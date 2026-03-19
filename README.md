@@ -1,210 +1,85 @@
-# Healthcare Admin Agents
+<p align="center">
+  <h1 align="center">Healthcare Agents</h1>
+  <p align="center">
+    <strong>A complete healthcare administration department for your AI assistant.</strong><br>
+    51 specialized agents with MHA-level expertise, real CFR citations, and ready-to-use deliverable templates.
+  </p>
+  <p align="center">
+    <a href="#quick-start"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 Agents"></a>
+    <a href="#compatible-tools"><img src="https://img.shields.io/badge/tools-12+-8A2BE2?style=flat-square" alt="12+ Tools"></a>
+    <a href="https://github.com/ajhcs/healthcare-agents/stargazers"><img src="https://img.shields.io/github/stars/ajhcs/healthcare-agents?style=flat-square" alt="Stars"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="License"></a>
+  </p>
+</p>
 
-> 51 specialized AI agents for US healthcare administration. MHA-level expertise in revenue cycle, compliance, quality, clinical operations, payer relations, health IT, and more.
+---
 
-Inspired by and built on the conventions of [The Agency](https://github.com/msitarzewski/agency-agents) by Michael Sitarzewski.
+Healthcare admin is drowning in complexity. These agents know the specific CFR sections, CMS payment models, and EHR workflows so you don't have to start from scratch every time.
 
-## What This Is
+Not a chatbot with a healthcare skin. Every agent cites real regulations, speaks in practitioner language, and produces actual deliverables — compliance assessments, financial models, audit checklists, gap reports.
 
-A complete healthcare administration department in your AI coding assistant. Each agent is a specialized expert with real regulatory knowledge, operational workflows, and deliverable templates — not a generic chatbot with a healthcare skin.
+> Built on the conventions of [agency-agents](https://github.com/msitarzewski/agency-agents) by [Michael Sitarzewski](https://github.com/msitarzewski).
 
-These agents know specific CFR sections, real EHR systems, actual CMS payment models, and the operational details that separate a textbook answer from practitioner-level advice.
-
-**Target audience**: Healthcare professionals (MHA-level and above). These agents assume you know the domain and communicate peer-to-peer.
-
-## Installation
-
-### Claude Code
+## Quick Start
 
 ```bash
+# Claude Code (2 commands, done)
 git clone https://github.com/ajhcs/healthcare-agents.git
 cp healthcare-agents/agents/*.md ~/.claude/agents/
 ```
 
-Agents are available immediately. Reference by name in conversation:
+Then just ask:
 
-> "Activate the 340B Program Manager and help me assess our contract pharmacy compliance"
+> *"Activate the Compliance Officer and audit our HIPAA Security Rule compliance against 45 CFR 164.308"*
 
-### Codex CLI (OpenAI)
+**Works with 12+ tools** — Claude Code, Cursor, Copilot, Gemini CLI, Windsurf, Cline, Aider, and more. See the full [Installation Guide](INSTALL.md).
 
-Codex CLI uses TOML for agent definitions. A conversion script is provided:
+## What Makes These Agents Different
 
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-cd healthcare-agents
+| | Generic AI | Healthcare Agents |
+|---|---|---|
+| **Compliance** | "Follow HIPAA" | Cites 45 CFR 164.500-534, breach notification at 164.400-414 |
+| **Finance** | "Optimize revenue" | PMPM decomposition, CARC/RARC denial analysis, CMS-2552 cost reports |
+| **Coding** | "Use correct codes" | CC/MCC capture rates, NCCI edits, E/M 2021+ guidelines |
+| **Systems** | "Use your EHR" | Epic Caboodle/Cogito, CAQH ProView, 340B OPAIS, PECOS, NHSN |
 
-# Option 1: Install as read-only context (simplest)
-mkdir -p ~/.codex/agents
-cp agents/*.md ~/.codex/agents/
+**21,000+ lines** of dense domain knowledge. **Average 420 lines/agent** of real expertise, not filler.
 
-# Then add to ~/.codex/AGENTS.md:
-echo "Refer to agent files in ~/.codex/agents/ for healthcare administration expertise." >> ~/.codex/AGENTS.md
-```
+## Example Output
 
-Or reference the agents directory directly in your project's `AGENTS.md`:
-
-```markdown
-# Healthcare Agents
-Load agent personality files from ./agents/ for healthcare administration expertise.
-Each file defines a specialist. Adopt the identity described in the file when asked.
-```
-
-### Gemini CLI
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p ~/.gemini/agents
-cp healthcare-agents/agents/*.md ~/.gemini/agents/
-```
-
-Enable subagents in `~/.gemini/settings.json`:
-
-```json
-{
-  "experimental": {
-    "enableAgents": true
-  }
-}
-```
-
-Invoke agents with `@agent-name` or let Gemini auto-select based on task relevance.
-
-### OpenClaw
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p ~/.openclaw/skills/healthcare-agents
-
-# Copy each agent as a skill
-for f in healthcare-agents/agents/*.md; do
-  name=$(basename "$f" .md)
-  mkdir -p ~/.openclaw/skills/healthcare-agents/$name
-  cp "$f" ~/.openclaw/skills/healthcare-agents/$name/SKILL.md
-done
-```
-
-Or install at workspace scope by placing the skill directories in `./skills/` within your working directory.
-
-### Claude Desktop — Cowork
-
-1. Open Claude Desktop and navigate to the **Cowork** tab
-2. Go to **Settings > Cowork > Global Instructions**
-3. Reference agents as domain knowledge, or create a plugin:
+Ask the 340B Program Manager about contract pharmacy compliance:
 
 ```
-your-plugin/
-  .claude-plugin/plugin.json
-  skills/
-    # Copy each .md agent file here as a skill
+340B CONTRACT PHARMACY COMPLIANCE ASSESSMENT
+=============================================
+
+1. ENTITY ELIGIBILITY VERIFICATION
+   - Covered entity type: [Federally Qualified Health Center / DSH Hospital / ...]
+   - 340B ID: [HRSA-assigned ID]
+   - Registration status in 340B OPAIS: [Active / Pending]
+
+2. CONTRACT PHARMACY NETWORK REVIEW
+   - Total contract pharmacies registered: [count]
+   - Chain vs. independent mix: [ratio]
+   - HRSA contract pharmacy registration dates: [verify all current]
+
+3. COMPLIANCE RED FLAGS
+   [ ] Duplicate discounts — Medicaid claims cross-referenced against 340B purchases
+   [ ] Diversion — prescriptions for non-eligible patients filled at contract pharmacy
+   [ ] GPO prohibition violations (for DSH hospitals under 100 beds)
+   [ ] Missing contract pharmacy agreements or expired registrations
+
+4. RECOMMENDED ACTIONS
+   ...
 ```
 
-For manual use, paste agent content into project instructions or add agent files to a **Claude Context** folder.
+Every agent produces structured, actionable deliverables like this — not summaries of what a deliverable *would* look like.
 
-### Claude Web (Projects)
+## The 51 Agents
 
-1. Open [claude.ai](https://claude.ai) and create a new **Project**
-2. Click **Set custom instructions**
-3. Paste the content of any agent file into the project instructions
-4. Upload additional agent `.md` files as project knowledge
+<details>
+<summary><strong>Strategy & Advisory</strong> — 5 agents</summary>
 
-Each project supports one primary persona — choose the agent that matches your workflow.
-
-### Cursor
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .cursor/rules
-cp healthcare-agents/agents/*.md .cursor/rules/
-```
-
-Cursor rules support YAML frontmatter. The existing agent frontmatter (`name`, `description`) will be recognized. For automatic activation, you can optionally add `alwaysApply: false` to let Cursor intelligently select the right agent based on context.
-
-### Windsurf
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .windsurf/rules
-cp healthcare-agents/agents/*.md .windsurf/rules/
-```
-
-Optionally add `trigger: model_decision` to the YAML frontmatter of each file so Windsurf activates the right specialist automatically.
-
-### Cline
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .clinerules
-cp healthcare-agents/agents/*.md .clinerules/
-```
-
-### GitHub Copilot
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .github/instructions
-cp healthcare-agents/agents/*.md .github/instructions/
-```
-
-Rename files to use the `.instructions.md` extension for path-specific activation:
-
-```bash
-for f in .github/instructions/*.md; do
-  mv "$f" "${f%.md}.instructions.md"
-done
-```
-
-Enable in VS Code settings: `github.copilot.chat.codeGeneration.useInstructionFiles: true`
-
-### Amazon Q Developer
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .amazonq/rules
-cp healthcare-agents/agents/*.md .amazonq/rules/
-```
-
-Rules are automatically applied as context in all Amazon Q chat sessions.
-
-### Aider
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-```
-
-Add to `.aider.conf.yml`:
-
-```yaml
-read:
-  - healthcare-agents/agents/revenue-340b-program-manager.md
-  - healthcare-agents/agents/quality-compliance-officer.md
-  # Add the specific agents you need
-```
-
-Or load in-session: `/read healthcare-agents/agents/revenue-340b-program-manager.md`
-
-### Any Other Tool
-
-Each agent is a self-contained Markdown file with YAML frontmatter. The format is:
-
-```yaml
----
-name: Agent Name
-description: One-line specialty summary
-color: "#hex"
-emoji: 🏥
-vibe: One-sentence personality
----
-
-# Agent Name
-
-System prompt and domain knowledge...
-```
-
-If your tool supports custom instructions, system prompts, or persona files — these agents work. Copy the `.md` file into wherever your tool reads custom instructions from, or paste the content directly into a system prompt field.
-
-## The 10 Divisions
-
-### Strategy & Advisory (5 agents)
 | Agent | Specialty |
 |-------|-----------|
 | Healthcare Strategy Consultant | Service line planning, M&A, market analysis, CON strategy |
@@ -213,7 +88,11 @@ If your tool supports custom instructions, system prompts, or persona files — 
 | Structural Improvement Consultant | Org redesign, governance, change management, post-merger integration |
 | Healthcare Actuarial Advisor | Risk adjustment (HCC/RAF), capitation, IBNR, MLR modeling |
 
-### Clinical Operations (8 agents)
+</details>
+
+<details>
+<summary><strong>Clinical Operations</strong> — 8 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Utilization Management Specialist | Medical necessity, InterQual/Milliman, Two-Midnight Rule |
@@ -225,7 +104,11 @@ If your tool supports custom instructions, system prompts, or persona files — 
 | Case Manager | Discharge planning, post-acute placement, LOS optimization |
 | Infection Prevention Specialist | HAI surveillance (NHSN), antimicrobial stewardship, outbreak response |
 
-### Quality, Safety & Compliance (7 agents)
+</details>
+
+<details>
+<summary><strong>Quality, Safety & Compliance</strong> — 7 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Quality Improvement Specialist | HEDIS, MIPS/QPP, CMS Stars, Leapfrog, eCQMs |
@@ -236,7 +119,11 @@ If your tool supports custom instructions, system prompts, or persona files — 
 | Risk Manager | Enterprise/clinical risk, malpractice, claims management |
 | Accreditation Specialist | Joint Commission, NCQA, URAC, AAAHC, DNV, survey readiness |
 
-### Revenue Cycle & Finance (6 agents)
+</details>
+
+<details>
+<summary><strong>Revenue Cycle & Finance</strong> — 6 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Revenue Cycle Specialist | End-to-end RCM, denials (CARC/RARC), A/R optimization |
@@ -246,7 +133,11 @@ If your tool supports custom instructions, system prompts, or persona files — 
 | 340B Program Manager | Covered entity compliance, contract pharmacy, split billing, HRSA audits |
 | Chargemaster Analyst | CDM maintenance, price transparency, charge capture integrity |
 
-### Payer & Managed Care (6 agents)
+</details>
+
+<details>
+<summary><strong>Payer & Managed Care</strong> — 6 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Value-Based Care Manager | ACO operations (MSSP/ACO REACH), shared savings, risk contracts |
@@ -256,14 +147,22 @@ If your tool supports custom instructions, system prompts, or persona files — 
 | Credentialing & Enrollment Coordinator | CAQH, PECOS, CMS-855, privileging, delegated credentialing |
 | Medicare Outreach Coordinator | Beneficiary education, enrollment periods, LIS/Extra Help |
 
-### Population Health & Community (3 agents)
+</details>
+
+<details>
+<summary><strong>Population Health & Community</strong> — 3 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Population Health Manager | Risk stratification, care gaps, SDOH, chronic disease programs |
 | Public Health Surveillance Coordinator | Reportable diseases, outbreak investigation, syndromic surveillance |
 | Community Health Coordinator | CHNA, Schedule H, health equity, CHW programs, grant management |
 
-### Health IT & Informatics (6 agents)
+</details>
+
+<details>
+<summary><strong>Health IT & Informatics</strong> — 6 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Health Informatics Manager | Clinical informatics, USCDI/TEFCA, ONC HTI-1, data governance |
@@ -273,7 +172,11 @@ If your tool supports custom instructions, system prompts, or persona files — 
 | Healthcare Interoperability Engineer | HL7v2, FHIR R4, C-CDA, X12 EDI, HIE connectivity |
 | Telehealth Program Manager | Virtual care ops, licensure compacts, RPM/RTM billing |
 
-### Operations & Administration (7 agents)
+</details>
+
+<details>
+<summary><strong>Operations & Administration</strong> — 7 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Hospital Operations Administrator | Bed management, capacity planning, patient throughput |
@@ -284,38 +187,46 @@ If your tool supports custom instructions, system prompts, or persona files — 
 | Supply Chain Manager | GPO management, value analysis, OR supplies, FDA recalls |
 | Healthcare Workforce Manager | Staffing models, scheduling, retention, burnout prevention |
 
-### Pharmacy & Drug Programs (2 agents)
+</details>
+
+<details>
+<summary><strong>Pharmacy & Drug Programs</strong> — 2 agents</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Pharmacy Benefits Specialist | Formulary, PBM contracts, specialty pharmacy, biosimilars |
 | Medication Safety Specialist | ISMP, LASA drugs, CPOE, BCMA, USP 797/800 |
 
-### Emergency & Preparedness (1 agent)
+</details>
+
+<details>
+<summary><strong>Emergency & Preparedness</strong> — 1 agent</summary>
+
 | Agent | Specialty |
 |-------|-----------|
 | Emergency Preparedness Coordinator | HICS, CMS EP CoPs (42 CFR 482.15), surge planning, HVA |
 
-## What Makes These Agents Different
+</details>
 
-**Real regulatory depth.** Every agent cites specific CFR sections, CMS transmittals, and Federal Register notices. Not "follow HIPAA" — the actual Privacy Rule sections (45 CFR 164.500-534) and breach notification requirements (45 CFR 164.400-414).
+## Compatible Tools
 
-**Actual deliverables.** Each agent includes 2-4 fill-in-ready templates — compliance assessments, financial analyses, audit checklists, gap reports. Not descriptions of what a deliverable would look like. The deliverable itself.
+| Tool | Install Method |
+|------|----------------|
+| **Claude Code** | `cp agents/*.md ~/.claude/agents/` |
+| **Cursor** | `cp agents/*.md .cursor/rules/` |
+| **Windsurf** | `cp agents/*.md .windsurf/rules/` |
+| **GitHub Copilot** | `cp agents/*.md .github/instructions/` |
+| **Gemini CLI** | `cp agents/*.md ~/.gemini/agents/` |
+| **Codex CLI** | `cp agents/*.md ~/.codex/agents/` |
+| **Cline** | `cp agents/*.md .clinerules/` |
+| **Amazon Q** | `cp agents/*.md .amazonq/rules/` |
+| **Aider** | Add to `.aider.conf.yml` as `read:` entries |
+| **Claude Desktop** | Paste into project instructions or Cowork plugins |
+| **Claude Web** | Upload `.md` files as project knowledge |
+| **OpenClaw** | Copy as skills (see [INSTALL.md](INSTALL.md)) |
+| **Any tool** | Paste `.md` content into system prompt / custom instructions |
 
-**Real systems.** Agents know Epic, Cerner, MEDITECH, CAQH ProView, 340B OPAIS, PECOS, NHSN, and the actual tools healthcare administrators use. Including API capabilities and integration patterns where relevant.
-
-**Expert audience.** These agents assume you know what a DRG is. They don't explain HIPAA from scratch. They discuss CC/MCC capture rates, PMPM decomposition, and F-tag citations because that's how healthcare professionals actually talk.
-
-## Stats
-
-- **51 agents** across 10 divisions
-- **21,000+ lines** of domain knowledge
-- **Average 420 lines/agent** of dense, real expertise
-- Real regulatory citations throughout (42 CFR, USC, CMS transmittals, Federal Register)
-- Actual deliverable templates with functional placeholders
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on creating new agents or improving existing ones.
+Full setup instructions with tool-specific tips: **[INSTALL.md](INSTALL.md)**
 
 ## Validation
 
@@ -323,13 +234,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on creating new agents or 
 bash scripts/lint-agents.sh
 ```
 
-## Attribution
+## Contributing
 
-This pack follows the conventions and structure established by [agency-agents](https://github.com/msitarzewski/agency-agents) by [Michael Sitarzewski](https://github.com/msitarzewski). The agency-agents project demonstrated that markdown-based agent personalities with strong voice, concrete deliverables, and measurable outcomes produce dramatically better AI assistance than generic prompts.
+New agents, deeper regulatory citations, updated CMS rules — all welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Disclaimer
 
-These agents provide healthcare administration knowledge for informational and operational purposes. They do not provide clinical advice (diagnosis, treatment, prescribing), legal opinions, or handle protected health information (PHI). Healthcare regulations change frequently — verify against primary sources (CMS.gov, Federal Register, state regulatory bodies) for current requirements.
+These agents provide healthcare administration knowledge for informational and operational purposes. They do not provide clinical advice, legal opinions, or handle PHI. Regulations change — verify against primary sources (CMS.gov, Federal Register, state regulatory bodies).
 
 ## License
 
