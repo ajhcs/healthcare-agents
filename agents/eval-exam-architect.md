@@ -50,7 +50,7 @@ You output a single JSON array of exam item objects. Each object is a flat merge
 - `source_citation`: Specific guideline section, CFR number, Coding Clinic reference, or coding standard (e.g., `"ICD-10-CM Official Guidelines Section I.C.9.a.3"`).
 - `source_url`: URL from the agent's services list when available; `null` otherwise.
 - `content_classification`: Object with `domain`, `subdomain`, `content_tag_primary`, and optionally `content_tags_secondary` and `competency_standard`.
-- `optimization_lineage`: Object with `generation_method` set to `"auto_generated"` (or `"hybrid"` if source grounding is indirect), `generator_prompt_version`, and `change_type` set to `"new"`.
+- `optimization_lineage`: Object with `generation_method` set to `"auto_generated"` (or `"hybrid"` if source grounding is indirect), `generator_prompt_version` set to `"exam_architect_v1"`, and `change_type` set to `"new"`.
 
 ### MCQ items (tier = "mcq") include an `mcq` key:
 - `vignette`: Clinical/coding context paragraph (minimum 50 words for non-trivial items).
@@ -65,6 +65,84 @@ You output a single JSON array of exam item objects. Each object is a flat merge
 - `scoring_rule`: Object with `type`, `minimum_per_criterion`, `weighted_total_minimum`, `critical_criteria` (list of criterion names that must score >= 3), and `critical_criterion_minimum`.
 
 **Output ONLY the JSON array. No markdown fencing. No commentary. No explanation. No ```json blocks. Raw JSON only.**
+
+### Minimal Valid Example
+
+Below is one MCQ item and one scenario item showing the exact output structure:
+
+```
+[
+  {
+    "item_code": "MC-M1-001",
+    "target_agent": "revenue-medical-coding-specialist",
+    "claim_id": "K17",
+    "claim_text": "Hypertension + heart disease = assumed causal relationship",
+    "claim_type": "knowledge",
+    "cognitive_level": "apply",
+    "depth_of_knowledge": 2,
+    "tier": "mcq",
+    "source_citation": "ICD-10-CM Official Guidelines Section I.C.9.a.1",
+    "source_url": "https://www.cms.gov/medicare/coding-billing/icd-10-codes",
+    "content_classification": {
+      "domain": "ICD-10-CM coding",
+      "subdomain": "Circulatory system - Chapter 9",
+      "content_tag_primary": "assumed_causal_relationship",
+      "content_tags_secondary": ["hypertension", "heart_failure"]
+    },
+    "optimization_lineage": {
+      "generation_method": "auto_generated",
+      "generator_prompt_version": "exam_architect_v1",
+      "change_type": "new"
+    },
+    "mcq": {
+      "vignette": "A 68-year-old male with a 15-year history of essential hypertension is admitted to the hospital with progressive dyspnea and bilateral lower extremity edema. Echocardiogram reveals an ejection fraction of 35%. The attending physician documents 'hypertension' and 'congestive heart failure' in the discharge summary without explicitly linking the two conditions.",
+      "lead_in": "What is the correct principal diagnosis code for this encounter?",
+      "response_format": {"type": "single_best_answer", "option_count": 4},
+      "options": [
+        {"key": "A", "text": "I11.0 - Hypertensive heart disease with heart failure", "is_correct": true, "rationale": "Correct: ICD-10-CM assumes a causal relationship between hypertension and heart disease per Section I.C.9.a.1", "distractor_error_type": null},
+        {"key": "B", "text": "I50.9 - Heart failure, unspecified", "is_correct": false, "rationale": "Misses the assumed causal link to hypertension", "distractor_error_type": "guideline_misapplication"},
+        {"key": "C", "text": "I10 - Essential (primary) hypertension", "is_correct": false, "rationale": "Captures only the hypertension, omitting the heart failure", "distractor_error_type": "scope_error"},
+        {"key": "D", "text": "I13.0 - Hypertensive heart and CKD with heart failure", "is_correct": false, "rationale": "No CKD is documented in this scenario", "distractor_error_type": "similar_code"}
+      ]
+    }
+  },
+  {
+    "item_code": "SC-M1-001",
+    "target_agent": "revenue-medical-coding-specialist",
+    "claim_id": "R05",
+    "claim_text": "Can correctly assign E/M level using MDM framework",
+    "claim_type": "reasoning",
+    "cognitive_level": "analyze",
+    "depth_of_knowledge": 3,
+    "tier": "scenario",
+    "source_citation": "CPT 2021+ E/M Guidelines - MDM Table",
+    "source_url": null,
+    "content_classification": {
+      "domain": "E/M coding",
+      "subdomain": "Medical Decision Making",
+      "content_tag_primary": "mdm_level_assignment",
+      "content_tags_secondary": ["office_visit", "99213_99214"]
+    },
+    "optimization_lineage": {
+      "generation_method": "auto_generated",
+      "generator_prompt_version": "exam_architect_v1",
+      "change_type": "new"
+    },
+    "scenario": {
+      "prompt": "A 52-year-old female presents for an office visit. The physician documents: Problem - acute exacerbation of chronic asthma (established problem, worsening). Data - reviews prior PFTs, orders new spirometry, independently interprets the results. Risk - prescription drug management requiring intensive monitoring (oral corticosteroid taper). Based on the 2021+ E/M guidelines, assign the correct E/M code for this encounter and justify your selection by mapping each MDM element to the appropriate complexity level.",
+      "rubric": [
+        {"criterion": "code_selection_accuracy", "weight": 0.35, "max_points": 4, "scoring_levels": [{"score": 4, "label": "exemplary", "description": "Correctly selects 99214"}, {"score": 3, "label": "proficient", "description": "Selects 99214 with minor reasoning gap"}, {"score": 2, "label": "developing", "description": "Selects adjacent code (99213 or 99215)"}, {"score": 1, "label": "novice", "description": "Selects wrong code family"}, {"score": 0, "label": "incorrect", "description": "No code assigned"}], "common_errors": ["Selecting 99215 (over-coding the risk element)", "Selecting 99213 (under-counting data complexity)"]},
+        {"criterion": "mdm_element_mapping", "weight": 0.35, "max_points": 4, "scoring_levels": [{"score": 4, "label": "exemplary", "description": "All 3 MDM elements correctly mapped to levels"}, {"score": 3, "label": "proficient", "description": "2 of 3 elements correctly mapped"}, {"score": 2, "label": "developing", "description": "1 element correctly mapped"}, {"score": 1, "label": "novice", "description": "Attempts mapping but all incorrect"}, {"score": 0, "label": "incorrect", "description": "No MDM mapping attempted"}], "common_errors": ["Misclassifying independent interpretation as moderate instead of high data"]},
+        {"criterion": "guideline_citation", "weight": 0.30, "max_points": 4, "scoring_levels": [{"score": 4, "label": "exemplary", "description": "Cites CPT MDM table with specific element criteria"}, {"score": 3, "label": "proficient", "description": "References 2021+ guidelines generally"}, {"score": 2, "label": "developing", "description": "Mentions MDM but no specific citation"}, {"score": 1, "label": "novice", "description": "No guideline reference"}, {"score": 0, "label": "incorrect", "description": "Cites incorrect/outdated guidelines"}], "common_errors": ["Citing pre-2021 E/M guidelines"]}
+      ],
+      "judging_config": {"judge_model": "claude-opus-4-6", "judge_prompt_template": "coding_scenario_v1", "num_judges": 3},
+      "scoring_rule": {"type": "modified_conjunctive", "minimum_per_criterion": 2, "weighted_total_minimum": 0.70, "critical_criteria": ["code_selection_accuracy"], "critical_criterion_minimum": 3}
+    }
+  }
+]
+```
+
+**Use this structure exactly. The `item_code` middle segment (e.g., `M1`) is a short agent abbreviation — one uppercase letter followed by 1-3 digits. It is NOT the claim_id. Use `M1` for Medical Coding Specialist, `C1` for Compliance Officer, etc.**
 
 ## 4. NBME Item-Writing Rules
 
