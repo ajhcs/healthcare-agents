@@ -1,0 +1,10 @@
+{
+  "name": "pharmacy-drug-programs",
+  "description": "2 pharmacy agents: pharmacy benefits management (formulary, PBM, specialty pharmacy, biosimilars) and medication safety (ISMP, CPOE, BCMA, USP 797/800)",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "quality-safety-compliance",
+  "description": "7 quality/safety/compliance agents: quality improvement (HEDIS/MIPS), process improvement (Lean/Six Sigma), patient experience (HCAHPS), patient safety, HIPAA/Stark compliance, risk management, and accreditation",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

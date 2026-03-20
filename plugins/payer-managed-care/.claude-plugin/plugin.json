@@ -1,0 +1,10 @@
+{
+  "name": "payer-managed-care",
+  "description": "6 payer and managed care agents: value-based care (ACO/MSSP), payer relations, Medicare/Medicaid, managed care analytics, credentialing, and Medicare outreach",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

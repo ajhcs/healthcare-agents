@@ -1,0 +1,10 @@
+{
+  "name": "revenue-cycle-finance",
+  "description": "6 revenue cycle and finance agents: end-to-end RCM, healthcare finance, contract analysis, medical coding (ICD-10/CPT/DRG), 340B program management, and chargemaster maintenance",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

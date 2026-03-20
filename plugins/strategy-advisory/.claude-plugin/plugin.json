@@ -1,0 +1,10 @@
+{
+  "name": "strategy-advisory",
+  "description": "5 healthcare strategy agents: strategy consulting, operations consulting (Lean/Six Sigma), clinical operations consulting, organizational restructuring, and actuarial advisory",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

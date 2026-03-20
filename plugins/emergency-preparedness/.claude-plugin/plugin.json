@@ -1,0 +1,10 @@
+{
+  "name": "emergency-preparedness",
+  "description": "Emergency preparedness coordinator agent: HICS, CMS EP CoPs (42 CFR 482.15), surge planning, and hazard vulnerability analysis",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

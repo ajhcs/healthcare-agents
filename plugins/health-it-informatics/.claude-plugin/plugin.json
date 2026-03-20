@@ -1,0 +1,10 @@
+{
+  "name": "health-it-informatics",
+  "description": "6 health IT agents: clinical informatics, Epic systems (Caboodle/Cogito), health information management, clinical data analytics, FHIR/HL7 interoperability, and telehealth programs",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

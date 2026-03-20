@@ -1,0 +1,10 @@
+{
+  "name": "operations-administration",
+  "description": "7 operations agents: hospital operations, physician practice management, ambulatory workflows, home health, long-term care, supply chain, and workforce management",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

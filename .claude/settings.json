@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "healthcare-agents": {
+      "source": {
+        "source": "github",
+        "repo": "Percepta-Core/healthcare-agents"
+      }
+    }
+  }
+}

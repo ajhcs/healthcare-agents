@@ -1,0 +1,10 @@
+{
+  "name": "clinical-operations",
+  "description": "8 clinical operations agents: utilization management, care coordination, clinical research, CDI, prior authorization, referrals, case management, and infection prevention",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}

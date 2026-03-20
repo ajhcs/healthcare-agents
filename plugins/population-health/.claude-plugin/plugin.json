@@ -1,0 +1,10 @@
+{
+  "name": "population-health",
+  "description": "3 population health agents: population health management, public health surveillance, and community health coordination (CHNA, health equity)",
+  "version": "1.0.0",
+  "author": {
+    "name": "Percepta-Core"
+  },
+  "homepage": "https://github.com/Percepta-Core/healthcare-agents",
+  "repository": "https://github.com/Percepta-Core/healthcare-agents"
+}
