@@ -471,10 +471,6 @@ def aggregate_scores(
     overall_score = 0.5 * tier1_score + 0.5 * tier2_score
 
     # ---- Build lookup maps ----
-    # item_id -> item dict
-    item_by_id: dict[str, dict] = {
-        item.get("id", item.get("item_code", "")): item for item in items
-    }
     # item_id -> MCQScore
     mcq_by_id: dict[str, MCQScore] = {s.item_id: s for s in mcq_scores}
     # item_id -> aggregated tier2 score (0-1)
