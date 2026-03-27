@@ -27,24 +27,37 @@ The pattern has been replicated by dozens of people (Ralph Wiggum Loop, Continuo
 2. **`eval/rubric.md`** — the frozen metric. Scoring criteria Claude-as-judge uses. The loop can NEVER modify this file.
 3. **`eval/results.tsv`** — append-only log of every iteration.
 
+### Preflight Checks
+
+Before entering the loop, the slash command MUST verify:
+
+1. **Not on main**: `git branch --show-current` must NOT be `main` or `master`. Abort with message: "Switch to a feature branch first (e.g., `git checkout -b eval/{agent-name}`)."
+2. **Clean worktree for target file**: `git diff --name-only` and `git diff --cached --name-only` must not include `agents/{name}.md`. Other dirty files are OK — we only need the target file clean so `git restore` is safe. Abort with: "agents/{name}.md has uncommitted changes. Commit or stash first."
+3. **Agent file exists**: `agents/{name}.md` must exist. Abort with: "No agent file found at agents/{name}.md."
+4. **Rubric exists**: `eval/rubric.md` must exist. Abort with: "Frozen rubric not found at eval/rubric.md."
+
 ### The Loop (up to 5 iterations per invocation)
 
 ```
-1. Read agents/{name}.md
-2. Generate 25 questions covering the agent's key responsibilities
-3. Answer all 25 as the agent (using the .md as system context)
-4. Judge each answer against rubric.md (score all 3 criteria per question)
-5. Compute weighted score → 0-100
-6. Identify the 2-3 weakest areas
-7. Edit agents/{name}.md to strengthen weak areas
-   - Must not exceed 120% of original line count (deterministic check via wc -l)
+0. Run preflight checks (see above) — abort if any fail
+1. Record session-start line count: wc -l agents/{name}.md → BASELINE_LINES
+2. Read agents/{name}.md
+3. Read eval/role-baselines/{name}.md if it exists (see Role Baselines section)
+4. Generate 25 questions from BOTH the agent .md AND the role baseline (if present)
+5. Answer all 25 as the agent (using the .md as system context)
+6. Judge each answer against rubric.md (score all 3 criteria per question)
+7. Compute weighted score → 0-100
+8. Identify the 2-3 weakest areas
+9. Edit agents/{name}.md to strengthen weak areas
+   - Must not exceed BASELINE_LINES × 1.2 OR BASELINE_LINES + 50 (whichever is greater)
+   - Cap is against SESSION-START baseline, not pre-edit — prevents compounding across iterations
    - Prefer appending specific guidance to existing sections over rewriting
-8. Re-answer the SAME 25 questions with the edited agent
-9. Re-judge → new score
-10. New > old → git add agents/{name}.md && git commit -m "eval: {agent} {before}→{after} (+{delta})"
-    New <= old → git restore agents/{name}.md
-11. Append to eval/results.tsv
-12. Next iteration (generate fresh 25 questions)
+10. Re-answer the SAME 25 questions with the edited agent
+11. Re-judge → new score
+12. Append to eval/results.tsv (BEFORE commit/revert — ensures every iteration is logged)
+13. New > old → git add agents/{name}.md eval/results.tsv && git commit -m "eval: {agent} {before}→{after} (+{delta})"
+    New <= old → git restore agents/{name}.md && git add eval/results.tsv && git commit -m "eval: {agent} {before}→{after} ({delta}) reverted"
+14. Next iteration (generate fresh 25 questions)
 ```
 
 ### Invocation
@@ -55,11 +68,11 @@ The pattern has been replicated by dozens of people (Ralph Wiggum Loop, Continuo
 
 One agent per session. Do not run multiple agents in a single invocation — context window fills after ~325K tokens (5 iterations × ~65K each), and judgment quality degrades with too much prior conversation in context.
 
-To run all agents, invoke separately:
+The argument is the agent filename without `.md`. It must match a file in `agents/`:
 ```
 /eval revenue-medical-coding-specialist
-/eval compliance-officer
-/eval prior-authorization-specialist
+/eval quality-compliance-officer
+/eval clinical-prior-authorization-specialist
 ...
 ```
 
@@ -81,7 +94,7 @@ To run all agents, invoke separately:
 
 | Criterion | Weight | What it measures |
 |-----------|--------|-----------------|
-| Accuracy | 40% | Factually correct, real citations, current guidelines. Score of 3+ requires specific codes or regulatory sections. Score of 4 requires named sources with publication dates or CFR numbers. |
+| Accuracy | 40% | Consistent with the agent's own stated guidelines and source documents. Score of 3+ requires specific codes or regulatory sections that appear in the agent .md or its referenced sources. Score of 4 requires named sources with publication dates or CFR numbers. Judge accuracy against what the prompt claims — do NOT independently verify external facts (that is a v2 concern). |
 | Completeness | 35% | All relevant steps covered, exceptions flagged, edge cases noted, nothing critical omitted |
 | Specificity | 25% | Cites specific codes/sections/timelines, actionable recommendations, not generic advice |
 
@@ -105,9 +118,9 @@ Column names use `pre_edit` / `post_edit` to make clear these are same-question-
 
 ### Commit Gate
 
-Karpathy-simple:
-- Score improved → `git add agents/{name}.md && git commit -m "eval: {name} {before}→{after} (+{delta})"`
-- Score same or worse → `git restore agents/{name}.md`
+Karpathy-simple. Every iteration commits (the log is always persisted):
+- Score improved → `git add agents/{name}.md eval/results.tsv && git commit`
+- Score same or worse → `git restore agents/{name}.md && git add eval/results.tsv && git commit`
 
 No threshold. No regression check beyond the same-question re-score. The ratchet self-corrects over iterations.
 
@@ -115,8 +128,31 @@ No threshold. No regression check beyond the same-question re-score. The ratchet
 
 Two deterministic constraints on the edit step:
 
-1. **Line count cap**: After editing, run `wc -l agents/{name}.md`. If it exceeds 120% of the pre-edit line count OR pre-edit + 50 lines (whichever is greater), revert immediately without re-scoring. Log as `status: capped`. The floor of 50 lines prevents the cap from blocking legitimate improvements on shorter files.
+1. **Line count cap**: After editing, run `wc -l agents/{name}.md`. If it exceeds `BASELINE_LINES × 1.2` OR `BASELINE_LINES + 50` (whichever is greater), revert immediately without re-scoring. Log as `status: capped`. **BASELINE_LINES is recorded once at session start (step 1)** and does not change between iterations — this prevents 5 successive 20% expansions from compounding. The floor of 50 lines prevents the cap from blocking legitimate improvements on shorter files.
 2. **Append-preferred**: The program instructs Claude to prefer adding specific guidance to existing sections over rewriting or reorganizing. Soft constraint but biases toward targeted fixes.
+
+### Role Baselines (Blind Spot Detection)
+
+`eval/role-baselines/{name}.md` — optional, frozen. A minimal checklist of capabilities and responsibilities expected for the role, independent of what the agent .md currently claims. Used to generate questions about things the agent SHOULD know but might not mention.
+
+Example for `revenue-medical-coding-specialist`:
+```
+## Expected Capabilities
+- ICD-10-CM/PCS code assignment and sequencing
+- CPT/HCPCS Level II coding
+- E/M level selection (2021 AMA guidelines)
+- Modifier usage (25, 59, 76, 77, etc.)
+- MS-DRG/APR-DRG optimization
+- HCC/RAF risk adjustment
+- NCCI edit resolution
+- Medical necessity documentation
+- Charge capture workflows
+- Denial management and appeals
+```
+
+These are short (10-20 lines), written once per agent, and never modified by the loop. They exist so the question generator can test for omitted responsibilities — not just what the prompt already covers. If no baseline exists for an agent, the loop generates questions from the agent .md only (graceful degradation).
+
+The baselines can be populated incrementally. Start with the first agent you eval, add others as you go.
 
 ### Question Persistence
 
@@ -168,5 +204,6 @@ The previous infrastructure (eval/schema/, eval/harness/, agents/eval-exam-archi
 |------|---------|-------------------|
 | `.claude/commands/eval.md` | The program — loop instructions | NO (read-only) |
 | `eval/rubric.md` | Frozen scoring metric | NO (never) |
+| `eval/role-baselines/{name}.md` | Frozen capability checklist (optional) | NO (never) |
 | `eval/results.tsv` | Iteration log (git-tracked) | APPEND-ONLY |
 | `agents/{name}.md` | The thing being optimized | YES (the only mutable target) |
