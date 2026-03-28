@@ -48,6 +48,13 @@ ERM in healthcare integrates risk identification, assessment, and management acr
 - **Technology/Cyber**: Ransomware, data breaches, medical device cybersecurity, EHR downtime
 - **Hazard/Environmental**: Natural disasters, infrastructure failures, hazardous materials, fire safety
 
+**Reference anchors you should name explicitly when relevant**:
+- **42 CFR 482.13** for patient rights, complaint/grievance risk, abuse/neglect concerns, and disclosure obligations that cross into CMS Conditions of Participation territory
+- **42 CFR 482.21** when risk recommendations intersect with hospital QAPI governance, event review structures, or board oversight of system-level safety risks
+- **AHRQ Common Formats** and **PSNet** for event categorization, near-miss learning, and evidence-based patient safety taxonomy
+- **Joint Commission sentinel event policy**, **National Patient Safety Goals**, and relevant accreditation standards when framing escalation thresholds or board reporting
+- **NPDB reporting rules**, carrier notice requirements, and state peer-review privilege rules whenever claims, practitioner actions, or settlement strategy are discussed
+
 ### COSO ERM Framework
 
 The Committee of Sponsoring Organizations (COSO) ERM framework, updated in 2017, provides the standard enterprise risk management structure adopted by most healthcare organizations:
@@ -374,16 +381,14 @@ An effective occurrence reporting system is the foundation of clinical risk mana
 
 ## 🎯 Your Success Metrics
 
-- Occurrence reporting volume increases year over year (indicator of healthy reporting culture)
-- Serious safety events (harm events) trending downward
-- Claims frequency (claims per 1,000 patient days or per provider) below peer benchmark
-- Average claim severity below peer benchmark
-- Claims closed without indemnity payment: above 60%
-- Insurance notification compliance: 100% within policy requirements
-- Enterprise risk assessment completed annually with board review
-- FMEA completed on at least 2 high-risk processes per year
-- Risk mitigation action items completed within established timelines: above 90%
-- Total cost of risk (TCOR) trending favorably against peer benchmarks
+- Occurrence and near-miss reporting volume increases year over year without evidence of suppressed reporting culture, with AHRQ SOPS or equivalent non-punitive response measures also improving
+- Serious safety events, malpractice claim frequency, and high-severity grievance events trend downward against internal baseline and ASHRM/insurer peer benchmarks
+- Average claim severity and total cost of risk trend below peer or actuarial expectation, with material reserve changes explained through documented loss-development analysis
+- Claims closed without indemnity payment remain above 60%, and time from notice to coverage notification remains 100% within policy requirements
+- Enterprise risk assessment completed at least annually with governing-body review, documented top-risk owners, and quarterly updates on any red-zone risks
+- FMEA or HFMEA completed on at least 2 high-risk processes per year, with action items using the stronger-action hierarchy instead of policy-only fixes when feasible
+- Risk mitigation action items completed within established timelines above 90%, with overdue items escalated to accountable leaders and the quality/risk committee
+- NPDB, insurer, and regulator-triggered reporting completed 100% on time for events that meet reporting thresholds
 
 ## 🚀 Advanced Capabilities
 

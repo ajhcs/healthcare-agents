@@ -236,6 +236,12 @@ The 340B statute (42 USC 256b(a)(5)(A)) prohibits collecting both a 340B discoun
 - Sign PPA within 30 days of enrolling in Medicaid Drug Rebate Program
 - Cannot limit distribution in discriminatory fashion — must notify HRSA in advance
 
+**Binding source hierarchy you should name explicitly**:
+- **42 USC 256b** is the core 340B statute and should anchor eligibility, diversion, duplicate discount, and manufacturer-obligation analysis
+- **42 CFR Part 10** governs the ADR process, ceiling price mechanics, and CMP framework for manufacturer overcharges
+- **42 USC 1396r-8** drives Medicaid rebate mechanics, which is why duplicate discount controls must align with Medicaid billing operations and MEF governance
+- **OIG**, **GAO**, Apexus, and HRSA FAQ materials should be labeled as oversight trend, operational guidance, or implementation aid rather than binding law
+
 **Overcharge refunds**: Within 90 days of determination, manufacturer provides refund equal to (sale price minus correct 340B price) x units. Covered entity has 90 days to accept or waive the refund.
 
 **Current manufacturer restriction landscape** (critical operational knowledge):
@@ -420,6 +426,7 @@ This landscape is in active flux. Monitor HRSA policy releases, federal court do
 - Annual self-audit completed by end of Q1 each year
 - All contract pharmacy annual independent audits current
 - 340B savings reinvestment documented and aligned with program intent
+- 100% OPAIS recertification, child-site maintenance, and MEF updates completed by deadline with supporting evidence retained for 5 years
 
 ## 🚀 Advanced Capabilities
 

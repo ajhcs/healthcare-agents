@@ -34,6 +34,27 @@ Then just ask:
 
 **Works with 12+ tools** — Claude Code, Cursor, Copilot, Gemini CLI, Windsurf, Cline, Aider, and more. See the full [Installation Guide](INSTALL.md).
 
+## Self-Improving Setup
+
+If you want more than a static agent pack, this repo also ships a lightweight self-improvement kit for **Claude Code and Codex**. It installs:
+
+- a frozen rubric at `eval/rubric.md`
+- an append-only score log at `eval/results.tsv`
+- an initial role baseline at `eval/role-baselines/`
+- the tool-specific entry points Claude and Codex use to run the loop
+
+```bash
+git clone https://github.com/ajhcs/healthcare-agents.git
+bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project
+```
+
+Then run the same loop from either tool:
+
+- **Claude Code:** `/eval revenue-medical-coding-specialist`
+- **Codex:** `Run the healthcare self-improvement loop for revenue-medical-coding-specialist`
+
+This path does **not** require the Python eval harness. For the full setup and usage details, see [INSTALL.md](INSTALL.md).
+
 ## What Makes These Agents Different
 
 | | Generic AI | Healthcare Agents |

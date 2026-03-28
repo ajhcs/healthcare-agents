@@ -13,6 +13,49 @@ Agents are available immediately. Reference by name in conversation:
 
 > "Activate the 340B Program Manager and help me assess our contract pharmacy compliance"
 
+## Self-Improvement Kit (Claude Code + Codex)
+
+If you want a simple prompt-improvement loop instead of the deeper Python eval harness, install the lightweight kit into the project that already contains your `agents/*.md` files:
+
+```bash
+git clone https://github.com/ajhcs/healthcare-agents.git
+bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project
+```
+
+Installed files:
+
+- `.claude/commands/eval.md`
+- `AGENTS.md` block for Codex discovery
+- `eval/rubric.md`
+- `eval/results.tsv`
+- `eval/role-baselines/revenue-medical-coding-specialist.md`
+
+Use `--force` if you want to overwrite the managed files:
+
+```bash
+bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project --force
+```
+
+### Running the Loop in Claude Code
+
+Open Claude Code in the target project and run:
+
+```text
+/eval revenue-medical-coding-specialist
+```
+
+Claude reads `.claude/commands/eval.md` as the loop program.
+
+### Running the Loop in Codex
+
+Open Codex in the target project and ask:
+
+```text
+Run the healthcare self-improvement loop for revenue-medical-coding-specialist
+```
+
+Codex reads project instructions from `AGENTS.md`, so the installer adds a marked block there telling Codex to use the same `.claude/commands/eval.md` procedure as the source of truth.
+
 ## Codex CLI (OpenAI)
 
 ```bash
