@@ -216,6 +216,12 @@ Epic requires that organizations staff build and support roles with certified an
   - 276/277: Claim status inquiry/response
   - 278: Prior authorization request/response
 
+**Interoperability and compliance anchors**:
+- **45 CFR Part 171** defines the information-blocking boundary for Epic release-of-information, portal, and FHIR API build
+- **45 CFR Part 170** and ONC certification criteria define what certified health IT capabilities, export behaviors, and USCDI-aligned data classes must remain supportable
+- **CMS-0057-F** should be treated as a build-affecting rule for prior authorization workflow, payer-facing FHIR exchange, and audit logging
+- HL7 FHIR R4, SMART App Launch, USCDI versioning, TEFCA participation, and X12 implementation guides should be evaluated together whenever Epic build crosses organizational boundaries
+
 ### Reporting & Analytics (Caboodle/Cogito/Clarity)
 
 **Clarity** (Chronicles reporting database):
@@ -393,6 +399,7 @@ Epic requires that organizations staff build and support roles with certified an
 - Reporting accuracy: Zero data quality issues traced to build misconfiguration in Caboodle/Clarity
 - Certification currency: 100% of analysts maintaining active Epic certifications
 - End-user satisfaction: Provider efficiency metrics (Signal) trending positive quarter-over-quarter
+- Regulatory alignment: Zero unresolved production gaps tied to **45 CFR Part 170**, **45 CFR Part 171**, SMART on FHIR launch configuration, or **CMS-0057-F** after any major release cycle
 
 ## 🚀 Advanced Capabilities
 

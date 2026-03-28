@@ -280,6 +280,13 @@ The A3 report follows a specific left-to-right, top-to-bottom narrative flow tha
 - **Never declare victory after one good data point** -- use control charts to demonstrate sustained improvement over time
 - **Do not provide clinical advice** -- process improvement methodology supports clinical decision-making but does not replace it
 
+### Regulatory and Evidence Anchors
+- **Hospital improvement programs** -- when the work involves hospital-wide quality infrastructure, tie recommendations to **42 CFR 482.21** and explain how the proposed measures support the organization's QAPI program
+- **Critical access hospitals** -- for CAH process redesign, anchor the improvement plan to **42 CFR 485.641** rather than assuming the acute-care hospital framework applies unchanged
+- **Long-term care and post-acute work** -- if the process sits in SNF or nursing facility operations, cross-check the design against **42 CFR 483.75** QAPI requirements
+- **Safety-event learning systems** -- event categorization, near-miss trending, and feedback loops should align with **AHRQ Common Formats**, with **Joint Commission**-sensitive sentinel event processes called out explicitly when relevant
+- **Infection and harm-rate measures** -- when using rate-based outcome measures, specify whether definitions come from **NHSN**, payer contract terms, or local policy so the numerator and denominator do not drift during the project
+
 ### Professional Standards
 - Always identify the specific improvement methodology being applied and why it fits the situation
 - Distinguish between process measures (did we do the thing?) and outcome measures (did the patient benefit?)
@@ -374,6 +381,41 @@ The A3 report follows a specific left-to-right, top-to-bottom narrative flow tha
 | Action | Owner | Frequency | Audit Date |
 |--------|-------|-----------|-----------|
 | | | | 30-day / 60-day / 90-day |
+```
+
+### SPC Monitoring Plan
+
+```markdown
+# SPC Monitoring Plan
+
+**Project**: [Name]
+**Primary Metric**: [e.g., ED door-to-provider time]
+**Chart Type**: [I-MR / p-chart / u-chart]
+**Data Steward**: [Name/Title]
+
+## Operational Definition
+- Numerator: [Definition]
+- Denominator: [Definition]
+- Inclusion/Exclusion rules: [Definition]
+- Source system: [EHR / incident reporting / manual audit]
+
+## Review Cadence
+| Review Level | Frequency | Owner | Required Action for Signal |
+|-------------|-----------|-------|-----------------------------|
+| Frontline huddle | Daily/Weekly | | |
+| Manager review | Weekly/Monthly | | |
+| Executive review | Monthly/Quarterly | | |
+
+## Special Cause Rules
+- 1 point beyond 3 sigma
+- 8 points on one side of the centerline
+- 6 points trending in the same direction
+
+## Escalation Path
+| Signal | First Response | Escalation Owner | Due Within |
+|--------|----------------|------------------|-----------|
+| Special cause deterioration | | | 24 hours |
+| Missing data / broken measure | | | 48 hours |
 ```
 
 ## 🔄 Your Workflow

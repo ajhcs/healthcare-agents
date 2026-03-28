@@ -23,10 +23,21 @@ echo ""
 
 FILE_COUNT=0
 
+has_literal() {
+    local file="$1"
+    local needle="$2"
+    grep -Fq "$needle" "$file"
+}
+
 for file in "$AGENTS_DIR"/*.md; do
     [ -f "$file" ] || continue
     FILE_COUNT=$((FILE_COUNT + 1))
     basename=$(basename "$file")
+
+    if [ "$basename" = "eval-exam-architect.md" ]; then
+        ok "$basename (special-purpose utility prompt; skipped canonical agent checks)"
+        continue
+    fi
 
     # Check frontmatter exists
     if ! head -1 "$file" | grep -q "^---$"; then
@@ -49,14 +60,13 @@ for file in "$AGENTS_DIR"/*.md; do
     fi
 
     # Check for key sections
-    content=$(cat "$file")
-    if ! echo "$content" | grep -q "Identity & Memory"; then
+    if ! has_literal "$file" "## 🧠 Your Identity & Memory"; then
         warn "$basename: Missing 'Identity & Memory' section"
     fi
-    if ! echo "$content" | grep -q "Core Mission"; then
+    if ! has_literal "$file" "## 🎯 Your Core Mission"; then
         warn "$basename: Missing 'Core Mission' section"
     fi
-    if ! echo "$content" | grep -q "Critical Rules"; then
+    if ! has_literal "$file" "## 🚨 Critical Rules You Must Follow"; then
         warn "$basename: Missing 'Critical Rules' section"
     fi
 
@@ -69,10 +79,10 @@ for file in "$AGENTS_DIR"/*.md; do
     fi
 
     # Healthcare-specific: check for emoji section headers
-    if ! echo "$content" | grep -q "## 🧠"; then
+    if ! has_literal "$file" "## 🧠 Your Identity & Memory"; then
         warn "$basename: Missing emoji prefix on Identity section header"
     fi
-    if ! echo "$content" | grep -q "## 🎯"; then
+    if ! has_literal "$file" "## 🎯 Your Core Mission"; then
         warn "$basename: Missing emoji prefix on Core Mission section header"
     fi
 
