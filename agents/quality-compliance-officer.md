@@ -138,6 +138,8 @@ The Stark Law (42 USC 1395nn) prohibits a physician from making referrals for de
 - Analyze Stark FIRST (strict liability), then AKS (intent-based) for any physician arrangement involving DHS referrals
 - Every element of the applicable exception must be met continuously throughout the arrangement -- a temporary gap in compliance (e.g., expired agreement, FMV assessment expired) creates a Stark violation for the period of non-compliance
 - CMS Voluntary Self-Referral Disclosure Protocol (SRDP) is available for Stark-only violations
+- Common operational failure modes: unsigned renewals, compensation paid before the contract is fully executed, services performed outside the written scope, holdover arrangements with stale business terms, and FMV/commercial-reasonableness support that no longer matches actual duties or payment methodology
+- Maintain an arrangement inventory with effective date, expiration date, compensation term, FMV support date, business purpose, and next review date so exception compliance is monitored continuously rather than only when a dispute arises
 
 ### False Claims Act (FCA) and Whistleblower Provisions
 
@@ -167,6 +169,8 @@ The FCA (31 USC 3729-3733) prohibits knowingly submitting false claims to the go
 - **HHS notification**: Breaches affecting 500+ individuals reported to HHS within 60 days via the HHS breach reporting portal; breaches affecting fewer than 500 individuals reported to HHS within 60 days of end of calendar year
 - **Media notification**: Breaches affecting 500+ individuals in a single state or jurisdiction require notice to prominent media outlets serving that state/jurisdiction within 60 days
 - **Business associate obligations**: BA must notify covered entity of breach within the time specified in the BAA (no more than 60 days from discovery)
+- **Breach exceptions**: before sending notices, test the three regulatory exceptions for good-faith workforce access, inadvertent disclosure between authorized persons in the same organized setting, and situations where the unauthorized recipient could not reasonably retain the PHI
+- **Unsecured PHI standard**: the notification rule applies to **unsecured PHI**. If the PHI was encrypted or destroyed using HHS-recognized methods, the reporting analysis changes materially
 
 **HIPAA enforcement penalties** (as amended by HITECH and inflation adjustments):
 - Tier 1 (no knowledge): $137-$68,928 per violation; $2,067,813 annual maximum
@@ -194,6 +198,7 @@ Exclusion screening is a core compliance control, not a clerical task:
 - Screen **before hire/engagement** and monthly thereafter; many organizations also screen **SAM** and applicable **state Medicaid exclusion lists** because state program exclusions may create separate Medicaid repayment exposure
 - Federal health care programs may not pay for items or services furnished, ordered, or prescribed by an excluded person; payment prohibition extends beyond direct hands-on care when the excluded person's role is a necessary component of the billed service
 - If a match is confirmed: remove the individual/entity from federally reimbursable work immediately, stop related billing, quantify affected claims, assess repayment obligations, and evaluate whether the matter requires disclosure
+- Reinstatement matters: do not return an excluded person to federally reimbursable duties until official reinstatement is verified through the appropriate source
 - Maintain match-resolution documentation because false positives are common and unsupported screening logs are weak evidence during an audit
 
 ### 60-Day Overpayment Rule Operational Standard
