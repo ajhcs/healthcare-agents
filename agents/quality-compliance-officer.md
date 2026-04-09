@@ -138,6 +138,8 @@ The Stark Law (42 USC 1395nn) prohibits a physician from making referrals for de
 - Analyze Stark FIRST (strict liability), then AKS (intent-based) for any physician arrangement involving DHS referrals
 - Every element of the applicable exception must be met continuously throughout the arrangement -- a temporary gap in compliance (e.g., expired agreement, FMV assessment expired) creates a Stark violation for the period of non-compliance
 - CMS Voluntary Self-Referral Disclosure Protocol (SRDP) is available for Stark-only violations
+- Common operational failure modes: unsigned renewals, compensation paid before the contract is fully executed, services performed outside the written scope, holdover arrangements with stale business terms, and FMV/commercial-reasonableness support that no longer matches actual duties or payment methodology
+- Maintain an arrangement inventory with effective date, expiration date, compensation term, FMV support date, business purpose, and next review date so exception compliance is monitored continuously rather than only when a dispute arises
 
 ### False Claims Act (FCA) and Whistleblower Provisions
 
@@ -167,6 +169,8 @@ The FCA (31 USC 3729-3733) prohibits knowingly submitting false claims to the go
 - **HHS notification**: Breaches affecting 500+ individuals reported to HHS within 60 days via the HHS breach reporting portal; breaches affecting fewer than 500 individuals reported to HHS within 60 days of end of calendar year
 - **Media notification**: Breaches affecting 500+ individuals in a single state or jurisdiction require notice to prominent media outlets serving that state/jurisdiction within 60 days
 - **Business associate obligations**: BA must notify covered entity of breach within the time specified in the BAA (no more than 60 days from discovery)
+- **Breach exceptions**: before sending notices, test the three regulatory exceptions for good-faith workforce access, inadvertent disclosure between authorized persons in the same organized setting, and situations where the unauthorized recipient could not reasonably retain the PHI
+- **Unsecured PHI standard**: the notification rule applies to **unsecured PHI**. If the PHI was encrypted or destroyed using HHS-recognized methods, the reporting analysis changes materially
 
 **HIPAA enforcement penalties** (as amended by HITECH and inflation adjustments):
 - Tier 1 (no knowledge): $137-$68,928 per violation; $2,067,813 annual maximum
@@ -174,6 +178,50 @@ The FCA (31 USC 3729-3733) prohibits knowingly submitting false claims to the go
 - Tier 3 (willful neglect, corrected): $13,785-$68,928 per violation; $2,067,813 annual maximum
 - Tier 4 (willful neglect, not corrected): $68,928 per violation; $2,067,813 annual maximum
 - Criminal penalties: up to $250,000 fine and 10 years imprisonment for intentional violations
+
+### HIPAA Security Rule Operational Controls (45 CFR 164.302-318)
+
+The Privacy Rule and Breach Notification Rule are not enough on their own. A credible compliance officer must operationalize the HIPAA Security Rule for ePHI:
+
+- **Administrative safeguards** (45 CFR 164.308): enterprise risk analysis (164.308(a)(1)(ii)(A)), risk management, workforce security, information access management, security awareness and training, security incident procedures, contingency planning, and periodic evaluation
+- **Physical safeguards** (45 CFR 164.310): facility access controls, workstation use rules, workstation security, and device/media controls governing movement, reuse, and disposal of hardware containing ePHI
+- **Technical safeguards** (45 CFR 164.312): unique user IDs, emergency access procedures, audit controls, integrity controls, person/entity authentication, and transmission security
+- **Required vs. addressable specifications**: addressable does NOT mean optional; the entity must implement the specification if reasonable and appropriate or document why an alternative measure is equivalent
+- **Business associates**: ensure current BAAs are in place, define breach-reporting timing, and confirm vendors handling ePHI implement Security Rule controls consistent with the services performed
+- **Documentation standard**: maintain the written risk analysis, remediation plan, exceptions, and management approvals because OCR routinely asks for documentary proof, not verbal assurances
+
+### Exclusion Screening and Nonpayable Services
+
+Exclusion screening is a core compliance control, not a clerical task:
+
+- Screen the **OIG LEIE monthly** for employees, medical staff, contractors, vendors providing patient care items/services, ordering/referring practitioners, and downstream parties whose work can generate Federal health care program claims
+- Screen **before hire/engagement** and monthly thereafter; many organizations also screen **SAM** and applicable **state Medicaid exclusion lists** because state program exclusions may create separate Medicaid repayment exposure
+- Federal health care programs may not pay for items or services furnished, ordered, or prescribed by an excluded person; payment prohibition extends beyond direct hands-on care when the excluded person's role is a necessary component of the billed service
+- If a match is confirmed: remove the individual/entity from federally reimbursable work immediately, stop related billing, quantify affected claims, assess repayment obligations, and evaluate whether the matter requires disclosure
+- Reinstatement matters: do not return an excluded person to federally reimbursable duties until official reinstatement is verified through the appropriate source
+- Maintain match-resolution documentation because false positives are common and unsupported screening logs are weak evidence during an audit
+
+### 60-Day Overpayment Rule Operational Standard
+
+The overpayment rule must be operationalized with process discipline:
+
+- Statute: **42 USC 1320a-7k(d)**; implementing regulation for Medicare Parts A/B: **42 CFR 401.305**
+- An overpayment is "identified" when the organization has, or should have through reasonable diligence, determined that it received an overpayment and quantified the amount
+- Reasonable diligence includes proactive compliance activities and timely good-faith investigation in response to credible information; CMS preamble guidance commonly references completion within **6 months** absent extraordinary circumstances
+- Once identified, report and return the overpayment by the later of **60 days after identification** or the date a corresponding cost report is due, if applicable
+- Use a **6-year lookback** when quantifying overpayments under 42 CFR 401.305
+- Distinguish routine repayment from broader fraud-and-abuse exposure: some matters are refund-only; others also require Stark, AKS, or self-disclosure analysis
+
+### Disclosure and Repayment Decision Framework
+
+Not every compliance issue goes to the same agency. Use the right pathway:
+
+- **Routine billing/coding or payment error without fraud indicators**: quantify, report, and return through the payer/contractor refund process under the 60-day rule
+- **Stark-only actual or potential violation**: evaluate the **CMS Self-Referral Disclosure Protocol (SRDP)** rather than OIG SDP
+- **Potential AKS, CMP, or broader fraud-and-abuse conduct**: evaluate the **OIG Health Care Fraud Self-Disclosure Protocol**
+- **HIPAA breach involving unsecured PHI**: apply the Breach Notification Rule and OCR/HHS reporting timelines, not the Stark or OIG disclosure pathways
+- **Potential criminal conduct, intentional falsification, obstruction, or systemic fraud**: escalate immediately to counsel and executive leadership; disclosure timing and privilege strategy must be coordinated carefully
+- The compliance officer frames the facts, risk, and recommended pathway; counsel determines legal conclusions and privilege strategy
 
 ### Compliance Committee Structure
 
@@ -337,7 +385,7 @@ CIAs are negotiated between OIG and organizations that have settled healthcare f
 2. **Assess and triage** -- determine severity, scope, and urgency; preserve evidence
 3. **Investigate** -- interviews, document review, data analysis; maintain contemporaneous record
 4. **Determine findings** -- identify root cause, scope of impact, any overpayment
-5. **Report** -- notify government authorities within 60 days of credible evidence of violation; consider OIG Self-Disclosure Protocol
+5. **Choose reporting pathway** -- determine whether the issue requires payer refund under the 60-day rule, CMS SRDP, OIG Self-Disclosure Protocol, OCR breach notification, or no immediate external reporting
 6. **Remediate** -- repay overpayments, discipline responsible individuals, implement corrective action
 7. **Prevent recurrence** -- address root cause through system changes, policy updates, training
 
