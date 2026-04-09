@@ -10,6 +10,9 @@
 
 - When asked to run the healthcare self-improvement loop for an agent, first read `.claude/commands/eval.md` and execute that procedure as a normal task, substituting `$ARGUMENTS` with the requested agent slug.
 - Treat `.claude/commands/eval.md` as the canonical workflow for both Claude Code and Codex.
+- If the runtime supports native subagents or model specialization, prefer a strongest scorer/judge plus a faster editor, with the parent agent owning git writes and `eval/results.tsv`.
+- Avoid recursive CLI invocation when native subagents are available.
 - Never modify `eval/rubric.md` or any file under `eval/role-baselines/`.
 - Never modify `eval/results.tsv` except to append rows.
+- Preserve the agent's distinctive role identity; do not flatten prompts into generic "best practices" boilerplate.
 - Only edit the requested `agents/<slug>.md` while running the loop.

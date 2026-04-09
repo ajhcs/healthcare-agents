@@ -56,6 +56,14 @@ Run the healthcare self-improvement loop for revenue-medical-coding-specialist
 
 Codex reads project instructions from `AGENTS.md`, so the installer adds a marked block there telling Codex to use the same `.claude/commands/eval.md` procedure as the source of truth.
 
+When the runtime supports native subagents or model specialization, prefer:
+
+- strongest available scorer/judge to generate questions, score, and produce an improvement brief
+- faster editor model to patch only the target `agents/<slug>.md`
+- parent orchestrator to own line-cap checks, `eval/results.tsv`, and commit/revert
+
+Avoid recursively calling the CLI from inside itself when native subagents are available. The scorer should return weak areas plus preservation guidance so the editor improves the prompt without broadening it into generic healthcare-administration boilerplate.
+
 ## Codex CLI (OpenAI)
 
 ```bash

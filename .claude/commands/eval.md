@@ -4,6 +4,20 @@ Evaluate and improve a healthcare agent's system prompt. Run up to 5 iterations 
 
 ---
 
+## Preferred Execution Mode
+
+When the runtime supports native subagents, model routing, or specialist workers, prefer a three-role loop:
+
+- **Parent orchestrator** — owns preflight checks, fixed question persistence within an iteration, line-cap enforcement, `eval/results.tsv` append, and commit/revert
+- **Scorer/judge** — strongest available reasoning model; read-only; generates the 25-question exam, scores it, and returns a structured critique
+- **Editor** — cheaper or faster model; edits ONLY `agents/$ARGUMENTS.md` using the scorer's critique
+
+Do **NOT** recursively invoke a full agent CLI inside itself (for example nested `codex exec`) when native subagents are available. That adds avoidable runtime, sandbox, and tool-recursion overhead.
+
+If the runtime does **not** support native subagents, a single agent may still run the loop end-to-end using the same rules below.
+
+---
+
 ## Rules
 
 - NEVER modify `eval/rubric.md` or any file in `eval/role-baselines/`.
@@ -13,6 +27,8 @@ Evaluate and improve a healthcare agent's system prompt. Run up to 5 iterations 
 - Each iteration is independent. Read the agent file fresh each time. Do NOT reference or build on previous iterations' questions, answers, or analysis.
 - You are both the test-taker and the judge. Be rigorous — do not inflate scores.
 - Scores across iterations are NOT comparable (different questions). Only the delta within an iteration (same questions, before vs after edit) is meaningful.
+- Do NOT broaden the role into generic healthcare administration. Preserve the agent's specialty, practitioner voice, and strongest differentiators.
+- Prefer sharpening missing mechanics, formulas, workflows, and citations over adding broad "best practices" boilerplate.
 
 ---
 
@@ -82,9 +98,23 @@ Average weighted scores across 25 questions. Multiply by 25 for a 0-100 score. T
 
 From the scores, identify the 2-3 weakest areas (lowest-scoring questions and which criteria drove the low scores).
 
+If the runtime supports separate scorer and editor roles, the scorer should also produce an **improvement brief** for the editor containing:
+
+- 2-4 representative low-scoring questions
+- 2-4 targeted prompt changes with the expected gain from each
+- `identity_to_preserve` — the role traits, sections, and differentiators that must survive editing
+- `anti_patterns_to_avoid` — generic broadening, duplicated boilerplate, bland executive-speak, or any rewrite that moves the prompt toward the mean
+
 ### Step 6: Edit the agent
 
 Edit `agents/$ARGUMENTS.md` to strengthen the weak areas identified in Step 5. Prefer adding specific guidance to existing sections over rewriting or reorganizing entire sections.
+
+If an improvement brief exists:
+
+- implement the highest-leverage 1-3 changes first
+- preserve everything listed under `identity_to_preserve`
+- explicitly avoid everything listed under `anti_patterns_to_avoid`
+- treat the editor as an implementer, not as the final judge
 
 After editing, check line count:
 Run: `wc -l < agents/$ARGUMENTS.md`
@@ -141,3 +171,20 @@ Results log: eval/results.tsv
 ```
 
 Note: "Retained score on disk" reflects the actual state of the agent .md on disk. "Last attempted score" is for the final scored attempt only; capped iterations have no post-edit score and should be shown as `N/A` in the TSV.
+
+---
+
+## Scaling Pattern
+
+When improving many agents:
+
+- run one agent per branch or worktree to avoid file and commit collisions
+- keep the scorer read-only and the editor single-file
+- let the parent orchestrator own git writes and `eval/results.tsv`
+- stop early when an agent clears the target score or when recent deltas are too small to justify another pass
+
+For Codex specifically, the highest-signal pattern so far is:
+
+- scorer/judge: strongest available reasoning model
+- editor: faster, cheaper model
+- parent: orchestration only

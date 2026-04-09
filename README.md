@@ -53,6 +53,14 @@ Then run the same loop from either tool:
 - **Claude Code:** `/eval revenue-medical-coding-specialist`
 - **Codex:** `Run the healthcare self-improvement loop for revenue-medical-coding-specialist`
 
+In runtimes that support native subagents, the preferred pattern is:
+
+- strongest available scorer/judge to generate the exam, score it, and produce an improvement brief
+- faster editor model to patch only the target agent
+- parent orchestrator to own git writes, `eval/results.tsv`, and commit/revert
+
+The scorer should preserve identity as well as find gaps: it should return weak areas, targeted prompt changes, `identity_to_preserve`, and `anti_patterns_to_avoid` so the editor improves the prompt without flattening it into generic boilerplate.
+
 This path does **not** require the Python eval harness. For the full setup and usage details, see [INSTALL.md](INSTALL.md).
 
 ## What Makes These Agents Different
