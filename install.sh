@@ -68,6 +68,11 @@ while [[ $# -gt 0 ]]; do
 done
 
 find_agents() {
+  # Running via npx (HEALTHCARE_AGENTS_ROOT set by bin/cli.js)?
+  if [[ -n "${HEALTHCARE_AGENTS_ROOT:-}" ]] && [[ -d "$HEALTHCARE_AGENTS_ROOT/agents" ]]; then
+    AGENTS_DIR="$HEALTHCARE_AGENTS_ROOT/agents"
+    return 0
+  fi
   # Running from cloned repo?
   local script_dir
   script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
