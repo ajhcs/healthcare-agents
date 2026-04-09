@@ -234,6 +234,37 @@ The CMS Hierarchical Condition Category (HCC) model determines risk-adjusted pay
 | 22 | Increased procedural services | Documentation must support substantially greater effort |
 | 24 | Unrelated E/M during postoperative period | E/M for condition unrelated to prior surgery |
 
+**Surgical coding and global period rules**:
+- Modifier 57 supports the decision for surgery when an E/M service results in the initial decision to perform major surgery (90-day global); do not use modifier 57 for minor procedures with 0- or 10-day globals
+- Modifier 58 = staged/related procedure during the postoperative period by the same physician; modifier 78 = unplanned return to OR for related procedure during the global; modifier 79 = unrelated procedure during the postoperative period
+- Modifier 51 applies to multiple procedures when the payer requires it and the code is not modifier-51-exempt; ranking follows the highest-valued procedure first, with secondary procedures subject to multiple-procedure discounting
+- Modifier 62 requires that two surgeons each perform distinct, substantive portions of the same procedure and each document their operative note; both surgeons report the same CPT code when the code is eligible for co-surgeon billing
+
+**Medical necessity and LCD/NCD alignment**:
+- Code assignment and charge submission must align with National Coverage Determinations (NCDs) and Local Coverage Determinations (LCDs); diagnosis coding must support the medical necessity criteria attached to the ordered service
+- When an LCD limits covered ICD-10-CM diagnoses for a CPT/HCPCS code, compare the documented indication against the payable diagnosis list before final claim release; unsupported diagnoses create preventable medical-necessity denials
+- ABN/advance-notice workflows are operational safeguards, not coder substitutions for documentation; if the documented indication does not support coverage, escalate before billing rather than forcing a payable diagnosis
+
+**Charge capture and reconciliation**:
+- Reconcile professional and facility charges against source documentation: operative notes, anesthesia records, infusion stop/start times, medication administration record, implant logs, and ancillary department charging reports
+- Typical missed-charge checks: bedside procedures, modifier-dependent bilateral services, drug wastage/JW-JZ workflows when payer-required, observation hours, infusion hierarchy, and supplies/devices billed through HCPCS Level II
+- Charge reconciliation should distinguish coding error, charging omission, documentation gap, and interface/build defect; each root cause has a different remediation path
+
+**Denial management from a coding lens**:
+- Categorize denials into clinical validation, DRG validation, medical necessity/LCD-NCD, NCCI/modifier, duplicate billing, and authorization/registration issues before assigning corrective action
+- Coding appeals should restate the documented facts, cite the exact ICD-10-CM/PCS guideline, CPT/HCPCS rule, NCCI edit logic, or payer policy, and explain why the billed code set is supported
+- Track avoidable denial rate, overturn rate, dollars at risk, and repeat denial themes by code family/provider/service line to drive coder education and charge-master or build fixes
+
+**Anesthesia coding essentials**:
+- Anesthesia reimbursement is built from base units + time units + qualifying circumstances/physical status when recognized by the payer; time is reported from anesthesia start to anesthesia end and must be supported by the anesthesia record
+- Anesthesia modifiers identify who performed the service and the medical direction model (for example AA, QK, QX, QY, QZ); accuracy depends on matching documentation to the payer's supervision rules
+- Qualifying circumstance add-on codes and physical status modifiers require supporting documentation and do not replace the core anesthesia code
+
+**Pathology and laboratory coding**:
+- Apply panel rules before unbundling component tests; if the ordered and performed services meet a defined CPT panel, report the panel code instead of separately billing all included components
+- Physician pathology consultation code 80502 requires documented medical interpretive judgment; it is not a default add-on for routine lab review or technical-only processing
+- For molecular and pathology services, verify whether the methodology, units, and specimen-specific documentation support the code selected and whether payer edits require prior authorization or Z-code registration
+
 ### NCCI Edits (National Correct Coding Initiative)
 
 CMS publishes NCCI edits quarterly (42 CFR 414) to prevent improper payment from unbundling:
@@ -385,6 +416,14 @@ CMS publishes NCCI edits quarterly (42 CFR 414) to prevent improper payment from
 6. **Prepare provider-specific feedback** — include specific documentation examples and guideline references
 7. **Deliver education** — targeted training on the most frequent errors (e.g., moderate vs. high risk, data element counting)
 
+### Charge Capture & Denial Prevention Workflow
+1. **Match charges to source records** — compare coded claims against op notes, MAR, infusion documentation, implant/device logs, and ancillary department feeds
+2. **Validate medical necessity** — test diagnosis-to-procedure pairing against LCD/NCD or payer policy before claim release
+3. **Review edit work queues** — NCCI, MUE, modifier, duplicate, and authorization edits should be resolved to root cause, not just manually overridden
+4. **Triage denials by category** — separate coding denials from registration, auth, utilization review, and payer configuration issues
+5. **Build appeal packets** — include the claim, operative/progress note excerpts, coding rationale, and exact guideline or policy citations
+6. **Feed back recurring issues** — update coder education, charge-master mapping, and EHR charge triggers when the same denial or missed-charge pattern repeats
+
 ### HCC Retrospective Review
 1. **Pull encounter data** — all face-to-face encounters for the measurement year by provider
 2. **Identify documented chronic conditions** — compare against CMS-HCC crosswalk
@@ -434,6 +473,12 @@ CMS publishes NCCI edits quarterly (42 CFR 414) to prevent improper payment from
 - Comprehensive APCs (C-APCs) package payment for adjunctive services into a single APC payment
 - Status indicators determine how OPPS pays for each code: S (significant procedure), T (significant procedure, multiple reduction applies), V (clinic visit), Q (packaged with other services)
 - Condition code 44 (inpatient-to-outpatient conversion) requires specific coding protocols — the admission order must exist, UR committee must concur, and the patient must agree
+
+### Professional Fee Modifier Triage
+- Modifier 25 belongs on the E/M code only when the documentation supports a significant, separately identifiable service above the usual pre/post work of the procedure
+- Modifier 24 is for unrelated E/M during a postoperative global period; modifier 57 is for the decision for major surgery; they are not interchangeable
+- Modifier 59/X{EPSU} should be used only after confirming the NCCI edit has modifier indicator 1 and the record supports a separate encounter, structure, practitioner, or non-overlapping service
+- Modifier 51, 62, 76, and 77 each answer different questions: multiple procedures, co-surgeons, repeat same physician, repeat different physician
 
 ### Computer-Assisted Coding (CAC) Oversight
 - CAC tools suggest codes based on NLP analysis of clinical documentation — every suggestion must be validated by a credentialed coder
