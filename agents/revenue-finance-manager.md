@@ -204,6 +204,18 @@ Revenue loss = ($18,000 - $12,000) × 150 = $900,000
 If total operating revenue = $300M → margin impact = $900K / $300M × 10,000 = 30 bps
 ```
 
+**Medicaid financing model**:
+- Forecast Medicaid in separate buckets: base fee-for-service, managed Medicaid capitation, and supplemental payments.
+- Keep supplemental streams distinct when possible: DSH, UPL-related payments, state-directed payments, and quality/incentive add-ons.
+- Model Medicaid margin as `base Medicaid revenue + supplemental payments - provider taxes/assessments - uncompensated care - contract leakage`.
+- Treat material state Medicaid changes as scenario cases, not a single blended rate change.
+
+**Managed care contract model**:
+- Forecast allowed amount, contractual adjustment, denial reserve, and underpayment recovery separately for each major payer contract.
+- Underpayment variance = `contracted allowed amount - adjudicated allowed amount - denial leakage + appeal recoveries`.
+- Track denial rate, overturn rate, timely-filing risk, and days-to-final-payment by payer and service line.
+- Maintain a contract terms table for case rates, carve-outs, stop-loss or outlier terms, annual escalators, and prompt-pay rules.
+
 ### Service Line Profitability Analysis
 
 True service line profitability requires moving beyond departmental accounting to episode-based or service-line-based cost assignment:
@@ -461,6 +473,12 @@ When implementing or upgrading a cost accounting system, evaluate:
 - **Update frequency**: Real-time (rare), monthly (common), annual (minimum)
 - **Integration**: Feeds into service line reporting, contract modeling, transfer pricing, strategic planning
 
+### Observation and Ancillary Outpatient Economics
+- Observation hours should be modeled separately from inpatient and ED volumes because they affect OPPS reimbursement, bed capacity, and ancillary capture differently.
+- Observation margin = `OPPS observation revenue + ancillary outpatient revenue + 340B pharmacy savings - nursing/lab/radiology/room costs - denial leakage`.
+- 340B savings should be tracked as a distinct revenue line or contra-expense and reconciled to eligible outpatient pharmacy, infusion, and contract-pharmacy volume.
+- Use a monthly observation bridge showing case count, hours, ancillary capture, 340B savings, and payer mix so margin movement can be traced to volume, mix, or reimbursement drift.
+
 ### OPPS Payment Mechanics
 Medicare outpatient services are paid under the Outpatient Prospective Payment System (OPPS, 42 CFR Part 419). Each service is assigned an Ambulatory Payment Classification (APC) with a relative weight. Payment = APC relative weight × OPPS conversion factor × wage index adjustment. Key differences from IPPS: OPPS pays per service (not per stay), allows multiple APCs per encounter, and uses the 2x rule (if a device cost exceeds the APC payment by a factor of 2, it may qualify for pass-through or new technology APC). Comprehensive APCs (C-APCs) package all related services into a single payment to the primary procedure. OPPS final rule published November, effective January 1.
 
@@ -479,5 +497,6 @@ Under 42 CFR 412.4(f), when a patient is transferred from one IPPS hospital to a
 - **Monitor Moody's/Fitch healthcare not-for-profit medians** — annual publications establish the benchmarks against which your organization's financial health is measured by rating agencies, lenders, and boards
 - **Follow HFMA publications** — Healthcare Finance journal, technical reports on cost reporting, revenue cycle, and financial management best practices
 - **Track state Medicaid rate changes** — Medicaid reimbursement varies by state and changes frequently; rate cuts directly impact organizations with high Medicaid payer mix
+- **Track Medicaid financing mechanics** — base rate changes matter, but supplemental payments, provider assessments, managed-care capitation, and state-directed payments can move margin faster than headline fee schedule changes
 - **Learn from cost report audits** — MAC audits typically follow this path: desk review of filed cost report → selection of specific worksheets/issues for field audit → information request to hospital (IDR) → draft audit adjustment → hospital response period (typically 30 days) → final audit adjustment → Notice of Program Reimbursement (NPR). If you disagree with the NPR, appeal to the Provider Reimbursement Review Board (PRRB, 42 CFR Part 405 Subpart R) within 180 days. Common audit targets: Worksheet S-10 uncompensated care data, Worksheet A-8 cost adjustments, statistical data accuracy on S-2/S-3, and GME FTE counts. Best defense: maintain contemporaneous documentation for every material cost report entry
 - **Monitor ACA/legislative changes** — DSH payment methodology, uncompensated care pool funding, and hospital payment policies are subject to Congressional action; model impact of proposed changes
