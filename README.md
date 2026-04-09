@@ -63,6 +63,27 @@ The scorer should preserve identity as well as find gaps: it should return weak 
 
 This path does **not** require the Python eval harness. For the full setup and usage details, see [INSTALL.md](INSTALL.md).
 
+## Eval Status
+
+10 of 51 agents currently score **80+** on a frozen eval rubric. Each agent goes through iterative question-answer-judge-improve cycles: the scorer generates domain-specific exam questions, grades the agent's answers, identifies weak areas, and produces a targeted improvement brief. An editor model then patches only the weak spots while preserving the agent's identity and voice.
+
+| Agent | Best Score |
+|-------|-----------|
+| Revenue Medical Coding Specialist | 82.15 |
+| Revenue Finance Manager | 81.55 |
+| 340B Program Manager | 81.20 |
+| Quality Compliance Officer | 81.15 |
+| Healthcare Interoperability Engineer | 81.10 |
+| Quality Process Improvement Analyst | 80.85 |
+| Revenue Cycle Specialist | 80.65 |
+| Revenue Contract Analyst | 80.45 |
+| Health Informatics Manager | 80.30 |
+| Payer Managed Care Analyst | 80.30 |
+
+Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
+
+**Infrastructure:** The `/eval` skill runs the loop. A frozen rubric at `eval/rubric.md` keeps scoring consistent across runs. A calibration pipeline ensures scorer reliability before any agent edits land.
+
 ## What Makes These Agents Different
 
 | | Generic AI | Healthcare Agents |
@@ -141,10 +162,10 @@ Every agent produces structured, actionable deliverables like this — not summa
 | Agent | Specialty |
 |-------|-----------|
 | Quality Improvement Specialist | HEDIS, MIPS/QPP, CMS Stars, Leapfrog, eCQMs |
-| Process Improvement Analyst | PDSA, Lean, Six Sigma DMAIC, value stream mapping |
+| Process Improvement Analyst `80+` | PDSA, Lean, Six Sigma DMAIC, value stream mapping |
 | Patient Experience Coordinator | HCAHPS, service recovery, VBP patient experience domain |
 | Patient Safety Officer | Sentinel events, RCA/FMEA, Just Culture, PSO reporting |
-| Compliance Officer | HIPAA, Stark, Anti-Kickback, FCA, OIG compliance programs, EMTALA |
+| Compliance Officer `80+` | HIPAA, Stark, Anti-Kickback, FCA, OIG compliance programs, EMTALA |
 | Risk Manager | Enterprise/clinical risk, malpractice, claims management |
 | Accreditation Specialist | Joint Commission, NCQA, URAC, AAAHC, DNV, survey readiness |
 
@@ -155,11 +176,11 @@ Every agent produces structured, actionable deliverables like this — not summa
 
 | Agent | Specialty |
 |-------|-----------|
-| Revenue Cycle Specialist | End-to-end RCM, denials (CARC/RARC), A/R optimization |
-| Healthcare Finance Manager | Budgets, cost accounting, CMS-2552 cost reports, margin analysis |
-| Healthcare Contract Analyst | Payer contracts, fee schedules, reimbursement modeling |
-| Medical Coding Specialist | ICD-10-CM/PCS, CPT, DRG, HCC, E/M coding |
-| 340B Program Manager | Covered entity compliance, contract pharmacy, split billing, HRSA audits |
+| Revenue Cycle Specialist `80+` | End-to-end RCM, denials (CARC/RARC), A/R optimization |
+| Healthcare Finance Manager `80+` | Budgets, cost accounting, CMS-2552 cost reports, margin analysis |
+| Healthcare Contract Analyst `80+` | Payer contracts, fee schedules, reimbursement modeling |
+| Medical Coding Specialist `80+` | ICD-10-CM/PCS, CPT, DRG, HCC, E/M coding |
+| 340B Program Manager `80+` | Covered entity compliance, contract pharmacy, split billing, HRSA audits |
 | Chargemaster Analyst | CDM maintenance, price transparency, charge capture integrity |
 
 </details>
@@ -172,7 +193,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 | Value-Based Care Manager | ACO operations (MSSP/ACO REACH), shared savings, risk contracts |
 | Payer Relations Specialist | Network development, contract negotiation, No Surprises Act |
 | Medicare & Medicaid Specialist | CMS regulations, CoPs, MAC requirements, dual-eligible programs |
-| Managed Care Analyst | Capitation modeling, MLR, PMPM, network adequacy |
+| Managed Care Analyst `80+` | Capitation modeling, MLR, PMPM, network adequacy |
 | Credentialing & Enrollment Coordinator | CAQH, PECOS, CMS-855, privileging, delegated credentialing |
 | Medicare Outreach Coordinator | Beneficiary education, enrollment periods, LIS/Extra Help |
 
@@ -194,11 +215,11 @@ Every agent produces structured, actionable deliverables like this — not summa
 
 | Agent | Specialty |
 |-------|-----------|
-| Health Informatics Manager | Clinical informatics, USCDI/TEFCA, ONC HTI-1, data governance |
+| Health Informatics Manager `80+` | Clinical informatics, USCDI/TEFCA, ONC HTI-1, data governance |
 | Epic Applications Analyst | Epic build/config, Bridges, Caboodle/Cogito, certification |
 | Health Information Manager | HIM operations, ROI, record retention, legal health record |
 | Clinical Data Analyst | Registries, eCQMs, MIPS reporting, SQL/Python for healthcare data |
-| Healthcare Interoperability Engineer | HL7v2, FHIR R4, C-CDA, X12 EDI, HIE connectivity |
+| Healthcare Interoperability Engineer `80+` | HL7v2, FHIR R4, C-CDA, X12 EDI, HIE connectivity |
 | Telehealth Program Manager | Virtual care ops, licensure compacts, RPM/RTM billing |
 
 </details>
