@@ -1,71 +1,121 @@
 <p align="center">
   <h1 align="center">Healthcare Agents</h1>
   <p align="center">
-    <strong>A complete healthcare administration department for your AI assistant.</strong><br>
-    51 specialized agents with MHA-level expertise, real CFR citations, and ready-to-use deliverable templates.
+    <strong>51 AI agents that actually know healthcare administration.</strong><br>
+    Real CFR citations. Real CMS payment models. Real deliverables. Not a chatbot with a healthcare skin.
   </p>
   <p align="center">
-    <a href="#quick-start"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 Agents"></a>
+    <a href="#install-in-30-seconds"><img src="https://img.shields.io/badge/install-30_seconds-success?style=flat-square" alt="Install in 30 seconds"></a>
+    <a href="#the-51-agents"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 Agents"></a>
+    <a href="#eval-status"><img src="https://img.shields.io/badge/eval_score-80+-brightgreen?style=flat-square" alt="Eval Score 80+"></a>
     <a href="#compatible-tools"><img src="https://img.shields.io/badge/tools-12+-8A2BE2?style=flat-square" alt="12+ Tools"></a>
     <a href="https://github.com/ajhcs/healthcare-agents/stargazers"><img src="https://img.shields.io/github/stars/ajhcs/healthcare-agents?style=flat-square" alt="Stars"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="License"></a>
+    <a href="https://github.com/ajhcs/healthcare-agents/releases"><img src="https://img.shields.io/badge/version-1.0.0-blue?style=flat-square" alt="v1.0.0"></a>
   </p>
 </p>
 
 ---
 
-Healthcare admin is drowning in complexity. These agents know the specific CFR sections, CMS payment models, and EHR workflows so you don't have to start from scratch every time.
-
-Not a chatbot with a healthcare skin. Every agent cites real regulations, speaks in practitioner language, and produces actual deliverables — compliance assessments, financial models, audit checklists, gap reports.
+Drop 22,000+ lines of healthcare administration expertise into any AI coding tool. These agents handle HIPAA compliance audits, medical coding reviews, revenue cycle management, CMS cost reports, payer contract analysis, and 45 other healthcare admin specialties -- with the depth of an MHA graduate, not a generic prompt.
 
 > Built on the conventions of [agency-agents](https://github.com/msitarzewski/agency-agents) by [Michael Sitarzewski](https://github.com/msitarzewski).
 
-## Quick Start
+## Install in 30 Seconds
+
+One command. Auto-detects your tools.
 
 ```bash
-# Claude Code (2 commands, done)
-git clone https://github.com/ajhcs/healthcare-agents.git
-cp healthcare-agents/agents/*.md ~/.claude/agents/
+curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
 ```
+
+Or target a specific tool:
+
+| Tool | Command |
+|------|---------|
+| **Claude Code** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --claude` |
+| **Cursor** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --cursor` |
+| **Copilot** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --copilot` |
+| **Gemini CLI** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --gemini` |
+| **Codex CLI** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --codex` |
+| **Windsurf** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --windsurf` |
+| **All tools** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --all` |
+
+<details>
+<summary>Manual install (git clone)</summary>
+
+```bash
+git clone https://github.com/ajhcs/healthcare-agents.git
+cp healthcare-agents/agents/*.md ~/.claude/agents/    # Claude Code
+cp healthcare-agents/agents/*.md .cursor/rules/        # Cursor
+cp healthcare-agents/agents/*.md .github/instructions/  # Copilot
+```
+
+</details>
 
 Then just ask:
 
 > *"Activate the Compliance Officer and audit our HIPAA Security Rule compliance against 45 CFR 164.308"*
 
-**Works with 12+ tools** — Claude Code, Cursor, Copilot, Gemini CLI, Windsurf, Cline, Aider, and more. See the full [Installation Guide](INSTALL.md).
+Full setup instructions for all 12+ tools: **[INSTALL.md](INSTALL.md)**
 
-## Self-Improving Setup
+## What Makes These Different
 
-If you want more than a static agent pack, this repo also ships a lightweight self-improvement kit for **Claude Code and Codex**. It installs:
+| | Generic AI | Healthcare Agents |
+|---|---|---|
+| **Compliance** | "Follow HIPAA" | Cites 45 CFR 164.500-534, breach notification at 164.400-414 |
+| **Finance** | "Optimize revenue" | PMPM decomposition, CARC/RARC denial analysis, CMS-2552 cost reports |
+| **Coding** | "Use correct codes" | CC/MCC capture rates, NCCI edits, E/M 2021+ guidelines |
+| **Systems** | "Use your EHR" | Epic Caboodle/Cogito, CAQH ProView, 340B OPAIS, PECOS, NHSN |
+| **Accreditation** | "Get certified" | Joint Commission tracer methodology, NCQA HEDIS measures, CMS CoPs by facility type |
 
-- a frozen rubric at `eval/rubric.md`
-- an append-only score log at `eval/results.tsv`
-- an initial role baseline at `eval/role-baselines/`
-- the tool-specific entry points Claude and Codex use to run the loop
+**22,000+ lines** of dense domain knowledge across 51 agents. **Average 420 lines/agent** of real expertise -- regulatory citations, payment model math, system-specific workflows -- not filler.
 
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project
+### Real Output, Not Summaries
+
+Ask the 340B Program Manager about contract pharmacy compliance and you get this:
+
+```
+340B CONTRACT PHARMACY COMPLIANCE ASSESSMENT
+=============================================
+
+1. ENTITY ELIGIBILITY VERIFICATION
+   - Covered entity type: [Federally Qualified Health Center / DSH Hospital / ...]
+   - 340B ID: [HRSA-assigned ID]
+   - Registration status in 340B OPAIS: [Active / Pending]
+
+2. CONTRACT PHARMACY NETWORK REVIEW
+   - Total contract pharmacies registered: [count]
+   - Chain vs. independent mix: [ratio]
+   - HRSA contract pharmacy registration dates: [verify all current]
+
+3. COMPLIANCE RED FLAGS
+   [ ] Duplicate discounts -- Medicaid claims cross-referenced against 340B purchases
+   [ ] Diversion -- prescriptions for non-eligible patients filled at contract pharmacy
+   [ ] GPO prohibition violations (for DSH hospitals under 100 beds)
+   [ ] Missing contract pharmacy agreements or expired registrations
+
+4. RECOMMENDED ACTIONS
+   ...
 ```
 
-Then run the same loop from either tool:
+Every agent produces structured, actionable deliverables -- compliance assessments, financial models, audit checklists, gap reports. Not summaries of what a deliverable *would* look like.
 
-- **Claude Code:** `/eval revenue-medical-coding-specialist`
-- **Codex:** `Run the healthcare self-improvement loop for revenue-medical-coding-specialist`
+## Use Cases
 
-In runtimes that support native subagents, the preferred pattern is:
+**HIPAA compliance audit** -- The Compliance Officer walks through 45 CFR 164.308 administrative safeguards, 164.310 physical safeguards, and 164.312 technical safeguards. Produces a gap assessment with specific remediation steps and regulatory citations.
 
-- strongest available scorer/judge to generate the exam, score it, and produce an improvement brief
-- faster editor model to patch only the target agent
-- parent orchestrator to own git writes, `eval/results.tsv`, and commit/revert
+**Revenue cycle denial management** -- The Revenue Cycle Specialist analyzes denial patterns using CARC/RARC codes, identifies root causes (registration errors, medical necessity, timely filing), and builds an appeals workflow with payer-specific requirements.
 
-The scorer should preserve identity as well as find gaps: it should return weak areas, targeted prompt changes, `identity_to_preserve`, and `anti_patterns_to_avoid` so the editor improves the prompt without flattening it into generic boilerplate.
+**Medical coding accuracy review** -- The Medical Coding Specialist audits documentation for CC/MCC capture, E/M level support under 2021+ guidelines, and NCCI edit compliance. Flags undercoding and overcoding with CPT/ICD-10 specifics.
 
-This path does **not** require the Python eval harness. For the full setup and usage details, see [INSTALL.md](INSTALL.md).
+**CMS cost report preparation** -- The Healthcare Finance Manager structures CMS-2552 worksheets, calculates cost-to-charge ratios, and identifies reclassification opportunities for wage index and DSH adjustments.
+
+**Payer contract negotiation** -- The Contract Analyst models reimbursement scenarios across fee-for-service, capitation, and value-based arrangements. Compares rates against Medicare benchmarks and MGMA data.
 
 ## Eval Status
 
-10 of 51 agents currently score **80+** on a frozen eval rubric. Each agent goes through iterative question-answer-judge-improve cycles: the scorer generates domain-specific exam questions, grades the agent's answers, identifies weak areas, and produces a targeted improvement brief. An editor model then patches only the weak spots while preserving the agent's identity and voice.
+10 of 51 agents currently score **80+** on a frozen eval rubric. Each agent goes through iterative question-answer-judge-improve cycles: the scorer generates domain-specific exam questions, grades the agent's answers, identifies weak areas, and produces a targeted improvement brief. An editor model patches only the weak spots while preserving the agent's identity and voice.
 
 | Agent | Best Score |
 |-------|-----------|
@@ -84,51 +134,10 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 
 **Infrastructure:** The `/eval` skill runs the loop. A frozen rubric at `eval/rubric.md` keeps scoring consistent across runs. A calibration pipeline ensures scorer reliability before any agent edits land.
 
-## What Makes These Agents Different
-
-| | Generic AI | Healthcare Agents |
-|---|---|---|
-| **Compliance** | "Follow HIPAA" | Cites 45 CFR 164.500-534, breach notification at 164.400-414 |
-| **Finance** | "Optimize revenue" | PMPM decomposition, CARC/RARC denial analysis, CMS-2552 cost reports |
-| **Coding** | "Use correct codes" | CC/MCC capture rates, NCCI edits, E/M 2021+ guidelines |
-| **Systems** | "Use your EHR" | Epic Caboodle/Cogito, CAQH ProView, 340B OPAIS, PECOS, NHSN |
-
-**21,000+ lines** of dense domain knowledge. **Average 420 lines/agent** of real expertise, not filler.
-
-## Example Output
-
-Ask the 340B Program Manager about contract pharmacy compliance:
-
-```
-340B CONTRACT PHARMACY COMPLIANCE ASSESSMENT
-=============================================
-
-1. ENTITY ELIGIBILITY VERIFICATION
-   - Covered entity type: [Federally Qualified Health Center / DSH Hospital / ...]
-   - 340B ID: [HRSA-assigned ID]
-   - Registration status in 340B OPAIS: [Active / Pending]
-
-2. CONTRACT PHARMACY NETWORK REVIEW
-   - Total contract pharmacies registered: [count]
-   - Chain vs. independent mix: [ratio]
-   - HRSA contract pharmacy registration dates: [verify all current]
-
-3. COMPLIANCE RED FLAGS
-   [ ] Duplicate discounts — Medicaid claims cross-referenced against 340B purchases
-   [ ] Diversion — prescriptions for non-eligible patients filled at contract pharmacy
-   [ ] GPO prohibition violations (for DSH hospitals under 100 beds)
-   [ ] Missing contract pharmacy agreements or expired registrations
-
-4. RECOMMENDED ACTIONS
-   ...
-```
-
-Every agent produces structured, actionable deliverables like this — not summaries of what a deliverable *would* look like.
-
 ## The 51 Agents
 
 <details>
-<summary><strong>Strategy & Advisory</strong> — 5 agents</summary>
+<summary><strong>Strategy & Advisory</strong> -- 5 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -141,7 +150,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Clinical Operations</strong> — 8 agents</summary>
+<summary><strong>Clinical Operations</strong> -- 8 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -157,7 +166,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Quality, Safety & Compliance</strong> — 7 agents</summary>
+<summary><strong>Quality, Safety & Compliance</strong> -- 7 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -172,7 +181,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Revenue Cycle & Finance</strong> — 6 agents</summary>
+<summary><strong>Revenue Cycle & Finance</strong> -- 6 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -186,7 +195,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Payer & Managed Care</strong> — 6 agents</summary>
+<summary><strong>Payer & Managed Care</strong> -- 6 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -200,7 +209,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Population Health & Community</strong> — 3 agents</summary>
+<summary><strong>Population Health & Community</strong> -- 3 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -211,7 +220,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Health IT & Informatics</strong> — 6 agents</summary>
+<summary><strong>Health IT & Informatics</strong> -- 6 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -225,7 +234,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Operations & Administration</strong> — 7 agents</summary>
+<summary><strong>Operations & Administration</strong> -- 7 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -240,7 +249,7 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Pharmacy & Drug Programs</strong> — 2 agents</summary>
+<summary><strong>Pharmacy & Drug Programs</strong> -- 2 agents</summary>
 
 | Agent | Specialty |
 |-------|-----------|
@@ -250,13 +259,30 @@ Every agent produces structured, actionable deliverables like this — not summa
 </details>
 
 <details>
-<summary><strong>Emergency & Preparedness</strong> — 1 agent</summary>
+<summary><strong>Emergency & Preparedness</strong> -- 1 agent</summary>
 
 | Agent | Specialty |
 |-------|-----------|
 | Emergency Preparedness Coordinator | HICS, CMS EP CoPs (42 CFR 482.15), surge planning, HVA |
 
 </details>
+
+## Self-Improving Agents
+
+These agents are not static. The repo ships a self-improvement kit for **Claude Code and Codex** that runs automated eval-and-improve loops:
+
+```bash
+bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project
+```
+
+Then run from either tool:
+
+- **Claude Code:** `/eval revenue-medical-coding-specialist`
+- **Codex:** `Run the healthcare self-improvement loop for revenue-medical-coding-specialist`
+
+The loop generates domain-specific exam questions, scores the agent's answers against a frozen rubric, identifies weak areas, and patches the prompt -- while preserving the agent's identity and voice. In runtimes that support native subagents, the strongest model scores while a faster model edits.
+
+This does **not** require the Python eval harness. See [INSTALL.md](INSTALL.md) for the full setup.
 
 ## Compatible Tools
 
@@ -270,13 +296,12 @@ Every agent produces structured, actionable deliverables like this — not summa
 | **Codex CLI** | `cp agents/*.md ~/.codex/agents/` |
 | **Cline** | `cp agents/*.md .clinerules/` |
 | **Amazon Q** | `cp agents/*.md .amazonq/rules/` |
+| **Continue.dev** | `cp agents/*.md .continue/` |
 | **Aider** | Add to `.aider.conf.yml` as `read:` entries |
 | **Claude Desktop** | Paste into project instructions or Cowork plugins |
 | **Claude Web** | Upload `.md` files as project knowledge |
 | **OpenClaw** | Copy as skills (see [INSTALL.md](INSTALL.md)) |
 | **Any tool** | Paste `.md` content into system prompt / custom instructions |
-
-Full setup instructions with tool-specific tips: **[INSTALL.md](INSTALL.md)**
 
 ## Validation
 
@@ -284,14 +309,36 @@ Full setup instructions with tool-specific tips: **[INSTALL.md](INSTALL.md)**
 bash scripts/lint-agents.sh
 ```
 
+## FAQ
+
+### Can AI agents handle HIPAA compliance?
+
+These agents cite specific CFR sections (45 CFR 160, 162, 164), know the difference between addressable and required implementation specifications, and produce structured gap assessments. They do not handle PHI or make legal determinations -- they give you the regulatory framework and audit methodology that a compliance officer would use.
+
+### What healthcare certifications and regulations do these agents cover?
+
+The agents cover CMS Conditions of Participation, Joint Commission standards, NCQA HEDIS measures, MIPS/QPP quality programs, CMS Five-Star ratings, OASIS/PDGM for home health, MDS/PDPM for skilled nursing, HRSA 340B requirements, OIG compliance program guidance, and dozens of other regulatory frameworks. Each agent's specialty section lists its specific coverage.
+
+### Do these agents work with Epic, Cerner, or other EHR systems?
+
+The Epic Applications Analyst has deep knowledge of Epic build/configuration, Bridges integration, and Caboodle/Cogito analytics. Other agents reference EHR-specific workflows where relevant (CPOE for medication safety, CDI queries for documentation improvement, eCQMs for quality reporting). The agents are not EHR plugins -- they provide the healthcare administration expertise that complements your EHR workflows.
+
+### How are agents evaluated and improved?
+
+Each agent goes through iterative eval cycles: a scorer generates domain-specific exam questions (regulatory scenarios, calculation problems, workflow decisions), grades the agent's responses on a frozen rubric, and produces an improvement brief. An editor model patches weak areas while preserving the agent's identity. 10 agents currently score 80+ out of 100. Scores and methodology are fully transparent in [`eval/results.tsv`](eval/results.tsv).
+
+### Can I use these agents for revenue cycle management?
+
+Six agents cover the full revenue cycle: Medical Coding Specialist (ICD-10, CPT, DRG, HCC coding), Revenue Cycle Specialist (denials management, A/R optimization, CARC/RARC analysis), Healthcare Finance Manager (CMS-2552 cost reports, budgeting), Contract Analyst (payer reimbursement modeling), 340B Program Manager (drug discount compliance), and Chargemaster Analyst (CDM maintenance, price transparency).
+
 ## Contributing
 
-New agents, deeper regulatory citations, updated CMS rules — all welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+New agents, deeper regulatory citations, updated CMS rules -- all welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Disclaimer
 
-These agents provide healthcare administration knowledge for informational and operational purposes. They do not provide clinical advice, legal opinions, or handle PHI. Regulations change — verify against primary sources (CMS.gov, Federal Register, state regulatory bodies).
+These agents provide healthcare administration knowledge for informational and operational purposes. They do not provide clinical advice, legal opinions, or handle PHI. Regulations change -- verify against primary sources (CMS.gov, Federal Register, state regulatory bodies).
 
 ## License
 
-Apache 2.0 — see [LICENSE](LICENSE).
+Apache 2.0 -- see [LICENSE](LICENSE).
