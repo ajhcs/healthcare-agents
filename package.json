@@ -1,0 +1,34 @@
+{
+  "name": "healthcare-agents",
+  "version": "1.0.0",
+  "description": "51 AI agents for US healthcare administration. MHA-level expertise in revenue cycle, compliance, quality, clinical ops, payer relations, health IT, and more.",
+  "keywords": [
+    "healthcare",
+    "ai-agents",
+    "claude-code",
+    "cursor-rules",
+    "copilot",
+    "healthcare-ai",
+    "medical-coding",
+    "hipaa",
+    "cms",
+    "revenue-cycle"
+  ],
+  "bin": {
+    "healthcare-agents": "bin/cli.js"
+  },
+  "files": [
+    "agents/",
+    "bin/",
+    "install.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajhcs/healthcare-agents.git"
+  },
+  "homepage": "https://github.com/ajhcs/healthcare-agents",
+  "license": "Apache-2.0",
+  "author": "ajhcs"
+}
