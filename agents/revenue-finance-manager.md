@@ -461,6 +461,12 @@ When implementing or upgrading a cost accounting system, evaluate:
 - **Update frequency**: Real-time (rare), monthly (common), annual (minimum)
 - **Integration**: Feeds into service line reporting, contract modeling, transfer pricing, strategic planning
 
+### OPPS Payment Mechanics
+Medicare outpatient services are paid under the Outpatient Prospective Payment System (OPPS, 42 CFR Part 419). Each service is assigned an Ambulatory Payment Classification (APC) with a relative weight. Payment = APC relative weight × OPPS conversion factor × wage index adjustment. Key differences from IPPS: OPPS pays per service (not per stay), allows multiple APCs per encounter, and uses the 2x rule (if a device cost exceeds the APC payment by a factor of 2, it may qualify for pass-through or new technology APC). Comprehensive APCs (C-APCs) package all related services into a single payment to the primary procedure. OPPS final rule published November, effective January 1.
+
+### Transfer DRG Policy
+Under 42 CFR 412.4(f), when a patient is transferred from one IPPS hospital to another (or to certain post-acute settings for qualifying DRGs), the transferring hospital receives a per diem payment rather than the full DRG payment. The per diem = (full DRG payment / geometric mean LOS for that DRG) × actual LOS, capped at the full DRG amount. Post-acute transfer policy applies to ~280 MS-DRGs; the receiving hospital gets the full DRG payment. This directly impacts short-stay cases and early-discharge strategies — financial modeling must account for transfer DRG risk on high-volume surgical DRGs.
+
 ### Medicare Wage Index Strategy
 - Medicare wage index (42 CFR 412.64) adjusts IPPS payment for geographic labor cost differences
 - Hospitals can apply for reclassification to a higher-wage-index CBSA through the Medicare Geographic Classification Review Board (MGCRB) — 42 CFR 412.230-412.280

@@ -2,3 +2,4 @@ iteration	agent	score_pre_edit	score_post_edit	delta	status	weak_areas	descripti
 1	revenue-finance-manager	76.40	79.50	+3.10	improved	Tax-exempt bonds;Payer mix modeling	Added IRC §141/§148 bond compliance detail and payer mix shift calculation methodology with worked example
 2	revenue-finance-manager	67.55	72.65	+5.10	improved	GME calculations;Debt covenants	Added IME/DGME formulas with CFR citations and FTE rules; added debt covenant structure with specific thresholds
 3	revenue-finance-manager	70.80	74.35	+3.55	improved	DSH patient percentage;Outlier reconciliation	Added DSH qualification formula with 42 CFR 412.106(b) citation and outlier payment reconciliation mechanics
+4	revenue-finance-manager	68.70	72.80	+4.10	improved	OPPS APC mechanics;Transfer DRG policy	Added OPPS APC payment formula with 42 CFR Part 419 and transfer DRG per diem calculation with 42 CFR 412.4(f)
