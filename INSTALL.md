@@ -13,6 +13,13 @@ Agents are available immediately. Reference by name in conversation:
 
 > "Activate the 340B Program Manager and help me assess our contract pharmacy compliance"
 
+Optional study material is available in this repo too:
+
+- `references/examples/` for worked exemplar deliverables
+- `scenarios/` for multi-agent workflow examples
+
+These are optional. The install path is still just `agents/*.md`.
+
 ## Self-Improvement Kit (Claude Code + Codex)
 
 If you want a simple prompt-improvement loop instead of the deeper Python eval harness, install the lightweight kit into the project that already contains your `agents/*.md` files:

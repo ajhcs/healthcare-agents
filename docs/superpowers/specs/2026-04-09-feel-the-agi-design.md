@@ -65,7 +65,6 @@ healthcare-agents/
 │   ├── applied/                     # traceability: gap_id -> prompt edit -> commit
 │   ├── rubric.yaml                  # calibration rubric (separate from eval/)
 │   ├── run-manifests/               # model, prompt version, date, cost, hashes
-│   ├── lint-references.sh           # deterministic lint
 │   └── run-calibration.sh           # Sonnet test + Opus judge
 │
 ├── eval/                            # UNTOUCHED — canonical simple loop
@@ -78,7 +77,7 @@ healthcare-agents/
 │   ├── generate-registry.sh         # agents/*.md -> registry.yaml skeleton
 │   ├── generate-roster.sh           # registry.yaml -> orchestrator roster
 │   ├── lint-agents.sh               # existing + line-budget enforcement
-│   ├── lint-references.sh           # reference/holdout validation
+│   ├── lint-references.sh           # canonical reference/holdout validation entry point
 │   ├── validate-dag.sh              # orchestrator output DAG validation
 │   ├── audit-agents.py              # existing
 │   └── install-self-improvement-kit.sh  # existing
@@ -150,7 +149,15 @@ Agents use HTML comment markers to identify deliverable boundaries:
 (content...)
 ```
 
-Markers are invisible in rendered markdown and in tools that consume `.md` as a prompt. A one-time migration script adds markers to all 51 agents.
+Markers are invisible in rendered markdown, but they ARE still present in the raw `.md` files that many tools ingest as prompts. The design accepts this explicitly. Markers must therefore remain:
+- terse
+- purely structural
+- semantically neutral
+- safe if read aloud by the model
+
+A one-time migration script adds markers to all 51 agents.
+
+**Prompt-visible marker rule:** Do not rely on markers being hidden from the model. If marker text starts influencing behavior, move the delimiter metadata to a sidecar manifest or frontmatter-derived index rather than adding richer inline comments.
 
 **Parser rule:** Scan for `<!-- deliverable: (.+) -->`. Nested `###` headings within a deliverable block are children. A naive "all `###` after deliverables" parser will misclassify nested headings in agents like `healthit-epic-applications-analyst.md`, `pophealth-surveillance-coordinator.md`, and `strategy-structural-improvement-consultant.md`.
 
@@ -182,7 +189,7 @@ regulatory_as_of: string             # YYYY-MM-DD
 source_basis: [string]               # real regulations/frameworks that inform content
 generated_by: string                 # model ID
 reviewed_by: string                  # model ID or "human"
-review_status: draft | reviewed | stale
+review_status: draft | reviewed | stale | retired
 review_date: string                  # YYYY-MM-DD
 ---
 ```
@@ -205,7 +212,7 @@ regulatory_as_of: string
 source_basis: [string]
 generated_by: string
 reviewed_by: string
-review_status: draft | reviewed | stale
+review_status: draft | reviewed | stale | retired
 review_date: string
 frozen: bool                         # once reviewed, content locked until re-review
 superseded_by: string | null
@@ -465,9 +472,14 @@ Agents recommend external data lookups by `capability_class`, not by product nam
 ```yaml
 capability_classes:
   provider_directory:
-    description: "Look up provider NPI, taxonomy, practice address, enrollment status"
-    does_not_do: "Board certification, malpractice history, sanctions, licensure verification"
+    description: "Look up provider NPI, taxonomy, and practice address"
+    does_not_do: "Board certification, malpractice history, sanctions, licensure verification, payer enrollment status"
     example_servers: [NPI Registry, NPPES direct]
+
+  provider_enrollment_status:
+    description: "Verify whether a provider or organization is enrolled with a specific program or payer"
+    does_not_do: "NPI issuance, taxonomy lookup, board certification, malpractice history"
+    example_servers: [PECOS, payer enrollment portals]
 
   coverage_determination:
     description: "Check NCD/LCD coverage policies for procedures, services, DME under Medicare Part B"
@@ -569,8 +581,10 @@ Every agent gets a new section: `## External Data & Tool Use`
 7. **Arrange post-acute services** — home health, DME, outpatient therapies,
    specialist follow-up; confirm insurance coverage. If the receiving
    facility's credentials are uncertain and a provider directory tool is
-   available, verify active NPI and enrollment status before finalizing
-   the referral.
+   available, verify active NPI, taxonomy, and practice address before
+   finalizing the referral. If payer or program enrollment status is
+   separately uncertain and an enrollment-status tool is available,
+   verify that independently.
 ```
 
 **Global section structure:**

@@ -55,6 +55,26 @@ Then run the same loop from either tool:
 
 This path does **not** require the Python eval harness. For the full setup and usage details, see [INSTALL.md](INSTALL.md).
 
+## Study Material And Pilot Routing
+
+The repo now ships three distinct surfaces:
+
+- `agents/` for the core specialist prompts you install into your assistant
+- `references/examples/` for worked, synthetic exemplar deliverables you can study
+- `scenarios/` for multi-agent workflow examples that show how handoffs should work
+
+The repo now also ships [agents/orchestrator.md](agents/orchestrator.md), a full-catalog routing prompt that maps plain-language requests to the right specialist agent, deliverable, dependencies, blockers, and handoffs. The earlier [docs/orchestrator-pilot.md](docs/orchestrator-pilot.md) file is kept as a maintainer-facing design and evolution artifact.
+
+## Maintainer Infrastructure
+
+If you are maintaining or extending the pack, the repo also contains:
+
+- `registry.yaml` for the full 51-agent registry-backed catalog
+- `calibration/` for maintainer-only seeds, holdouts, calibration runs, and trace artifacts
+- `docs/lifecycle.md`, `docs/audiences.md`, and `docs/missing-role-gaps.md` for refresh cadence, ownership, and future coverage gaps
+
+None of that maintainer infrastructure is required to install or use the base agent pack.
+
 ## What Makes These Agents Different
 
 | | Generic AI | Healthcare Agents |
@@ -253,6 +273,12 @@ Full setup instructions with tool-specific tips: **[INSTALL.md](INSTALL.md)**
 
 ```bash
 bash scripts/lint-agents.sh
+```
+
+For the maintainer test suite that exercises the registry, calibration schemas, DAG validation, and release gates:
+
+```bash
+bash scripts/run-maintainer-checks.sh
 ```
 
 ## Contributing
