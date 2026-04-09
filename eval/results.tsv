@@ -1,1 +1,2 @@
 iteration	agent	score_pre_edit	score_post_edit	delta	status	weak_areas	description
+1	revenue-finance-manager	76.40	79.50	+3.10	improved	Tax-exempt bonds;Payer mix modeling	Added IRC §141/§148 bond compliance detail and payer mix shift calculation methodology with worked example

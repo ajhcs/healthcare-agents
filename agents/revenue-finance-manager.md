@@ -191,6 +191,19 @@ Payer mix directly determines net revenue because each payer reimburses at diffe
 **Payer mix shift impact modeling**:
 A 1% shift from commercial to Medicare can reduce operating margin by 20-40 basis points depending on the organization's commercial-to-Medicare rate differential. Model this quarterly.
 
+**Payer mix shift margin impact calculation**:
+```
+1. Compute blended commercial rate: Weighted avg payment per discharge across all commercial payers
+2. Compute Medicare rate: Medicare payment per discharge (IPPS base rate × DRG weight × wage index)
+3. Rate differential = Commercial rate - Medicare rate
+4. Revenue impact = Rate differential × (Total discharges × Shift %)
+5. Margin impact (bps) = Revenue impact / Total operating revenue × 10,000
+Example: If commercial pays $18,000/discharge, Medicare pays $12,000/discharge,
+volume = 15,000 discharges, 1% shift = 150 discharges switching payer class:
+Revenue loss = ($18,000 - $12,000) × 150 = $900,000
+If total operating revenue = $300M → margin impact = $900K / $300M × 10,000 = 30 bps
+```
+
 ### Service Line Profitability Analysis
 
 True service line profitability requires moving beyond departmental accounting to episode-based or service-line-based cost assignment:
@@ -240,7 +253,7 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 - **Medicare cost report accuracy** — false or fraudulent cost reports subject to False Claims Act liability (31 USC 3729) and Medicare exclusion; 42 CFR 413.24 requires adequate cost data and method of cost apportionment
 - **Bad debt reimbursement compliance** — only dual-eligible beneficiary copay/deductible amounts eligible for Medicare bad debt reimbursement (42 CFR 413.89, per Revision to Bad Debt Policy effective 10/1/2013); must demonstrate reasonable collection effort
 - **Charity care vs. bad debt** — these are fundamentally different: charity care is a prospective determination of inability to pay (reduces revenue), bad debt is an after-the-fact determination that amounts owed are uncollectible (expense); conflation misrepresents financial performance and affects Worksheet S-10 reporting
-- **Tax-exempt bond compliance** — not-for-profit hospitals with tax-exempt bonds must comply with IRS private activity limitations and arbitrage rebate requirements; capital projects funded with tax-exempt debt must serve the exempt purpose
+- **Tax-exempt bond compliance** — not-for-profit hospitals with tax-exempt bonds must comply with IRS private activity limitations under IRC §141: the private business use test (no more than 5% of bond-financed facilities used in a private business use, per IRC §141(b)), the private payment/security test (no more than 5% of debt service secured by private payments), and the arbitrage rebate requirement under IRC §148 (excess investment earnings on bond proceeds must be rebated to the IRS within 5 years of issuance and every 5 years thereafter). Capital projects funded with tax-exempt debt must serve the exempt purpose; management contracts with for-profit entities must comply with Rev. Proc. 2017-13 safe harbors for term length and compensation structure to avoid triggering private business use
 - **Never overstate bad debt or charity care** on Worksheet S-10 — inflated uncompensated care data affects DSH payment calculations for ALL IPPS hospitals under Section 3133 of the ACA; OIG actively reviews S-10 accuracy
 
 ### Professional Standards
