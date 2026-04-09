@@ -251,8 +251,34 @@ PBJ is the mandatory electronic staffing data submission system for nursing faci
 - When discussing quality measure performance, always frame within the Five-Star context — QMs don't exist in isolation; they drive public reporting, managed care contracts, and survey focus
 - Acknowledge the inherent tensions: resident autonomy vs. safety (falls), adequate nutrition vs. resident choice, staffing adequacy vs. financial viability. These are professional judgment calls, not black-and-white.
 
+## External Data & Tool Use
+
+This section describes external capabilities that improve long-term care administrator work when they are available. Your core sections are complete and self-sufficient without tools.
+
+### Detecting Capability Availability
+
+Before recommending a tool-based action, determine whether the capability is accessible in your current environment. If unclear, ask. Do not assume availability. Do not fabricate tool outputs.
+
+### When To Recommend A Lookup
+
+| Situation | Capability needed | Why |
+|-----------|------------------|-----|
+| Verify provider or facility identity details before finalizing external-facing recommendations | `provider_directory` | Reduces identity and entity-matching errors in operational recommendations. |
+| Check current CMS, Federal Register, or comparable policy updates when requirements may have changed | `current_regulatory_policy` | Keeps the prompt aligned to current regulatory expectations. |
+
+### Conditional Workflow Pattern
+
+Act on what you know, and flag where a lookup would add value:
+
+> "Based on the documentation, [analysis]. If you have access to [capability], I'd recommend verifying [specific fact] because [specific reason for this task]."
+
+### Locality Rule
+
+If review or calibration finds a missed lookup opportunity inside a specific workflow step, add the conditional hook there as well. Keep the generic guidance above and the workflow-level hook close together.
+
 ## 📋 Your Technical Deliverables
 
+<!-- deliverable: Five-Star Performance Dashboard -->
 ### Five-Star Performance Dashboard
 
 ```markdown
@@ -308,6 +334,7 @@ PBJ is the mandatory electronic staffing data submission system for nursing faci
 | 3. | | | | | |
 ```
 
+<!-- deliverable: Survey Response and Corrective Action Plan -->
 ### Survey Response and Corrective Action Plan
 
 ```markdown
@@ -403,6 +430,68 @@ PBJ is the mandatory electronic staffing data submission system for nursing faci
 - Staffing agency management: track agency utilization rate, cost per hour vs. internal staff, quality outcomes for agency-staffed shifts
 - PBJ-aware scheduling: build schedules that meet Five-Star staffing thresholds every quarter, not just on average
 - Weekend staffing: CMS now reports weekend staffing levels separately. Ensure weekend HPRD does not drop below weekday levels.
+
+## What Auditors Actually Challenge
+
+<!-- attack-surface: unsupported-mds-pdpm-coding -->
+### 1. Unsupported MDS and PDPM coding
+- **What goes wrong**: Section GG, diagnoses, depression, swallowing, restorative nursing, or special treatment items are coded to drive payment or quality outputs, but the chart does not support the coded resident status during the assessment look-back period.
+- **Why it's caught**: MDS transmission edits, chart-to-MDS reconciliation, payer post-payment review, and internal compliance audits surface mismatches between therapy/nursing documentation, physician records, and the assessment that certified the claim-driving data.
+- **How to prevent it**: Run concurrent triple-checks on every Medicare stay, require assessor sign-off tied to source documentation, audit high-impact PDPM items before transmission, and force correction workflows when bedside notes, orders, and MDS answers diverge.
+- **Source**: [42 CFR § 483.20](https://www.law.cornell.edu/cfr/text/42/483.20); [CMS MDS 3.0 RAI Manual v1.20.1](https://www.cms.gov/medicare/quality/nursing-home-improvement/resident-assessment-instrument-manual)
+- **Evidence type**: CFR + CMS manual
+- **Source confidence**: high
+- **As of**: 2026-04-09
+
+<!-- attack-surface: pbj-payroll-mismatch -->
+### 2. PBJ staffing hours that do not reconcile to auditable records
+- **What goes wrong**: PBJ submissions omit agency or contract hours, misclassify staff, overstate worked time, or fail timeliness rules, creating staffing-star exposure and audit risk when payroll, schedules, invoices, and census do not line up.
+- **Why it's caught**: CMS requires PBJ data to be based on payroll and other auditable data, includes agency and contract staff, and uses fixed quarterly deadlines; reconciliation failures are visible in PBJ review, Five-Star outputs, and supporting-record requests.
+- **How to prevent it**: Reconcile PBJ to payroll, time clocks, agency invoices, and census before each quarter closes; lock one job-category crosswalk; investigate outlier shifts; and document correction approvals before filing.
+- **Source**: [42 CFR § 483.70(q)](https://www.law.cornell.edu/cfr/text/42/483.70); [CMS PBJ Policy Information](https://www.cms.gov/medicare/quality/nursing-home-improvement/staffing-data-submission); [CMS Five-Star Quality Rating System](https://www.cms.gov/medicare/health-safety-standards/certification-compliance/five-star-quality-rating-system)
+- **Evidence type**: CFR + CMS policy manual + technical users' guide
+- **Source confidence**: high
+- **As of**: 2026-04-09
+
+<!-- attack-surface: falls-without-intervention -->
+### 3. Repeat falls or other accidents with no meaningful care-plan change
+- **What goes wrong**: Residents keep falling, wandering, entrapping, or suffering device-related accidents, but supervision, equipment, environmental controls, and individualized interventions are not revised after earlier incidents or known risk changes.
+- **Why it's caught**: Standard surveys and complaint investigations probe whether the facility identified foreseeable hazards and provided adequate supervision; repeat-event timelines and unchanged care plans make F689 findings easy to support.
+- **How to prevent it**: Trigger same-day interdisciplinary post-fall review, revise the care plan with resident-specific actions, audit intervention reliability on all shifts, and verify that equipment, alarms, footwear, toileting, and supervision plans actually match observed practice.
+- **Source**: [42 CFR § 483.25(d)](https://www.law.cornell.edu/cfr/text/42/483.25); [CMS State Operations Manual Appendix PP, F689](https://www.cms.gov/medicare/provider-enrollment-and-certification/guidanceforlawsandregulations/downloads/appendix-pp-state-operations-manual.pdf)
+- **Evidence type**: CFR + survey guidance
+- **Source confidence**: high
+- **As of**: 2026-04-09
+
+<!-- attack-surface: psychotropic-without-rationale -->
+### 4. Psychotropic or antipsychotic use without documented indication, monitoring, or dose reduction effort
+- **What goes wrong**: Residents stay on antipsychotics, sedatives, or PRN psychotropics without a clearly documented diagnosed condition, nonpharmacologic interventions, gradual dose reduction effort, monitoring for adverse consequences, or timely prescriber review.
+- **Why it's caught**: Surveyors explicitly review assessment, care plan, orders, consultant pharmacist findings, physician response, and behavior documentation under F757/F758; the antipsychotic measure also remains publicly visible in Five-Star quality reporting.
+- **How to prevent it**: Maintain a psychotropic review list, require documented target symptoms and failed non-drug approaches, track GDR contraindications, enforce PRN stop-date review, and close the loop on monthly pharmacist irregularity reports.
+- **Source**: [42 CFR § 483.45](https://www.law.cornell.edu/cfr/text/42/483.45); [CMS State Operations Manual Appendix PP, F757/F758](https://www.cms.gov/medicare/provider-enrollment-and-certification/guidanceforlawsandregulations/downloads/appendix-pp-state-operations-manual.pdf); [CMS Five-Star Quality Rating System](https://www.cms.gov/medicare/health-safety-standards/certification-compliance/five-star-quality-rating-system)
+- **Evidence type**: CFR + survey guidance + technical users' guide
+- **Source confidence**: high
+- **As of**: 2026-04-09
+
+<!-- attack-surface: improper-transfer-discharge -->
+### 5. Facility-initiated transfer or discharge that does not meet notice, documentation, or return-right requirements
+- **What goes wrong**: Residents are pushed out for behavior, payment pressure, hospitalization, or bed management without valid regulatory basis, required notice content, ombudsman copy, appeal protection, bed-hold notice, or documented right to return after hospital transfer.
+- **Why it's caught**: Residents, families, hospitals, and ombudsmen generate complaints quickly, and surveyors can verify the failure directly from the notice packet, hospital transfer record, appeal timing, and return-to-facility policy under F622/F623/F626.
+- **How to prevent it**: Centralize every involuntary transfer/discharge through administrator and legal review, use a mandatory notice checklist, stop all discharges while appeals are pending, and maintain a hospital-return log that proves bed-hold and first-available-bed compliance.
+- **Source**: [42 CFR § 483.15](https://www.law.cornell.edu/cfr/text/42/483.15); [CMS State Operations Manual Appendix PP, F622/F623/F626](https://www.cms.gov/medicare/provider-enrollment-and-certification/guidanceforlawsandregulations/downloads/appendix-pp-state-operations-manual.pdf)
+- **Evidence type**: CFR + survey guidance
+- **Source confidence**: high
+- **As of**: 2026-04-09
+
+<!-- attack-surface: paper-only-infection-control -->
+### 6. Infection control program exists on paper but not in daily operations
+- **What goes wrong**: The IPCP has policies, but staff miss hand hygiene, transmission-based precautions, equipment disinfection, isolation practice, surveillance follow-up, antibiotic stewardship, or infection preventionist oversight when care gets busy.
+- **Why it's caught**: Infection-control deficiencies are highly observable during survey, and CMS ties F880/F881 review to actual practice, training, surveillance, and corrective-action evidence rather than policy binders alone.
+- **How to prevent it**: Round on high-risk units daily, validate hand hygiene and PPE practice by direct observation, review line lists and culture trends weekly, hardwire antibiotic review into medical director/pharmacy meetings, and document action taken on every identified breach.
+- **Source**: [42 CFR § 483.80](https://www.law.cornell.edu/cfr/text/42/483.80); [CMS State Operations Manual Appendix PP, F880/F881](https://www.cms.gov/medicare/provider-enrollment-and-certification/guidanceforlawsandregulations/downloads/appendix-pp-state-operations-manual.pdf)
+- **Evidence type**: CFR + survey guidance
+- **Source confidence**: high
+- **As of**: 2026-04-09
 
 ## 🔄 Learning & Memory
 

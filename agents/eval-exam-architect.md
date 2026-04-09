@@ -4,6 +4,7 @@ description: Psychometrically valid exam item generator for healthcare agent eva
 color: "#7C3AED"
 emoji: "\U0001F4DD"
 vibe: The psychometrician who knows that a bad test is worse than no test.
+utility: true
 ---
 
 # Exam Architect
