@@ -175,6 +175,49 @@ The FCA (31 USC 3729-3733) prohibits knowingly submitting false claims to the go
 - Tier 4 (willful neglect, not corrected): $68,928 per violation; $2,067,813 annual maximum
 - Criminal penalties: up to $250,000 fine and 10 years imprisonment for intentional violations
 
+### HIPAA Security Rule Operational Controls (45 CFR 164.302-318)
+
+The Privacy Rule and Breach Notification Rule are not enough on their own. A credible compliance officer must operationalize the HIPAA Security Rule for ePHI:
+
+- **Administrative safeguards** (45 CFR 164.308): enterprise risk analysis (164.308(a)(1)(ii)(A)), risk management, workforce security, information access management, security awareness and training, security incident procedures, contingency planning, and periodic evaluation
+- **Physical safeguards** (45 CFR 164.310): facility access controls, workstation use rules, workstation security, and device/media controls governing movement, reuse, and disposal of hardware containing ePHI
+- **Technical safeguards** (45 CFR 164.312): unique user IDs, emergency access procedures, audit controls, integrity controls, person/entity authentication, and transmission security
+- **Required vs. addressable specifications**: addressable does NOT mean optional; the entity must implement the specification if reasonable and appropriate or document why an alternative measure is equivalent
+- **Business associates**: ensure current BAAs are in place, define breach-reporting timing, and confirm vendors handling ePHI implement Security Rule controls consistent with the services performed
+- **Documentation standard**: maintain the written risk analysis, remediation plan, exceptions, and management approvals because OCR routinely asks for documentary proof, not verbal assurances
+
+### Exclusion Screening and Nonpayable Services
+
+Exclusion screening is a core compliance control, not a clerical task:
+
+- Screen the **OIG LEIE monthly** for employees, medical staff, contractors, vendors providing patient care items/services, ordering/referring practitioners, and downstream parties whose work can generate Federal health care program claims
+- Screen **before hire/engagement** and monthly thereafter; many organizations also screen **SAM** and applicable **state Medicaid exclusion lists** because state program exclusions may create separate Medicaid repayment exposure
+- Federal health care programs may not pay for items or services furnished, ordered, or prescribed by an excluded person; payment prohibition extends beyond direct hands-on care when the excluded person's role is a necessary component of the billed service
+- If a match is confirmed: remove the individual/entity from federally reimbursable work immediately, stop related billing, quantify affected claims, assess repayment obligations, and evaluate whether the matter requires disclosure
+- Maintain match-resolution documentation because false positives are common and unsupported screening logs are weak evidence during an audit
+
+### 60-Day Overpayment Rule Operational Standard
+
+The overpayment rule must be operationalized with process discipline:
+
+- Statute: **42 USC 1320a-7k(d)**; implementing regulation for Medicare Parts A/B: **42 CFR 401.305**
+- An overpayment is "identified" when the organization has, or should have through reasonable diligence, determined that it received an overpayment and quantified the amount
+- Reasonable diligence includes proactive compliance activities and timely good-faith investigation in response to credible information; CMS preamble guidance commonly references completion within **6 months** absent extraordinary circumstances
+- Once identified, report and return the overpayment by the later of **60 days after identification** or the date a corresponding cost report is due, if applicable
+- Use a **6-year lookback** when quantifying overpayments under 42 CFR 401.305
+- Distinguish routine repayment from broader fraud-and-abuse exposure: some matters are refund-only; others also require Stark, AKS, or self-disclosure analysis
+
+### Disclosure and Repayment Decision Framework
+
+Not every compliance issue goes to the same agency. Use the right pathway:
+
+- **Routine billing/coding or payment error without fraud indicators**: quantify, report, and return through the payer/contractor refund process under the 60-day rule
+- **Stark-only actual or potential violation**: evaluate the **CMS Self-Referral Disclosure Protocol (SRDP)** rather than OIG SDP
+- **Potential AKS, CMP, or broader fraud-and-abuse conduct**: evaluate the **OIG Health Care Fraud Self-Disclosure Protocol**
+- **HIPAA breach involving unsecured PHI**: apply the Breach Notification Rule and OCR/HHS reporting timelines, not the Stark or OIG disclosure pathways
+- **Potential criminal conduct, intentional falsification, obstruction, or systemic fraud**: escalate immediately to counsel and executive leadership; disclosure timing and privilege strategy must be coordinated carefully
+- The compliance officer frames the facts, risk, and recommended pathway; counsel determines legal conclusions and privilege strategy
+
 ### Compliance Committee Structure
 
 **Recommended membership**:
@@ -337,7 +380,7 @@ CIAs are negotiated between OIG and organizations that have settled healthcare f
 2. **Assess and triage** -- determine severity, scope, and urgency; preserve evidence
 3. **Investigate** -- interviews, document review, data analysis; maintain contemporaneous record
 4. **Determine findings** -- identify root cause, scope of impact, any overpayment
-5. **Report** -- notify government authorities within 60 days of credible evidence of violation; consider OIG Self-Disclosure Protocol
+5. **Choose reporting pathway** -- determine whether the issue requires payer refund under the 60-day rule, CMS SRDP, OIG Self-Disclosure Protocol, OCR breach notification, or no immediate external reporting
 6. **Remediate** -- repay overpayments, discipline responsible individuals, implement corrective action
 7. **Prevent recurrence** -- address root cause through system changes, policy updates, training
 
