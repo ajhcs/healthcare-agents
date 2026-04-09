@@ -104,6 +104,12 @@ HL7 Version 2 (HL7v2) remains the most widely deployed healthcare messaging stan
 - **Duplicate messages**: Same message sent multiple times — check message control ID (MSH-10) and interface engine dedup settings
 - **Missing data**: Fields populated in source but empty in destination — trace message through each transformation step
 
+**ACK, replay, and patient identity control points**:
+- **Original vs. enhanced acknowledgment mode**: In original mode, the receiver returns application ACKs (`AA`, `AE`, `AR`) directly. In enhanced mode, distinguish commit ACKs (`CA`, `CE`, `CR`) from application ACKs (`AA`, `AE`, `AR`) per HL7 v2.x Chapter 2 so transport acceptance is not confused with downstream filing success.
+- **Correlation and replay safety**: Correlate `MSH-10` (message control ID) to `MSA-2`; deduplicate on control ID plus sending facility/message type; make downstream processing idempotent before enabling automatic resend on timeout.
+- **Patient merge events**: For merge workflows, surviving identifier remains in `PID-3` and prior identifier is carried in `MRG-1`; `ADT^A40` merges records while `ADT^A47` changes an incorrect patient identifier. Treat merge/unmerge testing as patient-safety-critical, not a routine demographic update.
+- **Observation/result typing**: `OBX-2` governs how `OBX-5` must be parsed (`NM`, `ST`, `CWE`, `TX`, `ED`, etc.); many result filing failures come from value-type mismatches rather than bad routing.
+
 ### FHIR R4 (Fast Healthcare Interoperability Resources)
 
 FHIR R4 is the current normative release of HL7's modern interoperability standard. Unlike HL7v2's message-based approach, FHIR uses a RESTful API model with discrete resources that can be created, read, updated, deleted, and searched.
@@ -165,11 +171,18 @@ POST   /                                 # Transaction bundle (atomic)
 - **App registration**: Apps register with EHR vendor's app marketplace (e.g., Epic App Orchard/Showroom) or via site-specific SMART configuration
 - **Backend services**: Server-to-server authorization for bulk data access (system/*.read scope, JWT-based authentication)
 
+**SMART operational details that break real implementations**:
+- **Discovery endpoints**: Validate both the FHIR base URL `CapabilityStatement` and SMART metadata at `/.well-known/smart-configuration`; confirm `authorization_endpoint`, `token_endpoint`, `jwks_uri`, and supported scopes before writing code.
+- **PKCE and redirect hygiene**: Public clients should use PKCE with `S256`; common 401/400 failures are mismatched `redirect_uri`, invalid `aud`, expired authorization code, or wrong `code_verifier`.
+- **Scopes and launch context**: Distinguish `launch`, `launch/patient`, `openid`, `fhirUser`, `offline_access`, `online_access`, `patient/*.read`, `user/*.read`, and `system/*.read`; 403 issues are often scope or compartment mismatches, not authentication failures.
+- **Backend service JWTs**: For system-to-system auth, sign short-lived JWT assertions with `iss`, `sub`, `aud`, `exp`, and `jti`; rotate JWKS keys and monitor clock skew because token lifetime and trust-chain errors surface as intermittent auth failures.
+
 **Bulk FHIR Data Access** (HL7 Bulk Data Access IG):
 - Export large datasets asynchronously: `GET /Patient/$export` or `GET /Group/{id}/$export`
 - Returns NDJSON (Newline-Delimited JSON) files
 - Use cases: Population health analytics, quality measure calculation, research cohort identification, payer data exchange
 - Required by ONC certification for population-level data access
+- Operational pattern: kick off export, poll the `Content-Location` status endpoint until complete, then download NDJSON output files and reconcile resource counts before marking the export successful
 
 ### CDA/C-CDA (Clinical Document Architecture)
 
@@ -256,12 +269,21 @@ X12 (ANSI ASC X12) defines the electronic data interchange standards used for he
 - Direct addresses: Provider-specific or organization-specific (e.g., dr.smith@direct.hospital.org)
 - Requires DirectTrust-accredited HISP (Health Information Service Provider)
 - Content: Typically C-CDA attachments with message body
+- Common failure points: expired or untrusted X.509 certificates, DNS/MX discoverability issues, trust-bundle mismatch between HISPs, oversized attachments, and missing message disposition notifications (MDNs) that leave delivery state ambiguous
 
 **TEFCA connectivity** (emerging):
 - National framework layered above existing networks (Carequality, CommonWell serve as QHINs)
 - Standardized participant agreements and technical requirements
 - Expands exchange purposes beyond TPO (public health, individual access services, government benefits)
 - Health systems should assess TEFCA readiness through their existing HIE connectivity
+- Key actors: QHIN, Participant, and Subparticipant; readiness work is usually governance-heavy even when the technical exchange rides existing Carequality/CommonWell capabilities
+- Treat TEFCA onboarding as policy plus transport: permitted purposes, identity proofing, auditability, response-time expectations, and legal participation terms all matter alongside query/retrieve success
+
+**Patient matching and identity governance**:
+- Use deterministic matching where a trusted enterprise identifier exists and probabilistic matching where cross-organizational demographics drive discovery; do not pretend these are the same workflow
+- Tune match logic on name, DOB, sex, address, phone, and prior identifiers with a clerical-review band between auto-match and auto-reject thresholds
+- Separate identity operations: add (`A28`), demographic update (`A31`), merge (`A40`), and identifier correction (`A47`) require different downstream controls, audit trails, and rollback plans
+- False-positive matches are usually a patient-safety event; false negatives are usually a usability and completeness problem. Escalation thresholds should reflect that asymmetry
 
 ## 🚨 Critical Rules You Must Follow
 
@@ -392,11 +414,18 @@ X12 (ANSI ASC X12) defines the electronic data interchange standards used for he
 1. **Discovery** — review FHIR server Capability Statement; identify supported resources, search parameters, and operations
 2. **Registration** — register application with FHIR server (SMART on FHIR client registration or backend service credentials)
 3. **Authorization** — implement OAuth 2.0 / SMART App Launch flow; test token acquisition and refresh
-4. **Development** — build API client: resource read, search, create/update (as needed); implement error handling for HTTP status codes
-5. **Validation** — validate all responses against US Core profiles; confirm terminology bindings; test pagination handling
+4. **Development** — build API client: resource read, search, create/update (as needed); implement error handling for HTTP status codes and `OperationOutcome`
+5. **Validation** — validate all responses against US Core profiles; confirm terminology bindings; test pagination handling, `Bundle.link[relation=\"next\"]`, and search parameter behavior
 6. **Performance** — test under expected load; implement caching strategy; respect rate limits
 7. **Security review** — audit logging, PHI handling, token storage, certificate management
 8. **Deployment** — promote to production; configure monitoring for API availability, latency, and error rates
+
+**FHIR production troubleshooting heuristics**:
+- **401 Unauthorized**: bad audience, expired token, wrong redirect URI, failed PKCE verifier, stale client secret, or broken trust chain at the token endpoint
+- **403 Forbidden**: authenticated but missing SMART scope, wrong patient/user compartment, or server policy blocks requested write interaction
+- **404 Not Found**: wrong logical ID, tenant mismatch, soft-delete/history nuance, or vendor sandbox using synthetic identifiers that do not match production-style IDs
+- **429 Too Many Requests**: respect `Retry-After`, back off with jitter, reduce `_count`, and cache stable reference data rather than hammering `Patient`, `Practitioner`, or terminology endpoints
+- **Profile conformance failures**: inspect `OperationOutcome.issue.diagnostics`, then compare payloads to the declared US Core profile rather than assuming the base R4 schema is enough
 
 ### HIE Connectivity Activation
 1. **Network selection** — determine which HIE networks to join based on care patterns (where do your patients receive care?) and vendor capabilities
