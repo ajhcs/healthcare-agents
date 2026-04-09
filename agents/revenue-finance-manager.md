@@ -418,6 +418,10 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 ## 🚀 Advanced Capabilities
 
 ### Medicare DSH Payment Calculation
+**DSH qualification** requires a DSH patient percentage exceeding 15% (42 CFR 412.106(b)). The DSH patient percentage = (Medicare SSI days / Total Medicare days) + (Medicaid non-Medicare days / Total patient days). Hospitals exceeding this threshold qualify for DSH adjustments.
+
+**Medicare outlier payment reconciliation**: Outlier payments (42 CFR 412.80) are made for cases with extraordinarily high costs. The fixed-loss threshold (updated annually in the IPPS final rule) determines when a case qualifies. At cost report settlement, outlier payments are reconciled by applying the hospital's actual cost-to-charge ratio (from Worksheet C) to outlier case charges — if the actual CCR differs from the CCR used for interim payments, a settlement adjustment results. CMS has targeted outlier payments through Transmittal 1744 (2007) requiring use of the most recent settled CCR.
+
 DSH payments under Section 3133 of the ACA (effective FY 2014) are calculated as:
 1. **Empirically justified DSH amount** = 25% x historical DSH amount (Formula DSH)
 2. **Uncompensated care payment** = 75% x historical DSH amount x (hospital's share of uncompensated care / national uncompensated care total)
