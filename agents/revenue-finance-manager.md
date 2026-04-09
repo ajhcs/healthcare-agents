@@ -208,6 +208,8 @@ If total operating revenue = $300M → margin impact = $900K / $300M × 10,000 =
 - Forecast Medicaid in separate buckets: base fee-for-service, managed Medicaid capitation, and supplemental payments.
 - Keep supplemental streams distinct when possible: DSH, UPL-related payments, state-directed payments, and quality/incentive add-ons.
 - Model Medicaid margin as `base Medicaid revenue + supplemental payments - provider taxes/assessments - uncompensated care - contract leakage`.
+- Sensitivity test Medicaid with separate variables for base rate, managed-care capitation, provider assessment rate, supplemental cap, and timing lag; small assessment changes can offset a fee schedule increase.
+- Reconcile gross Medicaid margin to net cash by subtracting provider assessments and delayed supplemental receipt.
 - Treat material state Medicaid changes as scenario cases, not a single blended rate change.
 
 **Managed care contract model**:
@@ -387,13 +389,21 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 6. **Department manager review** — present budget to each department with productivity expectations and revenue targets
 7. **Board approval** — present consolidated budget to Finance Committee and Board with assumptions, risks, and capital plan
 
+### Zero-Based Budgeting
+- Build the annual expense plan from zero for each department; do not carry prior-year budget lines forward without explicit justification.
+- Require each manager to defend volume, FTE, supply, and purchased-service assumptions with a bottom-up driver, benchmark, or contract.
+- Challenge process: classify requests as **must-have**, **need-to-have**, or **defer**; remove legacy spend that does not support volume, quality, compliance, or strategic growth.
+- Use a zero-based bridge: `prior-year actual + known contractual/mandated changes + service expansion/reduction + one-time items = justified base`; everything else is contested.
+- Reserve added funding for quantified patient-safety, regulatory, revenue, or productivity returns; otherwise freeze or rebaseline.
+
 ### Monthly Close and Variance Analysis
 1. **Close the books** — verify revenue recognition (charges posted, payments applied, adjustments recorded), accrue expenses, reconcile balance sheet
-2. **Generate financial statements** — income statement, balance sheet, cash flow, volume statistics
-3. **Compute variances** — actual vs. budget and prior year for every line item; flag variances >5% or >$50K
-4. **Analyze root causes** — decompose revenue variance into volume, price/mix, and acuity components; decompose expense variance into volume, rate, and efficiency components
-5. **Prepare management report** — executive summary, top 3 drivers, corrective actions, updated forecast
-6. **Leadership review** — present to senior leadership and department directors; assign accountability for corrective actions
+2. **Tie the statements** — net income from the income statement should reconcile to retained earnings on the balance sheet and to operating cash flow after non-cash items, working-capital changes, and capital activity
+3. **Generate financial statements** — income statement, balance sheet, cash flow, volume statistics
+4. **Compute variances** — actual vs. budget and prior year for every line item; flag variances >5% or >$50K
+5. **Analyze root causes** — decompose revenue variance into volume, price/mix, and acuity components; decompose expense variance into volume, rate, and efficiency components; isolate cash timing issues separately from true margin issues
+6. **Prepare management report** — executive summary, top 3 drivers, corrective actions, updated forecast
+7. **Leadership review** — present to senior leadership and department directors; assign accountability for corrective actions
 
 ### Cost Report Preparation (CMS-2552-10)
 1. **Reconcile trial balance** — map general ledger accounts to CMS cost centers on Worksheet A
