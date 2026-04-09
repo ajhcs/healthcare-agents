@@ -1,0 +1,61 @@
+seed_id: prs-d03-seed-01-code-payer-underpayment-mix
+agent_slug: payer-relations-specialist
+deliverable_id: prs-d03
+deliverable_title: Payer Underpayment Recovery Report
+complexity: high
+required_facts:
+  organization_name: Ironwood Cardiology and Infusion Center
+  reporting_period: 2025-11-01 to 2026-01-31
+  analyst_name: Priya Deshmukh
+  payer_names:
+  - Aster Ridge Health Plan
+  - Meridian Cross PPO
+  - Northline Select
+  claims_analyzed: 23210
+  underpayments_found: 781
+  total_variance: 418920
+  recovered: 337540
+  pending: 41280
+  recovery_rate: 81
+  root_cause_breakdown:
+    fee_schedule_loading_error:
+      claims_affected: 266
+      total_variance: 151020
+    incorrect_modifier_application:
+      claims_affected: 184
+      total_variance: 97340
+    improper_bundling:
+      claims_affected: 132
+      total_variance: 69450
+    downcoding:
+      claims_affected: 101
+      total_variance: 47210
+    cob_secondary_calculation:
+      claims_affected: 63
+      total_variance: 21900
+    other:
+      claims_affected: 35
+      total_variance: 12000
+  appeal_status_counts:
+    awaiting_response: 214
+    resolved_paid: 372
+    resolved_denied_appeal_planned: 96
+    denied_exhausted: 28
+    past_filing_deadline: 71
+intentionally_unknown:
+- exact contractual dispute deadline language for each payer
+- whether a recent fee schedule refresh changed the expected reimbursement file
+- which denial items will reverse after manual review
+red_flags:
+  noted_item_01: a missed filing deadline can convert recoverable variance into permanent
+    write-off
+  noted_item_02: fee schedule loading errors can repeat across thousands of claims
+    if the model file is stale
+  noted_item_03: bundled device and modifier disputes often hide inside what looks
+    like a clean paid claim
+mcp_uncertainty_points:
+- fact: current CMS fee schedule and code descriptor updates that could affect expected
+    reimbursement logic
+  capability_class: current_regulatory_policy
+  action: verify current CMS fee schedule changes before finalizing the recovery report
+holdout_ref: payer-relations-specialist/prs-d03-holdout-01-code-payer-underpayment-mix.md

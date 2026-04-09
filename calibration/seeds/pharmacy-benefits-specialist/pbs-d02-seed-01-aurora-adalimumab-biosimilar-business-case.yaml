@@ -1,0 +1,27 @@
+seed_id: pbs-d02-seed-01-aurora-adalimumab-biosimilar-business-case
+agent_slug: pharmacy-benefits-specialist
+deliverable_id: pbs-d02
+deliverable_title: Biosimilar Conversion Business Case
+complexity: high
+required_facts:
+  drug_class: adalimumab
+  originator_product: Humira
+  annual_members: 1180
+  annual_net_spend: 9100000
+  current_biosimilar_penetration: 20
+  proposed_conversion_target: 50
+  projected_admin_support_cost:
+    originator: 410
+    biosimilar: 525
+intentionally_unknown:
+  - final preferred-tier decision
+  - exact member outreach sequence
+red_flags:
+  noted_item_01: conversion plan without a P&T approval step
+  noted_item_02: no member communication plan
+  noted_item_03: supply risk not addressed
+mcp_uncertainty_points:
+  - fact: current FDA biosimilar status and interchangeability guidance
+    capability_class: current_regulatory_policy
+    action: verify current FDA biosimilar guidance before finalizing the business case
+holdout_ref: pharmacy-benefits-specialist/pbs-d02-holdout-01-aurora-adalimumab-biosimilar-business-case.md

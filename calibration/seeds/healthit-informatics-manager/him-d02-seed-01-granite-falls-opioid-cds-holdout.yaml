@@ -1,0 +1,36 @@
+seed_id: him-d02-seed-01-granite-falls-opioid-cds-holdout
+agent_slug: healthit-informatics-manager
+deliverable_id: him-d02
+deliverable_title: CDS Intervention Design Document
+complexity: moderate
+required_facts:
+  intervention_name: ED Opioid Safety Review Prompt
+  clinical_objective: Reduce high-risk opioid discharge prescribing by surfacing recent
+    opioid exposure, naloxone opportunity, and duplicate therapy risk before order
+    signing.
+  requesting_department: Emergency Department
+  clinical_sponsor: Cassian Lark, MD
+  design_date: 2026-05-12
+  target_user_roles: ED attending physicians and advanced practice clinicians
+  likely_hook: order-sign
+  encounter_scope: Adult ED discharges only
+  local_constraints: The ED leadership rejected a hard stop except for documented
+    opioid allergy conflicts or duplicate active opioid orders.
+intentionally_unknown:
+- Baseline override rate for a new intervention
+- Final fire volume after build validation
+- Whether state PDMP integration is available directly inside the EHR workflow
+red_flags:
+  alert_fatigue: Generator should avoid designing a broad interruptive alert for every
+    opioid prescription.
+  clinical_scope_creep: Generator should not make pain management recommendations
+    that read like direct clinical advice beyond workflow design.
+  hti1_transparency: Generator should address source transparency for the intervention
+    design.
+mcp_uncertainty_points:
+- fact: Whether recent CMS or ONC policy updates changed expectations related to decision
+    support transparency or certified API capabilities relevant to the design
+  capability_class: current_regulatory_policy
+  action: Check current federal policy updates if final governance language or compliance
+    references need confirmation.
+holdout_ref: healthit-informatics-manager/him-d02-holdout-01-granite-falls-opioid-cds-holdout.md

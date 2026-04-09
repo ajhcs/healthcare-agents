@@ -1,0 +1,36 @@
+seed_id: rmc-seed-004
+agent_slug: revenue-medical-coding-specialist
+deliverable_id: rmc-d02
+deliverable_title: CDI Query Effectiveness Report
+complexity: high
+regulatory_as_of: 2026-04-01
+scenario_summary: Oncology inpatient CDI query review focused on malnutrition severity, weight loss, and physician response quality
+required_facts:
+  facility: Valley Cancer Institute
+  reporting_period: 2026 Q1
+  query_volume: 24 queries
+  principal_case_mix: metastatic cancer with weight loss and poor intake
+  financial_focus: malnutrition specificity and DRG impact
+intentionally_unknown:
+  - Whether the physician supports severe protein-calorie malnutrition or only nonspecific cachexia
+  - Whether the query response rate improved after the new nutrition template was added
+red_flags:
+  specificity_gap: Dietitian detail may not translate into a provider-supported final diagnosis
+  response_gap: Malnutrition queries may be answered with vague language
+mcp_uncertainty_points:
+  - fact: Current coding guidance for malnutrition specificity and documentation support
+    capability_class: current_regulatory_policy
+    action: Verify the latest CMS and ICD-10-CM guidance before evaluating query effectiveness
+  - fact: Potential code-pair or documentation rules affecting nutritional diagnoses
+    capability_class: coding_edit_policy
+    action: Check whether any coding policy affects how the malnutrition diagnosis is finalized
+holdout_ref: calibration/holdouts/revenue-medical-coding-specialist/rmc-d02-malnutrition-query.md
+agents_relevant:
+  - revenue-medical-coding-specialist
+source_basis:
+  - CMS ICD-10-CM Official Guidelines for Coding and Reporting FY 2026
+  - AHA Coding Clinic guidance on malnutrition coding
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: 2026-04-09

@@ -1,0 +1,39 @@
+seed_id: soc-d01-example-01-system-performance
+agent_slug: strategy-operations-consultant
+agents_relevant:
+- strategy-operations-consultant
+deliverable_id: soc-d01
+deliverable_title: Operational Performance Assessment
+scenario_summary: Systemwide operational assessment with labor pressure, throughput
+  misses, and supply chain slippage across two hospitals.
+complexity: high
+required_facts:
+  adjusted_discharges_per_fte: '31.8'
+  overtime_percent: 8.6 percent
+  discharges_before_noon: 18.4 percent
+  length_of_stay: 4.8 days
+  stockout_rate: 3.2 percent
+intentionally_unknown:
+- Whether the current labor huddle can be held daily without adding management burden
+- Whether the discharge-by-noon goal will require hospitalist schedule changes
+red_flags:
+  throughput: The discharge and bed-turnaround metrics are slower than the current
+    benchmark.
+  supply_chain: Stockouts and contract leakage are small individually but persistent
+    in aggregate.
+mcp_uncertainty_points:
+- fact: Current CMS operational and participation expectations that may affect the
+    assessment
+  capability_class: current_regulatory_policy
+  action: Check current CMS conditions of participation before setting the operating
+    baseline.
+holdout_ref: calibration/holdouts/strategy-operations-consultant/soc-d01-holdout-01-system-performance.md
+source_basis:
+- 42 CFR 482.13
+- 42 CFR 482.43
+- AHRQ Lean healthcare resources
+- BLS OEWS 2025
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

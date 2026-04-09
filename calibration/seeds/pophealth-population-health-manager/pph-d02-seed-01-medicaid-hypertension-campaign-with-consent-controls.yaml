@@ -1,0 +1,36 @@
+seed_id: pph-d02-seed-01-medicaid-hypertension-campaign-with-consent-controls
+agent_slug: pophealth-population-health-manager
+deliverable_id: pph-d02
+deliverable_title: Care Gap Closure Campaign Plan
+complexity: moderate
+required_facts:
+  organization_name: Flint Harbor Medicaid ACO
+  campaign_period: 2026-06-01 - 2026-09-30
+  target_population: 1,860 adult members with open CBP gaps
+  current_rate: 71.2%
+  goal_rate: 75.0%
+  members_needed_to_close: 168
+  dominant_barriers: missed follow-up visits, lack of validated home BP cuffs, unstable
+    phone contact, Spanish-language access needs
+  available_interventions: home BP loaner pool, pharmacist-led titration visits, evening
+    nurse visits, CHW support
+  key_compliance_issue: automated texts may only be used where informational message
+    consent and opt-out controls are defensible
+intentionally_unknown:
+- Exact payer benchmark used internally for cost per closure
+- Whether state Medicaid contract language changed for incentive handling this quarter
+- Final closure yield by outreach wave
+red_flags:
+  tcpa_drift: The generator should not use promotional language or imply unrestricted
+    autodialed texting.
+  outcome_measure_naivete: The generator should not treat a scheduled visit as equivalent
+    to controlled blood pressure.
+  denominator_errors: The generator should avoid suggesting homegrown exclusions without
+    measure-spec alignment.
+mcp_uncertainty_points:
+- fact: Current federal or state policy changes affecting outreach consent or incentive
+    design
+  capability_class: current_regulatory_policy
+  action: Check current CMS, FCC, and applicable state guidance before finalizing
+    text and incentive workflows
+holdout_ref: pophealth-population-health-manager/pph-d02-holdout-01-medicaid-hypertension-campaign-with-consent-controls.md

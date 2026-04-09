@@ -1,0 +1,25 @@
+seed_id: r3p-d02-seed-01-contract-pharmacy-margin-review
+agent_slug: revenue-340b-program-manager
+deliverable_id: r3p-d02
+deliverable_title: Contract Pharmacy Financial Analysis
+complexity: moderate
+required_facts:
+  entity_name: Valleyview Health System
+  network_size: three contract pharmacy locations
+  gross_savings: $1.28M
+  net_benefit: $985K
+intentionally_unknown:
+- "next quarter\u2019s manufacturer restriction list"
+- whether any location should be excluded from the network next cycle
+red_flags:
+  fee_ratio: Keep the fee ratio clearly visible; obscure fee math is a compliance
+    risk.
+  capture_rate: Do not report capture rate without stating the denominator.
+mcp_uncertainty_points:
+- fact: current HRSA or manufacturer restriction updates
+  capability_class: current_regulatory_policy
+  action: check whether the contract pharmacy network needs an immediate policy refresh
+- fact: coverage or exclusion rules for specific drugs
+  capability_class: drug_coverage_exclusion
+  action: verify whether any drug carve-outs apply before projecting savings
+holdout_ref: revenue-340b-program-manager/r3p-d02-holdout-01-contract-pharmacy-margin-review.md

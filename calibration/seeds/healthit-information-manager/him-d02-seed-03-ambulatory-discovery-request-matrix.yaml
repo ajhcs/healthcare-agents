@@ -1,0 +1,26 @@
+seed_id: him-d02-seed-03-ambulatory-discovery-request-matrix
+agent_slug: healthit-information-manager
+deliverable_id: him-d02
+deliverable_title: Legal Health Record Definition Matrix
+complexity: moderate
+required_facts:
+  organization_name: Harborview Ortho and Spine Network
+  state_context: Tennessee and Kentucky outpatient sites
+  core_systems: EHR, scheduling platform, billing system, PACS, patient portal
+  review_owners: HIM director, privacy officer, orthopedics medical director
+  record_classes: surgical consent, operative note, PACS report, portal upload, billing
+    claim, access log
+intentionally_unknown:
+- exact local medical staff bylaws language for disclosure review
+- specific vendor product names for each source system
+- final Legal sign-off language
+red_flags:
+  commingled_record_sets: billing and clinical data presented as one record set
+  missing_metadata_controls: audit trail and access log handling omitted
+  weak_production_rules: no distinction between PDF release and native export handling
+mcp_uncertainty_points:
+- fact: current OCR access guidance on form, format, and timing
+  capability_class: current_regulatory_policy
+  action: verify whether current HHS OCR guidance changes the preferred disclosure
+    language for electronic copies
+holdout_ref: healthit-information-manager/him-d02-holdout-03-ambulatory-discovery-request-matrix.md

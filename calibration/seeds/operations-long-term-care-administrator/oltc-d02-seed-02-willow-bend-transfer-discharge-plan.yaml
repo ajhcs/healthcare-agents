@@ -1,0 +1,35 @@
+seed_id: oltc-d02-seed-02-willow-bend-transfer-discharge-plan
+agent_slug: operations-long-term-care-administrator
+deliverable_id: oltc-d02
+deliverable_title: Survey Response and Corrective Action Plan
+complexity: routine
+required_facts:
+  facility_name: Willow Bend Skilled Care House
+  ccn: 24F193
+  survey_date: 2026-01-08
+  survey_type: Complaint
+  response_due_date: 2026-01-18
+  ftag: F623
+  regulatory_cite: "42 CFR \xA7 483.15(c)(5)-(6)"
+  scope_severity: D
+  identified_issue: Resident R09 was sent a facility-initiated discharge notice that
+    lacked complete appeal information and ombudsman contact details, and the transfer
+    packet did not document return-right counseling after hospitalization.
+  completion_date: 2026-01-15
+  responsible_party: Taryn Sol, LNHA
+intentionally_unknown:
+- Whether any appeal request was ultimately filed by the resident representative
+- Exact count of historical discharge notices requiring retroactive correction
+red_flags:
+  incomplete_notice_packet: Required notice elements were missing.
+  return_right_gap: Hospital-transfer workflow did not evidence counseling on the
+    right to return.
+  centralized_review_missing: Legal and administrator review were not hardwired before
+    issuance.
+mcp_uncertainty_points:
+- fact: Whether any current state-level ombudsman contact or notice-language requirement
+    changed after the survey
+  capability_class: current_regulatory_policy
+  action: Check current policy updates and state survey instructions before external
+    use or staff retraining materials.
+holdout_ref: operations-long-term-care-administrator/oltc-d02-holdout-02-willow-bend-transfer-discharge-plan.md

@@ -1,0 +1,12 @@
+agent_slug: clinical-care-management-specialist
+calibration_run_id: ""
+calibration_date: 2026/04/09
+applied_gaps:
+  - gap_id: ""
+    gap_type: nope
+    prompt_section: ""
+    edit_summary: ""
+    commit: ""
+    promotion_reason: invalid
+    recurrence_count: 0
+rejected_gaps: {}

@@ -1,0 +1,13 @@
+run_id: ""
+date: 2026/04/09
+agents_tested: []
+generator_model: ""
+judge_model: ""
+agent_prompt_versions: []
+seeds_used: -1
+holdouts_used: nope
+lint_pass_rate: maybe
+mean_calibration_score: nope
+estimated_cost_usd: nope
+human_qa_sample: -1
+human_qa_concordance: nope

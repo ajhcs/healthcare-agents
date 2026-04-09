@@ -1,0 +1,46 @@
+seed_id: cpa-d02-seed-02-external-review-spinal-stimulator
+agent_slug: clinical-prior-authorization-specialist
+deliverable_id: cpa-d02
+deliverable_title: Appeal Letter Template
+complexity: high
+required_facts:
+  date: '2026-04-09'
+  payer_name: Granite Peak Health
+  member_name: Nael Riven
+  member_id: GPH-6621094
+  provider_name: Sable Rowan, MD
+  provider_npi: '1336902248'
+  facility_name: Stonebrook Pain Institute
+  facility_tin: 84-5519026
+  service_requested: Spinal cord stimulator trial / CPT 63650
+  date_of_service_range: 2026-04-15 through 2026-04-30
+  denial_reference: GPH-PA-884217
+  denial_reason: Requested neuromodulation is not medically necessary because documentation
+    does not establish failure of less invasive treatment
+  appeal_level: External/IRO
+  clinical_seed: Post-laminectomy syndrome with chronic lumbar radiculopathy, Oswestry
+    Disability Index 58, failed PT for 7 months, two epidural steroid injections with
+    transient relief, prior lumbar decompression in 2024, ongoing opioid-sparing goal
+    documented by pain specialist
+intentionally_unknown:
+- The exact text of Granite Peak Health's current neuromodulation medical policy
+- Whether the plan requires a formal behavioral health clearance letter in addition
+  to pain specialist documentation
+red_flags:
+  unsupported-claims: The generator should not invent imaging findings or psych clearance
+    if those facts are not provided.
+  weak-appeal-leveling: The generator should not write this as a routine first-level
+    appeal when the seed specifies External/IRO.
+  missing-failure-chain: The generator should clearly enumerate failed conservative
+    treatment before arguing necessity.
+mcp_uncertainty_points:
+- fact: Current medical policy criteria for spinal cord stimulator trial approval
+  capability_class: coverage_determination
+  action: Check the live payer policy to confirm required elements such as conservative
+    therapy duration, surgical history, and psych clearance.
+- fact: Any current regulatory updates affecting external review rights or prior authorization
+    denial specificity
+  capability_class: current_regulatory_policy
+  action: Check current regulatory sources if the appeal challenges the sufficiency
+    of the denial explanation or review pathway.
+holdout_ref: clinical-prior-authorization-specialist/cpa-d02-holdout-02-external-review-spinal-stimulator.md

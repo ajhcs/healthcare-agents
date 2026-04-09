@@ -1,0 +1,26 @@
+Below is the normalized YAML summary:
+
+agent_slug: clinical-care-management-specialist
+calibration_run_id: pilot-live-upgraded-001
+date: 2026-04-09
+systematic_strengths:
+  - dimension: structural_completeness
+    evidence: Strong structure across the sample; lint stayed clean with missing_sections: [] and unresolved_placeholders: [] on the reviewed attempts.
+    mean_score: 3.8
+systematic_gaps:
+  - gap_type: specificity_gap
+    recurrence_count: 2
+    severity: medium
+    evidence_summary: Billing language stayed high level: exact CPT examples and timing windows were missing in multiple reports.
+    likely_prompt_fix: Add an audit-ready billing subsection with CPT references, timing rules, and required documentation elements.
+    confidence: 0.82
+    promotion_eligible: true
+recommended_edits:
+  - target_section: Billing / Compliance
+    edit_type: strengthen
+    description: Add audit-ready billing detail: CPT references, timing windows, and documentation elements.
+    source_gap_ids:
+      - gap-001
+      - gap-002
+
+Thanks.

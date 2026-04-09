@@ -1,0 +1,26 @@
+seed_id: qpi-d02-seed-01-observation-med-rec-kaizen
+agent_slug: quality-process-improvement-analyst
+deliverable_id: qpi-d02
+deliverable_title: Kaizen Event Charter
+complexity: moderate
+required_facts:
+  process: observation-unit discharge workflow
+  current_defect_rate: late medication reconciliation occurs on 28% of discharges
+  desired_outcome: discharge closeout completes before the patient leaves
+  event_length: 3-day Kaizen event
+intentionally_unknown:
+- which shift most often misses the final med rec
+- whether an EHR hard stop can be added without a build delay
+red_flags:
+  scope_creep: The charter should stay on observation discharge and not expand into
+    inpatient throughput.
+  staffing_gap: The event should account for coverage, not just documentation redesign.
+mcp_uncertainty_points:
+- fact: policy changes affecting observation discharge documentation
+  capability_class: current_regulatory_policy
+  action: check for updated CMS guidance before hard-coding the workflow
+- fact: receiving follow-up clinic identity
+  capability_class: provider_directory
+  action: "verify the clinic\u2019s NPI and address before creating the discharge\
+    \ handoff list"
+holdout_ref: quality-process-improvement-analyst/qpi-d02-holdout-01-observation-med-rec-kaizen.md

@@ -1,0 +1,23 @@
+run_id: pilot-001
+date: '2026-04-09'
+agents_tested:
+- clinical-care-management-specialist
+- healthit-interoperability-engineer
+- quality-compliance-officer
+- revenue-medical-coding-specialist
+- strategy-healthcare-consultant
+generator_model: dry-run
+judge_model: dry-run
+agent_prompt_versions:
+  healthit-interoperability-engineer: e03c59d
+  revenue-medical-coding-specialist: 5860ec5
+  strategy-healthcare-consultant: c92f913
+  quality-compliance-officer: 683c6ff
+  clinical-care-management-specialist: 061a77a
+seeds_used: 25
+holdouts_used: 25
+lint_pass_rate: 1.0
+mean_calibration_score: 0.0
+estimated_cost_usd: 0.0
+human_qa_sample: 0
+human_qa_concordance: null

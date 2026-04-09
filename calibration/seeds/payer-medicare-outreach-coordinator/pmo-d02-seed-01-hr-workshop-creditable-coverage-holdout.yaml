@@ -1,0 +1,34 @@
+seed_id: pmo-d02-seed-01-hr-workshop-creditable-coverage-holdout
+agent_slug: payer-medicare-outreach-coordinator
+deliverable_id: pmo-d02
+deliverable_title: Community Outreach Event Planning Template
+complexity: moderate
+required_facts:
+  event_name: Medicare and Your Employer Coverage Transition Workshop
+  event_type: Medicare 101
+  event_date_time: 2026-08-13, 12:00 PM to 1:15 PM
+  location: North Quill Manufacturing Training Center, 2400 Alloy Road, Westhaven
+  target_audience: Employees and spouses within 9 months of age 65
+  expected_attendance: '28'
+  event_lead: Maren Pike, Benefits Education Coordinator
+  staffing: 1 SHIP counselor, 1 HR moderator, 1 accessibility support staff member
+  promotion_channels: HR email bulletin, payroll insert, intranet banner
+  accessibility_features: Captioned slides, wheelchair seating, large-print packet
+intentionally_unknown:
+- Whether the employer drug coverage notice for 2027 has been finalized
+- Whether a second language interpreter is needed based on RSVPs
+red_flags:
+  cobra_confusion: The generator should warn that COBRA is not a safe default answer
+    for delaying Part B after Medicare eligibility.
+  improper_follow_up: Attendance roster cannot automatically become a marketing contact
+    list.
+mcp_uncertainty_points:
+- fact: Current CMS educational-versus-marketing event guardrails for Medicare outreach
+  capability_class: current_regulatory_policy
+  action: Verify current CMS or CFR event classification language before finalizing
+    the compliance review note and staff instructions.
+- fact: Most recent Medicare.gov language on creditable drug coverage notices
+  capability_class: current_regulatory_policy
+  action: Check current Medicare.gov or CMS notice guidance before citing the pre-event
+    handout set.
+holdout_ref: payer-medicare-outreach-coordinator/pmo-d02-holdout-01-hr-workshop-creditable-coverage-holdout.md

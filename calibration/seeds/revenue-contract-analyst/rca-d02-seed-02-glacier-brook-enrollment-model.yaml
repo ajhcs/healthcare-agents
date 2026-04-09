@@ -1,0 +1,64 @@
+seed_id: rca-d02-seed-02-glacier-brook-enrollment-model
+agent_slug: revenue-contract-analyst
+deliverable_id: rca-d02
+deliverable_title: Reimbursement Modeling Worksheet
+complexity: moderate
+required_facts:
+  payer_name: Glacier Brook Choice Network
+  proposed_change: New contract for a four-site cardiology group at 116% of CY 2026
+    PFS for office and hospital professional services, 140% of CY 2026 OPPS-equivalent
+    technical fee schedule for in-office diagnostics, and $185 add-on for diagnostic
+    stress echo interpretation bundles
+  effective_date: '2026-08-01'
+  modeling_period: Historical claims from 2025-07 through 2026-06
+  current_terms:
+    inpatient: Professional inpatient consult and rounding claims currently paid out
+      of network at historical realized rate of 92% of Medicare
+    outpatient: Office diagnostics currently paid out of network at 101% of Medicare-equivalent
+      realized rate
+    professional: Professional services currently paid out of network at 94% of CY
+      2026 PFS-equivalent realized rate
+    emergency: Minimal volume; existing realized rate 95% of Medicare-equivalent
+    observation: Included within professional E/M activity and not priced separately
+  financial_baseline:
+    inpatient_current: $1,884,210
+    outpatient_current: $6,228,540
+    professional_current: $14,906,880
+    emergency_current: $118,604
+    observation_current: $0
+  projected_terms:
+    inpatient_projected: $2,253,100
+    outpatient_projected: $7,981,440
+    professional_projected: $18,367,210
+    emergency_projected: $143,220
+    observation_projected: $0
+  enrollment_risk_fact: Two new clinic sites and 11 physician NPIs represent 28% of
+    projected contracted revenue and are not yet confirmed active with the payer for
+    2026-08-01.
+  sensitivity_counter_offer: Same rates with 90-day provisional in-network treatment
+    for clean claims submitted while credentialing is pending
+intentionally_unknown:
+- Which individual NPIs will receive final approval first
+- Whether the payer will allow retroactive effective dates for newly credentialed
+  clinicians
+red_flags:
+  enrollment_dependency: A large share of projected gain is tied to sites and clinicians
+    whose participation effective dates are not yet validated.
+  out_of_network_baseline: Historical realized payments include episodic single-case
+    agreements that may not repeat after contracting.
+mcp_uncertainty_points:
+- fact: Whether each NPI, TIN, and location will be active with the payer on the planned
+    go-live date
+  capability_class: provider_enrollment_status
+  action: Verify enrollment status for the group TIN, each clinic location, and the
+    11 pending physician NPIs with Glacier Brook Choice Network.
+- fact: Whether site-of-service or billability rules affect in-office diagnostics
+    assumptions
+  capability_class: coverage_determination
+  action: Check Medicare coverage policy for the diagnostic cardiology services and
+    site-of-service assumptions used in the model.
+- fact: Whether current PFS or OPPS assumptions changed for the contract year
+  capability_class: current_regulatory_policy
+  action: Check current CMS payment updates for CY 2026 PFS and OPPS assumptions relevant
+    to the proposed rate structure.
+holdout_ref: revenue-contract-analyst/rca-d02-holdout-02-glacier-brook-enrollment-model.md

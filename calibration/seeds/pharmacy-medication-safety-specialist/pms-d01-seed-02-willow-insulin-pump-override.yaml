@@ -1,0 +1,26 @@
+seed_id: pms-d01-seed-02-willow-insulin-pump-override
+agent_slug: pharmacy-medication-safety-specialist
+deliverable_id: pms-d01
+deliverable_title: Medication Error Root Cause Analysis Report
+complexity: moderate
+required_facts:
+  hospital_name: Willow Creek Medical Center
+  patient_condition: diabetic ketoacidosis
+  medication: insulin regular infusion, 100 units in 100 mL
+  outcome: temporary harm requiring dextrose rescue
+  transition_point: ICU to step-down transfer
+  workflow_issue: barcode scan was deferred
+intentionally_unknown:
+- exact glucose nadir
+- exact soft-limit override reason text
+- exact time elapsed from transfer to infusion start
+red_flags:
+  noted_item_01: using the wrong insulin template after transfer
+  noted_item_02: starting an insulin drip without a barcode confirmation
+  noted_item_03: failing to distinguish ICU and step-down library profiles
+mcp_uncertainty_points:
+- fact: current smart pump library and BCMA workflow expectations
+  capability_class: current_regulatory_policy
+  action: verify current medication safety standards before finalizing the recommended
+    controls
+holdout_ref: pharmacy-medication-safety-specialist/pms-d01-holdout-02-willow-insulin-pump-override.md

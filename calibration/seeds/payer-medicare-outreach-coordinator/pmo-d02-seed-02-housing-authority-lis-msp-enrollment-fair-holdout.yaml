@@ -1,0 +1,39 @@
+seed_id: pmo-d02-seed-02-housing-authority-lis-msp-enrollment-fair-holdout
+agent_slug: payer-medicare-outreach-coordinator
+deliverable_id: pmo-d02
+deliverable_title: Community Outreach Event Planning Template
+complexity: high
+required_facts:
+  event_name: Save Money on Medicare Enrollment Day
+  event_type: Benefits Enrollment
+  event_date_time: 2026-11-12, 10:00 AM to 2:00 PM
+  location: Willow Crest Housing Commons, 88 Lantern Court, East Briar
+  target_audience: Low-income Medicare beneficiaries and caregivers in subsidized
+    housing
+  expected_attendance: '55'
+  event_lead: Rina Calder, Community Benefits Supervisor
+  staffing: 3 SHIP counselors, 2 housing authority navigators, 1 interpreter coordinator
+  materials: LIS application guides, MSP state application packets, QMB billing-rights
+    handout, Medicare and You 2026 excerpts, secure document checklist
+  promotion_channels: Door flyers, resident council meeting, robocall, meal-site table
+    tents
+  accessibility_features: Onsite interpreter coordination, private counseling stations,
+    wheelchair-accessible route, large-print materials
+intentionally_unknown:
+- Final number of interpreters needed by language
+- Whether the state Medicaid office can place an eligibility worker onsite that day
+red_flags:
+  privacy_risk: The generator should address secure handling of Social Security numbers,
+    Medicare numbers, and income documents.
+  overpromising: The generator should not imply same-day approval of LIS or MSP applications.
+mcp_uncertainty_points:
+- fact: Current SSA Extra Help filing pathways and any updated 2026 cost-sharing figures
+    used in event handouts
+  capability_class: current_regulatory_policy
+  action: Verify current SSA and CMS figures before locking outreach materials.
+- fact: Any recent state or CMS guidance affecting MSP screening or QMB billing-rights
+    language
+  capability_class: current_regulatory_policy
+  action: Check current CMS or state Medicaid guidance before finalizing counselor
+    scripts.
+holdout_ref: payer-medicare-outreach-coordinator/pmo-d02-holdout-02-housing-authority-lis-msp-enrollment-fair-holdout.md

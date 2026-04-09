@@ -1,0 +1,9 @@
+agents_tested:
+  - payer-credentialing-enrollment-coordinator
+  - payer-managed-care-analyst
+  - payer-medicare-medicaid-specialist
+  - payer-medicare-outreach-coordinator
+  - payer-relations-specialist
+  - payer-value-based-care-manager
+  - pharmacy-benefits-specialist
+  - pharmacy-medication-safety-specialist

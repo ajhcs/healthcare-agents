@@ -1,0 +1,48 @@
+seed_id: oha-d02-seed-02-command-center-evs-case
+agent_slug: operations-hospital-administrator
+deliverable_id: oha-d02
+deliverable_title: Throughput Improvement Business Case
+complexity: routine
+required_facts:
+  initiative_name: Central Throughput Command Center Lite
+  sponsor: Naomi Crest, Chief Nursing Officer
+  date: '2026-04-09'
+  projected_go_live: '2026-08-15'
+  current_occupancy_rate: 89.6%
+  current_alos: 4.7 days
+  benchmark_alos: 4.5 days
+  current_dbn_rate: 35%
+  annual_ed_boarding_hours: 15,480
+  current_bed_turnaround_time: 92 minutes
+  estimated_annual_revenue_lost_to_capacity_constraints: $2,880,000
+  projected_alos: 4.6 days
+  projected_dbn_rate: 39%
+  projected_ed_boarding_hours: 12,900
+  projected_bed_tat: 58 minutes
+  effective_bed_capacity_gained: '4'
+  annual_incremental_revenue: $1,440,000
+  staffing_plan: 1.0 throughput RN lead, 1.0 EVS dispatcher, 1.0 transport coordinator
+  technology_cost: $185,000
+  capital_cost: $96,000
+  training_cost: $18,000
+  annual_staffing_cost: $286,000
+  one_time_implementation_cost: $299,000
+  total_annual_benefit: $1,440,000
+  payback_period: 6.0 months
+  three_year_roi: 268%
+intentionally_unknown:
+- Final vendor chosen for the wallboard and mobile alert software
+- Exact workstation furniture package for the command-center alcove
+red_flags:
+  false_capacity: Generator should not count beds as available before EVS completion
+    and staffing-ready release.
+  patient_safety: Generator should not imply that turnover speed matters more than
+    discharge readiness or infection prevention.
+  cost_logic: Generator should not omit recurring staffing cost when calculating return.
+mcp_uncertainty_points:
+- fact: Any recent CMS or survey focus areas affecting physical-environment controls
+    for overflow or rapid room turnover processes
+  capability_class: current_regulatory_policy
+  action: Check current CMS interpretive or survey guidance before using the case
+    for external regulatory-facing communication.
+holdout_ref: operations-hospital-administrator/oha-d02-holdout-02-command-center-evs-case.md

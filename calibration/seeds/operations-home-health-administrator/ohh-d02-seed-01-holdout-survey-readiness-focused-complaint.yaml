@@ -1,0 +1,41 @@
+seed_id: ohh-d02-seed-01-holdout-survey-readiness-focused-complaint
+agent_slug: operations-home-health-administrator
+deliverable_id: ohh-d02
+deliverable_title: Survey Readiness Assessment
+complexity: high
+required_facts:
+  agency_name: Maple Hollow Home Care Network
+  ccn: 77H654
+  last_survey_date: 2025-05-22
+  assessment_date: 2026-04-09
+  prepared_by: Rina Sol, RN, Administrator
+  sample_size: 12
+  aide_patients_total: 16
+  aide_supervision_current: 12
+  aide_supervision_overdue: 4
+  key_findings: Unsigned verbal orders in 2 charts, drug regimen issue without documented
+    physician follow-up in 1 chart, recertification care plan lag in 2 charts, aide
+    supervisory lapse in 4 aide cases
+intentionally_unknown:
+- Whether the state survey agency will arrive as complaint-only or expand to standard
+  survey scope
+- Whether current CMS subregulatory guidance changed after the last quarterly policy
+  review
+red_flags:
+  aide_supervision: Four active aide cases exceeded the 14-day supervisory interval.
+  order_aging: Unsigned verbal orders remained open beyond branch escalation rules.
+  poc_currency: Field frequencies changed before reconciled plan-of-care signatures
+    were returned.
+  medication_followup: A drug interaction note lacked documented clinician-to-physician
+    escalation and downstream action.
+mcp_uncertainty_points:
+- fact: Any recent CMS or Federal Register update affecting aide supervision, OASIS
+    timing, or HHQRP expectations
+  capability_class: current_regulatory_policy
+  action: Check CMS and Federal Register updates before finalizing the regulatory
+    commentary.
+- fact: Branch identity details for any external-facing survey support packet
+  capability_class: provider_directory
+  action: Verify provider identity details before preparing outside-facing corrective
+    action materials.
+holdout_ref: operations-home-health-administrator/ohh-d02-holdout-01-holdout-survey-readiness-focused-complaint.md

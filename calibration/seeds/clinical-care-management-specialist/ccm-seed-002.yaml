@@ -1,0 +1,24 @@
+seed_id: ccm-seed-002
+agent_slug: clinical-care-management-specialist
+deliverable_id: ccm-d01
+deliverable_title: Comprehensive Care Management Plan
+complexity: moderate
+required_facts:
+  patient: 68-year-old woman
+  condition: COPD exacerbation with CKD stage 3
+  social_risk: transportation barrier
+  discharge_context: lives alone and needs pulmonary follow-up
+intentionally_unknown:
+  - home oxygen vendor
+  - exact outpatient nephrology date
+red_flags:
+  medication_gap: inhaler technique and adherence need explicit coaching
+  follow_up_gap: appointments must be scheduled before discharge
+mcp_uncertainty_points:
+  - fact: receiving pulmonary clinic identity
+    capability_class: provider_directory
+    action: verify clinic NPI, taxonomy, and address before scheduling follow-up
+  - fact: enrollment status for home health
+    capability_class: provider_enrollment_status
+    action: confirm enrollment before assigning home services
+holdout_ref: clinical-care-management-specialist/ccm-d01-holdout-002.md

@@ -1,0 +1,29 @@
+seed_id: shc-seed-002
+agent_slug: strategy-healthcare-consultant
+deliverable_id: shc-d01
+deliverable_title: Service Line Strategic Assessment
+scenario_summary: Oncology service line review for a regional system facing outpatient migration, physician turnover, and pressure to decide between reinvestment and partnership
+complexity: high
+required_facts:
+  organization: Meridian Health Partners
+  geography: 11-county service area with aging population mix
+  service_line: Oncology
+  baseline_volume: 940 inpatient discharges and 18400 outpatient encounters
+  payer_mix: 46 percent commercial, 31 percent Medicare, 18 percent Medicare Advantage, 5 percent Medicaid
+  competitors: Summit Cancer Center expanded infusion capacity and a national chain opened a freestanding radiation site
+  physician_goal: retain two medical oncologists and one radiation oncologist
+intentionally_unknown:
+  - whether the radiation site is hospital-based or freestanding
+  - exact payer contract concessions available for infusion services
+  - board appetite for a joint venture versus internal expansion
+red_flags:
+  financial_gap: infusion margin has declined for three consecutive years
+  retention_gap: oncology physician turnover is creating referral leakage
+mcp_uncertainty_points:
+  - fact: current practice locations of oncology recruits
+    capability_class: provider_directory
+    action: verify physician and group identities before retention or recruitment planning
+  - fact: recent CMS or state policy affecting site-neutral payment exposure
+    capability_class: current_regulatory_policy
+    action: confirm policy changes before recommending ambulatory oncology expansion
+holdout_ref: strategy-healthcare-consultant/shc-d01-holdout-002.md

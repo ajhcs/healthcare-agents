@@ -1,0 +1,37 @@
+seed_id: osc-d01-seed-01-class-one-recall-savings-impact-report
+agent_slug: operations-supply-chain-manager
+deliverable_id: osc-d01
+deliverable_title: Supply Chain Savings Report
+complexity: high
+required_facts:
+  health_system: Silver Birch Care Network
+  fiscal_year: FY2025
+  total_supply_spend: $132.8M
+  prepared_by: Ari Mercer, System Supply Chain Director
+  documented_savings_total: $2,946,700
+  recall_event: Class I recall of a vascular closure device in Q2
+  substitute_strategy: Temporary shift to a contracted alternate plus premium freight
+    during first 10 days
+  compliance_rate: 86.7%
+  gpo_name: Vizient
+  gpo_contract_spend: $84,300,000
+intentionally_unknown:
+- Exact lot counts quarantined by each cath lab and procedural area
+- Whether the alternate vascular closure device will remain on formulary after the
+  recall closes
+- Whether a public policy update has changed any federal reporting expectation connected
+  to recall handling since the last quarterly prompt refresh
+red_flags:
+  inflated_savings_risk: The report could improperly count avoided cancellations and
+    substitute freight containment as realized savings.
+  reconciliation_gap: If the narrative does not mention quarantine and return reconciliation,
+    the recall section will feel operationally weak.
+  category_noise: The closure-device category may show mixed pricing signals that
+    need plain explanation for finance readers.
+mcp_uncertainty_points:
+- fact: Whether there are new federal recall-policy or emergency-preparedness updates
+    that should change the compliance note
+  capability_class: current_regulatory_policy
+  action: Check current CMS, FDA, or Federal Register updates before finalizing the
+    compliance and risk section.
+holdout_ref: operations-supply-chain-manager/osc-d01-holdout-01-class-one-recall-savings-impact-report.md

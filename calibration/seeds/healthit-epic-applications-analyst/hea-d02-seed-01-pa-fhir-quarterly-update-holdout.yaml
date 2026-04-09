@@ -1,0 +1,39 @@
+seed_id: hea-d02-seed-01-pa-fhir-quarterly-update-holdout
+agent_slug: healthit-epic-applications-analyst
+deliverable_id: hea-d02
+deliverable_title: Upgrade Impact Assessment
+complexity: high
+required_facts:
+  current_version: February 2026
+  target_version: QU3 2026
+  assessment_date: '2026-04-09'
+  lead_analyst: Selah Norwick
+  affected_interfaces: Payer authorization FHIR endpoint, 278 prior authorization
+    vendor feed, MyChart status display, denial analytics mart
+  known_customizations: Custom denial-reason mapping, custom attachment routing for
+    cardiology imaging requests, custom patient-facing status text in MyChart
+  go_live_window: 2026-07-12 to 2026-07-13
+intentionally_unknown:
+- Exact CMS FAQ language in force on 2026-04-09 for payer API timing details
+- Whether the organization plans to retire the 278 feed after FHIR expansion
+- Whether current MyChart status text has already been reviewed by compliance this
+  quarter
+red_flags:
+  compliance_gap: Custom MyChart prior-authorization status messaging may suppress
+    or oversimplify denial rationale.
+  data_lineage_gap: Caboodle denial mart may not retain the same status granularity
+    as source transaction history.
+  interface_regression_gap: Attachment handoff could succeed for approvals but fail
+    silently on pended or denied requests.
+mcp_uncertainty_points:
+- fact: Current CMS prior authorization API expectations and FAQ clarifications relevant
+    to denial-reason traceability
+  capability_class: current_regulatory_policy
+  action: Check CMS policy updates and FAQs before finalizing remediation language
+    for payer-facing workflow changes
+- fact: Any newly posted federal guidance affecting portal release or information-blocking
+    handling of prior authorization content
+  capability_class: current_regulatory_policy
+  action: Verify whether recent ONC or CMS guidance changes the framing of portal
+    disclosure and exception handling
+holdout_ref: healthit-epic-applications-analyst/hea-d02-holdout-01-pa-fhir-quarterly-update-holdout.md

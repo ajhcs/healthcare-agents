@@ -1,0 +1,28 @@
+seed_id: shc-seed-004
+agent_slug: strategy-healthcare-consultant
+deliverable_id: shc-d02
+deliverable_title: M&A Due Diligence Summary
+scenario_summary: Acquisition review for a rural critical access hospital with weak liquidity, aging plant, and a need to evaluate community access implications
+complexity: high
+required_facts:
+  acquirer: Harbor Crest Health System
+  target: Pine Valley Critical Access Hospital
+  transaction_type: Acquisition
+  geography: rural county with one hospital and two physician clinics
+  target_financial_condition: 18 days cash on hand and deferred maintenance backlog of 12.4 million dollars
+  strategic_goal: preserve local access while extending system referral reach
+intentionally_unknown:
+  - final consideration structure
+  - whether the county board supports a full acquisition
+  - exact pension and OPEB obligations
+red_flags:
+  antitrust_gap: local market concentration is high but the transaction is likely a rescue deal
+  facilities_gap: critical maintenance items may require immediate capital after closing
+mcp_uncertainty_points:
+  - fact: target hospital identity and address
+    capability_class: provider_directory
+    action: verify the target entity and affiliated clinics before preparing the diligence workstream
+  - fact: current state policy affecting hospital transfers or conversions
+    capability_class: current_regulatory_policy
+    action: confirm current regulatory constraints before recommending structure or close timing
+holdout_ref: strategy-healthcare-consultant/shc-d02-holdout-004.md

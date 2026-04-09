@@ -1,0 +1,26 @@
+seed_id: him-d01-seed-02-hybrid-pediatric-hold-profile
+agent_slug: healthit-information-manager
+deliverable_id: him-d01
+deliverable_title: Record Retention Schedule
+complexity: routine
+required_facts:
+  organization_name: Pinecrest Children's Medical Center
+  state_context: Virginia and West Virginia
+  core_systems: paper archive, EHR, imaging repository, ROI tracking tool
+  record_classes: minor chart, adult employee record, scanned legacy packet, disclosure
+    log, hold notice
+intentionally_unknown:
+- exact state minor-retention age threshold
+- final vendor certificate language for electronic purge
+- local risk-management hold release workflow wording
+red_flags:
+  missing_hold_language: no explicit stop-destruction rule for legal holds
+  weak_backfile_rule: scanned legacy files treated differently from source records
+    without justification
+  incomplete_destroy_controls: paper and electronic destruction methods not separated
+mcp_uncertainty_points:
+- fact: current federal media sanitization guidance
+  capability_class: current_regulatory_policy
+  action: confirm whether NIST SP 800-88 Rev. 2 changes the preferred electronic destruction
+    language
+holdout_ref: healthit-information-manager/him-d01-holdout-02-hybrid-pediatric-hold-profile.md

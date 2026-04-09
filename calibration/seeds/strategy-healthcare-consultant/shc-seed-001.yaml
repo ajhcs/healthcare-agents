@@ -1,0 +1,29 @@
+seed_id: shc-seed-001
+agent_slug: strategy-healthcare-consultant
+deliverable_id: shc-d01
+deliverable_title: Service Line Strategic Assessment
+scenario_summary: Outpatient cardiology expansion in a fast-growing suburban market with competitor leakage and rising Medicare Advantage penetration
+complexity: high
+required_facts:
+  organization: Harbor Crest Health System
+  geography: Southeast metro submarket with 180000 residents
+  service_line: Cardiovascular
+  baseline_volume: 2480 inpatient discharges and 31000 outpatient encounters
+  payer_mix: 38 percent Medicare Advantage, 42 percent commercial, 18 percent Medicare fee for service, 2 percent Medicaid
+  competitors: Northgate Heart Center opened an outpatient cath lab in 2025 and Lakeside Medical recruited two interventional cardiologists
+  physician_goal: recruit one interventional cardiologist and one electrophysiologist
+intentionally_unknown:
+  - exact capital budget approved by finance
+  - final ambulatory site selection
+  - whether a partner physician group is open to co-management
+red_flags:
+  market_share_gap: competitor growth is outpacing system volume in electrophysiology and imaging
+  physician_gap: referral leakage is concentrated in procedural cardiology
+mcp_uncertainty_points:
+  - fact: target physician affiliations and practice addresses
+    capability_class: provider_directory
+    action: verify the target cardiologists before outreach or market-share modeling
+  - fact: state restrictions on outpatient cath lab expansion
+    capability_class: current_regulatory_policy
+    action: confirm current certificate of need or site-of-service rules before recommending new capacity
+holdout_ref: strategy-healthcare-consultant/shc-d01-holdout-001.md

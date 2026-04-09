@@ -1,0 +1,14 @@
+agent_slug: clinical-care-management-specialist
+calibration_run_id: pilot-001
+calibration_date: 2026-04-09
+applied_gaps:
+  - gap_id: gap-001
+    gap_type: computational_omission
+    prompt_section: "## 🔄 Your Workflow"
+    edit_summary: Added a worked LACE computation example.
+    commit: abc1234
+    promotion_reason: high_severity
+    recurrence_count: null
+rejected_gaps:
+  - gap_id: gap-004
+    reason: Single low-confidence finding; hold for next round.

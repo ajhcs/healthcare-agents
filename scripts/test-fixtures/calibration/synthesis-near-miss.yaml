@@ -1,0 +1,15 @@
+strengths:
+  - dimension: mcp_awareness
+    evidence: "Repeatedly identifies when provider-directory lookups would help."
+    score: 3.5
+gaps:
+  - gap_type: insufficient_specificity
+    recurrence_count: 2
+    severity: medium
+    evidence: "Task ownership and due dates are too diffuse across multiple deliverables."
+    prompt_fix: "Add a task matrix requirement wherever execution plans are produced."
+    confidence: 0.78
+    promotion_eligible: true
+edits:
+  - section: "## Readmission Prevention Workflow"
+    description: "Add a task matrix requirement tied to cm-seed-001-gap-02."

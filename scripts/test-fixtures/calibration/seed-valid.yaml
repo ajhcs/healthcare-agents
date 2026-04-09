@@ -1,0 +1,16 @@
+seed_id: cm-seed-001
+agent_slug: clinical-care-management-specialist
+deliverable_id: cm-d01
+deliverable_title: Comprehensive Care Management Plan
+required_facts:
+  patient: "72-year-old male with CHF exacerbation"
+  insurance: "Traditional Medicare"
+intentionally_unknown:
+  - "Receiving home health agency"
+red_flags:
+  lace_gap: "Risk score should be computed, not described generically"
+mcp_uncertainty_points:
+  - fact: "Receiving provider credentials"
+    capability_class: provider_directory
+    action: Verify active NPI and taxonomy
+holdout_ref: clinical-care-management-specialist/cm-d01-holdout.yaml

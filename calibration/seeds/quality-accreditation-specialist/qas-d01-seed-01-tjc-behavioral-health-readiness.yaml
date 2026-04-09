@@ -1,0 +1,41 @@
+seed_id: qas-d01-seed-01-tjc-behavioral-health-readiness
+agent_slug: quality-accreditation-specialist
+deliverable_id: qas-d01
+deliverable_title: Survey Readiness Assessment
+complexity: moderate
+required_facts:
+  organization: Larkspur Behavioral Hospital
+  accrediting_body: TJC
+  assessment_date: '2026-04-06'
+  assessed_by: Nadia Mercer, RN, MSN
+  survey_window: Synthetic window of 2026-05-20 through 2026-06-30
+  focus_areas:
+  - Suicide risk reassessment documentation on inpatient psychiatric unit
+  - Environmental ligature risk mitigation
+  - Medication reconciliation at admission from emergency department
+  - Competency validation for one-to-one observation staff
+  sampled_findings:
+  - Two patient rooms on Unit Cedar had non-approved anchor point modifications pending
+    facilities completion.
+  - Five of twenty synthetic charts lacked documented suicide risk reassessment after
+    change in observation level.
+  - Admission medication reconciliation from transferring ED was incomplete in four
+    of fifteen sampled admissions.
+intentionally_unknown:
+- Exact counts for total standards in each chapter
+- Whether the hospital uses paper or EHR-based one-to-one observation documentation
+- Which specific ligature-resistant hardware model is installed
+red_flags:
+  generic_assessment: Assessment reads like a universal hospital review and does not
+    reflect behavioral health risks.
+  no_tracer_logic: Tracer section does not connect patient flow from ED intake through
+    psychiatric stabilization and discharge planning.
+  weak_staff_section: Staff readiness omits competence in suicide precautions, contraband
+    search, or de-escalation escalation pathways.
+mcp_uncertainty_points:
+- fact: Whether any current CMS or accreditor guidance updates affect suicide risk
+    or ligature-risk expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS and comparable policy updates if the assessment will be
+    used for live operational planning.
+holdout_ref: quality-accreditation-specialist/qas-d01-holdout-01-tjc-behavioral-health-readiness.md

@@ -1,0 +1,25 @@
+seed_id: psc-d02-seed-01-riverview-reportable-disease-audit
+agent_slug: pophealth-surveillance-coordinator
+deliverable_id: psc-d02
+deliverable_title: Reportable Disease Compliance Audit
+complexity: moderate
+required_facts:
+  facility_name: Riverview Community Hospital
+  audit_period: February 1, 2026 through April 30, 2026
+  on_time_reporting_rate: 74
+  elr_success_rate: 98
+  late_conditions: measles exposure, pertussis, legionellosis
+intentionally_unknown:
+- exact jurisdiction reporting deadlines
+- exact weekend staffing assignment
+- exact number of late reports
+red_flags:
+  noted_item_01: using a stale weekend reporting list
+  noted_item_02: missing an after-hours escalation tree
+  noted_item_03: delaying closure because the Monday review process is not owned
+mcp_uncertainty_points:
+- fact: current disease-reporting and infection-control wording
+  capability_class: current_regulatory_policy
+  action: verify the latest CDC, CMS, and jurisdiction reporting expectations before
+    finalizing the corrective-action language
+holdout_ref: pophealth-surveillance-coordinator/psc-d02-holdout-01-riverview-reportable-disease-audit.md

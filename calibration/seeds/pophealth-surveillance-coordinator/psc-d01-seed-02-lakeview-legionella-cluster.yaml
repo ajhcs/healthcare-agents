@@ -1,0 +1,25 @@
+seed_id: psc-d01-seed-02-lakeview-legionella-cluster
+agent_slug: pophealth-surveillance-coordinator
+deliverable_id: psc-d01
+deliverable_title: Outbreak Investigation Report
+complexity: high
+required_facts:
+  jurisdiction: Lakeview County Health District
+  condition: legionellosis
+  total_cases: 6
+  hospitalizations: 6
+  deaths: 1
+  source: building water system
+intentionally_unknown:
+- exact water temperature readings
+- exact WGS cluster identifier
+- exact date the maintenance review was missed
+red_flags:
+  noted_item_01: failing to tie the outbreak to the water system
+  noted_item_02: skipping environmental evidence
+  noted_item_03: not describing control measures
+mcp_uncertainty_points:
+- fact: current Legionella investigation guidance and reporting expectations
+  capability_class: current_regulatory_policy
+  action: verify current CDC Legionella guidance before finalizing the report
+holdout_ref: pophealth-surveillance-coordinator/psc-d01-holdout-02-lakeview-legionella-cluster.md

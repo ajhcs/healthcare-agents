@@ -1,0 +1,38 @@
+seed_id: him-d02-seed-01-rural-dual-state-lhr-definition
+agent_slug: healthit-information-manager
+deliverable_id: him-d02
+deliverable_title: Legal Health Record Definition Matrix
+complexity: moderate
+required_facts:
+  organization_name: Pine Arc Regional Health
+  effective_date: 2026-04-01
+  facilities: One critical access hospital, three rural health clinics, and one urgent
+    care center
+  source_systems: AsterEHR, PeakPACS, ScanVault, and a read-only legacy ED system
+    called TrailChart
+  approval_chain: Rowan Pike RHIA, Chief Medical Officer Elise Fen, JD counsel M.
+    Corbett, and CIO Niko Vale
+  included_elements: H&P, clinic notes, discharge instructions, medication administration
+    records, lab and radiology final reports, signed ED records, scanned outside records
+    incorporated into care
+  excluded_elements: access logs, interface queue history, unsigned drafts, coding
+    worksheets, claim edits, psychotherapy notes kept separately, device telemetry
+    not incorporated into a signed note
+intentionally_unknown:
+- Whether current AHIMA guidance has been updated this quarter on LHR versus designated
+  record set distinctions
+- Whether any state-specific patient access rule creates a stricter production expectation
+  than the federal floor
+red_flags:
+  over_inclusion: Treating all metadata, audit trails, and device feeds as automatically
+    included in the legal health record
+  format_error: Omitting a production format section or failing to identify how hybrid
+    images are produced
+  terminology_gap: Confusing legal health record with designated record set
+mcp_uncertainty_points:
+- fact: Any current CMS, OCR, or comparable policy update affecting patient access
+    production expectations for designated record set content
+  capability_class: current_regulatory_policy
+  action: Check current CMS, OCR, or Federal Register updates before finalizing any
+    statement that current production expectations are unchanged
+holdout_ref: healthit-information-manager/him-d02-holdout-01-rural-dual-state-lhr-definition.md

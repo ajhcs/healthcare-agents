@@ -1,0 +1,41 @@
+seed_id: crs-d02-seed-01-medicaid-behavioral-leakage-holdout
+agent_slug: clinical-referral-specialist
+deliverable_id: crs-d02
+deliverable_title: Referral Leakage Analysis
+complexity: moderate
+required_facts:
+  system_name: Northlight River Integrated Care
+  reporting_period: Q2 2026
+  largest_leakage_specialty: Behavioral Health
+  secondary_leakage_specialty: Pediatric Neurology
+  major_operational_issue: Community behavioral health partners changed panel status
+    repeatedly during the quarter
+  medicaid_focus: Medicaid managed care and CHIP comprise most attributed lives in
+    the affected counties
+  geography_hotspot: Drift Hollow and East Lark service areas
+intentionally_unknown:
+- Exact referral counts by every minor specialty
+- Exact contracted rates and claim yield behind the revenue-loss figures
+- Exact number of clinicians who terminated from each external partner
+red_flags:
+  directory_integrity: Generator should address unstable accepting-new-patients status
+    and stale directory routing.
+  enrollment_risk: Routing should not assume pediatric neurology or behavioral health
+    clinicians are enrolled in every Medicaid managed care product.
+  access_equity: Leakage narrative should recognize travel and language access barriers
+    in Drift Hollow and East Lark.
+mcp_uncertainty_points:
+- fact: Which behavioral health groups are currently accepting new pediatric patients
+    in Drift Hollow
+  capability_class: provider_directory
+  action: Verify practice address, accepting-new-patients status, and language access
+    flags before final routing recommendations.
+- fact: Whether the recommended pediatric neurology affiliate is enrolled across the
+    main Medicaid managed care plans
+  capability_class: provider_enrollment_status
+  action: Confirm plan enrollment before naming the affiliate as a preferred destination.
+- fact: Whether Medicaid managed care access standards changed in the latest state
+    or CMS update
+  capability_class: current_regulatory_policy
+  action: Check current policy updates before finalizing access-risk commentary.
+holdout_ref: clinical-referral-specialist/crs-d02-holdout-01-medicaid-behavioral-leakage-holdout.md

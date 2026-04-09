@@ -1,0 +1,51 @@
+seed_id: prs-d02-seed-01-idr-batch-eligibility-review
+agent_slug: payer-relations-specialist
+deliverable_id: prs-d02
+deliverable_title: No Surprises Act Dispute Tracker
+complexity: moderate
+required_facts:
+  organization_name: Willow Creek Anesthesia and Imaging
+  reporting_period: 2026-01-01 to 2026-03-31
+  payer_names:
+  - SummitGate Health
+  - Northline Select
+  - Prairie Summit Plan
+  oon_claim_totals:
+    emergency: 286
+    non_emergency_in_network_facility: 244
+    total: 530
+  initial_payment_percent_billed:
+    emergency: 11
+    non_emergency_in_network_facility: 14
+    total: 12
+  open_negotiation_and_idr_counts:
+    open_negotiations_initiated: 463
+    settled_in_open_negotiation: 241
+    idr_cases_initiated: 129
+    idr_cases_won_provider: 86
+    idr_cases_lost_payer: 43
+  financials:
+    billed_charges: 8640000
+    initial_payer_payments: 1034200
+    additional_recovery_negotiation: 498600
+    additional_recovery_idr: 836900
+    balance_billing_collected: 742100
+    unrecovered_balance: 5528200
+intentionally_unknown:
+- exact QPA comparison values for each payer
+- whether any state surprise-billing law adds stronger patient protections than the
+  federal floor
+- final portal disposition for the longest-running batch
+red_flags:
+  noted_item_01: batching may be invalid if related services are not grouped by the
+    same provider, payer, and service area
+  noted_item_02: signed consent after service would weaken the balance-billing position
+    for elective facility-based cases
+  noted_item_03: low initial payments may reflect a payer pattern that should be tracked
+    for contract leverage rather than only dispute recovery
+mcp_uncertainty_points:
+- fact: current CMS batching guidance, portal mechanics, and reporting updates
+  capability_class: current_regulatory_policy
+  action: verify the latest CMS IDR batching and filing guidance before finalizing
+    the tracker
+holdout_ref: payer-relations-specialist/prs-d02-holdout-01-idr-batch-eligibility-review.md

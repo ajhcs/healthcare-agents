@@ -1,0 +1,58 @@
+seed_id: oha-d02-seed-01-observation-unit-launch-case
+agent_slug: operations-hospital-administrator
+deliverable_id: oha-d02
+deliverable_title: Throughput Improvement Business Case
+complexity: high
+required_facts:
+  initiative_name: 12-Bed Clinical Decision Unit Launch
+  sponsor: Darren Kline, Chief Operating Officer
+  date: '2026-04-09'
+  projected_go_live: '2026-10-01'
+  current_occupancy_rate: 91.2%
+  current_alos: 5.1 days
+  benchmark_alos: 4.6 days
+  current_dbn_rate: 28%
+  annual_ed_boarding_hours: 21,960
+  current_bed_turnaround_time: 79 minutes
+  estimated_annual_revenue_lost_to_capacity_constraints: $4,950,000
+  projected_alos: 4.8 days
+  projected_dbn_rate: 34%
+  projected_ed_boarding_hours: 17,100
+  projected_bed_tat: 66 minutes
+  effective_bed_capacity_gained: '9'
+  annual_incremental_revenue: $3,240,000
+  staffing_plan: 6.0 RN FTE, 1.0 APP FTE, 1.0 unit clerk FTE, shared case management
+    and pharmacy support
+  technology_cost: $310,000
+  capital_cost: $1,480,000
+  training_cost: $72,000
+  annual_staffing_cost: $1,260,000
+  one_time_implementation_cost: $1,862,000
+  total_annual_benefit: $3,240,000
+  payback_period: 14.9 months
+  three_year_roi: 96%
+  observation_volume: 22 observation encounters per day currently scattered across
+    med/surg and telemetry
+  unit_design: 12 recliner-capable monitored beds adjacent to ED with protocol pathways
+    for chest pain, syncope, TIA, cellulitis, dehydration, and asthma
+intentionally_unknown:
+- Specific local contractor selected for renovation work
+- Final room numbering and exact ADT build dictionary names
+- Whether one payer-specific prior-authorization workflow will be embedded at go-live
+  or phase two
+red_flags:
+  status_compliance: Generator should not treat observation as inpatient care or omit
+    the outpatient financial implications.
+  discharge_pressure: Generator should not frame the unit as a place to hold medically
+    unstable patients for convenience.
+  roi_logic: Generator should not claim more effective beds than supported by the
+    provided migration volume.
+  regulation_precision: Generator should anchor the status workflow to public CMS
+    rules and notice requirements.
+mcp_uncertainty_points:
+- fact: Whether CMS has issued a more recent clarification affecting observation notice
+    operations or status review expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy materials before finalizing compliance language
+    in the business case.
+holdout_ref: operations-hospital-administrator/oha-d02-holdout-01-observation-unit-launch-case.md

@@ -1,0 +1,37 @@
+seed_id: osc-d02-seed-02-infusion-set-formulary-review
+agent_slug: operations-supply-chain-manager
+deliverable_id: osc-d02
+deliverable_title: Value Analysis Request Form
+complexity: moderate
+required_facts:
+  request_date: '2026-01-22'
+  requestor: Jalen Pryce, RN, Director of Infusion Therapy
+  requested_product: FlowGuard Low-Sorb Extension Set, Norvale Medical, Catalog FG-LS-214
+  current_product: PrimeLine Standard Extension Set, Alderon Clinical, Catalog PL-210
+  current_unit_cost: $2.18
+  requested_unit_cost: $3.06
+  projected_annual_volume: 4,200 sets
+  current_annual_cost: $9,156
+  requested_annual_cost: $12,852
+  gpo_status_current: Premier committed
+  gpo_status_requested: Premier portfolio
+  committee_decision: Approved with conditions for oncology and NICU use only
+  approver: Mae Linwood, PharmD, Co-Chair, Clinical Products Value Analysis Committee
+intentionally_unknown:
+- Whether the proposed set will move to a committed contract tier in the next contract
+  cycle
+- Whether oncology utilization will exceed the initial monthly cap after launch
+red_flags:
+  compatibility_risk: The requested tubing set is intended for select medications
+    and should not be quietly substituted across all infusion workflows.
+  training_scope: If unit educators are omitted, the implementation section will understate
+    adoption risk.
+  compliance_drift: Broad rollout would dilute committed spend in the current tubing
+    category.
+mcp_uncertainty_points:
+- fact: Whether current public policy or regulatory guidance affecting tubing-material
+    compatibility documentation has changed since the last quarterly refresh
+  capability_class: current_regulatory_policy
+  action: Check current public regulatory and safety updates before finalizing the
+    compliance note if external-facing use is planned.
+holdout_ref: operations-supply-chain-manager/osc-d02-holdout-02-infusion-set-formulary-review.md

@@ -1,0 +1,38 @@
+seed_id: opp-d02-seed-01-psychiatry-hybrid-comp-holdout
+agent_slug: operations-physician-practice-manager
+deliverable_id: opp-d02
+deliverable_title: Compensation Plan Design Worksheet
+complexity: moderate
+required_facts:
+  specialty: Psychiatry
+  effective_date: 2026-09-01
+  fmv_opinion_date: 2026-07-22
+  fmv_firm: Cedar Trace Healthcare Valuation
+  target_wrvu: 4180
+  base_salary: $332,000
+  incentive_rate: $84.00 per wRVU above threshold
+  wrvu_threshold: 3,900
+  quality_pool: $24,000
+  call_pay: $0; outpatient model with nurse triage only
+  medical_director_stipend: $18,000/year for behavioral health integration oversight
+  expected_collections: $585,000
+  operating_cost_allocation: $214,000
+  downstream_revenue_contribution: $410,000
+  access_target: new patient psychiatry 3rd next available within 12 calendar days
+intentionally_unknown:
+- Exact current-year MGMA percentile values for psychiatry compensation and wRVUs
+- Whether telepsychiatry visits are booked in 45-minute or 60-minute new-patient slots
+- The final patient satisfaction vendor used by the organization
+red_flags:
+  compensation_drift: Base pay cannot be written as if market pressure alone justifies
+    an unsupported $/wRVU above FMV.
+  admin_credit_blur: Behavioral health integration leadership time should not be buried
+    inside the clinical productivity rate.
+  access_incentive_design: Access metrics must be within physician influence and measured
+    from a reliable scheduling source.
+mcp_uncertainty_points:
+- fact: Whether current CMS or QPP scoring rules changed for the effective year
+  capability_class: current_regulatory_policy
+  action: Check current CMS and QPP policy updates before finalizing quality metric
+    language.
+holdout_ref: operations-physician-practice-manager/opp-d02-holdout-01-psychiatry-hybrid-comp-holdout.md

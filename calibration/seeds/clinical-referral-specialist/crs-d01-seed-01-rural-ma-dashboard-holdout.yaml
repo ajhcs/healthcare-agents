@@ -1,0 +1,39 @@
+seed_id: crs-d01-seed-01-rural-ma-dashboard-holdout
+agent_slug: clinical-referral-specialist
+deliverable_id: crs-d01
+deliverable_title: Referral Management Dashboard
+complexity: high
+required_facts:
+  organization_name: Silver Fen Community Health Alliance
+  reporting_period: February 2026
+  total_referrals_generated_this_month: 3,186
+  target_in_system_rate: 72%
+  high_pressure_specialties: Neurology and Dermatology
+  rural_county_issue: Pine Marsh and Elk Run counties have long travel times for in-network
+    specialty care
+  known_oop_driver: Access and travel burden are pushing OON selection more than patient
+    preference
+intentionally_unknown:
+- Exact prior-month counts for each dashboard row
+- Exact YTD values for each specialty line
+- Exact loop-closure performance split by specialty
+red_flags:
+  network_adequacy_gap: Dashboard should make clear that listed network coverage is
+    not translating into timely appointments in rural counties.
+  referral_tracking_risk: Weak specialist note return in neurology should be visible
+    through loop-closure metrics or operating notes.
+  financial_exposure: OON growth should be framed as a patient liability and continuity-of-care
+    risk, not only a revenue issue.
+mcp_uncertainty_points:
+- fact: Whether the highest-volume neurology group is still at the listed Pine Marsh
+    address and accepting new patients
+  capability_class: provider_directory
+  action: Verify provider identity, taxonomy, and practice address before locking
+    routing guidance.
+- fact: Whether the new dermatology locum is enrolled with the top two MA plans
+  capability_class: provider_enrollment_status
+  action: Confirm payer enrollment before routing MA referrals to the new clinician.
+- fact: Whether CMS updated county-specific network adequacy expectations this quarter
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy updates before finalizing network adequacy commentary.
+holdout_ref: clinical-referral-specialist/crs-d01-holdout-01-rural-ma-dashboard-holdout.md

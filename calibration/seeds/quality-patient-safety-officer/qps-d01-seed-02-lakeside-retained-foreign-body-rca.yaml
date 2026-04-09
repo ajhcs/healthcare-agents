@@ -1,0 +1,25 @@
+seed_id: qps-d01-seed-02-lakeside-retained-foreign-body-rca
+agent_slug: quality-patient-safety-officer
+deliverable_id: qps-d01
+deliverable_title: Root Cause Analysis Report
+complexity: high
+required_facts:
+  facility_name: Lakeside Surgery Center
+  event_type: sentinel event
+  procedure: laparoscopic surgery
+  outcome: retained sponge discovered after closure
+  root_theme: count reliability failure
+  immediate_issue: closure proceeded on verbal assurance
+intentionally_unknown:
+- exact surgeon specialty
+- exact imaging modality
+- exact count discrepancy language
+red_flags:
+  noted_item_01: allowing a count discrepancy to be resolved verbally
+  noted_item_02: not locking count documentation after closure
+  noted_item_03: missing board-ready follow-up metrics
+mcp_uncertainty_points:
+- fact: current retained-object and sentinel-event response wording
+  capability_class: current_regulatory_policy
+  action: verify the latest Joint Commission references before finalizing the RCA language
+holdout_ref: quality-patient-safety-officer/qps-d01-holdout-02-lakeside-retained-foreign-body-rca.md

@@ -1,0 +1,46 @@
+seed_id: osc-d02-seed-01-spinal-implant-escalation-request
+agent_slug: operations-supply-chain-manager
+deliverable_id: osc-d02
+deliverable_title: Value Analysis Request Form
+complexity: high
+required_facts:
+  request_date: '2026-03-11'
+  requestor: Talia Fen, MBA, RN, Service Line Administrator, Neurosciences
+  requested_product: ApexRise Expandable TLIF Cage, Helix Ortho Systems, Catalog AR-TLIF-32
+  current_product: ArcSpan PEEK TLIF Cage, Meridian Spine Technologies, Catalog ASP-TLIF-28
+  current_unit_cost: $3,280
+  requested_unit_cost: $4,760
+  projected_annual_volume: 96 cases
+  current_annual_cost: $314,880
+  requested_annual_cost: $456,960
+  gpo_status_current: Premier committed
+  gpo_status_requested: Non-contract unless local addendum executed
+  committee_decision: Deferred pending restricted-use protocol and competitive pricing
+    counteroffer
+  approver: Nolan Quist, MD, Chair, Surgical Value Analysis Subcommittee
+intentionally_unknown:
+- Whether comparable published outcome evidence demonstrates benefit over the current
+  cage in routine degenerative cases
+- Whether the vendor will match the system target price under a restricted commitment
+  model
+- Whether all spine OR rooms are fully ready for point-of-use UDI capture on the requested
+  implant packaging
+red_flags:
+  off_contract_leakage: Requested device would drop spine compliance below the committed
+    threshold if adopted without restrictions.
+  surgeon_preference_pressure: The requesting surgeons want open access for all lumbar
+    fusion cases without a narrowed indication set.
+  traceability_gap: Current implant log reconciliation in one OR core has missed scan
+    events during add-on evening cases.
+mcp_uncertainty_points:
+- fact: Whether current FDA labeling or clearance language materially differs for
+    the requested implant compared with the current cage
+  capability_class: current_regulatory_policy
+  action: Check current FDA public labeling and device status before finalizing the
+    clinical-review summary.
+- fact: Whether the requesting surgeon roster and facility identifiers are correctly
+    represented in the external-facing escalation memo
+  capability_class: provider_directory
+  action: Verify provider and facility identity details before issuing any vendor,
+    payer, or governance-facing recommendation.
+holdout_ref: operations-supply-chain-manager/osc-d02-holdout-01-spinal-implant-escalation-request.md

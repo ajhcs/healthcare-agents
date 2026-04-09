@@ -1,0 +1,50 @@
+seed_id: oha-d01-seed-01-rural-cah-swing-bed-report
+agent_slug: operations-hospital-administrator
+deliverable_id: oha-d01
+deliverable_title: Daily Capacity Report
+complexity: moderate
+required_facts:
+  date: '2026-04-09'
+  time: 06:40
+  prepared_by: Tessa Moore, Rural Hospital Administrator
+  capacity_status: Orange
+  facility_name: Pine Harbor Critical Access Hospital
+  staffed_acute_beds: '15'
+  swing_beds_in_use: '6'
+  total_licensed_limit: '25'
+  occupied_acute_beds: '14'
+  pending_admits: '3'
+  pending_discharges: '4'
+  ed_boarding_hours: '2.6'
+  dbn_rate: 50%
+  bed_turnaround_time: 52 minutes
+  observation_patients: '2'
+  observation_over_48_hours: '0'
+  transfer_issue: One sepsis patient awaiting tertiary ICU acceptance and weather-delayed
+    rotor transport
+  staffing_issue: One day-shift RN callout requires reassignment of charge coverage
+  census_pattern_note: Thursday night admissions ran higher than last 14-day rural
+    baseline due to influenza and one farm trauma case
+intentionally_unknown:
+- Exact rotor-wing launch time once weather clears
+- Whether tertiary center transfer acceptance will land at Valley Ridge Medical Center
+  or North Summit Regional
+- Final discharge pickup times for two swing-bed residents returning home
+red_flags:
+  cah_bed_limit: Generator should not exceed the 25-bed CAH limit when acute and swing-bed
+    counts are combined.
+  los_rule: Generator should not ignore the CAH acute length-of-stay control environment.
+  staffing_precision: Generator should not present open beds as usable unless staffing
+    supports them.
+mcp_uncertainty_points:
+- fact: Identity details for the tertiary accepting hospital before any external-facing
+    transfer recommendation
+  capability_class: provider_directory
+  action: Verify the receiving facility identity before finalizing any named transfer
+    destination.
+- fact: Any recent CMS interpretive update affecting CAH swing-bed or length-of-stay
+    guidance
+  capability_class: current_regulatory_policy
+  action: Check current CMS guidance if the report will be converted into formal compliance
+    recommendations.
+holdout_ref: operations-hospital-administrator/oha-d01-holdout-01-rural-cah-swing-bed-report.md

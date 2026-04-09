@@ -1,0 +1,36 @@
+seed_id: cm-seed-001
+deliverable_id: cm-d01
+agent_slug: clinical-care-management-specialist
+dimension_scores:
+  structural_completeness:
+    score: 3
+    rationale: "The output is organized but skips a required computed risk score."
+  regulatory_precision:
+    score: 2
+    rationale: "The guidance is directionally right but not audit-ready."
+  clinical_realism:
+    score: 3
+    rationale: "The workflow is plausible but not specific enough."
+  actionability:
+    score: 2
+    rationale: "Important tasks do not have a concrete owner and deadline."
+  mcp_awareness:
+    score: 4
+    rationale: "The output identifies both live lookup opportunities."
+weighted_total: 2.8
+checklist_results:
+  - checklist_item: compute the patient-specific risk score and document the result
+    status: missed
+    evidence: "The output says the score should be computed but leaves it unresolved."
+  - checklist_item: assign medication and follow-up tasks with owners and dates
+    status: partial
+    evidence: "Owners and windows are mentioned, but no task matrix is provided."
+gaps:
+  - gap_type: missing_requirement
+    severity: high
+    evidence: "The patient-specific risk score is required and remains uncomputed."
+    prompt_fix: "Require exact score computation or a blocking missing-data section."
+  - gap_type: insufficient_specificity
+    severity: medium
+    evidence: "Follow-up tasks are diffuse and lack a single accountable owner."
+    prompt_fix: "Require a task matrix with owners, deadlines, and completion criteria."

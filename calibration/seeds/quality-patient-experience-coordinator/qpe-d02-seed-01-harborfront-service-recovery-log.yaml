@@ -1,0 +1,24 @@
+seed_id: qpe-d02-seed-01-harborfront-service-recovery-log
+agent_slug: quality-patient-experience-coordinator
+deliverable_id: qpe-d02
+deliverable_title: Service Recovery Event Log
+complexity: moderate
+required_facts:
+  facility_name: Harborfront Medical Center
+  reporting_period: January 2026
+  total_events: 5
+  patient_satisfied_rate: 100
+  top_issue_categories: wait time updates, discharge confusion, medication explanation
+intentionally_unknown:
+- exact names of the patients
+- exact time-to-resolution for each row
+- exact unit-level leader names
+red_flags:
+  noted_item_01: leaving the log blank or using placeholder rows
+  noted_item_02: failing to include escalation status
+  noted_item_03: missing a summary of recurring issue categories
+mcp_uncertainty_points:
+- fact: current HCAHPS and patient-experience reporting language
+  capability_class: current_regulatory_policy
+  action: verify the latest CMS and CAHPS references before finalizing the log narrative
+holdout_ref: quality-patient-experience-coordinator/qpe-d02-holdout-01-harborfront-service-recovery-log.md

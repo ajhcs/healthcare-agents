@@ -1,0 +1,25 @@
+seed_id: qrm-d02-seed-01-claims-summary-review
+agent_slug: quality-risk-manager
+deliverable_id: qrm-d02
+deliverable_title: Claims Summary Report
+complexity: moderate
+required_facts:
+  organization_name: Summit Care Surgical Group
+  open_claim_drivers: postoperative infection, delayed diagnosis, medication error
+  reserve_exposure: $1.28M open reserves
+  reporting_period: Q1 2026
+intentionally_unknown:
+- "carrier\u2019s internal severity scoring model"
+- final settlement posture on the oldest claim
+red_flags:
+  privileged_material: Do not conflate counsel notes with board-facing trends.
+  reserve_trend: Reserves should be explained with loss-development logic, not just
+    summarized as totals.
+mcp_uncertainty_points:
+- fact: current carrier or renewal program terms
+  capability_class: current_regulatory_policy
+  action: verify whether any policy changes affect claim assumptions
+- fact: named defense counsel roster
+  capability_class: provider_directory
+  action: confirm the defense counsel contact list before the board packet is circulated
+holdout_ref: quality-risk-manager/qrm-d02-holdout-01-claims-summary-review.md

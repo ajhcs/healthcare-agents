@@ -1,0 +1,39 @@
+seed_id: qis-d01-seed-01-leapfrog-core-measures-dashboard
+agent_slug: quality-improvement-specialist
+deliverable_id: qis-d01
+deliverable_title: Quality Measure Performance Dashboard
+complexity: high
+required_facts:
+  organization_name: Northlake Ember Medical Center
+  reporting_program: Hospital Inpatient Quality Reporting / Leapfrog readiness review
+  measurement_year: '2025'
+  report_date: '2026-04-09'
+  prepared_by: Mira Solen, RN, CPHQ
+  performance_anchor:
+  - Sepsis bundle compliance is below target and affects both public reporting confidence
+    and internal patient safety escalation.
+  - ED throughput is worsening and contributes to leadership concern about flow, left-without-being-seen
+    risk, and patient experience downstream.
+  - CLABSI rate is improving after central line rounding changes.
+intentionally_unknown:
+- Exact benchmark percentile values for each hospital measure
+- Whether the hospital's latest external validation file has been accepted without
+  issue
+- Whether a recent CMS or Leapfrog methodology update changed scoring detail
+red_flags:
+  denominator_clarity: Generator should make denominator logic legible for each reported
+    rate and avoid presenting rates without a population basis.
+  mixed_measure_types: Generator should distinguish process, outcome, and utilization
+    measures instead of blending them into one narrative.
+  data_integrity: Generator should mention abstraction completion or feed integrity,
+    not just rates.
+mcp_uncertainty_points:
+- fact: Current Leapfrog survey scoring detail for the applicable cycle
+  capability_class: current_regulatory_policy
+  action: Check Leapfrog public survey materials before finalizing external-facing
+    scoring assumptions.
+- fact: Current CMS hospital quality reporting update or submission guidance
+  capability_class: current_regulatory_policy
+  action: Verify whether recent QualityNet guidance changed reporting expectations
+    or deadlines.
+holdout_ref: quality-improvement-specialist/qis-d01-holdout-01-leapfrog-core-measures-dashboard.md

@@ -1,0 +1,53 @@
+seed_id: oam-d02-seed-01-pediatrics-rooming-pilot-plan
+agent_slug: operations-ambulatory-manager
+deliverable_id: oam-d02
+deliverable_title: Clinic Workflow Redesign Plan
+complexity: moderate
+required_facts:
+  clinic_name: Willowbrook Pediatrics Center
+  specialty: Pediatrics
+  providers: '6'
+  date: '2026-04-09'
+  led_by: Nolan Pryce, Ambulatory Operations Manager
+  current_cycle_time: 71 min
+  target_cycle_time: 52 min
+  current_checkin_to_room: 16 min
+  target_checkin_to_room: 8 min
+  current_room_to_provider: 9 min
+  target_room_to_provider: 4 min
+  current_provider_encounter: 24 min
+  target_provider_encounter: 22 min
+  current_checkout: 7 min
+  target_checkout: 4 min
+  current_3na_new: 8 days
+  target_3na_new: 3 days
+  current_no_show: 9.6%
+  target_no_show: 7.0%
+  current_fill_rate: 96%
+  target_fill_rate: 91%
+  key_bottleneck_1: Vaccines drawn only after provider signs orders, creating a queue
+    at peak hours.
+  key_bottleneck_2: Sick and well visits compete in the same template lanes from 0800
+    to 1100.
+  key_bottleneck_3: Room turnover is delayed by inconsistent stocking and scale calibration.
+  pilot_scope: Two pediatricians and one nurse practitioner in Pod A
+  pilot_duration: 5 weeks
+  go_no_go_date: '2026-05-22'
+intentionally_unknown:
+- Exact state medical assistant scope rules for vaccine administration and standing
+  orders
+- Current local immunization inventory variance by product
+red_flags:
+  vaccine_safety: Any proposal that bypasses verification, lot capture, or post-vaccine
+    observation controls should be rejected.
+  same_day_access: A plan that improves well-child throughput but worsens same-day
+    sick access misses the access problem.
+  staffing_reality: Recommendations that require immediate net-new FTEs should be
+    challenged unless offset is shown.
+mcp_uncertainty_points:
+- fact: Whether current state MA standing orders and vaccine workflows align with
+    current regulatory expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS or comparable policy updates affecting ambulatory workflow
+    assumptions before finalizing external guidance.
+holdout_ref: operations-ambulatory-manager/oam-d02-holdout-01-pediatrics-rooming-pilot-plan.md

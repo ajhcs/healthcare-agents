@@ -1,0 +1,38 @@
+seed_id: cdi-d01-seed-01-rural-hospital-cdi-dashboard
+agent_slug: clinical-documentation-improvement-specialist
+deliverable_id: cdi-d01
+deliverable_title: CDI Program Dashboard
+complexity: routine
+required_facts:
+  facility_name: Silver Birch Critical Access Hospital
+  reporting_period: April 2026
+  prepared_by: Noelle Carver, RN, CDIP
+  total_discharges: '286'
+  records_reviewed: '247'
+  query_count: '71'
+  query_response_rate: 91.5%
+  physician_agreement_rate: 76.9%
+  compliance_audit_score: 97.0%
+  working_cmi: '1.421'
+  final_cmi: '1.438'
+  poa_corrections: '6'
+  leadership_focus: POA clarity on pressure injury and aspiration pneumonia admissions
+    from the ED
+intentionally_unknown:
+- Prior-month metrics
+- Exact YTD totals
+- Estimated revenue impact
+red_flags:
+  overengineered_volume: Using tertiary-center scale or implausibly high DRG-shift
+    counts would break realism.
+  missing_target_context: A dashboard without target columns or operational interpretation
+    would not match the deliverable.
+  no-poa-thread: Failing to surface the seeded POA initiative would ignore the core
+    scenario.
+mcp_uncertainty_points:
+- fact: Whether any current CMS update changed POA or HAC-related reporting assumptions
+    relevant to the April dashboard commentary
+  capability_class: current_regulatory_policy
+  action: Check current CMS, Federal Register, or comparable policy updates before
+    finalizing the regulatory watch note.
+holdout_ref: clinical-documentation-improvement-specialist/cdi-d01-holdout-01-rural-hospital-cdi-dashboard.md

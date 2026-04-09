@@ -1,0 +1,21 @@
+seed_id: ccm-seed-005
+agent_slug: clinical-care-management-specialist
+deliverable_id: ccm-d02
+deliverable_title: Readmission Risk Assessment
+complexity: moderate
+required_facts:
+  patient: 64-year-old man
+  condition: post-hip fracture repair with atrial fibrillation
+  social_risk: caregiver support is inconsistent
+  discharge_context: rehab placement under discussion
+intentionally_unknown:
+  - rehab facility selection
+  - anticoagulation monitoring owner
+red_flags:
+  medication_gap: anticoagulation education is required
+  placement_gap: discharge destination needs clear criteria
+mcp_uncertainty_points:
+  - fact: rehab facility identity and enrollment status
+    capability_class: provider_enrollment_status
+    action: confirm the rehab is enrolled with the target payer before transfer
+holdout_ref: clinical-care-management-specialist/ccm-d02-holdout-005.md

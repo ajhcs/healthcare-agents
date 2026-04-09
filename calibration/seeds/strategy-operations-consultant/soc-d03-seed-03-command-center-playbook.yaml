@@ -1,0 +1,35 @@
+seed_id: soc-d03-example-03-command-center-playbook
+agent_slug: strategy-operations-consultant
+agents_relevant:
+- strategy-operations-consultant
+deliverable_id: soc-d03
+deliverable_title: Throughput Command Center Playbook
+scenario_summary: Command center playbook for discharge flow, bed management, and
+  same-day escalation when throughput drifts out of tolerance.
+complexity: moderate
+required_facts:
+  discharges_before_noon_threshold: 18 percent
+  ed_boarder_threshold: 12 patients
+  bed_turnaround_threshold: 60 minutes
+  first_case_delay_threshold: 15 minutes
+intentionally_unknown:
+- Whether the command center will have a dedicated nurse in every shift
+- Whether the bed tower can reassign cleaning resources during surge days
+red_flags:
+  thresholds: The playbook only works if the triggers are visible and respected.
+  ownership: A command center without a named owner turns into a report instead of
+    a response.
+mcp_uncertainty_points:
+- fact: Current operational and discharge-planning guidance that may affect the playbook
+  capability_class: current_regulatory_policy
+  action: Verify the current CMS guidance before locking the thresholds.
+holdout_ref: calibration/holdouts/strategy-operations-consultant/soc-d03-holdout-03-command-center-playbook.md
+source_basis:
+- 42 CFR 482.13
+- 42 CFR 482.43
+- AHRQ flow management resources
+- CMS quality reporting guidance
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

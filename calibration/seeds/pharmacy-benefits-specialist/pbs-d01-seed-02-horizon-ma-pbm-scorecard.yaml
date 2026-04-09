@@ -1,0 +1,36 @@
+seed_id: pbs-d01-seed-02-horizon-ma-pbm-scorecard
+agent_slug: pharmacy-benefits-specialist
+deliverable_id: pbs-d01
+deliverable_title: PBM Contract Scorecard
+complexity: high
+required_facts:
+  sponsor_name: Horizon Medicare Advantage
+  pbm_name: Apex Pharmacy Services
+  contract_year: 2026
+  ingredient_discounts:
+    brand_current: 20
+    brand_proposed: 24
+    generic_current: 94
+    generic_proposed: 95
+  administrative_fee_pmpm:
+    current: 1.72
+    proposed: 1.54
+  specialty_dispensing_fee:
+    current: 17.85
+    proposed: 16.35
+  annual_spend_by_category:
+    inflammatory_conditions: 12100000
+    oncology: 8500000
+    cardiology: 7400000
+intentionally_unknown:
+  - final price-protection carve-outs
+  - whether specialty edits route claims outside the PBM channel
+red_flags:
+  noted_item_01: rebate guarantees without operational transparency
+  noted_item_02: narrow price-protection language
+  noted_item_03: aggregated reporting that limits auditability
+mcp_uncertainty_points:
+  - fact: current Part D formulary and star-rating guidance
+    capability_class: current_regulatory_policy
+    action: verify current CMS guidance before finalizing the scorecard
+holdout_ref: pharmacy-benefits-specialist/pbs-d01-holdout-02-horizon-ma-pbm-scorecard.md

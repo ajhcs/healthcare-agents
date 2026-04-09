@@ -1,0 +1,38 @@
+seed_id: sco-d01-example-03-icu-flex-plan
+agent_slug: strategy-clinical-operations-consultant
+agents_relevant:
+- strategy-clinical-operations-consultant
+deliverable_id: sco-d01
+deliverable_title: Nurse Staffing Model
+scenario_summary: ICU and step-down staffing plan with acuity spikes, float coverage
+  needs, and a narrow margin for overtime.
+complexity: high
+required_facts:
+  icu_census: 14.2 average census
+  step_down_census: 21.4 average census
+  current_rn_fte: '26.6'
+  recommended_rn_fte: '28.2'
+  annual_cost_impact: $182,000
+intentionally_unknown:
+- Whether the internal float pool can cover weekend spikes without agency help
+- Whether acuity surges will remain concentrated on nights or spread into day shift
+red_flags:
+  acuity_spike: The schedule has little slack for sudden jumps in patient acuity.
+  overtime: Weekend overtime is a signal that the current grid is too tight.
+mcp_uncertainty_points:
+- fact: Current staffing and quality guidance affecting the ICU coverage model
+  capability_class: current_regulatory_policy
+  action: Verify current guidance before finalizing the staffing recommendation.
+- fact: Provider and staff roster for the internal float pool
+  capability_class: provider_directory
+  action: Confirm the float roster and role mix before setting the flex plan.
+holdout_ref: calibration/holdouts/strategy-clinical-operations-consultant/sco-d01-holdout-03-icu-flex-plan.md
+source_basis:
+- 42 CFR 482.23
+- BLS OEWS 2025
+- AHRQ patient safety guidance
+- CMS quality reporting guidance
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

@@ -1,0 +1,36 @@
+seed_id: rmc-seed-005
+agent_slug: revenue-medical-coding-specialist
+deliverable_id: rmc-d02
+deliverable_title: CDI Query Effectiveness Report
+complexity: high
+regulatory_as_of: 2026-04-01
+scenario_summary: Medicare Advantage HCC retrospective review for a primary care panel with CHF, CKD, diabetes, and COPD capture gaps
+required_facts:
+  facility: Northbridge Primary Care
+  reporting_period: 2025 annual review
+  panel_size: 60 beneficiaries
+  principal_case_mix: chronic conditions with annual HCC capture risk
+  financial_focus: RAF impact and RADV readiness
+intentionally_unknown:
+  - Which chronic conditions have been documented face to face but not coded
+  - Whether the provider taxonomy is sufficient for every encounter used in the review
+red_flags:
+  radv_risk: Coded conditions may lack a supporting face-to-face encounter
+  carry_forward_assumption: The team may be assuming chronic diagnoses roll forward automatically
+mcp_uncertainty_points:
+  - fact: Provider identity and taxonomy for the qualifying encounters
+    capability_class: provider_directory
+    action: Verify the encounter provider details before counting HCC support
+  - fact: Current CMS-HCC risk adjustment guidance
+    capability_class: current_regulatory_policy
+    action: Confirm the latest HCC mapping and annual-capture expectations before finalizing the report
+holdout_ref: calibration/holdouts/revenue-medical-coding-specialist/rmc-d02-hcc-retrospective.md
+agents_relevant:
+  - revenue-medical-coding-specialist
+source_basis:
+  - CMS-HCC model documentation
+  - 42 CFR 422.311
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: 2026-04-09

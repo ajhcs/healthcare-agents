@@ -1,0 +1,36 @@
+seed_id: crs-d01-seed-02-surgical-referral-dashboard-holdout
+agent_slug: clinical-referral-specialist
+deliverable_id: crs-d01
+deliverable_title: Referral Management Dashboard
+complexity: routine
+required_facts:
+  organization_name: Cinder Brook Medical Partners
+  reporting_period: May 2026
+  total_referrals_generated_this_month: 2,518
+  strong_front_end_signal: Referral-to-appointment rate should be above 91%
+  weak_back_end_signal: Loop closure should remain below target because operative
+    consult notes are returning late
+  new_affiliate_effect: A new general surgery affiliate opened on 2026-04-20 and improved
+    access in the south market
+  risk_area: Two surgeons are still pending enrollment with one commercial HMO product
+intentionally_unknown:
+- Exact specialty mix beyond surgery, cardiology, GI, dermatology, and orthopedics
+- Exact prior-month figures for note review and OON reasons
+- Exact no-show contribution to the completion gap
+red_flags:
+  enrollment_mismatch: Dashboard should not imply that all newly added surgeons are
+    fully routable for every payer.
+  note_return_delay: Late consult-note receipt from the new affiliate should show
+    up in loop-closure performance or operating notes.
+  oon_exposure: OON use should still be documented with clear reasons, especially
+    where enrollment is incomplete.
+mcp_uncertainty_points:
+- fact: Whether the two new surgeons are listed correctly with the final south-market
+    practice address
+  capability_class: provider_directory
+  action: Verify provider identity, NPI, taxonomy, and address before expanding routing
+    logic.
+- fact: Whether the two surgeons completed enrollment with the commercial HMO product
+  capability_class: provider_enrollment_status
+  action: Confirm payer enrollment before routing HMO referrals.
+holdout_ref: clinical-referral-specialist/crs-d01-holdout-02-surgical-referral-dashboard-holdout.md

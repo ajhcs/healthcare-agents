@@ -1,0 +1,34 @@
+seed_id: pph-d01-seed-02-fqhc-prapare-closed-loop-dashboard
+agent_slug: pophealth-population-health-manager
+deliverable_id: pph-d01
+deliverable_title: Population Health Dashboard Report
+complexity: routine
+required_facts:
+  organization_name: Maple Vale Community Health Alliance
+  reporting_period: April 2026
+  attributed_population: 18,920 members
+  setting: Four-site FQHC consortium with Medicaid, uninsured, and exchange populations
+  sdoh_screening_model: PRAPARE administered at new patient visits, annual wellness
+    visits, and care management contacts
+  top_social_needs: food insecurity, housing instability, transportation
+  chronic_focus: diabetes, hypertension, depression
+  leadership_question: Whether the alliance should expand CHW staffing or invest first
+    in more community referral capacity
+intentionally_unknown:
+- Final benchmark source used for utilization comparisons
+- Whether any payer-specific quality withhold targets changed this quarter
+- Exact external capacity limits among local community-based organizations
+red_flags:
+  overbroad_data_sharing: The generator should avoid implying that sensitive SDOH
+    details are broadly distributed without role controls.
+  weak_registry_logic: The generator should not rely on problem list entries alone
+    for disease registry inclusion.
+  unsupported_precision: The generator should avoid false exactness on lagged claims-derived
+    measures.
+mcp_uncertainty_points:
+- fact: Current CMS or state policy changes that might affect SDOH reporting or related
+    quality expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS or state policy sources before finalizing any policy-sensitive
+    interpretive note
+holdout_ref: pophealth-population-health-manager/pph-d01-holdout-02-fqhc-prapare-closed-loop-dashboard.md

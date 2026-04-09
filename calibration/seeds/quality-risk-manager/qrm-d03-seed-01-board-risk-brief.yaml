@@ -1,0 +1,25 @@
+seed_id: qrm-d03-seed-01-board-risk-brief
+agent_slug: quality-risk-manager
+deliverable_id: qrm-d03
+deliverable_title: Board Risk Report
+complexity: high
+required_facts:
+  board_need: short board-level brief with clear action requests
+  enterprise_risk_count: 22 total risks with 6 critical/high
+  claims_exposure: $1.8M open reserves
+  insurance_program: renewal strategy focused on cyber coverage
+intentionally_unknown:
+- final insurer position on cyber sublimits
+- whether any board member wants deeper appendix detail
+red_flags:
+  brevity_vs_detail: The board report should stay concise while still naming the action
+    request.
+  no_surprises: The report should not bury a high-risk item in a paragraph.
+mcp_uncertainty_points:
+- fact: current cyber policy requirements
+  capability_class: current_regulatory_policy
+  action: verify whether any new policy affects the board risk briefing
+- fact: named board or committee contact list
+  capability_class: provider_directory
+  action: verify the recipient roster before circulation
+holdout_ref: quality-risk-manager/qrm-d03-holdout-01-board-risk-brief.md

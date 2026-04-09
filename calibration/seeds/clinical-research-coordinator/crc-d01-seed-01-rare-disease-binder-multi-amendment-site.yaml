@@ -1,0 +1,46 @@
+seed_id: crc-d01-seed-01-rare-disease-binder-multi-amendment-site
+agent_slug: clinical-research-coordinator
+deliverable_id: crc-d01
+deliverable_title: Regulatory Binder Checklist (Essential Documents)
+complexity: high
+required_facts:
+  study_title: AURORA-GT / Phase I/II Study of AGT-401 in Pediatric Ornithine Transcarbamylase
+    Deficiency
+  sponsor: Helix Lantern Therapeutics
+  pi_name: Nadia Mercer, MD
+  irb_name_number: Blue Mesa Children's IRB, BMC-IRB-2025-207
+  initial_irb_approval_date: '2025-09-12'
+  current_icf_version: Parental Permission Form Version 5.0 dated 2026-02-18 approved
+    2026-03-03
+  protocol_version: Protocol Version 5.0 dated 2026-02-11
+  ib_version: Investigator Brochure Edition 8 dated 2026-01-25
+  first_patient_in_date: '2025-10-07'
+  enrollment_status: 4 screened, 2 enrolled, enrollment temporarily paused for sponsor
+    amendment rollout
+  special_controls: eConsent platform validation packet, chain-of-custody logs for
+    gene therapy shipment, temperature excursion response records, biospecimen export
+    documentation
+  monitoring_status: One on-site visit and three remote monitoring reviews completed
+    through 2026-03-26
+intentionally_unknown:
+- Final IRB closure date
+- Whether sponsor has already posted the most recent ClinicalTrials.gov record update
+red_flags:
+  consent_version_turnover: Multiple pediatric assent and parental permission versions
+    create risk of outdated consent use.
+  part_11_traceability: eConsent and electronic delegation workflows must be documented
+    defensibly.
+  product_accountability: Gene therapy receipt, storage, preparation, and disposition
+    records require exact reconciliation.
+mcp_uncertainty_points:
+- fact: Current ClinicalTrials.gov recruitment status and posting recency for the
+    protocol
+  capability_class: trial_registry
+  action: Verify whether the public registry status still shows active recruitment
+    or reflects the sponsor pause.
+- fact: Any recent FDA or policy updates affecting decentralized or electronic consent
+    controls
+  capability_class: current_regulatory_policy
+  action: Check current FDA or HHS guidance if the site plans to expand remote consent
+    use.
+holdout_ref: clinical-research-coordinator/crc-d01-holdout-01-rare-disease-binder-multi-amendment-site.md

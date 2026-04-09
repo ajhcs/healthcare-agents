@@ -1,0 +1,27 @@
+seed_id: hie-seed-005
+agent_slug: healthit-interoperability-engineer
+deliverable_id: hie-d02
+deliverable_title: FHIR API Integration Checklist
+required_facts:
+  application_name: State immunization registry backend service
+  fhir_server: North Star Public Health FHIR R4 5.2
+  launch_type: Backend Service
+  implementation_guide: HL7 Bulk Data Access IG
+  resource_set: Patient, Immunization, Observation, Organization
+  scopes: system/Patient.read, system/Immunization.write, system/Observation.read, system/Organization.read
+  testing_focus: duplicate suppression, retry logic, and export validation
+intentionally_unknown:
+  - Whether the registry will require a separate source system identifier for each clinic site
+  - Whether the state endpoint will accept batch submissions during maintenance windows
+red_flags:
+  duplicate_submission: Immunization records must use stable idempotency handling
+  write_scope_sprawl: The service should not ask for unnecessary patient write access
+  export_gap: The implementation must validate every NDJSON bundle before release
+mcp_uncertainty_points:
+  - fact: The current policy posture for backend service access and bulk export
+    capability_class: current_regulatory_policy
+    action: Check current CMS, ONC, and Federal Register guidance before final signoff
+  - fact: The registry owner identity and endpoint ownership for onboarding
+    capability_class: provider_directory
+    action: Verify NPI, taxonomy, and practice address before onboarding
+holdout_ref: healthit-interoperability-engineer/hie-d02-002-immunization-backend.md

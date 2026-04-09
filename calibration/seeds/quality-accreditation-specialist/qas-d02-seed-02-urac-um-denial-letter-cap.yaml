@@ -1,0 +1,42 @@
+seed_id: qas-d02-seed-02-urac-um-denial-letter-cap
+agent_slug: quality-accreditation-specialist
+deliverable_id: qas-d02
+deliverable_title: Corrective Action Plan (Post-Survey)
+complexity: routine
+required_facts:
+  organization: Blue Harbor Review Services
+  survey_date: '2026-03-19'
+  accrediting_body: URAC
+  finding_reference: UM denial notice content completeness
+  submission_deadline: '2026-04-16'
+  standard: Utilization Management adverse determination communication requirements
+  element_of_performance: Adverse determination notices must contain required rationale,
+    appeal rights, and contact information
+  surveyor_finding: Eight of twenty-five sampled synthetic denial letters omitted
+    either reviewer specialty identification, appeal filing instructions, or the phone
+    number for member assistance.
+  risk_level: Moderate
+intentionally_unknown:
+- Whether the notices relate to commercial, Medicare Advantage, or mixed lines of
+  business
+- Whether the member communications vendor hosts the letter templates
+- Whether reviewer specialty should be displayed by discipline or specialty taxonomy
+red_flags:
+  incomplete_fix_scope: Plan updates a single letter template but ignores inventory
+    of all denial notice variants.
+  no_owner_alignment: Plan does not assign ownership across compliance, UM operations,
+    and communications teams.
+  superficial_monitoring: Plan lacks a sample size or frequency sufficient to detect
+    notice defects early.
+mcp_uncertainty_points:
+- fact: Any recent CMS or comparable policy changes affecting adverse determination
+    notice content
+  capability_class: current_regulatory_policy
+  action: Check current CMS and comparable policy updates before finalizing notice
+    content requirements for live use.
+- fact: Identity and active status of delegated UM entity or facility named in member-facing
+    materials
+  capability_class: provider_directory
+  action: Verify provider or facility identity details before finalizing external-facing
+    recommendations tied to the notice workflow.
+holdout_ref: quality-accreditation-specialist/qas-d02-holdout-02-urac-um-denial-letter-cap.md

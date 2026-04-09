@@ -1,0 +1,30 @@
+seed_id: pvbc-d01-seed-01-lakeshore-performance-dashboard
+agent_slug: payer-value-based-care-manager
+deliverable_id: pvbc-d01
+deliverable_title: ACO Performance Dashboard
+complexity: moderate
+required_facts:
+  aco_name: Lakeshore Community ACO
+  cms_aco_id: ACO-6182
+  track_level: BASIC Level E
+  assigned_beneficiaries: 31440
+  participating_tins: 11
+  participating_clinicians: 189
+  current_py_total_expenditures: $286.7M
+  prior_py_total_expenditures: $279.9M
+  benchmark: $283.1M
+  quality_score: 89/100
+intentionally_unknown:
+- final shared savings distribution rate after board discretion
+- exact beneficiary-level voluntary alignment list
+- whether a later reconciliation will return any withheld quality dollars
+red_flags:
+  noted_item_01: claims-feed outage that could understate post-acute spend
+  noted_item_02: leakage concentrated in a single orthopedic referral stream
+  noted_item_03: AWV completion below target
+mcp_uncertainty_points:
+- fact: whether the current CMS MSSP quality measure set changed for 2026
+  capability_class: current_regulatory_policy
+  action: verify the current CMS measure list before finalizing measure labels and
+    score weighting
+holdout_ref: payer-value-based-care-manager/pvbc-d01-holdout-01-lakeshore-performance-dashboard.md

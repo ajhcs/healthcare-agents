@@ -1,0 +1,36 @@
+seed_id: pbs-d01-seed-01-cedar-crest-pbm-scorecard
+agent_slug: pharmacy-benefits-specialist
+deliverable_id: pbs-d01
+deliverable_title: PBM Contract Scorecard
+complexity: moderate
+required_facts:
+  sponsor_name: Cedar Crest Health Plan
+  pbm_name: NorthStar Rx
+  contract_year: 2026
+  ingredient_discounts:
+    brand_current: 18
+    brand_proposed: 22
+    generic_current: 92
+    generic_proposed: 93
+  administrative_fee_pmpm:
+    current: 1.88
+    proposed: 1.60
+  specialty_dispensing_fee:
+    current: 18.10
+    proposed: 16.60
+  annual_spend_by_category:
+    immunology: 13800000
+    diabetes: 8900000
+    oncology: 6400000
+intentionally_unknown:
+  - final audit-right language
+  - exact MAC notice period
+red_flags:
+  noted_item_01: spread pricing on retail claims
+  noted_item_02: limited audit rights
+  noted_item_03: specialty exclusions outside the base contract
+mcp_uncertainty_points:
+  - fact: current PBM transparency and formulary policy guidance
+    capability_class: current_regulatory_policy
+    action: verify current CMS and FTC guidance before finalizing the scorecard
+holdout_ref: pharmacy-benefits-specialist/pbs-d01-holdout-01-cedar-crest-pbm-scorecard.md

@@ -1,0 +1,42 @@
+seed_id: pce-d02-seed-02-anesthesia-clean-file-boundary-holdout
+agent_slug: payer-credentialing-enrollment-coordinator
+deliverable_id: pce-d02
+deliverable_title: Credentialing File Completeness Checklist
+complexity: high
+required_facts:
+  provider_name: Arden Wren, CRNA
+  npi: '1447863151'
+  specialty: Certified Registered Nurse Anesthetist
+  application_type: Initial
+  application_date: '2026-02-03'
+  decision_deadline: '2026-08-02'
+  organization: Silver Marsh Surgical Services
+  license_state: New Mexico
+  license_expiration: '2027-09-30'
+  dea_status: No individual DEA maintained; anesthesia medications administered under
+    facility processes
+  malpractice_policy_term: 2026-01-01 through 2026-12-31
+  work_history_gap: 2024-05-01 through 2024-10-31
+  gap_explanation_received: Travel with family and completion of simulation-based
+    airway course
+  hospital_affiliation: Silver Marsh Regional Hospital, allied health anesthesia staff
+intentionally_unknown:
+- Exact verification dates for education and training
+- Whether the committee ultimately approves or defers after reviewing the gap explanation
+- Whether board certification is held through the NBCRNA at the time of review
+red_flags:
+  work_history_gap: Six-month professional gap sits at the threshold that requires
+    explicit documentation review
+  clean_file_boundary: File is otherwise clean, creating ambiguity about whether policy
+    allows non-committee approval
+mcp_uncertainty_points:
+- fact: Current provider directory identity and anesthesia taxonomy used by the facility
+    and payers
+  capability_class: provider_directory
+  action: Verify identity and taxonomy before finalizing the provider profile narrative.
+- fact: Whether commercial payer enrollment already recognizes the provider under
+    the new surgery center location
+  capability_class: provider_enrollment_status
+  action: Confirm enrollment status if the checklist is being paired with a start-date
+    recommendation.
+holdout_ref: payer-credentialing-enrollment-coordinator/pce-d02-holdout-02-anesthesia-clean-file-boundary-holdout.md

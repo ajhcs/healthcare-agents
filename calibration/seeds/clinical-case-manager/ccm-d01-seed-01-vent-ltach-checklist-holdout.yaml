@@ -1,0 +1,47 @@
+seed_id: ccm-d01-seed-01-vent-ltach-checklist-holdout
+agent_slug: clinical-case-manager
+deliverable_id: ccm-d01
+deliverable_title: Discharge Planning Checklist
+complexity: high
+required_facts:
+  patient_name: Iris Halden
+  mrn: MRN VX-772901
+  admission_date: '2026-03-30'
+  expected_los: 18 days
+  gmlos: '16.8'
+  expected_discharge_date: '2026-04-17'
+  disposition: LTACH
+  clinical_context: Prolonged mechanical ventilation after severe pneumonia with tracheostomy
+    placed on hospital day 9
+  payer: Mesa Summit Medicare Choice
+  chosen_facility: North Quill Long-Term Acute Hospital
+  transport_mode: Critical care ambulance with ventilator support
+  auth_reference: MSC-LTACH-90418
+  family_participant: spouse Rowan Halden
+  follow_up: Receiving pulmonologist assumes care on arrival; infectious disease tele-follow-up
+    in 7 days if still on IV antibiotics
+intentionally_unknown:
+- Exact transport pickup time
+- Final approved LTACH length of stay
+- Receiving physician NPI
+red_flags:
+  site_neutral_payment_risk: Transfer packet should show awareness of prolonged ventilation
+    criteria and payer review to avoid an inappropriate LTACH referral.
+  emtala_transfer_safety: If patient is not fully stabilized, the discharge planning
+    record should reflect safe transfer conditions and physician certification workflow.
+  incomplete_handoff: Omitting ventilator settings, IV antibiotic plan, or tracheostomy
+    care needs would make the deliverable unsafe.
+mcp_uncertainty_points:
+- fact: Receiving LTACH practice address and referral contact
+  capability_class: provider_directory
+  action: Verify the receiving facility's referral destination and clinician contact
+    before sending the final transition packet.
+- fact: LTACH enrollment status with the member's Medicare Advantage product
+  capability_class: provider_enrollment_status
+  action: Confirm the selected LTACH is enrolled and active for the payer before finalizing
+    transfer.
+- fact: Any recent CMS or Medicare Advantage policy updates affecting LTACH criteria
+    or transfer notices
+  capability_class: current_regulatory_policy
+  action: Check for current policy changes before using this workflow operationally.
+holdout_ref: clinical-case-manager/ccm-d01-holdout-01-vent-ltach-checklist-holdout.md

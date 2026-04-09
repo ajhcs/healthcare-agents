@@ -1,0 +1,15 @@
+run_id: resume-smoke-001
+date: '2026-04-09'
+agents_tested:
+- clinical-care-management-specialist
+generator_model: unknown
+judge_model: unknown
+agent_prompt_versions:
+  clinical-care-management-specialist: 67db1f6
+seeds_used: 1
+holdouts_used: 1
+lint_pass_rate: 1.0
+mean_calibration_score: 0.0
+estimated_cost_usd: 0.0
+human_qa_sample: 0
+human_qa_concordance: null

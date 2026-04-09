@@ -1,0 +1,22 @@
+agent_slug: clinical-care-management-specialist
+calibration_run_id: pilot-001
+date: 2026-04-09
+systematic_strengths:
+  - dimension: actionability
+    evidence: Follow-up scheduling remained specific across attempts.
+    mean_score: 3.2
+systematic_gaps:
+  - gap_type: computational_omission
+    recurrence_count: 2
+    severity: high
+    evidence_summary: Risk scores were repeatedly described but not computed.
+    likely_prompt_fix: Add an explicit worked risk-score example.
+    confidence: 0.88
+    promotion_eligible: true
+recommended_edits:
+  - target_section: "## 🔄 Your Workflow"
+    edit_type: add_example
+    description: Add a worked LACE or similar score example in the risk workflow.
+    source_gap_ids:
+      - gap-001
+      - gap-002

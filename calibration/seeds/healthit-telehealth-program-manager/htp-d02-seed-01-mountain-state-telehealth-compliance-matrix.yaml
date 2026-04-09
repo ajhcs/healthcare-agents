@@ -1,0 +1,36 @@
+seed_id: htp-d02-seed-01-mountain-state-telehealth-compliance-matrix
+agent_slug: healthit-telehealth-program-manager
+deliverable_id: htp-d02
+deliverable_title: State Telehealth Compliance Matrix
+complexity: high
+required_facts:
+  program_name: Mountain State Specialty Telehealth
+  service_lines:
+    - cardiology
+    - endocrinology
+    - behavioral_health
+  states:
+    wisconsin:
+      licensing_issue: compact_pathway_possible
+      audio_only: limited
+    minnesota:
+      licensing_issue: in_state_license_required
+      audio_only: limited
+    texas:
+      licensing_issue: compact_or_in_state
+      audio_only: limited
+    colorado:
+      licensing_issue: in_state_license_required
+      audio_only: limited
+intentionally_unknown:
+  - exact teleprescribing rule by medication class in each state
+  - whether the RPM vendor is active in all four states
+red_flags:
+  noted_item_01: scheduling without checking practitioner licensure
+  noted_item_02: no state-by-state prescribing caveat
+  noted_item_03: missing operational action items
+mcp_uncertainty_points:
+  - fact: current state telehealth and licensure guidance
+    capability_class: current_regulatory_policy
+    action: verify current state telehealth guidance before finalizing the compliance matrix
+holdout_ref: healthit-telehealth-program-manager/htp-d02-holdout-01-mountain-state-telehealth-compliance-matrix.md

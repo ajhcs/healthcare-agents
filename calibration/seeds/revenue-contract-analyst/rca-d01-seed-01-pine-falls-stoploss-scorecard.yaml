@@ -1,0 +1,69 @@
+seed_id: rca-d01-seed-01-pine-falls-stoploss-scorecard
+agent_slug: revenue-contract-analyst
+deliverable_id: rca-d01
+deliverable_title: Contract Performance Scorecard
+complexity: high
+required_facts:
+  payer_name: Pine Falls Regional PPO
+  contract_effective_date: '2022-11-01'
+  contract_term: 4 years, current year 4 of 4
+  analysis_period: 12 months ending 2026-03
+  financials:
+    gross_charges: $286,440,118
+    expected_net_revenue: $94,226,510
+    actual_paid_net_revenue: $90,998,804
+  cost_profile:
+    inpatient_cost: $42,611,004
+    outpatient_cost: $28,116,500
+    emergency_cost: $8,904,331
+    professional_cost: $6,404,707
+  benchmark_rates:
+    ip_base_rate_contract: $8,442.00
+    ip_base_rate_medicare: $6,408.00
+    op_weighted_contract: $151.20
+    op_weighted_medicare: $102.36
+    professional_cf_contract: $36.10
+    professional_cf_medicare: $32.35
+    ed_weighted_contract: $336.90
+    ed_weighted_medicare: $233.61
+  underpayment_inventory:
+    wrong_fee_schedule_claims: '318'
+    wrong_fee_schedule_dollars: $402,118
+    bundling_claims: '224'
+    bundling_dollars: $311,906
+    missing_escalator_claims: '0'
+    missing_escalator_dollars: $0
+    carveout_claims: '96'
+    carveout_dollars: $2,513,682
+  contract_terms:
+    rate_escalator: CMS-linked inpatient and outpatient updates on each January 1
+    timely_filing: 180 days
+    clean_claim: 45 days
+    prompt_payment: 35 days
+    termination_notice: 120 days
+    auto_renewal: Yes, one-year terms
+    mfn: 'No'
+intentionally_unknown:
+- Whether the payer will accept invoice-level implant support retroactively for the
+  oldest denied stop-loss cases
+- Whether the contract amendment hierarchy clearly resolves conflicts between the
+  master agreement and the stop-loss exhibit
+red_flags:
+  stoploss_trigger_logic: High-dollar implant and drug cases were frequently paid
+    under standard DRG logic despite billed costs above the contract threshold.
+  documentation_dependency: Some appeals depend on invoice and charge-detail packages
+    that were not always attached on first submission.
+  renewal_leverage: The payer depends on the hospital for Level II trauma and neonatal
+    services in the county.
+mcp_uncertainty_points:
+- fact: Whether current CMS IPPS outlier assumptions or related payment updates changed
+    the benchmark used in internal review
+  capability_class: current_regulatory_policy
+  action: Check current CMS payment updates for IPPS and outlier mechanics relevant
+    to the review year.
+- fact: Whether contested high-cost drug claims rely on Medicare coverage assumptions
+    for separate payment
+  capability_class: coverage_determination
+  action: Check Medicare coverage policy for the implicated drug administration and
+    site-of-service issue.
+holdout_ref: revenue-contract-analyst/rca-d01-holdout-01-pine-falls-stoploss-scorecard.md

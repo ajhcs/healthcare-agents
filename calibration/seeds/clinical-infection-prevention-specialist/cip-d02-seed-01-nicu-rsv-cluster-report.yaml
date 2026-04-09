@@ -1,0 +1,44 @@
+seed_id: cip-d02-seed-01-nicu-rsv-cluster-report
+agent_slug: clinical-infection-prevention-specialist
+deliverable_id: cip-d02
+deliverable_title: Outbreak Investigation Report
+complexity: high
+required_facts:
+  facility_name: Alder Crest Children's Hospital
+  organism_condition: Respiratory syncytial virus cluster in NICU
+  investigation_start: 2026-01-07
+  investigation_end: 2026-02-04
+  lead_investigator: Naomi Fen, CIC
+  trigger_date: 2026-01-07
+  detection_method: Clinical report and lab confirmation
+  baseline_rate: 0 NICU RSV cases in prior 12 months
+  current_rate: 5 NICU cases in 9 days
+  total_cases: '5'
+  attack_rate: '13.9'
+  epidemic_period: 2026-01-05 to 2026-01-14
+  units_affected: Level III NICU pods B and C
+  suspected_mode: Droplet and contact
+  common_exposures: shared respiratory therapy team, sibling visitation during winter
+    surge, bedside procedures in semi-open pod design
+  resolution_date: 2026-02-04
+  resolution_criteria: Fourteen days without new healthcare-associated RSV cases after
+    last infant symptom onset plus completion of enhanced surveillance
+intentionally_unknown:
+- Viral sequencing comparison across all infant specimens
+- Exact visitor symptom screening failure count
+- Whether one borderline early-onset case should be classified community onset or
+  healthcare associated
+red_flags:
+  nicu_specificity_missing: Generic adult-unit outbreak language would miss cohorting,
+    parental presence, and respiratory support workflow issues central to NICU control.
+  weak_case_definition: Report should make the temporal and location linkage credible
+    even if the formal case definition text is concise.
+  premature_resolution: Outbreak should not be closed before the surveillance interval
+    and enhanced controls are documented.
+mcp_uncertainty_points:
+- fact: Any current CMS or federal guidance changes relevant to respiratory virus
+    infection control expectations in hospitals
+  capability_class: current_regulatory_policy
+  action: Check for current CMS or comparable policy updates if the report will be
+    reused for live policy alignment beyond the quarterly refresh window.
+holdout_ref: clinical-infection-prevention-specialist/cip-d02-holdout-01-nicu-rsv-cluster-report.md

@@ -1,0 +1,53 @@
+seed_id: oam-d02-seed-02-oncology-access-redesign-holdout
+agent_slug: operations-ambulatory-manager
+deliverable_id: oam-d02
+deliverable_title: Clinic Workflow Redesign Plan
+complexity: routine
+required_facts:
+  clinic_name: Northlight Oncology Follow-Up Clinic
+  specialty: Medical Oncology
+  providers: '5'
+  date: '2026-04-09'
+  led_by: Avery Quist, Senior Clinic Operations Manager
+  current_cycle_time: 64 min
+  target_cycle_time: 50 min
+  current_checkin_to_room: 11 min
+  target_checkin_to_room: 6 min
+  current_room_to_provider: 12 min
+  target_room_to_provider: 5 min
+  current_provider_encounter: 26 min
+  target_provider_encounter: 24 min
+  current_checkout: 6 min
+  target_checkout: 3 min
+  current_3na_new: 12 days
+  target_3na_new: 7 days
+  current_no_show: 6.8%
+  target_no_show: 5.0%
+  current_fill_rate: 94%
+  target_fill_rate: 90%
+  bottleneck_a: External records and pathology packets are often incomplete at time
+    of visit.
+  bottleneck_b: Follow-up visits and urgent symptom visits share the same afternoon
+    template.
+  bottleneck_c: Next-visit scheduling depends on infusion or imaging timing, but coordination
+    starts only at checkout.
+  pilot_scope: One physician and one advanced practice provider for GI oncology follow-up
+  pilot_duration: 4 weeks
+  go_no_go_date: '2026-05-15'
+intentionally_unknown:
+- Current external referral source mix by practice
+- Whether any live payer policy changes affect oncology visit authorizations
+red_flags:
+  referral_readiness: If the plan ignores incomplete outside records, it misses a
+    major oncology access constraint.
+  urgent_access: If urgent symptom visits remain mixed with routine follow-ups, afternoon
+    access pressure will persist.
+  downstream_coordination: If infusion and imaging coordination stays entirely at
+    checkout, cycle-time gains will not hold.
+mcp_uncertainty_points:
+- fact: Whether current CMS or comparable policy updates affect referenced operational
+    assumptions
+  capability_class: current_regulatory_policy
+  action: Check current CMS or Federal Register updates when requirements may have
+    changed.
+holdout_ref: operations-ambulatory-manager/oam-d02-holdout-02-oncology-access-redesign-holdout.md

@@ -27,6 +27,7 @@ import subprocess
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
+import re
 
 from eval.harness.config import (
     AGENTS_DIR,
@@ -41,6 +42,10 @@ from eval.harness.config import (
 )
 
 logger = logging.getLogger(__name__)
+UTILITY_FILES = {"eval-exam-architect.md"}
+UTILITY_FRONTMATTER_RE = re.compile(r"(?m)^[ \t]*utility:[ \t]*true(?:[ \t]*#.*)?$")
+ORCHESTRATOR_FILES = {"orchestrator.md"}
+ORCHESTRATOR_FRONTMATTER_RE = re.compile(r"(?m)^[ \t]*agent_type:[ \t]*orchestrator(?:[ \t]*#.*)?$")
 
 
 # ---------------------------------------------------------------------------
@@ -63,6 +68,25 @@ class PipelineResult:
     results_dir: Path | None = None
     total_cost: float = 0.0
     error: str | None = None
+
+
+def is_utility_prompt(path: Path) -> bool:
+    if path.name in UTILITY_FILES:
+        return True
+
+    if not path.exists():
+        return False
+
+    text = path.read_text()
+    if not text.startswith("---"):
+        return False
+
+    end = text.find("\n---", 3)
+    if end == -1:
+        return False
+
+    frontmatter = text[4:end]
+    return bool(UTILITY_FRONTMATTER_RE.search(frontmatter) or ORCHESTRATOR_FRONTMATTER_RE.search(frontmatter))
 
 
 # ---------------------------------------------------------------------------
@@ -458,7 +482,7 @@ def main() -> None:
         agents = sorted(
             p.stem
             for p in AGENTS_DIR.glob("*.md")
-            if p.stem != "eval-exam-architect"
+            if not is_utility_prompt(p)
         )
         for agent in agents:
             logger.info(f"Running pipeline for {agent}")

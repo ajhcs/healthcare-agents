@@ -1,0 +1,43 @@
+seed_id: qas-d02-seed-01-dnv-hospital-post-survey-ic-cap
+agent_slug: quality-accreditation-specialist
+deliverable_id: qas-d02
+deliverable_title: Corrective Action Plan (Post-Survey)
+complexity: high
+required_facts:
+  organization: Silver Fir Regional Hospital
+  survey_date: '2026-03-26'
+  accrediting_body: DNV
+  finding_reference: Infection Prevention finding tied to endoscope high-level disinfection
+    workflow
+  submission_deadline: '2026-04-23'
+  standard: Infection Prevention and process control for reusable semi-critical devices
+  element_of_performance: Documented completion and verification of each required
+    reprocessing step before release for patient use
+  surveyor_finding: Three of fifteen sampled synthetic reprocessing logs for flexible
+    endoscopes lacked complete contact time documentation and one log was missing
+    second-person release verification.
+  risk_level: High
+intentionally_unknown:
+- Exact DNV clause citation number
+- Whether the hospital will implement a manual log revision or an electronic reprocessing
+  tracker
+- Whether affected scopes were quarantined immediately after discovery
+red_flags:
+  weak_root_cause: Plan blames individual forgetfulness without addressing workflow
+    design, competency validation, and release controls.
+  training_only_fix: Plan relies only on re-education and does not add a hard stop
+    or audit mechanism.
+  missing_effectiveness_proof: Plan lacks measurable monitoring for complete logs,
+    release verification, and supervisor review.
+mcp_uncertainty_points:
+- fact: Any recent CMS or interpretive guidance changes affecting reusable device
+    reprocessing expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS and comparable policy updates before finalizing the regulatory
+    crosswalk in the response.
+- fact: Identity and active status of contracted GI reprocessing vendor or facility
+    site if named in attachments
+  capability_class: provider_directory
+  action: Verify facility or vendor identity details before including external-facing
+    recommendations or escalation contacts.
+holdout_ref: quality-accreditation-specialist/qas-d02-holdout-01-dnv-hospital-post-survey-ic-cap.md

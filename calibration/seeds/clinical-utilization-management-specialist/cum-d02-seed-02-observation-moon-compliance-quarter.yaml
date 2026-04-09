@@ -1,0 +1,38 @@
+seed_id: cum-d02-seed-02-observation-moon-compliance-quarter
+agent_slug: clinical-utilization-management-specialist
+deliverable_id: cum-d02
+deliverable_title: Denial Tracking & Analysis Report
+complexity: routine
+required_facts:
+  facility_name: River Birch Community Hospital
+  reporting_period: Q2 2025
+  prepared_by: Lena Frost, RN, BSN, UM Coordinator
+  focal_problem: Several observation cases crossed 30 hours before notice completion,
+    creating compliance exposure and downstream patient complaints
+  quantitative_anchor: Technical and patient-status denials together should exceed
+    half of all denials in the quarter
+  service_line_pattern: Chest pain, syncope, and cellulitis observation pathways account
+    for most affected cases
+intentionally_unknown:
+- Exact number of complaints escalated to patient relations
+- Exact payer distribution between two commercial plans
+- Exact overturn rate for peer-to-peer discussions
+red_flags:
+  late_notice_workflow: The generator should identify delayed MOON delivery as both
+    a compliance issue and a denial-risk signal.
+  weak_status_reassessment: The generator should address cases approaching a second
+    midnight without documented inpatient reassessment.
+  claim_record_mismatch: The generator should call out mismatches between observation
+    documentation, notice timing, and final claim status.
+mcp_uncertainty_points:
+- fact: Whether current CMS guidance altered MOON operational expectations after the
+    cited regulation and fact sheet
+  capability_class: current_regulatory_policy
+  action: Check current CMS observation notice guidance before finalizing remediation
+    language
+- fact: Whether any affected commercial plans published current observation notification
+    or authorization policies
+  capability_class: coverage_determination
+  action: Verify plan-specific observation notification requirements for the quarter
+    under review
+holdout_ref: clinical-utilization-management-specialist/cum-d02-holdout-02-observation-moon-compliance-quarter.md

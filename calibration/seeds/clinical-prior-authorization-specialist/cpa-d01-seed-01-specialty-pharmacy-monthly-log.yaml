@@ -1,0 +1,36 @@
+seed_id: cpa-d01-seed-01-specialty-pharmacy-monthly-log
+agent_slug: clinical-prior-authorization-specialist
+deliverable_id: cpa-d01
+deliverable_title: Prior Authorization Tracking Log
+complexity: routine
+required_facts:
+  facility_practice: Juniper Reed Rheum & Neuro Center
+  reporting_period: April 2026
+  seeded_requests: Include synthetic biologic or specialty drug requests for Crohn's
+    disease, rheumatoid arthritis, migraine prevention, psoriasis, and multiple sclerosis
+    across MA, Medicaid MCO, and commercial plans
+  target_metrics: Initial approval rate should land above 85 percent and ePA-driven
+    turnaround should be under 3 days
+  denial_patterns: At least one denial for step therapy, one for missing lab documentation,
+    and one for specialty pharmacy channel mismatch
+intentionally_unknown:
+- Exact payer policy numbers for each specialty drug
+- Whether each payer's live criteria changed after the most recent quarterly formulary
+  update
+red_flags:
+  fake_placeholders: The generator should not leave blank template artifacts or checkbox
+    syntax.
+  generic_services: The generator should name concrete specialty medications or service
+    types rather than generic drug placeholders.
+  missing_ops_signal: The generator should show real tracking behavior such as follow-up
+    cadence, resubmission, or appeal preparation.
+mcp_uncertainty_points:
+- fact: Current preferred biologic sequencing and specialty pharmacy routing by payer
+  capability_class: coverage_determination
+  action: Check the live formulary or medical policy when medical necessity criteria
+    or specialty pharmacy channel rules are uncertain.
+- fact: Whether any 2026 regulatory updates altered pharmacy ePA obligations or timelines
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy updates if aligning pharmacy PA operations to current
+    ePA requirements.
+holdout_ref: clinical-prior-authorization-specialist/cpa-d01-holdout-01-specialty-pharmacy-monthly-log.md

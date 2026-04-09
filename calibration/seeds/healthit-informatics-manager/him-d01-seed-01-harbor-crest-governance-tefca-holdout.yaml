@@ -1,0 +1,36 @@
+seed_id: him-d01-seed-01-harbor-crest-governance-tefca-holdout
+agent_slug: healthit-informatics-manager
+deliverable_id: him-d01
+deliverable_title: Informatics Governance Charter
+complexity: high
+required_facts:
+  organization_name: Harbor Crest Health
+  effective_date: 2026-07-01
+  approving_executives: Rowan Pike, MD, CMIO; Elise Marr, CIO
+  strategic_context: Harbor Crest is evaluating whether to rely on its EHR vendor's
+    QHIN relationship or pursue direct Participant onboarding for treatment and individual
+    access services.
+  operational_risk: Recent audit found two ambulatory build changes reached production
+    without documented clinical validation and one patient portal export omitted structured
+    care team roles.
+  governance_threshold: Strategic technology decisions above 275000 dollars require
+    Steering Committee approval.
+  review_cycle: Annual with quarterly KPI review
+intentionally_unknown:
+- Final QHIN participation model selection
+- Live vendor release date for the next certified API upgrade
+- Final backlog target for standard-priority requests
+red_flags:
+  uncontrolled_change_path: Charter should close the gap that allowed undocumented
+    production changes.
+  uscdi_export_gap: Charter should assign ownership for structured exchange completeness,
+    especially care team data.
+  certification_assumption_risk: Charter should require validation that live capabilities
+    match CHPL-listed assumptions.
+mcp_uncertainty_points:
+- fact: Whether ONC, CMS, or Federal Register timelines affecting certified API or
+    exchange obligations changed after the current charter draft date
+  capability_class: current_regulatory_policy
+  action: Verify current federal policy updates before finalizing compliance wording
+    and review cadence.
+holdout_ref: healthit-informatics-manager/him-d01-holdout-01-harbor-crest-governance-tefca-holdout.md

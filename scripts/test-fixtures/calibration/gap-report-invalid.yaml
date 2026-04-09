@@ -1,0 +1,23 @@
+seed_id: cm-seed-001
+agent_slug: clinical-care-management-specialist
+deliverable_id: cm-d01
+generated_by: sonnet-4.6
+judged_by: opus-4.6
+timestamp: not-a-timestamp
+scores:
+  structural_completeness: 9
+  regulatory_precision: 2
+  clinical_realism: 3
+  actionability: 3
+  mcp_awareness: maybe
+  weighted_total: nope
+expectation_checklist: invalid
+lint: []
+gaps:
+  - gap_id: gap-001
+    gap_type: made_up_gap
+    severity: severe
+    dimension: structural_completeness
+    evidence: ""
+    likely_prompt_fix: ""
+    confidence: 2

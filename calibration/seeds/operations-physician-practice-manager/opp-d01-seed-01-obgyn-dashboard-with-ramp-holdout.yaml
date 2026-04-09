@@ -1,0 +1,38 @@
+seed_id: opp-d01-seed-01-obgyn-dashboard-with-ramp-holdout
+agent_slug: operations-physician-practice-manager
+deliverable_id: opp-d01
+deliverable_title: Provider Productivity Dashboard
+complexity: routine
+required_facts:
+  period: First 6 months of 2026
+  practice_name: Silver Fir Women's Health Collective
+  specialty: OB/GYN
+  provider_1: Dr. Anya Merit, 1.0 FTE, established physician
+  provider_2: Dr. Ivo Calder, 0.8 FTE, established physician with surgery-heavy template
+  provider_3: Dr. Nessa Vale, 1.0 FTE, started 2026-02-03 at new satellite site
+  new_patient_3na: 18 days at satellite site
+  no_show_rate: 9.4% overall
+  net_collection_rate: 95.8%
+  operating_margin: 6.1%
+intentionally_unknown:
+- Exact wRVU totals and compensation figures for each physician
+- Whether call compensation is embedded in total compensation or tracked separately
+- Whether the satellite site's payer enrollment lag has fully cleared
+red_flags:
+  false_comparison: The new physician should not be benchmarked as if she had a mature
+    panel for the full six-month period.
+  access_bottleneck: Satellite-site 3rd next available remains too long for a growth
+    clinic.
+  template_mix: A surgery-heavy template may depress clinic access without showing
+    true underperformance.
+mcp_uncertainty_points:
+- fact: Whether payer enrollment or rendering-location linkage is active for the satellite
+    clinic
+  capability_class: provider_directory
+  action: Verify clinic and provider identity details before finalizing any external-facing
+    site recommendation.
+- fact: Whether any current CMS enrollment rules changed during the launch period
+  capability_class: current_regulatory_policy
+  action: Check current CMS operational guidance if launch-related billing holds are
+    still under review.
+holdout_ref: operations-physician-practice-manager/opp-d01-holdout-01-obgyn-dashboard-with-ramp-holdout.md

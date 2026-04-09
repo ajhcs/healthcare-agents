@@ -1,0 +1,24 @@
+seed_id: ccm-seed-001
+agent_slug: clinical-care-management-specialist
+deliverable_id: ccm-d01
+deliverable_title: Comprehensive Care Management Plan
+complexity: high
+required_facts:
+  patient: 72-year-old man
+  condition: CHF exacerbation with diabetes
+  social_risk: food insecurity
+  discharge_context: no established PCP and limited transportation
+intentionally_unknown:
+  - final home health agency
+  - receiving cardiology follow-up site
+red_flags:
+  risk_score: LACE should be computed for the specific patient
+  transition_gap: medication reconciliation must be explicit
+mcp_uncertainty_points:
+  - fact: receiving provider identity
+    capability_class: provider_directory
+    action: verify the receiving clinician's NPI and practice address before the handoff
+  - fact: payer enrollment status for the receiving agency
+    capability_class: provider_enrollment_status
+    action: confirm the receiving agency is enrolled with the target payer before referral
+holdout_ref: clinical-care-management-specialist/ccm-d01-holdout-001.md

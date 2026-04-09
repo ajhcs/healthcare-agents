@@ -1,0 +1,35 @@
+seed_id: qco-d01-seed-02
+agent_slug: quality-compliance-officer
+deliverable_id: qco-d01
+deliverable_title: Annual Compliance Risk Assessment
+regulatory_as_of: 2026-04-09
+review_status: reviewed
+generated_by: maintainer
+reviewed_by: compliance-maintainer
+scenario_summary: Ambulatory surgery center faces ownership disclosure questions, vendor hospitality concerns, and a rising number of anonymous hotline reports.
+required_facts:
+  organization_name: Meadowline Surgery Center
+  facility_type: physician-owned ambulatory surgery center
+  known_events:
+    - 11 hotline reports in the last 90 days
+    - a new marketing vendor offering catered physician dinners
+    - several ownership roster updates after a buy-in event
+  board_expectation: prioritize risks that can be mitigated within one fiscal year
+intentionally_unknown:
+  - Whether the new owner is an excluded individual
+  - Whether the hospitality vendor is tied to referral sources
+red_flags:
+  do_not_assume:
+    - Ownership updates were already communicated to payers and regulators
+    - A vendor event is harmless because no cash changed hands
+  boundary_conditions:
+    - The board wants risk rankings plus targeted monitoring activities
+    - Compliance has access to hotline summaries but not raw claims data
+mcp_uncertainty_points:
+  - fact: Confirm the physician-owners' NPI and practice addresses before drafting the governance risk narrative.
+    capability_class: provider_directory
+    action: Verify identity and location details for ownership matching.
+  - fact: Check whether the latest fraud-and-abuse or ownership disclosure guidance has changed.
+    capability_class: current_regulatory_policy
+    action: Recommend a fresh policy scan before finalizing the annual assessment.
+holdout_ref: calibration/holdouts/quality-compliance-officer/qco-d01-holdout-02-asc-governance-risk-assessment.md

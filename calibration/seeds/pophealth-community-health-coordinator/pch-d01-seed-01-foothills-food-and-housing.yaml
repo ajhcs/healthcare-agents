@@ -1,0 +1,27 @@
+seed_id: pch-d01-seed-01-foothills-food-and-housing
+agent_slug: pophealth-community-health-coordinator
+deliverable_id: pch-d01
+deliverable_title: CHNA Summary Report Template
+complexity: moderate
+required_facts:
+  hospital_name: Pinecrest Valley Hospital
+  assessment_period: March 2, 2026 through May 12, 2026
+  board_approval_date: June 4, 2026
+  service_area: Eastbrook County plus the northern townships of Willow County
+  total_population: 96,400
+  priority_needs: food insecurity, housing quality, transportation barriers, chronic
+    respiratory disease, maternal access to care
+intentionally_unknown:
+- exact zip codes in the service area
+- exact listening session attendance counts
+- exact community survey response count
+red_flags:
+  noted_item_01: overgeneralized service area language
+  noted_item_02: missing community input from a public health department
+  noted_item_03: leaving out a rationale for non-prioritized needs
+mcp_uncertainty_points:
+- fact: current CHNA posting and compliance language for 2026 cycle
+  capability_class: current_regulatory_policy
+  action: verify current IRS 501(r) and Schedule H references before finalizing compliance
+    wording
+holdout_ref: pophealth-community-health-coordinator/pch-d01-holdout-01-foothills-food-and-housing.md

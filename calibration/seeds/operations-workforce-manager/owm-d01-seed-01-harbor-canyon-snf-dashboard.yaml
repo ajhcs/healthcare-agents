@@ -1,0 +1,41 @@
+seed_id: owm-d01-seed-01-harbor-canyon-snf-dashboard
+agent_slug: operations-workforce-manager
+deliverable_id: owm-d01
+deliverable_title: Workforce Dashboard
+complexity: moderate
+required_facts:
+  organization_name: Harbor Canyon Skilled Nursing Center
+  report_month: March 2026
+  total_employees: '412'
+  total_nursing_ftes: '168.2'
+  primary_pressure_point: Weekend night CNA call-offs and elevated LPN turnover
+  occupancy_context: Average daily census of 146 residents with a higher-acuity short-stay
+    rehab mix
+  agency_context: Agency hours concentrated in licensed nurse weekend coverage and
+    rehab CNAs
+  board_concern: Resident fall rate rose while premium labor spend exceeded plan for
+    two straight months
+intentionally_unknown:
+- Exact current state Medicaid staffing add-on rules in the facility's state
+- Live PBJ submission timing status for the most recent quarter
+- Whether the external board packet will name affiliated outpatient entities that
+  require identity verification
+red_flags:
+  staffing-proof-gap: Dashboard should not imply staffing adequacy without unit-level
+    or resident-day evidence.
+  credentialing-control-risk: Active roster and schedule eligibility should align
+    with current licensure and required certifications.
+  reporting-reconciliation-risk: Any public staffing representation should be reconcilable
+    to payroll and scheduling source systems.
+mcp_uncertainty_points:
+- fact: Whether CMS or Federal Register updates changed nursing home staffing expectations
+    relevant to this board packet
+  capability_class: current_regulatory_policy
+  action: Check current CMS and Federal Register updates before finalizing compliance
+    wording.
+- fact: Whether any named affiliated facility in the packet is being referenced under
+    the correct legal entity
+  capability_class: provider_directory
+  action: Verify facility identity details before external distribution if affiliate
+    names are included.
+holdout_ref: operations-workforce-manager/owm-d01-holdout-01-harbor-canyon-snf-dashboard.md

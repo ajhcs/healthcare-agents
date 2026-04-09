@@ -1,0 +1,41 @@
+seed_id: cum-d01-seed-01-post-op-short-stay-medical-necessity
+agent_slug: clinical-utilization-management-specialist
+deliverable_id: cum-d01
+deliverable_title: Medical Necessity Review Worksheet
+complexity: moderate
+required_facts:
+  patient_name: Mira Talbot
+  mrn: SYN-573901
+  admission_datetime: 2026-01-22 06:11
+  attending_physician: Evan Lark, MD
+  primary_diagnosis: Lumbar spinal stenosis with neurogenic claudication after decompression
+    and fusion
+  payer: Medicare
+  plan_type: FFS
+  review_date: 2026-01-23
+  reviewer: Jules Mercer, RN, Utilization Management
+  clinical_anchor: Postoperative hypotension and severe pain initially required IV
+    fluids, parenteral analgesia, and close mobility monitoring, but the patient stabilized
+    faster than expected and discharged the next evening
+intentionally_unknown:
+- Whether the exact procedure remained on the current IPO list at the time of service
+- Exact criteria subset label from the facility's licensed criteria product
+- Whether a physician advisor already reviewed the case
+red_flags:
+  ipo_assumption: The generator should not assume inpatient status solely from surgery
+    type without addressing current IPO status or actual documentation.
+  thin_expectation_note: The admitting note may need a stronger statement tying severity,
+    comorbidity burden, and expected hospital course to the initial inpatient order.
+  rapid_improvement_bias: The generator should note that shorter-than-expected stay
+    does not automatically defeat a valid original inpatient expectation.
+mcp_uncertainty_points:
+- fact: Whether the exact lumbar fusion procedure code remained on the current Inpatient
+    Only list at the service date
+  capability_class: coverage_determination
+  action: Check current CMS IPO status or payer coverage policy for the procedure
+    before finalizing the criteria section
+- fact: Whether any current CMS subregulatory update modified application guidance
+    for short postoperative stays
+  capability_class: current_regulatory_policy
+  action: Verify current CMS policy updates affecting short-stay inpatient review
+holdout_ref: clinical-utilization-management-specialist/cum-d01-holdout-01-post-op-short-stay-medical-necessity.md

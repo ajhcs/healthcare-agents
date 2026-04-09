@@ -1,0 +1,25 @@
+seed_id: rca-d01-seed-01-annual-cdm-update-cycle
+agent_slug: revenue-chargemaster-analyst
+deliverable_id: rca-d01
+deliverable_title: CDM Annual Maintenance Report
+complexity: high
+required_facts:
+  organization_name: Riverbend Community Hospital
+  cdm_lines: 8,420 active CDM lines
+  annual_update_scope: CPT, HCPCS, OPPS, and price transparency alignment
+  operational_goal: prevent code drift and charge denials before the next filing cycle
+intentionally_unknown:
+- final 2026 HCPCS quarterly update list after April
+- which payer will request the first contract amendment
+red_flags:
+  code_drift: The report should call out CPT/HCPCS changes by effective date.
+  transparency_compliance: The price transparency section must remain tied to the
+    active CDM.
+mcp_uncertainty_points:
+- fact: current code edit policy or payment update
+  capability_class: coding_edit_policy
+  action: verify the latest edit policy before activation
+- fact: coverage or OPPS status update
+  capability_class: coverage_determination
+  action: check whether the code moved from the expected outpatient payment category
+holdout_ref: revenue-chargemaster-analyst/rca-d01-holdout-01-annual-cdm-update-cycle.md

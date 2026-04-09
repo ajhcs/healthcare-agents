@@ -1,0 +1,31 @@
+seed_id: pvbc-d02-seed-01-blue-cedar-term-sheet
+agent_slug: payer-value-based-care-manager
+deliverable_id: pvbc-d02
+deliverable_title: Risk-Based Contract Term Sheet
+complexity: routine
+required_facts:
+  provider_organization: Blue Cedar Medical Group
+  payer: Orion Health Plan
+  product_line: Medicare Advantage
+  effective_date: 2026-07-01
+  term_years: 2
+  minimum_attributed_lives: 6500
+  estimated_attributed_population: 7480
+  quality_withhold: 2.0%
+  risk_corridor_year_1: "\xB13%"
+intentionally_unknown:
+- exact benchmark PMPM
+- final legal approval date
+- payer-specific coding normalization factor
+red_flags:
+  noted_item_01: attribution methodology that changes midterm without a written amendment
+  noted_item_02: downside exposure without an aggregate stop-loss
+  noted_item_03: quality measures that cannot be produced from the current EHR and
+    claims feeds
+mcp_uncertainty_points:
+- fact: whether the current CMS quality measure specifications still use the exact
+    measure titles named in the quality exhibit
+  capability_class: current_regulatory_policy
+  action: verify current CMS QPP measure specs before finalizing the performance bonus
+    language
+holdout_ref: payer-value-based-care-manager/pvbc-d02-holdout-01-blue-cedar-term-sheet.md

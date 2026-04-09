@@ -1,0 +1,9 @@
+agents_tested:
+  - operations-ambulatory-manager
+  - operations-home-health-administrator
+  - operations-hospital-administrator
+  - operations-long-term-care-administrator
+  - operations-physician-practice-manager
+  - operations-supply-chain-manager
+  - operations-workforce-manager
+  - emergency-preparedness-coordinator

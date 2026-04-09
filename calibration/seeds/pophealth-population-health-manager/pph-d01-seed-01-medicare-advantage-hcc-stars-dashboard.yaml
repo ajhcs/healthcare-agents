@@ -1,0 +1,36 @@
+seed_id: pph-d01-seed-01-medicare-advantage-hcc-stars-dashboard
+agent_slug: pophealth-population-health-manager
+deliverable_id: pph-d01
+deliverable_title: Population Health Dashboard Report
+complexity: high
+required_facts:
+  organization_name: Lattice Peak Medicare Advantage Plan
+  reporting_period: Q2 2026
+  attributed_population: 31,440 members
+  dominant_population: Medicare Advantage PPO and HMO members across three synthetic
+    counties
+  priority_measures: BCS, COL, CDC HbA1c <8%, CBP, AMM Acute, FUA 7-day
+  known_program_issue: RAF recapture suspect list was overinclusive because historical
+    diagnoses were not cleanly separated from payment-eligible current-year diagnoses
+  sdoh_program_status: AHC HRSN screening active in PCP practices and post-discharge
+    calls with electronic community referrals in place
+  operational_goal: Improve Stars run rate while reducing unsupported diagnosis exposure
+    and avoidable ED use
+intentionally_unknown:
+- Final 2026 contract-specific 4-Star and 5-Star thresholds to display
+- Whether any CMS mid-year methodological update affects the selected quality assumptions
+- Exact current benchmark for readmission comparison used by the organization
+red_flags:
+  unsupported_hcc_carryforward: The generator should avoid implying that historical
+    or suspected conditions count for payment without current compliant support.
+  stale_claims_assumptions: The generator should acknowledge claims lag and avoid
+    overstating current performance precision.
+  invalid_gap_closure_logic: The generator should not count scheduled services as
+    closed gaps.
+mcp_uncertainty_points:
+- fact: Current CMS methodological updates that could affect 2026 Medicare Advantage
+    risk adjustment or Stars assumptions
+  capability_class: current_regulatory_policy
+  action: Check current CMS and Federal Register updates before finalizing threshold
+    and compliance language
+holdout_ref: pophealth-population-health-manager/pph-d01-holdout-01-medicare-advantage-hcc-stars-dashboard.md

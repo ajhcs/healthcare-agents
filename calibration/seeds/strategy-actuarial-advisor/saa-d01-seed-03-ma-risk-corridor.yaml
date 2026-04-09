@@ -1,0 +1,39 @@
+seed_id: saa-d01-example-03-ma-risk-corridor
+agent_slug: strategy-actuarial-advisor
+agents_relevant:
+- strategy-actuarial-advisor
+deliverable_id: saa-d01
+deliverable_title: Capitation Rate Analysis
+scenario_summary: Medicare Advantage capitation review with risk-score drift, pharmacy
+  trend pressure, and a corridor that is too thin for current volatility.
+complexity: high
+required_facts:
+  line_of_business: Medicare Advantage
+  covered_lives: 62,000
+  required_pmpm: $449.20
+  proposed_pmpm: $437.60
+  risk_score: '1.12'
+  pharmacy_trend: 7.1 percent
+intentionally_unknown:
+- Whether a revised risk score will land before the contract lock date
+- Whether the provider roster has changed since the last attribution run
+red_flags:
+  pharmacy: Drug trend is pushing the capitation model above the filed rate.
+  corridor: The downside corridor is too thin for the observed volatility.
+mcp_uncertainty_points:
+- fact: Current CMS Medicare Advantage rate and risk adjustment guidance
+  capability_class: current_regulatory_policy
+  action: Verify the current CMS guidance before closing the rate discussion.
+- fact: Provider directory and attribution data used for the MA model
+  capability_class: provider_directory
+  action: Confirm providers and practice locations before the final rate build.
+holdout_ref: calibration/holdouts/strategy-actuarial-advisor/saa-d01-holdout-03-ma-risk-corridor.md
+source_basis:
+- 42 CFR Part 422
+- CMS Medicare Advantage rate announcement
+- CMS risk adjustment methodology
+- CMS encounter data guidance
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

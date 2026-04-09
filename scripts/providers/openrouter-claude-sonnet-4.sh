@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export OPENROUTER_PROVIDER_MODEL="${OPENROUTER_PROVIDER_MODEL:-anthropic/claude-sonnet-4}"
+export OPENROUTER_PROVIDER_MAX_TOKENS="${OPENROUTER_PROVIDER_MAX_TOKENS:-12000}"
+export OPENROUTER_PROVIDER_TEMPERATURE="${OPENROUTER_PROVIDER_TEMPERATURE:-0}"
+
+exec "$SCRIPT_DIR/openrouter-chat.sh"

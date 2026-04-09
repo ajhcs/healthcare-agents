@@ -1,0 +1,34 @@
+seed_id: hcd-d02-seed-02-sts-semiannual-submission-review
+agent_slug: healthit-clinical-data-analyst
+deliverable_id: hcd-d02
+deliverable_title: Registry Submission Validation Report
+complexity: routine
+required_facts:
+  registry_name: STS Adult Cardiac Surgery Database
+  reporting_period: 2026 H1 synthetic submission cycle
+  submission_deadline: 2026-08-20
+  facility_name: Harbor Ridge Heart Institute
+  analyst_name: Elise Navarro
+  volume_summary: 186 total index cases, 179 cases passing validation, 7 cases with
+    correctable issues, expected range 170 to 195.
+  key_errors: Two missing operative status values, three bypass-time outliers caused
+    by interface unit conversion, one duplicate abstract, one discharge-mortality
+    mismatch.
+  benchmark_preview: Mortality O:E remains favorable while prolonged ventilation is
+    worse than national comparator.
+intentionally_unknown:
+- Final STS star rating implications for the cycle
+- Any newly published STS data-spec amendment released after the drafting date
+red_flags:
+  capture_completeness: The generator should explicitly tie total cases to OR schedule
+    or billing reconciliation rather than assuming extraction completeness.
+  risk_model_inputs: Operative status and bypass-time fields should be called out
+    because they materially affect risk adjustment.
+  unsupported_certainty: The generator should avoid asserting final star rating outcomes.
+mcp_uncertainty_points:
+- fact: Whether STS released a new public specification or submission reminder affecting
+    current-cycle field validation
+  capability_class: current_regulatory_policy
+  action: Check the current STS or comparable policy update before finalizing wording
+    about accepted submission rules.
+holdout_ref: healthit-clinical-data-analyst/hcd-d02-holdout-02-sts-semiannual-submission-review.md

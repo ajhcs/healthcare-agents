@@ -1,0 +1,28 @@
+seed_id: hie-seed-002
+agent_slug: healthit-interoperability-engineer
+deliverable_id: hie-d01
+deliverable_title: Interface Specification Document
+required_facts:
+  interface_name: Inpatient pharmacy encoded orders and administration feed
+  source_system: North Valley CPOE 9.1
+  destination_system: Harborview Pharmacy Carousel 7.8
+  message_types: RDE^O11 and RAS^O17
+  transport: VPN plus MLLP
+  interface_engine: Rhapsody 8.3
+  expected_volume: 320 medication orders and 900 administration records per day
+  code_systems: HL7v2.5.1, RxNorm, NDC, SNOMED CT
+intentionally_unknown:
+  - The exact formulary substitutions used by the overnight pharmacy team
+  - Whether controlled substance ordering will remain on the same path after go-live
+red_flags:
+  dose_unit_drift: Dose units must be normalized before pharmacy verification
+  allergy_gap: Administration messages must not proceed when allergy context is missing
+  administration_duplication: RAS^O17 retries need a stable duplicate control key
+mcp_uncertainty_points:
+  - fact: The receiving pharmacy entity identity and endpoint ownership
+    capability_class: provider_directory
+    action: Verify NPI, taxonomy, and practice address before onboarding
+  - fact: Whether current policy changed any e-prescribing or medication transport requirements
+    capability_class: current_regulatory_policy
+    action: Check current CMS, ONC, and Federal Register guidance before final signoff
+holdout_ref: healthit-interoperability-engineer/hie-d01-002-pharmacy-admin.md

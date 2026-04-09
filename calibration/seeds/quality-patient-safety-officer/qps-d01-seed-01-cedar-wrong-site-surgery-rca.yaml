@@ -1,0 +1,25 @@
+seed_id: qps-d01-seed-01-cedar-wrong-site-surgery-rca
+agent_slug: quality-patient-safety-officer
+deliverable_id: qps-d01
+deliverable_title: Root Cause Analysis Report
+complexity: high
+required_facts:
+  facility_name: Cedar Valley Hospital
+  event_type: sentinel event near miss
+  procedure: left-knee arthroscopy
+  mismatch_source: right-knee consent packet
+  outcome: intercepted before incision
+  root_theme: laterality verification failure
+intentionally_unknown:
+- exact surgeon name
+- exact time the time-out occurred
+- exact EHR vendor
+red_flags:
+  noted_item_01: allowing a laterality mismatch to survive into the OR
+  noted_item_02: not linking consent and schedule with a hard stop
+  noted_item_03: failing to tie action items to measurable controls
+mcp_uncertainty_points:
+- fact: current sentinel event and Universal Protocol wording
+  capability_class: current_regulatory_policy
+  action: verify the latest Joint Commission references before finalizing the RCA language
+holdout_ref: quality-patient-safety-officer/qps-d01-holdout-01-cedar-wrong-site-surgery-rca.md

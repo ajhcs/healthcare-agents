@@ -1,0 +1,43 @@
+seed_id: pmo-d01-seed-01-disability-to-65-transition-holdout
+agent_slug: payer-medicare-outreach-coordinator
+deliverable_id: pmo-d01
+deliverable_title: Medicare Plan Comparison Worksheet
+complexity: high
+required_facts:
+  beneficiary_name: Selena Wren
+  medicare_number: 4LM2-QP7-RD85
+  dob: '1961-12-02'
+  part_a_effective: '2020-12-01'
+  part_b_effective: '2020-12-01'
+  current_coverage: Bright Canal Choice HMO
+  counseling_date: '2026-10-29'
+  counselor: Noah Finch, SHIP Counselor ID SYN-6712
+  monthly_income: $2,930 from SSDI and survivor benefit
+  prescriptions: Fingolimod 0.5 mg daily; baclofen 10 mg three times daily; dalfampridine
+    10 mg twice daily; vitamin D3 2000 IU daily
+  providers: PCP Liora Dane, MD NPI 1768442081; Neurologist Arin Vale, MD NPI 1205334410;
+    Rehabilitation specialist Pella Hart, MD NPI 1992667784
+  hospital_preference: Juniper Sound Rehabilitation Hospital
+  anticipated_needs: Quarterly neurology follow-up, periodic infusion-center coordination,
+    one interstate family visit lasting six weeks
+  financial_priorities: Keep current specialists and avoid surprise bills
+intentionally_unknown:
+- Whether the neurologist will remain in the HMO network for the next contract year
+- The final 2027 Medigap premium quote for the beneficiary's ZIP code
+red_flags:
+  missing_medigap_note: A weak draft would omit that turning 65 may create a new Medigap
+    open enrollment opportunity in many states.
+  network_assumption: A weak draft would assume specialist continuity without documenting
+    verification.
+mcp_uncertainty_points:
+- fact: Current year provider network status and any termination notices affecting
+    the neurologist or rehabilitation hospital
+  capability_class: current_regulatory_policy
+  action: Verify current plan directory and recent notices if a live check is available
+    before finalizing in-network statements.
+- fact: Any current CMS or state-level updates affecting Medigap guaranteed issue
+    at disability-to-65 transition
+  capability_class: current_regulatory_policy
+  action: Check current CMS or state guidance if the worksheet needs a jurisdiction-specific
+    note.
+holdout_ref: payer-medicare-outreach-coordinator/pmo-d01-holdout-01-disability-to-65-transition-holdout.md

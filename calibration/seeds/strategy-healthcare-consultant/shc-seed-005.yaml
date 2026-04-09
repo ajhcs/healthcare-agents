@@ -1,0 +1,28 @@
+seed_id: shc-seed-005
+agent_slug: strategy-healthcare-consultant
+deliverable_id: shc-d02
+deliverable_title: M&A Due Diligence Summary
+scenario_summary: Joint venture diligence for a specialty physician group where physician alignment, referral patterns, and antitrust risk all need a board-ready recommendation
+complexity: high
+required_facts:
+  acquirer: Meridian Health Partners
+  target: Summit Spine and Pain Associates
+  transaction_type: Joint Venture
+  geography: two-county referral region
+  target_financial_condition: profitable practice with concentrated referral sources and aging owners
+  strategic_goal: secure ambulatory spine volume and reduce leakage to competing systems
+intentionally_unknown:
+  - whether the physicians want employment or a joint venture
+  - exact referral concentration by payer
+  - final governance model for the venture
+red_flags:
+  antitrust_gap: combined market share could trigger FTC scrutiny if the service area is defined narrowly
+  physician_gap: owner succession is creating pressure for a near-term decision
+mcp_uncertainty_points:
+  - fact: physician owners and practice addresses
+    capability_class: provider_directory
+    action: verify the target owners before diligence and alignment modeling
+  - fact: current competition or policy changes affecting specialty joint ventures
+    capability_class: current_regulatory_policy
+    action: check current antitrust and state review posture before recommending structure
+holdout_ref: strategy-healthcare-consultant/shc-d02-holdout-005.md

@@ -1,0 +1,28 @@
+seed_id: hie-seed-001
+agent_slug: healthit-interoperability-engineer
+deliverable_id: hie-d01
+deliverable_title: Interface Specification Document
+required_facts:
+  interface_name: Radiology orders and final reports exchange
+  source_system: Silver Pine Imaging RIS 6.2
+  destination_system: Meridian Health Epic 2026.1
+  message_types: ORM^O01 and ORU^R01
+  transport: MLLP over TLS 1.2
+  interface_engine: Mirth Connect 4.5
+  expected_volume: 180 orders and 180 final reports per day
+  code_systems: HL7v2.5.1, LOINC, SNOMED CT
+intentionally_unknown:
+  - The exact radiology downtime fax fallback number
+  - The final production ACK timeout on the destination side
+red_flags:
+  accession_mismatch: Accession numbers must stay stable across order, report, and correction flows
+  result_crosswalk_gap: Local procedure names must not leak into OBX-3 without a maintained crosswalk
+  duplicate_posting: Amended reports need idempotent control by message control ID
+mcp_uncertainty_points:
+  - fact: The receiving organization identity and endpoint ownership for onboarding
+    capability_class: provider_directory
+    action: Verify NPI, taxonomy, and practice address before cutover
+  - fact: Whether recent interoperability policy changed the required transport or logging posture
+    capability_class: current_regulatory_policy
+    action: Check current CMS, ONC, and Federal Register guidance before final signoff
+holdout_ref: healthit-interoperability-engineer/hie-d01-001-radiology-results.md

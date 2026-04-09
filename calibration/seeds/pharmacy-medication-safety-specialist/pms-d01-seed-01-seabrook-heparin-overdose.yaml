@@ -1,0 +1,26 @@
+seed_id: pms-d01-seed-01-seabrook-heparin-overdose
+agent_slug: pharmacy-medication-safety-specialist
+deliverable_id: pms-d01
+deliverable_title: Medication Error Root Cause Analysis Report
+complexity: high
+required_facts:
+  hospital_name: Seabrook Medical Center
+  patient_age: 64
+  admitting_service: cardiology
+  medication: heparin infusion, 25,000 units in 500 mL
+  outcome: temporary harm requiring repeat anti-Xa monitoring
+  event_type: high-alert infusion start
+intentionally_unknown:
+- exact patient weight
+- exact anti-Xa result value
+- exact pharmacist verification timestamp
+red_flags:
+  noted_item_01: allowing mL/hr selection on a high-alert heparin order
+  noted_item_02: starting the infusion before the independent double-check was complete
+  noted_item_03: omitting the downtime workflow from the analysis
+mcp_uncertainty_points:
+- fact: current high-alert medication expectations for infusion workflows
+  capability_class: current_regulatory_policy
+  action: verify current safety language and order-set guidance before finalizing the
+    action plan wording
+holdout_ref: pharmacy-medication-safety-specialist/pms-d01-holdout-01-seabrook-heparin-overdose.md

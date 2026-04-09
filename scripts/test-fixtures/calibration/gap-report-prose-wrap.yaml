@@ -1,0 +1,28 @@
+Here is the YAML gap report you requested:
+
+```yaml
+seed_id: rmc-seed-003
+agent_slug: revenue-medical-coding-specialist
+deliverable_id: rmc-d01
+scores:
+  structural_completeness: 3
+  regulatory_precision: 2
+  clinical_realism: 3
+  actionability: 3
+  mcp_awareness: 2
+  weighted_total: 2.6
+expectation_checklist:
+  - expectation: The report includes provider-level accuracy and financial impact.
+    met: partial
+    notes: A financial impact section is present, but it is entirely non-quantified, and the performance table is coder-oriented rather than provider-level. Lint passed with missing_sections: [], so this is a substantive coverage miss rather than a missing heading.
+gaps:
+  - gap_id: G1
+    gap_type: structural_omission
+    severity: high
+    dimension: structural_completeness
+    evidence: The report never provides provider-level accuracy, even though the scenario is a multispecialty group audit and the expectation checklist explicitly requires provider-level accuracy.
+    likely_prompt_fix: Require a provider-level results section for every audit report, with provider rows or an explicit provider-data-needed stub if names are unavailable.
+    confidence: 0.97
+```
+
+No other comments.

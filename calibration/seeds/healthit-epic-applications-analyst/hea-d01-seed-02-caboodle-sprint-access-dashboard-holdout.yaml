@@ -1,0 +1,33 @@
+seed_id: hea-d01-seed-02-caboodle-sprint-access-dashboard-holdout
+agent_slug: healthit-epic-applications-analyst
+deliverable_id: hea-d01
+deliverable_title: Epic Build Change Request
+complexity: routine
+required_facts:
+  request_id: SYN-CHG-2604-205
+  application: Cadence / Caboodle / Cogito
+  requested_by: Briar Vale, Access Analytics
+  priority: Standard
+  target_date: '2026-05-13'
+  problem_statement: A Sprint update changed appointment reschedule event sequencing,
+    causing weekly access dashboards to overcount completed rebooks for two specialty
+    clinics.
+  affected_departments: Pulmonology DEP 61102 and Rheumatology DEP 61108
+intentionally_unknown:
+- Exact Caboodle fact table names used by the local dashboard extract
+- Whether the reschedule event issue also affects reminder-vendor feeds
+- Whether there is an Epic-delivered analytics catalog replacement available
+red_flags:
+  dashboard_accuracy: Leadership may act on inflated rebook counts if ETL logic is
+    not reconciled quickly.
+  source_alignment: Analysts could patch the dashboard only and leave source event
+    semantics unresolved.
+  governance_drift: An isolated extract fix may diverge from standard Cogito content
+    and complicate future upgrades.
+mcp_uncertainty_points:
+- fact: Whether recent federal policy updates materially change reporting or interoperability
+    framing for patient scheduling event disclosures
+  capability_class: current_regulatory_policy
+  action: Check for current CMS or ONC updates only if the proposed remediation affects
+    patient-access disclosure or API behavior
+holdout_ref: healthit-epic-applications-analyst/hea-d01-holdout-02-caboodle-sprint-access-dashboard-holdout.md

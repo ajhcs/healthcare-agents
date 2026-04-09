@@ -1,0 +1,37 @@
+seed_id: rmc-seed-001
+agent_slug: revenue-medical-coding-specialist
+deliverable_id: rmc-d01
+deliverable_title: Coding Audit Report
+complexity: high
+regulatory_as_of: 2026-04-01
+scenario_summary: Inpatient sepsis coding audit for a community hospital with respiratory failure, AKI, and POA timing questions
+required_facts:
+  facility: Riverside Regional Hospital
+  audit_period: 2026 Q1
+  sample_size: 48 records
+  setting: acute inpatient medicine
+  principal_case_mix: sepsis with acute respiratory failure and AKI
+  financial_focus: DRG shift exposure from missed secondary diagnoses
+intentionally_unknown:
+  - Whether the documentation supports severe sepsis versus sepsis without organ dysfunction
+  - Whether acute respiratory failure is present on admission in each sampled chart
+red_flags:
+  cc_mcc_gap: Acute respiratory failure may be omitted from the coded set
+  poa_conflict: A secondary diagnosis may need a POA indicator clarification
+mcp_uncertainty_points:
+  - fact: NCCI or code-pair edit status for the sample code set
+    capability_class: coding_edit_policy
+    action: Verify whether any bundled code pairs or modifier allowances apply before final audit conclusions
+  - fact: Latest sepsis sequencing guidance
+    capability_class: current_regulatory_policy
+    action: Check current CMS and ICD-10-CM guidance before finalizing the audit narrative
+holdout_ref: calibration/holdouts/revenue-medical-coding-specialist/rmc-d01-inpatient-sepsis-audit.md
+agents_relevant:
+  - revenue-medical-coding-specialist
+source_basis:
+  - CMS ICD-10-CM Official Guidelines for Coding and Reporting FY 2026
+  - CMS MS-DRG Definitions Manual v43.0
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: 2026-04-09

@@ -1,0 +1,29 @@
+workflow:
+  title: Invalid Independent Review
+  steps:
+    - step_id: 1
+      agent_slug: quality-compliance-officer
+      agent_name: Compliance Officer
+      deliverable_id: qco-d01
+      deliverable_title: Annual Compliance Risk Assessment
+      why: Independent review should not depend on other steps.
+      required_inputs:
+        - source: user
+          data: "Referral arrangement details"
+      outputs_passed_forward: []
+      depends_on: [2]
+      independent_review: true
+      tool_recommendation: null
+    - step_id: 2
+      agent_slug: clinical-care-management-specialist
+      agent_name: Care Management Specialist
+      deliverable_id: ccm-d02
+      deliverable_title: Readmission Risk Assessment
+      why: Upstream step
+      required_inputs:
+        - source: user
+          data: "Discharge summary"
+      outputs_passed_forward: []
+      depends_on: []
+      independent_review: false
+      tool_recommendation: null

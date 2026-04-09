@@ -1,0 +1,39 @@
+seed_id: ssi-d02-example-02-pmi-scorecard
+agent_slug: strategy-structural-improvement-consultant
+agents_relevant:
+- strategy-structural-improvement-consultant
+deliverable_id: ssi-d02
+deliverable_title: Post-Merger Integration Scorecard
+scenario_summary: Post-merger integration scorecard for a regional acquisition with
+  steady synergy capture but uneven culture and system integration.
+complexity: high
+required_facts:
+  integration_status: Yellow overall
+  labor_savings: $1.5 million achieved
+  supply_chain_savings: $1.0 million achieved
+  revenue_capture: $0.8 million achieved
+  remaining_problem: culture alignment
+intentionally_unknown:
+- Whether the local campuses will accept the final benefits harmonization without
+  exceptions
+- Whether the final EHR standardization can be finished without another training cycle
+red_flags:
+  culture: The integration can look green on paper while staff still feel the merger
+    every day.
+  denials: Revenue cycle leakage can quietly erase synergy gains if it is not fixed
+    quickly.
+mcp_uncertainty_points:
+- fact: Current governance and compliance expectations during the merger integration
+  capability_class: current_regulatory_policy
+  action: Verify the current governance and compliance expectations before finalizing
+    the scorecard.
+holdout_ref: calibration/holdouts/strategy-structural-improvement-consultant/ssi-d02-holdout-02-pmi-scorecard.md
+source_basis:
+- 42 CFR 482.12
+- IRS 501(r)
+- FTC Health Care Merger Guidelines 2023
+- OIG compliance guidance
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

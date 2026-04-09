@@ -1,0 +1,26 @@
+seed_id: psc-d01-seed-01-ashland-salmonella-wedding
+agent_slug: pophealth-surveillance-coordinator
+deliverable_id: psc-d01
+deliverable_title: Outbreak Investigation Report
+complexity: high
+required_facts:
+  jurisdiction: Ashland County Health Department
+  condition: salmonellosis
+  total_cases: 11
+  confirmed_cases: 7
+  probable_cases: 4
+  source: catered chicken salad
+intentionally_unknown:
+- exact venue name
+- exact laboratory subtype
+- exact attack rate denominator
+red_flags:
+  noted_item_01: omitting the case definition
+  noted_item_02: failing to identify the environmental source
+  noted_item_03: writing the report as a narrative without an analytic section
+mcp_uncertainty_points:
+- fact: current CDC and CSTE outbreak terminology
+  capability_class: current_regulatory_policy
+  action: verify current CDC wording and reporting expectations before finalizing the
+    investigation report language
+holdout_ref: pophealth-surveillance-coordinator/psc-d01-holdout-01-ashland-salmonella-wedding.md

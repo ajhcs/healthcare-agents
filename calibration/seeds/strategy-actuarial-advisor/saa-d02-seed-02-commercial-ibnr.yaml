@@ -1,0 +1,36 @@
+seed_id: saa-d02-example-02-commercial-ibnr
+agent_slug: strategy-actuarial-advisor
+agents_relevant:
+- strategy-actuarial-advisor
+deliverable_id: saa-d02
+deliverable_title: IBNR Reserve Estimate
+scenario_summary: Commercial ASO reserve estimate with a light booked reserve, elevated
+  late emergence, and a noticeable pharmacy tail.
+complexity: high
+required_facts:
+  booked_reserve: $16.9 million
+  selected_reserve: $18.0 million
+  indicated_deficiency: $1.1 million
+  late_pharmacy_tail: material
+  triangle_horizon: 2023 through 2026
+intentionally_unknown:
+- Whether the pharmacy rebate settlement will arrive before close
+- Whether the next month will show a faster than usual emergence pattern
+red_flags:
+  booked_light: The booked reserve does not fully cover the selected estimate.
+  pharmacy_tail: Pharmacy timing is still pushing claims into later development periods.
+mcp_uncertainty_points:
+- fact: CMS encounter data and reserve-reporting guidance that may affect the reserve
+    frame
+  capability_class: current_regulatory_policy
+  action: Check the current CMS guidance before finalizing the reserve discussion.
+holdout_ref: calibration/holdouts/strategy-actuarial-advisor/saa-d02-holdout-02-commercial-ibnr.md
+source_basis:
+- CMS encounter data guidance
+- ASOP 43
+- NAIC annual statement instructions
+- CMS risk adjustment methodology
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

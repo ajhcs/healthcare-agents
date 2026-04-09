@@ -1,0 +1,31 @@
+seed_id: hcd-d02-seed-02-oqr-imaging-followup-dashboard
+agent_slug: healthit-clinical-data-analyst
+deliverable_id: hcd-d02
+deliverable_title: Registry Submission Validation Report
+complexity: routine
+required_facts:
+  registry: Outpatient imaging follow-up recommendation submission package
+  reporting_period: Synthetic 2026 Q1
+  submission_deadline: 2026-04-25
+  analyst_name: Eli Navarro
+  organization_name: Juniper Coast Outpatient Center
+  expected_total_cases: 1240
+  target_error_rate: less than 1.5 percent
+intentionally_unknown:
+- Exact CMS identifier if the organization changes reporting pathway this year
+- Final benchmark percentile against peer sites
+- Whether any current CMS outpatient reporting guidance changed this quarter
+red_flags:
+  free_text_capture: Radiologist recommendation text may not map cleanly to structured
+    follow-up categories.
+  duplicate_study_issue: Repeat imaging orders on the same day may create duplicate
+    candidate records.
+  ordering_provider_attribution: Missing finalized ordering provider fields could
+    weaken downstream outreach reporting.
+mcp_uncertainty_points:
+- fact: Whether CMS updated outpatient reporting guidance or submission deadlines
+    for the current cycle
+  capability_class: current_regulatory_policy
+  action: Check current CMS outpatient quality policy updates before final submission
+    packaging
+holdout_ref: healthit-clinical-data-analyst/hcd-d02-holdout-02-oqr-imaging-followup-dashboard.md

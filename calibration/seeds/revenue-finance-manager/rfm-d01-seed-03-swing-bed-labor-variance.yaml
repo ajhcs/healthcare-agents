@@ -1,0 +1,40 @@
+seed_id: rfm-d01-seed-03-swing-bed-labor-variance
+agent_slug: revenue-finance-manager
+agents_relevant:
+- revenue-finance-manager
+deliverable_id: rfm-d01
+deliverable_title: Monthly Financial Performance Report
+scenario_summary: Rural hospital monthly close with swing-bed occupancy shortfall,
+  agency labor dependence, and a weaker accounts-receivable position.
+complexity: high
+required_facts:
+  facility: Pine Valley Community Hospital
+  period: August 2026
+  monthly_operating_margin: $-900
+  swing_bed_days: '382'
+  agency_nursing_variance: $610 unfavorable
+  days_in_accounts_receivable: '58'
+intentionally_unknown:
+- Whether the swing-bed marketing plan can lift census before the next quarter
+- Whether the staffing agency can be reduced without hurting coverage on nights and
+  weekends
+red_flags:
+  swing_bed: Lower-than-plan swing-bed occupancy is leaving fixed cost uncovered.
+  collections: A longer receivable cycle is amplifying the operating loss through
+    delayed cash.
+mcp_uncertainty_points:
+- fact: Current CMS rural payment and wage-index logic affecting a community hospital
+    close
+  capability_class: current_regulatory_policy
+  action: Verify the current CMS wage-index and rural payment rules before finalizing
+    the monthly commentary.
+holdout_ref: calibration/holdouts/revenue-finance-manager/rfm-d01-holdout-03-swing-bed-labor-variance.md
+source_basis:
+- CMS FY 2026 IPPS Final Rule
+- CMS Hospital Cost Report Instructions
+- CMS Wage Index Files
+- BLS OEWS 2025
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

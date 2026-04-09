@@ -1,0 +1,51 @@
+seed_id: rca-d02-seed-01-summit-bend-vbc-amendment
+agent_slug: revenue-contract-analyst
+deliverable_id: rca-d02
+deliverable_title: Reimbursement Modeling Worksheet
+complexity: high
+required_facts:
+  payer_name: Summit Bend Senior Choice
+  proposed_change: 'Replace current fee-for-service MA professional arrangement with
+    shared savings: target PMPM $462, provider share 55%, minimum savings rate 2.0%,
+    downside begins at losses beyond 1.5%, provider responsible for 40% of losses
+    capped at 3.0% of target spend, quality withhold 2.0% of monthly claims payments,
+    settlement 9 months after performance year end'
+  effective_date: '2027-01-01'
+  modeling_period: Historical claims and capitation support from 2025-01 through 2025-12
+  current_revenue_total: $28,640,000
+  projected_base_medical_spend: $105,336,000
+  attributed_members: 19,000
+  current_terms:
+    inpatient: No direct change; paid under existing facility contracts outside this
+      amendment
+    outpatient: No direct change; ancillary hospital services excluded from this amendment
+    professional: 112% of current MA fee schedule equivalent to $28,640,000 historical
+      annual revenue
+    emergency: Included only for professional claims rendered by participating physicians
+    observation: Not separately modeled in the current physician-only amendment
+  sensitivity_counter_offer: Provider share 60%, downside cap 2.0% of target spend,
+    quality withhold 1.0%, losses only after 2.0% corridor
+intentionally_unknown:
+- Actual 2026 attributed membership trend
+- Final payer quality score methodology and metric weights
+- Whether settlement excludes catastrophic transplant and NICU cases through a stop-loss
+  carve-out
+red_flags:
+  downside_exposure: Potential loss volatility if catastrophic claims are not excluded
+    before total-cost-of-care settlement.
+  settlement_timing: Nine-month settlement lag creates cash-flow drag when paired
+    with a 2.0% quality withhold.
+  scope_definition: Hospital facility claims are excluded from the amendment, but
+    emergency physician and ancillary attribution rules may still create leakage.
+mcp_uncertainty_points:
+- fact: Whether current CMS Medicare Advantage policy or final payment updates changed
+    benchmark assumptions for the contract year
+  capability_class: current_regulatory_policy
+  action: Check current CMS Medicare Advantage payment updates and related policy
+    guidance for the relevant contract year.
+- fact: Whether participating physician NPIs and TINs for new clinic sites will be
+    active with the MA plan before go-live
+  capability_class: provider_enrollment_status
+  action: Verify enrollment status for the group TIN and new clinic NPIs with Summit
+    Bend Senior Choice.
+holdout_ref: revenue-contract-analyst/rca-d02-holdout-01-summit-bend-vbc-amendment.md

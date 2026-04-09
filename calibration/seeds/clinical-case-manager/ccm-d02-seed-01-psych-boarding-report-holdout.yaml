@@ -1,0 +1,37 @@
+seed_id: ccm-d02-seed-01-psych-boarding-report-holdout
+agent_slug: clinical-case-manager
+deliverable_id: ccm-d02
+deliverable_title: Avoidable Day Report
+complexity: high
+required_facts:
+  facility_name: Stonebank Medical Center
+  reporting_period: February 2026
+  total_patient_days: 3,944
+  avoidable_days_identified: '121'
+  avoidable_day_rate: 3.1%
+  prior_month_rate: 2.6%
+  ytd_avoidable_days: '214'
+  target: <5%
+  cost_per_day: $689
+  total_cost: $83,369
+  revenue_risk: $176,500
+  major_driver: Psychiatric boarding after medical clearance
+  secondary_driver: Placement delays for dual-diagnosis and guardianship cases
+intentionally_unknown:
+- Exact number of affected cases
+- Unit-level breakdown
+- Specific state facility names
+red_flags:
+  undercounted_boarding: If boarding days are buried under physician or social categories,
+    the report will miss the actual operational problem.
+  weak_recommendations: Recommendations should include concrete CM actions such as
+    bed-registry follow-up cadence, diversion review, or escalation thresholds.
+  no_trend_signal: The report should show whether the major categories are rising,
+    falling, or flat.
+mcp_uncertainty_points:
+- fact: Any current state or federal policy updates affecting psych boarding limits
+    or hospital transfer workflow
+  capability_class: current_regulatory_policy
+  action: Check live policy sources before using the report for a current escalation
+    memo.
+holdout_ref: clinical-case-manager/ccm-d02-holdout-01-psych-boarding-report-holdout.md

@@ -1,0 +1,25 @@
+seed_id: rcs-d02-seed-01-denial-root-cause-workbench
+agent_slug: revenue-cycle-specialist
+deliverable_id: rcs-d02
+deliverable_title: Denial Root Cause Analysis
+complexity: high
+required_facts:
+  analysis_period: January through March 2026
+  leading_category: authorization denials
+  total_denied_charges: $2.14M
+  operational_goal: break the authorization and coding denial loop
+intentionally_unknown:
+- exact payer portal change that triggered the January spike
+- whether one cardiology subgroup should be separated from orthopedics
+red_flags:
+  category_split: Keep preventable and non-preventable denials separated.
+  proof_of_work: The analysis should not rely on memory; it needs workqueue and claim
+    evidence.
+mcp_uncertainty_points:
+- fact: coverage status for a high-volume procedure
+  capability_class: coverage_determination
+  action: verify the active benefit rule before the next payer meeting
+- fact: coding rule or edit change that may be driving denials
+  capability_class: coding_edit_policy
+  action: check the current coding edit policy before concluding the root cause
+holdout_ref: revenue-cycle-specialist/rcs-d02-holdout-01-denial-root-cause-workbench.md

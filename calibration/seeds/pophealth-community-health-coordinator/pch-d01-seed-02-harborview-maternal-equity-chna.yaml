@@ -1,0 +1,27 @@
+seed_id: pch-d01-seed-02-harborview-maternal-equity-chna
+agent_slug: pophealth-community-health-coordinator
+deliverable_id: pch-d01
+deliverable_title: CHNA Summary Report Template
+complexity: high
+required_facts:
+  hospital_name: Harborview Community Hospital
+  assessment_period: January 15, 2026 through April 10, 2026
+  board_approval_date: May 1, 2026
+  service_area: Central Harbor, West End, and South Station neighborhoods
+  total_population: 354200
+  priority_needs: maternal health inequity, pediatric asthma, community violence prevention,
+    food insecurity, and behavioral health access
+intentionally_unknown:
+- exact census tracts included in the service area
+- exact number of translated surveys
+- exact amount of community benefit funding committed
+red_flags:
+  noted_item_01: missing language-access detail
+  noted_item_02: weak linkage between data and priority selection
+  noted_item_03: implementation strategies without measurable outcomes
+mcp_uncertainty_points:
+- fact: current public health and CHNA reporting expectations for 2026
+  capability_class: current_regulatory_policy
+  action: verify current federal guidance before finalizing the compliance language
+    and reporting cadence
+holdout_ref: pophealth-community-health-coordinator/pch-d01-holdout-02-harborview-maternal-equity-chna.md

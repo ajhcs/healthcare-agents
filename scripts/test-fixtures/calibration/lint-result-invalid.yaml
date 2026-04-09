@@ -1,0 +1,11 @@
+seed_id: cm-seed-001
+agent_slug: ""
+timestamp: not-a-timestamp
+missing_sections: bad
+unresolved_placeholders: []
+citation_parse_failures:
+  - raw_text: ""
+static_mcp_claims: []
+min_length_met: yes
+frontmatter_valid: true
+overall_pass: maybe

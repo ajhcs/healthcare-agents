@@ -1,0 +1,33 @@
+seed_id: pmc-d02-seed-01-rural-bh-network-expansion
+agent_slug: payer-managed-care-analyst
+deliverable_id: pmc-d02
+deliverable_title: Network Adequacy Assessment Report
+complexity: high
+required_facts:
+  plan_name: Pine Arc Community Care
+  product: Medicaid MCO
+  service_area: Birch County, Hollow County, Stone County, Wren County, Yarrow County
+  assessment_date: 2026-02-28
+  enrolled_members: 54,210
+  pcp_ratio_required: 1 to 2000
+  bh_ratio_required: 1 to 1500
+  obgyn_ratio_required: 1 to 3000
+intentionally_unknown:
+- Whether the state will approve telehealth encounters toward all appointment availability
+  compliance categories
+- Whether one large multispecialty group in Hollow County will renew before the next
+  contract cycle
+red_flags:
+  ghost_panels: Contracted clinicians with closed panels can make directory-based
+    access look stronger than real access.
+  frontier_travel: Countywide percentage metrics can hide severe access problems in
+    fringe ZIP codes.
+  maternity_access: OB/GYN wait times can create prenatal care compliance risk even
+    when distance standards are met.
+mcp_uncertainty_points:
+- fact: Current state-specific Medicaid appointment wait-time standards and any post-rule
+    implementation bulletin
+  capability_class: current_regulatory_policy
+  action: Check CMS and the applicable state Medicaid agency for the most recent network
+    adequacy and appointment access bulletin before using the draft for filing support.
+holdout_ref: payer-managed-care-analyst/pmc-d02-holdout-01-rural-bh-network-expansion.md

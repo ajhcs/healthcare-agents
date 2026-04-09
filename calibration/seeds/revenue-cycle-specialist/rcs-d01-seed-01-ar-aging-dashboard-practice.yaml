@@ -1,0 +1,26 @@
+seed_id: rcs-d01-seed-01-ar-aging-dashboard-practice
+agent_slug: revenue-cycle-specialist
+deliverable_id: rcs-d01
+deliverable_title: Revenue Cycle Performance Dashboard
+complexity: moderate
+required_facts:
+  organization_name: Cedar Ridge Specialty Practice
+  reporting_period: April 2026
+  strongest_signal: strong collections but a few front-end denial drivers
+  operational_goal: maintain the clean-claim trend while improving point-of-service
+    collections
+intentionally_unknown:
+- which payer has the next contract renewal pressure point
+- whether a new appointment reminder script should be added
+red_flags:
+  front_end: Do not separate claim edits from benefit verification effects.
+  collection_mix: The dashboard should keep A/R, collections, and denial trends in
+    one view.
+mcp_uncertainty_points:
+- fact: benefit status for recurring denial reasons
+  capability_class: coverage_determination
+  action: verify the benefit rule before the next dashboard review
+- fact: provider enrollment status for a newly hired clinician
+  capability_class: provider_enrollment_status
+  action: confirm enrollment before the clean-claim trend is attributed to operations
+holdout_ref: revenue-cycle-specialist/rcs-d01-holdout-01-ar-aging-dashboard-practice.md

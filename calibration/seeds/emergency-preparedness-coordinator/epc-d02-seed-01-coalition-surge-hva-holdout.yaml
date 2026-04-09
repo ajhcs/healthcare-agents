@@ -1,0 +1,36 @@
+seed_id: epc-d02-seed-01-coalition-surge-hva-holdout
+agent_slug: emergency-preparedness-coordinator
+deliverable_id: epc-d02
+deliverable_title: Hazard Vulnerability Analysis Template
+complexity: moderate
+required_facts:
+  facility_name: Meridian Cross Hospital
+  date: 2026-03-07
+  lead_assessor: Owen Hart, CHSP, Emergency Management Program Lead
+  facility_profile: 310-bed urban safety-net hospital with Level II trauma designation,
+    inpatient behavioral health, and adjacent family shelter support agreements
+  planning_context: High ambulance volume, periodic migrant shelter medical support
+    requests, recurring ransomware concern, and limited inpatient psychiatric surge
+    space
+  notable_recent_events: A 2025 summer heat emergency, one regional telecom outage,
+    and two coalition-wide bed reporting activations
+  likely_top_hazards: mass casualty incident, cyberattack or ransomware, severe heat
+    and power stress, civil disturbance, and water disruption
+intentionally_unknown:
+- The exact numeric score for each hazard row.
+- Which hazard should rank first after final scoring.
+- The final wording of the risk interpretation section.
+red_flags:
+  cyber_dependency: Downtime workflows depend heavily on manual registration and pharmacy
+    processes that have not been stress-tested overnight.
+  coalition_reliance: External response assumptions may be optimistic during simultaneous
+    citywide incidents.
+  shelter_support_scope: Family shelter support obligations could dilute staffing
+    and supply capacity during heat or communicable disease events.
+mcp_uncertainty_points:
+- fact: Current evidence for crisis staffing, heat emergency surge operations, or
+    cyberattack impacts on hospital throughput
+  capability_class: literature_search
+  action: Search biomedical and public health literature to refine assumptions used
+    in scoring and mitigation priorities.
+holdout_ref: emergency-preparedness-coordinator/epc-d02-holdout-01-coalition-surge-hva-holdout.md

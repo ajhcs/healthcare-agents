@@ -4,7 +4,30 @@
 
 set -euo pipefail
 
-AGENTS_DIR="${1:-agents}"
+AGENTS_DIR="agents"
+REGISTRY_FILE="registry.yaml"
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --registry)
+            REGISTRY_FILE="${2:-}"
+            if [[ -z "$REGISTRY_FILE" ]]; then
+                echo "error: --registry requires a file path" >&2
+                exit 1
+            fi
+            shift 2
+            ;;
+        --help|-h)
+            echo "Usage: scripts/lint-agents.sh [--registry FILE] [AGENTS_DIR]" >&2
+            exit 0
+            ;;
+        *)
+            AGENTS_DIR="$1"
+            shift
+            ;;
+    esac
+done
+
 ERRORS=0
 WARNINGS=0
 
@@ -22,6 +45,7 @@ echo "Scanning: $AGENTS_DIR/"
 echo ""
 
 FILE_COUNT=0
+declare -A LINE_BUDGETS=()
 
 has_literal() {
     local file="$1"
@@ -29,13 +53,74 @@ has_literal() {
     grep -Fq "$needle" "$file"
 }
 
+if [[ -f "$REGISTRY_FILE" ]]; then
+    while IFS=$'\t' read -r slug budget; do
+        [[ -n "$slug" ]] || continue
+        LINE_BUDGETS["$slug"]="$budget"
+    done < <(
+        python3 - "$REGISTRY_FILE" <<'PY'
+from pathlib import Path
+import sys
+import yaml
+
+registry = yaml.safe_load(Path(sys.argv[1]).read_text(encoding="utf-8")) or {}
+for entry in registry.get("agents", []) or []:
+    slug = entry.get("slug")
+    budget = entry.get("line_budget")
+    if isinstance(slug, str) and isinstance(budget, int):
+        print(f"{slug}\t{budget}")
+PY
+    )
+fi
+
+is_utility_prompt() {
+    local file="$1"
+    local basename
+    basename=$(basename "$file")
+
+    if [ "$basename" = "eval-exam-architect.md" ]; then
+        return 0
+    fi
+
+    if ! head -1 "$file" | grep -q "^---$"; then
+        return 1
+    fi
+
+    local frontmatter
+    frontmatter=$(sed -n '2,/^---$/p' "$file" | head -n -1)
+    echo "$frontmatter" | grep -Eq '^[[:space:]]*utility:[[:space:]]*true([[:space:]]|$)'
+}
+
+is_orchestrator_prompt() {
+    local file="$1"
+    local basename
+    basename=$(basename "$file")
+
+    if [ "$basename" = "orchestrator.md" ]; then
+        return 0
+    fi
+
+    if ! head -1 "$file" | grep -q "^---$"; then
+        return 1
+    fi
+
+    local frontmatter
+    frontmatter=$(sed -n '2,/^---$/p' "$file" | head -n -1)
+    echo "$frontmatter" | grep -Eq '^[[:space:]]*agent_type:[[:space:]]*orchestrator([[:space:]]|$)'
+}
+
 for file in "$AGENTS_DIR"/*.md; do
     [ -f "$file" ] || continue
     FILE_COUNT=$((FILE_COUNT + 1))
     basename=$(basename "$file")
 
-    if [ "$basename" = "eval-exam-architect.md" ]; then
+    if is_utility_prompt "$file"; then
         ok "$basename (special-purpose utility prompt; skipped canonical agent checks)"
+        continue
+    fi
+
+    if is_orchestrator_prompt "$file"; then
+        ok "$basename (special-purpose orchestrator prompt; skipped canonical specialist checks)"
         continue
     fi
 
@@ -76,6 +161,14 @@ for file in "$AGENTS_DIR"/*.md; do
         warn "$basename: Body under 100 lines ($body_lines lines)"
     elif [ "$body_lines" -lt 350 ]; then
         warn "$basename: Body under 350 lines ($body_lines lines) — consider expanding Core Mission"
+    fi
+
+    slug="${basename%.md}"
+    if [[ -n "${LINE_BUDGETS[$slug]:-}" ]]; then
+        budget="${LINE_BUDGETS[$slug]}"
+        if [ "$body_lines" -gt "$budget" ]; then
+            error "$basename: Exceeds line_budget ($body_lines > $budget)"
+        fi
     fi
 
     # Healthcare-specific: check for emoji section headers

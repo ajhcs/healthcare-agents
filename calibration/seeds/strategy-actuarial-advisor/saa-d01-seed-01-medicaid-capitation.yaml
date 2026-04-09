@@ -1,0 +1,43 @@
+seed_id: saa-d01-example-01-medicaid-capitation
+agent_slug: strategy-actuarial-advisor
+agents_relevant:
+- strategy-actuarial-advisor
+deliverable_id: saa-d01
+deliverable_title: Capitation Rate Analysis
+scenario_summary: Medicaid managed care capitation review with a proposed rate that
+  trails the required trend, risk score, and high-cost claim exposure.
+complexity: high
+required_facts:
+  line_of_business: Medicaid managed care
+  covered_lives: 120,000
+  required_pmpm: $442.30
+  proposed_pmpm: $430.10
+  risk_score: '1.08'
+  admin_load: 8.9 percent
+intentionally_unknown:
+- Whether the state will approve a higher trend factor in the final certification
+  round
+- Whether the provider roster used for attribution still matches current enrollment
+red_flags:
+  trend_gap: The file trails the indicated PMPM after utilization trend is applied.
+  behavioral_health: Behavioral health mix could be understated if the encounter feed
+    is incomplete.
+mcp_uncertainty_points:
+- fact: Current CMS managed care rate certification and encounter guidance
+  capability_class: current_regulatory_policy
+  action: Verify the latest CMS rate certification guidance before accepting the proposed
+    PMPM.
+- fact: Provider roster and attribution support for the risk model
+  capability_class: provider_directory
+  action: Verify provider identifiers and practice addresses before finalizing the
+    attribution basis.
+holdout_ref: calibration/holdouts/strategy-actuarial-advisor/saa-d01-holdout-01-medicaid-capitation.md
+source_basis:
+- 42 CFR Part 438
+- CMS Medicaid managed care rate certification guidance
+- CMS encounter data guidance
+- CMS rate certification templates
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

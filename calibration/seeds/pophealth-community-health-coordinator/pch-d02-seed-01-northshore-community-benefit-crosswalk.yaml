@@ -1,0 +1,27 @@
+seed_id: pch-d02-seed-01-northshore-community-benefit-crosswalk
+agent_slug: pophealth-community-health-coordinator
+deliverable_id: pch-d02
+deliverable_title: Schedule H Community Benefit Report
+complexity: high
+required_facts:
+  hospital_name: Northshore Teaching Hospital
+  fiscal_year: FY2025
+  operating_expenses: 386200000
+  cost_to_charge_ratio: 0.4382
+  charity_care_at_cost: 12430000
+  medicare_shortfall: 5220000
+  bad_debt_at_cost: 4170000
+intentionally_unknown:
+- exact number of people served in each community benefit category
+- exact offsetting revenue for community building activities
+- exact board signoff dates for finance reconciliation
+red_flags:
+  noted_item_01: combining Medicare shortfall into Part I totals
+  noted_item_02: reporting charity care at charges instead of cost
+  noted_item_03: omitting community building activities from Part II
+mcp_uncertainty_points:
+- fact: current Schedule H instructions and any recent IRS wording changes
+  capability_class: current_regulatory_policy
+  action: verify current IRS instructions before finalizing line descriptions and
+    compliance narrative
+holdout_ref: pophealth-community-health-coordinator/pch-d02-holdout-01-northshore-community-benefit-crosswalk.md

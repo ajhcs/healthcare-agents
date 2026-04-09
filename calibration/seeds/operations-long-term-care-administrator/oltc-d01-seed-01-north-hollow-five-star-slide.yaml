@@ -1,0 +1,42 @@
+seed_id: oltc-d01-seed-01-north-hollow-five-star-slide
+agent_slug: operations-long-term-care-administrator
+deliverable_id: oltc-d01
+deliverable_title: Five-Star Performance Dashboard
+complexity: high
+required_facts:
+  facility_name: North Hollow Post-Acute and Living Center
+  ccn: 55E807
+  report_period: Q2 2026
+  current_overall_star_rating: "\u2605\u2606\u2606\u2606\u2606"
+  health_inspection_rating: "\u2605\u2606\u2606\u2606\u2606"
+  staffing_rating: "\u2605\u2606\u2606\u2606\u2606"
+  quality_measures_rating: "\u2605\u2605\u2606\u2606\u2606"
+  total_nursing_hprd: '3.02'
+  rn_hprd: '0.33'
+  weekend_total_hprd: '2.67'
+  short_stay_rehospitalization: 24.6%
+  long_stay_falls_major_injury: 4.8%
+  antipsychotic_use: 17.9%
+  primary_driver: Complaint survey activity and low staffing levels are suppressing
+    the public rating profile.
+intentionally_unknown:
+- State benchmark values for each measure
+- Prior quarter star values for all components other than overall
+red_flags:
+  staffing_floor_risk: RN coverage is close to minimum operational tolerance and weak
+    on weekends.
+  accident_repeat_pattern: Long-stay falls with major injury place the facility at
+    elevated F689 risk.
+  public_reporting_exposure: The one-star profile may affect payer contracting and
+    referral volume.
+mcp_uncertainty_points:
+- fact: Current Care Compare facility identity and ownership display before external
+    distribution
+  capability_class: provider_directory
+  action: Verify facility identity details and CCN before issuing the dashboard outside
+    the facility.
+- fact: Any recent CMS Five-Star methodology refresh affecting staffing or QM thresholds
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy updates before finalizing board or managed-care
+    materials.
+holdout_ref: operations-long-term-care-administrator/oltc-d01-holdout-01-north-hollow-five-star-slide.md

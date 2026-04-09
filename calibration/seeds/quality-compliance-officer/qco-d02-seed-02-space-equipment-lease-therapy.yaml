@@ -1,0 +1,38 @@
+seed_id: qco-d02-seed-02
+agent_slug: quality-compliance-officer
+deliverable_id: qco-d02
+deliverable_title: Arrangement Review Checklist
+regulatory_as_of: 2026-04-09
+review_status: reviewed
+generated_by: maintainer
+reviewed_by: compliance-maintainer
+scenario_summary: Outpatient therapy clinic is entering a space and equipment lease with a physician-owned entity and needs a fraud-and-abuse review.
+required_facts:
+  organization_name: Cedar Grove Therapy Clinic
+  arrangement_type: combined space and equipment lease
+  parties:
+    - Cedar Grove Therapy Clinic
+    - Summit Lease Holdings
+  known_terms:
+    - fixed monthly rent
+    - one-year lease term
+    - dedicated storage and treatment equipment
+  board_expectation: identify exception and safe harbor fit, then list monitoring obligations
+intentionally_unknown:
+  - Whether the rented space exceeds what is reasonably necessary
+  - Whether the lease rate is comparable to market value
+red_flags:
+  do_not_assume:
+    - The lease is safe because it is written
+    - The equipment list automatically proves commercial reasonableness
+  boundary_conditions:
+    - The clinic treats Medicare beneficiaries
+    - The review must address both Stark and AKS
+mcp_uncertainty_points:
+  - fact: Verify the leasing entity's identity and address before finalizing the party section.
+    capability_class: provider_directory
+    action: Confirm the lessor details before drafting the review.
+  - fact: Check whether recent CMS or OIG guidance has changed the lease exception analysis.
+    capability_class: current_regulatory_policy
+    action: Recommend a policy scan before completing the checklist.
+holdout_ref: calibration/holdouts/quality-compliance-officer/qco-d02-holdout-02-therapy-lease-checklist.md

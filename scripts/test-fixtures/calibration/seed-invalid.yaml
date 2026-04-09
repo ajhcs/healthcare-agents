@@ -1,0 +1,10 @@
+seed_id: ""
+agent_slug: clinical-care-management-specialist
+deliverable_id: cm-d01
+deliverable_title: Comprehensive Care Management Plan
+required_facts: []
+intentionally_unknown: not-a-list
+red_flags: []
+mcp_uncertainty_points:
+  - fact: "Provider credentials"
+holdout_ref: ""

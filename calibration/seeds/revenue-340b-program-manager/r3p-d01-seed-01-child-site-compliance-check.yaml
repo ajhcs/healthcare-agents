@@ -1,0 +1,29 @@
+seed_id: r3p-d01-seed-01-child-site-compliance-check
+agent_slug: revenue-340b-program-manager
+deliverable_id: r3p-d01
+deliverable_title: 340B Program Compliance Assessment
+complexity: high
+required_facts:
+  entity_name: Valleyview Disproportionate Share Hospital
+  340b_id: HRSA-DSH-0412
+  key_controls: child-site eligibility, duplicate discount prevention, contract pharmacy
+    oversight
+  audit_goal: keep the program audit-ready without expanding scope beyond eligible
+    outpatient drugs
+intentionally_unknown:
+- manufacturer-specific audit requests that may arise later
+- final state Medicaid carve-in direction for next year
+red_flags:
+  duplicate_discount: The assessment should explicitly address Medicaid Exclusion
+    File accuracy.
+  child_site_integrity: Do not assume a clinic is eligible without current OPAIS and
+    cost report support.
+mcp_uncertainty_points:
+- fact: current 340B policy or HRSA notice affecting recertification
+  capability_class: current_regulatory_policy
+  action: check for any recent policy changes before finalizing remediation timing
+- fact: child site or prescriber identity
+  capability_class: provider_directory
+  action: verify the NPI and practice location before documenting the remediation
+    plan
+holdout_ref: revenue-340b-program-manager/r3p-d01-holdout-01-child-site-compliance-check.md

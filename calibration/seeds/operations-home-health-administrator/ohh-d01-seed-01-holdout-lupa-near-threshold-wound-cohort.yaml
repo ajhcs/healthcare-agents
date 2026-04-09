@@ -1,0 +1,36 @@
+seed_id: ohh-d01-seed-01-holdout-lupa-near-threshold-wound-cohort
+agent_slug: operations-home-health-administrator
+deliverable_id: ohh-d01
+deliverable_title: LUPA Monitoring Report
+complexity: moderate
+required_facts:
+  agency_name: Alder Run Home Health
+  branch_name: South Basin Branch
+  report_date: 2026-04-09
+  prepared_by: Cato Mire, MHA
+  total_active_periods: 29
+  below_threshold_periods: 4
+  high_risk_periods: 2
+  on_track_periods: 25
+  risk_cases: One post-op wound patient at period end with 4 of 5 visits completed;
+    one MMTA-endocrine patient with 2 of 3 completed and 2 days left; one respiratory
+    patient with 2 of 4 completed and 6 days left; one musculoskeletal patient with
+    1 of 2 completed and 8 days left
+intentionally_unknown:
+- Final physician response if a clinician determines no additional skilled visit is
+  warranted for one of the near-threshold periods
+- Any fresh CMS payment update issued after the branch manager's last PDGM reference
+  check
+red_flags:
+  threshold_pressure: Operational staff are pushing to add visits purely to avoid
+    per-visit payment.
+  wound_documentation: Post-op wound notes must clearly support continued skilled
+    care if another visit is added.
+  respiratory_followup: Respiratory teaching visits are present, but note specificity
+    has been inconsistent.
+mcp_uncertainty_points:
+- fact: Any current CMS update affecting PDGM or LUPA billing logic
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy updates before finalizing external-facing revenue
+    guidance.
+holdout_ref: operations-home-health-administrator/ohh-d01-holdout-01-holdout-lupa-near-threshold-wound-cohort.md

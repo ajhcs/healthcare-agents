@@ -1,0 +1,48 @@
+dimensions:
+  structural_completeness:
+    weight: 0.2
+    anchors:
+      0: "Missing most required sections or structurally unusable."
+      1: "Major sections missing; output is incomplete."
+      2: "Core structure present but important sections or details omitted."
+      3: "Nearly complete structure with only minor omissions."
+      4: "All required structural elements present and well organized."
+  regulatory_precision:
+    weight: 0.25
+    anchors:
+      0: "Regulatory guidance is wrong, fabricated, or dangerously vague."
+      1: "Some relevant references appear, but they are unspecific or error-prone."
+      2: "Mostly correct direction with limited citation specificity."
+      3: "Specific and largely correct references, codes, or policy details."
+      4: "Highly specific, correct, and audit-ready regulatory detail."
+  clinical_realism:
+    weight: 0.2
+    anchors:
+      0: "Reads like generic AI text; a practitioner would reject it."
+      1: "Superficially plausible but operationally weak."
+      2: "Partly realistic but misses important professional judgment."
+      3: "Plausible practitioner-grade work product."
+      4: "Strongly practitioner-authentic and domain-grounded."
+  actionability:
+    weight: 0.2
+    anchors:
+      0: "Cannot be acted on."
+      1: "Requires major follow-up research before use."
+      2: "Actionable in parts, but still vague in key places."
+      3: "Mostly actionable with limited follow-up required."
+      4: "Immediately actionable with clear next steps and ownership."
+  mcp_awareness:
+    weight: 0.15
+    nullable: true
+    anchors:
+      0: "Misses all meaningful lookup opportunities."
+      1: "Vaguely gestures at lookups without linking them to scenario uncertainty."
+      2: "Recognizes some lookup value but inconsistently."
+      3: "Correctly identifies where live data would materially improve the deliverable."
+      4: "Consistently identifies the right lookup opportunities with clear materiality."
+
+scoring:
+  min_score: 0
+  max_score: 4
+  weighted_total_scale: 4
+  note: "If a seed has no mcp_uncertainty_points, mcp_awareness is null and excluded from the weighted calculation."

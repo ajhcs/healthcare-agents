@@ -1,0 +1,8 @@
+agents_tested:
+  - clinical-case-manager
+  - clinical-documentation-improvement-specialist
+  - clinical-infection-prevention-specialist
+  - clinical-prior-authorization-specialist
+  - clinical-referral-specialist
+  - clinical-research-coordinator
+  - clinical-utilization-management-specialist

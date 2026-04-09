@@ -1,0 +1,46 @@
+seed_id: crc-d02-seed-01-endocrine-deviation-late-sae-report
+agent_slug: clinical-research-coordinator
+deliverable_id: crc-d02
+deliverable_title: Protocol Deviation Report
+complexity: high
+required_facts:
+  study_title: GLIDE-SENSE / Pivotal Study of the SensePatch Closed-Loop Insulin Delivery
+    System
+  subject_id: GS-0189
+  deviation_date: '2026-01-22'
+  reported_by: Piper Quill, RN, Clinical Research Coordinator
+  report_date: '2026-01-27'
+  violated_section: Protocol Section 9.3 Serious Adverse Event Reporting and Site
+    Manual Section 5.2
+  event_summary: Subject hospitalized for severe hypoglycemia on 2026-01-22; site
+    learned of admission from parent voicemail on 2026-01-23 at 06:40 but sponsor
+    was not notified until 2026-01-27
+  pi_name: Levon Hart, MD
+  immediate_actions: PI reviewed event on 2026-01-27, sponsor notified same day, IRB
+    submission prepared, source and EDC reconciled
+  root_cause_hint: Voicemail was routed to a general research inbox not reviewed during
+    a weather-related closure; backup SAE triage coverage failed
+  safety_impact: 'Yes'
+  data_impact: 'Yes'
+intentionally_unknown:
+- Whether the IRB required reporting within 5 business days or 10 business days under
+  local policy
+- Final sponsor determination on device relatedness
+red_flags:
+  late-awareness-workflow: The site had awareness before sponsor notification, so
+    the deviation clock starts at documented awareness.
+  coverage-failure: Emergency closure procedures did not preserve SAE escalation coverage.
+  reconciliation-risk: Hospital discharge details, source notes, and SAE form timelines
+    may not align without follow-up.
+mcp_uncertainty_points:
+- fact: Any recent FDA safety-reporting interpretation updates relevant to device
+    or hybrid drug-device trials
+  capability_class: current_regulatory_policy
+  action: Check whether current FDA guidance has updated site expectations around
+    electronic awareness logs or remote safety escalation.
+- fact: Recent literature on severe hypoglycemia event rates with closed-loop systems
+    that could affect context
+  capability_class: literature_search
+  action: Search current studies if the report will be paired with a broader safety
+    trend analysis.
+holdout_ref: clinical-research-coordinator/crc-d02-holdout-01-endocrine-deviation-late-sae-report.md

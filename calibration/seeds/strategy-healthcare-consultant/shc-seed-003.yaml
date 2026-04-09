@@ -1,0 +1,29 @@
+seed_id: shc-seed-003
+agent_slug: strategy-healthcare-consultant
+deliverable_id: shc-d01
+deliverable_title: Service Line Strategic Assessment
+scenario_summary: Orthopedics service line strategy for a CON-exempt market where outpatient migration and new orthopedic ASC competition are reshaping volume
+complexity: moderate
+required_facts:
+  organization: Lakeshore Regional Medical Center
+  geography: mid-sized market with strong commercial employer base
+  service_line: Orthopedics
+  baseline_volume: 1620 inpatient discharges and 22300 outpatient encounters
+  payer_mix: 51 percent commercial, 24 percent Medicare, 17 percent Medicare Advantage, 8 percent Medicaid
+  competitors: Prairie Ortho opened a physician-owned ASC and two competitors added total joint capacity
+  physician_goal: add one sports medicine surgeon and one total joint surgeon
+intentionally_unknown:
+  - final ASC partnership structure
+  - whether physicians will agree to employment or PSA
+  - expected contribution margin after outpatient migration
+red_flags:
+  leakage_gap: outpatient cases are leaving the system for independent ASCs
+  capacity_gap: block time is constrained on the main campus
+mcp_uncertainty_points:
+  - fact: target surgeons and ASC owners
+    capability_class: provider_directory
+    action: verify affiliations and addresses before partnership or recruitment decisions
+  - fact: current coverage or payment policy affecting outpatient joint replacement
+    capability_class: current_regulatory_policy
+    action: check current CMS rules before shifting cases to a freestanding site
+holdout_ref: strategy-healthcare-consultant/shc-d01-holdout-003.md

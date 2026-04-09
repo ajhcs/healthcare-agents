@@ -1,0 +1,30 @@
+seed_id: hcd-d01-seed-01-sts-cabg-semiannual-preview
+agent_slug: healthit-clinical-data-analyst
+deliverable_id: hcd-d01
+deliverable_title: Quality Measure Performance Dashboard Specification
+complexity: high
+required_facts:
+  dashboard_name: Alder Ridge Heart Institute STS Outcomes Scorecard
+  owner: Cardiovascular Service Line Quality Office
+  data_source: EDW cardiac surgery mart with Clarity operative note reconciliation
+  refresh_frequency: Monthly with semiannual benchmark freeze
+  audience: Cardiac surgery leadership, perioperative nursing, finance, quality committee
+  synthetic_program_volume: 310 adult cardiac surgery cases annually
+intentionally_unknown:
+- Exact STS risk model version in use this cycle
+- National percentile targets for each composite outcome
+- Whether any STS public methodology notes changed after the last semiannual release
+red_flags:
+  abstraction_gap: Key fields for operative urgency and reoperation status may still
+    depend on manual abstraction.
+  mortality_definition: Internal mortality surveillance timing can diverge from registry-defined
+    operative mortality if not reconciled.
+  readmission_linkage: External-hospital readmissions may be incomplete in internal
+    ADT-only feeds.
+mcp_uncertainty_points:
+- fact: Whether STS published updated risk model or submission guidance relevant to
+    the current semiannual cycle
+  capability_class: current_regulatory_policy
+  action: Check current STS or CMS-linked policy materials before freezing benchmark
+    interpretation
+holdout_ref: healthit-clinical-data-analyst/hcd-d01-holdout-01-sts-cabg-semiannual-preview.md

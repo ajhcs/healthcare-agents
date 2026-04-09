@@ -1,0 +1,36 @@
+seed_id: htp-d01-seed-02-harborview-behavioral-health-rpm-pro-forma
+agent_slug: healthit-telehealth-program-manager
+deliverable_id: htp-d01
+deliverable_title: Telehealth Program Financial Pro Forma
+complexity: high
+required_facts:
+  organization_name: Harborview Behavioral Health
+  launch_date: 2026-10-01
+  service_mix:
+    psychiatry_follow_up: 240
+    psychotherapy: 300
+    rtm_management: 160
+  payer_mix:
+    commercial: 48
+    medicare_advantage: 26
+    medicaid: 26
+  allowed_amounts:
+    psychiatry_follow_up: 142
+    psychotherapy: 110
+    rtm_management: 58
+  staffing:
+    licensed_clinician_coverage_fte: 1.2
+    care_navigation_fte: 1.0
+    device_support_fte: 0.5
+intentionally_unknown:
+  - final no-show reduction rate
+  - exact platform vendor
+red_flags:
+  noted_item_01: RTM volume included without patient enrollment
+  noted_item_02: staffing plan that underestimates clinician coverage
+  noted_item_03: no separate expense for outreach and device support
+mcp_uncertainty_points:
+  - fact: current CMS telehealth and RPM billing rules
+    capability_class: current_regulatory_policy
+    action: verify current CMS telehealth guidance before finalizing the pro forma
+holdout_ref: healthit-telehealth-program-manager/htp-d01-holdout-02-harborview-behavioral-health-rpm-pro-forma.md

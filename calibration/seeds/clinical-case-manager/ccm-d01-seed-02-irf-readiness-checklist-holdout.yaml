@@ -1,0 +1,45 @@
+seed_id: ccm-d01-seed-02-irf-readiness-checklist-holdout
+agent_slug: clinical-case-manager
+deliverable_id: ccm-d01
+deliverable_title: Discharge Planning Checklist
+complexity: moderate
+required_facts:
+  patient_name: Eamon Pryce
+  mrn: MRN LF-226540
+  admission_date: '2026-04-01'
+  expected_los: 6 days
+  gmlos: '5.4'
+  expected_discharge_date: '2026-04-07'
+  disposition: IRF
+  clinical_context: Acute ischemic stroke with right-sided weakness, dysarthria, and
+    improving swallow function
+  payer: Harbor Lantern Medicare Advantage
+  chosen_facility: Maple Cross Rehabilitation Institute
+  auth_reference: HL-IRF-11827
+  family_participant: sister Jana Pryce
+  transport_mode: BLS ambulance
+  follow_up: Neurology in 14 days and PCP in 7 days after rehab discharge
+intentionally_unknown:
+- Final therapy minutes achieved on discharge day
+- Receiving rehab physician NPI
+- Exact transport departure time
+red_flags:
+  weak_irf_case: If the checklist does not support intensive rehab tolerance, physician
+    supervision, and interdisciplinary need, the recommendation is vulnerable.
+  patient_choice_gap: A polished checklist should show the provider-choice conversation,
+    not just a selected facility name.
+  handoff_gap: Swallow precautions, current diet, and communication deficits should
+    be reflected in the transfer planning.
+mcp_uncertainty_points:
+- fact: Receiving IRF contact details and physician directory match
+  capability_class: provider_directory
+  action: Verify the receiving rehab provider identity and destination details before
+    transmitting the final handoff.
+- fact: Plan participation status for the selected IRF
+  capability_class: provider_enrollment_status
+  action: Confirm the facility remains enrolled with the member's plan before transfer.
+- fact: Any recent policy updates affecting IRF coverage or prior authorization
+  capability_class: current_regulatory_policy
+  action: Check current CMS and payer policy references before using this scenario
+    as live guidance.
+holdout_ref: clinical-case-manager/ccm-d01-holdout-02-irf-readiness-checklist-holdout.md

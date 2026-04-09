@@ -1,0 +1,36 @@
+seed_id: cm-seed-001
+agent_slug: clinical-care-management-specialist
+deliverable_id: cm-d01
+generated_by: sonnet-4.6
+judged_by: opus-4.6
+timestamp: 2026-04-09T00:00:00Z
+scores:
+  structural_completeness: 3
+  regulatory_precision: 2
+  clinical_realism: 3
+  actionability: 3
+  mcp_awareness: 2
+  weighted_total: 2.65
+expectation_checklist:
+  - expectation: Compute the patient-specific risk score.
+    met: partial
+    notes: Described risk but did not calculate the score.
+lint:
+  seed_id: cm-seed-001
+  agent_slug: clinical-care-management-specialist
+  timestamp: 2026-04-09T00:00:00Z
+  missing_sections: []
+  unresolved_placeholders: []
+  citation_parse_failures: []
+  static_mcp_claims: []
+  min_length_met: true
+  frontmatter_valid: true
+  overall_pass: true
+gaps:
+  - gap_id: gap-001
+    gap_type: computational_omission
+    severity: high
+    dimension: structural_completeness
+    evidence: The output described risk level without computing the score.
+    likely_prompt_fix: Add a worked score computation example to the workflow.
+    confidence: 0.82

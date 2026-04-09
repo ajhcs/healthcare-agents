@@ -1,0 +1,40 @@
+seed_id: owm-d02-seed-01-redwood-coast-float-pool-case
+agent_slug: operations-workforce-manager
+deliverable_id: owm-d02
+deliverable_title: Agency Reduction Business Case
+complexity: high
+required_facts:
+  organization_name: Redwood Coast Medical Center
+  report_date: '2026-04-09'
+  current_annual_agency_spend: $14.2M
+  target_annual_agency_spend: $6.3M
+  labor_problem_statement: Travel RN reliance escalated after a telemetry expansion
+    and a step-down night-shift turnover wave.
+  strategic_thesis: A centralized float pool plus manager-level retention intervention
+    can remove most avoidable traveler demand within 12 months.
+  service_lines_in_scope: ICU, med-surg, telemetry, and ED
+  financial_guardrail: Board expects positive first-year net savings and no staffing
+    model that weakens shift-level acuity coverage.
+intentionally_unknown:
+- Current quarter market bill-rate movement for regional ICU and ED contracts
+- Whether state staffing legislation changed since the last internal policy scan
+- Whether any external-facing appendix names partner facilities requiring entity verification
+red_flags:
+  false-savings-math: Do not compare agency bill rates to base wage only; use fully
+    loaded internal cost.
+  competency-gap: Any float pool design should imply documented cross-training and
+    unit-specific competency validation.
+  retention-omission: Agency reduction plan should not rely on recruitment alone while
+    ignoring the turnover source.
+mcp_uncertainty_points:
+- fact: Whether CMS or comparable policy updates changed staffing-related expectations
+    relevant to the business case
+  capability_class: current_regulatory_policy
+  action: Check current CMS and Federal Register updates before finalizing compliance-sensitive
+    language.
+- fact: Whether partner facility names in the final deck map to the correct legal
+    entities
+  capability_class: provider_directory
+  action: Verify provider or facility identity details before sending the external
+    version.
+holdout_ref: operations-workforce-manager/owm-d02-holdout-01-redwood-coast-float-pool-case.md

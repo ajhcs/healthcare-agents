@@ -1,0 +1,35 @@
+seed_id: qco-d01-seed-03
+agent_slug: quality-compliance-officer
+deliverable_id: qco-d01
+deliverable_title: Annual Compliance Risk Assessment
+regulatory_as_of: 2026-04-09
+review_status: reviewed
+generated_by: maintainer
+reviewed_by: compliance-maintainer
+scenario_summary: Home health agency needs an annual risk assessment after audit findings on documentation, exclusion screening, and delayed overpayment returns.
+required_facts:
+  organization_name: Riverbend Home Health Services
+  facility_type: Medicare-certified home health agency
+  known_events:
+    - 4 audit findings on missed visit-note signatures
+    - 1 overpayment identified but not yet returned
+    - 2 vendors pending monthly exclusion-screening refresh
+  board_expectation: identify top controls to stabilize the revenue and compliance cycle
+intentionally_unknown:
+  - The exact overpayment amount
+  - Whether the vendor screening lapse involved a true exclusion match
+red_flags:
+  do_not_assume:
+    - Documentation gaps are purely clerical
+    - Overpayment return can wait until the year-end close
+  boundary_conditions:
+    - The agency uses third-party scheduling software
+    - The report must separate compliance risk from billing operations
+mcp_uncertainty_points:
+  - fact: Verify whether the vendor roster is current before describing exclusion-screening exposure.
+    capability_class: provider_directory
+    action: Recommend a directory check for any external clinicians or contractors.
+  - fact: Check for recent CMS or OIG updates affecting overpayment return expectations.
+    capability_class: current_regulatory_policy
+    action: Recommend a policy scan before finalizing the remediation plan.
+holdout_ref: calibration/holdouts/quality-compliance-officer/qco-d01-holdout-03-home-health-risk-assessment.md

@@ -1,0 +1,28 @@
+seed_id: qpi-d01-seed-01-discharge-flow-a3
+agent_slug: quality-process-improvement-analyst
+deliverable_id: qpi-d01
+deliverable_title: A3 Problem-Solving Report
+complexity: high
+required_facts:
+  organization_name: Riverbend Community Hospital
+  patient_population: adult heart failure discharges with frequent readmission risk
+  primary_gap: medication reconciliation and follow-up scheduling are incomplete at
+    discharge
+  improvement_goal: reduce readmissions by closing the discharge process defects
+intentionally_unknown:
+- exact weekend staffing levels for pharmacy and case management
+- which PCP groups have same-week appointment availability
+- the final home transportation vendor to use for all patients
+red_flags:
+  denominator_clarity: The report should define the discharge cohort clearly and avoid
+    mixing observation and inpatient discharges.
+  workflow_gap: The report should not assume a PCP visit exists unless it is booked.
+mcp_uncertainty_points:
+- fact: receiving PCP identity and practice location
+  capability_class: provider_directory
+  action: "verify the receiving clinician\u2019s NPI and practice address before handoff"
+- fact: current care-transition policy for CHF readmissions
+  capability_class: current_regulatory_policy
+  action: check for recent CMS or payer changes before finalizing the countermeasure
+    plan
+holdout_ref: quality-process-improvement-analyst/qpi-d01-holdout-01-discharge-flow-a3.md

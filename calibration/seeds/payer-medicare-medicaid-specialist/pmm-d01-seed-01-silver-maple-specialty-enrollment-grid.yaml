@@ -1,0 +1,34 @@
+seed_id: pmm-d01-seed-01-silver-maple-specialty-enrollment-grid
+agent_slug: payer-medicare-medicaid-specialist
+deliverable_id: pmm-d01
+deliverable_title: Medicare Enrollment Status Report
+complexity: high
+required_facts:
+  organization: Silver Maple Specialty Care Holdings
+  report_date: '2026-04-09'
+  total_enrolled_providers: '71'
+  total_tins: '5'
+  focal_risk: A neurology division changed suite addresses across two campuses and
+    one physician's reassignment did not post before claims queued.
+  pending_practitioner: Lena P. Corwin, MD
+  synthetic_group_npi_context: Enterprise has separate cardiology, neurology, pulmonology,
+    and imaging group entities under different Type 2 NPIs.
+  revalidation_pressure: Two group revalidations are due within 75 days.
+intentionally_unknown:
+- Exact MAC jurisdiction name
+- Whether the pending reassignment issue has already generated denials
+- Any newly adjusted CY2026 application fee details beyond the prompt baseline
+red_flags:
+  reassignment_gap: Professional claims may route under a group without a completed
+    PECOS reassignment.
+  location_reporting: Suite-level location changes may not be synchronized across
+    PECOS and the billing master.
+  revalidation_timing: Approaching deadlines increase deactivation risk if ownership
+    attestations remain incomplete.
+mcp_uncertainty_points:
+- fact: Whether current CMS enrollment instructions changed for reassignment processing
+    or revalidation workflow
+  capability_class: current_regulatory_policy
+  action: Check current CMS enrollment and PECOS policy updates before finalizing
+    recommended next steps.
+holdout_ref: payer-medicare-medicaid-specialist/pmm-d01-holdout-01-silver-maple-specialty-enrollment-grid.md

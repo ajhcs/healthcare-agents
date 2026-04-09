@@ -1,0 +1,35 @@
+seed_id: hea-d01-seed-01-ambulatory-orders-cosign-holdout
+agent_slug: healthit-epic-applications-analyst
+deliverable_id: hea-d01
+deliverable_title: Epic Build Change Request
+complexity: moderate
+required_facts:
+  request_id: SYN-CHG-2604-181
+  application: Orders / Clinical Documentation
+  requested_by: Eamon Thurl, Ambulatory Compliance
+  priority: Urgent
+  target_date: '2026-04-29'
+  organization: Juniper Ridge Medical Group
+  problem_statement: Verbal imaging and infusion orders entered by nursing staff are
+    not consistently routed to the correct authorizing provider cosign queue within
+    48 hours.
+  affected_sites: Four infusion departments and two imaging centers
+intentionally_unknown:
+- Specific INI number governing cosign timing behavior in this environment
+- Whether all affected order types share one routing rule or separate service-line
+  variants
+- Whether a downstream disclosure packet currently excludes unsigned draft order artifacts
+red_flags:
+  legal_record_risk: Unsigned or late-authenticated orders may not withstand medical
+    review.
+  routing_risk: Provider reassignment logic could misroute cosign tasks when covering
+    clinicians change mid-day.
+  reporting_risk: Current unsigned-order monitoring report may undercount deferred
+    cosign tasks.
+mcp_uncertainty_points:
+- fact: Whether any current CMS guidance has shifted around signature or authentication
+    expectations relevant to ambulatory diagnostic and infusion orders
+  capability_class: current_regulatory_policy
+  action: Check current CMS guidance before finalizing the clinical and business justification
+    language
+holdout_ref: healthit-epic-applications-analyst/hea-d01-holdout-01-ambulatory-orders-cosign-holdout.md

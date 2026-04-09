@@ -1,0 +1,36 @@
+seed_id: ssi-d01-example-01-org-redesign
+agent_slug: strategy-structural-improvement-consultant
+agents_relevant:
+- strategy-structural-improvement-consultant
+deliverable_id: ssi-d01
+deliverable_title: Organizational Redesign Proposal
+scenario_summary: Organizational redesign for a regional system that needs fewer layers,
+  clearer decision rights, and stronger service line governance.
+complexity: high
+required_facts:
+  current_direct_reports: '7'
+  proposed_direct_reports: '5'
+  annual_savings: $540,000
+  one_time_transition_cost: $320,000
+  service_lines: five hospitals and two ambulatory divisions
+intentionally_unknown:
+- Whether one of the duplicate vice president roles can be reassigned instead of eliminated
+- Whether the board wants service-line governance to be centralized or site-specific
+red_flags:
+  layers: Too many layers create decision drift and delay escalation.
+  decision_rights: Without reserve powers, the new structure will create confusion
+    instead of clarity.
+mcp_uncertainty_points:
+- fact: Current governance and compliance expectations that may affect the redesign
+  capability_class: current_regulatory_policy
+  action: Verify current CMS and compliance expectations before locking the structure.
+holdout_ref: calibration/holdouts/strategy-structural-improvement-consultant/ssi-d01-holdout-01-org-redesign.md
+source_basis:
+- 42 CFR 482.12
+- IRS 501(r)
+- OIG compliance guidance
+- FTC Health Care Merger Guidelines 2023
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

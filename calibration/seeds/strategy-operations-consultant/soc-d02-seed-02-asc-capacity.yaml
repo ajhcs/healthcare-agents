@@ -1,0 +1,36 @@
+seed_id: soc-d02-example-02-asc-capacity
+agent_slug: strategy-operations-consultant
+agents_relevant:
+- strategy-operations-consultant
+deliverable_id: soc-d02
+deliverable_title: Capacity Planning Model
+scenario_summary: Ambulatory surgery capacity model with block utilization pressure,
+  growing case volume, and one OR suite reaching saturation.
+complexity: high
+required_facts:
+  current_utilization: 78 percent in main ORs
+  asc_utilization: 84 percent
+  year_1_forecast: 4,720 cases
+  year_5_forecast: 5,420 cases
+  pacu_gap: 2 additional bays
+intentionally_unknown:
+- Whether surgeons will accept longer block hours without losing access to preferred
+  days
+- Whether PACU can be expanded without a capital buildout
+red_flags:
+  saturation: The busiest block days are already close to the practical ceiling.
+  pacu: Recovery space will become the next bottleneck if nothing changes.
+mcp_uncertainty_points:
+- fact: Current CMS outpatient payment or facility guidance affecting ambulatory expansion
+  capability_class: current_regulatory_policy
+  action: Verify the current CMS guidance before locking the capacity option.
+holdout_ref: calibration/holdouts/strategy-operations-consultant/soc-d02-holdout-02-asc-capacity.md
+source_basis:
+- 42 CFR 482.13
+- CMS outpatient payment guidance
+- AHRQ capacity planning resources
+- BLS OEWS 2025
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

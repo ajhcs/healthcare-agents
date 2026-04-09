@@ -1,0 +1,62 @@
+workflow:
+  title: TCM Audit Review
+  steps:
+    - step_id: 1
+      agent_slug: clinical-care-management-specialist
+      agent_name: Care Management Specialist
+      deliverable_id: ccm-d02
+      deliverable_title: Readmission Risk Assessment
+      why: Assess the patient-specific discharge risk before downstream review.
+      required_inputs:
+        - source: user
+          data: "Discharge summary, payer status, PCP status, housing situation"
+      outputs_passed_forward:
+        - field: risk_score
+          consumers: [2]
+      depends_on: []
+      independent_review: false
+      tool_recommendation:
+        capability_class: provider_directory
+        query_template: Verify the receiving provider's NPI and taxonomy.
+        materiality: Prevents handoff to an invalid receiving provider.
+    - step_id: 2
+      agent_slug: revenue-medical-coding-specialist
+      agent_name: Medical Coding Specialist
+      deliverable_id: rmc-d01
+      deliverable_title: Coding Audit Report
+      why: Confirm coding and billing support for the transition claim.
+      required_inputs:
+        - source: step_1
+          data: risk_score
+      outputs_passed_forward:
+        - field: audit_findings
+          consumers: [3]
+      depends_on: [1]
+      independent_review: false
+      tool_recommendation:
+        capability_class: coding_edit_policy
+        query_template: Verify NCCI edits for the planned billing workflow.
+        materiality: Prevents non-compliant coding assumptions.
+    - step_id: 3
+      agent_slug: quality-compliance-officer
+      agent_name: Compliance Officer
+      deliverable_id: qco-d01
+      deliverable_title: Annual Compliance Risk Assessment
+      why: Review the workflow for regulatory escalation risk.
+      required_inputs:
+        - source: user
+          data: "Compensation, referral, and escalation context"
+      outputs_passed_forward: []
+      depends_on: []
+      independent_review: true
+      tool_recommendation:
+        capability_class: current_regulatory_policy
+        query_template: Check recent CMS or OIG updates relevant to the review.
+        materiality: Keeps compliance advice current.
+  blockers:
+    - type: missing_input
+      condition: User has not provided a discharge summary.
+      affects: [1]
+      escalate_to: user
+      workflow_status: blocked
+      resolution: Ask the user for the missing discharge summary before continuing.

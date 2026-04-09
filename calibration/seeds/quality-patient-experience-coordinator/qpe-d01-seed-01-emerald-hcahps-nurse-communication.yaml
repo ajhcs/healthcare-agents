@@ -1,0 +1,25 @@
+seed_id: qpe-d01-seed-01-emerald-hcahps-nurse-communication
+agent_slug: quality-patient-experience-coordinator
+deliverable_id: qpe-d01
+deliverable_title: Patient Experience Improvement Plan
+complexity: moderate
+required_facts:
+  hospital_unit: Emerald Orthopedic Pavilion, 4 West
+  target_composite: Communication with Nurses
+  current_percentile_rank: 29
+  target_percentile_rank: 72
+  top_box_rate: 57
+  recurring_themes: inconsistent introductions, rushed medication explanations, delayed updates
+intentionally_unknown:
+- exact quarterly benchmark rates
+- exact call-light response time
+- exact script compliance percentage
+red_flags:
+  noted_item_01: talking about satisfaction without survey methodology
+  noted_item_02: missing monitoring measures
+  noted_item_03: treating complaint themes as anecdotes instead of data
+mcp_uncertainty_points:
+- fact: current HCAHPS and CMS VBP references
+  capability_class: current_regulatory_policy
+  action: verify the latest survey and VBP wording before finalizing the improvement plan
+holdout_ref: quality-patient-experience-coordinator/qpe-d01-holdout-01-emerald-hcahps-nurse-communication.md

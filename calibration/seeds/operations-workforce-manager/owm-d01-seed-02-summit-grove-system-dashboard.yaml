@@ -1,0 +1,41 @@
+seed_id: owm-d01-seed-02-summit-grove-system-dashboard
+agent_slug: operations-workforce-manager
+deliverable_id: owm-d01
+deliverable_title: Workforce Dashboard
+complexity: routine
+required_facts:
+  organization_name: Summit Grove Health System
+  report_month: April 2026
+  total_employees: 3,220
+  total_nursing_ftes: '962.5'
+  emerging_risk: First-year RN retention softened after a winter new-grad cohort was
+    placed into high-turnover night assignments
+  secondary_risk: Credentialing turnaround for APP and specialty RN onboarding is
+    slowing perioperative starts
+  operational_context: Enterprise fill rate remains above target with low agency use
+    outside ED and OR
+intentionally_unknown:
+- Whether any new Joint Commission interpretive emphasis affects credentialing file
+  review cadence
+- Whether a named ambulatory surgery affiliate in the packet needs facility-identity
+  confirmation
+- Current state-specific staffing proposal activity outside existing internal policy
+  summaries
+red_flags:
+  false-complacency: Stable top-line metrics should not hide first-year turnover and
+    onboarding delays.
+  access-risk: Credentialing delays can suppress realized FTEs even when funded positions
+    appear filled.
+  compliance-drift: Scheduling access should not stay active for staff with incomplete
+    onboarding files.
+mcp_uncertainty_points:
+- fact: Whether current policy updates changed staffing or credentialing expectations
+    relevant to external-facing recommendations
+  capability_class: current_regulatory_policy
+  action: Check current CMS or comparable policy updates before finalizing external
+    recommendations.
+- fact: Whether any affiliate named in the packet is referenced under the correct
+    facility identity
+  capability_class: provider_directory
+  action: Verify provider or facility identity details before sending the packet externally.
+holdout_ref: operations-workforce-manager/owm-d01-holdout-02-summit-grove-system-dashboard.md

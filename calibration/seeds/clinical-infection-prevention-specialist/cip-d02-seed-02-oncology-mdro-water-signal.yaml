@@ -1,0 +1,45 @@
+seed_id: cip-d02-seed-02-oncology-mdro-water-signal
+agent_slug: clinical-infection-prevention-specialist
+deliverable_id: cip-d02
+deliverable_title: Outbreak Investigation Report
+complexity: moderate
+required_facts:
+  facility_name: Northlake Oncology Center
+  organism_condition: Burkholderia cepacia complex bloodstream infection cluster
+  investigation_start: 2026-03-02
+  investigation_end: 2026-03-28
+  lead_investigator: Elias North, CIC
+  trigger_date: 2026-03-02
+  detection_method: Surveillance chart and microbiology review
+  baseline_rate: 1 oncology B. cepacia complex bloodstream isolate in prior 36 months
+  current_rate: 3 central line-associated bloodstream infections in 12 days
+  total_cases: '3'
+  attack_rate: '4.7'
+  epidemic_period: 2026-02-27 to 2026-03-10
+  units_affected: Hematology-Oncology Unit 5 East
+  suspected_mode: Common source or vehicle
+  common_exposures: use of sink-adjacent medication prep area, shared oral care supplies,
+    neutropenic central line population
+  resolution_date: 2026-03-28
+  resolution_criteria: No new related bloodstream infections for 18 days after sink-use
+    restrictions and remediation, plus negative follow-up environmental sampling from
+    remediated areas
+intentionally_unknown:
+- Final strain relatedness from any external reference laboratory
+- Exact proportion of oral care episodes performed at the sink-adjacent counter
+- Whether one environmental isolate reflects contamination after the cluster rather
+  than the original source
+red_flags:
+  water_management_disconnect: A strong report should connect the outbreak response
+    to the facility water management program and sink-risk controls.
+  false_precision: The report should not state the source was definitively proven
+    if environmental and molecular evidence remain partial.
+  missing_oncology_context: The narrative should reflect the vulnerability of central-line-dependent
+    neutropenic patients.
+mcp_uncertainty_points:
+- fact: Any newer CMS or federal survey expectations tied to water management and
+    infection control programs
+  capability_class: current_regulatory_policy
+  action: Verify whether any current CMS or related policy updates change how water
+    management expectations should be framed for hospital infection control oversight.
+holdout_ref: clinical-infection-prevention-specialist/cip-d02-holdout-02-oncology-mdro-water-signal.md

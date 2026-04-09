@@ -1,0 +1,26 @@
+seed_id: rcs-d01-seed-01-revenue-cycle-dashboard-core
+agent_slug: revenue-cycle-specialist
+deliverable_id: rcs-d01
+deliverable_title: Revenue Cycle Performance Dashboard
+complexity: high
+required_facts:
+  organization_name: Riverbend Community Hospital
+  reporting_period: March 2026
+  strongest_signal: clean claim rate, A/R aging, and denial recovery
+  operational_goal: keep the executive team focused on the largest revenue-cycle drag
+    points
+intentionally_unknown:
+- which payer is driving the highest denial cluster next month
+- whether a new registration edit will reduce CARC 16 first-pass denials
+red_flags:
+  metric_balance: Do not report KPIs without both current and prior-month context.
+  denial_focus: The dashboard should differentiate preventable and non-preventable
+    denials.
+mcp_uncertainty_points:
+- fact: benefit or coverage status for a recurring denial pattern
+  capability_class: coverage_determination
+  action: check the active benefit rule before writing the action item
+- fact: provider enrollment or credentialing status affecting claims
+  capability_class: provider_enrollment_status
+  action: verify whether enrollment status is blocking clean claim submission
+holdout_ref: revenue-cycle-specialist/rcs-d01-holdout-01-revenue-cycle-dashboard-core.md

@@ -1,0 +1,35 @@
+seed_id: qco-d01-seed-01
+agent_slug: quality-compliance-officer
+deliverable_id: qco-d01
+deliverable_title: Annual Compliance Risk Assessment
+regulatory_as_of: 2026-04-09
+review_status: reviewed
+generated_by: maintainer
+reviewed_by: compliance-maintainer
+scenario_summary: Behavioral health hospital with ED boarding, psychiatric transfers, and privacy complaints tied to shared workstations.
+required_facts:
+  organization_name: Northgate Behavioral Health Hospital
+  facility_type: inpatient psychiatric hospital with a freestanding emergency department
+  known_events:
+    - 22 seclusion events in the last quarter
+    - 6 transfers delayed by missing receiving-facility acceptances
+    - 3 privacy complaints tied to unlocked nursing workstations
+  board_expectation: board-ready heat map and 12-month work plan
+intentionally_unknown:
+  - Whether any transfer delays involved an unstable emergency medical condition
+  - Whether the workstation access issues reflect malicious access or workflow confusion
+red_flags:
+  do_not_assume:
+    - EMTALA does not apply to psychiatric hospitals
+    - A low hotline volume means low compliance risk
+  boundary_conditions:
+    - The organization uses both EHR and paper downtime forms
+    - Compliance can recommend controls but not legal conclusions
+mcp_uncertainty_points:
+  - fact: Verify current EMTALA interpretive guidance for psychiatric transfers and involuntary holds.
+    capability_class: current_regulatory_policy
+    action: Recommend a policy check before finalizing the transfer-risk section.
+  - fact: Confirm the on-call psychiatrist and emergency physician directory information before naming escalation contacts.
+    capability_class: provider_directory
+    action: Verify identities and practice locations before building the response tree.
+holdout_ref: calibration/holdouts/quality-compliance-officer/qco-d01-holdout-01-behavioral-health-annual-risk-assessment.md

@@ -1,0 +1,38 @@
+seed_id: qco-d02-seed-01
+agent_slug: quality-compliance-officer
+deliverable_id: qco-d02
+deliverable_title: Arrangement Review Checklist
+regulatory_as_of: 2026-04-09
+review_status: reviewed
+generated_by: maintainer
+reviewed_by: compliance-maintainer
+scenario_summary: Imaging center is renewing a medical director agreement and wants a Stark and AKS review before signature.
+required_facts:
+  organization_name: Westbrook Imaging Partners
+  arrangement_type: medical director services agreement
+  parties:
+    - Westbrook Imaging Partners
+    - Dr. Maya Desai
+  known_terms:
+    - one-year term
+    - monthly flat fee
+    - defined oversight and quality duties
+  board_expectation: a clear go or no-go recommendation with monitoring steps
+intentionally_unknown:
+  - Whether the compensation matches fair market value
+  - Whether the duties are actually performed each month
+red_flags:
+  do_not_assume:
+    - A flat fee is automatically compliant
+    - The agreement is safe because Dr. Desai is highly productive clinically
+  boundary_conditions:
+    - The practice bills Medicare for imaging services
+    - The board wants Stark first, then AKS analysis
+mcp_uncertainty_points:
+  - fact: Verify the physician's NPI and practice address before completing the party identification section.
+    capability_class: provider_directory
+    action: Confirm identity details prior to drafting the checklist.
+  - fact: Check for any recent CMS or OIG policy updates affecting personal-services arrangements.
+    capability_class: current_regulatory_policy
+    action: Recommend a current policy scan before sign-off.
+holdout_ref: calibration/holdouts/quality-compliance-officer/qco-d02-holdout-01-imaging-medical-director-checklist.md

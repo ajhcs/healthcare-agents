@@ -1,0 +1,32 @@
+seed_id: pmc-d01-seed-01-pediatric-chip-rate-rebase
+agent_slug: payer-managed-care-analyst
+deliverable_id: pmc-d01
+deliverable_title: Capitation Rate Development Summary
+complexity: moderate
+required_facts:
+  plan_name: Bright Harbor Kids Coverage
+  population: CHIP children in three urban counties
+  rating_period: 2027-07-01 to 2028-06-30
+  base_period: 2025-01-01 to 2025-12-31
+  enrolled_members: 27,640
+  member_months: 331,680
+  outpatient_fee_change: 2.4 percent hospital outpatient increase effective 2027-07-01
+  neonatal_outlier_adjustment: one $1.8 million NICU case removed from base and spread
+    through credibility review
+intentionally_unknown:
+- Final state premium tax treatment for this CHIP product
+- Whether the state will revise pediatric dental carve-out timing before rate finalization
+red_flags:
+  neonatal_concentration: A single catastrophic NICU case can distort infant PMPM
+    if not normalized.
+  ed_seasonality: Winter respiratory spikes can overstate annualized ED utilization
+    if the midpoint projection is not adjusted.
+  opd_fee_schedule: Outpatient hospital rate changes may leak into surgery and ED
+    unit-cost assumptions twice if not separated carefully.
+mcp_uncertainty_points:
+- fact: Whether CMS or the state posted updated CHIP managed care rate-setting instructions
+    after the latest quarterly refresh
+  capability_class: current_regulatory_policy
+  action: Check CMS and any posted state actuarial rate guidance for 2027 CHIP capitation
+    updates before finalizing assumptions.
+holdout_ref: payer-managed-care-analyst/pmc-d01-holdout-01-pediatric-chip-rate-rebase.md

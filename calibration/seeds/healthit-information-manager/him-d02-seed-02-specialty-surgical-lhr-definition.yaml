@@ -1,0 +1,32 @@
+seed_id: him-d02-seed-02-specialty-surgical-lhr-definition
+agent_slug: healthit-information-manager
+deliverable_id: him-d02
+deliverable_title: Legal Health Record Definition Matrix
+complexity: routine
+required_facts:
+  organization_name: Summit Quay Surgical Institute
+  effective_date: 2026-03-20
+  approval_chain: Dana Pryor, RHIA; Oren Slate, MD, CMO; Mira Corven, JD; Ash Vale,
+    CIO
+  source_systems: AxisEHR, OrthoPACS, FlowAnesthesia, ScanCore
+  included_elements: pre-op H&P, operative reports, implant logs linked to operative
+    record, anesthesia record, PACU notes, discharge instructions, radiology final
+    reports, consent forms
+  excluded_elements: access logs, OR schedule drafts, charge router edits, unsigned
+    preference-card notes, quality peer review memos
+  production_defaults: PDF packet plus DICOM images when specifically requested
+intentionally_unknown:
+- Whether any current OCR guidance has refined how electronic image delivery should
+  be prioritized for patient-access workflows
+red_flags:
+  periop_gap: Operative or anesthesia content omitted from included elements
+  overreach: Peer review material or quality memos treated as part of the legal health
+    record
+  production_problem: No practical production format for imaging requests
+mcp_uncertainty_points:
+- fact: Any current OCR or CMS update affecting electronic production expectations
+    for diagnostic images connected to patient access requests
+  capability_class: current_regulatory_policy
+  action: Check current OCR, CMS, or comparable public guidance before finalizing
+    image-production language
+holdout_ref: healthit-information-manager/him-d02-holdout-02-specialty-surgical-lhr-definition.md

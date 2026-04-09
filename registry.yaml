@@ -1,0 +1,1770 @@
+agents:
+- slug: clinical-care-management-specialist
+  name: Care Management Specialist
+  domain: clinical-operations
+  routing_triggers:
+  - care coordination
+  - transitions of care
+  - readmission prevention
+  - CCM/TCM
+  - SDOH screening
+  - population health
+  tool_opportunities:
+  - trigger: receiving provider identity or address is uncertain
+    capability_class: provider_directory
+    query_template: Verify the receiving provider's NPI, taxonomy, and practice address
+      before the discharge warm handoff
+    materiality: Avoids routing follow-up to the wrong clinician or facility
+  - trigger: payer or facility enrollment status is uncertain
+    capability_class: provider_enrollment_status
+    query_template: Confirm whether the receiving provider or facility is enrolled
+      with the target payer or program before referral
+    materiality: Prevents failed transitions caused by non-enrolled receiving entities
+  - trigger: recent CCM/TCM/HRRP requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check the latest CMS updates affecting CCM, TCM, or HRRP workflow
+      requirements
+    materiality: Keeps discharge and chronic care workflows aligned with current billing
+      rules
+  line_budget: 554
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  deliverables:
+  - id: ccm-d01
+    title: Comprehensive Care Management Plan
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: ccm-d02
+    title: Readmission Risk Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+- slug: clinical-case-manager
+  name: Case Manager
+  deliverables:
+  - id: ccm-d01
+    title: Discharge Planning Checklist
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: ccm-d02
+    title: Avoidable Day Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 563
+  domain: clinical-operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - inpatient/outpatient case management
+  - discharge planning
+  - post-acute placement (SNF/HH/IRF/LTACH
+  - avoidable day reduction
+  - length of stay optimization
+  - CCMC/ACM professional standards
+  - Discharge Planning Checklist
+  tool_opportunities:
+  - trigger: Verify provider identity, NPI, taxonomy, or practice address before routing
+      a referral or handoff
+    capability_class: provider_directory
+    query_template: Verify provider identity, NPI, taxonomy, or practice address before
+      routing a referral or handoff
+    materiality: Reduces failed transitions caused by identity or directory mismatches.
+  - trigger: Confirm payer or program enrollment before referral, credentialing, or
+      network-routing decisions
+    capability_class: provider_enrollment_status
+    query_template: Confirm payer or program enrollment before referral, credentialing,
+      or network-routing decisions
+    materiality: Prevents handoffs to non-enrolled providers or facilities.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: clinical-documentation-improvement-specialist
+  name: Documentation Improvement Specialist
+  deliverables:
+  - id: cdi-d01
+    title: CDI Program Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: cdi-d02
+    title: Query Compliance Audit Tool
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 561
+  domain: clinical-operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - clinical documentation improvement specialist
+  - CDI Program Dashboard
+  - Query Compliance Audit Tool
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: clinical-infection-prevention-specialist
+  name: Infection Prevention Specialist
+  deliverables:
+  - id: cip-d01
+    title: HAI Surveillance Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: cip-d02
+    title: Outbreak Investigation Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 556
+  domain: clinical-operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - HAI surveillance via NHSN
+  - CAUTI/CLABSI/SSI/CDI prevention bundles
+  - antimicrobial stewardship program operations
+  - outbreak investigation
+  - environmental rounds
+  - CMS Conditions of Participation for infection control
+  - HAI Surveillance Dashboard
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: clinical-prior-authorization-specialist
+  name: Prior Authorization Specialist
+  deliverables:
+  - id: cpa-d01
+    title: Prior Authorization Tracking Log
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: cpa-d02
+    title: Appeal Letter Template
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 554
+  domain: clinical-operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - clinical prior authorization specialist
+  - Prior Authorization Tracking Log
+  - Appeal Letter Template
+  tool_opportunities:
+  - trigger: Check current coverage policy when medical necessity or authorization
+      criteria are uncertain
+    capability_class: coverage_determination
+    query_template: Check current coverage policy when medical necessity or authorization
+      criteria are uncertain
+    materiality: Keeps utilization and authorization recommendations aligned to live
+      policy.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: clinical-referral-specialist
+  name: Referral Specialist
+  deliverables:
+  - id: crs-d01
+    title: Referral Management Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: crs-d02
+    title: Referral Leakage Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 562
+  domain: clinical-operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - clinical referral specialist
+  - Referral Management Dashboard
+  - Referral Leakage Analysis
+  tool_opportunities:
+  - trigger: Verify provider identity, NPI, taxonomy, or practice address before routing
+      a referral or handoff
+    capability_class: provider_directory
+    query_template: Verify provider identity, NPI, taxonomy, or practice address before
+      routing a referral or handoff
+    materiality: Reduces failed transitions caused by identity or directory mismatches.
+  - trigger: Confirm payer or program enrollment before referral, credentialing, or
+      network-routing decisions
+    capability_class: provider_enrollment_status
+    query_template: Confirm payer or program enrollment before referral, credentialing,
+      or network-routing decisions
+    materiality: Prevents handoffs to non-enrolled providers or facilities.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: clinical-research-coordinator
+  name: Clinical Research Coordinator
+  deliverables:
+  - id: crc-d01
+    title: Regulatory Binder Checklist (Essential Documents)
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: crc-d02
+    title: Protocol Deviation Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 566
+  domain: clinical-operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - IRB submissions
+  - ICH-GCP E6(R3) compliance
+  - 21 CFR Part 11 electronic records
+  - informed consent management
+  - adverse event reporting
+  - clinical trial lifecycle management
+  - CTMS operations
+  tool_opportunities:
+  - trigger: Search active clinical trials when eligibility, phase, or site availability
+      could change the recommendation
+    capability_class: trial_registry
+    query_template: Search active clinical trials when eligibility, phase, or site
+      availability could change the recommendation
+    materiality: Adds live trial availability to research coordination work.
+  - trigger: Search biomedical literature when evidence strength or recent studies
+      materially affect the recommendation
+    capability_class: literature_search
+    query_template: Search biomedical literature when evidence strength or recent
+      studies materially affect the recommendation
+    materiality: Keeps research and evidence summaries current.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: clinical-utilization-management-specialist
+  name: Utilization Management Specialist
+  deliverables:
+  - id: cum-d01
+    title: Medical Necessity Review Worksheet
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: cum-d02
+    title: Denial Tracking & Analysis Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 557
+  domain: clinical-operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - clinical utilization management specialist
+  - Medical Necessity Review Worksheet
+  - Denial Tracking & Analysis Report
+  tool_opportunities:
+  - trigger: Check current coverage policy when medical necessity or authorization
+      criteria are uncertain
+    capability_class: coverage_determination
+    query_template: Check current coverage policy when medical necessity or authorization
+      criteria are uncertain
+    materiality: Keeps utilization and authorization recommendations aligned to live
+      policy.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: emergency-preparedness-coordinator
+  name: Emergency Preparedness Coordinator
+  deliverables:
+  - id: epc-d01
+    title: Emergency Preparedness Program Compliance Checklist
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: epc-d02
+    title: Hazard Vulnerability Analysis Template
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 588
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - hazard vulnerability analysis refresh
+  - HICS design or activation planning
+  - surge capacity planning
+  - evacuation and shelter-in-place planning
+  - exercise design and after-action follow-up
+  - healthcare coalition coordination
+  - CMS emergency preparedness survey readiness
+  tool_opportunities:
+  - trigger: Emergency preparedness rules, waivers, or interpretive guidance may have
+      changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or Federal Register updates affecting emergency
+      preparedness CoPs, waivers, or survey guidance
+    materiality: Keeps the preparedness program aligned to current federal requirements
+  - trigger: Crisis standards, pandemic planning, or response assumptions need evidence
+      support
+    capability_class: literature_search
+    query_template: Search biomedical literature for evidence on surge operations,
+      evacuation risk, pandemic response, or crisis standards of care assumptions
+    materiality: Strengthens planning recommendations where evidence quality matters
+- slug: healthit-clinical-data-analyst
+  name: Clinical Data Analyst
+  deliverables:
+  - id: hcd-d01
+    title: Quality Measure Performance Dashboard Specification
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: hcd-d02
+    title: Registry Submission Validation Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 597
+  domain: health-it
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - clinical registry management
+  - quality measure reporting (eCQMs
+  - MIPS
+  - outcomes analysis
+  - clinical dashboards
+  - data validation
+  - Clarity
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: healthit-epic-applications-analyst
+  name: Epic Applications Analyst
+  deliverables:
+  - id: hea-d01
+    title: Epic Build Change Request
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: hea-d02
+    title: Upgrade Impact Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 593
+  domain: health-it
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - module build/configuration
+  - integration patterns
+  - upgrade planning
+  - Sprint/quarterly update management
+  - Caboodle/Cogito reporting
+  - clinical workflow optimization across the Epic ecosystem
+  - Epic Build Change Request
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: healthit-informatics-manager
+  name: Health Informatics Manager
+  deliverables:
+  - id: him-d01
+    title: Informatics Governance Charter
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: him-d02
+    title: CDS Intervention Design Document
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 641
+  domain: health-it
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - data governance
+  - USCDI/TEFCA compliance
+  - ONC certification (HTI-1
+  - CDS Hooks implementation
+  - EHR optimization
+  - informatics governance for health systems
+  - Informatics Governance Charter
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: healthit-information-manager
+  name: Health Information Manager
+  deliverables:
+  - id: him-d01
+    title: Record Retention Schedule
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: him-d02
+    title: Legal Health Record Definition Matrix
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 589
+  domain: health-it
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - HIM operations
+  - release of information
+  - record retention/destruction
+  - coding oversight
+  - CDI program support
+  - legal health record definition
+  - chart deficiency management
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: healthit-interoperability-engineer
+  name: Healthcare Interoperability Engineer
+  domain: interoperability
+  routing_triggers:
+  - HL7v2 interface
+  - FHIR API
+  - HIE connectivity
+  - USCDI
+  - SMART on FHIR
+  - C-CDA
+  - interface testing
+  tool_opportunities:
+  - trigger: trading partner identity or endpoint ownership is uncertain
+    capability_class: provider_directory
+    query_template: Verify the facility or organization NPI, taxonomy, and practice
+      address before onboarding a trading partner
+    materiality: Prevents misconfigured interface endpoints and directory mismatches
+  - trigger: interoperability policy or implementation guidance may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check the latest CMS, ONC, or Federal Register updates affecting
+      interoperability, information blocking, or USCDI requirements
+    materiality: Keeps interface specifications aligned to current policy
+  line_budget: 617
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  deliverables:
+  - id: hie-d01
+    title: Interface Specification Document
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: hie-d02
+    title: FHIR API Integration Checklist
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+- slug: healthit-telehealth-program-manager
+  name: Telehealth Program Manager
+  deliverables:
+  - id: htp-d01
+    title: Telehealth Program Financial Pro Forma
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: htp-d02
+    title: State Telehealth Compliance Matrix
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 589
+  domain: health-it
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - virtual care operations
+  - interstate licensure compacts
+  - CMS telehealth reimbursement rules
+  - state parity laws
+  - RPM/RTM billing
+  - platform evaluation
+  - provider adoption
+  tool_opportunities:
+  - trigger: Verify organization identity and location details before onboarding a
+      partner or telehealth endpoint
+    capability_class: provider_directory
+    query_template: Verify organization identity and location details before onboarding
+      a partner or telehealth endpoint
+    materiality: Reduces endpoint, organization, and directory mismatches.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: operations-ambulatory-manager
+  name: Ambulatory Operations Manager
+  deliverables:
+  - id: oam-d01
+    title: Clinic Operations Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: oam-d02
+    title: Clinic Workflow Redesign Plan
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 552
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - clinic throughput bottlenecks
+  - appointment template redesign
+  - third-next-available access backlog
+  - rooming protocol standardization
+  - multi-site ambulatory operations
+  - no-show reduction and patient access metrics
+  - provider schedule utilization
+  tool_opportunities:
+  - trigger: New provider or site setup depends on accurate specialty and location
+      mapping
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for providers or clinic
+      sites being added to scheduling templates or referral directories
+    materiality: Prevents template build and directory errors during ambulatory go-live
+  - trigger: Schedule activation depends on payer readiness for newly hired or relocated
+      providers
+    capability_class: provider_enrollment_status
+    query_template: Confirm payer enrollment status for newly hired or relocated ambulatory
+      providers before opening schedules
+    materiality: Avoids expanding access for visits that cannot be billed
+  - trigger: Ambulatory reporting or operational rules may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS and QPP policy updates affecting ambulatory
+      quality reporting, access operations, or outpatient workflows
+    materiality: Keeps redesign work aligned to current program requirements
+- slug: operations-home-health-administrator
+  name: Home Health Administrator
+  deliverables:
+  - id: ohh-d01
+    title: LUPA Monitoring Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: ohh-d02
+    title: Survey Readiness Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 557
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - OASIS-E accuracy and retraining
+  - PDGM episode performance
+  - LUPA rate monitoring
+  - HHVBP performance improvement
+  - start-of-care delay reduction
+  - aide supervision compliance
+  - home health survey readiness
+  tool_opportunities:
+  - trigger: Intake or episode management depends on the correct ordering or referring
+      clinician record
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for ordering or referring
+      clinicians named in intake and care coordination workflows
+    materiality: Reduces physician-identity errors that delay admissions and orders
+  - trigger: Admissions or branch operations depend on active program or payer enrollment
+    capability_class: provider_enrollment_status
+    query_template: Confirm Medicare or payer enrollment status for the agency, branch,
+      or involved clinicians before activating admissions or billing workflows
+    materiality: Prevents operational plans from relying on non-billable volume
+  - trigger: CoP, OASIS, PDGM, or HHVBP requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS policy updates affecting home health CoPs, OASIS
+      guidance, PDGM, or HHVBP requirements
+    materiality: Keeps survey and performance recommendations current
+- slug: operations-hospital-administrator
+  name: Hospital Operations Administrator
+  deliverables:
+  - id: oha-d01
+    title: Daily Capacity Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: oha-d02
+    title: Throughput Improvement Business Case
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 562
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - bed management escalation
+  - capacity command center design
+  - ED boarding reduction
+  - transfer center workflow
+  - ancillary bottleneck removal
+  - discharge-before-noon improvement
+  - observation versus inpatient status escalation
+  tool_opportunities:
+  - trigger: Transfer or downstream workflow depends on the correct external or consulting
+      clinician record
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for receiving or consulting
+      providers named in transfer and service-line workflows
+    materiality: Prevents routing and handoff errors in transfer-center operations
+  - trigger: Partner-facility workflows depend on active program or payer participation
+    capability_class: provider_enrollment_status
+    query_template: Confirm enrollment status for partner organizations before finalizing
+      transfer, outsourced service, or downstream care pathways
+    materiality: Avoids operational plans built on unavailable network capacity
+  - trigger: Observation, waiver, or hospital operations policy may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or Federal Register updates affecting hospital
+      throughput, emergency surge operations, or observation-related policy
+    materiality: Keeps operational guidance aligned to current federal rules
+- slug: operations-long-term-care-administrator
+  name: Long-Term Care Administrator
+  deliverables:
+  - id: oltc-d01
+    title: Five-Star Performance Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: oltc-d02
+    title: Survey Response and Corrective Action Plan
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 566
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - Five-Star recovery plan
+  - survey response and plan of correction
+  - MDS accuracy remediation
+  - PDPM case-mix optimization
+  - PBJ staffing compliance
+  - QM and QAPI performance improvement
+  - resident rights deficiency response
+  tool_opportunities:
+  - trigger: Survey response or care plan governance depends on the correct attending
+      or consulting clinician identity
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for attending or consulting
+      clinicians referenced in survey response and resident care workflows
+    materiality: Reduces practitioner-identity errors in high-scrutiny documents
+  - trigger: Admissions or contracted clinical services depend on active payer or
+      program participation
+    capability_class: provider_enrollment_status
+    query_template: Confirm enrollment status for the facility or involved practitioners
+      before relying on Medicare or payer-covered services in operational plans
+    materiality: Prevents census and service plans from assuming unavailable reimbursement
+      pathways
+  - trigger: RAI, Five-Star, PBJ, or survey guidance may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS policy updates affecting LTC survey guidance,
+      RAI Manual rules, PBJ requirements, PDPM, or Five-Star methodology
+    materiality: Keeps corrective-action and performance work current
+- slug: operations-physician-practice-manager
+  name: Physician Practice Manager
+  deliverables:
+  - id: opp-d01
+    title: Provider Productivity Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: opp-d02
+    title: Compensation Plan Design Worksheet
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 552
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - wRVU compensation redesign
+  - provider productivity benchmarking
+  - scheduling template optimization
+  - patient access backlog
+  - new-provider onboarding
+  - physician employment agreement operations
+  - medical group margin improvement
+  tool_opportunities:
+  - trigger: Practice operations depend on the correct provider specialty and site
+      record
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for physicians or APPs
+      being onboarded, relocated, or reassigned across sites
+    materiality: Prevents panel, schedule, and referral-directory errors
+  - trigger: Provider go-live depends on active payer participation
+    capability_class: provider_enrollment_status
+    query_template: Confirm payer enrollment status for new or relocated providers
+      before opening templates or projecting collections
+    materiality: Avoids access expansion and compensation assumptions that cannot
+      convert to revenue
+  - trigger: Fee schedule, MIPS, or physician operations policy may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS policy updates affecting physician fee schedule,
+      MIPS, or practice-operations requirements
+    materiality: Keeps compensation and access recommendations current
+- slug: operations-supply-chain-manager
+  name: Supply Chain Manager
+  deliverables:
+  - id: osc-d01
+    title: Supply Chain Savings Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: osc-d02
+    title: Value Analysis Request Form
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 552
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - GPO tier attainment
+  - value analysis committee review
+  - OR implant cost reduction
+  - contract compliance leakage
+  - par level or stockout instability
+  - product recall response
+  - supply disruption planning
+  tool_opportunities:
+  - trigger: Value analysis requires evidence beyond vendor claims
+    capability_class: literature_search
+    query_template: Search biomedical literature comparing clinical outcomes, safety,
+      or utilization for incumbent versus proposed products under value analysis review
+    materiality: Grounds standardization decisions in clinical evidence rather than
+      sales claims
+  - trigger: Buy-and-bill or infusion stocking decisions depend on Part B eligibility
+    capability_class: drug_coverage_exclusion
+    query_template: Check SAD exclusion status for office-administered drugs before
+      recommending stocking or distribution changes tied to Part B reimbursement
+    materiality: Prevents stocking strategies that assume incorrect reimbursement
+      pathways
+  - trigger: Federal reimbursement or policy treatment of supply-sensitive categories
+      may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or Federal Register updates affecting reimbursement-sensitive
+      products, supply resilience policy, or related operational requirements
+    materiality: Keeps sourcing recommendations aligned to current federal policy
+- slug: operations-workforce-manager
+  name: Healthcare Workforce Manager
+  deliverables:
+  - id: owm-d01
+    title: Workforce Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: owm-d02
+    title: Agency Reduction Business Case
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 592
+  domain: operations
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - nurse staffing model redesign
+  - scheduling optimization
+  - agency spend reduction
+  - float pool design
+  - retention and burnout mitigation
+  - labor cost benchmarking
+  - staffing compliance escalation
+  tool_opportunities:
+  - trigger: Workforce plans depend on accurate clinician identity and specialty records
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for clinicians being
+      onboarded, floated across sites, or included in credentialing coordination workflows
+    materiality: Reduces onboarding and deployment errors for licensed staff
+  - trigger: Provider scheduling or productivity assumptions depend on active payer
+      participation
+    capability_class: provider_enrollment_status
+    query_template: Confirm payer enrollment status for clinicians before opening
+      schedules or modeling productive capacity for staffed services
+    materiality: Prevents workforce plans from assuming billable capacity that is
+      not yet live
+  - trigger: Staffing mandates or CMS workforce-related policy may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or Federal Register updates affecting staffing
+      requirements, reporting expectations, or workforce-related operational policy
+    materiality: Keeps staffing recommendations aligned to current rules
+- slug: payer-credentialing-enrollment-coordinator
+  name: Credentialing & Enrollment Coordinator
+  deliverables:
+  - id: pce-d01
+    title: Provider Credentialing Status Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pce-d02
+    title: Credentialing File Completeness Checklist
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 591
+  domain: payer
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - CAQH ProView management
+  - PECOS/CMS-855 enrollment
+  - NPDB queries
+  - primary source verification
+  - delegated credentialing
+  - privileging vs credentialing distinctions
+  - payer enrollment workflows
+  tool_opportunities:
+  - trigger: Verify provider identity, NPI, taxonomy, or practice address before routing
+      a referral or handoff
+    capability_class: provider_directory
+    query_template: Verify provider identity, NPI, taxonomy, or practice address before
+      routing a referral or handoff
+    materiality: Reduces failed transitions caused by identity or directory mismatches.
+  - trigger: Confirm payer or program enrollment before referral, credentialing, or
+      network-routing decisions
+    capability_class: provider_enrollment_status
+    query_template: Confirm payer or program enrollment before referral, credentialing,
+      or network-routing decisions
+    materiality: Prevents handoffs to non-enrolled providers or facilities.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: payer-managed-care-analyst
+  name: Managed Care Analyst
+  deliverables:
+  - id: pmc-d01
+    title: Capitation Rate Development Summary
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pmc-d02
+    title: Network Adequacy Assessment Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 557
+  domain: payer
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - capitation modeling
+  - medical loss ratio analysis
+  - PMPM calculations
+  - network adequacy assessment
+  - utilization trend analysis
+  - risk corridor modeling
+  - stop-loss attachment points
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: payer-medicare-medicaid-specialist
+  name: Medicare & Medicaid Specialist
+  deliverables:
+  - id: pmm-d01
+    title: Medicare Enrollment Status Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pmm-d02
+    title: Conditions of Participation Readiness Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 561
+  domain: payer
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - payer medicare medicaid specialist
+  - Medicare Enrollment Status Report
+  - Conditions of Participation Readiness Assessment
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: payer-medicare-outreach-coordinator
+  name: Medicare Outreach Coordinator
+  deliverables:
+  - id: pmo-d01
+    title: Medicare Plan Comparison Worksheet
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pmo-d02
+    title: Community Outreach Event Planning Template
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 591
+  domain: payer
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - Annual Enrollment Period guidance
+  - plan comparison (MA vs Original Medicare + Medigap
+  - SHIP counseling frameworks
+  - LIS/Extra Help applications
+  - Medicare Savings Programs
+  - community outreach strategies
+  - beneficiary engagement for healthcare organizations
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: payer-relations-specialist
+  name: Payer Relations Specialist
+  deliverables:
+  - id: prs-d01
+    title: Payer Contract Analysis Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: prs-d02
+    title: No Surprises Act Dispute Tracker
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: prs-d03
+    title: Payer Underpayment Recovery Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 573
+  domain: payer
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - network development
+  - fee schedule negotiation
+  - contract language analysis
+  - single-case agreements
+  - out-of-network reimbursement
+  - No Surprises Act compliance
+  - timely filing rules
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: payer-value-based-care-manager
+  name: Value-Based Care Manager
+  deliverables:
+  - id: pvbc-d01
+    title: ACO Performance Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pvbc-d02
+    title: Risk-Based Contract Term Sheet
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 562
+  domain: payer
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - ACO governance
+  - MSSP/ACO REACH participation
+  - shared savings calculations
+  - risk-based contracting
+  - quality gate metrics
+  - MIPS/APM participation
+  - total cost of care benchmarking
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: pharmacy-benefits-specialist
+  name: Pharmacy Benefits Specialist
+  deliverables:
+  - id: pbs-d01
+    title: PBM Contract Scorecard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pbs-d02
+    title: Biosimilar Conversion Business Case
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 552
+  domain: pharmacy
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - formulary management
+  - PBM contract evaluation
+  - specialty pharmacy oversight
+  - biosimilar adoption
+  - pharmacy benefit design
+  - drug spend optimization for health systems
+  - health plans
+  tool_opportunities:
+  - trigger: Check current drug coverage or exclusion logic when benefit design or
+      Part B eligibility is uncertain
+    capability_class: drug_coverage_exclusion
+    query_template: Check current drug coverage or exclusion logic when benefit design
+      or Part B eligibility is uncertain
+    materiality: Prevents stale drug coverage advice.
+  - trigger: Check current Medicare or payer coverage policy when medication benefit
+      eligibility is uncertain
+    capability_class: coverage_determination
+    query_template: Check current Medicare or payer coverage policy when medication
+      benefit eligibility is uncertain
+    materiality: Improves benefit and medication-access recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: pharmacy-medication-safety-specialist
+  name: Medication Safety Specialist
+  deliverables:
+  - id: pms-d01
+    title: Medication Error Root Cause Analysis Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pms-d02
+    title: USP 797/800 Compliance Gap Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 580
+  domain: pharmacy
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - ISMP high-alert medication management
+  - CPOE optimization
+  - BCMA implementation
+  - smart pump programming
+  - medication reconciliation
+  - adverse drug event reporting
+  - USP 797/800 compounding compliance
+  tool_opportunities:
+  - trigger: Check current drug coverage or exclusion logic when benefit design or
+      Part B eligibility is uncertain
+    capability_class: drug_coverage_exclusion
+    query_template: Check current drug coverage or exclusion logic when benefit design
+      or Part B eligibility is uncertain
+    materiality: Prevents stale drug coverage advice.
+  - trigger: Check current Medicare or payer coverage policy when medication benefit
+      eligibility is uncertain
+    capability_class: coverage_determination
+    query_template: Check current Medicare or payer coverage policy when medication
+      benefit eligibility is uncertain
+    materiality: Improves benefit and medication-access recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: pophealth-community-health-coordinator
+  name: Community Health Coordinator
+  deliverables:
+  - id: pch-d01
+    title: CHNA Summary Report Template
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pch-d02
+    title: Schedule H Community Benefit Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 689
+  domain: population-health
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - Community Health Needs Assessment (CHNA
+  - IRS 990 Schedule H community benefit reporting
+  - health equity program design
+  - SDOH program implementation
+  - community health worker programs
+  - CBO partnerships
+  - grant-funded health initiatives for nonprofit hospitals
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: pophealth-population-health-manager
+  name: Population Health Manager
+  deliverables:
+  - id: pph-d01
+    title: Population Health Dashboard Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: pph-d02
+    title: Care Gap Closure Campaign Plan
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 622
+  domain: population-health
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - risk stratification models
+  - care gap identification
+  - closure
+  - SDOH screening programs
+  - chronic disease management
+  - registry management
+  - rising risk identification across ACO
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: pophealth-surveillance-coordinator
+  name: Public Health Surveillance Coordinator
+  deliverables:
+  - id: psc-d01
+    title: Outbreak Investigation Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: psc-d02
+    title: Reportable Disease Compliance Audit
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 608
+  domain: population-health
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - pophealth surveillance coordinator
+  - Outbreak Investigation Report
+  - Reportable Disease Compliance Audit
+  tool_opportunities:
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: quality-accreditation-specialist
+  name: Accreditation Specialist
+  deliverables:
+  - id: qas-d01
+    title: Survey Readiness Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qas-d02
+    title: Corrective Action Plan (Post-Survey)
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 560
+  domain: quality
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - quality accreditation specialist
+  - Survey Readiness Assessment
+  - Corrective Action Plan (Post-Survey)
+  tool_opportunities:
+  - trigger: Verify provider or facility identity details before finalizing external-facing
+      recommendations
+    capability_class: provider_directory
+    query_template: Verify provider or facility identity details before finalizing
+      external-facing recommendations
+    materiality: Reduces identity and entity-matching errors in operational recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: quality-compliance-officer
+  name: Compliance Officer
+  domain: compliance
+  routing_triggers:
+  - HIPAA
+  - Stark Law
+  - Anti-Kickback Statute
+  - FCA
+  - EMTALA
+  - compliance program
+  - arrangement review
+  tool_opportunities:
+  - trigger: arrangement parties need identity verification
+    capability_class: provider_directory
+    query_template: Verify each physician's NPI, taxonomy, and practice address before
+      arrangement review
+    materiality: Reduces identity and entity-matching errors in AKS/Stark reviews
+  - trigger: recent fraud-and-abuse or privacy rules may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check recent CMS, OIG, Federal Register, or OCR updates affecting
+      Stark, AKS, HIPAA, EMTALA, or compliance program guidance
+    materiality: Keeps policies and risk assessments aligned to current enforcement
+      expectations
+  line_budget: 564
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  deliverables:
+  - id: qco-d01
+    title: Annual Compliance Risk Assessment
+    prompt_section: External Data & Tool Use
+  - id: qco-d02
+    title: Arrangement Review Checklist
+    prompt_section: External Data & Tool Use
+- slug: quality-improvement-specialist
+  name: Quality Improvement Specialist
+  deliverables:
+  - id: qis-d01
+    title: Quality Measure Performance Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qis-d02
+    title: Quality Improvement Action Plan
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qis-d03
+    title: Star Ratings Impact Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 561
+  domain: quality
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - quality improvement specialist
+  - Quality Measure Performance Dashboard
+  - Quality Improvement Action Plan
+  - Star Ratings Impact Analysis
+  tool_opportunities:
+  - trigger: Verify provider or facility identity details before finalizing external-facing
+      recommendations
+    capability_class: provider_directory
+    query_template: Verify provider or facility identity details before finalizing
+      external-facing recommendations
+    materiality: Reduces identity and entity-matching errors in operational recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: quality-patient-experience-coordinator
+  name: Patient Experience Coordinator
+  deliverables:
+  - id: qpe-d01
+    title: Patient Experience Improvement Plan
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qpe-d02
+    title: Service Recovery Event Log
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qpe-d03
+    title: Grievance Tracking and Resolution Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 564
+  domain: quality
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - HCAHPS survey methodology
+  - Press Ganey analytics
+  - service recovery programs
+  - patient grievance management
+  - CMS VBP patient experience domain
+  - experience design across the care continuum
+  - Patient Experience Improvement Plan
+  tool_opportunities:
+  - trigger: Verify provider or facility identity details before finalizing external-facing
+      recommendations
+    capability_class: provider_directory
+    query_template: Verify provider or facility identity details before finalizing
+      external-facing recommendations
+    materiality: Reduces identity and entity-matching errors in operational recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: quality-patient-safety-officer
+  name: Patient Safety Officer
+  deliverables:
+  - id: qps-d01
+    title: Root Cause Analysis Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qps-d02
+    title: FMEA Worksheet
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 577
+  domain: quality
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - sentinel event investigation
+  - RCA/FMEA methodology
+  - Just Culture framework
+  - PSO reporting under the Patient Safety Act
+  - high-reliability organization principles
+  - safety event classification
+  - trending
+  tool_opportunities:
+  - trigger: Verify provider or facility identity details before finalizing external-facing
+      recommendations
+    capability_class: provider_directory
+    query_template: Verify provider or facility identity details before finalizing
+      external-facing recommendations
+    materiality: Reduces identity and entity-matching errors in operational recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: quality-process-improvement-analyst
+  name: Process Improvement Analyst
+  deliverables:
+  - id: qpi-d01
+    title: A3 Problem-Solving Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qpi-d02
+    title: Kaizen Event Charter
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qpi-d03
+    title: SPC Monitoring Plan
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 638
+  domain: quality
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - PDSA cycles
+  - A3 thinking
+  - value stream mapping
+  - Lean healthcare
+  - Six Sigma DMAIC
+  - statistical process control
+  - Kaizen events in clinical
+  tool_opportunities:
+  - trigger: Verify provider or facility identity details before finalizing external-facing
+      recommendations
+    capability_class: provider_directory
+    query_template: Verify provider or facility identity details before finalizing
+      external-facing recommendations
+    materiality: Reduces identity and entity-matching errors in operational recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: quality-risk-manager
+  name: Risk Manager
+  deliverables:
+  - id: qrm-d01
+    title: Enterprise Risk Register
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qrm-d02
+    title: Claims Summary Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: qrm-d03
+    title: Board Risk Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 575
+  domain: quality
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - enterprise risk management
+  - clinical risk (malpractice
+  - patient safety events
+  - insurance/liability
+  - FMEA
+  - claims management
+  - risk transfer strategies
+  tool_opportunities:
+  - trigger: Verify provider or facility identity details before finalizing external-facing
+      recommendations
+    capability_class: provider_directory
+    query_template: Verify provider or facility identity details before finalizing
+      external-facing recommendations
+    materiality: Reduces identity and entity-matching errors in operational recommendations.
+  - trigger: Check current CMS, Federal Register, or comparable policy updates when
+      requirements may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, Federal Register, or comparable policy updates
+      when requirements may have changed
+    materiality: Keeps the prompt aligned to current regulatory expectations.
+- slug: revenue-340b-program-manager
+  name: 340B Program Manager
+  deliverables:
+  - id: r3p-d01
+    title: 340B Program Compliance Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: r3p-d02
+    title: Contract Pharmacy Financial Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 625
+  domain: revenue-cycle
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - 340B eligibility, registration, or annual recertification
+  - split-billing design or accumulator remediation
+  - contract pharmacy oversight, replenishment, or savings leakage
+  - patient definition, child-site, or referral-to-prescription compliance
+  - duplicate discount prevention for Medicaid or managed Medicaid claims
+  - orphan drug, GPO prohibition, or audit-readiness questions
+  tool_opportunities:
+  - trigger: Part B drug status, orphan-drug treatment, or exclusion logic is uncertain
+      for a product or claim class
+    capability_class: drug_coverage_exclusion
+    query_template: Check Part B status and exclusion logic for [drug name / HCPCS
+      / NDC]
+    materiality: Prevents unsupported 340B accumulations and duplicate discounts.
+  - trigger: Coverage status is unclear for a therapy being evaluated for carve-in,
+      carve-out, or savings analysis
+    capability_class: coverage_determination
+    query_template: Check Medicare coverage policy for [drug / biologic / infused
+      service]
+    materiality: Keeps eligibility and savings analysis tied to real reimbursement
+      rules.
+  - trigger: HRSA, CMS, or manufacturer policy expectations may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current 340B-related CMS, HRSA, or Federal Register updates
+      for [topic]
+    materiality: Avoids stale compliance guidance in audit prep and policy decisions.
+- slug: revenue-chargemaster-analyst
+  name: Chargemaster Analyst
+  deliverables:
+  - id: rca-d01
+    title: CDM Annual Maintenance Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: rca-d02
+    title: Charge Capture Gap Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 580
+  domain: revenue-cycle
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - CDM annual maintenance or line-item cleanup
+  - CPT/HCPCS-to-revenue-code mapping questions
+  - charge capture leakage, missed charges, or reconciliation work
+  - OPPS/APC packaging, status indicator, or billability issues
+  - price transparency file maintenance or shoppable-services compliance
+  - new service, device, implant, or supply build requests
+  tool_opportunities:
+  - trigger: Code pairing, modifier logic, MUE, or NCCI edit rules are uncertain before
+      final CDM mapping
+    capability_class: coding_edit_policy
+    query_template: Check coding edit policy for [CPT/HCPCS pair or modifier scenario]
+    materiality: Prevents invalid line builds and avoidable downstream denials.
+  - trigger: Procedure billability or Medicare coverage is unclear for a new or revised
+      CDM line
+    capability_class: coverage_determination
+    query_template: Check Medicare coverage policy for [procedure / device / service]
+    materiality: Avoids building charge lines around non-covered or packaged services.
+  - trigger: OPPS, price transparency, or CMS file-format rules may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS policy updates for [OPPS / price transparency
+      / chargemaster topic]
+    materiality: Keeps maintenance recommendations aligned with current federal requirements.
+- slug: revenue-contract-analyst
+  name: Healthcare Contract Analyst
+  deliverables:
+  - id: rca-d01
+    title: Contract Performance Scorecard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: rca-d02
+    title: Reimbursement Modeling Worksheet
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 560
+  domain: revenue-cycle
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - payer contract modeling or fee schedule benchmarking
+  - underpayment recovery and reimbursement variance analysis
+  - contract performance scorecards or renewal prioritization
+  - new contract, amendment, or carve-out evaluation
+  - stop-loss, outlier, escalation, or termination clause review
+  - value-based reimbursement arrangement analysis
+  tool_opportunities:
+  - trigger: Reimbursement assumptions depend on Medicare coverage, site-of-service,
+      or billability rules
+    capability_class: coverage_determination
+    query_template: Check Medicare coverage policy for [service / procedure / site-of-service
+      issue]
+    materiality: Improves benchmark accuracy in reimbursement models and carve-out
+      analysis.
+  - trigger: Go-live timing or collections assumptions depend on payer or program
+      enrollment being active
+    capability_class: provider_enrollment_status
+    query_template: Verify enrollment status for [entity / NPI / TIN] with [payer
+      / program]
+    materiality: Avoids modeling contracted performance for entities that cannot bill
+      yet.
+  - trigger: IPPS, OPPS, MPFS, or other payment-rule assumptions may be stale
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or Federal Register payment updates for [payment
+      system / contract topic]
+    materiality: Keeps rate and variance analysis aligned with current payment mechanics.
+- slug: revenue-cycle-specialist
+  name: Revenue Cycle Specialist
+  deliverables:
+  - id: rcs-d01
+    title: Revenue Cycle Performance Dashboard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: rcs-d02
+    title: Denial Root Cause Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 565
+  domain: revenue-cycle
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - end-to-end revenue cycle performance review
+  - denial root cause analysis or appeal prioritization
+  - patient access, eligibility, or authorization defects
+  - timely filing, rejection, or edit backlog cleanup
+  - A/R aging, cash acceleration, or claim follow-up redesign
+  - new payer implementation or claims configuration readiness
+  - CARC/RARC remit pattern analysis
+  tool_opportunities:
+  - trigger: Denials appear driven by NCCI edits, modifier logic, or unit limits
+    capability_class: coding_edit_policy
+    query_template: Check coding edit policy for [code pair / modifier / unit issue]
+    materiality: Separates true coding defects from operational follow-up problems.
+  - trigger: Medical necessity, benefit, or covered-service status is driving denials
+    capability_class: coverage_determination
+    query_template: Check Medicare coverage policy for [service / procedure / claim
+      denial issue]
+    materiality: Improves denial classification and appeal recommendations.
+  - trigger: Claims are failing because provider, facility, or organization enrollment
+      may be inactive or mismatched
+    capability_class: provider_enrollment_status
+    query_template: Verify enrollment status for [entity / NPI / TIN] with [payer
+      / program]
+    materiality: Prevents operational fixes that miss the actual enrollment root cause.
+- slug: revenue-finance-manager
+  name: Healthcare Finance Manager
+  deliverables:
+  - id: rfm-d01
+    title: Monthly Financial Performance Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: rfm-d02
+    title: Service Line Profitability Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 600
+  domain: revenue-cycle
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  routing_triggers:
+  - monthly financial performance reporting
+  - service line profitability analysis
+  - annual operating budget development
+  - capital ROI or payback modeling
+  - Medicare cost report implications for margins or reimbursement
+  - payer mix and reimbursement trend analysis
+  - labor productivity and cost benchmarking
+  tool_opportunities:
+  - trigger: Margin, reimbursement, or cost-report assumptions depend on current CMS
+      payment policy
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or Federal Register updates for [cost report
+      / DSH / IME / reimbursement topic]
+    materiality: Keeps financial forecasts and variance analysis tied to current rules.
+  - trigger: Service line economics depend on whether specific services are covered
+      or non-covered
+    capability_class: coverage_determination
+    query_template: Check Medicare coverage policy for [service line / procedure /
+      service]
+    materiality: Improves profitability modeling where reimbursement eligibility materially
+      shifts margin.
+  - trigger: Revenue forecast timing depends on whether a provider or site is active
+      with key payers or programs
+    capability_class: provider_enrollment_status
+    query_template: Verify enrollment status for [entity / site / NPI] with [payer
+      / program]
+    materiality: Prevents overly optimistic revenue timing assumptions.
+- slug: revenue-medical-coding-specialist
+  name: Medical Coding Specialist
+  domain: revenue-cycle
+  routing_triggers:
+  - coding audit
+  - CDI query effectiveness
+  - inpatient coding
+  - E/M audit
+  - HCC retrospective review
+  - DRG assignment
+  - NCCI edits
+  tool_opportunities:
+  - trigger: code pairing or modifier logic is uncertain
+    capability_class: coding_edit_policy
+    query_template: Verify NCCI column 1/column 2 edits, modifier indicators, and
+      MUE limits for the target code set
+    materiality: Prevents avoidable denials and coding edits
+  - trigger: coverage or billing eligibility for a procedure is uncertain
+    capability_class: coverage_determination
+    query_template: Check Medicare Part B coverage policy for the specific procedure
+      or service before final code selection
+    materiality: Avoids assigning billable codes for non-covered services
+  - trigger: CMS coding guidance may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check the latest CMS transmittal or final rule affecting ICD-10-CM,
+      CPT, E/M, or HCC coding
+    materiality: Prevents stale coding guidance from entering audit work
+  line_budget: 603
+  regulatory_refresh: quarterly
+  refresh_owner: maintainer
+  deliverables:
+  - id: rmc-d01
+    title: Coding Audit Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: rmc-d02
+    title: CDI Query Effectiveness Report
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+- slug: strategy-actuarial-advisor
+  name: Healthcare Actuarial Advisor
+  deliverables:
+  - id: saa-d01
+    title: Capitation Rate Analysis
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: saa-d02
+    title: IBNR Reserve Estimate
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 580
+  domain: strategy
+  regulatory_refresh: annually
+  refresh_owner: maintainer
+  routing_triggers:
+  - capitation rate setting or premium adequacy analysis
+  - RAF/HCC impact modeling and coding sensitivity
+  - IBNR or reserve estimation
+  - medical loss ratio pressure analysis
+  - risk-based contract evaluation
+  - population cost trend or utilization forecasting
+  - network or attribution-driven actuarial scenario modeling
+  tool_opportunities:
+  - trigger: Risk-adjustment, benchmark, or payment assumptions may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or Federal Register updates for [risk adjustment
+      / MA / ACO / payment topic]
+    materiality: Keeps capitation, RAF, and reserve models aligned with current program
+      rules.
+  - trigger: Capitation or total-cost assumptions depend on whether services are covered
+      under current policy
+    capability_class: coverage_determination
+    query_template: Check Medicare coverage policy for [service / benefit category
+      / utilization assumption]
+    materiality: Improves actuarial modeling where coverage materially changes expected
+      spend.
+  - trigger: Attributed provider or network entity identity is uncertain in a contract
+      or population model
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for [provider / organization]
+    materiality: Reduces roster and attribution errors in network-based models.
+- slug: strategy-clinical-operations-consultant
+  name: Clinical Operations Consultant
+  deliverables:
+  - id: sco-d01
+    title: Nurse Staffing Model
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: sco-d02
+    title: ED Flow Redesign Blueprint
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 555
+  domain: strategy
+  regulatory_refresh: annually
+  refresh_owner: maintainer
+  routing_triggers:
+  - nurse staffing model redesign
+  - ED throughput or triage redesign
+  - OR or perioperative efficiency improvement
+  - provider productivity and care-team redesign
+  - acuity-based staffing or NHPPD planning
+  - unit flow, discharge, or disposition bottlenecks
+  - clinic-to-inpatient workflow redesign
+  tool_opportunities:
+  - trigger: The redesign depends on current staffing, licensure, or CMS conditions-of-participation
+      requirements
+    capability_class: current_regulatory_policy
+    query_template: Check current federal or state policy for [staffing / nursing
+      / clinical operations topic]
+    materiality: Avoids redesign recommendations that conflict with current staffing
+      requirements.
+  - trigger: Provider roster, specialty mix, or site identity is uncertain in the
+      target workflow
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for [provider / site
+      / specialty mix]
+    materiality: Improves staffing and workflow recommendations built around real
+      provider supply.
+  - trigger: The redesign hinges on evidence for a throughput, staffing, or care-team
+      intervention
+    capability_class: literature_search
+    query_template: Search literature for [clinical operations intervention / workflow
+      redesign topic]
+    materiality: Supports evidence-based recommendations rather than generic operations
+      advice.
+- slug: strategy-healthcare-consultant
+  name: Healthcare Strategy Consultant
+  domain: strategy
+  routing_triggers:
+  - service line planning
+  - M&A due diligence
+  - market analysis
+  - certificate of need
+  - physician alignment
+  - strategic plan
+  - board retreat
+  tool_opportunities:
+  - trigger: service line partner or physician target identity is uncertain
+    capability_class: provider_directory
+    query_template: Verify the target physician or organization NPI, taxonomy, and
+      practice address before strategic outreach
+    materiality: Avoids basing strategy on stale identity data
+  - trigger: transaction or market-entry rules may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check recent CMS, FTC, DOJ, or state CON updates before finalizing
+      the strategic recommendation
+    materiality: Prevents market-entry recommendations from missing current regulatory
+      constraints
+  line_budget: 552
+  regulatory_refresh: annually
+  refresh_owner: maintainer
+  deliverables:
+  - id: shc-d01
+    title: Service Line Strategic Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: shc-d02
+    title: M&A Due Diligence Summary
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+- slug: strategy-operations-consultant
+  name: Healthcare Operations Consultant
+  deliverables:
+  - id: soc-d01
+    title: Operational Performance Assessment
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: soc-d02
+    title: Capacity Planning Model
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: soc-d03
+    title: Throughput Command Center Playbook
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 605
+  domain: strategy
+  regulatory_refresh: annually
+  refresh_owner: maintainer
+  routing_triggers:
+  - enterprise throughput optimization
+  - Lean or Six Sigma deployment
+  - capacity planning or command-center design
+  - benchmark-driven operational assessment
+  - bottleneck, handoff, or waste mapping
+  - bed management, discharge flow, or access redesign
+  - standard work and KPI management system design
+  tool_opportunities:
+  - trigger: The recommendation depends on current operational policy or hospital
+      regulatory constraints
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS or comparable policy updates for [operations
+      topic]
+    materiality: Prevents stale assumptions in high-impact process redesign work.
+  - trigger: Cross-site benchmarking or redesign depends on confirming facility or
+      provider identity
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for [provider / facility
+      / organization]
+    materiality: Reduces entity-matching errors in multi-site operational assessments.
+  - trigger: The intervention choice depends on evidence for throughput, flow, or
+      command-center methods
+    capability_class: literature_search
+    query_template: Search literature for [operations improvement method / throughput
+      intervention]
+    materiality: Strengthens recommendations where published evidence differentiates
+      approaches.
+- slug: strategy-structural-improvement-consultant
+  name: Structural Improvement Consultant
+  deliverables:
+  - id: ssi-d01
+    title: Organizational Redesign Proposal
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: ssi-d02
+    title: Post-Merger Integration Scorecard
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  - id: ssi-d03
+    title: Reserved Powers Matrix
+    prompt_section: "\U0001F4CB Your Technical Deliverables"
+  line_budget: 585
+  domain: strategy
+  regulatory_refresh: annually
+  refresh_owner: maintainer
+  routing_triggers:
+  - organizational redesign or span-of-control changes
+  - governance charter or reserved-powers design
+  - post-merger integration governance
+  - dyad, service-line, or matrix reporting redesign
+  - change management for restructures or operating-model shifts
+  - corporate-vs-local decision-rights design
+  - management-layer reduction and accountability redesign
+  tool_opportunities:
+  - trigger: Governance design depends on confirming physician leaders, entities,
+      or operating sites
+    capability_class: provider_directory
+    query_template: Verify NPI, taxonomy, and practice address for [physician / entity
+      / site]
+    materiality: Improves governance and org-design recommendations built around real
+      leaders and entities.
+  - trigger: A merger, restructure, or TIN/NPI operating model change depends on current
+      payer or program enrollment status
+    capability_class: provider_enrollment_status
+    query_template: Verify enrollment status for [entity / site / NPI / TIN] with
+      [payer / program]
+    materiality: Avoids restructuring recommendations that disrupt billing or program
+      participation.
+  - trigger: Governance, integration, or restructuring guidance may have changed
+    capability_class: current_regulatory_policy
+    query_template: Check current CMS, OIG, or comparable policy updates for [governance
+      / integration / restructuring topic]
+    materiality: Keeps redesign recommendations aligned with current regulatory expectations.
+utility_agents:
+- eval-exam-architect

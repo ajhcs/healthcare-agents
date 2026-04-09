@@ -1,0 +1,31 @@
+seed_id: him-d01-seed-02-silver-pine-governance-charter-holdout
+agent_slug: healthit-informatics-manager
+deliverable_id: him-d01
+deliverable_title: Informatics Governance Charter
+complexity: routine
+required_facts:
+  organization_name: Silver Pine Specialty Network
+  effective_date: 2026-08-01
+  approving_executives: Nila Crest, MD, CMIO; Owen Trask, MBA, CIO
+  operating_model: Twelve specialty ambulatory clinics using a shared EHR with separate
+    local preference lists and growing requests for specialty-specific templates.
+  current_problem: Clinics have inconsistent documentation fields for social history
+    and referral reasons, creating reporting defects and uneven FHIR exports.
+  governance_threshold: Strategic projects above 150000 dollars
+  review_cycle: Annual
+intentionally_unknown:
+- Final data quality target by domain
+- Exact quorum count preferred by leadership
+- Whether a separate Steering Committee vice chair will be named
+red_flags:
+  local-build-fragmentation: Generator should address how specialty clinics can request
+    changes without bypassing shared standards.
+  structured-data-gap: Generator should account for social history and referral data
+    needing consistent discrete capture.
+mcp_uncertainty_points:
+- fact: Whether any current federal policy update changes the framing of USCDI or
+    certified capability expectations referenced in the charter
+  capability_class: current_regulatory_policy
+  action: Verify current policy updates before the charter is finalized for board
+    approval.
+holdout_ref: healthit-informatics-manager/him-d01-holdout-02-silver-pine-governance-charter-holdout.md

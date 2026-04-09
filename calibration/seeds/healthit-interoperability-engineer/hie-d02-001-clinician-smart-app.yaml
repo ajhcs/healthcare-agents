@@ -1,0 +1,27 @@
+seed_id: hie-seed-004
+agent_slug: healthit-interoperability-engineer
+deliverable_id: hie-d02
+deliverable_title: FHIR API Integration Checklist
+required_facts:
+  application_name: Cardiologist chart review app
+  fhir_server: Meridian Health FHIR R4 5.2
+  launch_type: EHR Launch
+  implementation_guide: US Core IG v6.1.0
+  resource_set: Patient, Encounter, Observation, MedicationRequest, AllergyIntolerance, Condition
+  scopes: launch, openid, fhirUser, user/Patient.read, user/Observation.read, user/MedicationRequest.read
+  testing_focus: token refresh, search support, and access control
+intentionally_unknown:
+  - Whether the downstream EHR will allow encounter context on every launch
+  - Whether the app will later need write scopes for note signing
+red_flags:
+  scope_bloat: The app should not request write access if the workflow is read only
+  profile_gap: Search behavior must match US Core profile expectations
+  token_failure: Expired tokens must return a clean retry path rather than a silent blank screen
+mcp_uncertainty_points:
+  - fact: The current interoperability policy posture for SMART launch and information blocking
+    capability_class: current_regulatory_policy
+    action: Check current CMS, ONC, and Federal Register guidance before final signoff
+  - fact: The endpoint organization identity for registration and support escalation
+    capability_class: provider_directory
+    action: Verify NPI, taxonomy, and practice address before onboarding
+holdout_ref: healthit-interoperability-engineer/hie-d02-001-clinician-smart-app.md

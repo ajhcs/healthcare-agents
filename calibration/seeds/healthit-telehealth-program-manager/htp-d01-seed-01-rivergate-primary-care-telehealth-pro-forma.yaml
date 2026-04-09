@@ -1,0 +1,36 @@
+seed_id: htp-d01-seed-01-rivergate-primary-care-telehealth-pro-forma
+agent_slug: healthit-telehealth-program-manager
+deliverable_id: htp-d01
+deliverable_title: Telehealth Program Financial Pro Forma
+complexity: moderate
+required_facts:
+  organization_name: Rivergate Family Medicine
+  launch_date: 2026-07-01
+  service_mix:
+    virtual_primary_care: 420
+    behavioral_health_follow_up: 120
+    rpm_patients: 90
+  payer_mix:
+    commercial_managed_care: 54
+    medicare_advantage: 24
+    medicaid: 22
+  allowed_amounts:
+    virtual_em: 92
+    behavioral_health: 128
+    rpm_management: 68
+  staffing:
+    telehealth_coordinator_fte: 1.0
+    licensed_clinician_coverage_fte: 0.5
+    billing_support_fte: 0.3
+intentionally_unknown:
+  - final payer credentialing timeline
+  - exact state licensure mix for the clinical staff
+red_flags:
+  noted_item_01: RPM billing without documented monthly management
+  noted_item_02: telehealth volume assumed without a ramp curve
+  noted_item_03: no separate expense line for patient onboarding support
+mcp_uncertainty_points:
+  - fact: current telehealth coverage and billing requirements
+    capability_class: current_regulatory_policy
+    action: verify the current CMS telehealth coverage guidance before finalizing revenue assumptions
+holdout_ref: healthit-telehealth-program-manager/htp-d01-holdout-01-rivergate-primary-care-telehealth-pro-forma.md

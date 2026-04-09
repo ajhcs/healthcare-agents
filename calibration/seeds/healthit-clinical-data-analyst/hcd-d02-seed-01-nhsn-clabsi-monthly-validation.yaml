@@ -1,0 +1,36 @@
+seed_id: hcd-d02-seed-01-nhsn-clabsi-monthly-validation
+agent_slug: healthit-clinical-data-analyst
+deliverable_id: hcd-d02
+deliverable_title: Registry Submission Validation Report
+complexity: moderate
+required_facts:
+  registry_name: CDC NHSN CLABSI
+  reporting_period: 2026-02 synthetic surveillance month
+  submission_deadline: 2026-03-30
+  facility_name: Silver Birch University Hospital
+  core_issue: Central-line-day counts from one MICU were 11 percent below charge nurse
+    log counts after a device documentation workflow change on 2026-02-12.
+  volume_snapshot: 5 confirmed CLABSI events across adult ICUs, 1480 patient-days,
+    622 central-line-days before reconciliation, 691 central-line-days after reconciliation.
+  validation_findings: One duplicate event review, two denominator mapping defects,
+    one admission-date mismatch affecting transfer attribution.
+  analyst_name: Devon Rhee
+  benchmark_context: Preliminary SIR remained above internal target after denominator
+    correction and requires infection prevention review.
+intentionally_unknown:
+- Final nationally published benchmark percentile for the exact surveillance month
+- Whether CDC issued a protocol clarification after the local workflow change
+red_flags:
+  denominator_reliability: The generator should explicitly address the pre-correction
+    and post-correction central-line-day totals and note operational impact.
+  portal_evidence: The generator should not claim portal upload confirmation unless
+    it states a synthetic confirmation artifact.
+  phi_exposure: The generator should avoid patient-identifiable event descriptions
+    and keep case discussion aggregate.
+mcp_uncertainty_points:
+- fact: Current CDC NHSN CLABSI surveillance guidance or protocol updates applicable
+    to the reporting month
+  capability_class: current_regulatory_policy
+  action: Verify whether CDC posted any updated validation or reporting guidance before
+    finalizing denominator and event logic language.
+holdout_ref: healthit-clinical-data-analyst/hcd-d02-holdout-01-nhsn-clabsi-monthly-validation.md

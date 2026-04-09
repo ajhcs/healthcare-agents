@@ -1,0 +1,42 @@
+seed_id: cpa-d02-seed-01-cardiac-cta-urgent-appeal
+agent_slug: clinical-prior-authorization-specialist
+deliverable_id: cpa-d02
+deliverable_title: Appeal Letter Template
+complexity: moderate
+required_facts:
+  date: '2026-04-09'
+  payer_name: Blue Summit Medicare Advantage
+  member_name: Corin Dace
+  member_id: BSMA-2047718
+  provider_name: Liora Penn, MD
+  provider_npi: '1447812035'
+  facility_name: Willow Strand Cardiology Associates
+  facility_tin: 84-6629137
+  service_requested: Coronary CT angiography / CPT 75574
+  denial_reference: BSMA-PA-441902
+  denial_reason: Insufficient evidence of intermediate-risk chest pain after initial
+    evaluation
+  clinical_seed: Exertional chest pressure for 3 weeks, abnormal exercise ECG with
+    equivocal imaging, strong family history of premature CAD, LDL 181 mg/dL, worsening
+    symptoms despite beta blocker initiation
+intentionally_unknown:
+- The exact wording of the current Blue Summit Medicare Advantage imaging policy
+- Whether the plan uses an AIM/Carelon-derived imaging policy or an internal policy
+  number
+red_flags:
+  urgency_pathway: The generator should not treat this as routine because the seed
+    facts support an expedited framing.
+  denial_specificity: The generator should reconcile the stated denial reason instead
+    of writing a generic chest pain appeal.
+  medicare_advantage_guardrail: The generator should avoid accepting a stricter non-Medicare
+    rationale without scrutiny for a basic benefit.
+mcp_uncertainty_points:
+- fact: Current coronary CTA authorization criteria for the member's MA plan
+  capability_class: coverage_determination
+  action: Verify the live imaging policy and whether prior stress test findings satisfy
+    current plan criteria.
+- fact: Any recent CMS or MA policy update affecting PA denial specificity or timing
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy updates if the appeal argues untimely or insufficiently
+    specific denial language.
+holdout_ref: clinical-prior-authorization-specialist/cpa-d02-holdout-01-cardiac-cta-urgent-appeal.md

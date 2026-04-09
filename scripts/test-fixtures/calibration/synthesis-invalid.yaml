@@ -1,0 +1,17 @@
+agent_slug: clinical-care-management-specialist
+calibration_run_id: pilot-001
+date: bad-date
+systematic_strengths: {}
+systematic_gaps:
+  - gap_type: nope
+    recurrence_count: 0
+    severity: urgent
+    evidence_summary: ""
+    likely_prompt_fix: ""
+    confidence: 9
+    promotion_eligible: maybe
+recommended_edits:
+  - target_section: ""
+    edit_type: invent
+    description: ""
+    source_gap_ids: []

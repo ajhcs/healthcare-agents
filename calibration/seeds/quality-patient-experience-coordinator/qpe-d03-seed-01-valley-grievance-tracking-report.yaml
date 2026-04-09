@@ -1,0 +1,25 @@
+seed_id: qpe-d03-seed-01-valley-grievance-tracking-report
+agent_slug: quality-patient-experience-coordinator
+deliverable_id: qpe-d03
+deliverable_title: Grievance Tracking and Resolution Report
+complexity: high
+required_facts:
+  facility_name: Valley Health System
+  reporting_period: Q1 2026
+  total_grievances_received: 11
+  acknowledgment_compliance: 100
+  average_time_to_resolution_days: 6.1
+  top_categories: discharge communication, bedside respect, billing/refunds
+intentionally_unknown:
+- exact grievance numbers
+- exact number of cases referred to the state survey agency
+- exact board presentation date
+red_flags:
+  noted_item_01: omitting the board reporting summary
+  noted_item_02: failing to distinguish active from closed grievances
+  noted_item_03: not stating acknowledgment compliance
+mcp_uncertainty_points:
+- fact: current grievance and patient-rights reporting expectations
+  capability_class: current_regulatory_policy
+  action: verify the latest 42 CFR 482.13 wording before finalizing the report
+holdout_ref: quality-patient-experience-coordinator/qpe-d03-holdout-01-valley-grievance-tracking-report.md

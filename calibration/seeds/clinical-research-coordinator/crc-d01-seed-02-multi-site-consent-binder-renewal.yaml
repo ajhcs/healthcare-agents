@@ -1,0 +1,41 @@
+seed_id: crc-d01-seed-02-multi-site-consent-binder-renewal
+agent_slug: clinical-research-coordinator
+deliverable_id: crc-d01
+deliverable_title: Regulatory Binder Checklist (Essential Documents)
+complexity: moderate
+required_facts:
+  study_title: RIVER-UC / Phase III Study of Lumerava in Moderate to Severe Ulcerative
+    Colitis
+  sponsor: Palisade Meridian Pharma
+  pi_name: Iris Penfield, MD
+  irb_name_number: Stonegate Medical IRB, SGIRB-2024-882
+  continuing_review_date: '2026-03-21'
+  current_protocol: Protocol Version 6.0 dated 2026-01-30
+  current_icf: Main ICF Version 6.1 dated 2026-02-04 approved 2026-02-19
+  ib_version: Investigator Brochure Edition 9 dated 2026-01-18
+  enrollment_snapshot: 41 screened, 24 enrolled, 18 active on treatment, 4 in follow-up
+  monitoring_snapshot: Centralized monitoring ongoing with remote review letters dated
+    2026-01-17 and 2026-03-11
+  pending_item: Updated laboratory normal ranges memo from local chemistry lab expected
+    2026-04-15
+intentionally_unknown:
+- Whether a new protocol amendment will be issued in Q2
+- Whether sponsor will require additional re-consent after upcoming DSMB review
+red_flags:
+  consent-control: Recent consent revision requires subject-level re-consent tracking
+    for active participants.
+  remote-monitoring-followthrough: Remote findings must still show documented resolution
+    and correspondence.
+  lab-document-currency: Normal ranges and lab certifications can drift out of date
+    around annual review.
+mcp_uncertainty_points:
+- fact: Any newly posted Federal Register or FDA policy changes affecting consent
+    content expectations
+  capability_class: current_regulatory_policy
+  action: Check current policy if the site is revising reproductive-risk or biospecimen
+    language again.
+- fact: Current public recruitment status for the study and whether site-level status
+    appears updated
+  capability_class: trial_registry
+  action: Verify registry status if binder review is paired with enrollment planning.
+holdout_ref: clinical-research-coordinator/crc-d01-holdout-02-multi-site-consent-binder-renewal.md

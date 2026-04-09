@@ -1,0 +1,39 @@
+seed_id: rfm-d02-seed-02-orthopedics-margin-bridge
+agent_slug: revenue-finance-manager
+agents_relevant:
+- revenue-finance-manager
+deliverable_id: rfm-d02
+deliverable_title: Service Line Profitability Analysis
+scenario_summary: Orthopedics profitability review with implant cost pressure, outpatient
+  migration, and a payer mix that rewards standardization.
+complexity: high
+required_facts:
+  service_line: Orthopedics
+  cases: 1,220
+  net_revenue: $19,800
+  direct_cost: $16,000
+  contribution_margin: $3,800
+  implant_cost_pressure: $620
+intentionally_unknown:
+- Whether a preferred implant pricing amendment is available before the next renewal
+- Whether surgeon block-time changes can be enforced without reducing access
+red_flags:
+  implant_spend: Device and implant pricing is the main reason the contribution margin
+    lags the revenue story.
+  block_time: Unbalanced block use could hide the real margin opportunity inside the
+    service line.
+mcp_uncertainty_points:
+- fact: Current CMS outpatient payment logic and OPPS updates for procedure benchmarking
+  capability_class: current_regulatory_policy
+  action: Check the current CMS outpatient payment updates before using the line as
+    a benchmarking anchor.
+holdout_ref: calibration/holdouts/revenue-finance-manager/rfm-d02-holdout-02-orthopedics-margin-bridge.md
+source_basis:
+- CMS FY 2026 OPPS Final Rule
+- CMS FY 2026 IPPS Final Rule
+- CMS Hospital Cost Report Worksheet A
+- BLS OEWS 2025
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

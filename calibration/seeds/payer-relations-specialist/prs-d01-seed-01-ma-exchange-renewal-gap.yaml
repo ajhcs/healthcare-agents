@@ -1,0 +1,55 @@
+seed_id: prs-d01-seed-01-ma-exchange-renewal-gap
+agent_slug: payer-relations-specialist
+deliverable_id: prs-d01
+deliverable_title: Payer Contract Analysis Report
+complexity: high
+required_facts:
+  payer_name: Harbor Vale Health Plan
+  contract_id: HVHP-26-1142
+  product_lines: PPO, exchange, and Medicare Advantage
+  effective_date: 2025-10-01
+  expiration_date: 2028-09-30
+  analysis_date: 2026-04-09
+  annual_revenue_by_category:
+    professional_em: 21450000
+    professional_procedures: 13820000
+    inpatient: 10440000
+    outpatient_facility: 12760000
+    ancillary: 7110000
+  current_medicare_percentages:
+    professional_em: 121
+    professional_procedures: 114
+    inpatient: 89
+    outpatient_facility: 96
+    ancillary: 108
+  contract_clauses:
+  - timely filing at 90 days from date of service
+  - 30-month recoupment lookback with offset after notice
+  - all-products participation requirement
+  - silent PPO lease language
+  - deemed acceptance for amendments after 14 business days
+  - MFN clause limited to commercial products
+  target_positions:
+  - professional_em: 141
+  - professional_procedures: 135
+  - inpatient: 113
+  - outpatient_facility: 124
+  - ancillary: 126
+intentionally_unknown:
+- final counteroffer acceptance status
+- exact peer benchmark percentile for each service line
+- whether the payer will carve out Medicare Advantage from the renewal
+red_flags:
+  noted_item_01: forced product-line participation may drag profitable commercial
+    terms into weaker MA or exchange economics
+  noted_item_02: the recoupment window may allow retroactive offsets long after the
+    underlying claim file has aged out of normal audit review
+  noted_item_03: deemed acceptance can create silent amendments if the contract owner
+    misses the notice deadline
+mcp_uncertainty_points:
+- fact: current CMS and Federal Register guidance on Medicare Advantage policy changes
+    and prompt-payment expectations
+  capability_class: current_regulatory_policy
+  action: verify whether any recent CMS or Federal Register update changes the renewal
+    leverage story for MA or exchange products
+holdout_ref: payer-relations-specialist/prs-d01-holdout-01-ma-exchange-renewal-gap.md

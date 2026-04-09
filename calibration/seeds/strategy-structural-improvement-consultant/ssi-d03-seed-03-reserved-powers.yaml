@@ -1,0 +1,36 @@
+seed_id: ssi-d03-example-03-reserved-powers
+agent_slug: strategy-structural-improvement-consultant
+agents_relevant:
+- strategy-structural-improvement-consultant
+deliverable_id: ssi-d03
+deliverable_title: Reserved Powers Matrix
+scenario_summary: Reserved powers matrix for a system governance redesign that needs
+  to separate management speed from board oversight.
+complexity: high
+required_facts:
+  capital_threshold: $250,000
+  board_approval_required: service line launch or close
+  compensation_review: board or compensation committee
+  debt_approval: full board
+  governance_goal: separate speed from oversight
+intentionally_unknown:
+- Whether the board wants one combined committee or separate finance and quality approvals
+- Whether the system wants a tighter capital threshold for the first year after redesign
+red_flags:
+  delegation: A matrix that is too broad will hide risk instead of clarifying it.
+  oversight: A matrix that is too vague will force the board back into operational
+    micromanagement.
+mcp_uncertainty_points:
+- fact: Current governance and compliance expectations that may affect the matrix
+  capability_class: current_regulatory_policy
+  action: Verify current guidance before finalizing reserve powers.
+holdout_ref: calibration/holdouts/strategy-structural-improvement-consultant/ssi-d03-holdout-03-reserved-powers.md
+source_basis:
+- 42 CFR 482.12
+- IRS 501(r)
+- OIG compliance guidance
+- FTC Health Care Merger Guidelines 2023
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

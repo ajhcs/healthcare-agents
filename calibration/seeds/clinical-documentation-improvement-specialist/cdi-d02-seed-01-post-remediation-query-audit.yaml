@@ -1,0 +1,33 @@
+seed_id: cdi-d02-seed-01-post-remediation-query-audit
+agent_slug: clinical-documentation-improvement-specialist
+deliverable_id: cdi-d02
+deliverable_title: Query Compliance Audit Tool
+complexity: moderate
+required_facts:
+  auditor_name: Tessa Holloway, RHIA, CCDS-O
+  audit_period: 2026-04-01 to 2026-04-30
+  audited_specialist: Galen Frost, RN, CCDS
+  sample_size: 8 queries
+  improvement_context: Prior quarter audit found visible diagnosis-specific titles
+    and one yes-no misuse.
+  current_result_anchor: Only two queries should fail in the completed artifact.
+  recurring_issue: One remaining failure should involve omission of a clinically relevant
+    alternative diagnosis.
+  resolved_issue: Provider-facing titles should now be neutral across the sample.
+intentionally_unknown:
+- Exact patient identifiers for the eight sampled queries
+- Which diagnosis category produced the non-leading-language failure
+- Whether the overall compliance rate lands just above or just below 95%
+red_flags:
+  false_perfection: An all-pass audit would ignore the seeded remediation nuance.
+  math_drift: Aggregate percentages that do not reconcile to the per-query table undermine
+    credibility.
+  policy_slippage: Using yes-no to establish a new diagnosis would recreate the exact
+    remediated issue.
+mcp_uncertainty_points:
+- fact: Whether any current CMS or OIG publication changed documentation audit emphasis
+    relevant to CDI query oversight
+  capability_class: current_regulatory_policy
+  action: Check current CMS, Federal Register, or comparable policy updates before
+    finalizing the narrative recommendation.
+holdout_ref: clinical-documentation-improvement-specialist/cdi-d02-holdout-01-post-remediation-query-audit.md

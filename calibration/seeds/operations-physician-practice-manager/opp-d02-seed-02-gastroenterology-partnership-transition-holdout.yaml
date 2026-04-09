@@ -1,0 +1,40 @@
+seed_id: opp-d02-seed-02-gastroenterology-partnership-transition-holdout
+agent_slug: operations-physician-practice-manager
+deliverable_id: opp-d02
+deliverable_title: Compensation Plan Design Worksheet
+complexity: high
+required_facts:
+  specialty: Gastroenterology
+  effective_date: 2026-10-01
+  fmv_opinion_date: 2026-08-14
+  fmv_firm: Juniper Bend FMV Advisors
+  base_salary: $470,000
+  wrvu_threshold: 7,200
+  incentive_rate: $68.00 per wRVU above threshold
+  quality_pool: $28,000
+  call_pay: $900 weekday call; $1,650 weekend call
+  medical_director_stipend: $0
+  expected_total_comp_at_target: $540,400
+  expected_collections_at_target: $1,020,000
+  operating_cost_allocation: $356,000
+  downstream_revenue_contribution: $1,680,000
+  target_access: new consult 3rd next available within 10 business days
+intentionally_unknown:
+- The exact current-year benchmark table from the organization's licensed MGMA file
+- Whether advanced endoscopy blocks are carved out from the same compensation pool
+- Whether APP endoscopy follow-up visits are billed independently or under physician
+  supervision patterns
+red_flags:
+  attribution_risk: The model must not quietly pay physician productivity credit for
+    APP work without a compliant basis.
+  referral_value_confusion: Downstream facility revenue can support commercial reasonableness
+    narrative but cannot be used as direct referral-based compensation.
+  access_tradeoff: Overfilling endoscopy time can starve clinic consult access and
+    suppress future case growth.
+mcp_uncertainty_points:
+- fact: Whether live CMS policy changes affect billing assumptions relevant to GI
+    procedures or supervision language
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy updates before locking the narrative around productivity
+    attribution.
+holdout_ref: operations-physician-practice-manager/opp-d02-holdout-02-gastroenterology-partnership-transition-holdout.md

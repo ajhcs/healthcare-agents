@@ -1,0 +1,46 @@
+seed_id: epc-d01-seed-02-cms-waiver-readiness-holdout
+agent_slug: emergency-preparedness-coordinator
+deliverable_id: epc-d01
+deliverable_title: Emergency Preparedness Program Compliance Checklist
+complexity: moderate
+required_facts:
+  facility_name: Larkspur Valley Hospital
+  ccn: 77A771
+  assessment_date: 2026-03-28
+  assessor: Devin Rowe, Emergency Management and Safety Officer
+  facility_profile: 92-bed hospital with swing beds, emergency department, basic obstetrics
+    stabilization, and one rural clinic under arrangement
+  recent_review_date: 2025-07-30
+  first_exercise_date: 2025-11-12
+  first_exercise_type: community-based full-scale exercise
+  first_exercise_scenario: regional influenza surge with medical shelter coordination
+    and oxygen supply stress
+  second_exercise_date: 2026-02-06
+  second_exercise_type: tabletop exercise
+  second_exercise_scenario: extended telecom outage during a federal public health
+    emergency with 1135 waiver decision support
+  known_open_issues: rural clinic contact-tree maintenance, alternate care site documentation,
+    and outbound transfer acceptance logging
+intentionally_unknown:
+- The final numeric compliance score.
+- Whether the open issues justify a Ready status or a Gaps Identified status.
+- The exact number of corrective actions that should appear at the end.
+red_flags:
+  transfer_logging: Outbound transfer acceptance decisions are not consistently documented
+    during high census periods.
+  clinic_integration: The rural clinic under arrangement may not be fully integrated
+    into the hospital communication and training cycle.
+  waiver_operationalization: Section 1135 concepts are referenced in policy but may
+    not yet be supported by practical decision aids.
+mcp_uncertainty_points:
+- fact: Any current CMS or Federal Register changes affecting waiver interpretation,
+    emergency preparedness survey guidance, or CoP expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS emergency preparedness and waiver resources before finalizing
+    the checklist.
+- fact: Current literature on surge staffing, alternate care site operations, or crisis
+    standards assumptions used in the annex set
+  capability_class: literature_search
+  action: Search public health and biomedical literature to validate planning assumptions
+    if the generator wants stronger evidence support.
+holdout_ref: emergency-preparedness-coordinator/epc-d01-holdout-02-cms-waiver-readiness-holdout.md

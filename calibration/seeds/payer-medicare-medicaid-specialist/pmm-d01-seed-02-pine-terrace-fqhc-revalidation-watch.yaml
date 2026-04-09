@@ -1,0 +1,29 @@
+seed_id: pmm-d01-seed-02-pine-terrace-fqhc-revalidation-watch
+agent_slug: payer-medicare-medicaid-specialist
+deliverable_id: pmm-d01
+deliverable_title: Medicare Enrollment Status Report
+complexity: routine
+required_facts:
+  organization: Pine Terrace Family Health Cooperative
+  report_date: '2026-04-09'
+  total_enrolled_providers: '19'
+  total_tins: '1'
+  operational_context: Single-TIN FQHC with one institutional enrollment, one group
+    enrollment, and a small physician and NP panel.
+  main_issue: Two individual revalidations are due within 45 days and one ordering/referring
+    profile has an outdated correspondence address.
+intentionally_unknown:
+- Whether the outdated correspondence address has affected any MAC notices
+- Any live CMS change to revalidation notice timing
+red_flags:
+  missed_notice_risk: Outdated contact information could cause missed revalidation
+    or development requests.
+  deadline_concentration: Small team has multiple due dates clustered in the same
+    month.
+mcp_uncertainty_points:
+- fact: Whether CMS changed current revalidation communications or contact update
+    expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS provider enrollment updates if the organization plans
+    to rely on older PECOS workflows.
+holdout_ref: payer-medicare-medicaid-specialist/pmm-d01-holdout-02-pine-terrace-fqhc-revalidation-watch.md

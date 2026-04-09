@@ -1,0 +1,52 @@
+seed_id: oam-d01-seed-01-surgical-specialty-dashboard-holdout
+agent_slug: operations-ambulatory-manager
+deliverable_id: oam-d01
+deliverable_title: Clinic Operations Dashboard
+complexity: high
+required_facts:
+  month: March 2026
+  region: Summit Surgical Ambulatory Network
+  sites: '4'
+  providers: 18.0 FTE
+  site_a_name: Summit Ridge
+  site_b_name: Lakeview Pavilion
+  site_c_name: Orchard Point
+  site_d_name: Mesa Annex
+  site_a_3na_new: 16 days
+  site_b_3na_new: 22 days
+  site_c_3na_new: 13 days
+  site_d_3na_new: 19 days
+  site_a_fill: 96%
+  site_b_fill: 98%
+  site_c_fill: 93%
+  site_d_fill: 97%
+  network_no_show: 5.9%
+  network_cycle_time: '63'
+  patient_experience_overall: '89.8'
+  patient_experience_office_staff: '84.9'
+  network_revenue: $3,118,400
+  network_margin: $1,041,200
+  key_operational_issue: Follow-up and post-op scheduling are still handled at a single
+    checkout desk in every site.
+intentionally_unknown:
+- Per-site wRVU distribution
+- Current provider roster and external-facing facility identity details
+red_flags:
+  access_compression: If the dashboard does not call out 3NA risk despite fill rates
+    above 95%, it misses the operating problem.
+  procedure_mix_blindness: A generator should not treat procedural and clinic follow-up
+    demand as the same supply pool.
+  office_staff_signal: Low office-staff experience relative to overall rating should
+    trigger at least one action item.
+mcp_uncertainty_points:
+- fact: Which provider or facility names should appear in any external-facing operational
+    recommendation
+  capability_class: provider_directory
+  action: Verify provider or facility identity details before finalizing external-facing
+    recommendations.
+- fact: Whether any current CMS ambulatory policy update affects cited operational
+    assumptions
+  capability_class: current_regulatory_policy
+  action: Check current CMS or Federal Register updates before issuing final policy-sensitive
+    guidance.
+holdout_ref: operations-ambulatory-manager/oam-d01-holdout-01-surgical-specialty-dashboard-holdout.md

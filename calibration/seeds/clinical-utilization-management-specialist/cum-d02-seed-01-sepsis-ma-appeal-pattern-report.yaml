@@ -1,0 +1,39 @@
+seed_id: cum-d02-seed-01-sepsis-ma-appeal-pattern-report
+agent_slug: clinical-utilization-management-specialist
+deliverable_id: cum-d02
+deliverable_title: Denial Tracking & Analysis Report
+complexity: high
+required_facts:
+  facility_name: Cedar Marsh Regional Hospital
+  reporting_period: Q4 2025
+  prepared_by: Talia Wren, RN, CCM, Manager of Utilization Review
+  dominant_denial_pattern: Medicare Advantage medical necessity denials involving
+    sepsis, COPD exacerbation, and hypoxemic respiratory failure
+  operational_context: First-level overturns improved after physician advisor review
+    was added, but late packet assembly still weakens escalated appeals
+  quantitative_anchor: Total denials should be materially higher in Medicare Advantage
+    than in Medicare FFS
+intentionally_unknown:
+- Exact payer names beyond one regional Medicare Advantage plan
+- Precise overturn count for external review cases
+- Exact dollar value for each denial subgroup
+red_flags:
+  payer_criteria_drift: The generator should call out proprietary inpatient criteria
+    being applied more restrictively than Medicare coverage standards for MA basic
+    benefits.
+  weak_first_day_documentation: The generator should surface missing attending rationale
+    for expected duration and severity in several cases.
+  appeal_packet_latency: The generator should identify delays in obtaining signed
+    physician narratives before filing deadlines.
+mcp_uncertainty_points:
+- fact: Whether any CMS or subregulatory updates after January 2024 changed MA coverage-criteria
+    alignment expectations
+  capability_class: current_regulatory_policy
+  action: Check current CMS Medicare Advantage regulatory guidance before finalizing
+    the MA strategy section
+- fact: Whether the named regional MA plan has published current inpatient authorization
+    or coverage criteria for sepsis and COPD admissions
+  capability_class: coverage_determination
+  action: Verify current plan coverage criteria and authorization language for the
+    affected diagnoses
+holdout_ref: clinical-utilization-management-specialist/cum-d02-holdout-01-sepsis-ma-appeal-pattern-report.md

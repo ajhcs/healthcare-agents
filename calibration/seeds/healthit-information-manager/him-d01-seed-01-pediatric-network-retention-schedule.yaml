@@ -1,0 +1,33 @@
+seed_id: him-d01-seed-01-pediatric-network-retention-schedule
+agent_slug: healthit-information-manager
+deliverable_id: him-d01
+deliverable_title: Record Retention Schedule
+complexity: high
+required_facts:
+  organization_name: Blue Harbor Children's Network
+  effective_date: 2026-04-15
+  states: Wisconsin and Minnesota
+  approval_chain: Keira Sol, RHIA; D. Forrester, JD; Ilan Voss, Compliance Director
+  pediatric_rule: Minor patient records are retained until age 21, then 10 years
+  adult_rule: Adult records from family medicine clinics are retained 10 years from
+    last encounter
+  emtala_rule: EMTALA records are retained 5 years
+  employee_health_rule: Employment plus 30 years
+  special_record_classes: NICU developmental follow-up records, school-based clinic
+    records, immunization records, radiology images, destruction vendor certificates
+intentionally_unknown:
+- Whether either state enacted a more recent pediatric retention statute revision
+  after the last quarterly regulatory refresh
+- Whether any CMS or OCR policy update changed the practical federal floor for electronic
+  production or retention documentation
+red_flags:
+  missing_minor_logic: Minor records treated with the same period as adult records
+  destruction_gap: No documented destruction method for electronic media
+  legal_hold_omission: Litigation hold process absent or too vague to operate
+mcp_uncertainty_points:
+- fact: Whether Wisconsin or Minnesota issued a recent record-retention change affecting
+    minor records or school-based clinic documentation
+  capability_class: current_regulatory_policy
+  action: Check current state health department or comparable public updates before
+    final approval of pediatric retention periods
+holdout_ref: healthit-information-manager/him-d01-holdout-01-pediatric-network-retention-schedule.md

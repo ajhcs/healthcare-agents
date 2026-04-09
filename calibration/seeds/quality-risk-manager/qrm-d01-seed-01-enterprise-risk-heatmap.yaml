@@ -1,0 +1,25 @@
+seed_id: qrm-d01-seed-01-enterprise-risk-heatmap
+agent_slug: quality-risk-manager
+deliverable_id: qrm-d01
+deliverable_title: Enterprise Risk Register
+complexity: high
+required_facts:
+  organization_name: Northshore Physician Partners
+  top_risks: cybersecurity, licensure, reserve adequacy
+  board_need: board-ready register with mitigation owners
+  review_cadence: quarterly
+intentionally_unknown:
+- exact insurer renewal terms
+- final board appetite threshold for telehealth expansion
+red_flags:
+  overconcentration: The register should not collapse all cyber items into one vague
+    risk bucket.
+  ownership_gap: Every high risk needs a named owner and due date.
+mcp_uncertainty_points:
+- fact: provider licensure status for telehealth clinicians
+  capability_class: provider_directory
+  action: verify the clinician roster before board review
+- fact: current policy affecting telehealth or claims rules
+  capability_class: current_regulatory_policy
+  action: check whether any recent policy changes affect the top risks
+holdout_ref: quality-risk-manager/qrm-d01-holdout-01-enterprise-risk-heatmap.md

@@ -1,0 +1,29 @@
+workflow:
+  title: Invalid Cycle
+  steps:
+    - step_id: 1
+      agent_slug: clinical-care-management-specialist
+      agent_name: Care Management Specialist
+      deliverable_id: ccm-d02
+      deliverable_title: Readmission Risk Assessment
+      why: Seed step
+      required_inputs:
+        - source: user
+          data: "Discharge summary"
+      outputs_passed_forward: []
+      depends_on: [2]
+      independent_review: false
+      tool_recommendation: null
+    - step_id: 2
+      agent_slug: revenue-medical-coding-specialist
+      agent_name: Medical Coding Specialist
+      deliverable_id: rmc-d01
+      deliverable_title: Coding Audit Report
+      why: Downstream step
+      required_inputs:
+        - source: step_1
+          data: risk_score
+      outputs_passed_forward: []
+      depends_on: [1]
+      independent_review: false
+      tool_recommendation: null

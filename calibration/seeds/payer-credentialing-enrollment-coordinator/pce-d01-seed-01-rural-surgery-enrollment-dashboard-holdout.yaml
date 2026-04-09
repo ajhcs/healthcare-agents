@@ -1,0 +1,45 @@
+seed_id: pce-d01-seed-01-rural-surgery-enrollment-dashboard-holdout
+agent_slug: payer-credentialing-enrollment-coordinator
+deliverable_id: pce-d01
+deliverable_title: Provider Credentialing Status Dashboard
+complexity: high
+required_facts:
+  organization: High Desert Surgical Partners
+  report_date: '2026-04-09'
+  total_active_providers: '11'
+  providers_in_pipeline: '4'
+  held_provider: Dr. Sela Arden
+  held_reason: PECOS returned CMS-855I because reassignment to the group TIN was omitted
+  payer_columns: Medicare, Medicaid, Blue Peak, Summit Choice, Aetna, Cigna, Frontier
+    Community Plan
+  entity_revalidation_due: '2026-07-01'
+  monthly_screening_date: '2026-04-02'
+  caqh_risk_provider: Dr. Oren Pike
+  caqh_risk_expiration: '2026-04-21'
+intentionally_unknown:
+- Exact effective dates for each payer that already approved the providers
+- Which two pending commercial payers should still show hourglass status for each
+  pipeline provider
+- Precise PECOS ID values
+red_flags:
+  go_live_block: One surgeon is scheduled for cases on 2026-04-20 but cannot bill
+    until Medicare and commercial enrollment are active
+  reassignment_error: CMS-855I reassignment section missing from PECOS submission
+  caqh_deadline: A CAQH attestation expires inside 14 days
+mcp_uncertainty_points:
+- fact: Whether Dr. Sela Arden's PECOS resubmission has moved from Returned to In
+    Review
+  capability_class: provider_enrollment_status
+  action: Confirm live Medicare enrollment status before communicating a revised start
+    date.
+- fact: Whether the reported practice address and taxonomy are current for referral
+    routing after the satellite clinic opening
+  capability_class: provider_directory
+  action: Verify the provider directory record before publishing the dashboard to
+    scheduling leadership.
+- fact: Whether CMS issued any current enrollment processing changes affecting reassignment
+    handling
+  capability_class: current_regulatory_policy
+  action: Check for recent CMS enrollment guidance if turnaround assumptions are being
+    updated.
+holdout_ref: payer-credentialing-enrollment-coordinator/pce-d01-holdout-01-rural-surgery-enrollment-dashboard-holdout.md

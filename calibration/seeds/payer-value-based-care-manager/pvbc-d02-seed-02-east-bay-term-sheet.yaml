@@ -1,0 +1,29 @@
+seed_id: pvbc-d02-seed-02-east-bay-term-sheet
+agent_slug: payer-value-based-care-manager
+deliverable_id: pvbc-d02
+deliverable_title: Risk-Based Contract Term Sheet
+complexity: high
+required_facts:
+  provider_organization: East Bay Clinically Integrated Network
+  payer: Atlas Advantage Plan
+  product_line: Medicare Advantage
+  effective_date: 2026-04-01
+  term_years: 4
+  minimum_attributed_lives: 18000
+  estimated_attributed_population: 22600
+  shared_savings_percentage: 75%
+  shared_losses_percentage: 45%
+intentionally_unknown:
+- payer's final shared-latency data SLA
+- benchmark rebasing details beyond annual refresh
+- carve-outs for out-of-network transplant cases
+red_flags:
+  noted_item_01: symmetric downside exposure without an explicit corridor width
+  noted_item_02: capitation language that omits reconciliation mechanics
+  noted_item_03: quality withhold that lacks measure definitions
+mcp_uncertainty_points:
+- fact: whether current CMS QPP measure PDFs still match the exact measure names used
+    in the quality exhibit
+  capability_class: current_regulatory_policy
+  action: check the current CMS QPP measure specs before finalizing the quality exhibit
+holdout_ref: payer-value-based-care-manager/pvbc-d02-holdout-02-east-bay-term-sheet.md

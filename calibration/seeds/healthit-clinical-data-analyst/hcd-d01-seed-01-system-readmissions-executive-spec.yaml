@@ -1,0 +1,37 @@
+seed_id: hcd-d01-seed-01-system-readmissions-executive-spec
+agent_slug: healthit-clinical-data-analyst
+deliverable_id: hcd-d01
+deliverable_title: Quality Measure Performance Dashboard Specification
+complexity: high
+required_facts:
+  dashboard_name: Alder System Readmissions and Safety Command Center
+  owner: Enterprise Quality and Finance Strategy
+  data_source: EDW with claims lag mart, Caboodle inpatient mart, and NHSN import
+    tables
+  refresh_frequency: Monthly for official scorecards with weekly internal surveillance
+    tiles
+  audience: Board quality committee, CFO, CMOs, hospital presidents
+  hospitals_in_scope: Alder Grove Medical Center, Juniper Coast Hospital, Willow Bend
+    Regional
+  measure_set: HRRP AMI, HRRP HF, HRRP Pneumonia, HAC PSI-90, HAC CLABSI SIR, HAC
+    CAUTI SIR
+  core_risk: One hospital moved from middle performance to near penalty threshold
+    after payer-class mapping changes and delayed claims completion.
+intentionally_unknown:
+- Final CMS payment adjustment percentages for the next fiscal year release
+- Whether a newly issued Federal Register rule changed applicable program weights
+  after the planning date
+red_flags:
+  claims_lag: The generator should mention that claims-based measures lag near-real-time
+    data and must be labeled accordingly.
+  denominator_context: The generator should not present rates without denominator
+    or volume context in the measure descriptions or validation notes.
+  access_scope: The generator should keep patient-level drill-through limited to authorized
+    analyst and review roles.
+mcp_uncertainty_points:
+- fact: Current CMS HRRP and HAC program rule updates that could alter public benchmark
+    framing or payment adjustment assumptions
+  capability_class: current_regulatory_policy
+  action: Check CMS and Federal Register sources for any recent annual rulemaking
+    that changes program scoring language before publication.
+holdout_ref: healthit-clinical-data-analyst/hcd-d01-holdout-01-system-readmissions-executive-spec.md

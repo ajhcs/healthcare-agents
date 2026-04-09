@@ -1,0 +1,28 @@
+seed_id: hie-seed-003
+agent_slug: healthit-interoperability-engineer
+deliverable_id: hie-d01
+deliverable_title: Interface Specification Document
+required_facts:
+  interface_name: Specialist referral scheduling and consult exchange
+  source_system: Summit Family Clinic Athena 2025.9
+  destination_system: North Shore Specialty Access Portal
+  message_types: SIU^S12, SIU^S13, and C-CDA referral note exchange
+  transport: Direct secure messaging plus HTTPS callback
+  interface_engine: Cloverleaf 20.1
+  expected_volume: 75 referral packets per day
+  code_systems: HL7v2.5.1, C-CDA R2.1, LOINC
+intentionally_unknown:
+  - Whether the receiving specialty group requires fax backup for same-day slots
+  - The final patient matching threshold for the document query path
+red_flags:
+  appointment_drift: Scheduling acknowledgments must map back to the originating referral
+  consent_gap: Referral note exchange must honor the receiving organization consent rules
+  document_loss: Failed Direct delivery must quarantine rather than silently drop
+mcp_uncertainty_points:
+  - fact: The specialty organization identity and endpoint ownership
+    capability_class: provider_directory
+    action: Verify NPI, taxonomy, and practice address before onboarding
+  - fact: Whether current exchange policy changed for document sharing or information blocking
+    capability_class: current_regulatory_policy
+    action: Check current CMS, ONC, and Federal Register guidance before final signoff
+holdout_ref: healthit-interoperability-engineer/hie-d01-003-referral-scheduling.md

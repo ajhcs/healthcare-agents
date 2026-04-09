@@ -1,0 +1,24 @@
+seed_id: rca-d02-seed-01-charge-gap-audit
+agent_slug: revenue-chargemaster-analyst
+deliverable_id: rca-d02
+deliverable_title: Charge Capture Gap Analysis
+complexity: high
+required_facts:
+  analysis_period: March 2026
+  total_charges_reviewed: 24,860
+  miss_rate: 1.26%
+  annual_revenue_at_risk: $415K
+intentionally_unknown:
+- exact reason the OR interface missed each charge
+- which missed charges can still be recovered before filing windows close
+red_flags:
+  charge_integrity: The analysis should separate missed charges from phantom charges.
+  source_traceability: Each department needs a clear source-to-CDM linkage.
+mcp_uncertainty_points:
+- fact: current charge coding or edit policy
+  capability_class: coding_edit_policy
+  action: verify the latest edit rule set before the next CDM release
+- fact: coverage status for new procedures or drugs
+  capability_class: coverage_determination
+  action: confirm whether the expected payment category changed for any impacted service
+holdout_ref: revenue-chargemaster-analyst/rca-d02-holdout-01-charge-gap-audit.md

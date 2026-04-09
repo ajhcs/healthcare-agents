@@ -1,0 +1,26 @@
+seed_id: him-d02-seed-04-part2-segmented-lhr-profile
+agent_slug: healthit-information-manager
+deliverable_id: him-d02
+deliverable_title: Legal Health Record Definition Matrix
+complexity: high
+required_facts:
+  organization_name: Meadowgate Health Alliance
+  state_context: Michigan, Indiana, and Ohio
+  core_systems: EHR, behavioral health EHR, pharmacy system, HIE, patient portal,
+    audit logging
+  record_classes: psychotherapy notes, Part 2 program notes, lab reports, discharge
+    summary, access log, portal message, scanned outside consult
+intentionally_unknown:
+- exact behavioral health segmentation rule by source system
+- final legal-release routing for subpoenas
+- current payer-specific disclosure language
+red_flags:
+  part2_commingling: substance use program content blended into the general chart
+  overbroad_exclusions: clinically relevant records excluded without explanation
+  missing_version_control: amendments and addenda not tied to the original entry
+mcp_uncertainty_points:
+- fact: current federal Part 2 alignment and OCR enforcement posture
+  capability_class: current_regulatory_policy
+  action: verify whether there are any new federal guidance updates affecting segmentation
+    and disclosure handling
+holdout_ref: healthit-information-manager/him-d02-holdout-04-part2-segmented-lhr-profile.md

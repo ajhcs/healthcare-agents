@@ -1,0 +1,23 @@
+run_id: pilot-live-upgraded-008
+date: '2026-04-09'
+agents_tested:
+- clinical-care-management-specialist
+- healthit-interoperability-engineer
+- quality-compliance-officer
+- revenue-medical-coding-specialist
+- strategy-healthcare-consultant
+generator_model: gpt-5.4-medium+claude-sonnet-4-resume
+judge_model: gpt-5.4-xhigh+claude-opus-4.1-resume
+agent_prompt_versions:
+  healthit-interoperability-engineer: 4a3a72e
+  revenue-medical-coding-specialist: 8eb5050
+  strategy-healthcare-consultant: a95df86
+  quality-compliance-officer: d9fca1c
+  clinical-care-management-specialist: 67db1f6
+seeds_used: 25
+holdouts_used: 25
+lint_pass_rate: 0.88
+mean_calibration_score: 3.0239999999999996
+estimated_cost_usd: 0.0
+human_qa_sample: 0
+human_qa_concordance: null

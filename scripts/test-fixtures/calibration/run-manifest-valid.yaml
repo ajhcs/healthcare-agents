@@ -1,0 +1,15 @@
+run_id: pilot-001
+date: 2026-04-09
+agents_tested:
+  - clinical-care-management-specialist
+generator_model: sonnet-4.6
+judge_model: opus-4.6
+agent_prompt_versions:
+  clinical-care-management-specialist: abc1234
+seeds_used: 5
+holdouts_used: 5
+lint_pass_rate: 0.8
+mean_calibration_score: 2.9
+estimated_cost_usd: 8.5
+human_qa_sample: 3
+human_qa_concordance: 0.67

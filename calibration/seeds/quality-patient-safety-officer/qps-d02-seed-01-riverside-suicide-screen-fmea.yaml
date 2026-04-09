@@ -1,0 +1,25 @@
+seed_id: qps-d02-seed-01-riverside-suicide-screen-fmea
+agent_slug: quality-patient-safety-officer
+deliverable_id: qps-d02
+deliverable_title: FMEA Worksheet
+complexity: moderate
+required_facts:
+  process: ED to inpatient suicide-risk screening and handoff
+  hazard_scores:
+    screen_not_visible_in_handoff: 12
+    order_not_placed: 8
+    environmental_review_omitted: 9
+  action_theme: mandatory EHR flag and hard-stop controls
+intentionally_unknown:
+- exact EHR build name
+- exact unit placement process
+- exact local policy wording
+red_flags:
+  noted_item_01: leaving the worksheet blank
+  noted_item_02: omitting hazard scoring
+  noted_item_03: not proposing countermeasures for the highest-risk failure modes
+mcp_uncertainty_points:
+- fact: current suicide-risk and patient-safety wording
+  capability_class: current_regulatory_policy
+  action: verify current Joint Commission and AHRQ references before finalizing the worksheet
+holdout_ref: quality-patient-safety-officer/qps-d02-holdout-01-riverside-suicide-screen-fmea.md

@@ -1,0 +1,39 @@
+seed_id: cdi-d01-seed-02-enterprise-cmi-variance-dashboard
+agent_slug: clinical-documentation-improvement-specialist
+deliverable_id: cdi-d01
+deliverable_title: CDI Program Dashboard
+complexity: high
+required_facts:
+  facility_name: Harbor Gate Regional Medical Center
+  reporting_period: May 2026
+  prepared_by: Soren Vale, MBA, RN, CCDS, CDIP
+  total_discharges: '1788'
+  review_rate: 88.2%
+  query_rate: 31.4%
+  response_rate: 89.1%
+  agreement_rate: 68.7%
+  compliance_audit_score: 95.6%
+  working_cmi: '1.973'
+  final_cmi: '1.941'
+  reconciliation_rate: 84.9%
+  narrative_cause: Several DRG-changing malnutrition and respiratory failure queries
+    were either unanswered before final coding or removed after physician advisor
+    validation review.
+intentionally_unknown:
+- Exact count of total queries
+- Exact YTD values
+- Which single query category was highest volume
+red_flags:
+  financially_spun: The narrative must not frame the negative variance as missed revenue
+    alone.
+  impossible_metrics: Agreement rate below target with compliance above target is
+    plausible; the artifact should preserve that distinction.
+  missing_root_cause: If the final CMI dip is not explained operationally, the dashboard
+    will read as superficial.
+mcp_uncertainty_points:
+- fact: Whether any current CMS or Federal Register update changed FY 2026 MS-DRG
+    or HAC assumptions that would affect executive interpretation of the variance
+  capability_class: current_regulatory_policy
+  action: Check current CMS, Federal Register, or comparable policy updates before
+    the dashboard is circulated to executive leadership.
+holdout_ref: clinical-documentation-improvement-specialist/cdi-d01-holdout-02-enterprise-cmi-variance-dashboard.md

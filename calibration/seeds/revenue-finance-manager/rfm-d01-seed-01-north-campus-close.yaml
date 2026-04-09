@@ -1,0 +1,43 @@
+seed_id: rfm-d01-seed-01-north-campus-close
+agent_slug: revenue-finance-manager
+agents_relevant:
+- revenue-finance-manager
+deliverable_id: rfm-d01
+deliverable_title: Monthly Financial Performance Report
+scenario_summary: North campus monthly close with margin pressure from agency labor,
+  pharmacy overspend, and a favorable case mix swing.
+complexity: moderate
+required_facts:
+  facility: North Campus Medical Center
+  period: March 2026
+  monthly_net_patient_revenue: $10,540
+  monthly_operating_margin: $1,900
+  ytd_operating_margin: $3,800
+  inpatient_discharges: 1,204
+  outpatient_visits: 18,640
+  ed_visits: 6,820
+  surgery_cases: 1,104
+  agency_labor_variance: $480 unfavorable
+intentionally_unknown:
+- Whether the staffing vendor contract can be re-priced before the next close
+- Whether specialty pharmacy spend will remain elevated after the current treatment
+  mix normalizes
+red_flags:
+  agency_labor: Premium labor is carrying open shifts and could reappear in the next
+    close if vacancies remain open.
+  pharmacy_mix: Specialty drug use is compressing margin even with stable volume.
+mcp_uncertainty_points:
+- fact: Current CMS payment logic and FY 2026 payment updates affecting the close
+  capability_class: current_regulatory_policy
+  action: Verify the current CMS payment updates before finalizing the monthly variance
+    commentary.
+holdout_ref: calibration/holdouts/revenue-finance-manager/rfm-d01-holdout-01-north-campus-close.md
+source_basis:
+- CMS FY 2026 IPPS Final Rule
+- CMS FY 2026 OPPS Final Rule
+- CMS Hospital Cost Report Instructions
+- BLS OEWS 2025
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

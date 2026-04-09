@@ -1,0 +1,36 @@
+seed_id: oltc-d02-seed-01-silver-oaks-f758-correction
+agent_slug: operations-long-term-care-administrator
+deliverable_id: oltc-d02
+deliverable_title: Survey Response and Corrective Action Plan
+complexity: moderate
+required_facts:
+  facility_name: Silver Oaks Transitional Care Lodge
+  ccn: 38D552
+  survey_date: 2026-02-11
+  survey_type: Standard
+  response_due_date: 2026-02-21
+  ftag: F758
+  regulatory_cite: "42 CFR \xA7 483.45(e)"
+  scope_severity: E
+  identified_issue: Resident R22 remained on PRN quetiapine beyond the permitted short-duration
+    window with no documented physician evaluation of continued need and no current
+    behavioral monitoring notes.
+  completion_date: 2026-02-19
+  responsible_party: Leora Mott, LNHA
+intentionally_unknown:
+- Exact number of additional residents found on the expanded psychotropic review list
+- Final percentage compliance result from the first month of monitoring
+red_flags:
+  undocumented_prn_psychotropic: PRN psychotropic order duration and reassessment
+    were not controlled.
+  missing_behavior_tracking: Target symptoms and nonpharmacologic interventions were
+    not trended consistently.
+  pharmacist_loop_not_closed: Monthly irregularity findings did not show documented
+    prescriber response.
+mcp_uncertainty_points:
+- fact: Whether current CMS psychotropic guidance language or related survey memo
+    language changed after the survey date
+  capability_class: current_regulatory_policy
+  action: Check current CMS policy updates and survey guidance before finalizing an
+    external-facing response packet.
+holdout_ref: operations-long-term-care-administrator/oltc-d02-holdout-01-silver-oaks-f758-correction.md

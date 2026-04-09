@@ -1,0 +1,35 @@
+seed_id: pmc-d01-seed-02-medicaid-expansion-glp1-pressure
+agent_slug: payer-managed-care-analyst
+deliverable_id: pmc-d01
+deliverable_title: Capitation Rate Development Summary
+complexity: high
+required_facts:
+  plan_name: Cedar Vale Provider Health Plan
+  population: Medicaid expansion adults
+  rating_period: 2027-01-01 to 2027-12-31
+  base_period: 2025-04-01 to 2026-03-31
+  enrolled_members: 18,970
+  member_months: 227,640
+  current_specific_stop_loss_attachment: 175000
+  proposed_specific_stop_loss_attachment: 225000
+  hospital_rate_increase: 3.1 percent on the dominant hospital contract effective
+    2027-01-01
+intentionally_unknown:
+- Whether the state will permit a separate risk mitigation pool for cell-and-gene
+  therapies
+- Final QIA classification for one digital weight-management program in the coming
+  MLR cycle
+red_flags:
+  pharmacy_spike: GLP-1 utilization can lift pharmacy PMPM quickly and create downstream
+    rebound if prior authorization tightens midyear.
+  ed_reliance: Rising ED use may indicate primary care leakage rather than pure acuity
+    growth.
+  stop_loss_shift: Raising the specific attachment point can improve premium load
+    but increase retained volatility.
+mcp_uncertainty_points:
+- fact: Any recent CMS or state bulletin affecting Medicaid managed care pharmacy
+    trend treatment, network access, or stop-loss-related risk mitigation
+  capability_class: current_regulatory_policy
+  action: Check current CMS and state policy updates before using the rate summary
+    in negotiations or governance review.
+holdout_ref: payer-managed-care-analyst/pmc-d01-holdout-02-medicaid-expansion-glp1-pressure.md

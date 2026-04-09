@@ -1,0 +1,37 @@
+agents:
+  - slug: 'healthit-epic-applications-analyst'
+    name: 'Epic Applications Analyst'
+    domain: 'health-it'
+    routing_triggers:
+      - 'Epic build'
+      - 'EHR upgrade'
+    tool_opportunities:
+      - trigger: 'validate Epic build or interface impacts'
+        capability_class: 'current_regulatory_policy'
+        query_template: 'Check Epic release notes and version-specific guidance'
+        materiality: 'Prevents stale build assumptions during upgrade work'
+    line_budget: 560
+    regulatory_refresh: 'as-needed'
+    refresh_owner: 'maintainer'
+    deliverables:
+      - id: 'hea-d01'
+        title: 'Legacy Interface Specification'
+        prompt_section: '📋 Your Technical Deliverables'
+      - id: 'hea-d02'
+        title: 'Legacy FHIR Checklist'
+        prompt_section: '📋 Your Technical Deliverables'
+  - slug: 'operations-physician-practice-manager'
+    name: 'Physician Practice Manager'
+    domain: 'operations'
+    routing_triggers:
+      - 'practice operations'
+      - 'physician office management'
+    line_budget: 520
+    regulatory_refresh: 'annually'
+    refresh_owner: 'contributor'
+    deliverables:
+      - id: 'oppm-d01'
+        title: 'Practice Performance Dashboard'
+        prompt_section: '📋 Your Technical Deliverables'
+utility_agents:
+  - 'legacy-helper'

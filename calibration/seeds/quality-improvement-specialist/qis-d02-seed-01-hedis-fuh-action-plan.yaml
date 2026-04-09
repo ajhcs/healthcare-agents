@@ -1,0 +1,40 @@
+seed_id: qis-d02-seed-01-hedis-fuh-action-plan
+agent_slug: quality-improvement-specialist
+deliverable_id: qis-d02
+deliverable_title: Quality Improvement Action Plan
+complexity: moderate
+required_facts:
+  measure_name: FUH 7-Day / Follow-Up After Hospitalization for Mental Illness
+  current_rate: 49.8%
+  target_rate: 63.0%
+  gap: 13.2 percentage points
+  product_line: Medicaid
+  plan_owner: Sela Venn, Behavioral Health Quality Manager
+  effective_date: '2026-04-09'
+  known_contributors:
+  - Discharge feeds arrive one business day late from the largest psychiatric facility.
+  - Weekend discharges have lower seven-day follow-up completion.
+  - Two rural counties have thin outpatient psychiatry capacity.
+intentionally_unknown:
+- Whether a provider directory refresh would reveal additional active behavioral health
+  sites accepting new members
+- Whether a recent specification clarification affected eligible follow-up modalities
+- Exact outreach staffing model for after-hours scheduling
+red_flags:
+  external_network_accuracy: Generator should not assume listed behavioral health
+    providers are active or accepting appointments without verification.
+  followup_window: Generator should preserve the seven-day timing urgency and not
+    blur it into a generic 30-day access plan.
+  data_source_limits: Generator should acknowledge claims and encounter timing constraints.
+mcp_uncertainty_points:
+- fact: Whether named outpatient behavioral health clinics are active and accepting
+    new patients
+  capability_class: provider_directory
+  action: Verify provider and facility identity details before finalizing network-based
+    recommendations.
+- fact: Whether current public guidance changed accepted follow-up modalities or reporting
+    assumptions
+  capability_class: current_regulatory_policy
+  action: Check current CMS or NCQA-linked policy guidance before finalizing the external-facing
+    action summary.
+holdout_ref: quality-improvement-specialist/qis-d02-holdout-01-hedis-fuh-action-plan.md

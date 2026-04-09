@@ -1,0 +1,38 @@
+seed_id: ohh-d02-seed-02-holdout-survey-readiness-new-branch-stabilization
+agent_slug: operations-home-health-administrator
+deliverable_id: ohh-d02
+deliverable_title: Survey Readiness Assessment
+complexity: routine
+required_facts:
+  agency_name: Silver Birch Visiting Nurses
+  ccn: 77H712
+  last_survey_date: 2023-10-03
+  assessment_date: 2026-04-09
+  prepared_by: Marn Keel, Administrator
+  sample_size: 10
+  aide_patients_total: 9
+  aide_supervision_current: 8
+  aide_supervision_overdue: 1
+  key_findings: Admission timeliness strong, one late aide supervisory visit, two
+    unsigned orders, QAPI minutes incomplete for one quarter, one discharge summary
+    finalized late
+intentionally_unknown:
+- Whether the accrediting body or state survey agency will review this branch first
+  after the acquisition
+- Whether provider directory records fully reflect the new branch contact structure
+red_flags:
+  qapi_governance: One quarter of QAPI documentation lacks completed governing body
+    review evidence.
+  order_control: Unsigned orders remain the most visible chart-control weakness.
+  discharge_timeliness: Discharge completion lag could become a records finding if
+    repeated.
+mcp_uncertainty_points:
+- fact: Provider identity details and branch contact information used in any outside-facing
+    readiness packet
+  capability_class: provider_directory
+  action: Verify provider and branch identity details before finalizing materials
+    sent outside the organization.
+- fact: Any recent CMS survey guidance update relevant to home health CoPs
+  capability_class: current_regulatory_policy
+  action: Check for recent CMS policy updates before finalizing the compliance narrative.
+holdout_ref: operations-home-health-administrator/ohh-d02-holdout-02-holdout-survey-readiness-new-branch-stabilization.md

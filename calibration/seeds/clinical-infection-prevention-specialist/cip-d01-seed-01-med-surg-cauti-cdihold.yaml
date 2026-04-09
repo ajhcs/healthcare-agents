@@ -1,0 +1,92 @@
+seed_id: cip-d01-seed-01-med-surg-cauti-cdihold
+agent_slug: clinical-infection-prevention-specialist
+deliverable_id: cip-d01
+deliverable_title: HAI Surveillance Dashboard
+complexity: moderate
+required_facts:
+  facility_name: Larkspur Ridge Hospital
+  reporting_period: February 2026
+  prepared_by: Rowan Pike, CIC
+  clabsi_icu_events: '0'
+  clabsi_icu_device_days: '688'
+  clabsi_icu_rate: '0.00'
+  clabsi_icu_sir: '0.00'
+  clabsi_nonicu_events: '1'
+  clabsi_nonicu_device_days: '514'
+  clabsi_nonicu_rate: '1.95'
+  clabsi_nonicu_sir: '0.96'
+  cauti_icu_events: '1'
+  cauti_icu_device_days: '812'
+  cauti_icu_rate: '1.23'
+  cauti_icu_sir: '0.98'
+  cauti_nonicu_events: '3'
+  cauti_nonicu_device_days: 1,204
+  cauti_nonicu_rate: '2.49'
+  cauti_nonicu_sir: '1.42'
+  colon_ssi_events: '0'
+  colon_ssi_procedures: '19'
+  colon_ssi_rate: '0.00'
+  colon_ssi_sir: '0.00'
+  abdominal_hysterectomy_ssi_events: '0'
+  abdominal_hysterectomy_procedures: '8'
+  abdominal_hysterectomy_rate: '0.00'
+  abdominal_hysterectomy_sir: '0.00'
+  cabg_ssi_events: '0'
+  cabg_procedures: '0'
+  cabg_ssi_rate: '0.00'
+  cabg_ssi_sir: '0.00'
+  hip_ssi_events: '1'
+  hip_ssi_procedures: '14'
+  hip_ssi_rate: '7.14'
+  hip_ssi_sir: '0.93'
+  knee_ssi_events: '0'
+  knee_ssi_procedures: '22'
+  knee_ssi_rate: '0.00'
+  knee_ssi_sir: '0.00'
+  cdi_events: '4'
+  patient_days: 6,418
+  cdi_rate: '6.23'
+  cdi_sir: '1.18'
+  mrsa_bsi_events: '0'
+  mrsa_rate: '0.00'
+  mrsa_sir: '0.00'
+  central_line_icu_days: '688'
+  central_line_icu_patient_days: 1,096
+  central_line_utilization_ratio: '0.63'
+  central_line_sur: '0.91'
+  urinary_catheter_icu_days: '812'
+  urinary_catheter_icu_patient_days: 1,096
+  urinary_catheter_utilization_ratio: '0.74'
+  urinary_catheter_sur: '1.09'
+  clabsi_insertion_observations: '11'
+  clabsi_insertion_compliant: '11'
+  clabsi_maintenance_observations: '76'
+  clabsi_maintenance_compliant: '74'
+  cauti_insertion_observations: '17'
+  cauti_insertion_compliant: '15'
+  cauti_daily_review_observations: '104'
+  cauti_daily_review_compliant: '91'
+  ssi_abx_timing_observations: '41'
+  ssi_abx_timing_compliant: '40'
+  hand_hygiene_observations: '286'
+  hand_hygiene_compliant: '261'
+  hotspot_unit: 2 North Medical-Surgical
+  suspected_driver: prolonged catheter duration and delayed nurse-driven removal activation
+intentionally_unknown:
+- Exact fluoroquinolone DOT for the month
+- Confidence interval values for the elevated CAUTI and CDI SIRs
+- Whether any pending chart reviews will reclassify the hip SSI
+red_flags:
+  denominator_context_missing: Dashboard would be incomplete if it reports CAUTI counts
+    without catheter days and SUR context.
+  stewardship_gap: CDI action plan should not focus only on isolation and cleaning;
+    it should also address antibiotic exposure and testing discipline.
+  overreaction_to_single_hip_ssi: Hip SSI should be acknowledged without overstating
+    a broad arthroplasty trend from one quarter-sized denominator.
+mcp_uncertainty_points:
+- fact: Current CMS or Federal Register updates affecting infection control participation
+    requirements
+  capability_class: current_regulatory_policy
+  action: Verify whether any CMS policy updates since the last quarterly refresh change
+    infection control or stewardship expectations referenced in the narrative.
+holdout_ref: clinical-infection-prevention-specialist/cip-d01-holdout-01-med-surg-cauti-cdihold.md

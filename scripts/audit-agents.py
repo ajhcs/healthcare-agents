@@ -21,6 +21,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 AGENTS_DIR = REPO_ROOT / "agents"
 UTILITY_FILES = {"eval-exam-architect.md"}
+UTILITY_FRONTMATTER_RE = re.compile(r"(?m)^[ \t]*utility:[ \t]*true(?:[ \t]*#.*)?$")
+ORCHESTRATOR_FILES = {"orchestrator.md"}
+ORCHESTRATOR_FRONTMATTER_RE = re.compile(r"(?m)^[ \t]*agent_type:[ \t]*orchestrator(?:[ \t]*#.*)?$")
 
 REQUIRED_SECTIONS = [
     "## 🧠 Your Identity & Memory",
@@ -160,6 +163,38 @@ def audit_file(path: Path) -> AuditRow:
     )
 
 
+def is_utility_prompt(path: Path) -> bool:
+    if path.name in UTILITY_FILES:
+        return True
+
+    text = path.read_text()
+    if not text.startswith("---"):
+        return False
+
+    end = text.find("\n---", 3)
+    if end == -1:
+        return False
+
+    frontmatter = text[4:end]
+    return bool(UTILITY_FRONTMATTER_RE.search(frontmatter))
+
+
+def is_orchestrator_prompt(path: Path) -> bool:
+    if path.name in ORCHESTRATOR_FILES:
+        return True
+
+    text = path.read_text()
+    if not text.startswith("---"):
+        return False
+
+    end = text.find("\n---", 3)
+    if end == -1:
+        return False
+
+    frontmatter = text[4:end]
+    return bool(ORCHESTRATOR_FRONTMATTER_RE.search(frontmatter))
+
+
 def render(rows: list[AuditRow], top: int) -> str:
     header = "score  lines  sect  cites  templ  file"
     rule = "-" * len(header)
@@ -191,7 +226,7 @@ def main() -> None:
 
     rows = []
     for path in sorted(AGENTS_DIR.glob("*.md")):
-        if not args.include_utility and path.name in UTILITY_FILES:
+        if not args.include_utility and (is_utility_prompt(path) or is_orchestrator_prompt(path)):
             continue
         rows.append(audit_file(path))
     rows.sort(key=lambda row: row.total)

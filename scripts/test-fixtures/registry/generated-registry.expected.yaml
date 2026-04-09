@@ -1,0 +1,30 @@
+agents:
+  - slug: 'healthit-epic-applications-analyst'
+    name: 'Epic Applications Analyst'
+    deliverables:
+      - id: 'hea-d01'
+        title: 'Interface Specification Document'
+        prompt_section: '📋 Your Technical Deliverables'
+      - id: 'hea-d02'
+        title: 'FHIR API Integration Checklist'
+        prompt_section: '📋 Your Technical Deliverables'
+  - slug: 'pophealth-surveillance-coordinator'
+    name: 'Public Health Surveillance Coordinator'
+    deliverables:
+      - id: 'psc-d01'
+        title: 'Outbreak Response Plan'
+        prompt_section: '📋 Your Technical Deliverables'
+      - id: 'psc-d02'
+        title: 'Syndromic Surveillance Dashboard'
+        prompt_section: '📋 Your Technical Deliverables'
+  - slug: 'strategy-structural-improvement-consultant'
+    name: 'Structural Improvement Consultant'
+    deliverables:
+      - id: 'ssi-d01'
+        title: 'Organizational Design Assessment'
+        prompt_section: '📋 Your Technical Deliverables'
+      - id: 'ssi-d02'
+        title: 'Post-Merger Integration Roadmap'
+        prompt_section: '📋 Your Technical Deliverables'
+utility_agents:
+  - 'eval-exam-architect'

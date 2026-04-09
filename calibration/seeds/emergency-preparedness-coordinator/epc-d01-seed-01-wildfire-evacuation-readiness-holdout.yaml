@@ -1,0 +1,41 @@
+seed_id: epc-d01-seed-01-wildfire-evacuation-readiness-holdout
+agent_slug: emergency-preparedness-coordinator
+deliverable_id: epc-d01
+deliverable_title: Emergency Preparedness Program Compliance Checklist
+complexity: high
+required_facts:
+  facility_name: Pine Arc Medical Center
+  ccn: 77A608
+  assessment_date: 2026-04-02
+  assessor: Rina Solis, CHEP, Regional Emergency Preparedness Manager
+  facility_profile: 185-bed acute care hospital with obstetrics, a 12-bed ICU, and
+    one attached outpatient pavilion
+  recent_review_date: 2025-08-21
+  actual_event_date: 2025-09-13
+  actual_event_description: Regional wildfire smoke event with prolonged HVAC recirculation
+    controls, ambulance rerouting, and shelter-in-place activation
+  second_exercise_date: 2026-02-18
+  second_exercise_type: facility-based functional exercise
+  second_exercise_scenario: partial evacuation caused by advancing brush fire and
+    road closure
+  top_program_issues: outpatient pavilion evacuation accountability, mutual aid transport
+    confirmation, and alternate air-intake protection supplies
+intentionally_unknown:
+- The exact score the generator should assign for overall compliance.
+- Whether the final readiness status should be Ready or Gaps Identified after weighing
+  the open issues.
+- The precise wording of the corrective action section.
+red_flags:
+  stale_contacts: Coalition transport contacts changed after county EMS restructuring
+    and may require refreshed call-down logic.
+  evacuation_detail_gap: Outpatient pavilion patient movement and accountability are
+    less mature than the inpatient tower process.
+  utility_resilience_gap: Smoke intrusion controls depend on limited filter and sealing
+    supplies.
+mcp_uncertainty_points:
+- fact: Whether CMS or Federal Register updates since 2025 changed emergency preparedness
+    interpretation relevant to exercise substitution or review intervals
+  capability_class: current_regulatory_policy
+  action: Check current CMS emergency preparedness rule resources and survey guidance
+    before finalizing compliance statements.
+holdout_ref: emergency-preparedness-coordinator/epc-d01-holdout-01-wildfire-evacuation-readiness-holdout.md

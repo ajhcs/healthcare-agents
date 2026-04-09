@@ -1,0 +1,27 @@
+seed_id: qpi-d03-seed-01-sepsis-spc-plan
+agent_slug: quality-process-improvement-analyst
+deliverable_id: qpi-d03
+deliverable_title: SPC Monitoring Plan
+complexity: routine
+required_facts:
+  project_name: sepsis bundle completion reliability
+  primary_metric: 48-hour bundle completion rate
+  source_system: EHR sepsis registry
+  baseline_pattern: March dip recovered after bundle education
+intentionally_unknown:
+- exact centerline value after the baseline period
+- whether one ED location should be carved out as a separate chart
+red_flags:
+  denominator_integrity: Do not mix transfer-in cases with locally recognized sepsis
+    cases.
+  signal_noise: Do not treat one late bundle as a trend without the SPC rule being
+    met.
+mcp_uncertainty_points:
+- fact: current sepsis reporting guidance
+  capability_class: current_regulatory_policy
+  action: confirm current CMS or payer reporting rules before locking the denominator
+- fact: receiving ICU or step-down unit identity for escalation
+  capability_class: provider_directory
+  action: verify the unit owner and escalation contact list before launching the monitoring
+    plan
+holdout_ref: quality-process-improvement-analyst/qpi-d03-holdout-01-sepsis-spc-plan.md

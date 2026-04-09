@@ -1,0 +1,26 @@
+seed_id: pms-d02-seed-01-northgate-sterile-compounding-gap
+agent_slug: pharmacy-medication-safety-specialist
+deliverable_id: pms-d02
+deliverable_title: USP 797/800 Compliance Gap Analysis
+complexity: high
+required_facts:
+  facility_name: Northgate Cancer Center Pharmacy
+  compounding_category: both
+  iso_5_pec_certified: true
+  buffer_area_certification_overdue_days: 11
+  expired_technician_competency_files: 2
+  hazardous_drug_list_out_of_date: true
+intentionally_unknown:
+- exact cleanroom certification vendor
+- exact action-level environmental monitoring results
+- exact number of hazardous drug products on the omitted list
+red_flags:
+  noted_item_01: missing competency evidence for compounding personnel
+  noted_item_02: outdated hazardous drug list
+  noted_item_03: unresolved negative-pressure alarm testing after maintenance
+mcp_uncertainty_points:
+- fact: current USP 797 and USP 800 regulatory wording
+  capability_class: current_regulatory_policy
+  action: verify the latest chapter guidance and hazardous drug handling references before
+    finalizing the compliance narrative
+holdout_ref: pharmacy-medication-safety-specialist/pms-d02-holdout-01-northgate-sterile-compounding-gap.md

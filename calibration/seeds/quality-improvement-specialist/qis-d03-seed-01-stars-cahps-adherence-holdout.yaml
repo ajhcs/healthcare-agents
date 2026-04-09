@@ -1,0 +1,32 @@
+seed_id: qis-d03-seed-01-stars-cahps-adherence-holdout
+agent_slug: quality-improvement-specialist
+deliverable_id: qis-d03
+deliverable_title: Star Ratings Impact Analysis
+complexity: high
+required_facts:
+  plan_name: Pine Harbor Choice MA-PD
+  product_line: MA-PD
+  current_overall_star_rating: '4.0'
+  target_overall_star_rating: '4.5'
+  analysis_date: '2026-04-09'
+  strategic_context:
+  - Medication adherence is strong but close to the next cut point on only one measure.
+  - CAHPS performance slipped after call center turnover and slower grievance handling.
+  - The plan wants to protect 4.0 while testing a credible path to 4.5.
+intentionally_unknown:
+- Current CMS clustering cut points for the next rating cycle
+- Final CAI effect for this plan's member mix
+- Exact benchmark-based bonus translation for the coming payment year
+red_flags:
+  overprecision: Generator should avoid false certainty on methodology-sensitive projections
+    and instead label assumptions clearly.
+  weighting_errors: Generator should treat CAHPS and outcome-heavy measures as high
+    leverage where appropriate.
+  false_strategy: Generator should not present a weakly weighted process-only campaign
+    as the main route to 4.5.
+mcp_uncertainty_points:
+- fact: Latest CMS Star Ratings methodology detail or cut point context
+  capability_class: current_regulatory_policy
+  action: Check current CMS Star Ratings materials before finalizing the projected
+    path to 4.5.
+holdout_ref: quality-improvement-specialist/qis-d03-holdout-01-stars-cahps-adherence-holdout.md

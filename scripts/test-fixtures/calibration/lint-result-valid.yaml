@@ -1,0 +1,10 @@
+seed_id: cm-seed-001
+agent_slug: clinical-care-management-specialist
+timestamp: 2026-04-09T00:00:00Z
+missing_sections: []
+unresolved_placeholders: []
+citation_parse_failures: []
+static_mcp_claims: []
+min_length_met: true
+frontmatter_valid: true
+overall_pass: true

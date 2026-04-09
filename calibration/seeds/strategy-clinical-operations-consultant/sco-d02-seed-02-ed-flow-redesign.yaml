@@ -1,0 +1,40 @@
+seed_id: sco-d02-example-02-ed-flow-redesign
+agent_slug: strategy-clinical-operations-consultant
+agents_relevant:
+- strategy-clinical-operations-consultant
+deliverable_id: sco-d02
+deliverable_title: ED Flow Redesign Blueprint
+scenario_summary: Emergency department flow redesign for door-to-provider delays,
+  boarding pressure, and a rising leave-without-being-seen rate.
+complexity: high
+required_facts:
+  annual_visits: 62,400
+  door_to_provider: 41 minutes
+  lwbs_rate: 4.8 percent
+  boarding_time: 8.2 hours
+  fast_track_candidate: low-acuity patients
+intentionally_unknown:
+- Whether the inpatient bed tower can release beds faster on high-volume days
+- Whether specialty consult response times can be shortened with a named physician
+  owner
+red_flags:
+  boarding: Patients are staying in the ED long after they should have moved upstairs.
+  lwbs: The leave-without-being-seen rate is high enough to signal a front-end access
+    problem.
+mcp_uncertainty_points:
+- fact: Current EMTALA and emergency-services guidance
+  capability_class: current_regulatory_policy
+  action: Check the current emergency-services guidance before finalizing the redesign.
+- fact: Provider roster for consult escalation and ED ownership
+  capability_class: provider_directory
+  action: Verify the specialty roster before assigning consult owners.
+holdout_ref: calibration/holdouts/strategy-clinical-operations-consultant/sco-d02-holdout-02-ed-flow-redesign.md
+source_basis:
+- 42 CFR 482.55
+- EMTALA guidance
+- AHRQ emergency department operations guidance
+- BLS OEWS 2025
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

@@ -1,0 +1,27 @@
+seed_id: r3p-d01-seed-01-medicaid-exclusion-and-diversion-audit
+agent_slug: revenue-340b-program-manager
+deliverable_id: r3p-d01
+deliverable_title: 340B Program Compliance Assessment
+complexity: high
+required_facts:
+  entity_name: Canyon Ridge Critical Access Hospital
+  340b_id: HRSA-CAH-2088
+  key_controls: Medicaid exclusion file, diversion controls, contract pharmacy oversight
+  audit_goal: close the file gaps without losing traceability on child-site eligibility
+intentionally_unknown:
+- whether the state will change its Medicaid carve-out election
+- the final audit sample size required by the next reviewer
+red_flags:
+  exclusion_file: Do not call the program compliant while the Medicaid Exclusion File
+    is stale.
+  workpaper_traceability: The assessment should show where each control evidence set
+    is stored.
+mcp_uncertainty_points:
+- fact: current HRSA policy or audit trend affecting exclusion files
+  capability_class: current_regulatory_policy
+  action: check whether new guidance changes the remediation sequence
+- fact: prescriber or child-site identity
+  capability_class: provider_directory
+  action: verify the NPI and practice address before finishing the child-site support
+    file
+holdout_ref: revenue-340b-program-manager/r3p-d01-holdout-01-medicaid-exclusion-and-diversion-audit.md

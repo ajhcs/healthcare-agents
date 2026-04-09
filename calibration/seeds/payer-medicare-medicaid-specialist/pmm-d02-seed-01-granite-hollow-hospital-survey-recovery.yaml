@@ -1,0 +1,35 @@
+seed_id: pmm-d02-seed-01-granite-hollow-hospital-survey-recovery
+agent_slug: payer-medicare-medicaid-specialist
+deliverable_id: pmm-d02
+deliverable_title: Conditions of Participation Readiness Assessment
+complexity: high
+required_facts:
+  facility_name: Granite Hollow Regional Hospital
+  ccn: 22A615
+  facility_type: Hospital
+  assessment_date: '2026-04-09'
+  last_cms_survey_date: '2026-01-21'
+  accrediting_organization: TJC
+  known_pressure_points: Recent complaint survey cited lapses in isolation precaution
+    signage, grievance closure documentation, and delayed medical record authentication.
+  governing_body_context: Board receives monthly quality dashboard but February packet
+    omitted corrective-action follow-up.
+  qapi_context: Falls and ED throughput projects are active, but validation of sustained
+    improvement is uneven.
+intentionally_unknown:
+- Exact return survey date
+- Whether CMS or the accrediting organization will conduct the next on-site review
+- Any live 2026 revisions to Appendix A interpretive guidance
+red_flags:
+  infection_prevention: Unit-level corrective actions are not yet consistently trended
+    back to hospital leadership.
+  patient_rights: Grievance closure evidence may not be retrievable for every sampled
+    case.
+  medical_records: Authentication delays could recur if delinquent record escalation
+    remains manual.
+mcp_uncertainty_points:
+- fact: Whether CMS updated Appendix A or hospital survey priorities after Q1 2026
+  capability_class: current_regulatory_policy
+  action: Check current CMS survey and certification updates and Federal Register
+    notices for hospital CoP interpretive or enforcement changes.
+holdout_ref: payer-medicare-medicaid-specialist/pmm-d02-holdout-01-granite-hollow-hospital-survey-recovery.md

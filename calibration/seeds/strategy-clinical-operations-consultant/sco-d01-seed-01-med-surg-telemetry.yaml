@@ -1,0 +1,39 @@
+seed_id: sco-d01-example-01-med-surg-telemetry
+agent_slug: strategy-clinical-operations-consultant
+agents_relevant:
+- strategy-clinical-operations-consultant
+deliverable_id: sco-d01
+deliverable_title: Nurse Staffing Model
+scenario_summary: Med-surg and telemetry staffing review with a unit that is stable
+  on census but too dependent on premium labor.
+complexity: moderate
+required_facts:
+  med_surg_census: 31.2 average census
+  telemetry_census: 18.6 average census
+  current_rn_fte: '18.4'
+  recommended_rn_fte: '20.2'
+  annual_cost_impact: $196,000
+intentionally_unknown:
+- Whether the float pool can absorb nights without agency support
+- Whether the unit census will stay stable through the next quarter
+red_flags:
+  agency_dependence: Premium labor is plugging staffing holes that should be handled
+    by core FTEs or internal float.
+  overtime: Weekend overtime is masking an underlying staffing imbalance.
+mcp_uncertainty_points:
+- fact: Current staffing-related regulatory expectations and quality guidance
+  capability_class: current_regulatory_policy
+  action: Check current CMS and nursing guidance before finalizing the staffing grid.
+- fact: Provider roster and staffing skill mix for the float pool
+  capability_class: provider_directory
+  action: Verify the staffing roster and role mix before using the flex plan.
+holdout_ref: calibration/holdouts/strategy-clinical-operations-consultant/sco-d01-holdout-01-med-surg-telemetry.md
+source_basis:
+- 42 CFR 482.23
+- BLS OEWS 2025
+- AHRQ staffing and burnout resources
+- CMS quality reporting guidance
+generated_by: sonnet-4.6
+reviewed_by: maintainer
+review_status: reviewed
+review_date: '2026-04-09'

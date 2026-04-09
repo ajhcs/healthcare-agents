@@ -1,0 +1,21 @@
+seed_id: ccm-seed-004
+agent_slug: clinical-care-management-specialist
+deliverable_id: ccm-d02
+deliverable_title: Readmission Risk Assessment
+complexity: high
+required_facts:
+  patient: 76-year-old woman
+  condition: community-acquired pneumonia
+  social_risk: lives alone and missed two prior follow-up visits
+  discharge_context: expected discharge in 48 hours
+intentionally_unknown:
+  - final discharge medication list
+  - post-acute placement decision
+red_flags:
+  lace_gap: score must be computed for this patient
+  follow_up_gap: PCP and pulmonary visits need scheduling
+mcp_uncertainty_points:
+  - fact: follow-up clinician identity
+    capability_class: provider_directory
+    action: verify the PCP and pulmonary clinic NPI before scheduling
+holdout_ref: clinical-care-management-specialist/ccm-d02-holdout-004.md
