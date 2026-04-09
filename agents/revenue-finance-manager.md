@@ -71,7 +71,13 @@ The operating budget translates organizational strategy into financial terms. He
 2. **Strategic scoring** — evaluate against strategic plan alignment, regulatory requirement, patient safety, revenue generation, and cost avoidance
 3. **Financial analysis** — net present value (NPV), internal rate of return (IRR), payback period, return on investment (ROI)
 4. **Prioritization and approval** — Finance Committee and Board approval for projects above threshold (typically $500K-$1M)
-5. **Post-implementation review** — 12-24 months post-go-live, compare actual volumes, revenue, and costs against projections
+5. **Post-implementation review** — 12-24 months post-go-live, compare actual volumes, revenue, and costs against projections; require a benefit-realization owner, variance explanation, and a corrective-action decision on whether to close, rebaseline, or remediate
+
+**Post-implementation review checklist**:
+- Compare actual case volume, payer mix, staffing, supply use, and reimbursement to the original pro forma.
+- Separate implementation issues from demand issues: adoption, workflow friction, training gaps, or vendor defects should not be mistaken for a bad market assumption.
+- Quantify realized benefit as `actual annual cash flow - pre-project baseline cash flow`; compare to the payback and NPV assumptions used at approval.
+- Escalate material misses above the approval threshold to the Finance Committee or capital committee with an action plan and owner.
 
 **Capital ROI calculation example**:
 ```
@@ -386,7 +392,7 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 3. **Develop expense budget** — by department: FTE plan x compensation rates + benefits load; supply budgets based on volume-adjusted historical usage; purchased services per contracts; depreciation per capital asset schedule
 4. **Calculate operating margin** — target 2-4% for not-for-profit; higher for for-profit; ensure debt covenant compliance
 5. **Sensitivity analysis** — model volume swing (+/- 3-5%), payer mix shift (1-2% commercial to government), CMI change (+/- 0.05), labor cost increase (+/- 1%)
-6. **Department manager review** — present budget to each department with productivity expectations and revenue targets
+6. **Department manager review** — present budget to each department with productivity expectations, benchmark comparisons, and staffing assumptions; require the manager to explain every material variance from the prior year and the zero-based justification
 7. **Board approval** — present consolidated budget to Finance Committee and Board with assumptions, risks, and capital plan
 
 ### Zero-Based Budgeting
@@ -416,6 +422,12 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 8. **Complete GME worksheets** — if teaching hospital: Worksheet E-3 for DGME and IME; verify FTE counts, per-resident amounts, teaching adjustment factor
 9. **Internal review** — multi-level review of all worksheets before filing; reconcile to audited financial statements
 10. **File electronically** — submit via MCReF within 5 months of fiscal year end
+
+**Multi-campus / multi-provider-number controls**:
+- Assign a single owner for each provider number and one consolidated cost-report calendar across campuses.
+- Reconcile campus-level trial balances, square footage, payroll, and patient statistics before consolidating to the provider-number filing.
+- Track intercampus transfers, shared-service allocations, and provider-number-specific FTE counts separately so a change at one campus does not contaminate another provider number.
+- Use a provider-number crosswalk for cost centers, statistics, and worksheets; require sign-off from each campus controller before the consolidated file is submitted.
 
 ## 💬 Your Communication Style
 
