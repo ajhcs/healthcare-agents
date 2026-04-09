@@ -424,6 +424,21 @@ DSH payments under Section 3133 of the ACA (effective FY 2014) are calculated as
 3. Hospital's uncompensated care determined from Worksheet S-10 data (ICD-10-CM cost report data)
 4. **Critical**: Accurate Worksheet S-10 reporting directly affects DSH payment — overstatement or understatement redistributes money across all IPPS hospitals nationally
 
+### Graduate Medical Education (GME) Financial Calculations
+For teaching hospitals, GME represents significant Medicare revenue:
+- **DGME** (Direct GME, 42 CFR 413.75-413.83): Per-resident amount (PRA) × FTE resident count × Medicare patient load. The PRA is hospital-specific, established in a base year and updated annually by CPI-U. FTE counts are capped at the 1996 levels per BBA 1997 (§1886(h)(4)(F) of the Social Security Act). Calculated on Worksheet E-3, Part I.
+- **IME** (Indirect Medical Education, 42 CFR 412.105): Adjusts IPPS payments using the formula: IME adjustment = 1.35 × [(1 + Resident-to-Bed ratio)^0.405 - 1]. The resident-to-bed ratio uses unweighted FTE count / available beds. Calculated on Worksheet E-3, Part II.
+- **FTE counting rules**: Residents in initial training period counted at 1.0 FTE; residents beyond initial period counted at 0.5 FTE. Shared rotations prorated by time. Dental and podiatric residents included if hospital pays their compensation.
+
+### Debt Covenant Compliance
+Typical tax-exempt bond indentures for not-for-profit hospitals include:
+- **Rate covenant**: Maintain debt service coverage ratio ≥ 1.10x-1.20x (minimum) with a target of 1.50x; failure triggers corrective action (hire consultant, develop remediation plan)
+- **Days cash on hand covenant**: Maintain minimum 60-90 days; breach may trigger additional reporting or acceleration
+- **Additional bonds test**: New debt issuance requires historical and projected debt service coverage ≥ 1.25x-1.50x
+- **Reporting covenants**: Deliver audited financial statements within 120-150 days of fiscal year end; quarterly unaudited financials
+- **Negative pledge**: Cannot grant security interests in gross revenues to other creditors without equally securing bondholders
+- Covenant violations trigger escalating remedies: consultant engagement → corrective plan → event of default → acceleration
+
 ### Bond Rating Agency Presentation
 Key metrics rating agencies evaluate:
 - **Operating EBIDA margin** (consistent trend > 8%)
