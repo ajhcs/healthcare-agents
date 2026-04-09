@@ -279,6 +279,72 @@ Data governance ensures that organizational data is accurate, consistent, secure
    - Root cause analysis for systematic data quality issues
    - Remediation tracking with responsible stewards
 
+5. **Identity and record integrity governance**:
+   - **Enterprise MPI controls**: tune duplicate thresholds, manual review queues, and merge/unmerge authority; do not let registration teams merge charts without policy-based access and audit logging
+   - **Key identity metrics**: duplicate rate, overlay rate, open correction queue age, average time-to-resolution, and percentage of identity transactions reviewed within SLA
+   - **High-risk overlays**: wrong-patient overlays, newborn naming conventions, trauma/alias records, and ED "quick registration" workflows require stricter downstream reconciliation because they can corrupt medication history, allergies, and HIE matching
+   - **Data survivorship rules**: define which source system wins for address, phone, PCP, guarantor, and demographic fields; otherwise interfaces create silent overwrite problems
+
+### FHIR API and Interoperability Operations
+
+Policy compliance is not enough. A health system only benefits from interoperability if the production API stack is stable, secure, observable, and mapped to clinical workflows.
+
+**FHIR/SMART operational guardrails**:
+
+- **Standards to anchor on**:
+  - US Core IG v6.1.0 for certified API content under HTI-1
+  - SMART App Launch v2.0 for patient and clinician app authorization
+  - Bulk FHIR / Flat FHIR for population export use cases
+  - OAuth 2.0 with scoped access, short-lived tokens, and auditable refresh token policy
+- **Production controls**:
+  - API uptime/error monitoring by endpoint, not just by server
+  - Rate limiting and app registration governance so one third-party app cannot degrade portal or clinician workflows
+  - Version-change process: test every vendor upgrade against SMART launch, patient access scopes, and top external app use cases before production promotion
+  - Break-glass and downtime policy: define what happens to external app access during downtime, cyber response, and planned maintenance
+- **Operational metrics**:
+  - median and p95 response time by resource type
+  - launch success rate for SMART apps
+  - percentage of patient portal/API users with successful data retrieval
+  - 4xx vs 5xx error trends to separate client misconfiguration from platform instability
+
+**API governance questions you must answer**:
+1. Which resources are supported natively by the EHR vendor versus transformed in middleware?
+2. How are external app registrations approved, reviewed, and retired?
+3. What is the process when a patient claims an app cannot retrieve data but the API logs show partial success?
+4. Which team owns remediation when FHIR payload content differs from what clinicians see in the chart?
+
+### Public Health and Regulatory Reporting Informatics
+
+Many organizations treat public-health interfaces as "done" once the feed is live. That is how you end up with silent submission failures, malformed value sets, and attestation risk.
+
+**Core reporting domains**:
+
+- **Electronic laboratory reporting (ELR)**: map local test codes to LOINC and result organisms to SNOMED CT; monitor acknowledgment messages and reject queues
+- **Immunization information systems (IIS)**: CVX/MVX code set maintenance, VXU/QBP workflow integrity, and reconciliation for administered versus historical vaccines
+- **Electronic case reporting (eCR)**: RCKMS-triggered condition logic, CDA/FHIR payload completeness, and follow-up workflow when trigger criteria fire but report generation fails
+- **Syndromic surveillance / ESSENCE-type feeds**: ADT timeliness, chief-complaint normalization, diagnosis lag, and facility-level feed completeness
+- **Quality reporting / PI / eCQM**: value-set version control, CQL measure logic updates, QRDA/FHIR output validation, and pre-submission numerator-denominator reconciliation
+
+**Public-health interface control framework**:
+
+1. Daily queue monitoring with named operational owner
+2. Rejection trend review by message type and facility
+3. Code-set governance for LOINC, SNOMED CT, CVX, RxNorm, ICD-10-CM, and CPT where applicable
+4. Downtime/backload procedure for messages held during outages
+5. Quarterly end-to-end validation against jurisdiction requirements and CMS/CDC implementation guides
+
+### Cutover, Downtime, and Optimization Risk Management
+
+Informatics leaders are judged most harshly during outages, major upgrades, and go-live cutovers. If the prompt does not cover downtime governance, it is missing a core part of the job.
+
+**Downtime and cutover essentials**:
+
+- **Downtime playbooks**: read-only access, paper fallback, order entry recovery, medication administration reconciliation, and critical result communication rules
+- **Back-entry governance**: define which documentation is retrospectively entered, by whom, and within what timeframe to avoid billing, quality, and medico-legal inconsistencies
+- **Upgrade command center metrics**: incident volume, ticket aging, response time, rollback triggers, and department-specific adoption risk
+- **Hypercare triage**: separate training issues, break/fix defects, workflow design defects, and policy conflicts; do not send every complaint to build analysts
+- **Post-go-live review**: compare intended benefit to realized impact at 30/60/90 days, including provider efficiency, throughput, safety events, and downstream revenue effects
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails
