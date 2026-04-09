@@ -137,6 +137,9 @@ The 340B statute (42 USC 256b(a)(5)(A)) prohibits collecting both a 340B discoun
 - CMS issued an Informational Bulletin with best practices (modifier codes, etc.)
 - State-by-state variation — some require modifier codes, some have no policy, some incorrectly rely on MEF
 - Covered entities must work with their state, MCOs, and PBMs to ensure proper identification
+- Operational controls should name the exact claim-level identifier required by the state or PBM: UD modifier on medical claims, NCPDP Submission Clarification Code/value, claim-level 340B indicator, or a contract-specific encounter flag
+- Build a payer matrix by state, MCO, PBM, BIN/PCN/group, and billing channel (medical vs. pharmacy) so staff know when 340B is permitted, how the claim must be tagged, and when the entity must carve out
+- Reconcile paid MCO claims to accumulator/split-billing output at least monthly; unresolved tagging failures should be treated as potential duplicate discounts and removed from 340B replenishment until corrected
 
 **Contract pharmacy and duplicate discounts**:
 - Higher risk of duplicate discounts at contract pharmacies
@@ -194,6 +197,11 @@ The 340B statute (42 USC 256b(a)(5)(A)) prohibits collecting both a 340B discoun
 3. Drug only accessible through GPO (entity must document attempts to purchase at 340B and WAC price, report to HRSA)
 4. Inpatient use — GPO permitted for inpatient drugs
 
+**Orphan drug exclusion**:
+- Applies to free-standing cancer hospitals, CAHs, RRCs, and SCHs for drugs designated under the Federal Food, Drug, and Cosmetic Act for a rare disease or condition
+- The exclusion is drug-specific and indication-sensitive in operations; entities need an NDC-level flag plus policy for mixed-use claims where the same product may be used for orphan and non-orphan indications
+- DSH hospitals are not subject to the orphan drug exclusion, so do not import rural-hospital controls into the DSH workflow
+
 **Replenishment model**: Entity must demonstrate through auditable records that it complies with GPO prohibition. GPO-purchased drugs in inventory at time of 340B enrollment may be used until expended.
 
 ### HRSA Audits
@@ -243,6 +251,16 @@ The 340B statute (42 USC 256b(a)(5)(A)) prohibits collecting both a 340B discoun
 - **OIG**, **GAO**, Apexus, and HRSA FAQ materials should be labeled as oversight trend, operational guidance, or implementation aid rather than binding law
 
 **Overcharge refunds**: Within 90 days of determination, manufacturer provides refund equal to (sale price minus correct 340B price) x units. Covered entity has 90 days to accept or waive the refund.
+
+**ADR / CMP mechanics**:
+- Administrative dispute resolution is governed by 42 CFR Part 10 and should be treated as a formal post-negotiation pathway, not an informal HRSA help-desk escalation
+- Overcharge files should preserve NDC, wholesaler invoice, purchase date, quantity, price paid, expected ceiling price, and correspondence showing the entity attempted to resolve the issue before escalation
+- Civil monetary penalties attach to manufacturer knowing and intentional overcharges; the operational discipline is to maintain a dispute file that can support both refund requests and a potential ADR record
+
+**Medicare Part B payment operations**:
+- For hospital outpatient departments paid under OPPS, 340B status affects both purchasing and claim reporting; use the current CMS-required informational/payment modifier logic (for example `JG` when a drug was acquired through 340B, `TB` when purchased through a non-340B pathway under the hospital's 340B status)
+- Separate purchasing status, billing modifier assignment, and payment reduction/remedy analysis. A drug can be 340B eligible operationally while a specific claim still requires careful modifier validation and audit trail support
+- Maintain a monthly tie-out between accumulator output, charge router/modifier assignment, and remittance patterns so the pharmacy team can detect claims where 340B inventory and Part B billing logic diverged
 
 **Current manufacturer restriction landscape** (critical operational knowledge):
 
@@ -441,6 +459,8 @@ This landscape is in active flux. Monitor HRSA policy releases, federal court do
 - **Virtual inventory / accumulator model**: Single inventory, software tracks eligible vs. non-eligible dispensing and generates 340B replenishment orders at NDC level
 - **EHR/pharmacy system configuration**: Configure split billing in Epic Willow, Cerner PharmNet, or standalone pharmacy systems (QS/1, Rx30, Computer-Rx) to flag eligible encounters at point of prescribing
 - **Wholesaler account setup**: Maintain separate 340B and GPO/WAC accounts with primary wholesaler; configure bill-to/ship-to for contract pharmacy locations
+- **Mixed-use infusion areas**: Build encounter logic that distinguishes inpatient, outpatient, observation, and referral infusion activity before replenishment; observation and same-day status changes are frequent sources of diversion if the accumulator only keys off location
+- **Covered outpatient drug exclusions**: Exclude vaccines, most inpatient-use drugs, and other non-covered outpatient drug categories from replenishment logic even if dispensed at a registered site; site registration alone is not sufficient
 
 ### Self-Audit Program Design
 - Build annual self-audit calendar aligned with HRSA audit methodology
