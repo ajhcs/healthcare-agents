@@ -202,6 +202,46 @@ Example: ±5% symmetric risk corridor
 - **PMPM method**: Estimate expected PMPM by service category; multiply by member months to get expected incurred claims; subtract paid claims to get IBNR
 - **Bornhuetter-Ferguson method**: Blend of completion factor and expected cost methods — useful when recent experience is limited or volatile
 
+### Settlement, Reconciliation & Retro Eligibility Mechanics
+
+Managed care margin is often won or lost in settlement mechanics, not just in the nominal PMPM. A sophisticated analyst must reconcile what was supposed to be paid, what was actually paid, and what still needs true-up.
+
+**Core settlement equations**:
+```
+Monthly capitation settlement = Final attributable member months x Final PMPM
+                              +/- risk score true-up
+                              +/- quality withhold earn-back
+                              +/- risk corridor settlement
+                              - interim payments already received
+
+Retro eligibility impact PMPM = Retro add/(term) claims and capitation adjustments / current-period member months
+```
+
+- **Member month reconciliation**: Tie state or employer eligibility files to premium receipts, capitation rosters, PCP attribution, and retro add/term activity. A plan can look favorable on reported MLR simply because high-cost members have not yet been loaded to the final eligibility file.
+- **Encounter-to-capitation reconciliation**: Compare encounter-derived utilization and service categories to what the capitation contract says is included or carved out. Missing encounters understate delegated medical expense and distort both MLR and risk-corridor settlement.
+- **Withhold and incentive settlement**: Separate earned current-year quality withholds from prior-year true-ups. A 2% withhold should be modeled as temporarily unavailable revenue until measure performance and audit validation support release.
+- **Corridor settlement waterfall**: Calculate results in this order unless the contract states otherwise: allowed claims, excluded claims, admin load treatment, stop-loss recoveries, corridor band calculation, then member-month normalization. Misordering these steps can materially change settlement.
+- **Claims lag and runout discipline**: Report both paid PMPM and incurred PMPM with completion factors. For recent months, paid PMPM alone is an operational metric, not a final financial view.
+
+### Medicaid Directed Payments, Pass-Throughs & State-Specific Rate Components
+
+For Medicaid managed care, analysts must separate base capitation from state-directed payment mechanics under **42 CFR 438.6(c)**. These items affect rate adequacy, encounter expectations, provider economics, and MLR interpretation, but they are not interchangeable.
+
+- **Base capitation vs. directed payment**: Model the base rate separately from any minimum fee schedule, maximum fee schedule, uniform dollar increase, value-based payment requirement, or other CMS-approved State directed payment (SDP). Do not present an all-in PMPM without showing which dollars are ordinary utilization cost and which dollars are state-directed.
+- **Pass-through payment caution**: Treat pass-throughs as a distinct regulatory construct under **42 CFR 438.6(d)**, not as a generic synonym for supplemental funding. They have specific phase-down and approval rules and should be isolated from recurring claims trend analysis.
+- **Preprint and approval dependency**: If a state's SDP requires CMS written prior approval, the analyst should flag timing risk between the rating period, provider payment effective date, and final approval. A rate can look adequate on paper yet produce provider abrasion or plan cash strain if approval or implementation lags.
+- **MLR classification discipline**: Some state-directed or quality incentive dollars belong in incurred claims only when tied to covered services or permissible provider payments. If they are booked inconsistently between numerator and denominator periods, the reported MLR becomes non-comparable month to month.
+- **Rate-cell distortion check**: Directed payments concentrated in hospitals, nursing facilities, or academic medical centers can make total PMPM growth look like utilization trend when it is actually a financing change. Always restate trend excluding directed-payment step-changes before blaming utilization management.
+
+### Medicare Advantage Bid, Benchmark & Risk-Score Revenue Mechanics
+
+For MA products, managed care analysts need to understand the economic bridge from bid to benchmark to final revenue, not just medical PMPM. Under **42 CFR 422.254**, bids must include estimated required revenue, administrative cost, and return on investment, and plans with rebates must specify how the rebate is applied under **42 CFR 422.266**.
+
+- **Bid-to-benchmark logic**: If the plan bid is below the benchmark, part of the difference returns to the plan as a rebate that must be used for supplemental benefits, premium reduction, or cost-sharing reduction. If the bid is above benchmark, the difference generally shows up as member premium requirement.
+- **Risk-score revenue bridge**: Separate pricing assumptions for baseline RAF, coding trend, normalization, new enrollee factors, and final reconciliation. Revenue can miss target even when utilization is on plan if risk-score submission or final sweep performance trails assumption.
+- **Operational RAF guardrail**: Distinguish legitimate documentation/coding improvement from unsupported diagnosis capture. A short-term revenue gain from aggressive coding can reverse later through RADV or data-validation findings.
+- **Revenue variance walk**: When explaining MA premium revenue variance, bridge benchmark updates, rebate percentage, enrollment mix, RAF change, Star bonus effects when applicable, sequestration or premium adjustments if relevant to the reporting basis, and timing of CMS mid-year/final sweeps.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails
