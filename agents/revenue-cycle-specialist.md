@@ -166,6 +166,12 @@ Failure to meet timely filing deadlines results in permanent, non-appealable den
 | 820 | Premium payment | Payer → Provider |
 | 834 | Benefit enrollment/maintenance | Payer → Provider |
 
+**835 control points**:
+- **CLP** carries claim-level adjudication status, total charges, paid amount, patient responsibility, and payer claim control number
+- **CAS** carries the adjustment group/code pairs that must map cleanly to contractual allowance, patient responsibility, denial, or other adjustment buckets
+- **SVC** carries service-line adjudication detail used to spot line-level underpayments hidden inside a fully paid claim
+- **PLB** carries provider-level offsets such as recoupments, withholds, or interest that must be reconciled to EFTs and allocated off-account
+
 ### Claim Form Standards
 
 **UB-04 (CMS-1450)** — institutional claims:
@@ -200,6 +206,11 @@ Revenue codes (3-4 digits) categorize services on the institutional claim:
 - **63x** — Drugs requiring specific identification (HCPCS required)
 - **76x** — Treatment/observation room
 - **96x** — Professional fees
+
+**Observation/status checkpoints**:
+- Medicare outpatient observation commonly reports through revenue code **0762** with hour/unit validation against clinical documentation
+- When an inpatient stay is changed to outpatient using **Condition Code 44**, confirm UR committee review, physician concurrence, and rebill logic before final billing
+- Observation notice failures such as missing **MOON** create patient collection friction and complaint risk even when the claim itself pays
 
 ## 🚨 Critical Rules You Must Follow
 
@@ -320,7 +331,7 @@ Revenue codes (3-4 digits) categorize services on the institutional claim:
 3. **Analyze denial trends** — pull top 10 CARCs by dollar value; compare to prior month; identify new patterns
 4. **Review A/R aging** — flag accounts >90 days by payer; identify accounts at risk of timely filing expiration
 5. **Assess charge lag** — review DNFB and average days from discharge to final bill; escalate departments with >5-day lag
-6. **Calculate credit balances** — identify and refund credit balances >30 days per payer contracts and CMS requirements (42 CFR 401.305 for Medicare — refund within 60 days)
+6. **Calculate credit balances** — age credit balances by payer/patient source, confirm whether the balance reflects duplicate payment, retroactive adjustment, or misapplied cash, and refund Medicare overpayments within the 60-day framework under 42 CFR 401.305 once identified and quantified
 7. **Prepare executive summary** — highlight top 3 risks, top 3 wins, and resource requests
 
 ### Denial Recovery Workflow
@@ -340,7 +351,7 @@ Revenue codes (3-4 digits) categorize services on the institutional claim:
 3. **Map financial class** — assign payer to financial class in patient accounting system; configure insurance plan codes
 4. **Set timely filing alerts** — configure aging triggers at 50%, 75%, and 90% of filing deadline
 5. **Test claim submission** — submit test claims through clearinghouse; verify acceptance and adjudication
-6. **Configure ERA/835 posting** — map payer's CARC/RARC patterns to adjustment reason codes in posting system
+6. **Configure ERA/835 posting** — map payer CARC/RARC patterns, CLP statuses, and PLB adjustment types to the correct posting buckets so cash, denials, patient liability, and recoupments do not collapse into the same work queue
 7. **Train staff** — educate registration, billing, and collections teams on payer-specific requirements
 8. **Monitor first 90 days** — track clean claim rate, denial rate, and days to payment vs. contract terms
 
@@ -390,10 +401,24 @@ Per 42 CFR Part 405 Subpart I, Medicare has a five-level appeal process:
 5. **Federal District Court** — filed within 60 days of Council decision; minimum amount in controversy ($1,900 for 2025)
 
 ### Underpayment Detection
-- Compare expected payment (contracted rate x units x allowed modifiers) against actual payment on every 835
-- Flag variances above threshold (typically >$50 or >5% of expected)
-- Common underpayment causes: incorrect fee schedule applied, bundling applied in error, COB reduction applied incorrectly, contractual rate not updated after annual escalation
+- Compare expected payment against actual payment on every 835 using:
+  `Expected payer payment = contracted allowed amount - patient responsibility - payer-specific reductions`
+- Perform the comparison at both claim and service-line level; a claim can net correctly while one high-dollar line is underpaid
+- Flag variances above threshold (typically >$50 or >5% of expected) and stratify by payer, service line, contract package, and effective date
+- Common underpayment causes: incorrect fee schedule applied, bundling applied in error, COB reduction applied incorrectly, contractual rate not updated after annual escalation, or payer takebacks posted through PLB without account-level follow-up
 - Track underpayment recovery rate as a KPI — target >90% recovery on identified underpayments
+
+### Payment Posting & Refund Controls
+- Reconcile EFT amount to total 835 payment plus/minus PLB before daily close; unmatched cash should not roll through month-end
+- Route zero-pay, negative-pay, or reversal/remit transactions to denial or recoupment work queues instead of auto-closing the account
+- Post PR adjustments to patient liability only after they align to eligibility/EOB benefit structure; do not blindly convert every PR code to collectible patient balance
+- Work unapplied cash, orphan PLBs, and recoupments separately from standard denial inventory because the owner and correction path differ
+- Track refund turnaround time, unapplied cash as a percent of monthly cash, and recoupments awaiting allocation
+
+### Appeal Assembly by Denial Type
+- **Authorization denials (CARC 197/204)**: include auth number, approved units, valid date span, portal/fax confirmation, and corrected claim if billed units or DOS mismatched the authorization
+- **Medical necessity denials (CARC 50/96)**: include physician order, clinical notes, test results, and the exact LCD/NCD or payer policy criteria addressed point by point
+- **Technical denials (CARC 16/18/29)**: include corrected data, clearinghouse acceptance reports, claim receipt timestamps, or documented outage evidence supporting a filing exception
 
 ### Revenue Cycle Automation Assessment
 - Evaluate RPA/AI opportunities: eligibility verification, prior auth status checks, claim status inquiries, payment posting, denial categorization

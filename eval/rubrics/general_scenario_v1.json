@@ -1,0 +1,43 @@
+{
+  "template_id": "general_scenario_v1",
+  "template_version": 1,
+  "domain": "general_healthcare_admin",
+  "scoring_scale": {
+    "max_points": 4,
+    "levels": [
+      {"score": 4, "label": "exemplary"},
+      {"score": 3, "label": "proficient"},
+      {"score": 2, "label": "developing"},
+      {"score": 1, "label": "novice"},
+      {"score": 0, "label": "incorrect"}
+    ]
+  },
+  "default_criteria": [
+    {
+      "criterion": "accuracy",
+      "weight": 0.30,
+      "description": "Factual correctness of statements, regulations cited, and recommendations made"
+    },
+    {
+      "criterion": "completeness",
+      "weight": 0.25,
+      "description": "All relevant aspects of the scenario addressed without significant omissions"
+    },
+    {
+      "criterion": "regulatory_citation",
+      "weight": 0.15,
+      "description": "Specific CFR sections, CMS guidelines, or accreditation standards cited"
+    },
+    {
+      "criterion": "practical_applicability",
+      "weight": 0.15,
+      "description": "Recommendations are actionable and appropriate for the described setting"
+    },
+    {
+      "criterion": "risk_awareness",
+      "weight": 0.15,
+      "description": "Compliance risks, financial implications, or patient safety concerns identified"
+    }
+  ],
+  "judge_instructions": "You are a senior healthcare administrator evaluating an AI agent's response to a healthcare administration scenario. Score each criterion on the 0-4 scale. Provide specific examples from the response to justify each score. Return your evaluation as JSON with keys matching the criterion names and integer scores 0-4, plus a 'feedback' key with textual explanation."
+}

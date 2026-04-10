@@ -118,6 +118,88 @@ The most common modern commercial contract structure. Critical considerations:
 - **Reopener clause**: Either party can request rate renegotiation after a specified period (typically 12-24 months)
 - **Termination for rate dispute**: Some contracts allow termination without cause with 90-120 day notice if rate renegotiation fails
 
+### Contract Build and Pricing Hierarchy
+
+Many contract disputes are not rate disputes; they are hierarchy disputes. Your pricing model must define which document controls when the agreement body, exhibit, amendment, provider manual, and payer reimbursement policy conflict.
+
+**Recommended hierarchy review**:
+- **Amendment precedence**: Confirm whether the latest amendment supersedes only the sections it expressly changes or fully restates the reimbursement exhibit. Many payment disputes arise when Exhibit B was replaced for outpatient rates but the payer keeps using the legacy professional schedule.
+- **Product mapping**: Map each payer product separately: commercial HMO/PPO/EPO, exchange/QHP, self-funded ASO, Medicare Advantage, Medicaid managed care, workers' compensation, and narrow-network products. A contract may cover only some products, and silent inclusion of exchange or narrow-network products can dilute yield materially.
+- **Claim-pricing hierarchy**: Document whether payment follows contract language first, then fee schedule exhibit, then payer reimbursement policy, or whether payer policies are incorporated by reference. If incorporated, model only the policies explicitly referenced; broad language like "payer payment policies as amended from time to time" creates unilateral repricing risk.
+- **Code set versioning**: Tie fee schedules to a code set year and update cadence. CPT/HCPCS additions, deletions, and descriptor changes on January 1 can create unpriced or mispriced codes if the contract is silent on interim pricing.
+- **National vs. local Medicare basis**: For percent-of-Medicare terms, specify whether the benchmark is locality-adjusted PFS, wage-adjusted OPPS/IPPS, or a national unadjusted schedule. This drives material variances in multi-state systems.
+
+**Model build checklist**:
+1. Create one contract object per payer product, not one per payer name.
+2. Store effective and termination dates for each amendment and exhibit.
+3. Record the pricing basis at the claim-line level: DRG/APC/CPT/HCPCS/revenue code/per diem/case rate/PMPM.
+4. Flag any payment term that references an external manual or policy URL that can change without amendment.
+5. Test 20-30 high-volume claims manually before productionizing the model.
+
+### Outpatient and Professional Payment Edit Mechanics
+
+Percent-of-Medicare and fee-schedule contracts still require edit logic. The negotiated percentage is only one layer; the underlying unit logic determines realized yield.
+
+**High-impact edit domains**:
+- **Multiple procedure reduction**: Determine whether the contract follows Medicare's MPPR for surgical/procedural services or uses payer-specific logic. For OPPS status indicator T services, the highest-paid procedure is generally paid at 100% and additional T procedures at 50%; a contract that says "135% of OPPS" should specify whether reductions follow current Medicare logic or a fixed exhibit.
+- **Bilateral and assistant-at-surgery adjustments**: PFS-based professional contracts should state whether modifiers 50, 80, 81, 82, and AS follow Medicare percentages or payer custom edits. Missing modifier logic can make an apparently favorable CF underperform in practice.
+- **26/TC split**: For diagnostic services, define whether professional and technical components are priced separately off the PFS non-facility/facility rates and how global billing is handled when the components split across entities.
+- **NCCI and modifier override policy**: If the payer uses National Correct Coding Initiative edits, confirm whether modifiers 59/XE/XS/XP/XU are honored consistent with CMS NCCI policy or subject to payer-specific prepayment edits.
+- **Drug and biological pricing**: If outpatient drugs are paid off ASP, WAC, or invoice cost, define the source file, quarter lag, wastage modifier treatment (JW/JZ), and whether separately payable drugs are packaged under payer policy or follow OPPS status indicators.
+- **Observation and ED logic**: Specify whether observation is paid per hour, case rate, or packaged into ED/APC payment, and whether ED levels benchmark to OPPS visit APCs or a proprietary fee schedule.
+
+**Expected-vs-actual payment waterfall**:
+```
+Allowed amount before edits
+- multiple procedure reduction
+- bilateral / assistant surgeon adjustment
+- packaged or bundled lines
+- sequestration or payer withhold if contractually allowed
+= expected paid amount
+```
+
+### Contractual vs. Administrative Denial Economics
+
+Do not mix unit-price underpayments with denials and take-backs. The operational owner, evidence package, and recovery timing are different.
+
+| Variance Type | Typical Root Cause | Primary Evidence | Recovery Path |
+|--------------|--------------------|------------------|---------------|
+| Unit-price underpayment | Wrong fee schedule / missing escalator / wrong DRG base rate | Contract exhibit, amendment, expected payment model | Payment dispute under contract |
+| Administrative denial | Authorization, timely filing, missing records, coding edit | Claim record, auth log, medical records, clearinghouse proof | Appeal / corrected claim |
+| Clinical denial | Medical necessity, level-of-care, inpatient vs. observation | Physician documentation, InterQual/MCG, appeal packet | Clinical appeal / peer review |
+| Retro recoupment | COB/subrogation, audit, refund request, extrapolation | Remit, recoupment notice, overpayment clause | Refund validation / dispute / offset review |
+
+**Working denial-yield math**:
+- **Gross expected revenue**
+- minus **contractual allowance**
+- minus **initial denials**
+- plus **appeal overturn recoveries**
+- minus **retro recoupments and offsets**
+- equals **net realized contract yield**
+
+If a payer offers a 4% headline rate increase but also tightens authorization rules or expands payer-policy edits, the realized yield may decline. Always model both unit price and collectible yield.
+
+### Prompt Pay, Interest, Recoupment, and Offset Terms
+
+These terms are often worth more than a nominal rate increase because they determine cash timing and payer leverage.
+
+**Critical clauses to extract and model**:
+- **Clean claim definition**: If overly broad, the payer can delay payment by declaring routine claims incomplete. Identify what documentation is required and whether requests for additional information toll the payment clock.
+- **Prompt payment clock**: Note the contractual days to pay clean claims and whether the standard differs for electronic vs. paper claims. Also identify whether state prompt-pay law supplies statutory interest when the contract is silent.
+- **Interest on underpayments or late payments**: Some contracts provide simple interest after a stated number of days; many do not. If statutory interest applies, quantify it in dispute packages.
+- **Overpayment lookback**: Limit payer recoupment to a defined period where possible, commonly 6-12 months for ordinary errors. Open-ended language allows indefinite balance-sheet drag.
+- **Offset rights**: Determine whether the payer may offset alleged overpayments against unrelated current claims. Cross-product and cross-TIN offsets can create major cash disruption if not prohibited.
+- **Dispute and appeal timelines**: Build a calendar for provider dispute filing windows, payer response deadlines, escalation rights, and arbitration/mediation triggers. Missing a 30- or 60-day window can waive otherwise valid recoveries.
+
+**Cash impact example**:
+```
+Underpayment identified:                 $1,200,000
+Average age before recovery:                   180 days
+Interest provision:                            8% simple annual
+Interest recovery estimate:             $1,200,000 x 8% x 180/365 = $47,342
+Total demand value:                      $1,247,342
+```
+
 ### Contract Performance Monitoring
 
 **Underpayment detection methodology**:

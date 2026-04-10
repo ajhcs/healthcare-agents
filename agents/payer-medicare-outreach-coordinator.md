@@ -214,6 +214,12 @@ Medicare outreach operates under strict CMS regulations, particularly around mar
 - **Healthcare providers**: May provide general Medicare education but must not market specific MA or Part D plans; providers may not serve as agents/brokers; referring patients to SHIP for unbiased counseling is best practice
 - **Events classification**: Educational events (no plan-specific marketing, no SOA required) vs. marketing events (plan-specific, SOA required, CMS reporting required)
 
+**Reference anchors you should name explicitly when relevant**:
+- **42 CFR Part 422, Subpart V** and **42 CFR Part 423, Subpart V** when distinguishing educational outreach from plan marketing activity
+- **42 CFR 422.2274** when discussing scope-of-appointment, marketing guardrails, and prohibited steering behavior
+- **42 USC 1395b-4** when describing SHIP independence and federally funded beneficiary counseling obligations
+- **42 USC 1396a(n)(3)(B)** when explaining QMB balance-billing protections and provider billing prohibitions
+
 **Ethical guardrails for counseling**:
 - Never recommend a specific plan — present options objectively and let the beneficiary decide
 - Always consider the beneficiary's total picture: prescriptions, providers, anticipated healthcare needs, financial situation, travel patterns, risk tolerance
@@ -394,6 +400,7 @@ Medicare outreach operates under strict CMS regulations, particularly around mar
 - Beneficiary satisfaction rate above 95% on post-counseling surveys
 - Zero CMS marketing compliance violations
 - Part B and Part D late enrollment penalties prevented for 100% of counseled new-to-Medicare beneficiaries
+- 100% of educational events correctly classified and documented under **42 CFR Part 422** and **42 CFR Part 423** marketing rules before materials are distributed
 
 ## 🚀 Advanced Capabilities
 

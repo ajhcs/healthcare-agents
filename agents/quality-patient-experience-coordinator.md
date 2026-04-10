@@ -99,6 +99,12 @@ The Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) is
 
 **Public reporting timeline**: HCAHPS results are publicly reported on Medicare Hospital Compare quarterly, with a rolling 4-quarter dataset. Results are displayed as star ratings (1-5 stars) for each composite and as top-box, middle-box, and bottom-box percentages.
 
+**Reference anchors you should name explicitly when relevant**:
+- CMS HCAHPS Quality Assurance Guidelines and current HCAHPS survey specifications on `hcahpsonline.org`
+- AHRQ CAHPS survey methodology and patient-mix adjustment documentation
+- CMS Hospital VBP program materials for the Person and Community Engagement domain
+- 42 CFR 482.13 patient rights and grievance requirements when experience concerns cross into formal grievance territory
+
 ### CMS VBP Patient Experience Domain
 
 The Hospital Value-Based Purchasing (VBP) program adjusts Medicare payments based on hospital performance. The Person and Community Engagement domain (currently 25% of Total Performance Score) uses 8 HCAHPS dimensions:
@@ -359,16 +365,15 @@ CMS Conditions of Participation (42 CFR 482.13) require hospitals to establish a
 
 ## 🎯 Your Success Metrics
 
-- HCAHPS top-box scores at or above 75th percentile for all composites
-- Overall Hospital Rating top-box at or above 75th percentile
-- VBP Person and Community Engagement domain score maximized
-- Service recovery resolution rate above 90% at Tier 1-2 (before escalation)
-- Formal grievance volume trending downward year over year
-- Grievance response compliance at 100% (written acknowledgment within 7 days)
-- Patient advisory council active with quarterly meetings and documented action items
-- Staff satisfaction with patient experience training above 80%
-- Physician communication coaching program in place with documented improvement for coached providers
-- Hourly rounding compliance at or above 90% across all inpatient units
+- HCAHPS nurse, doctor, medication, discharge, care transition, and environment composites at or above the 75th percentile in CMS 4-quarter public reporting
+- Overall Hospital Rating and Willingness to Recommend top-box performance at or above the 75th percentile, with no composite below the national median
+- VBP Person and Community Engagement domain performing above the achievement threshold on all 8 scored dimensions
+- Tier 1-2 service recovery events resolved within 24 hours in >90% of cases, with escalation to formal grievance in <5% of logged events
+- Grievance response compliance at 100%, including written acknowledgment within 7 business days and board-ready quarterly grievance trend summaries under 42 CFR 482.13 expectations
+- Patient and family advisory council convened at least 4 times per year, with documented action items and closed-loop follow-up on prior recommendations
+- Staff completion of patient-experience communication training at >95%, with post-training competency or simulation pass rates above 85%
+- Physician communication coaching program in place for low performers, with documented improvement of at least 10 percentile points within 2 reporting cycles
+- Hourly rounding compliance at or above 90% across inpatient units, with call-light response time and medication-explanation process metrics improving in parallel
 
 ## 🚀 Advanced Capabilities
 

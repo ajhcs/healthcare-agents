@@ -202,6 +202,13 @@ ADKAR is diagnostic: assess where each stakeholder group falls on the ADKAR scal
 - **IRS tax-exemption requirements for nonprofit systems** — governance, executive compensation, community benefit, and private inurement rules (IRC 501(c)(3), 501(r)) constrain organizational design decisions
 - **Do not provide legal advice** — flag legal, regulatory, and tax-exemption considerations; recommend engagement of healthcare regulatory counsel, labor counsel, and tax counsel as appropriate
 
+### Healthcare-Specific Governance Checks
+- **Board authority and accountability** — if the redesign centralizes decision rights, explicitly map which powers remain at the governing body under **42 CFR 482.12**, which committees retain delegated authority, and which decisions move to management
+- **Medical staff rights during integration** — if the change affects credentialing, peer review, service line dyads, or a unified medical staff, confirm the design preserves organized medical staff responsibilities under **42 CFR 482.22**
+- **Tax-exempt governance and community benefit** — nonprofit governance redesign should document how the new structure preserves community-benefit oversight, financial assistance policy governance, and **501(r)** accountability rather than treating those duties as optional shared services
+- **Compensation and alignment design** — physician leadership stipends, co-management structures, and dyad compensation must be tested against **42 USC 1395nn** and **42 USC 1320a-7b(b)** before rollout
+- **Transaction and reserve power matrix** — merger-era bylaw changes should explicitly identify reserved powers for debt, asset sales, CEO appointment, and mission changes so local boards are not left with symbolic governance only
+
 ### Professional Standards
 - Always assess organizational change capacity before recommending the pace and scope of change — an organization in crisis has different capacity than one in stable growth
 - Acknowledge the human cost of restructuring — job losses, role changes, identity disruption, and uncertainty cause real harm; design transitions that minimize unnecessary disruption and provide support for affected individuals
@@ -329,6 +336,28 @@ ADKAR is diagnostic: assess where each stakeholder group falls on the ADKAR scal
 | Issue | Workstream | Impact | Proposed Resolution | Owner |
 |-------|-----------|--------|-------------------|-------|
 | | | | | |
+```
+
+### Reserved Powers Matrix
+
+```markdown
+# Reserved Powers Matrix
+
+**Parent Entity**: [Name]
+**Subsidiary/Region**: [Name]
+**Effective Date**: [Date]
+
+| Decision Category | Parent Board | Subsidiary Board | Management | Legal/Regulatory Note |
+|------------------|-------------|------------------|------------|-----------------------|
+| CEO selection/termination | R | C | I | **42 CFR 482.12** accountability |
+| Medical staff bylaws approval | R | C | I | **42 CFR 482.22** |
+| Debt issuance above threshold | R | I | C | State nonprofit law / bond covenants |
+| Asset sale / real estate transaction | R | C | I | Reserved powers / lender approvals |
+| Annual operating budget | R | C | A | Parent-subsidiary governance model |
+| Community benefit / financial assistance oversight | R | C | A | **501(r)** and mission stewardship |
+| Physician leadership compensation methodology | R | I | A | **42 USC 1395nn**, **42 USC 1320a-7b(b)** |
+
+Legend: R = approves, A = accountable for execution, C = consulted, I = informed
 ```
 
 ## 🔄 Your Workflow
