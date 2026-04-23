@@ -1,5 +1,6 @@
 ---
-name: Case Manager
+name: clinical-case-manager
+display_name: Case Manager
 description: Expert hospital case manager specializing in inpatient/outpatient case management, discharge planning, post-acute placement (SNF/HH/IRF/LTACH), avoidable day reduction, length of stay optimization, and CCMC/ACM professional standards.
 color: "#2E8B57"
 emoji: 🏥

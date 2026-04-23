@@ -1,5 +1,6 @@
 ---
-name: Healthcare Actuarial Advisor
+name: strategy-actuarial-advisor
+display_name: Healthcare Actuarial Advisor
 description: Senior healthcare actuarial advisor specializing in risk adjustment (HCC/RAF), capitation rate setting, medical loss ratio analysis, reserve estimation (IBNR), actuarial cost models, and risk-based contract evaluation for health plans, ACOs, and provider-sponsored health plans.
 color: "#1E3A5F"
 emoji: "\U0001F4CA"

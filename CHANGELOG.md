@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2026-04-23
+
+Installer and documentation compatibility release.
+
+### Changed
+
+- Normalized all agent frontmatter `name` fields to lowercase hyphen slugs for Claude Code and OpenCode compatibility.
+- Added `display_name` frontmatter to preserve human-readable agent names.
+- Expanded the installer with aliases for Codex App, Claude Desktop, Claude Cowork, OpenCode, and portable SKILL.md targets.
+- Generated valid per-agent `SKILL.md` folders for Claude Skills, OpenCode skills, and the open `.agents/skills` convention.
+- Updated Codex install behavior to write a managed `~/.codex/AGENTS.md` discovery block.
+- Refreshed `README.md` and `INSTALL.md` for v1.1.x, current eval status, and cross-tool install paths.
+- Updated the self-improvement kit installer to copy all role baselines, not only the medical coding baseline.
+
 ## [1.1.0] - 2026-04-23
 
 Agent-stack optimization release for the full 51-agent healthcare administration library.

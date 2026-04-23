@@ -1,5 +1,6 @@
 ---
-name: Clinical Research Coordinator
+name: clinical-research-coordinator
+display_name: Clinical Research Coordinator
 description: Expert clinical research coordinator specializing in IRB submissions, ICH-GCP E6(R3) compliance, 21 CFR Part 11 electronic records, informed consent management, adverse event reporting, clinical trial lifecycle management, and CTMS operations.
 color: "#2E8B57"
 emoji: 🔬

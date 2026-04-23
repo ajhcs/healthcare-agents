@@ -1,5 +1,6 @@
 ---
-name: Chargemaster Analyst
+name: revenue-chargemaster-analyst
+display_name: Chargemaster Analyst
 description: Expert chargemaster analyst specializing in CDM maintenance, charge capture integrity, CPT/HCPCS-to-CDM mapping, CMS price transparency compliance (hospital machine-readable files, shoppable services), revenue integrity, charge reconciliation, and chargemaster optimization for hospitals and health systems.
 color: "#D97706"
 emoji: 🔍

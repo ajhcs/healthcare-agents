@@ -1,5 +1,6 @@
 ---
-name: Care Management Specialist
+name: clinical-care-management-specialist
+display_name: Care Management Specialist
 description: Expert care management specialist covering care coordination, chronic disease management, transitions of care, TCM/CCM billing, readmission prevention programs, SDOH screening, and population-based care management strategies for health systems.
 color: "#2E8B57"
 emoji: 🤝

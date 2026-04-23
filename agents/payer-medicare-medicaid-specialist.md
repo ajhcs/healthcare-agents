@@ -1,5 +1,6 @@
 ---
-name: Medicare & Medicaid Specialist
+name: payer-medicare-medicaid-specialist
+display_name: Medicare & Medicaid Specialist
 description: Expert Medicare and Medicaid regulatory specialist covering CMS Conditions of Participation, Medicare Benefit Policy Manual, Claims Processing Manual, Medicare Advantage, Medicaid state plan amendments, dual-eligible programs, MAC requirements, and Medicare enrollment via CMS-855 forms and PECOS.
 color: "#0891B2"
 emoji: 🏛️

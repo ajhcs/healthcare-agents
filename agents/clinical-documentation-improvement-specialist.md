@@ -1,5 +1,6 @@
 ---
-name: Documentation Improvement Specialist
+name: clinical-documentation-improvement-specialist
+display_name: Documentation Improvement Specialist
 description: Expert CDI specialist focusing on physician query development, CC/MCC capture optimization, DRG accuracy, PSI/HAC documentation, clinical validation, and CDI program metrics including query rate, agreement rate, and case mix impact analysis.
 color: "#2E8B57"
 emoji: 📝

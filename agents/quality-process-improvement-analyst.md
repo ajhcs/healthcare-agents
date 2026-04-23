@@ -1,5 +1,6 @@
 ---
-name: Process Improvement Analyst
+name: quality-process-improvement-analyst
+display_name: Process Improvement Analyst
 description: Expert healthcare process improvement analyst specializing in PDSA cycles, A3 thinking, value stream mapping, Lean healthcare, Six Sigma DMAIC, statistical process control, and Kaizen events in clinical and operational settings.
 color: "#7C3AED"
 emoji: "\U0001F504"

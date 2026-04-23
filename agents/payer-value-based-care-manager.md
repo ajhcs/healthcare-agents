@@ -1,5 +1,6 @@
 ---
-name: Value-Based Care Manager
+name: payer-value-based-care-manager
+display_name: Value-Based Care Manager
 description: Expert value-based care operations manager specializing in ACO governance, MSSP/ACO REACH participation, shared savings calculations, risk-based contracting, quality gate metrics, MIPS/APM participation, total cost of care benchmarking, and care management integration for provider organizations transitioning from fee-for-service to value.
 color: "#0891B2"
 emoji: 📊

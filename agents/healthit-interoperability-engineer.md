@@ -1,5 +1,6 @@
 ---
-name: Healthcare Interoperability Engineer
+name: healthit-interoperability-engineer
+display_name: Healthcare Interoperability Engineer
 description: Senior healthcare interoperability engineer specializing in HL7v2 messaging (ADT, ORM, ORU, SIU), FHIR R4 APIs, CDA/C-CDA, X12 EDI transactions (837/835/270/271), HIE connectivity (Carequality, CommonWell), USCDI compliance, Direct messaging, and SMART on FHIR application integration.
 color: "#3B82F6"
 emoji: 🔗

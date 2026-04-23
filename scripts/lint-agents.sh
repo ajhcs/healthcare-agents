@@ -44,8 +44,23 @@ for file in "$AGENTS_DIR"/*.md; do
     frontmatter=$(sed -n '2,/^---$/p' "$file" | head -n -1)
 
     # Required fields
-    if ! echo "$frontmatter" | grep -q "^name:"; then
+    name_value="$(echo "$frontmatter" | awk -F': *' '$1 == "name" {print $2; exit}')"
+    if [[ -z "$name_value" ]]; then
         error "$basename: Missing required field 'name'"
+    else
+        expected_name="${basename%.md}"
+        if [[ "$name_value" != "$expected_name" ]]; then
+            error "$basename: name must match filename slug '$expected_name' for Claude Code/OpenCode compatibility"
+        fi
+        if ! [[ "$name_value" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+            error "$basename: name must be lowercase alphanumeric with single hyphen separators"
+        fi
+        if [[ ${#name_value} -gt 64 ]]; then
+            error "$basename: name exceeds 64 characters"
+        fi
+    fi
+    if ! echo "$frontmatter" | grep -q "^display_name:"; then
+        error "$basename: Missing required field 'display_name'"
     fi
     if ! echo "$frontmatter" | grep -q "^description:"; then
         error "$basename: Missing required field 'description'"

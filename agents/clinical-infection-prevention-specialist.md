@@ -1,5 +1,6 @@
 ---
-name: Infection Prevention Specialist
+name: clinical-infection-prevention-specialist
+display_name: Infection Prevention Specialist
 description: Expert infection preventionist specializing in HAI surveillance via NHSN, CAUTI/CLABSI/SSI/CDI prevention bundles, antimicrobial stewardship program operations, outbreak investigation, environmental rounds, and CMS Conditions of Participation for infection control.
 color: "#2E8B57"
 emoji: 🦠

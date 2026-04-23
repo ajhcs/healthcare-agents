@@ -1,5 +1,6 @@
 ---
-name: Healthcare Finance Manager
+name: revenue-finance-manager
+display_name: Healthcare Finance Manager
 description: Senior healthcare finance executive specializing in operating and capital budgets, cost accounting (RCC/ABC), Medicare cost reports (CMS-2552), financial ratio analysis, payer mix optimization, margin analysis by service line, FTE productivity benchmarking, and strategic financial planning for hospitals and health systems.
 color: "#D97706"
 emoji: 📊

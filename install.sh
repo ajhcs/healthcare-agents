@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="1.0.0"
+VERSION="1.1.1"
 REPO="ajhcs/healthcare-agents"
 REPO_URL="https://github.com/$REPO"
 AGENTS_DIR=""
@@ -31,8 +31,11 @@ usage() {
 ${BOLD}Healthcare Agents Installer v$VERSION${RESET}
 Usage: install.sh [OPTIONS]
 
-Targets:  --claude --codex --gemini --cursor --windsurf
-          --copilot --cline --amazonq --aider --continue
+Targets:  --claude --claude-code --codex --codex-app --gemini
+          --cursor --windsurf --copilot --cline --amazonq
+          --aider --continue
+          --claude-skills --claude-desktop --claude-cowork
+          --opencode --agent-skills --skills
           --all (force all)  --path DIR (custom directory)
 
 Flags:    --force       Overwrite existing files
@@ -46,8 +49,8 @@ EOF
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --claude)    TARGETS+=(claude);    EXPLICIT=true; shift ;;
-    --codex)     TARGETS+=(codex);     EXPLICIT=true; shift ;;
+    --claude|--claude-code) TARGETS+=(claude); EXPLICIT=true; shift ;;
+    --codex|--codex-app)    TARGETS+=(codex);  EXPLICIT=true; shift ;;
     --gemini)    TARGETS+=(gemini);    EXPLICIT=true; shift ;;
     --cursor)    TARGETS+=(cursor);    EXPLICIT=true; shift ;;
     --windsurf)  TARGETS+=(windsurf);  EXPLICIT=true; shift ;;
@@ -56,6 +59,12 @@ while [[ $# -gt 0 ]]; do
     --amazonq)   TARGETS+=(amazonq);   EXPLICIT=true; shift ;;
     --aider)     TARGETS+=(aider);     EXPLICIT=true; shift ;;
     --continue)  TARGETS+=(continue);  EXPLICIT=true; shift ;;
+    --claude-skills|--claude-desktop|--claude-cowork|--cowork)
+                  TARGETS+=(claude-skills); EXPLICIT=true; shift ;;
+    --opencode)  TARGETS+=(opencode);  EXPLICIT=true; shift ;;
+    --agent-skills|--agents-skills)
+                  TARGETS+=(agent-skills); EXPLICIT=true; shift ;;
+    --skills)    TARGETS+=(claude-skills opencode agent-skills); EXPLICIT=true; shift ;;
     --all)       ALL=true; shift ;;
     --path)      CUSTOM_PATH="$2"; EXPLICIT=true; shift 2 ;;
     --force)     FORCE=true; shift ;;
@@ -108,7 +117,7 @@ download_agents() {
 declare -A TOOL_DISPLAY TOOL_PATH TOOL_HOME
 reg() { TOOL_DISPLAY[$1]="$2"; TOOL_PATH[$1]="$3"; TOOL_HOME[$1]="$4"; }
 reg claude   "Claude Code"     .claude/agents          1
-reg codex    "Codex CLI"       .codex/agents            1
+reg codex    "Codex / Codex App" .codex/agents          1
 reg gemini   "Gemini CLI"      .gemini/agents           1
 reg cursor   "Cursor"          .cursor/rules            0
 reg windsurf "Windsurf"        .windsurf/rules          0
@@ -117,7 +126,10 @@ reg cline    "Cline"           .clinerules              0
 reg amazonq  "Amazon Q"        .amazonq/rules           0
 reg aider    "Aider"           .aider.conf.yml          0
 reg continue "Continue.dev"    .continue                0
-TOOL_ORDER=(claude codex gemini cursor windsurf copilot cline amazonq aider continue)
+reg claude-skills "Claude Skills" .claude/skills         1
+reg opencode "OpenCode Skills" .config/opencode/skills   1
+reg agent-skills "Open Agent Skills" .agents/skills      1
+TOOL_ORDER=(claude codex claude-skills opencode agent-skills gemini cursor windsurf copilot cline amazonq aider continue)
 
 resolve_path() {
   local tool="$1"
@@ -133,6 +145,8 @@ tool_exists() {
   path="$(resolve_path "$tool")"
   if [[ "$tool" == "aider" ]]; then
     [[ -f "$path" ]] || command -v aider &>/dev/null
+  elif [[ "$tool" == "opencode" ]]; then
+    [[ -d "$path" ]] || command -v opencode &>/dev/null
   else
     [[ -d "$path" ]] || [[ -d "$(dirname "$path")" && "$tool" == "continue" ]]
   fi
@@ -179,6 +193,134 @@ install_to_dir() {
   agent_count="$(ls "$AGENTS_DIR"/*.md 2>/dev/null | wc -l)"
   printf "  %s %s (%d files)\n" "${GREEN}->${RESET}" "$label" "$agent_count"
   TOTAL_INSTALLED=$((TOTAL_INSTALLED + agent_count))
+}
+
+field_value() {
+  local file="$1" field="$2"
+  awk -v key="$field:" '
+    $0 == "---" { seen++; next }
+    seen == 1 && index($0, key) == 1 {
+      sub("^[^:]+:[[:space:]]*", "", $0)
+      gsub(/^"|"$/, "", $0)
+      print
+      exit
+    }
+  ' "$file"
+}
+
+write_skill_file() {
+  local src="$1" dest_dir="$2"
+  local slug display desc
+  slug="$(basename "$src" .md)"
+  display="$(field_value "$src" display_name)"
+  [[ -n "$display" ]] || display="$slug"
+  desc="$(field_value "$src" description)"
+
+  mkdir -p "$dest_dir/$slug"
+  {
+    printf '%s\n' '---'
+    printf 'name: %s\n' "$slug"
+    printf '%s\n' 'description: >-'
+    printf '  Healthcare administration specialist: %s Use when the user asks for the %s role, related healthcare operations expertise, or a concrete deliverable in this specialty.\n' "$desc" "$display"
+    printf 'license: Apache-2.0\n'
+    printf 'compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex\n'
+    printf '%s\n\n' '---'
+    printf 'Use this skill as the %s healthcare administration specialist. Preserve the role identity, regulatory boundaries, source hierarchy, deliverable style, and safety constraints below.\n\n' "$display"
+    sed '1,/^---$/d' "$src"
+  } > "$dest_dir/$slug/SKILL.md"
+}
+
+install_skills_tree() {
+  local dest="$1" label="$2"
+  local count=0
+  mkdir -p "$dest"
+  for f in "$AGENTS_DIR"/*.md; do
+    local slug target
+    slug="$(basename "$f" .md)"
+    target="$dest/$slug/SKILL.md"
+    if [[ -f "$target" ]] && ! $FORCE; then
+      if [[ $count -eq 0 ]]; then
+        warn "$label: skill files exist (use --force to update)"
+      fi
+      return 0
+    fi
+    if ! $DRY_RUN; then write_skill_file "$f" "$dest"; fi
+    count=$((count + 1))
+  done
+  printf "  %s %s (%d skills)\n" "${GREEN}->${RESET}" "$label" "$count"
+  TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
+}
+
+uninstall_skills_tree() {
+  local dest="$1" label="$2"
+  local count=0
+  for f in "$AGENTS_DIR"/*.md; do
+    local slug target
+    slug="$(basename "$f" .md)"
+    target="$dest/$slug"
+    if [[ -d "$target" ]]; then
+      if ! $DRY_RUN; then rm -rf "$target"; fi
+      count=$((count + 1))
+    fi
+  done
+  if [[ $count -gt 0 ]]; then
+    printf "  %s %s (%d skills removed)\n" "${RED}<-${RESET}" "$label" "$count"
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
+  else
+    skip "$label (nothing to remove)"
+  fi
+}
+
+upsert_block() {
+  local file="$1" start="$2" end="$3" body="$4"
+  mkdir -p "$(dirname "$file")"
+  local tmp
+  tmp="$(mktemp)"
+  printf '%s\n%s\n%s\n' "$start" "$body" "$end" > "$tmp"
+  if [[ ! -f "$file" ]]; then
+    if ! $DRY_RUN; then cp "$tmp" "$file"; fi
+    rm -f "$tmp"
+    return
+  fi
+  if grep -Fq "$start" "$file"; then
+    if ! $DRY_RUN; then
+      awk -v start="$start" -v end="$end" -v replacement="$tmp" '
+        $0 == start {
+          while ((getline line < replacement) > 0) print line
+          close(replacement)
+          skip = 1
+          next
+        }
+        $0 == end { skip = 0; next }
+        !skip { print }
+      ' "$file" >"$file.tmp"
+      mv "$file.tmp" "$file"
+    fi
+  else
+    if ! $DRY_RUN; then
+      {
+        printf '\n'
+        cat "$tmp"
+        printf '\n'
+      } >> "$file"
+    fi
+  fi
+  rm -f "$tmp"
+}
+
+install_codex() {
+  local dest="$HOME/.codex/agents"
+  if $UNINSTALL; then
+    uninstall_from_dir "$dest" "Codex / Codex App ($dest)"
+    return
+  fi
+  install_to_dir "$dest" "Codex / Codex App ($dest)"
+  local body
+  body='## Healthcare Agents
+
+When the user asks for healthcare administration expertise, choose the matching specialist prompt from `~/.codex/agents/*.md` and read it before answering. Agent file names and frontmatter `name` fields use lowercase hyphen slugs such as `revenue-cycle-specialist`; `display_name` is the human label. Preserve the selected agent role, compliance boundaries, source hierarchy, and deliverable style. Do not treat the agents as clinical, legal, or PHI-handling authority.'
+  upsert_block "$HOME/.codex/AGENTS.md" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->" "$body"
+  printf "  %s Codex instructions (%s)\n" "${GREEN}->${RESET}" "$HOME/.codex/AGENTS.md"
 }
 
 uninstall_from_dir() {
@@ -273,6 +415,12 @@ for tool in "${TARGETS[@]}"; do
   fi
   local_path="$(resolve_path "$tool")"
   if [[ "$tool" == "aider" ]]; then install_aider; continue; fi
+  if [[ "$tool" == "codex" ]]; then install_codex; continue; fi
+  if [[ "$tool" == "claude-skills" || "$tool" == "opencode" || "$tool" == "agent-skills" ]]; then
+    if $UNINSTALL; then uninstall_skills_tree "$local_path" "${TOOL_DISPLAY[$tool]} ($local_path)"
+    else install_skills_tree "$local_path" "${TOOL_DISPLAY[$tool]} ($local_path)"; fi
+    continue
+  fi
   if $UNINSTALL; then uninstall_from_dir "$local_path" "${TOOL_DISPLAY[$tool]} ($local_path)"
   else install_to_dir "$local_path" "${TOOL_DISPLAY[$tool]} ($local_path)"; fi
 done

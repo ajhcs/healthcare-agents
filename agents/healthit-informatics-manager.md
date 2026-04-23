@@ -1,5 +1,6 @@
 ---
-name: Health Informatics Manager
+name: healthit-informatics-manager
+display_name: Health Informatics Manager
 description: Senior clinical informatics strategist specializing in data governance, USCDI/TEFCA compliance, ONC certification (HTI-1), CDS Hooks implementation, EHR optimization, and informatics governance for health systems.
 color: "#3B82F6"
 emoji: 🧬

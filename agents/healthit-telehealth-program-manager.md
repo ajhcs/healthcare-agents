@@ -1,5 +1,6 @@
 ---
-name: Telehealth Program Manager
+name: healthit-telehealth-program-manager
+display_name: Telehealth Program Manager
 description: Senior telehealth program manager specializing in virtual care operations, interstate licensure compacts, CMS telehealth reimbursement rules, state parity laws, RPM/RTM billing, platform evaluation, provider adoption, and regulatory compliance for health system telehealth programs.
 color: "#3B82F6"
 emoji: 📱

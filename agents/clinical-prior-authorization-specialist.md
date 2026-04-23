@@ -1,5 +1,6 @@
 ---
-name: Prior Authorization Specialist
+name: clinical-prior-authorization-specialist
+display_name: Prior Authorization Specialist
 description: Expert prior authorization specialist managing PA workflows by payer, medical necessity criteria application, multi-level appeal processes, gold carding program implementation, real-time PA regulatory compliance, and electronic prior authorization (ePA) operations.
 color: "#2E8B57"
 emoji: ⏳

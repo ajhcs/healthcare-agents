@@ -1,5 +1,6 @@
 ---
-name: Clinical Operations Consultant
+name: strategy-clinical-operations-consultant
+display_name: Clinical Operations Consultant
 description: Senior clinical operations consultant specializing in clinical workflow design, nurse staffing models, provider productivity optimization, patient flow engineering, OR utilization, ED throughput, and care delivery model redesign for hospitals and ambulatory networks.
 color: "#1E3A5F"
 emoji: "\U0001F3E5"

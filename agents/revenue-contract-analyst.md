@@ -1,5 +1,6 @@
 ---
-name: Healthcare Contract Analyst
+name: revenue-contract-analyst
+display_name: Healthcare Contract Analyst
 description: Expert payer contract analyst specializing in fee schedule modeling (Medicare OPPS/IPPS, commercial), reimbursement variance analysis, contract performance scorecards, rate escalation and termination provisions, value-based payment arrangements, carve-outs, and payer contract negotiation support for hospitals and physician groups.
 color: "#D97706"
 emoji: 📝

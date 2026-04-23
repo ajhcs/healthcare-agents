@@ -1,138 +1,147 @@
 <p align="center">
   <h1 align="center">Healthcare Agents</h1>
   <p align="center">
-    <strong>51 AI agents that actually know healthcare administration.</strong><br>
-    Real CFR citations. Real CMS payment models. Real deliverables. Not a chatbot with a healthcare skin.
+    <strong>51 eval-improved AI agents for US healthcare administration.</strong><br>
+    Revenue cycle, compliance, quality, clinical operations, payer relations, health IT, population health, pharmacy, strategy, and emergency preparedness.
   </p>
   <p align="center">
-    <a href="#install-in-30-seconds"><img src="https://img.shields.io/badge/install-30_seconds-success?style=flat-square" alt="Install in 30 seconds"></a>
-    <a href="#the-51-agents"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 Agents"></a>
-    <a href="#eval-status"><img src="https://img.shields.io/badge/eval_score-80+-brightgreen?style=flat-square" alt="Eval Score 80+"></a>
-    <a href="#compatible-tools"><img src="https://img.shields.io/badge/tools-12+-8A2BE2?style=flat-square" alt="12+ Tools"></a>
-    <a href="https://github.com/ajhcs/healthcare-agents/stargazers"><img src="https://img.shields.io/github/stars/ajhcs/healthcare-agents?style=flat-square" alt="Stars"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="License"></a>
-    <a href="https://github.com/ajhcs/healthcare-agents/releases"><img src="https://img.shields.io/badge/version-1.0.0-blue?style=flat-square" alt="v1.0.0"></a>
+    <a href="#install"><img src="https://img.shields.io/badge/install-curl%20%7C%20npx-success?style=flat-square" alt="Install"></a>
+    <a href="#the-51-agents"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
+    <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20improved-brightgreen?style=flat-square" alt="51 of 51 improved"></a>
+    <a href="#compatibility"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode-compatible-8A2BE2?style=flat-square" alt="Claude Codex OpenCode compatible"></a>
+    <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.1.1"><img src="https://img.shields.io/badge/version-1.1.1-blue?style=flat-square" alt="v1.1.1"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0"></a>
   </p>
 </p>
 
----
+Healthcare Agents is a portable prompt pack for healthcare administration work. Each agent is a long-form Markdown system prompt with structured YAML frontmatter, concrete regulatory/source awareness, role-specific workflows, and deliverable templates.
 
-Drop 22,000+ lines of healthcare administration expertise into any AI coding tool. These agents handle HIPAA compliance audits, medical coding reviews, revenue cycle management, CMS cost reports, payer contract analysis, and 45 other healthcare admin specialties -- with the depth of an MHA graduate, not a generic prompt.
+The pack is designed to install cleanly into agent tools that understand subagents, project instructions, custom rules, or `SKILL.md` folders.
 
-> Built on the conventions of [agency-agents](https://github.com/msitarzewski/agency-agents) by [Michael Sitarzewski](https://github.com/msitarzewski).
+## Install
 
-## Install in 30 Seconds
-
-One command. Auto-detects your tools.
+Fast path:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
 ```
 
-Or target a specific tool:
+Or use npm:
 
-| Tool | Command |
-|------|---------|
-| **Claude Code** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --claude` |
-| **Cursor** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --cursor` |
-| **Copilot** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --copilot` |
-| **Gemini CLI** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --gemini` |
-| **Codex CLI** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --codex` |
-| **Windsurf** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --windsurf` |
-| **All tools** | `curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh \| bash -s -- --all` |
+```bash
+npx healthcare-agents install
+```
 
-<details>
-<summary>Manual install (git clone)</summary>
+Target a specific runtime:
+
+| Runtime | Command |
+|---|---|
+| Claude Code subagents | `npx healthcare-agents install --claude` |
+| Claude Skills / Claude Desktop / Claude Cowork | `npx healthcare-agents install --claude-skills` |
+| Codex CLI / Codex App | `npx healthcare-agents install --codex` |
+| OpenCode skills | `npx healthcare-agents install --opencode` |
+| Open Agent Skills convention | `npx healthcare-agents install --agent-skills` |
+| Cursor | `npx healthcare-agents install --cursor` |
+| GitHub Copilot | `npx healthcare-agents install --copilot` |
+| All known targets | `npx healthcare-agents install --all` |
+
+Preview first:
+
+```bash
+npx healthcare-agents install --all --dry-run
+```
+
+Update existing installs:
+
+```bash
+npx healthcare-agents install --all --force
+```
+
+## Why Use This
+
+| Generic prompt | Healthcare Agents |
+|---|---|
+| "Follow HIPAA" | Distinguishes HIPAA Privacy, Security, Breach Notification, and operational handoffs. |
+| "Improve revenue" | Uses CARC/RARC, 837/835, charge capture, cost report, payer contract, 340B, and coding mechanics. |
+| "Check quality" | Separates HEDIS, MIPS/QPP, Stars, HCAHPS/CAHPS, accreditation, patient safety, and QI methods. |
+| "Use healthcare data" | Names FHIR, HL7v2, X12, C-CDA, Epic Caboodle/Cogito, USCDI, TEFCA, eCQMs, and data-lineage controls. |
+| "Make a plan" | Produces checklists, charters, dashboards, appeal packets, audit binders, gap analyses, and operating playbooks. |
+
+The agents do not give clinical advice, legal opinions, or permission to handle PHI. They provide healthcare administration expertise, source-aware workflows, and structured deliverables.
+
+## Compatibility
+
+| Tool / Standard | Install Target | Notes |
+|---|---|---|
+| Claude Code subagents | `~/.claude/agents/*.md` | Agent frontmatter now uses lowercase hyphen `name` values that match filenames. |
+| Claude Skills | `~/.claude/skills/<slug>/SKILL.md` | Generated SKILL.md wrappers include valid `name`, `description`, `license`, and `compatibility` fields. |
+| Claude Desktop / Claude Cowork | Claude-compatible skills | Use `--claude-desktop`, `--claude-cowork`, or `--claude-skills` to generate skill folders. |
+| Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed AGENTS.md block telling Codex how to load the matching specialist. |
+| OpenCode | `~/.config/opencode/skills/<slug>/SKILL.md` | Matches OpenCode's SKILL.md directory/name requirements. |
+| Open Agent Skills | `~/.agents/skills/<slug>/SKILL.md` | Portable fallback for tools that scan the common `.agents/skills` convention. |
+| Cursor | `.cursor/rules/*.md` | Uses the same Markdown prompts as project rules. |
+| Windsurf | `.windsurf/rules/*.md` | Uses the same Markdown prompts as project rules. |
+| GitHub Copilot | `.github/instructions/*.md` | Copy as repository instruction files; rename to `.instructions.md` if your setup requires it. |
+| Gemini CLI | `~/.gemini/agents/*.md` | Installs Markdown agent files globally. |
+| Cline | `.clinerules/*.md` | Installs prompt files into project rules. |
+| Amazon Q Developer | `.amazonq/rules/*.md` | Installs prompt files into project rules. |
+| Continue.dev | `.continue/*.md` | Installs prompt files as reusable context. |
+| Aider | `.aider.conf.yml` managed `read:` block | Adds all agent prompts as read-only context entries. |
+
+Reference standards checked for this release:
+
+- Claude Code subagents and skills: <https://code.claude.com/docs/en/sub-agents> and <https://code.claude.com/docs/en/skills>
+- Codex AGENTS.md, skills, and app docs: <https://developers.openai.com/>
+- OpenCode skills: <https://opencode.ai/docs/skills>
+
+## Quick Examples
+
+Ask Claude Code:
+
+```text
+Use the revenue-cycle-specialist agent to diagnose why our clean claim rate dropped.
+```
+
+Ask Codex:
+
+```text
+Read the healthcare agent for quality-compliance-officer and build a HIPAA Security Rule audit checklist.
+```
+
+Ask OpenCode:
+
+```text
+Use the revenue-contract-analyst skill to model payer contract underpayment risk.
+```
+
+Manual install into a project:
 
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
-cp healthcare-agents/agents/*.md ~/.claude/agents/    # Claude Code
-cp healthcare-agents/agents/*.md .cursor/rules/        # Cursor
-cp healthcare-agents/agents/*.md .github/instructions/  # Copilot
+mkdir -p .claude/agents .opencode/skills
+cp healthcare-agents/agents/*.md .claude/agents/
+bash healthcare-agents/install.sh --path ./agents --force
 ```
-
-</details>
-
-Then just ask:
-
-> *"Activate the Compliance Officer and audit our HIPAA Security Rule compliance against 45 CFR 164.308"*
-
-Full setup instructions for all 12+ tools: **[INSTALL.md](INSTALL.md)**
-
-## What Makes These Different
-
-| | Generic AI | Healthcare Agents |
-|---|---|---|
-| **Compliance** | "Follow HIPAA" | Cites 45 CFR 164.500-534, breach notification at 164.400-414 |
-| **Finance** | "Optimize revenue" | PMPM decomposition, CARC/RARC denial analysis, CMS-2552 cost reports |
-| **Coding** | "Use correct codes" | CC/MCC capture rates, NCCI edits, E/M 2021+ guidelines |
-| **Systems** | "Use your EHR" | Epic Caboodle/Cogito, CAQH ProView, 340B OPAIS, PECOS, NHSN |
-| **Accreditation** | "Get certified" | Joint Commission tracer methodology, NCQA HEDIS measures, CMS CoPs by facility type |
-
-**22,000+ lines** of dense domain knowledge across 51 agents. **Average 420 lines/agent** of real expertise -- regulatory citations, payment model math, system-specific workflows -- not filler.
-
-### Real Output, Not Summaries
-
-Ask the 340B Program Manager about contract pharmacy compliance and you get this:
-
-```
-340B CONTRACT PHARMACY COMPLIANCE ASSESSMENT
-=============================================
-
-1. ENTITY ELIGIBILITY VERIFICATION
-   - Covered entity type: [Federally Qualified Health Center / DSH Hospital / ...]
-   - 340B ID: [HRSA-assigned ID]
-   - Registration status in 340B OPAIS: [Active / Pending]
-
-2. CONTRACT PHARMACY NETWORK REVIEW
-   - Total contract pharmacies registered: [count]
-   - Chain vs. independent mix: [ratio]
-   - HRSA contract pharmacy registration dates: [verify all current]
-
-3. COMPLIANCE RED FLAGS
-   [ ] Duplicate discounts -- Medicaid claims cross-referenced against 340B purchases
-   [ ] Diversion -- prescriptions for non-eligible patients filled at contract pharmacy
-   [ ] GPO prohibition violations (for DSH hospitals under 100 beds)
-   [ ] Missing contract pharmacy agreements or expired registrations
-
-4. RECOMMENDED ACTIONS
-   ...
-```
-
-Every agent produces structured, actionable deliverables -- compliance assessments, financial models, audit checklists, gap reports. Not summaries of what a deliverable *would* look like.
-
-## Use Cases
-
-**HIPAA compliance audit** -- The Compliance Officer walks through 45 CFR 164.308 administrative safeguards, 164.310 physical safeguards, and 164.312 technical safeguards. Produces a gap assessment with specific remediation steps and regulatory citations.
-
-**Revenue cycle denial management** -- The Revenue Cycle Specialist analyzes denial patterns using CARC/RARC codes, identifies root causes (registration errors, medical necessity, timely filing), and builds an appeals workflow with payer-specific requirements.
-
-**Medical coding accuracy review** -- The Medical Coding Specialist audits documentation for CC/MCC capture, E/M level support under 2021+ guidelines, and NCCI edit compliance. Flags undercoding and overcoding with CPT/ICD-10 specifics.
-
-**CMS cost report preparation** -- The Healthcare Finance Manager structures CMS-2552 worksheets, calculates cost-to-charge ratios, and identifies reclassification opportunities for wage index and DSH adjustments.
-
-**Payer contract negotiation** -- The Contract Analyst models reimbursement scenarios across fee-for-service, capitation, and value-based arrangements. Compares rates against Medicare benchmarks and MGMA data.
 
 ## Eval Status
 
-10 of 51 agents currently score **80+** on a frozen eval rubric. Each agent goes through iterative question-answer-judge-improve cycles: the scorer generates domain-specific exam questions, grades the agent's answers, identifies weak areas, and produces a targeted improvement brief. An editor model patches only the weak spots while preserving the agent's identity and voice.
+All 51 agents have been improved through the lightweight eval loop.
 
-| Agent | Best Score |
-|-------|-----------|
-| Revenue Medical Coding Specialist | 82.15 |
-| Revenue Finance Manager | 81.55 |
-| 340B Program Manager | 81.20 |
-| Quality Compliance Officer | 81.15 |
-| Healthcare Interoperability Engineer | 81.10 |
-| Quality Process Improvement Analyst | 80.85 |
-| Revenue Cycle Specialist | 80.65 |
-| Revenue Contract Analyst | 80.45 |
-| Health Informatics Manager | 80.30 |
-| Payer Managed Care Analyst | 80.30 |
+| Pass | Agents | Average Before | Average After | Delta |
+|---|---:|---:|---:|---:|
+| First before/after pass | 15 | 85.0 | 93.9 | +8.9 |
+| Remaining before/after pass | 36 | 85.11 | 95.50 | +10.40 |
 
-Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
+The active eval system is intentionally simple:
 
-**Infrastructure:** The `/eval` skill runs the loop. A frozen rubric at `eval/rubric.md` keeps scoring consistent across runs, and role baselines help the scorer test omitted responsibilities rather than only what the prompt already claims.
+- `.claude/commands/eval.md` is the canonical workflow for Claude Code and Codex.
+- `eval/rubric.md` is the frozen scoring rubric.
+- `eval/role-baselines/` contains expected-capability baselines for all 51 agents.
+- `docs/eval/exam-architect-playbook.md` guides question writing and scorer behavior.
+- `docs/eval/model-tuning.md` documents model-role routing for current SOTA models.
+- `eval/run-logs/` keeps local exact-question artifacts; raw run logs are ignored by git.
+
+Same-question before/after comparisons must persist full Q001-Q025 question artifacts before answers are generated. This prevents score deltas from being based on paraphrased weak areas or unrecoverable question sets.
 
 ## The 51 Agents
 
@@ -140,12 +149,12 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Strategy & Advisory</strong> -- 5 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Healthcare Strategy Consultant | Service line planning, M&A, market analysis, CON strategy |
-| Healthcare Operations Consultant | Lean/Six Sigma, throughput, benchmarking (MGMA/Vizient) |
-| Clinical Operations Consultant | Clinical workflows, staffing models, ED/OR throughput |
-| Structural Improvement Consultant | Org redesign, governance, change management, post-merger integration |
-| Healthcare Actuarial Advisor | Risk adjustment (HCC/RAF), capitation, IBNR, MLR modeling |
+|---|---|
+| `strategy-healthcare-consultant` | Service line planning, M&A, market analysis, CON strategy |
+| `strategy-operations-consultant` | Lean/Six Sigma, throughput, benchmarking, predictive operations |
+| `strategy-clinical-operations-consultant` | Clinical workflows, staffing models, ED/OR throughput |
+| `strategy-structural-improvement-consultant` | Org redesign, governance, change management, post-merger integration |
+| `strategy-actuarial-advisor` | Risk adjustment, capitation, IBNR, MLR, actuarial caveats |
 
 </details>
 
@@ -153,15 +162,15 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Clinical Operations</strong> -- 8 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Utilization Management Specialist | Medical necessity, InterQual/Milliman, Two-Midnight Rule |
-| Care Management Specialist | Care coordination, TCM/CCM, readmission prevention, SDOH |
-| Clinical Research Coordinator | IRB, ICH-GCP E6(R3), 21 CFR Part 11, trial management |
-| Documentation Improvement Specialist | CDI queries, CC/MCC capture, DRG optimization |
-| Prior Authorization Specialist | PA workflows, appeals, gold carding, ePA (CMS-0057-F) |
-| Referral Specialist | Referral management, network navigation, care gap closure |
-| Case Manager | Discharge planning, post-acute placement, LOS optimization |
-| Infection Prevention Specialist | HAI surveillance (NHSN), antimicrobial stewardship, outbreak response |
+|---|---|
+| `clinical-utilization-management-specialist` | Medical necessity, status, notices, InterQual/MCG boundaries |
+| `clinical-care-management-specialist` | Care coordination, TCM/CCM, readmission prevention, SDOH |
+| `clinical-research-coordinator` | IRB, ICH-GCP E6(R3), 21 CFR Part 11, trial operations |
+| `clinical-documentation-improvement-specialist` | CDI queries, CC/MCC capture, DRG optimization |
+| `clinical-prior-authorization-specialist` | PA workflows, appeals, ePA, payer/state variation |
+| `clinical-referral-specialist` | Referral management, network navigation, care gap closure |
+| `clinical-case-manager` | Discharge planning, post-acute placement, LOS optimization |
+| `clinical-infection-prevention-specialist` | NHSN, HAI surveillance, stewardship, outbreak response |
 
 </details>
 
@@ -169,14 +178,14 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Quality, Safety & Compliance</strong> -- 7 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Quality Improvement Specialist | HEDIS, MIPS/QPP, CMS Stars, Leapfrog, eCQMs |
-| Process Improvement Analyst `80+` | PDSA, Lean, Six Sigma DMAIC, value stream mapping |
-| Patient Experience Coordinator | HCAHPS, service recovery, VBP patient experience domain |
-| Patient Safety Officer | Sentinel events, RCA/FMEA, Just Culture, PSO reporting |
-| Compliance Officer `80+` | HIPAA, Stark, Anti-Kickback, FCA, OIG compliance programs, EMTALA |
-| Risk Manager | Enterprise/clinical risk, malpractice, claims management |
-| Accreditation Specialist | Joint Commission, NCQA, URAC, AAAHC, DNV, survey readiness |
+|---|---|
+| `quality-improvement-specialist` | HEDIS, MIPS/QPP, Stars, eCQMs, SPC, Baldrige |
+| `quality-process-improvement-analyst` | PDSA, Lean, Six Sigma DMAIC, capability/takt math |
+| `quality-patient-experience-coordinator` | CAHPS/HCAHPS, service recovery, grievance escalation |
+| `quality-patient-safety-officer` | Sentinel events, RCA2, HFMEA, Just Culture, PSO boundaries |
+| `quality-compliance-officer` | HIPAA, Stark, AKS, FCA, OIG, EMTALA, CIA evidence |
+| `quality-risk-manager` | ERM, malpractice, claims, CRP, NPDB/state reporting boundaries |
+| `quality-accreditation-specialist` | TJC, NCQA, URAC, AAAHC, DNV, survey readiness |
 
 </details>
 
@@ -184,13 +193,13 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Revenue Cycle & Finance</strong> -- 6 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Revenue Cycle Specialist `80+` | End-to-end RCM, denials (CARC/RARC), A/R optimization |
-| Healthcare Finance Manager `80+` | Budgets, cost accounting, CMS-2552 cost reports, margin analysis |
-| Healthcare Contract Analyst `80+` | Payer contracts, fee schedules, reimbursement modeling |
-| Medical Coding Specialist `80+` | ICD-10-CM/PCS, CPT, DRG, HCC, E/M coding |
-| 340B Program Manager `80+` | Covered entity compliance, contract pharmacy, split billing, HRSA audits |
-| Chargemaster Analyst | CDM maintenance, price transparency, charge capture integrity |
+|---|---|
+| `revenue-cycle-specialist` | End-to-end RCM, denials, EDI, A/R, patient financial experience |
+| `revenue-finance-manager` | Budgets, reserves, CMS-2552, cost accounting, margin analysis |
+| `revenue-contract-analyst` | Payer contracts, fee schedules, reimbursement modeling |
+| `revenue-medical-coding-specialist` | ICD-10-CM/PCS, CPT, DRG, HCC, E/M, appeals |
+| `revenue-340b-program-manager` | Covered entity compliance, contract pharmacy, split billing, HRSA audits |
+| `revenue-chargemaster-analyst` | CDM maintenance, price transparency, charge capture integrity |
 
 </details>
 
@@ -198,24 +207,13 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Payer & Managed Care</strong> -- 6 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Value-Based Care Manager | ACO operations (MSSP/ACO REACH), shared savings, risk contracts |
-| Payer Relations Specialist | Network development, contract negotiation, No Surprises Act |
-| Medicare & Medicaid Specialist | CMS regulations, CoPs, MAC requirements, dual-eligible programs |
-| Managed Care Analyst `80+` | Capitation modeling, MLR, PMPM, network adequacy |
-| Credentialing & Enrollment Coordinator | CAQH, PECOS, CMS-855, privileging, delegated credentialing |
-| Medicare Outreach Coordinator | Beneficiary education, enrollment periods, LIS/Extra Help |
-
-</details>
-
-<details>
-<summary><strong>Population Health & Community</strong> -- 3 agents</summary>
-
-| Agent | Specialty |
-|-------|-----------|
-| Population Health Manager | Risk stratification, care gaps, SDOH, chronic disease programs |
-| Public Health Surveillance Coordinator | Reportable diseases, outbreak investigation, syndromic surveillance |
-| Community Health Coordinator | CHNA, Schedule H, health equity, CHW programs, grant management |
+|---|---|
+| `payer-value-based-care-manager` | ACOs, shared savings, attribution, downside-risk readiness |
+| `payer-relations-specialist` | Network development, contract negotiation, No Surprises Act |
+| `payer-medicare-medicaid-specialist` | CMS regulations, CoPs, MAC requirements, dual-eligible programs |
+| `payer-managed-care-analyst` | Capitation, MLR, PMPM, network adequacy |
+| `payer-credentialing-enrollment-coordinator` | CAQH, PECOS, CMS-855, delegated credentialing |
+| `payer-medicare-outreach-coordinator` | Beneficiary education, enrollment periods, LIS/Extra Help |
 
 </details>
 
@@ -223,13 +221,13 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Health IT & Informatics</strong> -- 6 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Health Informatics Manager `80+` | Clinical informatics, USCDI/TEFCA, ONC HTI-1, data governance |
-| Epic Applications Analyst | Epic build/config, Bridges, Caboodle/Cogito, certification |
-| Health Information Manager | HIM operations, ROI, record retention, legal health record |
-| Clinical Data Analyst | Registries, eCQMs, MIPS reporting, SQL/Python for healthcare data |
-| Healthcare Interoperability Engineer `80+` | HL7v2, FHIR R4, C-CDA, X12 EDI, HIE connectivity |
-| Telehealth Program Manager | Virtual care ops, licensure compacts, RPM/RTM billing |
+|---|---|
+| `healthit-informatics-manager` | Clinical informatics, USCDI/TEFCA, ONC HTI-1, data governance |
+| `healthit-epic-applications-analyst` | Epic build/config, Bridges, Caboodle/Cogito |
+| `healthit-information-manager` | HIM operations, ROI, record retention, legal health record |
+| `healthit-clinical-data-analyst` | Registries, eCQMs, MIPS, SQL/Python healthcare analytics |
+| `healthit-interoperability-engineer` | HL7v2, FHIR R4, C-CDA, X12 EDI, HIE connectivity |
+| `healthit-telehealth-program-manager` | Virtual care ops, licensure, RPM/RTM, payer policy matrices |
 
 </details>
 
@@ -237,14 +235,25 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Operations & Administration</strong> -- 7 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Hospital Operations Administrator | Bed management, capacity planning, patient throughput |
-| Physician Practice Manager | wRVU compensation, MGMA benchmarking, practice operations |
-| Ambulatory Operations Manager | Clinic workflows, scheduling optimization, patient access |
-| Home Health Administrator | CoPs (42 CFR 484), OASIS, PDGM, home health VBP |
-| Long-Term Care Administrator | SNF CoPs (42 CFR 483), MDS, PDPM, Five-Star, survey readiness |
-| Supply Chain Manager | GPO management, value analysis, OR supplies, FDA recalls |
-| Healthcare Workforce Manager | Staffing models, scheduling, retention, burnout prevention |
+|---|---|
+| `operations-hospital-administrator` | Bed management, capacity planning, throughput |
+| `operations-physician-practice-manager` | wRVU compensation, MGMA benchmarking, practice operations |
+| `operations-ambulatory-manager` | Clinic workflows, scheduling optimization, patient access |
+| `operations-home-health-administrator` | CoPs, OASIS, PDGM, home health VBP |
+| `operations-long-term-care-administrator` | SNF CoPs, MDS, PDPM, Five-Star, PBJ |
+| `operations-supply-chain-manager` | GPOs, value analysis, OR supplies, recalls |
+| `operations-workforce-manager` | Staffing models, scheduling, retention, workforce analytics |
+
+</details>
+
+<details>
+<summary><strong>Population Health & Community</strong> -- 3 agents</summary>
+
+| Agent | Specialty |
+|---|---|
+| `pophealth-population-health-manager` | Risk stratification, care gaps, SDOH, chronic disease programs |
+| `pophealth-surveillance-coordinator` | Reportable diseases, outbreak investigation, syndromic surveillance |
+| `pophealth-community-health-coordinator` | CHNA, Schedule H, health equity, CHW programs, grants |
 
 </details>
 
@@ -252,9 +261,9 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Pharmacy & Drug Programs</strong> -- 2 agents</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Pharmacy Benefits Specialist | Formulary, PBM contracts, specialty pharmacy, biosimilars |
-| Medication Safety Specialist | ISMP, LASA drugs, CPOE, BCMA, USP 797/800 |
+|---|---|
+| `pharmacy-benefits-specialist` | Formulary, PBM contracts, specialty pharmacy, biosimilars |
+| `pharmacy-medication-safety-specialist` | ISMP, LASA drugs, CPOE, BCMA, USP 797/800 |
 
 </details>
 
@@ -262,83 +271,72 @@ Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 <summary><strong>Emergency & Preparedness</strong> -- 1 agent</summary>
 
 | Agent | Specialty |
-|-------|-----------|
-| Emergency Preparedness Coordinator | HICS, CMS EP CoPs (42 CFR 482.15), surge planning, HVA |
+|---|---|
+| `emergency-preparedness-coordinator` | HICS, CMS EP CoPs, surge planning, HVA |
 
 </details>
 
-## Self-Improving Agents
+## Self-Improvement Kit
 
-These agents are not static. The repo ships a self-improvement kit for **Claude Code and Codex** that runs automated eval-and-improve loops:
+Install the eval loop into another project that already has `agents/*.md`:
 
 ```bash
-bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project
+git clone https://github.com/ajhcs/healthcare-agents.git
+bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/project
 ```
 
-Then run from either tool:
+Then run:
 
-- **Claude Code:** `/eval revenue-medical-coding-specialist`
-- **Codex:** `Run the healthcare self-improvement loop for revenue-medical-coding-specialist`
+```text
+/eval revenue-medical-coding-specialist
+```
 
-The loop generates domain-specific exam questions, scores the agent's answers against a frozen rubric, identifies weak areas, and patches the prompt -- while preserving the agent's identity and voice. In runtimes that support native subagents, the strongest model scores while a faster model edits.
+Or in Codex:
 
-See [INSTALL.md](INSTALL.md) for the full setup.
-
-## Compatible Tools
-
-| Tool | Install Method |
-|------|----------------|
-| **Claude Code** | `cp agents/*.md ~/.claude/agents/` |
-| **Cursor** | `cp agents/*.md .cursor/rules/` |
-| **Windsurf** | `cp agents/*.md .windsurf/rules/` |
-| **GitHub Copilot** | `cp agents/*.md .github/instructions/` |
-| **Gemini CLI** | `cp agents/*.md ~/.gemini/agents/` |
-| **Codex CLI** | `cp agents/*.md ~/.codex/agents/` |
-| **Cline** | `cp agents/*.md .clinerules/` |
-| **Amazon Q** | `cp agents/*.md .amazonq/rules/` |
-| **Continue.dev** | `cp agents/*.md .continue/` |
-| **Aider** | Add to `.aider.conf.yml` as `read:` entries |
-| **Claude Desktop** | Paste into project instructions or Cowork plugins |
-| **Claude Web** | Upload `.md` files as project knowledge |
-| **OpenClaw** | Copy as skills (see [INSTALL.md](INSTALL.md)) |
-| **Any tool** | Paste `.md` content into system prompt / custom instructions |
+```text
+Run the healthcare self-improvement loop for revenue-medical-coding-specialist.
+```
 
 ## Validation
 
 ```bash
 bash scripts/lint-agents.sh
+bash install.sh --all --dry-run
 ```
+
+## Limitations
+
+- The agents are healthcare administration aids, not clinicians, attorneys, auditors, or billing authorities.
+- Regulations, payer policies, and code sets change. Verify against current primary sources before operational use.
+- The prompts do not process PHI safely by themselves. Use your organization's approved privacy, security, and de-identification workflows.
+- Tool support differs by runtime. The installer provides the best-known current file layouts, plus plain Markdown fallback.
 
 ## FAQ
 
-### Can AI agents handle HIPAA compliance?
+### Are these Claude Code agents or skills?
 
-These agents cite specific CFR sections (45 CFR 160, 162, 164), know the difference between addressable and required implementation specifications, and produce structured gap assessments. They do not handle PHI or make legal determinations -- they give you the regulatory framework and audit methodology that a compliance officer would use.
+Both. The source files in `agents/*.md` install as Claude Code subagents. The installer can also generate one `SKILL.md` folder per agent for Claude Skills, Claude Desktop/Cowork where skills are available, OpenCode, and the open `.agents/skills` convention.
 
-### What healthcare certifications and regulations do these agents cover?
+### Do these work in Codex?
 
-The agents cover CMS Conditions of Participation, Joint Commission standards, NCQA HEDIS measures, MIPS/QPP quality programs, CMS Five-Star ratings, OASIS/PDGM for home health, MDS/PDPM for skilled nursing, HRSA 340B requirements, OIG compliance program guidance, and dozens of other regulatory frameworks. Each agent's specialty section lists its specific coverage.
+Yes. The installer copies prompts to `~/.codex/agents` and writes a managed `~/.codex/AGENTS.md` block telling Codex how to select and read specialists. For repo-local Codex App work, keep the prompts in the repository and reference them from `AGENTS.md`.
 
-### Do these agents work with Epic, Cerner, or other EHR systems?
+### Why did the frontmatter names change?
 
-The Epic Applications Analyst has deep knowledge of Epic build/configuration, Bridges integration, and Caboodle/Cogito analytics. Other agents reference EHR-specific workflows where relevant (CPOE for medication safety, CDI queries for documentation improvement, eCQMs for quality reporting). The agents are not EHR plugins -- they provide the healthcare administration expertise that complements your EHR workflows.
+Claude Code and OpenCode expect lowercase hyphen identifiers. v1.1.0 keeps human labels in `display_name` while making `name` match the filename slug.
 
-### How are agents evaluated and improved?
+### Can I install just one agent?
 
-Each agent goes through iterative eval cycles: a scorer generates domain-specific exam questions (regulatory scenarios, calculation problems, workflow decisions), grades the agent's responses on a frozen rubric, and produces an improvement brief. An editor model patches weak areas while preserving the agent's identity. 10 agents currently score 80+ out of 100. Scores and methodology are fully transparent in [`eval/results.tsv`](eval/results.tsv).
+The installer installs the pack. For one-off use, copy the specific `agents/<slug>.md` file or generated `SKILL.md` folder into your tool's expected location.
 
-### Can I use these agents for revenue cycle management?
+### Can I use these for HIPAA, coding, or payer work?
 
-Six agents cover the full revenue cycle: Medical Coding Specialist (ICD-10, CPT, DRG, HCC coding), Revenue Cycle Specialist (denials management, A/R optimization, CARC/RARC analysis), Healthcare Finance Manager (CMS-2552 cost reports, budgeting), Contract Analyst (payer reimbursement modeling), 340B Program Manager (drug discount compliance), and Chargemaster Analyst (CDM maintenance, price transparency).
+Use them for structured analysis, checklists, source-aware workflows, and draft deliverables. Do not treat them as final legal, clinical, coding, billing, or compliance determinations.
 
 ## Contributing
 
-New agents, deeper regulatory citations, updated CMS rules -- all welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Disclaimer
-
-These agents provide healthcare administration knowledge for informational and operational purposes. They do not provide clinical advice, legal opinions, or handle PHI. Regulations change -- verify against primary sources (CMS.gov, Federal Register, state regulatory bodies).
+Issues and improvement ideas are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-Apache 2.0 -- see [LICENSE](LICENSE).
+Apache 2.0. See [LICENSE](LICENSE).

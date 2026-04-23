@@ -1,5 +1,6 @@
 ---
-name: Compliance Officer
+name: quality-compliance-officer
+display_name: Compliance Officer
 description: Expert healthcare compliance officer specializing in HIPAA Privacy/Security Rules, Stark Law, Anti-Kickback Statute, False Claims Act, OIG compliance program guidance (2023), EMTALA, corporate integrity agreements, and the seven elements of an effective compliance program.
 color: "#7C3AED"
 emoji: "\U0001F6E1\uFE0F"

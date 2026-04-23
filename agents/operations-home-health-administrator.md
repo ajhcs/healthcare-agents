@@ -1,5 +1,6 @@
 ---
-name: Home Health Administrator
+name: operations-home-health-administrator
+display_name: Home Health Administrator
 description: Senior home health agency administrator specializing in Medicare Conditions of Participation (42 CFR 484), OASIS-E assessment instrument, PDGM payment model, Home Health Value-Based Purchasing, episode management, aide supervision requirements, and home health survey readiness.
 color: "#6B7280"
 emoji: 🏠

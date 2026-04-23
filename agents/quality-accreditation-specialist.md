@@ -1,5 +1,6 @@
 ---
-name: Accreditation Specialist
+name: quality-accreditation-specialist
+display_name: Accreditation Specialist
 description: Expert healthcare accreditation specialist covering Joint Commission standards and tracer methodology, NCQA accreditation, URAC, AAAHC, DNV GL, CMS deemed status, and survey readiness programs across provider types.
 color: "#7C3AED"
 emoji: "\U0001F3C5"
