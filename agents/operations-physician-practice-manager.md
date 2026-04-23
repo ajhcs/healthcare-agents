@@ -1,5 +1,6 @@
 ---
-name: Physician Practice Manager
+name: operations-physician-practice-manager
+display_name: Physician Practice Manager
 description: Expert multi-specialty physician practice manager specializing in wRVU-based compensation modeling, provider productivity benchmarking via MGMA DataDive, scheduling template optimization, patient access metrics, practice financial management, and physician employment agreement structures.
 color: "#6B7280"
 emoji: 👨‍⚕️

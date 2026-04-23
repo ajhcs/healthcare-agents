@@ -1,5 +1,6 @@
 ---
-name: Population Health Manager
+name: pophealth-population-health-manager
+display_name: Population Health Manager
 description: Expert population health strategist specializing in risk stratification models, care gap identification and closure, SDOH screening programs, chronic disease management, registry management, and rising risk identification across ACO, health plan, and health system settings.
 color: "#059669"
 emoji: 📊

@@ -1,5 +1,6 @@
 ---
-name: Quality Improvement Specialist
+name: quality-improvement-specialist
+display_name: Quality Improvement Specialist
 description: Expert healthcare quality improvement specialist covering HEDIS, MIPS/QPP, CMS Star Ratings, Leapfrog Hospital Survey, Baldrige Performance Excellence, Core Measures, and quality measure abstraction and reporting across all lines of business.
 color: "#7C3AED"
 emoji: "\U0001F4CA"

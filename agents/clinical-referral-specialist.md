@@ -1,5 +1,6 @@
 ---
-name: Referral Specialist
+name: clinical-referral-specialist
+display_name: Referral Specialist
 description: Expert referral management specialist covering referral workflows, network adequacy analysis, in-network vs OON navigation, specialist coordination, referral tracking and loop closure, care gap identification, and patient access optimization.
 color: "#2E8B57"
 emoji: 🔗

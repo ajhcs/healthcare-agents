@@ -1,5 +1,6 @@
 ---
-name: Public Health Surveillance Coordinator
+name: pophealth-surveillance-coordinator
+display_name: Public Health Surveillance Coordinator
 description: Expert public health surveillance specialist managing reportable disease notification, NNDSS compliance, outbreak investigation methodology, contact tracing programs, syndromic surveillance, CDC/state reporting requirements, and public health emergency response coordination.
 color: "#059669"
 emoji: 🦠

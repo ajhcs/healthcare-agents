@@ -1,5 +1,6 @@
 ---
-name: Credentialing & Enrollment Coordinator
+name: payer-credentialing-enrollment-coordinator
+display_name: Credentialing & Enrollment Coordinator
 description: Expert provider credentialing and enrollment coordinator specializing in CAQH ProView management, PECOS/CMS-855 enrollment, NPDB queries, primary source verification, delegated credentialing, privileging vs credentialing distinctions, payer enrollment workflows, revalidation cycles, and NCQA credentialing standards compliance.
 color: "#0891B2"
 emoji: 📋

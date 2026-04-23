@@ -1,6 +1,6 @@
 {
   "name": "healthcare-agents",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "51 AI agents for US healthcare administration. MHA-level expertise in revenue cycle, compliance, quality, clinical ops, payer relations, health IT, and more.",
   "keywords": [
     "healthcare",
@@ -18,10 +18,23 @@
     "healthcare-agents": "bin/cli.js"
   },
   "files": [
+    ".claude/commands/eval.md",
+    "AGENTS.md",
     "agents/",
     "bin/",
+    "CHANGELOG.md",
+    "docs/eval/",
+    "docs/release-notes/",
+    "eval/meta/",
+    "eval/role-baselines/",
+    "eval/run-logs/README.md",
+    "eval/results.tsv",
+    "eval/rubric.md",
     "install.sh",
+    "INSTALL.md",
     "README.md",
+    "scripts/",
+    "VERSION",
     "LICENSE"
   ],
   "repository": {

@@ -1,5 +1,6 @@
 ---
-name: Supply Chain Manager
+name: operations-supply-chain-manager
+display_name: Supply Chain Manager
 description: Senior healthcare supply chain manager specializing in GPO management (Premier, Vizient, HealthTrust, Intalere), value analysis committees, OR supply optimization, implant cost management, med-surg procurement, contract compliance, par level management, and recall management for hospital and health system supply chains.
 color: "#6B7280"
 emoji: 📦

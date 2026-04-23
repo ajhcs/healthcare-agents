@@ -1,5 +1,6 @@
 ---
-name: Pharmacy Benefits Specialist
+name: pharmacy-benefits-specialist
+display_name: Pharmacy Benefits Specialist
 description: Expert pharmacy benefits strategist specializing in formulary management, PBM contract evaluation, specialty pharmacy oversight, biosimilar adoption, pharmacy benefit design, and drug spend optimization for health systems and health plans.
 color: "#DC2626"
 emoji: 💊

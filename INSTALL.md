@@ -1,140 +1,170 @@
 # Installation Guide
 
-Every agent is a self-contained Markdown file with YAML frontmatter. If your tool supports custom instructions, system prompts, or persona files — these agents work.
+Healthcare Agents ships in two compatible formats:
+
+- `agents/*.md`: full specialist prompts for subagent/rules/custom-instruction systems.
+- generated `SKILL.md` folders: portable skill packages for Claude Skills, OpenCode, and tools that follow the open agent-skills layout.
+
+## Fast Install
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
+```
+
+Or:
+
+```bash
+npx healthcare-agents install
+```
+
+Use `--dry-run` before writing files:
+
+```bash
+npx healthcare-agents install --all --dry-run
+```
+
+Use `--force` to update an existing install:
+
+```bash
+npx healthcare-agents install --all --force
+```
+
+## Targets
+
+| Target | Command | Writes |
+|---|---|---|
+| Claude Code | `npx healthcare-agents install --claude` | `~/.claude/agents/*.md` |
+| Claude Skills | `npx healthcare-agents install --claude-skills` | `~/.claude/skills/<slug>/SKILL.md` |
+| Claude Desktop | `npx healthcare-agents install --claude-desktop` | `~/.claude/skills/<slug>/SKILL.md` |
+| Claude Cowork | `npx healthcare-agents install --claude-cowork` | `~/.claude/skills/<slug>/SKILL.md` |
+| Codex CLI / App | `npx healthcare-agents install --codex` | `~/.codex/agents/*.md`, `~/.codex/AGENTS.md` |
+| OpenCode | `npx healthcare-agents install --opencode` | `~/.config/opencode/skills/<slug>/SKILL.md` |
+| Open Agent Skills | `npx healthcare-agents install --agent-skills` | `~/.agents/skills/<slug>/SKILL.md` |
+| Cursor | `npx healthcare-agents install --cursor` | `.cursor/rules/*.md` |
+| Windsurf | `npx healthcare-agents install --windsurf` | `.windsurf/rules/*.md` |
+| GitHub Copilot | `npx healthcare-agents install --copilot` | `.github/instructions/*.md` |
+| Gemini CLI | `npx healthcare-agents install --gemini` | `~/.gemini/agents/*.md` |
+| Cline | `npx healthcare-agents install --cline` | `.clinerules/*.md` |
+| Amazon Q Developer | `npx healthcare-agents install --amazonq` | `.amazonq/rules/*.md` |
+| Continue.dev | `npx healthcare-agents install --continue` | `.continue/*.md` |
+| Aider | `npx healthcare-agents install --aider` | managed `.aider.conf.yml` `read:` block |
+| Common skill locations | `npx healthcare-agents install --skills` | Claude, OpenCode, and `.agents` skill folders |
 
 ## Claude Code
 
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-cp healthcare-agents/agents/*.md ~/.claude/agents/
-```
+Claude Code subagents live in:
 
-Agents are available immediately. Reference by name in conversation:
+- project: `.claude/agents/*.md`
+- user: `~/.claude/agents/*.md`
 
-> "Activate the 340B Program Manager and help me assess our contract pharmacy compliance"
-
-## Self-Improvement Kit (Claude Code + Codex)
-
-If you want a prompt-improvement loop, install the lightweight kit into the project that already contains your `agents/*.md` files:
+Install globally:
 
 ```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project
+npx healthcare-agents install --claude
 ```
 
-Installed files:
-
-- `.claude/commands/eval.md`
-- `AGENTS.md` block for Codex discovery
-- `eval/rubric.md`
-- `eval/results.tsv`
-- `eval/role-baselines/revenue-medical-coding-specialist.md`
-
-Use `--force` if you want to overwrite the managed files:
-
-```bash
-bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/your/project --force
-```
-
-### Running the Loop in Claude Code
-
-Open Claude Code in the target project and run:
+Invoke naturally:
 
 ```text
-/eval revenue-medical-coding-specialist
+Use the revenue-cycle-specialist agent to diagnose denial trends.
 ```
 
-Claude reads `.claude/commands/eval.md` as the loop program.
+The `name` frontmatter field matches the filename slug, as expected by Claude Code. The human-readable name is retained in `display_name`.
 
-### Running the Loop in Codex
+## Claude Skills, Desktop, and Cowork
 
-Open Codex in the target project and ask:
-
-```text
-Run the healthcare self-improvement loop for revenue-medical-coding-specialist
-```
-
-Codex reads project instructions from `AGENTS.md`, so the installer adds a marked block there telling Codex to use the same `.claude/commands/eval.md` procedure as the source of truth.
-
-When the runtime supports native subagents or model specialization, prefer:
-
-- strongest available scorer/judge to generate questions, score, and produce an improvement brief
-- faster editor model to patch only the target `agents/<slug>.md`
-- parent orchestrator to own line-cap checks, `eval/results.tsv`, and commit/revert
-
-Avoid recursively calling the CLI from inside itself when native subagents are available. The scorer should return weak areas plus preservation guidance so the editor improves the prompt without broadening it into generic healthcare-administration boilerplate.
-
-## Codex CLI (OpenAI)
+Generate SKILL.md folders:
 
 ```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p ~/.codex/agents
-cp healthcare-agents/agents/*.md ~/.codex/agents/
+npx healthcare-agents install --claude-skills
 ```
 
-Add to `~/.codex/AGENTS.md`:
+Aliases:
 
-```
-Refer to agent files in ~/.codex/agents/ for healthcare administration expertise.
+```bash
+npx healthcare-agents install --claude-desktop
+npx healthcare-agents install --claude-cowork
 ```
 
-Or reference the agents directory in your project's `AGENTS.md`:
+Each skill is written to:
+
+```text
+~/.claude/skills/<agent-slug>/SKILL.md
+```
+
+Each generated `SKILL.md` has:
+
+```yaml
+---
+name: revenue-cycle-specialist
+description: >-
+  Healthcare administration specialist...
+license: Apache-2.0
+compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex
+---
+```
+
+## Codex CLI and Codex App
+
+Install:
+
+```bash
+npx healthcare-agents install --codex
+```
+
+This writes:
+
+```text
+~/.codex/agents/*.md
+~/.codex/AGENTS.md
+```
+
+The managed `AGENTS.md` block tells Codex to read the matching specialist prompt before answering healthcare administration requests.
+
+For a repo-local Codex App setup, copy the prompts into the repo and add a local `AGENTS.md` note:
+
+```bash
+mkdir -p agents
+cp healthcare-agents/agents/*.md agents/
+```
 
 ```markdown
-# Healthcare Agents
-Load agent personality files from ./agents/ for healthcare administration expertise.
-Each file defines a specialist. Adopt the identity described in the file when asked.
+## Healthcare Agents
+
+When healthcare administration expertise is needed, read the matching file in `agents/*.md` before answering. Preserve the selected specialist's role, source hierarchy, compliance boundaries, and deliverable style.
 ```
 
-## Gemini CLI
+## OpenCode
+
+Install OpenCode skills:
 
 ```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p ~/.gemini/agents
-cp healthcare-agents/agents/*.md ~/.gemini/agents/
+npx healthcare-agents install --opencode
 ```
 
-Enable subagents in `~/.gemini/settings.json`:
+This writes:
 
-```json
-{
-  "experimental": {
-    "enableAgents": true
-  }
-}
+```text
+~/.config/opencode/skills/<agent-slug>/SKILL.md
 ```
 
-Invoke agents with `@agent-name` or let Gemini auto-select based on task relevance.
-
-## Cursor
+OpenCode also discovers Claude-compatible and open-agent-compatible skill paths, so `--skills` is a good portable default:
 
 ```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .cursor/rules
-cp healthcare-agents/agents/*.md .cursor/rules/
+npx healthcare-agents install --skills
 ```
 
-The existing YAML frontmatter (`name`, `description`) is recognized by Cursor. Optionally add `alwaysApply: false` to let Cursor intelligently select the right agent based on context.
+## Cursor, Windsurf, Copilot, and Rules-Based Tools
 
-## Windsurf
+Install into project rule folders:
 
 ```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .windsurf/rules
-cp healthcare-agents/agents/*.md .windsurf/rules/
+npx healthcare-agents install --cursor
+npx healthcare-agents install --windsurf
+npx healthcare-agents install --copilot
 ```
 
-Optionally add `trigger: model_decision` to the YAML frontmatter so Windsurf activates the right specialist automatically.
-
-## GitHub Copilot
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .github/instructions
-cp healthcare-agents/agents/*.md .github/instructions/
-```
-
-Rename files to use the `.instructions.md` extension for path-specific activation:
+For GitHub Copilot, some setups prefer the `.instructions.md` extension:
 
 ```bash
 for f in .github/instructions/*.md; do
@@ -142,99 +172,74 @@ for f in .github/instructions/*.md; do
 done
 ```
 
-Enable in VS Code settings: `github.copilot.chat.codeGeneration.useInstructionFiles: true`
-
-## Cline
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .clinerules
-cp healthcare-agents/agents/*.md .clinerules/
-```
-
-## Amazon Q Developer
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .amazonq/rules
-cp healthcare-agents/agents/*.md .amazonq/rules/
-```
-
-Rules are automatically applied as context in all Amazon Q chat sessions.
-
 ## Aider
 
+Install:
+
 ```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
+npx healthcare-agents install --aider
 ```
 
-Add to `.aider.conf.yml`:
+This adds a managed block to `.aider.conf.yml`:
 
 ```yaml
+# healthcare-agents start
 read:
-  - healthcare-agents/agents/revenue-340b-program-manager.md
-  - healthcare-agents/agents/quality-compliance-officer.md
-  # Add the specific agents you need
+  - /path/to/agents/revenue-cycle-specialist.md
+  - /path/to/agents/quality-compliance-officer.md
+# healthcare-agents end
 ```
 
-Or load in-session: `/read healthcare-agents/agents/revenue-340b-program-manager.md`
+## Custom Directory
 
-## OpenClaw
+Copy the source agent files to any directory:
+
+```bash
+npx healthcare-agents install --path ./vendor/healthcare-agents
+```
+
+## Uninstall
+
+```bash
+npx healthcare-agents uninstall --claude
+npx healthcare-agents uninstall --opencode
+npx healthcare-agents uninstall --all
+```
+
+## Self-Improvement Kit
+
+Install the eval loop into another project that already has `agents/*.md`:
 
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p ~/.openclaw/skills/healthcare-agents
-
-# Copy each agent as a skill
-for f in healthcare-agents/agents/*.md; do
-  name=$(basename "$f" .md)
-  mkdir -p ~/.openclaw/skills/healthcare-agents/$name
-  cp "$f" ~/.openclaw/skills/healthcare-agents/$name/SKILL.md
-done
+bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/project
 ```
 
-Or install at workspace scope by placing the skill directories in `./skills/` within your working directory.
+Installed files:
 
-## Claude Desktop (Cowork)
+- `.claude/commands/eval.md`
+- managed `AGENTS.md` block for Codex discovery
+- `eval/rubric.md`
+- `eval/results.tsv`
+- `eval/role-baselines/*.md`
 
-1. Open Claude Desktop and navigate to the **Cowork** tab
-2. Go to **Settings > Cowork > Global Instructions**
-3. Reference agents as domain knowledge, or create a plugin:
+Run in Claude Code:
 
-```
-your-plugin/
-  .claude-plugin/plugin.json
-  skills/
-    # Copy each .md agent file here as a skill
-```
-
-For manual use, paste agent content into project instructions or add agent files to a **Claude Context** folder.
-
-## Claude Web (Projects)
-
-1. Open [claude.ai](https://claude.ai) and create a new **Project**
-2. Click **Set custom instructions**
-3. Paste the content of any agent file into the project instructions
-4. Upload additional agent `.md` files as project knowledge
-
-Each project supports one primary persona — choose the agent that matches your workflow.
-
-## Any Other Tool
-
-Each agent is a self-contained Markdown file with YAML frontmatter:
-
-```yaml
----
-name: Agent Name
-description: One-line specialty summary
-color: "#hex"
-emoji: emoji
-vibe: One-sentence personality
----
-
-# Agent Name
-
-System prompt and domain knowledge...
+```text
+/eval revenue-medical-coding-specialist
 ```
 
-Copy the `.md` file into wherever your tool reads custom instructions from, or paste the content directly into a system prompt field.
+Run in Codex:
+
+```text
+Run the healthcare self-improvement loop for revenue-medical-coding-specialist.
+```
+
+## Verify
+
+From the repository:
+
+```bash
+bash scripts/lint-agents.sh
+bash install.sh --all --dry-run
+```

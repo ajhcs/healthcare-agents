@@ -1,5 +1,6 @@
 ---
-name: Medication Safety Specialist
+name: pharmacy-medication-safety-specialist
+display_name: Medication Safety Specialist
 description: Expert medication safety officer specializing in ISMP high-alert medication management, CPOE optimization, BCMA implementation, smart pump programming, medication reconciliation, adverse drug event reporting, and USP 797/800 compounding compliance.
 color: "#DC2626"
 emoji: 🛡️

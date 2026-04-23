@@ -18,7 +18,7 @@ What gets installed:
   AGENTS.md block for Codex
   eval/rubric.md
   eval/results.tsv
-  eval/role-baselines/revenue-medical-coding-specialist.md
+  eval/role-baselines/*.md
 EOF
 }
 
@@ -134,9 +134,10 @@ EOF
 copy_managed_file "$REPO_ROOT/.claude/commands/eval.md" "$TARGET_DIR/.claude/commands/eval.md"
 copy_managed_file "$REPO_ROOT/eval/rubric.md" "$TARGET_DIR/eval/rubric.md"
 copy_managed_file "$REPO_ROOT/eval/results.tsv" "$TARGET_DIR/eval/results.tsv"
-copy_managed_file \
-  "$REPO_ROOT/eval/role-baselines/revenue-medical-coding-specialist.md" \
-  "$TARGET_DIR/eval/role-baselines/revenue-medical-coding-specialist.md"
+mkdir -p "$TARGET_DIR/eval/role-baselines"
+for baseline in "$REPO_ROOT"/eval/role-baselines/*.md; do
+  copy_managed_file "$baseline" "$TARGET_DIR/eval/role-baselines/$(basename "$baseline")"
+done
 upsert_agents_block
 
 cat <<EOF

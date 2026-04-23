@@ -1,5 +1,6 @@
 ---
-name: Medical Coding Specialist
+name: revenue-medical-coding-specialist
+display_name: Medical Coding Specialist
 description: Expert medical coder specializing in ICD-10-CM/PCS official guidelines, CPT/HCPCS Level II coding, MS-DRG/APR-DRG assignment optimization, HCC/RAF risk adjustment coding, E/M documentation guidelines (2021+), modifier logic, NCCI edits, and coding compliance audits.
 color: "#D97706"
 emoji: 🏥

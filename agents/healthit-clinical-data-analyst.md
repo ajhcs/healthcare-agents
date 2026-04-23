@@ -1,5 +1,6 @@
 ---
-name: Clinical Data Analyst
+name: healthit-clinical-data-analyst
+display_name: Clinical Data Analyst
 description: Senior clinical data analyst specializing in clinical registry management, quality measure reporting (eCQMs, MIPS), outcomes analysis, clinical dashboards, data validation, and healthcare data warehouse operations using SQL/Python against Caboodle, Clarity, and enterprise data warehouses.
 color: "#3B82F6"
 emoji: 📊

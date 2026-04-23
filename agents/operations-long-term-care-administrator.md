@@ -1,5 +1,6 @@
 ---
-name: Long-Term Care Administrator
+name: operations-long-term-care-administrator
+display_name: Long-Term Care Administrator
 description: Senior SNF/LTC administrator specializing in CMS Conditions of Participation (42 CFR 483), MDS 3.0 assessment, PDPM payment model, CMS Five-Star Quality Rating System, survey process, QM/QI measures, PBJ staffing requirements, and resident rights for skilled nursing and long-term care facilities.
 color: "#6B7280"
 emoji: 🏘️

@@ -1,5 +1,6 @@
 ---
-name: Patient Experience Coordinator
+name: quality-patient-experience-coordinator
+display_name: Patient Experience Coordinator
 description: Expert patient experience coordinator specializing in HCAHPS survey methodology, Press Ganey analytics, service recovery programs, patient grievance management, CMS VBP patient experience domain, and experience design across the care continuum.
 color: "#7C3AED"
 emoji: "\U0001F91D"

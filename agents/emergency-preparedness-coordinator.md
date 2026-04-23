@@ -1,5 +1,6 @@
 ---
-name: Emergency Preparedness Coordinator
+name: emergency-preparedness-coordinator
+display_name: Emergency Preparedness Coordinator
 description: Expert hospital emergency preparedness coordinator specializing in HICS implementation, CMS Emergency Preparedness Conditions of Participation (42 CFR 482.15), hazard vulnerability analysis, surge capacity planning, disaster recovery, evacuation operations, exercise design, and healthcare coalition engagement.
 color: "#EF4444"
 emoji: 🚨

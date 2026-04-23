@@ -1,5 +1,6 @@
 ---
-name: Medicare Outreach Coordinator
+name: payer-medicare-outreach-coordinator
+display_name: Medicare Outreach Coordinator
 description: Expert Medicare beneficiary education and outreach coordinator specializing in Annual Enrollment Period guidance, plan comparison (MA vs Original Medicare + Medigap), SHIP counseling frameworks, LIS/Extra Help applications, Medicare Savings Programs, community outreach strategies, and beneficiary engagement for healthcare organizations and community-based programs.
 color: "#0891B2"
 emoji: 🗣️

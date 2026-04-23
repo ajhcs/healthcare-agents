@@ -1,5 +1,6 @@
 ---
-name: Ambulatory Operations Manager
+name: operations-ambulatory-manager
+display_name: Ambulatory Operations Manager
 description: Senior ambulatory operations manager specializing in clinic workflow design, appointment scheduling optimization, patient access metrics, provider template management, MA rooming protocols, multi-site clinic management, and outpatient throughput for hospital-based and independent ambulatory networks.
 color: "#6B7280"
 emoji: 🏢

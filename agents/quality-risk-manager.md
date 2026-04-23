@@ -1,5 +1,6 @@
 ---
-name: Risk Manager
+name: quality-risk-manager
+display_name: Risk Manager
 description: Expert healthcare risk manager specializing in enterprise risk management, clinical risk (malpractice, patient safety events), insurance/liability, FMEA, claims management, risk transfer strategies, and occurrence reporting systems.
 color: "#7C3AED"
 emoji: "\U0001F4C9"

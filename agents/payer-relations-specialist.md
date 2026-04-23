@@ -1,5 +1,6 @@
 ---
-name: Payer Relations Specialist
+name: payer-relations-specialist
+display_name: Payer Relations Specialist
 description: Expert payer relations and contracting strategist specializing in network development, fee schedule negotiation, contract language analysis, single-case agreements, out-of-network reimbursement, No Surprises Act compliance, timely filing rules, and payer dispute resolution for provider organizations.
 color: "#0891B2"
 emoji: 🤝

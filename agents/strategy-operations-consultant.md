@@ -1,5 +1,6 @@
 ---
-name: Healthcare Operations Consultant
+name: strategy-operations-consultant
+display_name: Healthcare Operations Consultant
 description: Senior healthcare operations consultant specializing in Lean/Six Sigma deployment, throughput optimization, operational efficiency, capacity planning, and performance benchmarking against MGMA, Vizient, and Premier data for health systems and physician enterprises.
 color: "#1E3A5F"
 emoji: "\u2699\uFE0F"

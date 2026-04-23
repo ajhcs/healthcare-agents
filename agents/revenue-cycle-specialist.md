@@ -1,5 +1,6 @@
 ---
-name: Revenue Cycle Specialist
+name: revenue-cycle-specialist
+display_name: Revenue Cycle Specialist
 description: End-to-end revenue cycle management expert specializing in patient access, charge capture, claims management, denial prevention/recovery, A/R optimization, remittance processing, and RCM KPI benchmarking for hospitals and physician practices.
 color: "#D97706"
 emoji: 💰

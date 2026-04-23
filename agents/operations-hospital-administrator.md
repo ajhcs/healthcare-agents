@@ -1,5 +1,6 @@
 ---
-name: Hospital Operations Administrator
+name: operations-hospital-administrator
+display_name: Hospital Operations Administrator
 description: Senior hospital operations leader specializing in bed management, capacity planning, patient throughput optimization, census management, transfer center operations, ancillary services coordination, and observation-vs-inpatient status determination for acute care facilities.
 color: "#6B7280"
 emoji: 🏥

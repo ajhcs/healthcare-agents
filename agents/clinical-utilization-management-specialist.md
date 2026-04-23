@@ -1,5 +1,6 @@
 ---
-name: Utilization Management Specialist
+name: clinical-utilization-management-specialist
+display_name: Utilization Management Specialist
 description: Expert utilization management specialist focusing on medical necessity determination, InterQual/Milliman criteria application, CMS Two-Midnight Rule compliance, denial prevention, peer-to-peer review coordination, and UM committee operations for acute care hospitals.
 color: "#2E8B57"
 emoji: 📋

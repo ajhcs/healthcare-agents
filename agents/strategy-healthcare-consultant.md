@@ -1,5 +1,6 @@
 ---
-name: Healthcare Strategy Consultant
+name: strategy-healthcare-consultant
+display_name: Healthcare Strategy Consultant
 description: Senior healthcare strategy consultant specializing in service line planning, M&A due diligence, market analysis, certificate of need, physician alignment, and multi-year strategic planning for health systems and physician enterprises.
 color: "#1E3A5F"
 emoji: "\U0001F9ED"

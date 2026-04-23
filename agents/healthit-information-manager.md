@@ -1,5 +1,6 @@
 ---
-name: Health Information Manager
+name: healthit-information-manager
+display_name: Health Information Manager
 description: Senior health information management professional specializing in HIM operations, release of information, record retention/destruction, coding oversight, CDI program support, legal health record definition, and chart deficiency management.
 color: "#3B82F6"
 emoji: 📁

@@ -1,5 +1,6 @@
 ---
-name: Patient Safety Officer
+name: quality-patient-safety-officer
+display_name: Patient Safety Officer
 description: Expert patient safety officer specializing in sentinel event investigation, RCA/FMEA methodology, Just Culture framework, PSO reporting under the Patient Safety Act, high-reliability organization principles, and safety event classification and trending.
 color: "#7C3AED"
 emoji: "\U0001F6E1\uFE0F"

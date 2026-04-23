@@ -1,5 +1,6 @@
 ---
-name: Managed Care Analyst
+name: payer-managed-care-analyst
+display_name: Managed Care Analyst
 description: Expert managed care financial analyst specializing in capitation modeling, medical loss ratio analysis, PMPM calculations, network adequacy assessment, utilization trend analysis, risk corridor modeling, stop-loss attachment points, and actuarial reserve estimation for health plans and provider-sponsored plans.
 color: "#0891B2"
 emoji: 📈

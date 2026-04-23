@@ -10,14 +10,18 @@ Healthcare Agents -- 51 AI agents for healthcare administration
 Usage:
   npx healthcare-agents install          Auto-detect tools and install
   npx healthcare-agents install --claude  Install to Claude Code only
+  npx healthcare-agents install --skills  Install Claude/OpenCode/agent SKILL.md bundles
+  npx healthcare-agents install --opencode Install OpenCode skills
   npx healthcare-agents install --all     Install to all known tool paths
   npx healthcare-agents install --force   Overwrite existing files
   npx healthcare-agents install --dry-run Preview without installing
   npx healthcare-agents uninstall        Remove installed agents
 
 Options:
-  --claude, --cursor, --copilot, --codex, --gemini,
-  --windsurf, --cline, --amazonq, --aider, --continue
+  --claude, --claude-code, --claude-skills, --claude-desktop,
+  --claude-cowork, --codex, --codex-app, --opencode,
+  --cursor, --copilot, --gemini, --windsurf, --cline,
+  --amazonq, --aider, --continue, --agent-skills, --skills
   --path <dir>  Install to a custom directory
   --force       Overwrite existing files
   --dry-run     Show what would be installed
