@@ -20,7 +20,6 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 AGENTS_DIR = REPO_ROOT / "agents"
-UTILITY_FILES = {"eval-exam-architect.md"}
 
 REQUIRED_SECTIONS = [
     "## 🧠 Your Identity & Memory",
@@ -182,17 +181,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--top", type=int, default=10, help="rows to show from each end")
     parser.add_argument("--json", action="store_true", help="emit machine-readable JSON")
-    parser.add_argument(
-        "--include-utility",
-        action="store_true",
-        help="include helper prompts such as eval-exam-architect.md",
-    )
     args = parser.parse_args()
 
     rows = []
     for path in sorted(AGENTS_DIR.glob("*.md")):
-        if not args.include_utility and path.name in UTILITY_FILES:
-            continue
         rows.append(audit_file(path))
     rows.sort(key=lambda row: row.total)
 

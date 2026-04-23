@@ -6,7 +6,7 @@
 
 ## Problem
 
-We have 51 healthcare administration AI agents (system prompt .md files in `agents/`; 52 files total but `eval-exam-architect.md` is a meta-agent from the previous design and is excluded from eval). We need a way to point at one, find its weaknesses, improve it, and produce a standardized score. Personal tool, not production system.
+We have 51 healthcare administration AI agents (system prompt .md files in `agents/`). We need a way to point at one, find its weaknesses, improve it, and produce a standardized score. Personal tool, not production system.
 
 ## Inspiration
 
@@ -200,7 +200,7 @@ This design specifies:
 - No Python, no dependencies
 - Estimated time: ~15-20 minutes per agent per session
 
-The previous infrastructure (eval/schema/, eval/harness/, agents/eval-exam-architect.md) can be archived or deleted. The rubric files in eval/rubrics/ informed the rubric.md design and can be referenced but are not used by this system.
+The previous infrastructure (`eval/schema/`, `eval/harness/`, `eval/rubrics/`, `agents/eval-exam-architect.md`) was deleted on 2026-04-23. The old rubric templates informed `eval/rubric.md` historically but are not used by this system.
 
 ## File Manifest
 

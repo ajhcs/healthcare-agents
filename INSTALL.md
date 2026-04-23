@@ -15,7 +15,7 @@ Agents are available immediately. Reference by name in conversation:
 
 ## Self-Improvement Kit (Claude Code + Codex)
 
-If you want a simple prompt-improvement loop instead of the deeper Python eval harness, install the lightweight kit into the project that already contains your `agents/*.md` files:
+If you want a prompt-improvement loop, install the lightweight kit into the project that already contains your `agents/*.md` files:
 
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
