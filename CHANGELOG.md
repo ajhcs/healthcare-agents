@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2026-04-23
+
+Agent-stack optimization release for the full 51-agent healthcare administration library.
+
+### Changed
+
+- Improved all 51 healthcare agent prompts through same-question before/after eval passes.
+- Raised the first 15 evaluated agents from an 85.0 average score to 93.9.
+- Raised the remaining 36 evaluated agents from an 85.11 average score to 95.50.
+- Added more role-specific mechanics, compliance boundaries, source hierarchies, workflow handoffs, and deliverable requirements across clinical, operations, payer, quality, health IT, population health, pharmacy, revenue, and strategy agents.
+- Reworked the eval workflow for modern SOTA model routing with parent orchestrator, scorer/judge, editor, and optional adjudicator roles.
+- Required reusable full-question artifacts for before/after evals so score deltas can be audited against exact Q001-Q025 prompts.
+
+### Added
+
+- Role baselines for all 51 installable healthcare agents.
+- Eval scorer guidance in `docs/eval/exam-architect-playbook.md`.
+- Current model-routing guidance in `docs/eval/model-tuning.md`.
+- Meta-eval checks for judge calibration, scorer consistency, and prompt-overfitting risk.
+- Local run-log documentation for retained questions, scorer outputs, editor briefs, and summaries.
+
+### Removed
+
+- Retired the unused Python/DSPy eval harness and related schema, rubric, test, and runner files.
+- Removed the standalone eval exam architect agent prompt in favor of the documented eval skill/playbook workflow.
+
+See [docs/release-notes/2026-04-23-agent-stack-optimization.md](docs/release-notes/2026-04-23-agent-stack-optimization.md) for full details.
+
 ## [1.0.0] - 2026-04-09
 
 Initial release of the healthcare-agents repository.
