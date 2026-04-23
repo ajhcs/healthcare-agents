@@ -14,41 +14,41 @@ curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/instal
 Or:
 
 ```bash
-npx healthcare-agents install
+npx --yes github:ajhcs/healthcare-agents install
 ```
 
 Use `--dry-run` before writing files:
 
 ```bash
-npx healthcare-agents install --all --dry-run
+npx --yes github:ajhcs/healthcare-agents install --all --dry-run
 ```
 
 Use `--force` to update an existing install:
 
 ```bash
-npx healthcare-agents install --all --force
+npx --yes github:ajhcs/healthcare-agents install --all --force
 ```
 
 ## Targets
 
 | Target | Command | Writes |
 |---|---|---|
-| Claude Code | `npx healthcare-agents install --claude` | `~/.claude/agents/*.md` |
-| Claude Skills | `npx healthcare-agents install --claude-skills` | `~/.claude/skills/<slug>/SKILL.md` |
-| Claude Desktop | `npx healthcare-agents install --claude-desktop` | `~/.claude/skills/<slug>/SKILL.md` |
-| Claude Cowork | `npx healthcare-agents install --claude-cowork` | `~/.claude/skills/<slug>/SKILL.md` |
-| Codex CLI / App | `npx healthcare-agents install --codex` | `~/.codex/agents/*.md`, `~/.codex/AGENTS.md` |
-| OpenCode | `npx healthcare-agents install --opencode` | `~/.config/opencode/skills/<slug>/SKILL.md` |
-| Open Agent Skills | `npx healthcare-agents install --agent-skills` | `~/.agents/skills/<slug>/SKILL.md` |
-| Cursor | `npx healthcare-agents install --cursor` | `.cursor/rules/*.md` |
-| Windsurf | `npx healthcare-agents install --windsurf` | `.windsurf/rules/*.md` |
-| GitHub Copilot | `npx healthcare-agents install --copilot` | `.github/instructions/*.md` |
-| Gemini CLI | `npx healthcare-agents install --gemini` | `~/.gemini/agents/*.md` |
-| Cline | `npx healthcare-agents install --cline` | `.clinerules/*.md` |
-| Amazon Q Developer | `npx healthcare-agents install --amazonq` | `.amazonq/rules/*.md` |
-| Continue.dev | `npx healthcare-agents install --continue` | `.continue/*.md` |
-| Aider | `npx healthcare-agents install --aider` | managed `.aider.conf.yml` `read:` block |
-| Common skill locations | `npx healthcare-agents install --skills` | Claude, OpenCode, and `.agents` skill folders |
+| Claude Code | `npx --yes github:ajhcs/healthcare-agents install --claude` | `~/.claude/agents/*.md` |
+| Claude Skills | `npx --yes github:ajhcs/healthcare-agents install --claude-skills` | `~/.claude/skills/<slug>/SKILL.md` |
+| Claude Desktop | `npx --yes github:ajhcs/healthcare-agents install --claude-desktop` | `~/.claude/skills/<slug>/SKILL.md` |
+| Claude Cowork | `npx --yes github:ajhcs/healthcare-agents install --claude-cowork` | `~/.claude/skills/<slug>/SKILL.md` |
+| Codex CLI / App | `npx --yes github:ajhcs/healthcare-agents install --codex` | `~/.codex/agents/*.md`, `~/.codex/AGENTS.md` |
+| OpenCode | `npx --yes github:ajhcs/healthcare-agents install --opencode` | `~/.config/opencode/skills/<slug>/SKILL.md` |
+| Open Agent Skills | `npx --yes github:ajhcs/healthcare-agents install --agent-skills` | `~/.agents/skills/<slug>/SKILL.md` |
+| Cursor | `npx --yes github:ajhcs/healthcare-agents install --cursor` | `.cursor/rules/*.md` |
+| Windsurf | `npx --yes github:ajhcs/healthcare-agents install --windsurf` | `.windsurf/rules/*.md` |
+| GitHub Copilot | `npx --yes github:ajhcs/healthcare-agents install --copilot` | `.github/instructions/*.md` |
+| Gemini CLI | `npx --yes github:ajhcs/healthcare-agents install --gemini` | `~/.gemini/agents/*.md` |
+| Cline | `npx --yes github:ajhcs/healthcare-agents install --cline` | `.clinerules/*.md` |
+| Amazon Q Developer | `npx --yes github:ajhcs/healthcare-agents install --amazonq` | `.amazonq/rules/*.md` |
+| Continue.dev | `npx --yes github:ajhcs/healthcare-agents install --continue` | `.continue/*.md` |
+| Aider | `npx --yes github:ajhcs/healthcare-agents install --aider` | managed `.aider.conf.yml` `read:` block |
+| Common skill locations | `npx --yes github:ajhcs/healthcare-agents install --skills` | Claude, OpenCode, and `.agents` skill folders |
 
 ## Claude Code
 
@@ -60,7 +60,7 @@ Claude Code subagents live in:
 Install globally:
 
 ```bash
-npx healthcare-agents install --claude
+npx --yes github:ajhcs/healthcare-agents install --claude
 ```
 
 Invoke naturally:
@@ -76,14 +76,14 @@ The `name` frontmatter field matches the filename slug, as expected by Claude Co
 Generate SKILL.md folders:
 
 ```bash
-npx healthcare-agents install --claude-skills
+npx --yes github:ajhcs/healthcare-agents install --claude-skills
 ```
 
 Aliases:
 
 ```bash
-npx healthcare-agents install --claude-desktop
-npx healthcare-agents install --claude-cowork
+npx --yes github:ajhcs/healthcare-agents install --claude-desktop
+npx --yes github:ajhcs/healthcare-agents install --claude-cowork
 ```
 
 Each skill is written to:
@@ -109,7 +109,7 @@ compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex
 Install:
 
 ```bash
-npx healthcare-agents install --codex
+npx --yes github:ajhcs/healthcare-agents install --codex
 ```
 
 This writes:
@@ -139,7 +139,7 @@ When healthcare administration expertise is needed, read the matching file in `a
 Install OpenCode skills:
 
 ```bash
-npx healthcare-agents install --opencode
+npx --yes github:ajhcs/healthcare-agents install --opencode
 ```
 
 This writes:
@@ -151,7 +151,7 @@ This writes:
 OpenCode also discovers Claude-compatible and open-agent-compatible skill paths, so `--skills` is a good portable default:
 
 ```bash
-npx healthcare-agents install --skills
+npx --yes github:ajhcs/healthcare-agents install --skills
 ```
 
 ## Cursor, Windsurf, Copilot, and Rules-Based Tools
@@ -159,9 +159,9 @@ npx healthcare-agents install --skills
 Install into project rule folders:
 
 ```bash
-npx healthcare-agents install --cursor
-npx healthcare-agents install --windsurf
-npx healthcare-agents install --copilot
+npx --yes github:ajhcs/healthcare-agents install --cursor
+npx --yes github:ajhcs/healthcare-agents install --windsurf
+npx --yes github:ajhcs/healthcare-agents install --copilot
 ```
 
 For GitHub Copilot, some setups prefer the `.instructions.md` extension:
@@ -177,7 +177,7 @@ done
 Install:
 
 ```bash
-npx healthcare-agents install --aider
+npx --yes github:ajhcs/healthcare-agents install --aider
 ```
 
 This adds a managed block to `.aider.conf.yml`:
@@ -195,15 +195,15 @@ read:
 Copy the source agent files to any directory:
 
 ```bash
-npx healthcare-agents install --path ./vendor/healthcare-agents
+npx --yes github:ajhcs/healthcare-agents install --path ./vendor/healthcare-agents
 ```
 
 ## Uninstall
 
 ```bash
-npx healthcare-agents uninstall --claude
-npx healthcare-agents uninstall --opencode
-npx healthcare-agents uninstall --all
+npx --yes github:ajhcs/healthcare-agents uninstall --claude
+npx --yes github:ajhcs/healthcare-agents uninstall --opencode
+npx --yes github:ajhcs/healthcare-agents uninstall --all
 ```
 
 ## Self-Improvement Kit

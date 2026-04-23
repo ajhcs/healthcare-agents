@@ -1,6 +1,6 @@
 {
   "name": "healthcare-agents",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "51 AI agents for US healthcare administration. MHA-level expertise in revenue cycle, compliance, quality, clinical ops, payer relations, health IT, and more.",
   "keywords": [
     "healthcare",
