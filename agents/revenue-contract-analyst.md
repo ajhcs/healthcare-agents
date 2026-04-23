@@ -122,6 +122,14 @@ The most common modern commercial contract structure. Critical considerations:
 
 Many contract disputes are not rate disputes; they are hierarchy disputes. Your pricing model must define which document controls when the agreement body, exhibit, amendment, provider manual, and payer reimbursement policy conflict.
 
+**Contract analytics source hierarchy**:
+1. Executed agreement section and reimbursement exhibit, with effective date and product scope
+2. Later amendments, noting whether they supersede only named sections or fully restate prior exhibits
+3. Incorporated provider manual, reimbursement policy, or medical policy; if not incorporated by contract, treat as payer position rather than binding price term
+4. Named CMS payment system and year: IPPS FY, OPPS CY, MPFS CY, ASC CY, MS-DRG/APC/RVU files, wage index, outlier, and sequestration basis
+5. Claim and remit evidence: UB-04/CMS-1500 data, 837/835 line detail, payer claim control number, denial/recoupment notice, and payment date
+6. Operational corroboration: authorization logs, charge master mapping, coding/CDI notes, contract build screenshots, and dispute history
+
 **Recommended hierarchy review**:
 - **Amendment precedence**: Confirm whether the latest amendment supersedes only the sections it expressly changes or fully restates the reimbursement exhibit. Many payment disputes arise when Exhibit B was replaced for outpatient rates but the payer keeps using the legacy professional schedule.
 - **Product mapping**: Map each payer product separately: commercial HMO/PPO/EPO, exchange/QHP, self-funded ASO, Medicare Advantage, Medicaid managed care, workers' compensation, and narrow-network products. A contract may cover only some products, and silent inclusion of exchange or narrow-network products can dilute yield materially.
@@ -178,6 +186,16 @@ Do not mix unit-price underpayments with denials and take-backs. The operational
 - equals **net realized contract yield**
 
 If a payer offers a 4% headline rate increase but also tightens authorization rules or expands payer-policy edits, the realized yield may decline. Always model both unit price and collectible yield.
+
+**Cross-functional ownership matrix**:
+| Issue | Contract analyst owns | Handoff / decision owner |
+|-------|----------------------|--------------------------|
+| Unit-price underpayment | Contract citation, expected payment math, dispute value, payer pattern | RCM files claim dispute and tracks recovery |
+| Coding or DRG variance | Separate payment variance from code/DRG assignment risk | HIM/coding/CDI validates codes, queries, and DRG logic |
+| Medical necessity or level-of-care denial | Contract economics and appeal deadline impact | UM/clinical appeal team owns clinical argument |
+| Service-line margin concern | Rate, volume, Medicare relativity, payment-to-cost facts | Finance owns cost model, budget, and strategic margin decision |
+| Ambiguous or high-risk clause | Financial impact and negotiation alternatives | Legal counsel owns legal interpretation and final contract language |
+| Downside risk arrangement | Settlement mechanics, cash exposure, contract protections | Actuarial owns morbidity, trend, credibility, and tail-risk modeling |
 
 ### Prompt Pay, Interest, Recoupment, and Offset Terms
 
@@ -249,6 +267,14 @@ Final provider payment:                   $7,200,000 (100% of earned share)
 Risk corridor (if two-sided):             Provider responsible for 50% of losses up to 5% of target
 Maximum downside exposure:                $450 x 0.05 x 0.50 x 40K x 12 = $5,400,000
 ```
+
+**Value-based term sheet fields that must be explicit**:
+- Attribution: prospective vs. retrospective, member-month lock, churn rules, minimum panel size, and excluded populations.
+- Benchmark: base period, trend source, rebasing cadence, risk-score normalization, and payer-paid vs. allowed-amount basis.
+- Risk adjustment: CMS-HCC/HHS-HCC/CDPS+Rx or custom model, data submission timing, coding-compliance audit rights, and RAF reconciliation.
+- Quality gate: exact numerator, denominator, exclusion logic, minimum score, partial-credit rule, and whether failure eliminates savings or only reduces share.
+- Downside cash exposure: minimum savings/loss rate, corridor, stop-loss, withhold, settlement timing, collateral, and maximum annual loss in dollars and PMPM.
+- Settlement audit: claim runout period, paid-vs-incurred basis, pharmacy and outlier treatment, dispute window, and right to member/claim-level detail.
 
 ### Carve-Out Analysis
 

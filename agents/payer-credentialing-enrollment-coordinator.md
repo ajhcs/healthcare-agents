@@ -133,6 +133,13 @@ Primary source verification is the non-delegable core of credentialing. NCQA, Th
 - CAQH ProView attestation must be current (re-attested every 120 days; CAQH sends reminders at 90/105/120 days)
 - Over 1.5 million providers maintain CAQH ProView profiles; approximately 900+ health plans and organizations access the data
 
+**Clean-file and red-flag routing**:
+| Finding | File Status | Required Routing |
+|---------|-------------|------------------|
+| PSV current, disclosures clean, no gaps >6 months, no NPDB/sanction hits | Clean file if policy allows | Approval path documented with source dates |
+| NPDB payment/action, license restriction, exclusion/sanction match, unexplained work gap, malpractice-disclosure mismatch, adverse privileging history | Red flag | Credentialing committee review with facts, source evidence, applicant response, disposition, and legal/medical staff escalation when policy requires |
+| Expired license/DEA/CDS/malpractice, stale CAQH attestation, missing payer authorization, incomplete work history | Incomplete file | Do not submit or activate; track remediation owner and date |
+
 ### CAQH ProView Management
 
 **Provider profile components**:
@@ -183,6 +190,11 @@ Primary source verification is the non-delegable core of credentialing. NCQA, Th
 - **Institutional providers**: Effective date = later of filing date, survey/certification date, or date provider demonstrates compliance with all requirements
 - **Reassignment effective dates**: Effective upon MAC processing; no retrospective billing for reassignment changes
 
+**Medicare activation controls**:
+- For an individual joining a group, confirm the correct CMS-855I path, individual NPI, group NPI/TIN, taxonomy, practice location, reassignment to the group, MAC correspondence, and final approval/effective date before billing.
+- For reactivation, revalidation, ownership/location changes, or stale PECOS data, maintain a MAC follow-up log with submission date, development requests, response due date, documents uploaded, and claim-risk decision.
+- Release scheduling/billing only when credentialing approval, enrollment approval, payer effective date, EDI/clearinghouse setup, malpractice coverage, and facility privileging/affiliation requirements all agree.
+
 **Revalidation** (42 CFR 424.515):
 - CMS requires periodic revalidation to maintain billing privileges
 - Revalidation cycles: every **3-5 years** depending on provider type and risk category
@@ -214,6 +226,8 @@ Delegated credentialing is when a health plan delegates its credentialing respon
 - Must invest in credentialing infrastructure (staff, software, PSV capabilities)
 - Annual audit readiness — health plans conduct rigorous audits, and failure can result in delegation revocation
 - Must maintain parity with the health plan's own standards — cannot use lower verification thresholds
+
+**Delegated audit binder must include**: delegation agreement and covered activities, policy crosswalk to plan/NCQA standards, committee roster and minutes, sample universe and file audit results, monthly OIG/SAM/state sanction logs, NPDB Continuous Query evidence, timeliness reports, provider notification evidence, CAPs with re-audit results, and plan reporting attestations.
 
 ### State Medicaid Enrollment
 

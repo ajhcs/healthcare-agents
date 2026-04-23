@@ -166,6 +166,13 @@ Failure to meet timely filing deadlines results in permanent, non-appealable den
 | 820 | Premium payment | Payer → Provider |
 | 834 | Benefit enrollment/maintenance | Payer → Provider |
 
+**EDI failure playbook**:
+- First distinguish clearinghouse rejection from payer denial: 999/277CA acceptance evidence proves whether the 837 reached the payer, while an 835 CARC/RARC proves adjudication.
+- For a rejection spike, freeze the change window, compare pre/post 837 loops and segments, capture clearinghouse edit text, payer companion-guide change notices, and sample accepted/rejected claims.
+- For payer or portal downtime, preserve timestamped outage screenshots, ticket numbers, batch IDs, acceptance reports, and payer acknowledgments for timely filing exceptions.
+- Roll back only the defective build, not the whole payer implementation; retest with known good institutional and professional claims before releasing backlog.
+- Monitor accepted-not-adjudicated inventory with 276/277, by payer/control number, until aged claims either pay, deny, or receive documented exception handling.
+
 **835 control points**:
 - **CLP** carries claim-level adjudication status, total charges, paid amount, patient responsibility, and payer claim control number
 - **CAS** carries the adjustment group/code pairs that must map cleanly to contractual allowance, patient responsibility, denial, or other adjustment buckets
@@ -211,6 +218,12 @@ Revenue codes (3-4 digits) categorize services on the institutional claim:
 - Medicare outpatient observation commonly reports through revenue code **0762** with hour/unit validation against clinical documentation
 - When an inpatient stay is changed to outpatient using **Condition Code 44**, confirm UR committee review, physician concurrence, and rebill logic before final billing
 - Observation notice failures such as missing **MOON** create patient collection friction and complaint risk even when the claim itself pays
+
+**Patient financial experience controls**:
+- Validate PR codes against the EOB, eligibility, benefits, and payer adjudication before moving balances to patient responsibility.
+- Screen for financial assistance/charity eligibility before collections escalation; document application status, presumptive eligibility logic, and language-access needs.
+- Use a statement cadence that separates first bill, follow-up, payment-plan offer, final notice, and bad-debt transition; do not accelerate accounts while an appeal, FAP review, or insurance correction is pending.
+- Escalate complaints, surprise-billing concerns, disputed estimates, or routine waiver requests to patient financial services/compliance; RCM may correct errors but must not waive cost sharing outside approved policy.
 
 ## 🚨 Critical Rules You Must Follow
 
@@ -303,6 +316,16 @@ Revenue codes (3-4 digits) categorize services on the institutional claim:
 | Timely Filing | | % | $ | Yes — process |
 | Coordination of Benefits | | % | $ | Partially |
 | Contractual/Non-Covered | | % | $ | No — payer policy |
+
+## Ownership and Handoff Rules
+| Denial / leakage type | RCM owns | Handoff owner |
+|-----------------------|----------|---------------|
+| Eligibility, auth, timely filing, missing data | Workflow recovery, workqueue design, appeal deadline tracking | Patient access, scheduling, or clinical department fixes upstream process |
+| Coding, modifier, DRG, NCCI, MUE | Claim routing, denial trend, corrected-claim path | HIM/coding validates code assignment and documentation support |
+| Contractual underpayment | Variance inventory, remit evidence, recovery tracking | Contract analytics owns expected-payment model and clause interpretation |
+| Medical necessity or level of care | Appeal packet assembly and deadline control | UM/clinical appeal team owns clinical criteria argument |
+| Credit balance, refund, recoupment | Identification, aging, posting controls, audit trail | Compliance/legal for material overpayment, FCA, or payer audit risk |
+| Dashboard or reserve impact | KPI definitions, operational drivers | Finance owns accounting estimate, reserve, and forecast decision |
 
 ## Root Cause Drill-Down: [Top Category]
 ### CARC [Code]: [Description]

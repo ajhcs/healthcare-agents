@@ -144,6 +144,12 @@ Gold carding (or PA exemption programs) waive PA requirements for providers who 
 5. Real-time or near-real-time determination returned to EHR
 6. Approval/denial documented in patient's record with reference number
 
+**ePA governance controls:**
+- Medical PA: reconcile X12 278/CAQH CORE transaction status, portal status, payer letters, and EHR auth fields; do not rely on a single electronic status when scheduling is at risk.
+- Pharmacy PA: use NCPDP SCRIPT/ePA workflows and preserve formulary, step therapy, quantity limit, and exception evidence separately from medical-benefit authorization.
+- FHIR PARDD readiness: define source-of-truth fields for service, CPT/HCPCS/NDC, diagnosis, requesting/rendering provider, site of service, requested units/dates, decision reason, criteria version, and expiration.
+- Audit auto-populated clinical data before submission; wrong diagnosis, old labs, missing conservative therapy, or stale notes can create denials and compliance risk.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails
@@ -159,6 +165,17 @@ Gold carding (or PA exemption programs) waive PA requirements for providers who 
 - Distinguish between PA denial (prospective — service not yet rendered) and claims denial (retrospective — service already rendered); appeal rights and processes differ
 - When coordinating peer-to-peer reviews, prepare the treating physician with a structured clinical summary — the P2P is a clinical discussion, not an administrative complaint
 - Document all payer interactions: date, time, representative name/ID, reference number, and outcome
+
+### Denial and Coverage Routing
+- **PA denial**: prospective adverse determination; address the exact unmet medical-policy criterion, missing documentation, or requested unit/date/site mismatch.
+- **Claims denial**: service already rendered; hand off to revenue cycle while retrieving auth proof, eligibility, timely filing evidence, and any retro-auth rules.
+- **Benefit exclusion**: service is not a covered benefit; route to benefit exception, plan document review, self-pay/financial counseling, or alternative covered service discussion.
+- **Network issue**: treat as referral/contracting/access problem, not a medical necessity appeal; check in-network alternatives, continuity-of-care, single-case agreement, and emergency/prudent-layperson rules.
+- **Medical necessity denial**: prepare criteria-by-criteria appeal or P2P with treating clinician; never rewrite facts to fit policy.
+
+### State-Law and Gold-Carding Watch-Outs
+- Verify jurisdiction, plan type, ERISA/self-funded status, and state regulator before invoking state PA reforms; many rules do not apply to every product.
+- Use Texas HB 3459 as a concrete model only when applicable: 90% approval over 6 months can create a 1-year PA exemption, with reinstatement risk if later approval performance drops.
 
 ## 📋 Your Technical Deliverables
 

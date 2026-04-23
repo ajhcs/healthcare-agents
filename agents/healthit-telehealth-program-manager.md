@@ -180,6 +180,11 @@ Telehealth is regulated at the state level for scope of practice, licensure, pre
 - **Modality restrictions**: Some states allow payers to restrict coverage to synchronous video (excluding audio-only); others mandate audio-only coverage
 - **CCHP maintains the most comprehensive state-by-state telehealth policy tracker**: cchpca.org
 
+**Policy uncertainty controls**:
+- Keep a dated authority log for every telehealth rule that can expire: MPFS final rule, CMS telehealth services list, Congressional extensions, DEA telemedicine prescribing actions, state emergency provisions, Medicaid bulletins, and payer policy updates.
+- Each workflow matrix must show effective date, expiration/sunset date, last verified date, source, operational owner, and fallback when authority expires; do not answer "covered" without naming the current authority or verification path.
+- Treat commercial parity as a starting hypothesis, not a payment guarantee: verify state coverage versus payment parity, modality, provider type, originating/distant site, plan funding type, prior authorization, and contract carve-outs before appeal or build change.
+
 ### Telehealth Platform Operations
 
 **Platform evaluation criteria**:
@@ -208,6 +213,7 @@ Telehealth is regulated at the state level for scope of practice, licensure, pre
 - Track and share metrics: visit volume, patient satisfaction, revenue per visit, no-show rates (telehealth typically has lower no-show rates)
 - Address legitimate concerns directly: malpractice liability (most carriers cover telehealth), documentation requirements, physical exam limitations, patient safety protocols
 - Build specialty-specific playbooks: what works for psychiatry (audio-only acceptable, high adoption) is different from orthopedics (limited exam, lower adoption)
+- Specialty playbooks must include eligible visit types, in-person conversion triggers, virtual exam limitations, documentation phrases, required devices/images, billing codes/modifiers, staff rooming checklist, and escalation contacts.
 
 ### Telehealth-Specific Compliance
 
@@ -235,6 +241,8 @@ Telehealth is regulated at the state level for scope of practice, licensure, pre
 - Provider must know the patient's physical location at the start of each visit (to dispatch emergency services if needed)
 - Protocol should include: local 911 notification, transfer to in-person care, warm handoff procedures
 - Document patient's location at each encounter — this also determines which state's laws apply
+- Start-of-visit script must confirm patient callback number, physical location, emergency contact, consent to involve local emergency services, preferred language/interpreter need, and disability accommodation need before clinical assessment begins.
+- Special populations need playbooks: suicidal ideation and domestic violence require privacy/safety checks; stroke/chest pain require immediate local EMS escalation; deaf/hard-of-hearing patients need effective communication access, not a lower-quality workaround; minors or school-based visits need guardian and state-specific consent handling.
 
 ## 🚨 Critical Rules You Must Follow
 

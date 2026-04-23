@@ -82,6 +82,12 @@ The ICD-10-CM Official Guidelines for Coding and Reporting (FY 2026, effective O
 - COPD with acute exacerbation: J44.1; COPD with acute lower respiratory infection: J44.0 + code for infection
 - COVID-19 confirmed: U07.1; post-COVID conditions: U09.9
 
+**Complex final-code sequencing patterns** (assign final characters only from the record and current codebook):
+- Hypertensive heart and CKD: use I13.- when hypertension, heart disease, and CKD are documented without a stated unrelated cause; add I50.- for heart failure type and N18.- for CKD stage.
+- Sepsis with organ dysfunction: sequence the systemic infection first when sepsis occasioned admission, add R65.2- for severe sepsis/septic shock, then code each acute organ dysfunction and source/organism when documented.
+- COPD with infection: J44.0 requires an additional code for the lower respiratory infection; add J44.1 only when acute exacerbation is separately documented.
+- Diabetes complications: use as many E08-E13 combination codes as needed for documented complications; add Z79.4/Z79.84/Z79.85 when applicable and not inherent to the diabetes type.
+
 **Chapter 19 (S00-T88): Injury, Poisoning, and External Causes**:
 - 7th character: A = initial encounter (active treatment phase); D = subsequent encounter (routine care during healing); S = sequela
 - "Initial encounter" does NOT mean first visit — it means the patient is receiving active treatment
@@ -255,15 +261,26 @@ The CMS Hierarchical Condition Category (HCC) model determines risk-adjusted pay
 - Coding appeals should restate the documented facts, cite the exact ICD-10-CM/PCS guideline, CPT/HCPCS rule, NCCI edit logic, or payer policy, and explain why the billed code set is supported
 - Track avoidable denial rate, overturn rate, dollars at risk, and repeat denial themes by code family/provider/service line to drive coder education and charge-master or build fixes
 
+**Appeal source hierarchy**:
+1. Official code set and mandatory guideline: ICD-10-CM/PCS Official Guidelines, CPT/HCPCS codebook, AMA E/M guidance, and CMS NCCI Policy Manual
+2. CMS payment or coverage source: MS-DRG Definitions Manual, OPPS addenda/status indicator, NCD, LCD, Medicare manual, or MAC article
+3. Payer policy or billing manual effective on DOS, including prior authorization, units, modifier, or medical-necessity criteria
+4. Record evidence: order, progress/operative note, pathology/lab result, MAR/infusion times, anesthesia record, device log, POA evidence, and query response
+5. Claim route: corrected claim vs. reconsideration vs. formal appeal, with RCM owning timely filing and submission tracking
+
 **Anesthesia coding essentials**:
 - Anesthesia reimbursement is built from base units + time units + qualifying circumstances/physical status when recognized by the payer; time is reported from anesthesia start to anesthesia end and must be supported by the anesthesia record
 - Anesthesia modifiers identify who performed the service and the medical direction model (for example AA, QK, QX, QY, QZ); accuracy depends on matching documentation to the payer's supervision rules
 - Qualifying circumstance add-on codes and physical status modifiers require supporting documentation and do not replace the core anesthesia code
+- For medical direction, verify pre-anesthesia exam, prescribed plan, personal participation in key portions, monitoring at frequent intervals, remaining physically available, and post-anesthesia care documentation before selecting QK/QY/QX logic; payer rules may differ for teaching or CRNA-only models.
 
 **Pathology and laboratory coding**:
 - Apply panel rules before unbundling component tests; if the ordered and performed services meet a defined CPT panel, report the panel code instead of separately billing all included components
 - Physician pathology consultation code 80502 requires documented medical interpretive judgment; it is not a default add-on for routine lab review or technical-only processing
 - For molecular and pathology services, verify whether the methodology, units, and specimen-specific documentation support the code selected and whether payer edits require prior authorization or Z-code registration
+- For lab panels, confirm every component in the defined panel was ordered/performed; separately report only non-panel tests or incomplete-panel components when CPT rules permit.
+- For drug wastage, match HCPCS/J-code units to MAR dose, vial size, discarded amount, and payer JW/JZ requirements; some payers require JZ on no-waste claims, while others reject it outside Medicare-style policy.
+- For infusions, apply the hierarchy before units: initial service by route and substance, sequential vs. concurrent, hydration subordinate to therapeutic/chemo services, and start/stop time support for each billable hour.
 
 ### NCCI Edits (National Correct Coding Initiative)
 

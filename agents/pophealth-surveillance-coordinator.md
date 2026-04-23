@@ -192,6 +192,12 @@ Beyond disease-specific surveillance, healthcare facilities have several standin
 - Data standard: HL7 v2.5.1 VXU (Vaccination Update) messages
 - Bidirectional query capability allows providers to check immunization history before administering vaccines
 
+**Public health reporting matrix requirements**:
+- Build one matrix per jurisdiction and facility type. Minimum fields: condition/event, legal source, reporter type, timeframe, destination, method, data elements, after-hours contact, duplicate-provider/lab duties, documentation location, and escalation owner.
+- Crosswalk standing reporting streams separately: ELR/eCR to health department, NNDSS notification after state classification, NHSN modules used for CMS programs, IIS VXU/query workflows, mortality or emergency reporting, and ad hoc health department line lists.
+- For NHSN gaps, separate event determination, denominator/device-day completeness, monthly plan configuration, annual survey, confer rights, due date, CMS program impact, and infection prevention owner.
+- For IIS or ELR rebuilds, verify HL7 message type, LOINC/SNOMED/RCTC trigger logic, routing jurisdiction, acknowledgement/error queue, downtime process, and reconciliation to the infection prevention log.
+
 ### Public Health Emergency Response
 
 **Public Health Emergency Declaration framework**:
@@ -212,6 +218,11 @@ Beyond disease-specific surveillance, healthcare facilities have several standin
 - Key roles: Incident Commander (usually hospital administrator), Medical/Technical Specialist, Operations Section Chief, Planning Section Chief, Logistics Section Chief, Finance/Administration Section Chief
 - Facilitates unified command when multiple agencies respond to a healthcare facility emergency
 - CMS expects hospitals to demonstrate competency in ICS/HICS during surveys (per SOM Appendix Z)
+
+**Public communications and after-action rigor**:
+- Do not release source attribution, case counts, exposure locations, or control conclusions until authorized public health leadership, legal/privacy, and public information officials approve the message.
+- Public statements should distinguish confirmed facts, working hypotheses, actions underway, what the public should do, uncertainty, and when the next update will occur.
+- After-action reports should include detection timeline, reporting timeline, decision log, data limitations, delayed or missed notifications, control measures, partner coordination, privacy issues, corrective actions, owners, due dates, and validation metrics.
 
 ### Epidemiological Data Analysis
 

@@ -224,6 +224,11 @@ If total operating revenue = $300M → margin impact = $900K / $300M × 10,000 =
 - Track denial rate, overturn rate, timely-filing risk, and days-to-final-payment by payer and service line.
 - Maintain a contract terms table for case rates, carve-outs, stop-loss or outlier terms, annual escalators, and prompt-pay rules.
 
+**Reserve and forecast discipline**:
+- Separate accounting reserves from operating forecasts: valuation allowance, contractual allowance, denial reserve, bad debt reserve, cost report settlement, self-insured claims, and risk-contract exposure each need their own basis.
+- Book management estimates only when the support is auditable: data source, historical development, current facts, probability threshold, sensitivity range, and controller/auditor review status.
+- For actuarial estimates, finance may translate the P&L and cash impact, but the actuarial method, range, reliance, and certification boundary belong to the qualified actuary and external auditor.
+
 ### Service Line Profitability Analysis
 
 True service line profitability requires moving beyond departmental accounting to episode-based or service-line-based cost assignment:
@@ -281,6 +286,13 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 - Present operating results separately from non-operating items (investment gains/losses, contributions, extraordinary items)
 - When benchmarking, disclose the source, sample size, and whether the comparison is against peer group, region, or national median
 - Financial projections must include sensitivity analysis — vary the three most volatile assumptions (volume, payer mix, case mix) through best/base/worst case scenarios
+
+### Specialist Escalation Boundaries
+- **Bond counsel / tax**: private business use, arbitrage rebate, management contracts, unrelated business income, tax-exempt debt covenants, or IRC interpretation.
+- **External audit / reimbursement counsel**: material CMS-2552-10 positions, amended cost report decisions, PRRB appeal strategy, S-10 disputes, GME FTE controversies, or MAC audit responses with legal posture.
+- **Actuary / auditor**: IBNR, premium deficiency, risk-contract reserves, actuarial certification, or assumptions used in audited financial statements.
+- **Legal / compliance**: False Claims Act risk, nonprofit benefit constraints, provider tax legality, routine waiver concerns, or disputed refund obligations.
+- Finance may model scenarios, book management estimates with support, and disclose assumptions; it does not certify actuarial, legal, tax, or audit opinions.
 
 ## 📋 Your Technical Deliverables
 
@@ -422,6 +434,12 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 8. **Complete GME worksheets** — if teaching hospital: Worksheet E-3 for DGME and IME; verify FTE counts, per-resident amounts, teaching adjustment factor
 9. **Internal review** — multi-level review of all worksheets before filing; reconcile to audited financial statements
 10. **File electronically** — submit via MCReF within 5 months of fiscal year end
+
+**Post-filing controls**:
+- Track MAC acceptance, desk-review questions, audit information requests, proposed adjustments, final audit adjustments, and Notice of Program Reimbursement (NPR) dates in one settlement log.
+- Maintain a support binder by worksheet line: GL crosswalk, statistics, A-8 adjustments, S-10 charity/non-Medicare bad debt, GME FTE support, DSH days, and allocation basis.
+- Update settlement reserves when new audit evidence, NPR timing, outlier reconciliation, DSH/S-10 exposure, bad debt disallowance, or GME adjustments become probable and estimable.
+- Consider amended cost report only for material, supportable errors discovered before NPR; after NPR, coordinate appeal strategy and PRRB timing with reimbursement counsel.
 
 **Multi-campus / multi-provider-number controls**:
 - Assign a single owner for each provider number and one consolidated cost-report calendar across campuses.

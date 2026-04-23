@@ -65,7 +65,7 @@ Informatics governance is the organizational structure that ensures health IT in
 **Change control process** — every EHR modification follows:
 1. Request submitted with clinical justification and affected workflows documented
 2. Impact analysis: downstream effects on reporting, interfaces, CDS, billing, regulatory
-3. Governance committee review (expedited path for patient safety items)
+3. Governance committee review using a visible score: patient safety, regulatory deadline, clinician burden, patient access/equity, revenue/quality impact, technical risk, maintenance cost, and availability of a non-build fix
 4. Build/test in non-production environment with clinical validation
 5. Go-live with monitoring period (typically 2-4 weeks post-activation)
 6. Outcome review against stated objectives at 30/60/90 days
@@ -143,6 +143,11 @@ USCDI defines the minimum set of data classes and elements that must be exchange
 3. Included in patient access (Patient Portal/app) per 21st Century Cures Act
 4. Available for exchange via TEFCA-designated QHINs
 
+**USCDI readiness artifact**:
+- Inventory each required element by source screen, data type, owner, steward, US Core profile/resource, FHIR export status, patient-portal visibility, exchange destination, and data-quality rule.
+- Flag elements that exist only in notes, scanned documents, local codes, custom flowsheets, or vendor extensions; assign remediation to build, terminology, training, interface, or policy owners.
+- Validate readiness with sample patients across ambulatory, inpatient, ED, specialty, pediatric, and sensitive-record scenarios rather than relying on vendor certification status alone.
+
 ### TEFCA (Trusted Exchange Framework and Common Agreement)
 
 TEFCA, mandated by the 21st Century Cures Act, creates a national floor for health information exchange. The Sequoia Project serves as the Recognized Coordinating Entity (RCE).
@@ -170,6 +175,10 @@ TEFCA, mandated by the 21st Century Cures Act, creates a national floor for heal
 - Assess whether to connect as a Participant directly or through your EHR vendor's QHIN relationship
 - Map your current patient matching approach to TEFCA requirements (TEFCA uses a minimum set of demographic attributes for matching)
 - Establish consent management policies aligned with TEFCA's "no consent to query" model (the Cures Act generally prohibits requiring consent for TPO-based exchange, but state laws may impose additional requirements)
+
+**TEFCA readiness artifact**:
+- Produce a one-page decision record naming QHIN path, exchange purposes enabled, participant/subparticipant scope, patient-matching thresholds, sensitive-data segmentation limits, audit-log owner, downtime behavior, and permitted-purpose escalation owner.
+- Separate technical readiness from governance readiness: successful document retrieval does not prove consent, IAS, state-law, Part 2, or information-blocking obligations are satisfied.
 
 ### Clinical Decision Support (CDS)
 
@@ -523,6 +532,7 @@ Informatics leaders are judged most harshly during outages, major upgrades, and 
 - Define model monitoring requirements: performance drift detection, demographic bias monitoring, adverse event tracking
 - Manage vendor AI features (Epic's cognitive computing, ambient documentation tools) through the same governance framework as internally developed models
 - Document AI/ML model inventory: model name, purpose, training data source, validation results, clinical owner, review schedule
+- For predictive DSI, require a run card with intended users, trigger point, input freshness, calibration/drift thresholds, subgroup monitoring, override or feedback capture, kill switch, and review cadence; do not approve silent model updates without revalidation.
 
 ### TEFCA Implementation Planning
 - Assess current HIE connectivity (Carequality, CommonWell, state HIEs) as baseline

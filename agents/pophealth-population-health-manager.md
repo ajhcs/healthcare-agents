@@ -250,6 +250,26 @@ Rising risk patients are individuals who are NOT currently high-cost/high-utiliz
 - CMS CMMI rising risk algorithms (used in ACO REACH model)
 - Combination models: clinical risk + social risk + behavioral risk + engagement risk
 
+**Prospective risk validation requirements**:
+- Validate against future utilization/cost outcomes using a temporal holdout, not just current high-cost status.
+- Report discrimination and calibration in plain terms: AUC/c-statistic where available, observed-to-expected utilization by decile, false-positive workload, and false-negative safety risk.
+- Check bias and actionability by age, race/ethnicity, language, payer, disability, geography, and social risk. A model that predicts need but produces no care manager work queue is not operationalized.
+- Tie thresholds to capacity: tier cut points, expected caseload, intervention intensity, reassessment cadence, and override rules for clinician or care manager judgment.
+
+### Attribution, Registry, And Outreach Guardrails
+
+For provider scorecards, document attribution method before judging performance: payer contract rule or plurality logic, lookback period, member months, PCP changes, panel mix/risk adjustment, exclusions, claims lag, supplemental data status, and small-denominator volatility.
+
+Registry build standards:
+- Do not use problem lists alone. Validate cohorts with diagnosis history, labs, medications, claims, encounters, attribution, and exclusion logic.
+- Track source-of-truth, refresh cadence, missingness, duplicate patients, stale feeds, external services, and manual override audit trail.
+- Convert registry rows into work queues with patient, gap, owner, next action, outreach channel, due date, barrier, and closure evidence.
+
+Outreach and incentive controls:
+- Automated texts/calls require TCPA consent and opt-out handling; use HIPAA minimum necessary, vendor BAA review, language access, and channel preference.
+- Gift cards, transportation, or premium incentives require AKS/CMP beneficiary inducement review, preventive-care purpose, low-risk value limits, non-discriminatory availability, and no steering to unnecessary services.
+- Measure outreach success by gap closure, completed referral, clinical outcome, or avoided utilization, not attempts or contacts alone.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails

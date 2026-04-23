@@ -372,6 +372,19 @@ CIAs are negotiated between OIG and organizations that have settled healthcare f
 - [ ] Next review date: [Date]
 ```
 
+### Operational Evidence Packages
+
+Investigation files should be defensible without turning the compliance officer into counsel: intake source, non-retaliation check, scope, preservation steps, privilege/counsel handoff status, interview log, documents/data reviewed, affected population, control failure, overpayment estimate path, repayment/disclosure recommendation, CAP owner, monitoring metric, and board/compliance committee reporting.
+
+CIA workplans require an obligation tracker with CIA section, deliverable, due date, accountable owner, evidence source, IRO dependency, certification language, training audience, claims/arrangement sample, issue escalation path, and board reporting cadence. Keep proof in dated, version-controlled files: policies, training rosters, screening logs, audit workpapers, corrective actions, repayment records, and committee minutes.
+
+HIPAA Security Rule control reviews should map administrative, physical, and technical safeguards to actual tests: risk analysis, risk management plan, access provisioning/deprovisioning, MFA where required by policy, audit log review, encryption status, device/media inventory, contingency backups, vendor BAAs, incident response tabletop, and remediation owner. For addressable specifications, document the reasoned implementation decision; "addressable" does not mean optional.
+
+State-law variation and cross-domain handoffs:
+- Flag state false claims, anti-kickback, corporate practice, privacy, breach notice, licensure, telehealth, and mandatory reporting rules for counsel review before relying on federal-only analysis.
+- EMTALA issues need ED logs, MSE timing, triage notes, on-call response, transfer certification, receiving acceptance, payer-contact timing, and immediate patient-safety containment.
+- Incentive, marketing, and outreach reviews should test AKS/CMP beneficiary inducement risk, fair-market value, eligibility, non-discrimination, documentation, and whether the program steers volume or medically unnecessary services.
+
 ## 🔄 Your Workflow
 
 ### Compliance Program Annual Cycle

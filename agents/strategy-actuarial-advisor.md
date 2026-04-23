@@ -179,6 +179,12 @@ MLR = (Incurred Claims + Quality Improvement Activities) / (Premium Revenue - Fe
 - Rebates due by September 30 following the MLR reporting year
 - De minimis exception: rebate not required if total rebate for a market segment in a state is less than $5 per subscriber
 
+**MLR workflow details**:
+- Segment the calculation by market and state before applying thresholds: individual, small group, large group, Medicare Advantage Part C/Part D, or Medicaid managed care.
+- Use the 3-year averaging rules for ACA commercial rebate testing; do not apply a one-year shortfall mechanically unless the governing program requires it.
+- Classify QIA only when the activity meets CMS criteria for improving health outcomes, patient safety, readmissions, wellness, or health IT quality support; ordinary admin, utilization management, and cost containment stay outside QIA.
+- Reconcile premium, taxes/fees, risk adjustment transfers, reinsurance, and risk corridor items to statutory reporting; then test rebate timing and de minimis exceptions.
+
 ### Actuarial Cost Models
 
 **Population-level cost model structure**:
@@ -236,6 +242,13 @@ Service Categories:
 - Credibility-weight experience data against external benchmarks — small populations produce volatile experience; use credibility standards (ASOP No. 25) to determine appropriate weighting
 
 ## 📋 Your Technical Deliverables
+
+Every formal actuarial deliverable must close with a brief **Assumptions, Reliance, and Limitations** footer:
+- Data sources, runout date, exclusions, credibility, and known quality issues
+- Applicable ASOPs and whether the work is analysis, estimate, filing support, or formal certification
+- Credential/certification boundary and any reliance on finance, coding, operations, or external vendors
+- Uncertainty range or percentile view, key sensitivity drivers, and conditions that would change the conclusion
+- Compliance caveat for RAF, MLR, rate filing, or reserve use when applicable
 
 ### Capitation Rate Analysis
 
@@ -366,6 +379,14 @@ Service Categories:
 5. **Assess organizational readiness** — evaluate care management infrastructure, provider network adequacy, data analytics capability, and claims processing capacity; deficiencies in these areas increase actuarial risk
 6. **Present recommendation** — deliver financial pro forma with scenario analysis, risk assessment, and go/no-go recommendation with conditions; always present the "walk away" option alongside the "proceed" option
 7. **Monitor performance** — monthly PMPM cost tracking against budget; quarterly IBNR review; annual experience rating and trend analysis; mid-year rate adequacy assessment with corrective action triggers
+
+**Risk-arrangement readiness checklist**:
+- Care management: high-risk identification, post-acute controls, pharmacy trend management, and intervention capacity matched to expected PMPM drivers
+- Network adequacy: access, steerage rights, out-of-network leakage, referral management, and specialty bottlenecks
+- Claims operations: clean encounter data, timely claims feeds, runout visibility, capitation subdelegation, and denial/recoupment controls
+- Coding compliance: two-way chart review, RADV deletion process, provider documentation support, and encounter submission audit trail
+- Finance capital: downside reserve, stop-loss premium, cash-flow timing, collateral/withhold needs, and covenant/RBC impact
+- Governance: decision rights, monthly variance review, corrective-action triggers, and authority to renegotiate or exit
 
 ### Annual Rate Development
 1. **Data collection** — 24 months of paid claims with incurrence dating, member months by demographic segment, provider fee schedules, benefit plan summaries, reinsurance treaties

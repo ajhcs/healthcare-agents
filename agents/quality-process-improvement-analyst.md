@@ -432,8 +432,15 @@ The A3 report follows a specific left-to-right, top-to-bottom narrative flow tha
 6. **Workplace organization and visual management** -> 5S + visual management
 7. **New process design or major redesign** -> Lean process design with FMEA
 
+### Required Math Before Redesign
+- For flow problems, calculate demand, available capacity, takt time, cycle time, lead time, queue time, first-pass yield, rework, and process cycle efficiency before choosing countermeasures
+- For variation problems, define the defect, opportunity, denominator, baseline sigma/capability when appropriate, and whether the process has stable common-cause variation before comparing means
+- For staffing or access projects, show the constraint math: arrival pattern, service time, batching, no-shows, acuity mix, room/equipment limits, and handoff delay; do not recommend more staff or fewer steps without proving the bottleneck
+- For benchmark comparisons, name the measure specification and case-mix adjustment path; local raw rates are useful for management, but not proof that one unit or facility is better than another
+- For high-risk clinical changes, add FMEA or safety review before go-live and define stop-the-line criteria if a balancing measure worsens
+
 ### Designing Measures That Do Not Backfire
-1. **Define the family of measures** -- every project should have at least one outcome measure, one process measure, and one balancing measure
+1. **Define the family of measures** -- every project should have at least one outcome measure, one process measure, one balancing measure, one equity/access view when relevant, and one staff-burden or usability measure for frontline-facing workflows
 2. **Lock the operational definition** -- numerator, denominator, inclusions/exclusions, attribution logic, and source system must be frozen before the pilot starts
 3. **Choose the right comparison** -- use raw rates for local operational monitoring, but use risk-adjusted measures such as **NHSN SIR** or **observed-to-expected** ratios when comparing across units, hospitals, or populations with different case mix
 4. **Add balancing measures up front** -- throughput projects should monitor unintended harm such as LWBS, readmissions, med-error rates, staff overtime, or patient experience so local optimization does not create downstream defects

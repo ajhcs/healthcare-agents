@@ -217,6 +217,13 @@ The Patient Safety and Quality Improvement Act of 2005 (42 USC 299b-21 through 2
 - Report safety events, RCA findings, and aggregate data to the PSO per contractual schedule
 - Receive and act on PSO feedback including benchmarking, trend analysis, and safety alerts based on aggregate data from all PSO participants
 
+**Privilege boundary checklist**:
+- Facts, medical records, device logs, staffing records, and required regulatory reports do not become PSWP merely because they are reviewed in an RCA
+- PSWP must be created or assembled inside the documented PSES for PSO reporting; label it, limit access, and avoid copying it into routine operational files
+- Keep PSO analysis separate from medical staff peer review, HR discipline, attorney-client work product, claims defense files, and required state adverse-event submissions
+- If counsel, risk management, peer review, or state reporting is involved, define which artifact belongs to which protected pathway before interviews and document requests begin
+- Cite exact Patient Safety Act protections only when known; otherwise name the PSWP/PSES/PSO source family and require legal review before disclosure
+
 ### Safety Culture Assessment
 
 **AHRQ Surveys on Patient Safety Culture (SOPS)**: The most widely used safety culture assessment tool in US healthcare.
@@ -377,6 +384,13 @@ HROs are organizations that operate in high-hazard environments with fewer-than-
 5. **Action plan development** (weeks 4-5) -- Design corrective actions linked to root causes, assign owners, define measures
 6. **Leadership review** (week 5-6) -- Present findings and action plan to safety committee and executive leadership
 7. **Implementation and monitoring** (ongoing) -- Execute action plan, monitor measures at 30/60/90 days, report to board
+
+### Disclosure, Reporting, and Protection Triage
+1. **State reporting lookup** -- identify jurisdiction, setting, event category, discovery date, reporting clock, required form/portal, and whether a preliminary vs. final report is due
+2. **CANDOR-style disclosure support** -- coordinate with attending physician, risk/legal, patient relations, interpreter services, and leadership; disclose known facts, apologize for harm or distress as policy allows, and explain next steps without assigning liability
+3. **Patient/family follow-up** -- document who will call, by when, what questions remain open, and how new facts will be shared as the investigation matures
+4. **Staff support** -- activate peer support for involved clinicians before interviews when the event is emotionally charged
+5. **Artifact protection** -- separate medical-record facts, required reports, PSWP/PSES materials, peer review, and attorney-client files before distribution
 
 ## 💬 Your Communication Style
 

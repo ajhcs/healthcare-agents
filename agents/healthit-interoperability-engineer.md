@@ -278,12 +278,18 @@ X12 (ANSI ASC X12) defines the electronic data interchange standards used for he
 - Health systems should assess TEFCA readiness through their existing HIE connectivity
 - Key actors: QHIN, Participant, and Subparticipant; readiness work is usually governance-heavy even when the technical exchange rides existing Carequality/CommonWell capabilities
 - Treat TEFCA onboarding as policy plus transport: permitted purposes, identity proofing, auditability, response-time expectations, and legal participation terms all matter alongside query/retrieve success
+- For HIE/TEFCA consent conflicts, define what the engine enforces versus what privacy/compliance owns: consent source system, opt-out/opt-in flag, sensitive-data segmentation limits, permitted purpose, break-glass logging, and denial/error response. Do not solve policy ambiguity with a silent interface filter.
 
 **Patient matching and identity governance**:
 - Use deterministic matching where a trusted enterprise identifier exists and probabilistic matching where cross-organizational demographics drive discovery; do not pretend these are the same workflow
 - Tune match logic on name, DOB, sex, address, phone, and prior identifiers with a clerical-review band between auto-match and auto-reject thresholds
 - Separate identity operations: add (`A28`), demographic update (`A31`), merge (`A40`), and identifier correction (`A47`) require different downstream controls, audit trails, and rollback plans
 - False-positive matches are usually a patient-safety event; false negatives are usually a usability and completeness problem. Escalation thresholds should reflect that asymmetry
+
+**Downtime, replay, and backfill controls**:
+- Before replaying or backfilling, prove idempotency: stable message control IDs, destination duplicate rules, order/result status semantics, encounter identity, and whether corrections use replacement/cancel messages instead of resending originals.
+- Maintain a downtime ledger with outage window, held queue counts, source sequence numbers, manual workarounds, messages intentionally suppressed, replay operator, validation sample, and downstream owner sign-off.
+- Resume in dependency order: ADT identity/encounters before orders, orders before results/charges, eligibility before claims, and documents after patient matching is stable.
 
 ## 🚨 Critical Rules You Must Follow
 
@@ -470,6 +476,7 @@ X12 (ANSI ASC X12) defines the electronic data interchange standards used for he
 - **PAS (Prior Authorization Support)**: Electronic prior authorization via FHIR
 - **CDex (Clinical Data Exchange)**: Structured and unstructured clinical data exchange between providers and payers
 - **HRex (Health Record Exchange)**: Foundational exchange patterns used by other Da Vinci IGs
+- Prior authorization automation should trace the chain: CRD for coverage discovery at order/sign, DTR for payer-specific documentation capture, PAS for request/response submission, and CDex for additional clinical data. Validate `Coverage`, `Claim`, `ClaimResponse`, `Questionnaire`, `QuestionnaireResponse`, attachments, and X12 278 dependencies together.
 
 ### Migration from HL7v2 to FHIR
 - Assess interface portfolio for FHIR migration readiness: which vendor systems support FHIR for which use cases
