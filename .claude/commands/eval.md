@@ -44,6 +44,7 @@ Use `docs/eval/model-tuning.md` for model-role guidance. Pin exact model IDs in 
 - One agent per session. After 5 iterations, print the summary and stop.
 - Each iteration is independent. Read the agent file fresh each time.
 - Scores across iterations are not comparable because questions differ. Only the same-question pre/post delta within an iteration is meaningful.
+- Any before/after or score-only baseline run must persist the full question set before answers are generated. Focus rows, weak-area labels, or paraphrases are not enough for retesting.
 - Do not broaden the role into generic healthcare administration. Preserve the agent's specialty, practitioner voice, and strongest differentiators.
 - Prefer sharpening missing mechanics, formulas, workflows, citations, and deliverables over adding broad best-practices boilerplate.
 - Do not log API keys, secrets, PHI, patient data, or private operational credentials.
@@ -133,6 +134,17 @@ Default mix:
 - 3 deliverable-production prompts
 
 Persist the exact questions for the iteration in the run log before answering them. Reuse these same questions for the post-edit re-score within the same iteration.
+
+The question artifact is mandatory. Write `questions.md` and, when practical, `questions.json` with all 25 full questions. Each question must include:
+
+- stable question ID, `Q001` through `Q025`
+- full prompt text exactly as shown to the answerer
+- question type: factual mechanics, applied reasoning, edge case, cross-domain scenario, or deliverable production
+- source basis: agent prompt, role baseline, playbook blueprint, train bank, validation bank, holdout bank, or calibration case
+- expected coverage: the capabilities, source families, or deliverable elements the answer should address
+- scoring emphasis: accuracy, completeness, specificity, or mixed
+
+Do not substitute short focus labels such as "network adequacy reporting" for the full prompt. If the full question text is not recoverable later, any retest must be labeled `fresh-comparable`, not `baseline-exact` or `same-question`.
 
 ### Step 3: Answer All Questions
 
@@ -241,12 +253,14 @@ Before any commit/revert decision:
 1. Write run-log artifacts for the iteration, including:
    - `manifest.json`
    - `questions.md`
+   - `questions.json` when practical
    - `scorer-output-pre.json`
    - `editor-brief.md`
    - `scorer-output-post.json`
    - `summary.md`
-2. Ensure the manifest records exact model IDs when available, git state, file hashes, rubric hash, baseline hash, question source, line cap, status, and calibration status.
-3. Append a tab-separated row to `eval/results.tsv`:
+2. Verify `questions.md` contains all 25 complete question prompts. If not, stop and repair the artifact before editing or scoring.
+3. Ensure the manifest records exact model IDs when available, git state, file hashes, rubric hash, baseline hash, question source, question artifact paths, line cap, status, and calibration status.
+4. Append a tab-separated row to `eval/results.tsv`:
 
 ```text
 {iteration}\t{$ARGUMENTS}\t{score_pre_edit}\t{score_post_edit}\t{delta}\t{status}\t{weak_areas}\t{description}
@@ -272,6 +286,25 @@ Commit decision:
   ```
 
 Do not commit raw `eval/run-logs/` artifacts unless a human explicitly asks to promote a run log for review.
+
+---
+
+## Score-Only And Before/After Runs
+
+For score-only baselines, multi-agent scorecards, or before/after experiments:
+
+1. Create a run directory under `eval/run-logs/<timestamp>-<experiment-name>/`.
+2. For each agent, write the full 25-question set before answering:
+   - `baseline/<batch-or-agent>/questions.md`
+   - `baseline/<batch-or-agent>/questions.json` when practical
+3. Write baseline answers and scores separately from the question artifact.
+4. Give editors only the improvement brief, not hidden holdout material or answer keys.
+5. During retest, first load the baseline `questions.md`.
+6. If all 25 full prompts are present, retest with exactly those prompts and mark `question_source=baseline-exact`.
+7. If only focus rows, weak areas, or paraphrases are present, do not reconstruct them as exact. Generate comparable questions if useful and mark `question_source=fresh-comparable`.
+8. The final scorecard must include `question_source` for every row.
+
+This rule is required because before/after deltas are only defensible when the post-edit score uses the same questions as the pre-edit score.
 
 ---
 

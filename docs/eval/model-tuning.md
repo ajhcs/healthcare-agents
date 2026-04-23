@@ -59,6 +59,8 @@ When a run log exists, record at least:
 - `rubric_hash`
 - `role_baseline_hash` or `null`
 - `question_source`: generated, train-bank, validation-bank, holdout-bank, or calibration
+- `question_artifact`: path to the full preserved question set, usually `questions.md`
+- `question_artifact_complete`: true only when all full prompts are present
 - `parent_runtime`: Claude Code, Codex, or other runtime
 - `parent_model_id`
 - `parent_effort`

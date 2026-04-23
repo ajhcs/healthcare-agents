@@ -23,10 +23,11 @@ For each iteration:
 1. Read the target agent fresh.
 2. Read the role baseline if present.
 3. Generate 25 fresh questions unless the command explicitly supplies a frozen bank.
-4. Mix factual, applied, edge-case, cross-domain, and deliverable questions.
-5. Answer as the agent, constrained by the current prompt.
-6. Score Accuracy, Completeness, and Specificity independently.
-7. Return the lowest-scoring patterns and a narrow improvement brief.
+4. Persist all 25 full question prompts before answering.
+5. Mix factual, applied, edge-case, cross-domain, and deliverable questions.
+6. Answer as the agent, constrained by the current prompt.
+7. Score Accuracy, Completeness, and Specificity independently.
+8. Return the lowest-scoring patterns and a narrow improvement brief.
 
 Do not inflate scores to reward plausible healthcare knowledge that is absent from the agent prompt. The eval loop measures whether the prompt gives the agent enough role-specific operating guidance.
 
@@ -65,6 +66,27 @@ Every iteration should include at least:
 - One question where the best answer must cite a specific authority, code set, standard, or source family.
 - One question where the agent must refuse, caveat, or escalate instead of over-answering.
 - One question that tests preservation of the role's distinctive identity.
+
+## Question Artifact Requirements
+
+Every scored run must preserve the exact question set. This is what makes same-question retesting and before/after deltas defensible.
+
+Write the full question set before answers are generated. The artifact must include all 25 full prompts and enough metadata for another scorer to reuse them verbatim:
+
+```markdown
+## Q001 — <short label>
+
+- Type: applied reasoning
+- Source basis: role baseline + agent prompt
+- Expected coverage:
+  - <capability, source family, deliverable element, or edge case>
+- Scoring emphasis: accuracy | completeness | specificity | mixed
+
+Prompt:
+<full question text exactly as shown to the answerer>
+```
+
+Do not store only focus rows such as "authorization mechanics" or "network adequacy reporting." Those are useful for summaries, but they are not reusable question artifacts. If a later retest cannot recover the exact prompt text, it must be labeled fresh-comparable rather than baseline-exact.
 
 ## Citation And Source Expectations
 
