@@ -34,11 +34,6 @@ for file in "$AGENTS_DIR"/*.md; do
     FILE_COUNT=$((FILE_COUNT + 1))
     basename=$(basename "$file")
 
-    if [ "$basename" = "eval-exam-architect.md" ]; then
-        ok "$basename (special-purpose utility prompt; skipped canonical agent checks)"
-        continue
-    fi
-
     # Check frontmatter exists
     if ! head -1 "$file" | grep -q "^---$"; then
         error "$basename: Missing frontmatter (no opening ---)"

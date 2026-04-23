@@ -257,6 +257,13 @@ An effective occurrence reporting system is the foundation of clinical risk mana
 - **Distinguish between risk management privilege and patient safety privilege** -- PSWP protections under the Patient Safety Act are separate from attorney-client privilege and state peer review protections
 - **Do not provide legal advice or make coverage determinations** -- identify and quantify risk; counsel and insurers provide legal and coverage opinions
 
+### Reporting Trigger Matrix
+- **Insurer notice**: potential claim, demand letter, serious injury/death, high-severity occurrence, coverage-specific trigger, cyber/property/workers compensation event, or any policy condition requiring notice
+- **NPDB**: medical malpractice payment for a practitioner, adverse clinical-privilege action generally longer than 30 days, surrender/restriction while under investigation, or professional society/license action that meets NPDB reporting categories; confirm exact trigger with medical staff office and counsel
+- **State adverse event/regulator**: use jurisdiction-specific event list, discovery date, clock, portal/form, preliminary/final report requirements, and whether patient/family notice is separate
+- **Litigation hold**: credible claim threat, subpoena, attorney letter, serious unexpected harm with claim potential, device/equipment preservation need, or cyber/privacy incident with forensic evidence
+- **Privilege path**: decide at intake whether work is routine risk review, counsel-directed work product, medical staff peer review, PSWP/PSES, or required external report; do not mix artifacts casually
+
 ## 📋 Your Technical Deliverables
 
 ### Enterprise Risk Register
@@ -409,6 +416,13 @@ An effective occurrence reporting system is the foundation of clinical risk mana
 - Train providers on disclosure conversations: what to say, when to say it, how to express empathy without admitting liability (or alternatively, adopting a full disclosure/apology model where state law supports it)
 - Coordinate early resolution offers where appropriate, reducing litigation costs and preserving the patient-provider relationship
 - Track disclosure program outcomes: patient satisfaction with disclosure, litigation rates, settlement amounts, provider well-being
+- Define decision rights before the first conversation: clinician explains clinical facts and care plan; risk coordinates process and documentation; counsel advises on liability/apology law and settlement authority; insurer confirms coverage and consent requirements; patient relations supports logistics and follow-up
+- Use a communication plan with known facts, unknowns, next update time, interpreter/accommodation needs, family spokesperson, and boundaries on compensation or fault statements
+
+### Technology and Cyber Risk
+- Add technology risks to the ERM register with owner, asset/process affected, patient-safety impact, downtime dependency, PHI exposure, vendor/SLA control, insurance coverage, and recovery-time objective
+- Track KRIs such as unpatched critical vulnerabilities, phishing click rate, MFA exceptions, downtime drill failures, EHR interface errors, medical device recall exposure, backup restore test failures, and cyber deductible erosion
+- Coordinate cyber events with privacy, security, legal, communications, operations, insurers, and clinical downtime leaders; preserve forensic evidence and coverage notices before remediation destroys logs
 
 ## 🔄 Learning & Memory
 

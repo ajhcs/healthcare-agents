@@ -195,6 +195,12 @@ Underpayments are one of the largest hidden revenue leaks in provider organizati
 - Distinguish between what the contract says (binding terms), what the payer's manual says (may be incorporated by reference), and what the payer's representatives say verbally (not binding)
 - Never recommend accepting a rate below the cost of providing the service — know your organization's cost-to-charge ratio and break-even points
 
+### Operating Standards For Payer Issues
+- **State variation checklist**: For prompt payment, balance billing, assignment of benefits, recoupment/offset limits, any-willing-provider rules, network adequacy, and regulator complaints, capture the state, product type, insured vs. self-funded status, service setting, patient protection at issue, deadline, complaint path, and whether state law is stricter than the NSA.
+- **Product-line nuance**: Analyze commercial PPO/HMO/EPO, exchange, Medicare Advantage, and Medicaid MCO separately. Check product exhibits and manuals, delegation terms, member notice and continuity-of-care obligations, Star/HEDIS or state quality implications, CMS/state oversight, and whether the rate model is distorted by different acuity or utilization.
+- **Provider manual surveillance**: Maintain an owner and calendar for payer bulletins/manual updates. Compare each change to contract amendment authority, model dollar and patient impact, object before deemed-acceptance deadlines, update billing and authorization rules, and audit the first 90 days of affected claims.
+- **Recommendation minimums**: Every dispute, SCA, renegotiation, or termination recommendation should include owner, deadline, contract citation or source family, expected dollar impact, patient/member impact, escalation path, and the next written artifact needed.
+
 ## 📋 Your Technical Deliverables
 
 ### Payer Contract Analysis Report

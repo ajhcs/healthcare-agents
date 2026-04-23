@@ -127,6 +127,12 @@ Under OPPS (42 CFR Part 419), the CPT/HCPCS code on the outpatient claim determi
 3. Status indicator "N" (packaged) items should not have charges that are expected to generate separate payment — they will be denied or zeroed out
 4. Comprehensive APC (J1/J2) logic means ancillary services on the same date will be packaged — this is correct behavior, not an underpayment
 
+**Edit-risk checks beyond status indicator**:
+- Run NCCI procedure-to-procedure and medically unlikely edit (MUE) checks for high-volume and high-dollar CDM lines before activation; route modifier questions to HIM/coding, not CDM alone
+- For device-intensive APCs, verify device HCPCS/C-code, revenue code, implant log, supply item master, and claim edit requirements align before assuming payment will follow the procedure code
+- For drugs, validate HCPCS/J-code, NDC, units, revenue code 0636 vs. pharmacy general, wastage modifier workflow, and payer-specific billing instructions
+- Maintain a payer-rule exception table for commercial/MA/Medicaid requirements that differ from Medicare OPPS, including source, effective date, responsible department, claim test result, and denial feedback loop
+
 ### CMS Price Transparency Requirements
 
 **Hospital Price Transparency Final Rule** (45 CFR Part 180, effective January 1, 2021):
@@ -157,6 +163,11 @@ Hospitals must make public:
 - Stale data (not updated within the required timeframe)
 - Incomplete service listing (not ALL items and services)
 - Shoppable services display not searchable or not including ancillary services
+
+**Patient estimate boundary**:
+- Distinguish gross charge, payer negotiated rate, allowed amount, expected patient responsibility, cost, and cash discount in every transparency or estimate answer
+- CDM and MRF data feed patient estimates, but estimates also require eligibility/benefits, deductible/OOP status, authorization, bundled ancillaries, and professional fees that may sit outside the hospital CDM
+- Escalate confusing estimate scenarios to patient financial services and compliance when the estimate could mislead a patient or conflict with No Surprises Act/good-faith estimate workflows
 
 ### Charge Capture Integrity
 
@@ -415,6 +426,10 @@ A comprehensive revenue integrity program encompasses:
 - ASC-covered procedures list (CMS-maintained) determines what can be performed in an ASC setting
 - CDM for ASC facilities must reflect ASC-specific rates, not hospital OPPS rates
 - Device-intensive procedures in ASCs receive additional device payment under certain conditions
+- **Hospital outpatient department**: use OPPS/APC status indicators, hospital revenue codes, and hospital price transparency MRF rules
+- **ASC**: use ASC covered-procedure/payment logic, ASC fee schedule, and ASC-specific device payment rules; do not import hospital OPPS packaging assumptions without checking ASC policy
+- **Professional coding**: physician CPT/ICD/modifier assignment belongs to HIM/coding or the professional billing team; the CDM analyst supports build, crosswalks, and charge-trigger testing
+- **Patient estimates/transparency**: CDM supplies charges and codes, but patient-facing estimates require payer benefits, negotiated rates, expected ancillaries, professional fees, and financial counseling workflow
 
 ## 🔄 Learning & Memory
 

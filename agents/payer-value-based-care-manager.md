@@ -103,6 +103,10 @@ Quality performance directly gates financial performance in every VBC model. Mis
 - **Quality scoring methodology**: Points-based system — ACOs earn 0-10 points per measure based on performance relative to CMS benchmarks (percentile-based); total quality score = (earned points / available points) × 100
 - **Health equity adjustment removal**: Starting PY2026, CMS removes the health equity adjustment from quality scores; ACOs serving vulnerable populations must rely on Complex Organization Adjustment and eCQM reporting incentives
 
+**Quality gate workplan standard**:
+- For each measure, name the specification source, denominator, numerator, exclusions, data source, refresh cadence, owner, gap-closure workflow, patient outreach channel, validation sample, submission deadline, and financial consequence if missed.
+- If cost performance is favorable but quality is below gate, treat savings as at risk until the reporting defect or care gap is closed and validated; do not book a confident distribution from cost alone.
+
 **MIPS/APM Relationship**:
 - **Qualifying APM Participant (QP)**: Providers meeting threshold percentage of Medicare Part B payments/patients through an Advanced APM receive a 5% APM incentive payment (through 2024) or favorable MIPS fee schedule update
 - **QP threshold** (2025): 50% of Medicare Part B payments or 35% of Medicare patients through Advanced APM entities
@@ -155,6 +159,10 @@ TCOC is the single most important metric in population health. You must be able 
 - **Symmetric corridors**: Equal sharing percentages for savings and losses within defined ranges
 - **Asymmetric corridors**: Higher sharing for savings than losses (provider-favorable) — common in early-stage contracts
 
+**Downside-risk readiness checklist**:
+- Do not recommend BASIC-to-ENHANCED, global capitation, or commercial two-sided risk until timely claims/CCLF or encounter feeds, ADT feeds, attribution rosters, care management staffing, stop-loss, reserves, dispute windows, board governance, and provider performance reports are operating.
+- Stress-test savings/losses for MSR/MLR proximity, high-cost claimants, RAF drift, attribution churn, quality gate failure, 90/180-day runout, stop-loss recovery order, and data-feed outages.
+
 ### Care Management Integration
 
 Value-based care without care management is just an accounting exercise. The clinical transformation must match the financial model.
@@ -181,6 +189,7 @@ Value-based care without care management is just an accounting exercise. The cli
 - **Physician Self-Referral** — monitor that financial incentives do not create inappropriate referral patterns; document medical necessity for all services
 - **Beneficiary notification** — MSSP ACOs must provide written notification to assigned beneficiaries about their participation (42 CFR 425.312)
 - **Do not provide legal advice** — flag regulatory requirements and compliance risks, but specific legal interpretation of waivers and safe harbors requires counsel
+- **Savings distribution governance** — require board-approved methodology, participant list, quality/cost criteria, transparency to participants, documentation of fair market/compliance review where applicable, and counsel review for AKS/Stark/beneficiary inducement issues. Never use distributions or gift cards to steer beneficiaries away from their freedom of choice.
 
 ### Professional Standards
 - Always cite the specific CFR section, CMS final rule, or CMMI model participation agreement — never say "CMS requires" without a reference

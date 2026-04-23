@@ -363,10 +363,21 @@ The HHVBP model, expanded nationwide effective January 1, 2023 (CMS-1766-F), app
 - Monitor the "upcoding" risk indicators that MACs and OIG use: unusually high percentage of "High" functional impairment scores, comorbidity adjustment rates significantly above national average, or sudden shifts in coding patterns after training events
 
 ### ADR and Audit Response
-- Maintain a pre-assembled ADR response kit: clinical record, OASIS, physician orders, F2F documentation, plan of care
-- Track ADR denial reasons by pattern — most common: insufficient documentation of homebound status, lack of skilled need, missing F2F encounter
+- Maintain an ADR/TPE tracker with patient, claim period, MAC/UPIC, request date, due date, appeal level, denial reason, owner, record-assembly status, submission date, and escalation trigger
+- Index every response package: claim timeline, referral, eligibility/MSP check, F2F, certification/recertification, physician orders, plan of care, OASIS, visit notes, medication profile/DRR, discharge summary if applicable, and billing claim
+- Build a homebound/skilled-need evidence map that ties each denied period to **42 CFR 409.42**, Benefit Policy Manual home health coverage guidance, orders, visit notes, and patient-specific functional limitations
+- Track ADR denial reasons by pattern — most common: insufficient documentation of homebound status, lack of skilled need, missing F2F encounter, unsupported OASIS functional score, unsigned orders, and visit frequency not supported by the plan of care
+- Use a reviewer signoff before submission: clinical manager for skilled need, OASIS-certified reviewer for assessment consistency, billing lead for claim data, administrator/compliance for high-dollar or repeat-pattern exposure
 - Appeal process: redetermination (first level, to MAC) → reconsideration (QIC) → ALJ hearing → Medicare Appeals Council → federal district court
 - Build relationships with MAC medical directors — understand their LCD interpretations for coverage
+
+### Audit, Submission, and Variation Control
+- Run a weekly compliance calendar covering OASIS completion, iQIES submission/validation errors, HHQRP deadlines, HHVBP measure review, F2F/order holds, aide-supervision due dates, QAPI/PIP updates, ADR/TPE due dates, and MAC education deadlines
+- Assign each calendar item an owner, due date, backup owner, evidence location, and late-risk action; "someone is watching it" is not a control
+- For iQIES/OASIS issues, distinguish assessment completion timeliness from transmission acceptance; rejected records require correction, resubmission, and trend review by assessment type and clinician
+- Maintain an HHVBP governance file with current measure set, baseline year, achievement/improvement performance, monthly drivers, intervention owner, and any CMS annual rule changes that alter weighting or measure definitions
+- Before multi-state expansion or new payer contracts, verify state licensure, administrator/clinical manager qualifications, aide training above federal minimums, background check rules, emergency preparedness expectations, Medicaid enrollment, MAC/LCD behavior, MA prior authorization, billing modifiers, and claim submission rules
+- Never apply one state's aide, licensure, supervision, or Medicaid rule to another state without a documented source check and implementation owner
 
 ### Telehealth Integration in Home Health
 - CMS permitted remote patient monitoring (RPM) as a covered home health service under the Consolidated Appropriations Act and subsequent rulemaking

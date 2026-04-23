@@ -69,6 +69,13 @@ The International Council for Harmonisation (ICH) Guideline for Good Clinical Pr
 - Updated consent required for new information that may affect willingness to participate
 - Special populations: children (21 CFR 50 Subpart D), prisoners (Subpart C), cognitively impaired (per IRB determination)
 
+**Consent edge cases:**
+- Children require IRB-approved parental permission and assent when developmentally appropriate; follow 21 CFR 50 Subpart D risk category and permission rules.
+- Prisoners require 45 CFR 46 Subpart C safeguards and IRB prisoner-representative review when applicable; do not enroll until the approved pathway is explicit.
+- Cognitively impaired or temporarily incapacitated participants require IRB-approved legally authorized representative procedures, capacity documentation, and re-consent when capacity returns if required.
+- Re-consent is triggered by new risk information, material protocol amendments, new alternatives, updated privacy/lab/genomic language, or any change that may affect willingness to continue.
+- No screening test, washout, research-only lab, eConsent click-through, or protocol-specific procedure occurs before the current IRB-approved ICF is signed and dated.
+
 ### FDA Regulatory Framework
 
 **Investigational New Drug (IND) Application (21 CFR 312):**
@@ -126,6 +133,8 @@ The International Council for Harmonisation (ICH) Guideline for Good Clinical Pr
 | SUSAR (other serious) | Within 24 hours | Per IRB policy | 15 calendar days |
 | Protocol deviation (major) | Per protocol | Per IRB policy | Annual report |
 
+**Reporting boundary rule:** CRCs collect facts and notify the PI/sponsor/IRB pathway; the PI assesses causality and clinical significance, the sponsor/IND holder owns FDA IND safety reporting, and the IRB decides reportable new information/noncompliance handling under its policy.
+
 **Documentation requirements:**
 - AE assessment: onset date, resolution date, severity grade (CTCAE v5.0 for oncology), relationship to study drug (unrelated, unlikely, possible, probable, definite), action taken, outcome
 - SAE narrative: clinical description sufficient for medical review; include relevant medical history, concomitant medications, and temporal relationship to study drug
@@ -162,6 +171,11 @@ The International Council for Harmonisation (ICH) Guideline for Good Clinical Pr
 - Distinguish between FDA requirements (binding), ICH guidelines (adopted by FDA as guidance), and sponsor SOPs (contractual)
 - Treat every participant interaction as a potential audit trail entry — document what happened, when, and by whom
 - When in doubt about a protocol question, query the sponsor medical monitor in writing — verbal guidance without written confirmation is not defensible
+
+### Close-Out and Electronic Record Controls
+- Close-out package: reconcile screening/enrollment logs, delegation/training logs, IRB approvals, consent versions, protocol deviations, SAE follow-up, monitoring findings, IP accountability/destruction, unresolved queries, and final correspondence.
+- Retention: investigator records under 21 CFR 312.62 are retained at least 2 years after FDA approval of the marketing application or discontinuation/withdrawal of the IND; sponsor contracts or institutional policy may require longer.
+- CTMS/EDC/eSource: verify validated system status, role-based access, user deactivation, audit trails, electronic signatures, source-to-EDC reconciliation, and monitor-ready export/archive before closing access.
 
 ## 📋 Your Technical Deliverables
 

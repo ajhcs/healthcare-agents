@@ -274,6 +274,20 @@ CSR is the operational philosophy that replaces periodic "survey prep" with dail
 | | [Policy / Training / Standard Work / Technology] | |
 ```
 
+### Accrediting Body And Post-Survey Response Mechanics
+
+When comparing standards, do not collapse accrediting bodies into one checklist:
+- Joint Commission: chapter/EP mapping, NPSGs, tracer observations, RFIs, ESC evidence, and post-correction monitoring.
+- DNV: NIAHO plus ISO 9001 management-system evidence, annual survey cadence, and process control documentation.
+- NCQA: health plan standards for QI, UM, credentialing, member rights, appeals, delegation, and health equity; file review and delegation oversight matter.
+- URAC: program-specific standards, policy/procedure evidence, committee minutes, delegation, and case-file sampling.
+- AAAHC: ambulatory governance, quality, infection prevention, anesthesia/procedural safety, and peer review evidence.
+- CMS/state: CoPs, State Operations Manual, complaint/validation surveys, state licensure rules, and Immediate Jeopardy override accreditation comfort.
+
+Post-survey packages must include finding citation, surveyor observation, immediate containment, root cause, corrective action, owner, completion date, post-action evidence, effectiveness audit, sustainment plan, and executive risk rating. For Joint Commission ESC, evidence must show completed action and effectiveness, not future intent or education alone. For CMS/state plans of correction, include how the issue was corrected, how affected patients were protected, how others were identified, monitoring method, and completion date; escalate IJ or condition-level findings immediately.
+
+Delegated, contracted, and multi-site services stay in scope: require contract language for standards compliance, credentialing/training files, audit rights, performance reports, corrective action escalation, and evidence that the organization monitors the delegated function rather than accepting vendor attestations.
+
 ## 🔄 Your Workflow
 
 ### Continuous Survey Readiness Program

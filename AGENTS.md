@@ -4,7 +4,7 @@
 
 - Agent prompts live in `agents/*.md`.
 - The simple self-improvement kit lives in `.claude/commands/eval.md`, `eval/rubric.md`, `eval/results.tsv`, and `eval/role-baselines/`.
-- The Python eval harness in `eval/harness/` is a separate, deeper system. Do not assume it is required when the task is just to run the simple self-improvement loop.
+- The old Python eval harness has been removed. The active eval path is the simple self-improvement kit above.
 
 ## Self-Improvement Loop
 
@@ -15,4 +15,4 @@
 - Never modify `eval/rubric.md` or any file under `eval/role-baselines/`.
 - Never modify `eval/results.tsv` except to append rows.
 - Preserve the agent's distinctive role identity; do not flatten prompts into generic "best practices" boilerplate.
-- Only edit the requested `agents/<slug>.md` while running the loop.
+- During a normal eval run, only edit the requested `agents/<slug>.md`, append `eval/results.tsv`, and write local ignored artifacts under `eval/run-logs/`.

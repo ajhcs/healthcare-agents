@@ -132,7 +132,7 @@ Every agent produces structured, actionable deliverables -- compliance assessmen
 
 Full scores and iteration history: [`eval/results.tsv`](eval/results.tsv)
 
-**Infrastructure:** The `/eval` skill runs the loop. A frozen rubric at `eval/rubric.md` keeps scoring consistent across runs. A calibration pipeline ensures scorer reliability before any agent edits land.
+**Infrastructure:** The `/eval` skill runs the loop. A frozen rubric at `eval/rubric.md` keeps scoring consistent across runs, and role baselines help the scorer test omitted responsibilities rather than only what the prompt already claims.
 
 ## The 51 Agents
 
@@ -282,7 +282,7 @@ Then run from either tool:
 
 The loop generates domain-specific exam questions, scores the agent's answers against a frozen rubric, identifies weak areas, and patches the prompt -- while preserving the agent's identity and voice. In runtimes that support native subagents, the strongest model scores while a faster model edits.
 
-This does **not** require the Python eval harness. See [INSTALL.md](INSTALL.md) for the full setup.
+See [INSTALL.md](INSTALL.md) for the full setup.
 
 ## Compatible Tools
 

@@ -99,14 +99,19 @@ The MDS 3.0 is the federally mandated, standardized, comprehensive assessment in
 
 | Assessment Type | Code | When Required | Medicare Payment |
 |----------------|------|---------------|-----------------|
-| Admission | NC | Within 14 days of admission | Sets initial PDPM |
-| 5-Day (OMRA) | N5 | Days 1-5 of Medicare Part A stay | Sets initial PDPM |
-| Interim Payment Assessment (IPA) | NP | When significant change in clinical status warrants reclassification | Adjusts PDPM |
-| Significant Change in Status (SCSA) | NS | When significant improvement or decline occurs | Adjusts care plan and payment |
+| Admission | NC | Within 14 days of admission | Comprehensive baseline for care planning; not the Medicare PPS payment assessment |
+| 5-Day PPS | N5 | ARD days 1-8 of Medicare Part A stay under the RAI Manual rules | Sets initial PDPM HIPPS code |
+| Interim Payment Assessment (IPA) | NP | Optional PPS assessment when clinical status changes enough that payment classification should change | Adjusts PDPM from the IPA ARD forward |
+| Significant Change in Status (SCSA) | NS | When significant improvement or decline affects more than one care area and requires IDT review | Updates comprehensive assessment/care plan; coordinate with IPA if PPS payment also changes |
 | Quarterly | NQ | Every 92 days | Care planning (not directly payment) |
 | Annual | NA | Within 366 days of most recent full assessment | Comprehensive care plan update |
 | Discharge | ND | Within 14 days of discharge | Discharge planning |
-| Reentry | NR | Within 14 days of return from hospital | Resets PDPM |
+| Reentry | NR | When resident returns after temporary discharge/hospital observation | Tracks return status; does not by itself reset PDPM |
+
+**MDS/PDPM trigger discipline**:
+- For a Medicare Part A decline or improvement, separate the **care-planning trigger** (SCSA/care plan revision) from the **payment trigger** (IPA decision, ARD, HIPPS change, claim impact).
+- Before changing PDPM, reconcile orders, nursing notes, therapy documentation, physician diagnoses, Section GG usual performance, Section O services, isolation criteria, PHQ-9/BIMS, and NTA comorbidities.
+- If documentation conflicts, hold the billing/correction question with MDS, therapy, billing, compliance, and the attending clinician; do not optimize the HIPPS code ahead of support in the medical record.
 
 **Key MDS sections**:
 - **Section A**: Identification and demographics
@@ -206,6 +211,8 @@ PBJ is the mandatory electronic staffing data submission system for nursing faci
 - Ensure agency/contract staff hours are captured — missing agency hours artificially deflates staffing metrics
 - Census data must match MDS census records
 - CMS audits PBJ data against payroll — discrepancies can trigger penalties
+- Reconcile quarter-end PBJ by employee ID, job category, agency invoice, exempt/admin nursing treatment, daily census, hire/termination dates, and submission file acceptance. Do not explain a staffing-star drop until payroll, agency, census, and case-mix files tie out.
+- For Five-Star action plans, separate levers by **health inspection** (scope/severity and repeat citations), **staffing** (RN HPRD, total HPRD, weekend coverage, agency reliability), and **quality measures** (MDS source item, denominator, owner, intervention, audit sample).
 
 ### Survey Process
 
@@ -339,6 +346,13 @@ PBJ is the mandatory electronic staffing data submission system for nursing faci
 
 **Completion Date**: [Date]
 **Responsible Party**: [Name/Title]
+
+## Evidence and Monitoring
+| Element | Required Evidence | Owner | Frequency | Duration |
+|---------|------------------|-------|-----------|----------|
+| Immediate resident protection | Rounds, reassessments, notifications, orders/care-plan updates | Administrator/DON | Shift/daily | Until stable |
+| Systemic correction | Policy/workflow change, competency validation, audit tool | Dept owner | Weekly | 4-12 weeks |
+| QAPI escalation | Trend graph, root cause, PIP minutes, leadership sign-off | QAPI chair | Monthly | Until sustained |
 ```
 
 ## 🔄 Your Workflow

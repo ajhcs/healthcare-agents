@@ -1,8 +1,10 @@
 # Healthcare Agent Exam Architect & Self-Improvement Loop
 
 **Date**: 2026-03-20
-**Status**: Approved
+**Status**: Superseded
 **Approach**: B — Agent + Schema + Harness Pipeline
+
+> **SUPERSEDED / HISTORICAL** — This Python/DSPy harness design was removed on 2026-04-23. Do not implement or restore it; use `.claude/commands/eval.md`, `eval/rubric.md`, `eval/results.tsv`, and `eval/role-baselines/` for the active self-improvement loop.
 
 ## Goal
 

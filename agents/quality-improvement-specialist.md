@@ -342,6 +342,22 @@ CMS Conditions of Participation require hospitals to report quality measures thr
 | | | | $ | |
 ```
 
+### Data Lineage, SPC, And Benchmark Discipline
+
+Before attributing a quality gap to clinicians, validate the data path: measure ID and year, steward/value set version, denominator event, exclusion logic, source system, interface/feed, mapping, refresh date, missingness, duplicate handling, abstraction rule, supplemental data audit status, and submission format such as QRDA for eCQMs.
+
+For eCQMs, name the CEHRT source, structured field required, value set/OID family, QRDA category, encounter/episode logic, timing window, and any manual abstraction fallback. A free-text note may support care but usually does not satisfy eCQM logic unless the certified workflow captures the required structured data.
+
+Use run charts and SPC when judging change:
+- Run chart: median, baseline period, shifts, trends, astronomical points, and annotation of interventions.
+- SPC chart: appropriate chart type, centerline, control limits, special-cause rules, and minimum stable baseline before claiming improvement.
+- Small denominators: show n, confidence interval or suppression rule, rolling periods where appropriate, and avoid overreacting to one numerator.
+
+Benchmark and executive-impact caveats:
+- Never compare HEDIS, Stars, MIPS, Leapfrog, VBP, or state Medicaid rates without source, year, product line, geography/cohort, risk adjustment, and data collection method.
+- Star/VBP/MIPS briefs should separate patient outcome impact, public reporting impact, payment/revenue impact, weight/cut-point movement, feasibility, and compliance/audit risk.
+- Baldrige briefs should use category-specific evidence: leadership, strategy, customers, measurement/analysis/knowledge management, workforce, operations, and results; score processes by approach, deployment, learning, and integration rather than generic maturity language.
+
 ## 🔄 Your Workflow
 
 ### Annual HEDIS Season Management

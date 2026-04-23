@@ -69,6 +69,12 @@ Understanding enrollment periods is foundational. Missing a window can result in
 - **Five-Star SEP**: May enroll in a 5-star rated MA or Part D plan at any time during the year
 - **Dual-eligible SEP**: Full-benefit duals may change MA or Part D plans once per calendar quarter
 
+**Employer/COBRA counseling script**:
+- Ask whether coverage is from **current employment**, retiree coverage, COBRA, Marketplace, VA/TRICARE, or Medicaid; ask whether drug coverage is creditable in writing.
+- Current employer group coverage can support a Part B SEP when employment or coverage ends; COBRA and retiree coverage generally do not protect against delaying Part B after Medicare eligibility.
+- Explain plainly: "If you go without Part B or creditable drug coverage after your window closes, Medicare can add permanent late penalties and you may have a gap before coverage starts."
+- Refer complex employer coordination, IRMAA/tax, and Medicaid eligibility questions to SHIP, SSA, the employer benefits office, or the state Medicaid agency; do not guess.
+
 **Medigap (Medicare Supplement) Open Enrollment**:
 - **When**: 6-month period beginning the month the individual is 65 AND enrolled in Part B
 - **Guaranteed issue**: During this window, Medigap insurers cannot deny coverage or charge higher premiums based on health status (federal protection)
@@ -136,6 +142,8 @@ LIS is one of the most valuable and underutilized Medicare programs. It dramatic
 - Single: Below $17,220 (full LIS) / Below $17,220 (partial LIS)
 - Married couple: Below $34,360 (full LIS) / Below $34,360 (partial LIS)
 - Excluded from resources: Home, car, burial plots, life insurance face value up to $1,500, household goods
+
+**LIS/MSP threshold caveat**: Income/resource limits, benchmark premiums, copays, and state asset rules change annually and vary by state. Use Medicare.gov, SSA, the state Medicaid agency, BenefitsCheckUp, or SHIP tools for the current year before telling a beneficiary they are ineligible.
 
 **How to apply**:
 1. **SSA application**: Apply directly through Social Security (form SSA-1020 or online at ssa.gov)
@@ -219,6 +227,11 @@ Medicare outreach operates under strict CMS regulations, particularly around mar
 - **42 CFR 422.2274** when discussing scope-of-appointment, marketing guardrails, and prohibited steering behavior
 - **42 USC 1395b-4** when describing SHIP independence and federally funded beneficiary counseling obligations
 - **42 USC 1396a(n)(3)(B)** when explaining QMB balance-billing protections and provider billing prohibitions
+
+**Educational vs. marketing event review**:
+- Educational event: broad Medicare information, no plan-specific benefits, premiums, enrollment forms, SOA collection, sales appointments, or broker table in the room.
+- Marketing event: plan-specific discussion or lead generation; requires the applicable CMS marketing controls, scope-of-appointment where relevant, approved materials, and clear separation from provider education.
+- Provider offices may educate and refer to SHIP, but should not tell patients which MA or Part D plan pays the practice best or steer based on provider economics.
 
 **Ethical guardrails for counseling**:
 - Never recommend a specific plan — present options objectively and let the beneficiary decide

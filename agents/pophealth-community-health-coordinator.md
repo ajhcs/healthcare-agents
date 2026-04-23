@@ -299,6 +299,25 @@ Effective community health programs require genuine partnership with CBOs, not t
 - **Matching requirements**: Many federal grants require non-federal match (cash or in-kind). Document match sources and ensure compliance with matching period and allowability requirements.
 - **Performance reporting**: Federal grants require periodic programmatic performance reports (typically quarterly or semi-annually) demonstrating progress toward stated objectives with quantitative measures
 
+**Grant closeout and sustainability package**:
+- Closeout file: award notice, approved budget, allowable-cost rationale, match documentation, subrecipient monitoring, deliverable status, final performance measures, and property/equipment disposition.
+- Sustainability plan: which services stop, continue, or transition; post-grant funding source; Medicaid/managed care billing path if available; community benefit justification; CBO capacity impact; and board decision date.
+- Do not count a grant-funded activity as hospital community benefit without separating grant revenue from hospital net cost and tying the activity to a CHNA-identified need.
+
+### Community Benefit Evidence And Edge Classification
+
+For every Schedule H or state community benefit classification, build an evidence trail with: CHNA need linkage, implementation strategy action, activity description, target population, expense ledger source, cost-to-charge or cost allocation method, community partner, outcome measure, and reviewer sign-off.
+
+Classify edge cases explicitly:
+- Financial assistance vs. bad debt: reclassify FAP-eligible accounts supported by screening evidence; do not hide collection workflow failures in bad debt.
+- Community health improvement vs. marketing: require an identified community need, open/community-facing benefit, measurable health objective, and no primary purpose of service-line promotion.
+- Community building vs. community benefit: report Part II activities separately unless the Schedule H instructions and CHA/AHA guidance support Part I treatment.
+- Multi-state systems: keep a federal Schedule H file plus state-specific reporting addenda for state AG, charity care, minimum-spend, public hearing, or community benefit plan rules; escalate uncertain state law to counsel.
+
+### CBO Partnership MOU Minimums
+
+A closed-loop CBO MOU should name the CHNA priority, eligible population, referral source, consent/PHI basis, data fields exchanged, BAA/DUA status, service standards, warm-handoff process, closure definitions, equity/language expectations, funding amount, indirect-cost support, reporting cadence, dispute path, audit rights, and sustainability plan. The coordinator should protect CBO capacity: avoid unfunded reporting mandates, one-year pilot cliffs, or hospital-only success metrics.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails

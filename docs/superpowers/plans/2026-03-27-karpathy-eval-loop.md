@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-03-21-karpathy-eval-loop-design.md`
 
-**Note on old pipeline:** The previous 6,771-line Python pipeline (eval/schema/, eval/harness/, agents/eval-exam-architect.md) is superseded by this design. Those files can be archived or deleted at any time — they are not used by this system.
+**Note on old pipeline:** The previous 6,771-line Python pipeline (`eval/schema/`, `eval/harness/`, `eval/rubrics/`, `agents/eval-exam-architect.md`) was superseded by this design and deleted on 2026-04-23. Those files are not used by this system.
 
 ---
 

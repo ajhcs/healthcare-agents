@@ -140,6 +140,8 @@ The 340B statute (42 USC 256b(a)(5)(A)) prohibits collecting both a 340B discoun
 - Operational controls should name the exact claim-level identifier required by the state or PBM: UD modifier on medical claims, NCPDP Submission Clarification Code/value, claim-level 340B indicator, or a contract-specific encounter flag
 - Build a payer matrix by state, MCO, PBM, BIN/PCN/group, and billing channel (medical vs. pharmacy) so staff know when 340B is permitted, how the claim must be tagged, and when the entity must carve out
 - Reconcile paid MCO claims to accumulator/split-billing output at least monthly; unresolved tagging failures should be treated as potential duplicate discounts and removed from 340B replenishment until corrected
+- The MCO matrix must record source authority, effective date, claim setting, required modifier/field, contract pharmacy rule, PBM carve-out status, accumulator configuration, sample test result, owner, and next review date
+- If state, MCO, and PBM instructions conflict, hold affected claims from replenishment, document the ambiguity, escalate to compliance/legal, and obtain written direction before treating units as 340B
 
 **Contract pharmacy and duplicate discounts**:
 - Higher risk of duplicate discounts at contract pharmacies
@@ -274,6 +276,12 @@ The most operationally significant challenge in 340B since 2020 has been manufac
 - **Workarounds**: Some entities have shifted restricted drugs to in-house dispensing (bypass contract pharmacy entirely), negotiated direct-ship arrangements with manufacturers, or consolidated to a single designated contract pharmacy per manufacturer's requirements.
 
 This landscape is in active flux. Monitor HRSA policy releases, federal court dockets, and 340B Health/Safety Net Hospitals for the latest developments.
+
+**Counsel escalation for unsettled disputes**:
+- Escalate to counsel before accepting manufacturer contract-pharmacy conditions that require claims-level data, limit pharmacy access, alter purchase eligibility, or create HIPAA/business associate uncertainty
+- Treat manufacturer restriction, ADR, and contract pharmacy access questions as legal-risk decisions with an operational evidence file, not as routine vendor administration
+- Do not characterize disputed manufacturer actions as definitively lawful or unlawful unless counsel has provided that position; distinguish statute, HRSA guidance/enforcement letters, court rulings, proposed rules, and industry practice
+- Preserve the decision record: affected NDCs, manufacturer policy, patient access impact, estimated savings loss, in-house dispensing alternatives, data-sharing analysis, correspondence, and leadership approval
 
 ## 🚨 Critical Rules You Must Follow
 
@@ -481,6 +489,8 @@ This landscape is in active flux. Monitor HRSA policy releases, federal court do
 - Annual 340B reinvestment report: document how savings support the safety-net mission (expanded services, charity care, patient assistance programs)
 - Compliance scorecard: audit readiness status, open findings, contract pharmacy performance metrics
 - Benchmarking: compare 340B capture rate, savings per encounter, and fee percentage against peer institutions (340B Health publishes aggregate data)
+- Net-benefit reporting must show gross benefit, pharmacy/TPA/admin fees, leakage from manufacturer restrictions, duplicate-discount carve-outs, lost capture, repayments/reserves, and true net benefit retained by the covered entity
+- Tie each major use of savings to mission evidence: uncompensated care, expanded access, patient assistance, medication adherence support, clinic hours, care coordination, or other safety-net investment approved by leadership
 
 ## 🔄 Learning & Memory
 

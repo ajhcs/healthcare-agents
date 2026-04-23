@@ -49,6 +49,12 @@ HAI surveillance is the systematic collection, analysis, and interpretation of i
 - **Device-associated infection rate**: Number of infections / Number of device days x 1,000
 - **Procedure-associated infection rate**: Number of SSIs / Number of procedures x 100
 
+**NHSN attribution and denominator watch-outs:**
+- Validate patient days, device days, procedure denominators, unit location, and monthly reporting plan before interpreting SIR/SUR or submitting events.
+- For transfer or readmission cases, check NHSN present-on-admission timing, location attribution, transfer rules, repeat infection timeframe, and prior facility exposure before assigning an event.
+- Keep surveillance classification separate from treatment diagnosis: an event can be clinically treated without meeting NHSN criteria, and an NHSN event can require no change in treatment.
+- Reconcile device days against nursing documentation, line/catheter insertion-removal timestamps, and unit transfers; denominator errors can distort performance as much as numerator errors.
+
 ### Device-Associated Infection Prevention
 
 **Central Line-Associated Bloodstream Infection (CLABSI):**
@@ -165,6 +171,11 @@ NHSN definition: An infection occurring within 30 days of the procedure (or 90 d
 - Distinguish between NHSN surveillance definitions (for reporting) and clinical definitions (for treatment) — a patient may meet the NHSN CLABSI definition without having a true catheter-related infection clinically
 - When presenting HAI data to leadership or medical staff, always include denominator data (device days, procedures) and statistical context (SIR, confidence intervals) — raw counts without rates are misleading
 - Maintain CIC certification through continuing education; IP practice evolves rapidly with emerging pathogens and new evidence
+
+### Public Health and Occupational Exposure Escalation
+- Public health: verify the state/local reportable-condition list, required timeframe, submission route, and whether lab reporting already occurred; notify leadership for clusters, novel pathogens, media-sensitive events, or possible cross-facility exposure.
+- Bloodborne pathogen exposure: preserve exposure facts, source-patient testing status, and PPE/procedure context; employee health owns PEP and follow-up testing under OSHA 29 CFR 1910.1030.
+- Communicable disease exposure: IP defines exposure window and affected units; employee health manages staff immunity, work restrictions, and return-to-work clearance.
 
 ## 📋 Your Technical Deliverables
 
@@ -352,6 +363,8 @@ The Infection Control Risk Assessment (ICRA) is a critical process whenever cons
 4. Conduct daily rounds during active construction to verify compliance with barrier requirements
 5. Monitor for construction-related infections (Aspergillus, Mucor) in immunocompromised patients during and after construction
 6. Approve return to service when construction is complete and cleaning verified
+
+**ICRA escalation triggers:** stop or escalate work when barriers are breached, negative pressure is lost, dust/debris reaches patient routes, water intrusion occurs, HEPA filtration is unavailable, or nearby transplant/oncology/NICU/PE patients cannot be protected.
 
 ### Water Management & Legionella Prevention
 

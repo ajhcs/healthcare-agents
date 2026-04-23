@@ -207,6 +207,13 @@ CMS Conditions of Participation (42 CFR 482.13) require hospitals to establish a
 - All grievance records retained per state and federal requirements
 - Grievance data must be reported to the governing body (board) for oversight
 
+**Experience escalation decision rules**:
+- Keep as **service recovery** only when staff present can resolve promptly, the patient/family accepts the resolution, and no rights, harm, abuse, discrimination, privacy, or billing-care issue is alleged
+- Convert to **formal grievance** when written, post-discharge, unresolved at point of service, requested as formal, or involving patient rights under 42 CFR 482.13
+- Refer to **patient safety/quality** when the concern alleges harm, near miss, unsafe care transition, medication explanation failure with clinical consequence, restraint/seclusion concern, or repeated unit-level defect
+- Refer to **risk/legal/compliance** before discussing compensation, liability, media-sensitive facts, discrimination, privacy breach, abuse/neglect, law enforcement, or state agency contact
+- Preserve patient trust without overpromising: acknowledge concern, explain the process and next contact, document facts, and avoid legal or clinical conclusions outside the experience role
+
 **Physician communication coaching**: Targeted interventions for physicians whose patient experience scores consistently fall below the unit or department average:
 - Individual coaching sessions using recorded or observed encounters (with consent)
 - Communication skills training focusing on the "sit, listen, explain, ask" model
@@ -388,11 +395,15 @@ CMS Conditions of Participation (42 CFR 482.13) require hospitals to establish a
 - Use NLP on patient comments to identify emerging themes before they appear in structured survey data
 - Create real-time experience dashboards fed by text/IVR feedback, rounding data, and call light metrics
 - Model the financial impact of experience improvement on VBP payments, readmission rates, and market share
+- For small-n units or providers, report confidence limits, rolling periods, comment themes, and direct observation before ranking people; do not overreact to one survey return or ignore repeated qualitative signals
+- Segment by language, disability accommodation, race/ethnicity where available, payer/product line, age, digital access, and caregiver involvement to find experience inequities hidden by average scores
+- Pair each experience intervention with an equity check: who has trouble accessing it, which language or literacy supports are needed, and whether the change burdens patients, families, or frontline staff
 
 ### CAHPS Across Product Lines
-- Manage CAHPS surveys beyond HCAHPS: CG-CAHPS (clinician/group), OAS CAHPS (outpatient/ambulatory surgery), HHCAHPS (home health), ICH CAHPS (in-center hemodialysis), HHOS (hospice)
-- Align improvement strategies across CAHPS instruments where composites overlap (e.g., communication with providers appears across multiple CAHPS surveys)
-- Coordinate with health plan CAHPS for Medicare Advantage Star Ratings impact -- Member Experience domain uses CAHPS data
+- Select the CAHPS instrument by setting and accountability: **HCAHPS** for acute inpatient discharges, **CG-CAHPS** for clinician/group ambulatory practice, **OAS CAHPS** for outpatient/ambulatory surgery, **HHCAHPS** for home health, **Hospice CAHPS** for hospice, **ICH CAHPS** for dialysis, and health plan CAHPS for Medicare Advantage/Medicaid plan member experience
+- For each CAHPS product line, name the owner, eligible population, vendor/mode rules, reporting lag, public-reporting or Stars/VBP linkage, and the operational leader who can change the workflow
+- Align overlapping domains such as access, provider communication, care coordination, discharge/care transition, medication understanding, and respect, but do not import HCAHPS sampling or inpatient interventions into a non-hospital setting without checking the CAHPS specification
+- When building a cross-continuum action plan, show the handoff: inpatient discharge understanding -> ambulatory follow-up access -> home health start-of-care communication -> plan member support
 
 ### VBP Optimization Modeling
 - Model the financial impact of specific HCAHPS composite improvements on VBP payment adjustments

@@ -1,64 +1,93 @@
-Evaluate and improve a healthcare agent's system prompt. Run up to 5 iterations of: generate questions → answer → judge → improve → re-score → commit if better.
+Evaluate and improve one healthcare agent's system prompt. Run up to 5 iterations of: prepare fixed questions -> answer -> judge -> improve -> re-score -> commit if better.
 
 **Target agent:** agents/$ARGUMENTS.md
 
 ---
 
+## Support Docs
+
+Read these as operating instructions for the eval run:
+
+- `eval/rubric.md` — frozen scoring metric.
+- `eval/role-baselines/$ARGUMENTS.md` — frozen expected-capability baseline for this agent.
+- `eval/role-baselines/INDEX.md` — confirms baseline coverage for all installable agents.
+- `docs/eval/exam-architect-playbook.md` — scorer and question-writing guidance.
+- `docs/eval/model-tuning.md` — model-role and manifest guidance for current SOTA models.
+- `eval/meta/README.md` and linked meta-eval docs — optional calibration checks for release or close-call scoring.
+
+Do not use or recreate the retired Python/DSPy harness. The active system is this command, the frozen rubric, role baselines, optional local run logs, and git.
+
+---
+
 ## Preferred Execution Mode
 
-When the runtime supports native subagents, model routing, or specialist workers, prefer a three-role loop:
+When the runtime supports native subagents, model routing, or specialist workers, prefer a four-role loop:
 
-- **Parent orchestrator** — owns preflight checks, fixed question persistence within an iteration, line-cap enforcement, `eval/results.tsv` append, and commit/revert
-- **Scorer/judge** — strongest available reasoning model; read-only; generates the 25-question exam, scores it, and returns a structured critique
-- **Editor** — cheaper or faster model; edits ONLY `agents/$ARGUMENTS.md` using the scorer's critique
+- **Parent orchestrator** — owns preflight checks, fixed-question persistence within an iteration, line-cap enforcement, local run logs, `eval/results.tsv` append, and commit/revert.
+- **Scorer/judge** — strongest available reasoning model; read-only; generates the exam, scores answers, checks calibration risk, and returns structured critique.
+- **Editor** — faster strong model; edits only `agents/$ARGUMENTS.md` using the scorer's brief.
+- **Adjudicator** — optional different model family for close deltas, high-risk roles, suspicious scoring, or release scoring.
 
-Do **NOT** recursively invoke a full agent CLI inside itself (for example nested `codex exec`) when native subagents are available. That adds avoidable runtime, sandbox, and tool-recursion overhead.
+Do not recursively invoke a full agent CLI inside itself when native subagents are available. If no subagents are available, a single agent may run the same workflow end-to-end.
 
-If the runtime does **not** support native subagents, a single agent may still run the loop end-to-end using the same rules below.
+Use `docs/eval/model-tuning.md` for model-role guidance. Pin exact model IDs in run logs when the runtime exposes them; do not rely only on UI or marketing names.
 
 ---
 
 ## Rules
 
-- NEVER modify `eval/rubric.md` or any file in `eval/role-baselines/`.
-- NEVER modify `eval/results.tsv` except to append rows.
-- The ONLY file you may edit is `agents/$ARGUMENTS.md`.
+- Never modify `eval/rubric.md`.
+- Never modify files in `eval/role-baselines/` during an eval run.
+- Never modify `eval/results.tsv` except to append rows.
+- The editor may edit only `agents/$ARGUMENTS.md`.
+- The parent may write local run artifacts under `eval/run-logs/`.
 - One agent per session. After 5 iterations, print the summary and stop.
-- Each iteration is independent. Read the agent file fresh each time. Do NOT reference or build on previous iterations' questions, answers, or analysis.
-- You are both the test-taker and the judge. Be rigorous — do not inflate scores.
-- Scores across iterations are NOT comparable (different questions). Only the delta within an iteration (same questions, before vs after edit) is meaningful.
-- Do NOT broaden the role into generic healthcare administration. Preserve the agent's specialty, practitioner voice, and strongest differentiators.
-- Prefer sharpening missing mechanics, formulas, workflows, and citations over adding broad "best practices" boilerplate.
+- Each iteration is independent. Read the agent file fresh each time.
+- Scores across iterations are not comparable because questions differ. Only the same-question pre/post delta within an iteration is meaningful.
+- Any before/after or score-only baseline run must persist the full question set before answers are generated. Focus rows, weak-area labels, or paraphrases are not enough for retesting.
+- Do not broaden the role into generic healthcare administration. Preserve the agent's specialty, practitioner voice, and strongest differentiators.
+- Prefer sharpening missing mechanics, formulas, workflows, citations, and deliverables over adding broad best-practices boilerplate.
+- Do not log API keys, secrets, PHI, patient data, or private operational credentials.
 
 ---
 
 ## Preflight Checks
 
-Run these checks before entering the loop. If ANY fail, print the error message and stop immediately.
+Run these checks before entering the loop. If any fail, print the error message and stop immediately.
 
 1. Verify not on main:
    Run: `git branch --show-current`
-   If the result is `main` or `master`, stop with: "❌ Switch to a feature branch first: `git checkout -b eval/$ARGUMENTS`"
+   If the result is `main` or `master`, stop with: "Switch to a feature branch first: `git checkout -b eval/$ARGUMENTS`"
 
 2. Verify clean index:
    Run: `git diff --cached --name-only`
-   If there is any output, stop with: "❌ You have staged changes. Commit or unstage them first: `git reset HEAD`"
+   If there is any output, stop with: "You have staged changes. Commit or unstage them first: `git reset HEAD`"
 
 3. Verify clean target file:
    Run: `git diff --name-only -- agents/$ARGUMENTS.md`
-   If there is any output, stop with: "❌ agents/$ARGUMENTS.md has uncommitted changes. Commit or stash first."
+   If there is any output, stop with: "agents/$ARGUMENTS.md has uncommitted changes. Commit or stash first."
 
 4. Verify agent file exists:
-   Check that `agents/$ARGUMENTS.md` exists. If not, stop with: "❌ No agent file found at agents/$ARGUMENTS.md"
+   Check that `agents/$ARGUMENTS.md` exists. If not, stop with: "No agent file found at agents/$ARGUMENTS.md"
 
-5. Verify rubric exists:
-   Check that `eval/rubric.md` exists. If not, stop with: "❌ Frozen rubric not found at eval/rubric.md"
+5. Verify required eval files exist:
+   Required:
+   - `eval/rubric.md`
+   - `eval/role-baselines/$ARGUMENTS.md`
+   - `docs/eval/exam-architect-playbook.md`
+   - `docs/eval/model-tuning.md`
 
-6. Record session-start line count (this value is FIXED for the entire session — do NOT recompute it in later iterations):
+   If the role baseline is missing, stop and create the baseline first. Baselines are now expected for all 51 installable agents.
+
+6. Record session-start line count:
    Run: `wc -l < agents/$ARGUMENTS.md`
-   Store as BASELINE_LINES.
-   Compute LINE_CAP = max(BASELINE_LINES × 1.2, BASELINE_LINES + 50), rounded up to nearest integer.
-   Print: "✓ Preflight passed. Baseline: {BASELINE_LINES} lines. Cap: {LINE_CAP} lines."
+   Store as `BASELINE_LINES` for the whole session. Do not recompute it in later iterations.
+   Compute `LINE_CAP = max(BASELINE_LINES * 1.2, BASELINE_LINES + 50)`, rounded up.
+   Print: "Preflight passed. Baseline: {BASELINE_LINES} lines. Cap: {LINE_CAP} lines."
+
+7. Create a local run-log directory:
+   Use `eval/run-logs/<timestamp>-<agent-slug>/`.
+   Raw run logs are ignored by git by default. See `eval/run-logs/README.md`.
 
 ---
 
@@ -66,111 +95,237 @@ Run these checks before entering the loop. If ANY fail, print the error message 
 
 Repeat the following up to 5 times. Number each iteration starting from 1.
 
-### Step 1: Read inputs
+### Step 1: Read Inputs
 
-- Read `agents/$ARGUMENTS.md` fresh (do not rely on your memory of it from prior iterations).
-- Read `eval/role-baselines/$ARGUMENTS.md` if it exists. If not, that is fine — proceed without it.
-- Read `eval/rubric.md`.
+Read fresh:
 
-### Step 2: Generate 25 questions
+- `agents/$ARGUMENTS.md`
+- `eval/role-baselines/$ARGUMENTS.md`
+- `eval/rubric.md`
+- `docs/eval/exam-architect-playbook.md`
+- `docs/eval/model-tuning.md`
 
-Generate 25 challenge questions covering the agent's key responsibilities. Draw questions from BOTH:
-- The agent's .md content (what it claims to know)
-- The role baseline (what it SHOULD know, which may include things the .md omits)
+For release scoring, close deltas, or high-risk agents, also read:
 
-Mix of question types: factual knowledge, applied reasoning, edge cases, cross-domain scenarios. Each iteration must generate FRESH questions — never reuse questions from a prior iteration.
+- `eval/meta/judge-calibration-cases.md`
+- `eval/meta/scorer-consistency-check.md`
+- `eval/meta/prompt-overfitting-check.md`
 
-### Step 3: Answer all 25 questions
+### Step 2: Prepare 25 Questions
 
-Answer each question as if you ARE the agent — the .md file is your system prompt. Base your answers ONLY on what the agent .md contains. If the .md does not cover a topic, acknowledge the gap rather than fabricating an answer.
+Choose the question source in this order:
 
-### Step 4: Judge each answer
+1. If a deliberate train bank exists at `eval/question-banks/train/$ARGUMENTS.md`, use it for weakness discovery.
+2. Otherwise generate 25 fresh questions from the agent prompt, role baseline, and `docs/eval/exam-architect-playbook.md`.
+3. Use validation-bank questions only after a retained edit, and only for confidence checking.
+4. Never use holdout-bank questions to guide edits.
 
-Read the rubric. For each of the 25 question-answer pairs:
-- Score Accuracy (0-4), Completeness (0-4), Specificity (0-4)
-- Give a one-line justification per score
-- Apply scoring thresholds strictly: Accuracy 3+ requires specific codes/sections, Accuracy 4 requires named sources with dates/CFR numbers
-- Compute weighted score per question: (Accuracy × 0.40) + (Completeness × 0.35) + (Specificity × 0.25)
+Draw questions from both:
 
-Average weighted scores across 25 questions. Multiply by 25 for a 0-100 score. This is `score_pre_edit`.
+- The agent prompt: what it claims to know.
+- The role baseline: what the role should know, including omitted responsibilities.
 
-### Step 5: Identify weaknesses
+Default mix:
 
-From the scores, identify the 2-3 weakest areas (lowest-scoring questions and which criteria drove the low scores).
+- 5 factual mechanics
+- 8 applied reasoning
+- 5 edge cases
+- 4 cross-domain scenarios
+- 3 deliverable-production prompts
 
-If the runtime supports separate scorer and editor roles, the scorer should also produce an **improvement brief** for the editor containing:
+Persist the exact questions for the iteration in the run log before answering them. Reuse these same questions for the post-edit re-score within the same iteration.
 
-- 2-4 representative low-scoring questions
-- 2-4 targeted prompt changes with the expected gain from each
-- `identity_to_preserve` — the role traits, sections, and differentiators that must survive editing
-- `anti_patterns_to_avoid` — generic broadening, duplicated boilerplate, bland executive-speak, or any rewrite that moves the prompt toward the mean
+The question artifact is mandatory. Write `questions.md` and, when practical, `questions.json` with all 25 full questions. Each question must include:
 
-### Step 6: Edit the agent
+- stable question ID, `Q001` through `Q025`
+- full prompt text exactly as shown to the answerer
+- question type: factual mechanics, applied reasoning, edge case, cross-domain scenario, or deliverable production
+- source basis: agent prompt, role baseline, playbook blueprint, train bank, validation bank, holdout bank, or calibration case
+- expected coverage: the capabilities, source families, or deliverable elements the answer should address
+- scoring emphasis: accuracy, completeness, specificity, or mixed
 
-Edit `agents/$ARGUMENTS.md` to strengthen the weak areas identified in Step 5. Prefer adding specific guidance to existing sections over rewriting or reorganizing entire sections.
+Do not substitute short focus labels such as "network adequacy reporting" for the full prompt. If the full question text is not recoverable later, any retest must be labeled `fresh-comparable`, not `baseline-exact` or `same-question`.
 
-If an improvement brief exists:
+### Step 3: Answer All Questions
 
-- implement the highest-leverage 1-3 changes first
-- preserve everything listed under `identity_to_preserve`
-- explicitly avoid everything listed under `anti_patterns_to_avoid`
-- treat the editor as an implementer, not as the final judge
+Answer each question as if you are the target agent, with `agents/$ARGUMENTS.md` as the system prompt.
+
+Use only the agent prompt as the answerer's authority. If the prompt does not cover a topic, acknowledge the gap instead of fabricating detail.
+
+### Step 4: Judge Each Answer
+
+The scorer reads `eval/rubric.md` and scores each question-answer pair independently:
+
+- Accuracy: 0-4
+- Completeness: 0-4
+- Specificity: 0-4
+
+Apply the rubric strictly:
+
+- Accuracy 3+ requires specific codes, sections, standards, source families, or concrete authority references when the role calls for them.
+- Accuracy 4 requires the most specific authority level the prompt makes available.
+- Do not grant high accuracy for invented citations.
+- Do not reward verbosity when the answer is vague or unsafe.
+- Cite evidence from the answer and prompt; do not score from preference alone.
+
+Compute weighted score per question:
+
+```text
+(Accuracy * 0.40) + (Completeness * 0.35) + (Specificity * 0.25)
+```
+
+Average across 25 questions and multiply by 25 for a 0-100 score. This is `score_pre_edit`.
+
+The scorer output must include structured criterion detail:
+
+```json
+{
+  "question_source": "generated | train-bank | validation-bank | holdout-bank | calibration",
+  "score_pre_edit": 0,
+  "criteria_summary": {
+    "accuracy": {"score": 0, "evidence": "..."},
+    "completeness": {"score": 0, "evidence": "..."},
+    "specificity": {"score": 0, "evidence": "..."}
+  },
+  "weaknesses": [
+    {
+      "criterion": "accuracy | completeness | specificity",
+      "question_ids": ["Q003"],
+      "issue": "...",
+      "proposed_prompt_change": "..."
+    }
+  ],
+  "identity_to_preserve": [],
+  "anti_patterns_to_avoid": []
+}
+```
+
+### Step 5: Produce Improvement Brief
+
+From the scores, identify the 2-3 weakest areas. The scorer gives the editor a narrow improvement brief containing:
+
+- 2-4 representative low-scoring questions or paraphrased failure patterns.
+- 2-4 targeted prompt changes with expected gain.
+- The rubric criterion each change should improve.
+- `identity_to_preserve`: role traits, sections, and differentiators that must survive editing.
+- `anti_patterns_to_avoid`: generic broadening, duplicated boilerplate, bland executive-speak, or question-specific patching.
+
+Do not reveal hidden holdout material or answer-key wording to the editor.
+
+### Step 6: Edit The Agent
+
+Edit `agents/$ARGUMENTS.md` to strengthen the weak areas identified in Step 5.
+
+Editor constraints:
+
+- Implement the highest-leverage 1-3 changes first.
+- Prefer adding specific guidance to existing sections over rewriting or reorganizing entire sections.
+- Preserve all items under `identity_to_preserve`.
+- Avoid all listed anti-patterns.
+- Do not edit eval files, baselines, docs, or other agents.
 
 After editing, check line count:
-Run: `wc -l < agents/$ARGUMENTS.md`
-If the count exceeds LINE_CAP (computed in preflight — do NOT recompute from current file):
-  - Immediately run: `git restore agents/$ARGUMENTS.md`
-  - Append a row to `eval/results.tsv` with status `capped`, `score_pre_edit` as computed, `score_post_edit` as `N/A`, `delta` as `N/A`, and description noting the line cap was exceeded. The N/A values mark this row as a sentinel — no post-edit scoring occurred.
-  - Run: `git add eval/results.tsv && git commit -m "eval: $ARGUMENTS capped (exceeded line limit)"`
-  - Skip to the next iteration
 
-### Step 7: Re-score
-
-Re-answer the SAME 25 questions from Step 2 using the EDITED agent .md as your system prompt.
-Re-judge using the same rubric. Compute the new 0-100 score. This is `score_post_edit`.
-
-### Step 8: Log and commit
-
-Append a tab-separated row to `eval/results.tsv` BEFORE the commit decision (so every commit/revert path has a row ready to persist):
-
+```bash
+wc -l < agents/$ARGUMENTS.md
 ```
+
+If the count exceeds `LINE_CAP`:
+
+1. Immediately run `git restore agents/$ARGUMENTS.md`.
+2. Append a row to `eval/results.tsv` with status `capped`, `score_post_edit` as `N/A`, and `delta` as `N/A`.
+3. Write a capped summary in the run log.
+4. Run `git add eval/results.tsv && git commit -m "eval: $ARGUMENTS capped (exceeded line limit)"`.
+5. Skip to the next iteration.
+
+### Step 7: Re-Score
+
+Re-answer the same 25 questions from Step 2 using the edited agent prompt.
+
+Re-judge using the same rubric and scoring method. This is `score_post_edit`.
+
+If the delta is small, the role is high-risk, or the scorer behavior looks suspect, run the adjudicator or meta-eval checks described in `eval/meta/`.
+
+### Step 8: Log And Commit
+
+Before any commit/revert decision:
+
+1. Write run-log artifacts for the iteration, including:
+   - `manifest.json`
+   - `questions.md`
+   - `questions.json` when practical
+   - `scorer-output-pre.json`
+   - `editor-brief.md`
+   - `scorer-output-post.json`
+   - `summary.md`
+2. Verify `questions.md` contains all 25 complete question prompts. If not, stop and repair the artifact before editing or scoring.
+3. Ensure the manifest records exact model IDs when available, git state, file hashes, rubric hash, baseline hash, question source, question artifact paths, line cap, status, and calibration status.
+4. Append a tab-separated row to `eval/results.tsv`:
+
+```text
 {iteration}\t{$ARGUMENTS}\t{score_pre_edit}\t{score_post_edit}\t{delta}\t{status}\t{weak_areas}\t{description}
 ```
 
-Where `delta` = score_post_edit - score_pre_edit, and `status` is determined next.
+The existing TSV schema remains unchanged. Put the run-log directory path in `description` when one exists.
 
-Commit decision (three paths):
-- **If score_post_edit > score_pre_edit** (improved):
-  ```
+Commit decision:
+
+- If `score_post_edit > score_pre_edit`:
+
+  ```bash
   git add agents/$ARGUMENTS.md eval/results.tsv
-  git commit -m "eval: $ARGUMENTS {score_pre_edit}→{score_post_edit} (+{delta})"
+  git commit -m "eval: $ARGUMENTS {score_pre_edit}->{score_post_edit} (+{delta})"
   ```
-- **If score_post_edit <= score_pre_edit** (reverted):
-  ```
+
+- If `score_post_edit <= score_pre_edit`:
+
+  ```bash
   git restore agents/$ARGUMENTS.md
   git add eval/results.tsv
   git commit -m "eval: $ARGUMENTS reverted ({delta})"
   ```
 
-(The capped path is handled in Step 6 above.)
+Do not commit raw `eval/run-logs/` artifacts unless a human explicitly asks to promote a run log for review.
+
+---
+
+## Score-Only And Before/After Runs
+
+For score-only baselines, multi-agent scorecards, or before/after experiments:
+
+1. Create a run directory under `eval/run-logs/<timestamp>-<experiment-name>/`.
+2. For each agent, write the full 25-question set before answering:
+   - `baseline/<batch-or-agent>/questions.md`
+   - `baseline/<batch-or-agent>/questions.json` when practical
+3. Write baseline answers and scores separately from the question artifact.
+4. Give editors only the improvement brief, not hidden holdout material or answer keys.
+5. During retest, first load the baseline `questions.md`.
+6. If all 25 full prompts are present, retest with exactly those prompts and mark `question_source=baseline-exact`.
+7. If only focus rows, weak areas, or paraphrases are present, do not reconstruct them as exact. Generate comparable questions if useful and mark `question_source=fresh-comparable`.
+8. The final scorecard must include `question_source` for every row.
+
+This rule is required because before/after deltas are only defensible when the post-edit score uses the same questions as the pre-edit score.
 
 ---
 
 ## Completion
 
-After 5 iterations (or if interrupted), print a summary:
+After 5 iterations, or if interrupted, print:
 
-```
+```text
 === Eval Complete: $ARGUMENTS ===
 Iterations: {N}
 Results: {improved} improved, {reverted} reverted, {capped} capped
-Starting score (iteration 1 pre-edit): {score}
-Retained score on disk (last committed iteration): {score_post_edit from most recent iteration with status=improved, or starting score if none improved}
-Last attempted score: {score_post_edit from the last non-capped iteration, or N/A if the final iteration was capped}
+Starting score: {iteration 1 score_pre_edit}
+Retained score on disk: {score_post_edit from most recent improved iteration, or starting score if none improved}
+Last attempted score: {score_post_edit from the last non-capped iteration, or N/A}
 Results log: eval/results.tsv
+Run log: eval/run-logs/<timestamp>-<agent-slug>/
+Models: parent={id}, scorer={id}, editor={id}, adjudicator={id or none}
+Calibration: {not-run | passed | warning | failed}
 ```
 
-Note: "Retained score on disk" reflects the actual state of the agent .md on disk. "Last attempted score" is for the final scored attempt only; capped iterations have no post-edit score and should be shown as `N/A` in the TSV.
+Remember: retained score reflects the actual agent prompt on disk. Last attempted score may include a reverted edit.
 
 ---
 
@@ -178,13 +333,16 @@ Note: "Retained score on disk" reflects the actual state of the agent .md on dis
 
 When improving many agents:
 
-- run one agent per branch or worktree to avoid file and commit collisions
-- keep the scorer read-only and the editor single-file
-- let the parent orchestrator own git writes and `eval/results.tsv`
-- stop early when an agent clears the target score or when recent deltas are too small to justify another pass
+- Run one agent per branch or worktree to avoid file and commit collisions.
+- Keep scorers and adjudicators read-only.
+- Keep editors single-file.
+- Let the parent orchestrator own git writes and `eval/results.tsv`.
+- Stop early when an agent clears the target score or recent deltas are too small to justify another pass.
+- Use role baselines for every agent; missing baselines are now a setup failure.
 
-For Codex specifically, the highest-signal pattern so far is:
+For Codex and Claude Code under newer models:
 
-- scorer/judge: strongest available reasoning model
-- editor: faster, cheaper model
-- parent: orchestration only
+- Scorer/judge: strongest available reasoning model.
+- Editor: faster strong model.
+- Parent: reliable tool-using orchestrator.
+- Adjudicator: different strong model family when available.

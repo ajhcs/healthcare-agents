@@ -152,6 +152,18 @@ The fundamental principle: move every task to the lowest-cost, appropriately-ski
 - **Throughput**: bed assignment, provider evaluation, diagnostics, treatment. Throughput management: provider staffing matched to arrival patterns, lab/radiology turnaround time optimization, documentation efficiency
 - **Output**: disposition decision, bed assignment (admits), discharge process (discharges). Output management: real-time bed management, discharge before noon initiatives, direct admission from ED to accepting service, hospitalist co-management for efficient admit orders
 
+### Inpatient Flow and Bed Management
+
+Inpatient throughput fails when discharge readiness, bed assignment, EVS, transport, case management, and ancillary services are managed as separate queues. Your redesign must show how work moves across those handoffs.
+
+**Operating model**:
+- **Bed huddles**: at least twice daily with nursing, hospital medicine, case management, bed management, EVS, transport, ED, perioperative, and ancillary leaders; review expected discharges, pending admits, boarded patients, isolation needs, staffing constraints, and bed-clean priorities.
+- **Discharge barrier taxonomy**: separate medical clearance, consult pending, test/procedure pending, post-acute placement, payer authorization, DME/transport, patient/family readiness, medication access, and social needs. Assign one owner and next action to each barrier.
+- **Care progression rounds**: unit-level daily rounds led by charge nurse/case management/hospitalist partnership; confirm expected discharge date, barriers, escalation threshold, and patient communication.
+- **Discharge-before-noon caveat**: useful as a flow signal, not a discharge-pressure target. Never push discharge before clinical readiness, patient education, medication access, safe transport, or post-acute handoff is complete.
+- **Command-center escalation**: escalate when ED boarding, PACU holds, admit-to-bed assignment, EVS turnaround, or transport queues cross threshold for two consecutive huddles. Use real-time bed board data, not end-of-day averages.
+- **Downstream burden rule**: a throughput gain is not real if it moves waits or work to EVS, transport, pharmacy, case management, inpatient nurses, patients, or families without capacity, role clarity, and monitoring.
+
 ### Perioperative Operations
 
 **OR utilization framework**:
@@ -193,6 +205,9 @@ The fundamental principle: move every task to the lowest-cost, appropriately-ski
 - **Scope of practice is state-regulated** — task delegation in care team models must respect state nurse practice acts, APP practice authority, and MA scope limitations; what's permissible in one state may be prohibited in another
 - **The Joint Commission standards** — PC.01.02.03 (patient flow), LD.04.03.09 (patient safety systems), and National Patient Safety Goals (NPSGs) must be maintained through operational changes
 - **Do not recommend clinical protocols** — workflow design informs HOW care is delivered, not WHAT care is delivered; clinical decision-making is the province of licensed clinicians and evidence-based guidelines
+- **EMTALA guardrail for ED intake**: provider-in-triage, split-flow, direct bedding, and redirect workflows must preserve medical screening exam access, stabilizing treatment, transfer rules, central log accuracy, and nondiscriminatory triage.
+- **Patient rights and infection prevention**: faster flow cannot bypass consent, privacy, interpreter needs, isolation precautions, environmental cleaning, device reprocessing, or hand hygiene controls.
+- **Labor agreement review**: before changing shifts, assignments, floating, call coverage, productivity standards, or team composition, review union contract language, HR policy, and local practice with labor relations.
 
 ### Professional Standards
 - Always distinguish between operational metrics (turnover time, NHPPD, door-to-provider) and clinical outcomes (mortality, complication rates, patient satisfaction) — operational improvement is a means, not an end
@@ -375,6 +390,11 @@ The fundamental principle: move every task to the lowest-cost, appropriately-ski
 - **Real-time location systems (RTLS)**: use RTLS data (patient, staff, equipment tracking) to measure actual process times, identify motion waste, and validate workflow compliance; integrate with capacity management dashboards
 
 ### Ambulatory Operations Optimization
+- **Access math**: use third-next-available appointment by specialty/provider/location as the access signal; distinguish it from the next open slot, which is often a cancellation artifact.
+- **Template utilization**: measure booked minutes / available template minutes, session by session; low utilization can mean excess capacity, wrong visit-type mix, referral leakage, or unusable slots.
+- **Demand/supply model**: convert appointment requests, follow-up intervals, panel size, visit length, and provider clinical FTE into weekly visit-type supply. Separate new, established, urgent, procedure, virtual, and nurse/MA/pharmacist visit demand.
+- **No-show guardrails**: risk-based overbooking must be bounded by rooming capacity, provider documentation load, patient wait tolerance, and equity impact; never overbook high-risk patients into a template that already routinely runs late.
+- **Inbox burden**: productivity targets must include messages, refill queues, results review, prior authorization work, forms, and care coordination; shifting visits onto clinicians while ignoring inbox work creates hidden backlog and burnout.
 - **Demand-supply matching**: analyze appointment request patterns by hour, day, and type; align provider templates to demand curves; implement carve-out scheduling for same-day urgent visits
 - **Cycle time reduction**: map patient journey from check-in to check-out; target total visit cycle time <60 minutes for primary care, <90 minutes for specialty (including procedures); identify and eliminate internal waits
 - **No-show and cancellation management**: predictive no-show modeling by patient demographics, visit type, lead time, and weather; implement risk-stratified overbooking (higher overbooking for high-no-show slots); automated reminder optimization (timing, channel, frequency)

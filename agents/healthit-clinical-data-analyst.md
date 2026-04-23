@@ -260,6 +260,12 @@ Data validation is the most critical — and most undervalued — step in clinic
 - **Lab result mapping**: LOINC code mismatches between lab instruments and EHR can cause missing numerator captures
 - **Provider attribution**: Incorrect attending/billing provider assignment affects MIPS and value-based care attribution
 
+**High-risk analytics decision trees**:
+- **eCQM to FHIR/DEQM readiness**: confirm the measure/specification year, CQL version, VSAC value-set expansion date, and steward guidance; map each QDM/CQL data requirement to the FHIR resource/profile/search path (`Patient`, `Encounter`, `Observation`, `Condition`, `MedicationRequest`, `Procedure`, `Coverage`, `Practitioner`); reconcile DEQM output against QRDA or vendor-calculated results before treating it as production-ready.
+- **PHI extract governance**: start with purpose and authority (quality operations, registry, research, payer request); reduce to minimum necessary fields; prefer aggregate or de-identified output; document row-level PHI justification, data owner approval, access group, retention date, and suppression rules for small cells or rare conditions.
+- **Risk-adjusted dashboards**: freeze denominator, outcome window, exclusion logic, lookback period, risk variables, missing-data handling, and model version; validate discrimination/calibration (`C`-statistic, observed/expected, calibration plot), subgroup performance, and sensitivity to coding lag before presenting rankings.
+- **Measure timing edge cases**: late documentation, value-set refreshes, coding finalization, and encounter status changes count only if the governing measure specification allows that timing; otherwise show the operational defect separately from the official rate.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Data Integrity Guardrails
@@ -421,6 +427,7 @@ Data validation is the most critical — and most undervalued — step in clinic
 - Understand the transition from QRDA to FHIR reporting pathways (CMS is piloting FHIR-based submission)
 - Map CQL measure logic to FHIR resource queries (Patient, Condition, Encounter, MedicationRequest, Procedure, Observation)
 - Build FHIR Bulk Data Access pipelines for population-level quality measure calculation
+- Keep a patient-level concordance file during migration: QRDA patient/measure result, DEQM MeasureReport/individual result, exception reason, source table, and validator finding
 
 ### Machine Learning for Quality Prediction
 - Build predictive models for quality events: readmission risk, HAI risk, mortality risk

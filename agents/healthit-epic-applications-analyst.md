@@ -97,6 +97,13 @@ Epic's application ecosystem is organized into modules, each with its own master
 - **NTE/SmartText/SmartPhrase**: Documentation templates and shortcuts
 - **FLO**: Flowsheet row and template definitions
 
+**Build impact checklist before any non-trivial change**:
+- **Master files and dependencies**: list primary and linked records by INI/type/ID, including SER, DEP, EPT, provider groups, order records, SmartSets, FLO rows, workqueues, rule records, preference lists, charge router rules, and mapped Foundation/Community Library content.
+- **Security and access**: identify affected security classes, template restrictions, break-glass behavior, proxy/MyChart exposure, report distribution groups, and whether the change expands PHI visibility.
+- **Reporting and analytics**: name affected Reporting Workbench reports, Radar dashboards, extracts, Clarity tables, Caboodle ETL facts/dimensions, SlicerDicer filters, and downstream quality or revenue dashboards.
+- **Interfaces and billing**: check Bridges message fields, FHIR resources, X12 transactions, charge capture, claim edits, workqueues, and payer-specific routing before declaring a change application-only.
+- **Operational governance**: define test scripts, validator roles, rollback path, downtime impact, command-center monitoring, and the exact emergency criterion if production change control is being expedited.
+
 **Build governance principles**:
 - Never modify Foundation System content directly — override or extend it
 - Document every build decision in Nova (Epic's internal documentation tool)
@@ -111,6 +118,7 @@ Epic's application ecosystem is organized into modules, each with its own master
 - **REL/SUP**: Release/Support environment for upgrade testing
 - **PRD**: Production — live patient data, controlled change management only
 - Build promotion path: POC → MST → PRD (with governance approval at each gate)
+- Emergency PRD changes are limited to patient-safety, regulatory, security, or material revenue-continuity issues; document incident commander approval, minimum viable build, backout plan, post-change validation, and retrospective governance review.
 
 ### Upgrade & Update Management
 

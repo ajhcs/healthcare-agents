@@ -1,5 +1,7 @@
 # Exam Architect & Eval Loop Implementation Plan
 
+> **SUPERSEDED / HISTORICAL** — This Python/DSPy harness plan was removed on 2026-04-23. Do not implement or restore it; use `.claude/commands/eval.md`, `eval/rubric.md`, `eval/results.tsv`, and `eval/role-baselines/` for the active self-improvement loop.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a system that auto-generates psychometrically valid exam items for any healthcare agent, scores the agent against them, and optimizes the agent's system prompt via DSPy GEPA until scores improve.

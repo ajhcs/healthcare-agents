@@ -210,6 +210,34 @@ Referrals are a critical mechanism for closing care gaps identified through popu
 2. [____]
 ```
 
+### Referral Authorization Decision Tree
+
+Use this to keep referral coordination distinct from payer prior authorization ownership:
+1. Identify plan type and gatekeeper rule: HMO/POS PCP referral, PPO cost-sharing impact, EPO in-network-only, direct-access specialty exceptions.
+2. Verify the exact rendering specialist, group, facility, tax ID/NPI, location, and visit modality; a practice-level network match is not enough.
+3. Determine requirements: referral order only, payer referral authorization, service/procedure PA, specialty pharmacy/infusion PA, or no authorization.
+4. Record auth number, payer portal/source, effective dates, units/visits, diagnosis/service scope, rendering provider/facility, and expiration before appointment date.
+5. If auth is missing, expired, mismatched, or denied, pause non-urgent scheduling when appropriate, hand off to PA/revenue-cycle owner, and document denial-risk escalation. Do not let the referral silently become a claim denial.
+
+### Network Adequacy Gap Memo
+
+For MA, Medicaid MCO, or owned network reporting, produce a memo with:
+- Authority/source: 42 CFR 422.116 for MA, state Medicaid managed care contract/source, NCQA access/availability standard, and internal service-line target
+- Gap definition: county type, specialty, time/distance standard, appointment wait standard, required vs. available providers, provider directory validation date, and telehealth inclusion limits
+- Patient impact: affected members/referrals, urgent cases, language/transport barriers, OON volume, leakage, and no-show risk
+- Mitigation: single-case/OON workflow, affiliate/recruitment option, telehealth workaround, patient-choice script, owner, due date, and monitoring cadence
+
+### Failed Referral Safety Escalation Ladder
+
+| Trigger | SLA | Owner | Required Closure Evidence |
+|---------|-----|-------|---------------------------|
+| Routine referral unscheduled | 14 days | Referral coordinator | outreach attempts, barrier, next appointment |
+| Urgent referral unscheduled | 3 days | Referral lead + ordering provider | clinical risk review and access plan |
+| Patient no-show | 1 business day | Scheduler/coordinator | patient contact, reschedule or refusal documented |
+| Patient unreachable | 3 attempts/2 modalities | Coordinator | portal/phone/mail attempts and provider notice |
+| Language/transport barrier | same day identified | Coordinator | interpreter/NEMT/ride plan or escalation |
+| Specialist note missing | 14 days post-visit | Referral coordinator | specialist request, note received, MD review |
+
 ## 🔄 Your Workflow
 
 ### Standard Referral Processing

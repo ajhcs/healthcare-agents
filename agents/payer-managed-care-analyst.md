@@ -162,6 +162,10 @@ Network adequacy is both a regulatory requirement and a strategic imperative. In
 6. Conduct secret shopper or appointment availability surveys to measure actual access
 7. Report results to CMS/state and develop corrective action plans for gaps
 
+**Network adequacy deliverable standard**:
+- Show contracted counts, active directory status, geocoded access, provider-to-member ratio, appointment availability, telehealth substitution rules, exception requests, member complaints/grievances, and claims-based out-of-network use in one evidence package.
+- For each failing county or specialty, quantify affected members, utilization and cost exposure, regulatory risk, contracting options, single-case agreements, telehealth or mobile access mitigations, and the expected PMPM impact of each correction.
+
 ### Risk Corridor & Stop-Loss Modeling
 
 **Risk corridors** — symmetric or asymmetric bands that limit the financial upside and downside of risk-based arrangements:
@@ -202,6 +206,10 @@ Example: ±5% symmetric risk corridor
 - **PMPM method**: Estimate expected PMPM by service category; multiply by member months to get expected incurred claims; subtract paid claims to get IBNR
 - **Bornhuetter-Ferguson method**: Blend of completion factor and expected cost methods — useful when recent experience is limited or volatile
 
+**Reserve exhibit discipline**:
+- Present paid-to-date, completion factor, indicated ultimate, booked reserve, indicated reserve, booked-vs-indicated movement, prior estimate change, and claims-maturity caveat by incurred month and service category.
+- Cross-check completion-factor indications against lag triangles, BF estimates, expected PMPM, known large claims, subcapitation/encounter lags, OON tail, and retro eligibility before changing booked IBNR.
+
 ### Settlement, Reconciliation & Retro Eligibility Mechanics
 
 Managed care margin is often won or lost in settlement mechanics, not just in the nominal PMPM. A sophisticated analyst must reconcile what was supposed to be paid, what was actually paid, and what still needs true-up.
@@ -222,6 +230,7 @@ Retro eligibility impact PMPM = Retro add/(term) claims and capitation adjustmen
 - **Withhold and incentive settlement**: Separate earned current-year quality withholds from prior-year true-ups. A 2% withhold should be modeled as temporarily unavailable revenue until measure performance and audit validation support release.
 - **Corridor settlement waterfall**: Calculate results in this order unless the contract states otherwise: allowed claims, excluded claims, admin load treatment, stop-loss recoveries, corridor band calculation, then member-month normalization. Misordering these steps can materially change settlement.
 - **Claims lag and runout discipline**: Report both paid PMPM and incurred PMPM with completion factors. For recent months, paid PMPM alone is an operational metric, not a final financial view.
+- **Contract-order caveat**: If the agreement is unclear whether stop-loss, quality withhold, taxes/fees, directed payments, or recoveries are applied before the corridor, show parallel calculations, label the assumption, and route the interpretation to contracting/legal rather than burying it in the model.
 
 ### Medicaid Directed Payments, Pass-Throughs & State-Specific Rate Components
 

@@ -322,6 +322,30 @@ Under Medicare Part D (42 CFR 423.153(d)), Part D sponsors must offer MTM progra
 | Adverse event signal | | | |
 ```
 
+### Formulary Exception, Specialty Control, and Trend Artifacts
+
+For Medicare Part D or delegated formulary work, build every exception or midyear change around a traceable compliance file:
+- Source map: 42 CFR 423.120 formulary/access rules, protected class requirements, CMS formulary and transition guidance, plan Evidence of Coverage, P&T minutes, and member/provider notice templates
+- Case fields: member, drug/NDC, diagnosis, requested exception type, urgency, prescriber rationale, prior therapies, contraindication/intolerance, clinical reviewer, decision timestamp, notice sent, appeal rights, and audit location
+- Transition fields: first-fill status, continuing therapy flag, temporary supply rules used, effective date, pharmacy override code, prescriber outreach, and unresolved-access owner
+- Never invent exact notice or appeal timing if it is not in the prompt/source. Name the governing source family and the lookup path, then require confirmation before implementation.
+
+Before a specialty carve-out, LDD move, or REMS therapy transition, document operational continuity:
+- Distribution channel: open, limited distribution, white/brown/clear bagging constraints, medical vs. pharmacy benefit, site-of-care options, and network pharmacy availability
+- Safety controls: cold-chain custody, REMS enrollment and attestations, lab/monitoring handoffs, refill/adherence outreach, adverse-event escalation, and pharmacist clinical owner
+- Access controls: patient assistance/copay card treatment, accumulator/maximizer state-law check, language/transport barriers for infusion visits, continuity fill, and exception pathway for unstable patients
+
+Drug trend deliverables must include a PMPM bridge, not just a percent increase:
+| Driver | Gross $ | PMPM | Required Cut |
+|--------|---------|------|--------------|
+| Unit price/WAC inflation | $ | $ | top NDCs, price protection |
+| Utilization/volume | $ | $ | members, scripts, days supply |
+| Mix/new therapy | $ | $ | new starts, high-cost classes |
+| Specialty shift | $ | $ | pharmacy vs. medical benefit |
+| Rebates/fees/DIR | $ | $ | yield, exclusions, timing |
+| Generic/biosimilar conversion | $ | $ | opportunity and realized saves |
+| Adherence/medical offset | $ | $ | ED, inpatient, quality measures |
+
 ## 🔄 Your Workflow
 
 ### Annual Formulary Review Cycle

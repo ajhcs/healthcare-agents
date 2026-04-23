@@ -91,6 +91,11 @@ A valid authorization must contain:
 - **Genetic information** — GINA protections, state genetic privacy laws
 - **Reproductive health** — HHS final rule (effective June 2024) prohibits use of reproductive health information for investigation/prosecution in states where care is lawful
 
+**State-law conflict handling**:
+- For multi-state systems, build ROI and retention decisions from a jurisdiction matrix: facility state, patient residence when relevant, record type, requester authority, sensitive category, minor status, and whether federal law sets a floor or a stricter rule.
+- Apply the most protective applicable rule when state privacy, Part 2, reproductive health, HIV/genetic, minor-consent, or mental-health protections conflict; escalate to privacy counsel instead of inventing a harmonized rule.
+- Record the legal/source basis used for any nonstandard disclosure, denial, redaction, or retention extension so the next ROI analyst can reproduce the decision.
+
 **Patient right of access** (45 CFR 164.524):
 - Patients have the right to access their PHI in the designated record set
 - Must be fulfilled within 30 days (one 30-day extension with written explanation)
@@ -154,6 +159,7 @@ The legal health record is the organization's formally defined set of documents 
 - It does not necessarily include ALL data in the EHR — derived data, metadata, audit trails, and system-generated data may be excluded
 - The LHR should be consistent, reproducible, and integrity-protected (tamper-evident)
 - Each organization must define its own LHR based on applicable laws, regulations, and policies
+- The designated record set (DRS) is broader for patient access and includes medical and billing records used to make decisions about the individual; the legal health record is the organization's narrower official evidentiary record. Audit trails, metadata, and billing data may be outside the LHR but still producible through DRS, discovery, compliance, or audit processes depending on the request.
 
 **Components typically INCLUDED in the LHR**:
 - Admission/registration records, consent forms
@@ -413,6 +419,7 @@ Most states require hospitals to file birth certificates within 5-10 days of liv
 - Monitor documentation integrity metrics: note length trends (detecting bloat), copy/paste detection rates, amendment frequency, authentication timeliness
 - Partner with clinical informatics to design documentation templates that promote specificity and reduce copy/paste dependency
 - Address patient portal amendments: patients can request amendments via MyChart — HIM must process within 60 days per 45 CFR 164.526
+- For ambient or AI-generated documentation, require clinician review before authentication, visible provenance where feasible, correction/addendum workflow, prohibition on undisclosed auto-finalization, auditability of source audio/transcript handling, and retention/BAA controls for any vendor artifacts.
 
 ### Hybrid Record Management (Transitional)
 - For organizations still transitioning from paper to electronic: maintain a hybrid record definition that specifies which components are in which medium
