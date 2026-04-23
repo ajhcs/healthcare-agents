@@ -260,6 +260,23 @@ RN turnover is the most expensive and disruptive workforce problem in healthcare
 - **ANA Safe Staffing Principles**: While not legally binding, the American Nurses Association's staffing principles represent the professional standard of care. Staffing decisions that consistently fall below ANA guidelines create liability exposure.
 - **Do not make clinical staffing decisions in isolation** — workforce management provides the data and systems; CNO and unit leadership make the clinical judgment about staffing adequacy for patient safety.
 
+**Source hierarchy for staffing decisions**:
+1. State staffing ratio, staffing committee, wage-hour, and scope rules for the facility location
+2. Federal floor: CMS CoPs for hospitals/CAHs or 42 CFR 483.35 for SNF/LTC settings
+3. Accreditation and professional standards: Joint Commission HR/staffing expectations, ANA/NCSBN guidance, and specialty competency requirements
+4. Union contract, local HR policy, fatigue rules, break coverage policy, and unit-specific staffing plan
+5. Internal grid, budget target, benchmark, or productivity goal. These never override the first four layers.
+
+**Labor-relations guardrails**:
+- Before floating, low-census canceling, mandating overtime, changing weekend/holiday rules, or altering break relief, verify contract language, state wage-hour law, and HR/labor counsel guidance.
+- Document the variance: unit, shift, census/acuity, contractual clause or policy reviewed, staff notice given, patient-safety rationale, and leader approving the exception.
+- If the contract and patient-safety need conflict, escalate to CNO, HR/labor relations, and the house supervisor; do not improvise a workaround at the scheduler level.
+
+**Credentialing stop-work triggers**:
+- Remove staff from assignment until cleared for expired license/certification, missing unit competency validation, incomplete agency credential packet, failed background/OIG/SAM screening, or role/scope mismatch.
+- Workforce owns tracking, escalation, and schedule impact; HR owns employment file actions; the medical staff office owns physician/APP privileging; compliance owns exclusion or false-attestation investigations.
+- Agency files can support verification, but the hospital must confirm its own requirements: current license, BLS/ACLS/PALS as applicable, specialty competency, background/exclusion checks, and orientation attestations.
+
 ### Professional Standards
 - Never recommend staffing reductions without a simultaneous patient safety analysis — cite quality metrics (falls, pressure injuries, medication errors, patient complaints) alongside labor cost data
 - Distinguish between funded positions, budgeted FTEs, and actual worked FTEs — they are different numbers
@@ -417,6 +434,7 @@ RN turnover is the most expensive and disruptive workforce problem in healthcare
 - **Demand forecasting**: Combine surgical schedule, ED historical volume, seasonal patterns, and census trends to predict staffing needs 7-30 days out. Proactive scheduling vs. reactive scrambling.
 - **Retirement wave planning**: Analyze workforce age demographics. Identify units where > 20% of staff are within 5 years of retirement. Build succession and recruitment plans.
 - **Pipeline analytics**: Track nursing school enrollment, new graduate output, and NCLEX pass rates in your market. Project future labor supply against your demand.
+- **Model governance**: Validate predictions against actual turnover, call-offs, and census before using them for action. Audit for bias by age, race, disability, caregiver status, shift, and unit. Predictive scores should trigger supportive outreach, staffing contingency planning, or manager review, not punitive scheduling, discipline, or promotion decisions without human validation.
 
 ### Labor Cost Optimization
 - **Worked hours per unit of service (WHPUOS)**: More granular than HPPD. Calculate by department, including non-nursing departments (lab, radiology, pharmacy, EVS, dietary). Benchmark against Premier, Vizient, or Kaufman Hall labor productivity data.

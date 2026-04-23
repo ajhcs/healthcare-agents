@@ -135,6 +135,12 @@ The transfer center is the hospital's front door for inter-facility transfers �
 - Decline rate tracking — every declined transfer = lost revenue + potential EMTALA exposure if due to capability
 - Revenue attribution: track transfer volume by service line, payer, referring facility, and accepting physician
 
+**Transfer center audit controls:**
+- Capture request time, sending facility, requested service/capability, patient acuity, current staffed-capacity check, bed constraints, and accepting physician
+- Document risk/benefit certification status, records received/sent, transport mode, nurse/physician handoff time, and final bed assignment time
+- Every decline must have a capacity/capability reason, escalation path used, alternative disposition if known, and compliance review trigger if specialized capability existed
+- Scorecards must separate operational delay (call handling, consultant response, bed assignment, transport) from clinical acceptance decisions
+
 **Transfer categories**:
 - **Emergent**: STEMI, stroke, trauma, acute surgical emergency — acceptance within minutes
 - **Urgent**: Clinical deterioration requiring higher level of care — acceptance within 1-2 hours
@@ -161,6 +167,13 @@ The observation-vs-inpatient determination is one of the most complex operationa
 - Condition Code 44 vs. physician order change: CC44 requires UR committee concurrence before downgrade from inpatient to outpatient; physician order change alone does not
 - RAC (Recovery Audit Contractor) review: Short-stay admissions (1-day stays) are prime RAC audit targets — ensure documentation supports medical necessity and Two-Midnight expectation
 
+**Status determination escalation tree:**
+1. Confirm the admitting physician's expected length of stay, clinical rationale, and whether an IPO-list procedure or unusual-circumstance exception applies
+2. At >24 hours observation, verify MOON timing, active plan, barriers, and whether continued observation remains appropriate
+3. At >48 hours observation or when the second midnight is now expected, trigger UR/Case Management physician advisor review for conversion or discharge-barrier escalation
+4. For inpatient-to-observation downgrades after an inpatient order, verify UR committee involvement, physician concurrence, Condition Code 44 requirements, notice obligations, and billing handoff before action
+5. If the patient contests discharge or status consequences affect SNF eligibility, route to the QIO/appeal-rights workflow; operations does not override medical necessity or patient rights
+
 ### Ancillary Services Coordination
 
 Ancillary services — lab, radiology, pharmacy, respiratory therapy, physical therapy, dietary, and others — are the operational backbone that supports clinical care.
@@ -179,6 +192,12 @@ Ancillary services — lab, radiology, pharmacy, respiratory therapy, physical t
 | Patient Transport | Request-to-arrival time | < 15 minutes |
 
 **Ancillary services as throughput drivers**: Delayed ancillary results are among the top discharge barriers. A patient waiting for a final echocardiogram, a PT evaluation, or a medication reconciliation cannot be discharged. Track "discharge delayed due to ancillary" as a specific metric.
+
+**Ancillary bottleneck playbook:**
+- Flag discharge-critical orders at entry (echo, MRI/CT, PT/OT eval, PICC, home O2 test, pharmacy med-to-bed, specialty consult) with required-by time and accountable department
+- Calculate bed-hours lost: delayed discharge count x hours past target, then translate to ED boarding, DBN miss, and staffed-bed pressure
+- Use priority queues with TAT thresholds: STAT, routine, and discharge-priority; global average TAT is not enough if discharge-critical cases wait behind non-urgent work
+- Escalate by owner: unit charge nurse for missing readiness info, ancillary supervisor for queue delay, physician/service line for incomplete order or consult decision, AOC when bed-hours lost threaten surge tier
 
 ### Census Management
 
@@ -363,6 +382,8 @@ Ancillary services — lab, radiology, pharmacy, respiratory therapy, physical t
 - Calculate "beds needed" by service line for budget season and capital planning
 - Model the impact of new service lines (e.g., adding a cardiac surgery program = X additional ICU days/year)
 - Incorporate payer mix shifts into ALOS projections (more Medicare Advantage = potentially shorter ALOS due to UR pressure)
+- Short-term forecast formula: projected census = current occupied + ED admits + direct admits + transfers in + scheduled post-op admits - confirmed discharges - likely discharges - transfers out
+- Run scenarios against staffed beds, not licensed beds: conservative, expected, and surge cases with unit-level constraints for ICU, telemetry, isolation, OB, behavioral health, and pediatrics
 
 ### Critical Access Hospital Operations (42 CFR Part 485, Subpart F)
 - **Bed limit**: CAHs are limited to 25 inpatient beds (42 CFR 485.620). Beds used for swing-bed SNF patients count toward this limit.

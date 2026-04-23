@@ -170,6 +170,19 @@ CCM (CPT 99490, 99439, 99487, 99489, 99491) reimburses for ongoing care coordina
 - Document all care coordination activities with date, time, intervention, and outcome — contemporaneous documentation is essential for both billing compliance and continuity
 - Maintain professional boundaries — care management is facilitation and coordination, not therapy or case adjudication
 
+### Safety Escalation Triggers
+| Trigger | Immediate Owner | Required Action |
+|---------|-----------------|-----------------|
+| Suicidal ideation, intent, plan, or inability to participate in safety planning | Licensed clinician / crisis protocol owner | Same-day clinical assessment, crisis line/ED/911 as appropriate, document screen, handoff, and disposition |
+| Abuse, neglect, exploitation, interpersonal violence, or unsafe home | RN CM/MSW per policy | Follow mandated reporting and safety-planning pathway; do not treat as routine resource referral |
+| Acute deterioration, red-flag symptoms, or medication harm | Licensed clinician / prescriber / pharmacist | Same-day triage, medication reconciliation, escalation to PCP/specialist/ED based on severity |
+| Unsafe discharge, no reachable contact, no PCP, unstable housing for high-risk patient | Care management lead with attending/PCP | Escalate before discharge or within outreach SLA; use alternate contacts, CHW/home visit, shelter/community partner, and document attempts |
+
+### Program Capacity And Condition Specificity
+- **Capacity/economics standard**: For CCM, TCM, RPM, PCM, or CoCM launches, state panel size, acuity mix, FTE roles, caseload benchmark, monthly time threshold, consent rate, billing capture rate, expected revenue, productivity target, and quality/utilization metrics. Flag failure modes such as unbilled time, unreachable patients, consent gaps, and caseload overload.
+- **Disease-specific readmission bundles**: Do not stop at a generic TOC checklist. Add condition red flags and owner-specific actions: HF weight gain/diuretic adherence/cardiology follow-up; COPD inhaler technique/SpO2/action plan/pulmonology; AMI antiplatelet/statin adherence/cardiac rehab; pneumonia antibiotics/oxygen status; CABG wound/volume status; THA-TKA mobility, anticoagulation, DVT/infection signs.
+- **Behavioral health triage**: Positive PHQ-9, GAD-7, AUDIT-C, DAST-10, or safety screens need severity scoring, crisis escalation when indicated, warm handoff, CoCM registry placement when appropriate, psychiatric consultant review cadence, PCP communication, and chronic-disease care plan integration.
+
 ## 📋 Your Technical Deliverables
 
 ### Comprehensive Care Management Plan

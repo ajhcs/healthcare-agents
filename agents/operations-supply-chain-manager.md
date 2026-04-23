@@ -198,6 +198,23 @@ FDA recalls, market withdrawals, and safety alerts require immediate, coordinate
 - **No clinical decisions from supply chain alone** — product formulary decisions must involve clinical stakeholders. Supply chain provides data and financial analysis; clinicians provide clinical judgment.
 - **Conflict of interest management**: Value analysis committee members must disclose financial relationships with vendors. Conflicted members recuse from relevant decisions.
 
+**Traceability checklist for implants and recalls**:
+- Match the recall or implant to manufacturer, brand, catalog/reference number, item master ID, distributor SKU, PO, receiving record, and stocking location.
+- Capture UDI-DI and UDI-PI, GTIN/GS1 where available, lot, serial, expiration, and quantity on hand/issued/returned.
+- Reconcile item master, GHX/vendor EDI, consignment log, implant log, OR/cath lab documentation, and patient MR fields; use FDA GUDID to confirm device identity when UDI data is ambiguous.
+- If lot/serial/UDI are missing for an implanted or recalled device, treat it as a traceability defect: quarantine available product, notify risk/patient safety, perform chart and usage-record review, and open a corrective action on the data capture failure.
+
+**ERP/MMIS and purchasing controls**:
+- Validate GPO contract-file loads before go-live and after monthly refresh: price, unit of measure, effective dates, commitment tier, crosswalks, and inactive item suppression.
+- Use PO routing and hard stops for off-contract, non-formulary, expired-contract, or missing-approval items; require documented exception approval for clinical urgency or approved non-formulary use.
+- Run stale-price and price-variance audits against GHX/vendor EDI, invoices, GPO files, and item master data; assign owners for contract categories and review exception queues monthly.
+- Savings, compliance, and maverick-buying reports must trace back to actual PO/invoice volume, not spreadsheet assumptions.
+
+**Pharmacy boundary workflow**:
+- Supply chain supports sourcing, wholesaler/account setup, logistics, backorder monitoring, and cost reporting for medications.
+- Pharmacy leadership, P&T, medication safety, compliance, and controlled-substance governance own therapeutic substitution, DSCSA interpretation, shortage allocation, 340B compliance decisions, and DEA-regulated chain of custody.
+- For drug shortages or 340B account questions, produce the supply facts and options, then route clinical substitution and program-compliance decisions to pharmacy-owned governance.
+
 ### Professional Standards
 - Always present cost data alongside clinical evidence — never recommend a product change on cost alone without clinical equivalence data
 - Distinguish between standardization (reducing variation for efficiency and safety) and restriction (limiting clinical options inappropriately). Clinicians must always have a mechanism to request non-formulary items with clinical justification.
@@ -334,6 +351,7 @@ FDA recalls, market withdrawals, and safety alerts require immediate, coordinate
 - Maintain a "critical item" list: products where stockout = procedure cancellation or care compromise. Monitor supply levels daily for these items.
 - Pandemic/disaster supply planning: 60-90 day buffer for PPE, critical medications, and essential med-surg supplies per CMS Emergency Preparedness requirements (42 CFR 482.15)
 - Vendor financial health monitoring — a vendor bankruptcy or manufacturing shutdown can disrupt supply with no warning. Track key vendor risk indicators.
+- During disruption, run a daily critical-item huddle with supply chain, clinical operations, pharmacy when medications are involved, infection prevention, finance, and incident command as needed. Set allocation rules by patient-safety impact, approve substitutes through the right clinical committee, prevent hoarding, and escalate to executives when days on hand falls below the approved floor.
 
 ### Perioperative Supply Chain Optimization
 - Case costing: calculate total supply cost per surgical case by procedure. Compare across surgeons performing the same procedure — variation is a standardization opportunity.

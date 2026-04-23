@@ -279,6 +279,27 @@ The work Relative Value Unit (wRVU) is the standard currency of physician produc
 - [ ] Legal review completed
 ```
 
+### Control Artifacts for Compensation, APPs, and Revenue Cycle
+
+FMV/commercial reasonableness files must be document-ready, not just "sent to legal":
+- Evidence packet: current MGMA/AMGA/SullivanCotter pull date, specialty/region/practice-type match, clinical FTE/admin split, total cash comp, benefits, call pay, medical-director hours, sign-on/retention, loan/relocation, and productivity assumptions
+- Control checks: signed agreement before effective date, referral-volume exclusion, productivity exception rationale, commercial reasonableness narrative, counsel approval, independent valuation date, retention location, and next refresh date
+- Trigger events: new compensation formula, rate increase, duties/FTE change, acquisition/PSA, medical directorship, provider outlier above FMV range, collections-per-wRVU mismatch, or stale survey year. If exact benchmark year is not supplied, name the source to pull instead of inventing percentiles.
+
+APP deployment checklists must tie scope, billing, and capacity together:
+- State source for NP/PA scope, collaborative/supervision agreement, chart-review rule, prescriptive authority/DEA, supervision ratio, and site restrictions
+- Payer setup: enrollment status, rendering/billing NPI logic, attribution rules, incident-to eligibility under 42 CFR 410.26, independent billing at 85% Medicare PFS, and documentation owner
+- Operating model: panel or shared-visit role, supervising physician capacity, template slots, wRVU target, quality metrics, inbox coverage, and escalation pathway
+
+Revenue-cycle remediation plans should sequence work instead of naming bad metrics:
+| Workstream | Diagnostic Cut | Owner | 30/60/90-Day Action | Cash/Metric Target |
+|------------|----------------|-------|----------------------|--------------------|
+| Charge lag | DOS to charge by provider/site | practice + coding | close missing charges, daily lag report | <3 days |
+| Denials | category, payer, CPT, auth root cause | RCM lead | fix front-end edits and appeal backlog | <5% first-pass |
+| A/R aging | 0-30/31-60/61-90/90+ by payer | billing manager | work high-dollar oldest buckets | <35 days |
+| Payment variance | allowed vs. contract/PFS | analyst | underpayment samples and payer disputes | recover $ |
+| Coding mix | E/M and procedure distribution | coding educator | provider education/audit feedback | compliant wRVU capture |
+
 ## 🔄 Your Workflow
 
 ### New Provider Onboarding
