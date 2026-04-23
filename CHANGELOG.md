@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2026-04-23
+
+Documentation correction for npm-backed install commands.
+
+### Changed
+
+- Updated README and INSTALL examples to use `npx --yes github:ajhcs/healthcare-agents` because the package name is not published to npm from this environment yet.
+- Bumped installer/package metadata to v1.1.2 so GitHub-backed npx installs report the latest compatibility release.
+
 ## [1.1.1] - 2026-04-23
 
 Installer and documentation compatibility release.

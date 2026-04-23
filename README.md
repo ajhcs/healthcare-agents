@@ -9,7 +9,7 @@
     <a href="#the-51-agents"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
     <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20improved-brightgreen?style=flat-square" alt="51 of 51 improved"></a>
     <a href="#compatibility"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode-compatible-8A2BE2?style=flat-square" alt="Claude Codex OpenCode compatible"></a>
-    <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.1.1"><img src="https://img.shields.io/badge/version-1.1.1-blue?style=flat-square" alt="v1.1.1"></a>
+    <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.1.2"><img src="https://img.shields.io/badge/version-1.1.2-blue?style=flat-square" alt="v1.1.2"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0"></a>
   </p>
 </p>
@@ -26,35 +26,37 @@ Fast path:
 curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
 ```
 
-Or use npm:
+Or use `npx` directly from GitHub:
 
 ```bash
-npx healthcare-agents install
+npx --yes github:ajhcs/healthcare-agents install
 ```
+
+The npm package name is reserved in `package.json` but is not published to the npm registry from this environment yet; the GitHub-backed `npx` form works today.
 
 Target a specific runtime:
 
 | Runtime | Command |
 |---|---|
-| Claude Code subagents | `npx healthcare-agents install --claude` |
-| Claude Skills / Claude Desktop / Claude Cowork | `npx healthcare-agents install --claude-skills` |
-| Codex CLI / Codex App | `npx healthcare-agents install --codex` |
-| OpenCode skills | `npx healthcare-agents install --opencode` |
-| Open Agent Skills convention | `npx healthcare-agents install --agent-skills` |
-| Cursor | `npx healthcare-agents install --cursor` |
-| GitHub Copilot | `npx healthcare-agents install --copilot` |
-| All known targets | `npx healthcare-agents install --all` |
+| Claude Code subagents | `npx --yes github:ajhcs/healthcare-agents install --claude` |
+| Claude Skills / Claude Desktop / Claude Cowork | `npx --yes github:ajhcs/healthcare-agents install --claude-skills` |
+| Codex CLI / Codex App | `npx --yes github:ajhcs/healthcare-agents install --codex` |
+| OpenCode skills | `npx --yes github:ajhcs/healthcare-agents install --opencode` |
+| Open Agent Skills convention | `npx --yes github:ajhcs/healthcare-agents install --agent-skills` |
+| Cursor | `npx --yes github:ajhcs/healthcare-agents install --cursor` |
+| GitHub Copilot | `npx --yes github:ajhcs/healthcare-agents install --copilot` |
+| All known targets | `npx --yes github:ajhcs/healthcare-agents install --all` |
 
 Preview first:
 
 ```bash
-npx healthcare-agents install --all --dry-run
+npx --yes github:ajhcs/healthcare-agents install --all --dry-run
 ```
 
 Update existing installs:
 
 ```bash
-npx healthcare-agents install --all --force
+npx --yes github:ajhcs/healthcare-agents install --all --force
 ```
 
 ## Why Use This
@@ -323,7 +325,7 @@ Yes. The installer copies prompts to `~/.codex/agents` and writes a managed `~/.
 
 ### Why did the frontmatter names change?
 
-Claude Code and OpenCode expect lowercase hyphen identifiers. v1.1.0 keeps human labels in `display_name` while making `name` match the filename slug.
+Claude Code and OpenCode expect lowercase hyphen identifiers. v1.1.1 and newer keep human labels in `display_name` while making `name` match the filename slug.
 
 ### Can I install just one agent?
 
