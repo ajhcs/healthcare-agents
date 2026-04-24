@@ -23,6 +23,7 @@
     "agents/",
     "bin/",
     "CHANGELOG.md",
+    "docs/assets/",
     "docs/eval/",
     "docs/release-notes/",
     "eval/meta/",
