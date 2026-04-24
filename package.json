@@ -1,11 +1,15 @@
 {
   "name": "healthcare-agents",
   "version": "1.1.2",
-  "description": "51 AI agents for US healthcare administration. MHA-level expertise in revenue cycle, compliance, quality, clinical ops, payer relations, health IT, and more.",
+  "description": "Portable prompt and SKILL.md pack with 51 specialist AI agents for US healthcare administration workflows.",
   "keywords": [
     "healthcare",
+    "healthcare-administration",
     "ai-agents",
+    "agent-skills",
     "claude-code",
+    "codex",
+    "opencode",
     "cursor-rules",
     "copilot",
     "healthcare-ai",

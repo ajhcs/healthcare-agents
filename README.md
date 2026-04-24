@@ -1,35 +1,47 @@
 <p align="center">
-  <img src="docs/assets/healthcare-agents-hero.png" alt="Healthcare Agents command center showing agent network, operations dashboards, compliance metrics, denial analytics, and workflow orchestration" width="100%">
+  <img src="docs/assets/healthcare-agents-hero.png" alt="Healthcare Agents command center showing specialist agents across revenue cycle, compliance, quality, clinical operations, payer, health IT, population health, pharmacy, strategy, and emergency preparedness workflows" width="100%">
+</p>
+
+<h1 align="center">Healthcare Agents</h1>
+
+<p align="center">
+  <strong>51 specialist AI agents for US healthcare administration.</strong><br>
+  Installable prompts and skills for Claude Code, Codex, OpenCode, Cursor, Copilot, and other agentic coding tools.
 </p>
 
 <p align="center">
-  <h1 align="center">Healthcare Agents</h1>
-  <p align="center">
-    <strong>51 eval-improved AI agents for US healthcare administration.</strong><br>
-    Revenue cycle, compliance, quality, clinical operations, payer relations, health IT, population health, pharmacy, strategy, and emergency preparedness.
-  </p>
-  <p align="center">
-    <a href="#install"><img src="https://img.shields.io/badge/install-curl%20%7C%20npx-success?style=flat-square" alt="Install"></a>
-    <a href="#the-51-agents"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
-    <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20improved-brightgreen?style=flat-square" alt="51 of 51 improved"></a>
-    <a href="#compatibility"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode-compatible-8A2BE2?style=flat-square" alt="Claude Codex OpenCode compatible"></a>
-    <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.1.2"><img src="https://img.shields.io/badge/version-1.1.2-blue?style=flat-square" alt="v1.1.2"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0"></a>
-  </p>
+  <a href="#install"><img src="https://img.shields.io/badge/install-curl%20%7C%20github--npx-success?style=flat-square" alt="Install with curl or GitHub npx"></a>
+  <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
+  <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20improved-brightgreen?style=flat-square" alt="51 of 51 agents improved"></a>
+  <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
+  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.1.2"><img src="https://img.shields.io/badge/version-1.1.2-blue?style=flat-square" alt="v1.1.2"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
 </p>
 
 <table>
   <tr>
-    <td align="center"><strong>51</strong><br><sub>specialist agents</sub></td>
-    <td align="center"><strong>10</strong><br><sub>healthcare domains</sub></td>
-    <td align="center"><strong>95.50</strong><br><sub>avg post-score, final 36</sub></td>
-    <td align="center"><strong>Claude · Codex · OpenCode</strong><br><sub>agents, rules, and skills</sub></td>
+    <td align="center"><strong>51</strong><br><sub>healthcare specialists</sub></td>
+    <td align="center"><strong>10</strong><br><sub>administrative domains</sub></td>
+    <td align="center"><strong>95.50</strong><br><sub>avg final-pass score</sub></td>
+    <td align="center"><strong>Markdown + SKILL.md</strong><br><sub>portable agent formats</sub></td>
   </tr>
 </table>
 
-Healthcare Agents is a portable prompt pack for healthcare administration work. Each agent is a long-form Markdown system prompt with structured YAML frontmatter, concrete regulatory/source awareness, role-specific workflows, and deliverable templates.
+Healthcare Agents is a model-agnostic prompt library for healthcare administration work: revenue cycle, quality and compliance, clinical operations, payer relations, health IT, population health, pharmacy programs, operations, strategy, and emergency preparedness.
 
-The pack is designed to install cleanly into agent tools that understand subagents, project instructions, custom rules, or `SKILL.md` folders.
+Each agent is a long-form Markdown specialist with YAML frontmatter, role-specific source awareness, compliance boundaries, operational workflows, and concrete deliverable templates. The pack installs into tools that support subagents, custom instructions, repository rules, or `SKILL.md` folders.
+
+## TL;DR
+
+| You need | Healthcare Agents gives you |
+|---|---|
+| Healthcare-specific agent behavior | 51 narrow specialists instead of one generic "healthcare assistant." |
+| Practical administrative output | Appeal packets, audit binders, gap analyses, dashboards, charters, payer matrices, readiness plans, and workflow checklists. |
+| Better regulatory handling | Role-aware references to HIPAA, CMS, OIG, HEDIS, Stars, MIPS/QPP, HRSA 340B, NHSN, TEFCA, HL7/FHIR, X12, and other domain sources. |
+| Portable installation | Claude Code agents, Claude/OpenCode skills, Codex agent prompts, Cursor/Windsurf/Copilot rules, Aider context, and plain Markdown. |
+| Prompt quality controls | An included self-improvement kit with a frozen rubric, role baselines, scorer guidance, and append-only eval results. |
+
+These agents are for healthcare administration support. They are not clinicians, attorneys, auditors, coders of record, billing authorities, or a safe PHI-processing environment.
 
 ## Install
 
@@ -39,28 +51,29 @@ Fast path:
 curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
 ```
 
-Or use `npx` directly from GitHub:
+GitHub-backed `npx`:
 
 ```bash
 npx --yes github:ajhcs/healthcare-agents install
 ```
 
-The npm package name is reserved in `package.json` but is not published to the npm registry from this environment yet; the GitHub-backed `npx` form works today.
+The package metadata is ready for npm, but the package is not currently published to the npm registry from this environment. Use the GitHub-backed `npx` command above.
 
-Target a specific runtime:
+Target a specific tool:
 
 | Runtime | Command |
 |---|---|
 | Claude Code subagents | `npx --yes github:ajhcs/healthcare-agents install --claude` |
-| Claude Skills / Claude Desktop / Claude Cowork | `npx --yes github:ajhcs/healthcare-agents install --claude-skills` |
+| Claude Skills, Claude Desktop, Claude Cowork | `npx --yes github:ajhcs/healthcare-agents install --claude-skills` |
 | Codex CLI / Codex App | `npx --yes github:ajhcs/healthcare-agents install --codex` |
 | OpenCode skills | `npx --yes github:ajhcs/healthcare-agents install --opencode` |
 | Open Agent Skills convention | `npx --yes github:ajhcs/healthcare-agents install --agent-skills` |
-| Cursor | `npx --yes github:ajhcs/healthcare-agents install --cursor` |
-| GitHub Copilot | `npx --yes github:ajhcs/healthcare-agents install --copilot` |
+| Cursor rules | `npx --yes github:ajhcs/healthcare-agents install --cursor` |
+| Windsurf rules | `npx --yes github:ajhcs/healthcare-agents install --windsurf` |
+| GitHub Copilot instructions | `npx --yes github:ajhcs/healthcare-agents install --copilot` |
 | All known targets | `npx --yes github:ajhcs/healthcare-agents install --all` |
 
-Preview first:
+Preview before writing files:
 
 ```bash
 npx --yes github:ajhcs/healthcare-agents install --all --dry-run
@@ -72,107 +85,90 @@ Update existing installs:
 npx --yes github:ajhcs/healthcare-agents install --all --force
 ```
 
+Uninstall:
+
+```bash
+npx --yes github:ajhcs/healthcare-agents uninstall --all
+```
+
+## Quick Examples
+
+Claude Code:
+
+```text
+Use the revenue-cycle-specialist agent to diagnose why our clean claim rate dropped and build a denial-reduction workplan.
+```
+
+Codex:
+
+```text
+Read the quality-compliance-officer healthcare agent and draft a HIPAA Security Rule audit checklist for a small clinic.
+```
+
+OpenCode:
+
+```text
+Use the revenue-contract-analyst skill to model payer contract underpayment risk from a sample allowed-amount table.
+```
+
+Rules-based tools:
+
+```text
+Using the healthit-interoperability-engineer instructions, review this HL7v2 interface mapping for common ADT and ORU risks.
+```
+
+Manual project install:
+
+```bash
+git clone https://github.com/ajhcs/healthcare-agents.git
+mkdir -p .claude/agents
+cp healthcare-agents/agents/*.md .claude/agents/
+```
+
 ## Why Use This
 
-| Generic prompt | Healthcare Agents |
+| Generic healthcare prompting | Healthcare Agents |
 |---|---|
-| "Follow HIPAA" | Distinguishes HIPAA Privacy, Security, Breach Notification, and operational handoffs. |
-| "Improve revenue" | Uses CARC/RARC, 837/835, charge capture, cost report, payer contract, 340B, and coding mechanics. |
-| "Check quality" | Separates HEDIS, MIPS/QPP, Stars, HCAHPS/CAHPS, accreditation, patient safety, and QI methods. |
-| "Use healthcare data" | Names FHIR, HL7v2, X12, C-CDA, Epic Caboodle/Cogito, USCDI, TEFCA, eCQMs, and data-lineage controls. |
-| "Make a plan" | Produces checklists, charters, dashboards, appeal packets, audit binders, gap analyses, and operating playbooks. |
+| "Follow HIPAA." | Separates Privacy Rule, Security Rule, Breach Notification, minimum necessary, BAAs, operational evidence, and escalation boundaries. |
+| "Improve revenue." | Uses CARC/RARC, 837/835, charge capture, CDM, denial prevention, payer contracts, 340B, coding, and cost-report mechanics. |
+| "Check quality." | Distinguishes HEDIS, MIPS/QPP, Stars, CAHPS/HCAHPS, accreditation, patient safety, infection prevention, and QI methodology. |
+| "Analyze healthcare data." | Names FHIR, HL7v2, X12, C-CDA, Epic Caboodle/Cogito, USCDI, TEFCA, eCQMs, registries, and data-lineage controls. |
+| "Make an operational plan." | Produces healthcare-specific work products: appeal packets, readiness binders, staffing models, audit trails, gap analyses, and KPI dashboards. |
 
-The agents do not give clinical advice, legal opinions, or permission to handle PHI. They provide healthcare administration expertise, source-aware workflows, and structured deliverables.
-
-## Compatibility
+## Supported Tools
 
 ```mermaid
 flowchart LR
-  A["agents/*.md"] --> B["Claude Code<br/>~/.claude/agents"]
+  A["agents/*.md<br/>source prompts"] --> B["Claude Code<br/>~/.claude/agents"]
   A --> C["Codex<br/>~/.codex/agents + AGENTS.md"]
-  A --> D["Rules<br/>Cursor · Windsurf · Copilot"]
+  A --> D["Rules folders<br/>Cursor · Windsurf · Copilot"]
   A --> E["Generated SKILL.md"]
   E --> F["Claude Skills<br/>Desktop · Cowork"]
   E --> G["OpenCode Skills"]
-  E --> H[".agents/skills"]
+  E --> H["Open Agent Skills<br/>.agents/skills"]
 ```
 
 | Tool / Standard | Install Target | Notes |
 |---|---|---|
-| Claude Code subagents | `~/.claude/agents/*.md` | Agent frontmatter now uses lowercase hyphen `name` values that match filenames. |
-| Claude Skills | `~/.claude/skills/<slug>/SKILL.md` | Generated SKILL.md wrappers include valid `name`, `description`, `license`, and `compatibility` fields. |
-| Claude Desktop / Claude Cowork | Claude-compatible skills | Use `--claude-desktop`, `--claude-cowork`, or `--claude-skills` to generate skill folders. |
-| Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed AGENTS.md block telling Codex how to load the matching specialist. |
-| OpenCode | `~/.config/opencode/skills/<slug>/SKILL.md` | Matches OpenCode's SKILL.md directory/name requirements. |
-| Open Agent Skills | `~/.agents/skills/<slug>/SKILL.md` | Portable fallback for tools that scan the common `.agents/skills` convention. |
-| Cursor | `.cursor/rules/*.md` | Uses the same Markdown prompts as project rules. |
-| Windsurf | `.windsurf/rules/*.md` | Uses the same Markdown prompts as project rules. |
-| GitHub Copilot | `.github/instructions/*.md` | Copy as repository instruction files; rename to `.instructions.md` if your setup requires it. |
+| Claude Code subagents | `~/.claude/agents/*.md` | Source prompts use lowercase hyphen `name` values matching filenames. |
+| Claude Skills | `~/.claude/skills/<slug>/SKILL.md` | Generated skill wrappers include `name`, `description`, `license`, and `compatibility`. |
+| Claude Desktop / Claude Cowork | Claude-compatible skills | Use `--claude-desktop`, `--claude-cowork`, or `--claude-skills`. |
+| Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed discovery block telling Codex how to load specialists. |
+| OpenCode | `~/.config/opencode/skills/<slug>/SKILL.md` | Matches OpenCode's skill directory conventions. |
+| Open Agent Skills | `~/.agents/skills/<slug>/SKILL.md` | Portable fallback for tools that scan a common `.agents/skills` layout. |
+| Cursor | `.cursor/rules/*.md` | Installs the same Markdown prompts as project rules. |
+| Windsurf | `.windsurf/rules/*.md` | Installs the same Markdown prompts as project rules. |
+| GitHub Copilot | `.github/instructions/*.md` | Rename to `.instructions.md` if your Copilot setup requires that extension. |
 | Gemini CLI | `~/.gemini/agents/*.md` | Installs Markdown agent files globally. |
 | Cline | `.clinerules/*.md` | Installs prompt files into project rules. |
 | Amazon Q Developer | `.amazonq/rules/*.md` | Installs prompt files into project rules. |
-| Continue.dev | `.continue/*.md` | Installs prompt files as reusable context. |
+| Continue.dev | `.continue/*.md` | Installs prompts as reusable context files. |
 | Aider | `.aider.conf.yml` managed `read:` block | Adds all agent prompts as read-only context entries. |
 
-Reference standards checked for this release:
+## Agent Catalog
 
-- Claude Code subagents and skills: <https://code.claude.com/docs/en/sub-agents> and <https://code.claude.com/docs/en/skills>
-- Codex AGENTS.md, skills, and app docs: <https://developers.openai.com/>
-- OpenCode skills: <https://opencode.ai/docs/skills>
-
-## Quick Examples
-
-Ask Claude Code:
-
-```text
-Use the revenue-cycle-specialist agent to diagnose why our clean claim rate dropped.
-```
-
-Ask Codex:
-
-```text
-Read the healthcare agent for quality-compliance-officer and build a HIPAA Security Rule audit checklist.
-```
-
-Ask OpenCode:
-
-```text
-Use the revenue-contract-analyst skill to model payer contract underpayment risk.
-```
-
-Manual install into a project:
-
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-mkdir -p .claude/agents .opencode/skills
-cp healthcare-agents/agents/*.md .claude/agents/
-bash healthcare-agents/install.sh --path ./agents --force
-```
-
-## Eval Status
-
-All 51 agents have been improved through the lightweight eval loop.
-
-| Pass | Agents | Average Before | Average After | Delta |
-|---|---:|---:|---:|---:|
-| First before/after pass | 15 | 85.0 | 93.9 | +8.9 |
-| Remaining before/after pass | 36 | 85.11 | 95.50 | +10.40 |
-
-The active eval system is intentionally simple:
-
-- `.claude/commands/eval.md` is the canonical workflow for Claude Code and Codex.
-- `eval/rubric.md` is the frozen scoring rubric.
-- `eval/role-baselines/` contains expected-capability baselines for all 51 agents.
-- `docs/eval/exam-architect-playbook.md` guides question writing and scorer behavior.
-- `docs/eval/model-tuning.md` documents model-role routing for current SOTA models.
-- `eval/run-logs/` keeps local exact-question artifacts; raw run logs are ignored by git.
-
-Same-question before/after comparisons must persist full Q001-Q025 question artifacts before answers are generated. This prevents score deltas from being based on paraphrased weak areas or unrecoverable question sets.
-
-## The 51 Agents
-
-<details>
-<summary><strong>Strategy & Advisory</strong> -- 5 agents</summary>
+<details open>
+<summary><strong>Strategy & Advisory</strong> - 5 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -185,7 +181,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Clinical Operations</strong> -- 8 agents</summary>
+<summary><strong>Clinical Operations</strong> - 8 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -201,7 +197,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Quality, Safety & Compliance</strong> -- 7 agents</summary>
+<summary><strong>Quality, Safety & Compliance</strong> - 7 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -216,7 +212,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Revenue Cycle & Finance</strong> -- 6 agents</summary>
+<summary><strong>Revenue Cycle & Finance</strong> - 6 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -230,7 +226,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Payer & Managed Care</strong> -- 6 agents</summary>
+<summary><strong>Payer & Managed Care</strong> - 6 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -244,7 +240,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Health IT & Informatics</strong> -- 6 agents</summary>
+<summary><strong>Health IT & Informatics</strong> - 6 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -258,7 +254,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Operations & Administration</strong> -- 7 agents</summary>
+<summary><strong>Operations & Administration</strong> - 7 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -273,7 +269,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Population Health & Community</strong> -- 3 agents</summary>
+<summary><strong>Population Health & Community</strong> - 3 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -284,7 +280,7 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Pharmacy & Drug Programs</strong> -- 2 agents</summary>
+<summary><strong>Pharmacy & Drug Programs</strong> - 2 agents</summary>
 
 | Agent | Specialty |
 |---|---|
@@ -294,13 +290,36 @@ Same-question before/after comparisons must persist full Q001-Q025 question arti
 </details>
 
 <details>
-<summary><strong>Emergency & Preparedness</strong> -- 1 agent</summary>
+<summary><strong>Emergency & Preparedness</strong> - 1 agent</summary>
 
 | Agent | Specialty |
 |---|---|
 | `emergency-preparedness-coordinator` | HICS, CMS EP CoPs, surge planning, HVA |
 
 </details>
+
+## Eval Status
+
+All 51 agents have been improved through the repository's lightweight self-improvement loop.
+
+| Pass | Agents | Average Before | Average After | Delta |
+|---|---:|---:|---:|---:|
+| First before/after pass | 15 | 85.0 | 93.9 | +8.9 |
+| Remaining before/after pass | 36 | 85.11 | 95.50 | +10.40 |
+
+The eval kit is intentionally simple and auditable:
+
+| File | Purpose |
+|---|---|
+| `.claude/commands/eval.md` | Canonical workflow for Claude Code and Codex. |
+| `eval/rubric.md` | Frozen scoring rubric. |
+| `eval/role-baselines/` | Expected-capability baselines for all 51 agents. |
+| `eval/results.tsv` | Append-only results log. |
+| `docs/eval/exam-architect-playbook.md` | Guidance for question writing and scoring behavior. |
+| `docs/eval/model-tuning.md` | Model-role routing notes for current SOTA models. |
+| `eval/run-logs/` | Local ignored artifacts for exact questions, scorer outputs, editor briefs, and summaries. |
+
+Same-question before/after comparisons must preserve full Q001-Q025 artifacts before answers are generated. This keeps score deltas tied to the exact same exam rather than paraphrased weak areas.
 
 ## Self-Improvement Kit
 
@@ -311,31 +330,74 @@ git clone https://github.com/ajhcs/healthcare-agents.git
 bash healthcare-agents/scripts/install-self-improvement-kit.sh /path/to/project
 ```
 
-Then run:
+Run in Claude Code:
 
 ```text
 /eval revenue-medical-coding-specialist
 ```
 
-Or in Codex:
+Run in Codex:
 
 ```text
 Run the healthcare self-improvement loop for revenue-medical-coding-specialist.
 ```
 
+During a normal eval run, only the requested `agents/<slug>.md` file should change, `eval/results.tsv` should only receive appended rows, and local artifacts should stay under ignored `eval/run-logs/` paths.
+
+## Repository Layout
+
+```text
+.
+├── agents/                         # 51 source agent prompts
+├── .claude/commands/eval.md         # canonical self-improvement workflow
+├── eval/
+│   ├── rubric.md                    # frozen scoring rubric
+│   ├── results.tsv                  # append-only eval log
+│   ├── role-baselines/              # expected capability baselines
+│   └── run-logs/                    # local ignored exact-question artifacts
+├── docs/eval/                       # scorer and model-routing guidance
+├── bin/cli.js                       # GitHub-backed npx entrypoint
+├── install.sh                       # multi-tool installer
+└── scripts/                         # lint and self-improvement kit helpers
+```
+
 ## Validation
+
+Validate agent prompt structure:
 
 ```bash
 bash scripts/lint-agents.sh
+```
+
+Preview installer behavior:
+
+```bash
 bash install.sh --all --dry-run
+```
+
+Check CLI help:
+
+```bash
+npx --yes github:ajhcs/healthcare-agents --help
 ```
 
 ## Limitations
 
-- The agents are healthcare administration aids, not clinicians, attorneys, auditors, or billing authorities.
-- Regulations, payer policies, and code sets change. Verify against current primary sources before operational use.
-- The prompts do not process PHI safely by themselves. Use your organization's approved privacy, security, and de-identification workflows.
-- Tool support differs by runtime. The installer provides the best-known current file layouts, plus plain Markdown fallback.
+- The agents provide healthcare administration support, not final clinical, legal, coding, billing, audit, or compliance determinations.
+- Regulations, code sets, payer policies, accreditation standards, and program manuals change. Verify against current primary sources before operational use.
+- The prompts do not make an AI tool HIPAA-compliant and do not create a safe PHI-processing environment. Use approved privacy, security, de-identification, and vendor-review workflows.
+- Tool support differs by runtime. The installer uses best-known current file layouts and keeps plain Markdown as the fallback.
+- The eval scores measure performance against this repository's rubric and role baselines; they are not external certification.
+
+## Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `npx healthcare-agents` cannot find the package | Use `npx --yes github:ajhcs/healthcare-agents install`; the npm package is not published yet. |
+| Existing files are skipped | Re-run with `--force` after reviewing `--dry-run` output. |
+| Your tool does not auto-discover the agents | Install to a custom path with `--path <dir>` or copy the relevant `agents/<slug>.md` file into the tool's documented rule/context folder. |
+| Claude/OpenCode rejects a skill name | Use v1.1.1 or newer; agent and skill names are lowercase hyphen slugs. |
+| You only want one agent | Copy the specific `agents/<slug>.md` file or generated `SKILL.md` folder manually. The installer is pack-oriented. |
 
 ## FAQ
 
@@ -351,17 +413,21 @@ Yes. The installer copies prompts to `~/.codex/agents` and writes a managed `~/.
 
 Claude Code and OpenCode expect lowercase hyphen identifiers. v1.1.1 and newer keep human labels in `display_name` while making `name` match the filename slug.
 
-### Can I install just one agent?
+### Can I use these for HIPAA, coding, payer, or compliance work?
 
-The installer installs the pack. For one-off use, copy the specific `agents/<slug>.md` file or generated `SKILL.md` folder into your tool's expected location.
+Use them for structured analysis, checklists, source-aware workflows, and draft deliverables. Do not treat them as final legal, clinical, coding, billing, audit, or compliance determinations.
 
-### Can I use these for HIPAA, coding, or payer work?
+### Can I use these with PHI?
 
-Use them for structured analysis, checklists, source-aware workflows, and draft deliverables. Do not treat them as final legal, clinical, coding, billing, or compliance determinations.
+Only inside an environment your organization has approved for PHI, with the right vendor agreements, access controls, retention settings, and de-identification practices. The prompts themselves do not solve that governance problem.
 
-## Contributing
+### Can I add my own agents?
 
-Issues and improvement ideas are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Yes. Follow the conventions in [CONTRIBUTING.md](CONTRIBUTING.md), run `bash scripts/lint-agents.sh`, and keep the agent narrow, source-aware, and operationally concrete.
+
+## About Contributions
+
+*About Contributions:* Please don't take this the wrong way, but I do not accept outside contributions for any of my projects. I simply don't have the mental bandwidth to review anything, and it's my name on the thing, so I'm responsible for any problems it causes; thus, the risk-reward is highly asymmetric from my perspective. I'd also have to worry about other "stakeholders," which seems unwise for tools I mostly make for myself for free. Feel free to submit issues, and even PRs if you want to illustrate a proposed fix, but know I won't merge them directly. Instead, I'll have Claude or Codex review submissions via `gh` and independently decide whether and how to address them. Bug reports in particular are welcome. Sorry if this offends, but I want to avoid wasted time and hurt feelings. I understand this isn't in sync with the prevailing open-source ethos that seeks community contributions, but it's the only way I can move at this velocity and keep my sanity.
 
 ## License
 
