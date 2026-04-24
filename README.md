@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="docs/assets/healthcare-agents-hero.png" alt="Healthcare Agents command center showing agent network, operations dashboards, compliance metrics, denial analytics, and workflow orchestration" width="100%">
+</p>
+
+<p align="center">
   <h1 align="center">Healthcare Agents</h1>
   <p align="center">
     <strong>51 eval-improved AI agents for US healthcare administration.</strong><br>
@@ -13,6 +17,15 @@
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0"></a>
   </p>
 </p>
+
+<table>
+  <tr>
+    <td align="center"><strong>51</strong><br><sub>specialist agents</sub></td>
+    <td align="center"><strong>10</strong><br><sub>healthcare domains</sub></td>
+    <td align="center"><strong>95.50</strong><br><sub>avg post-score, final 36</sub></td>
+    <td align="center"><strong>Claude · Codex · OpenCode</strong><br><sub>agents, rules, and skills</sub></td>
+  </tr>
+</table>
 
 Healthcare Agents is a portable prompt pack for healthcare administration work. Each agent is a long-form Markdown system prompt with structured YAML frontmatter, concrete regulatory/source awareness, role-specific workflows, and deliverable templates.
 
@@ -72,6 +85,17 @@ npx --yes github:ajhcs/healthcare-agents install --all --force
 The agents do not give clinical advice, legal opinions, or permission to handle PHI. They provide healthcare administration expertise, source-aware workflows, and structured deliverables.
 
 ## Compatibility
+
+```mermaid
+flowchart LR
+  A["agents/*.md"] --> B["Claude Code<br/>~/.claude/agents"]
+  A --> C["Codex<br/>~/.codex/agents + AGENTS.md"]
+  A --> D["Rules<br/>Cursor · Windsurf · Copilot"]
+  A --> E["Generated SKILL.md"]
+  E --> F["Claude Skills<br/>Desktop · Cowork"]
+  E --> G["OpenCode Skills"]
+  E --> H[".agents/skills"]
+```
 
 | Tool / Standard | Install Target | Notes |
 |---|---|---|
