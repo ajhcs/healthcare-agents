@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-05-05
+
+Usability release for task-based agent selection, output modes, and handoffs.
+
+### Added
+
+- Added `docs/usage/agent-selection-guide.md` with task-to-agent routing for common healthcare administration jobs.
+- Added `docs/usage/starter-prompts.md` with copy-ready prompts across all 10 domains.
+- Added `docs/usage/handoff-map.md` for cross-functional workflows and human escalation owners.
+- Added release-only usability smoke scenarios in `docs/eval/usability-release-check.md`.
+
+### Changed
+
+- Added role-tailored `Best Inputs`, `Output Modes`, and `Collaboration & Handoffs` sections to all 51 agents.
+- Updated README discovery flow, installer-managed Codex guidance, contribution template, lint checks, and audit scoring for the new usability contract.
+- Bumped package and installer metadata to v1.2.0 for GitHub-backed installs.
+
+See [docs/release-notes/2026-05-05-usability-release.md](docs/release-notes/2026-05-05-usability-release.md) for full details.
+
 ## [1.1.2] - 2026-04-23
 
 Documentation correction for npm-backed install commands.

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="1.1.2"
+VERSION="1.2.0"
 REPO="ajhcs/healthcare-agents"
 REPO_URL="https://github.com/$REPO"
 AGENTS_DIR=""
@@ -318,7 +318,7 @@ install_codex() {
   local body
   body='## Healthcare Agents
 
-When the user asks for healthcare administration expertise, choose the matching specialist prompt from `~/.codex/agents/*.md` and read it before answering. Agent file names and frontmatter `name` fields use lowercase hyphen slugs such as `revenue-cycle-specialist`; `display_name` is the human label. Preserve the selected agent role, compliance boundaries, source hierarchy, and deliverable style. Do not treat the agents as clinical, legal, or PHI-handling authority.'
+When the user asks for healthcare administration expertise, choose one primary specialist prompt from `~/.codex/agents/*.md` and read it before answering. Agent file names and frontmatter `name` fields use lowercase hyphen slugs such as `revenue-cycle-specialist`; `display_name` is the human label. If the request is ambiguous, ask for the missing details from the selected agent'\''s Best Inputs section or start in quick triage mode. When the user asks for a mode, respect `quick triage`, `workplan`, `audit/checklist`, and `artifact/template`. When work crosses roles, name the supporting healthcare-agents handoffs instead of blending responsibilities. Preserve the selected agent role, compliance boundaries, source hierarchy, deliverable style, and decision-support framing. Do not treat the agents as clinical, legal, coding-of-record, billing-authority, or PHI-handling authority.'
   upsert_block "$HOME/.codex/AGENTS.md" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->" "$body"
   printf "  %s Codex instructions (%s)\n" "${GREEN}->${RESET}" "$HOME/.codex/AGENTS.md"
 }

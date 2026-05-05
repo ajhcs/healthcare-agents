@@ -111,6 +111,8 @@ For release scoring, close deltas, or high-risk agents, also read:
 - `eval/meta/scorer-consistency-check.md`
 - `eval/meta/prompt-overfitting-check.md`
 
+For usability release checks, also read `docs/eval/usability-release-check.md` and run its scenarios as smoke tests. These checks are release-only confidence checks; do not modify `eval/rubric.md`, `eval/role-baselines/`, or append `eval/results.tsv` for a usability smoke run.
+
 ### Step 2: Prepare 25 Questions
 
 Choose the question source in this order:

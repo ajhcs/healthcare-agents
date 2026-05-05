@@ -14,7 +14,7 @@
   <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
   <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20improved-brightgreen?style=flat-square" alt="51 of 51 agents improved"></a>
   <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
-  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.1.2"><img src="https://img.shields.io/badge/version-1.1.2-blue?style=flat-square" alt="v1.1.2"></a>
+  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.2.0"><img src="https://img.shields.io/badge/version-1.2.0-blue?style=flat-square" alt="v1.2.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
 </p>
 
@@ -23,19 +23,20 @@
     <td align="center"><strong>51</strong><br><sub>healthcare specialists</sub></td>
     <td align="center"><strong>10</strong><br><sub>administrative domains</sub></td>
     <td align="center"><strong>95.50</strong><br><sub>avg final-pass score</sub></td>
-    <td align="center"><strong>Markdown + SKILL.md</strong><br><sub>portable agent formats</sub></td>
+    <td align="center"><strong>Routing + SKILL.md</strong><br><sub>usable agent formats</sub></td>
   </tr>
 </table>
 
 Healthcare Agents is a model-agnostic prompt library for healthcare administration work: revenue cycle, quality and compliance, clinical operations, payer relations, health IT, population health, pharmacy programs, operations, strategy, and emergency preparedness.
 
-Each agent is a long-form Markdown specialist with YAML frontmatter, role-specific source awareness, compliance boundaries, operational workflows, and concrete deliverable templates. The pack installs into tools that support subagents, custom instructions, repository rules, or `SKILL.md` folders.
+Each agent is a long-form Markdown specialist with YAML frontmatter, role-specific source awareness, compliance boundaries, operational workflows, concrete deliverable templates, best-input guidance, output modes, and cross-agent handoff rules. The pack installs into tools that support subagents, custom instructions, repository rules, or `SKILL.md` folders.
 
 ## TL;DR
 
 | You need | Healthcare Agents gives you |
 |---|---|
 | Healthcare-specific agent behavior | 51 narrow specialists instead of one generic "healthcare assistant." |
+| Easier agent selection | Task-based chooser docs, starter prompts, output modes, and handoff maps. |
 | Practical administrative output | Appeal packets, audit binders, gap analyses, dashboards, charters, payer matrices, readiness plans, and workflow checklists. |
 | Better regulatory handling | Role-aware references to HIPAA, CMS, OIG, HEDIS, Stars, MIPS/QPP, HRSA 340B, NHSN, TEFCA, HL7/FHIR, X12, and other domain sources. |
 | Portable installation | Claude Code agents, Claude/OpenCode skills, Codex agent prompts, Cursor/Windsurf/Copilot rules, Aider context, and plain Markdown. |
@@ -91,18 +92,44 @@ Uninstall:
 npx --yes github:ajhcs/healthcare-agents uninstall --all
 ```
 
+## Choose the Right Agent
+
+Start with the task, not the agent name. Use the [agent selection guide](docs/usage/agent-selection-guide.md) when you know the operational problem, the [starter prompts](docs/usage/starter-prompts.md) when you want copy-ready examples, and the [handoff map](docs/usage/handoff-map.md) when the request spans departments.
+
+Every agent now supports four output modes:
+
+| Ask for | When to use it |
+|---|---|
+| `quick triage` | Symptoms, weak data, or first-pass root cause analysis |
+| `workplan` | Owners, sequence, dependencies, KPIs, and timeline |
+| `audit/checklist` | Evidence requests, pass/fail criteria, remediation owners |
+| `artifact/template` | A draft work product with assumptions and placeholders |
+
+Common starting points:
+
+| You need | Start with |
+|---|---|
+| Clean claim or denial problem | `revenue-cycle-specialist` |
+| Survey readiness | `quality-accreditation-specialist` |
+| Prior authorization delays | `clinical-prior-authorization-specialist` |
+| ED boarding or capacity issue | `operations-hospital-administrator` |
+| Interface or FHIR issue | `healthit-interoperability-engineer` |
+| Value-based care performance | `payer-value-based-care-manager` |
+| Safety event or RCA | `quality-patient-safety-officer` |
+| CHNA or community benefit | `pophealth-community-health-coordinator` |
+
 ## Quick Examples
 
 Claude Code:
 
 ```text
-Use the revenue-cycle-specialist agent to diagnose why our clean claim rate dropped and build a denial-reduction workplan.
+Use the revenue-cycle-specialist agent in quick triage mode to diagnose why our clean claim rate dropped, then list coding, contract, and prior authorization handoffs.
 ```
 
 Codex:
 
 ```text
-Read the quality-compliance-officer healthcare agent and draft a HIPAA Security Rule audit checklist for a small clinic.
+Read the quality-compliance-officer healthcare agent and use audit/checklist mode to draft a HIPAA Security Rule evidence checklist for a small clinic.
 ```
 
 OpenCode:
@@ -153,7 +180,7 @@ flowchart LR
 | Claude Code subagents | `~/.claude/agents/*.md` | Source prompts use lowercase hyphen `name` values matching filenames. |
 | Claude Skills | `~/.claude/skills/<slug>/SKILL.md` | Generated skill wrappers include `name`, `description`, `license`, and `compatibility`. |
 | Claude Desktop / Claude Cowork | Claude-compatible skills | Use `--claude-desktop`, `--claude-cowork`, or `--claude-skills`. |
-| Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed discovery block telling Codex how to load specialists. |
+| Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed discovery block telling Codex how to choose specialists, use output modes, and name handoffs. |
 | OpenCode | `~/.config/opencode/skills/<slug>/SKILL.md` | Matches OpenCode's skill directory conventions. |
 | Open Agent Skills | `~/.agents/skills/<slug>/SKILL.md` | Portable fallback for tools that scan a common `.agents/skills` layout. |
 | Cursor | `.cursor/rules/*.md` | Installs the same Markdown prompts as project rules. |
@@ -356,6 +383,7 @@ During a normal eval run, only the requested `agents/<slug>.md` file should chan
 │   ├── role-baselines/              # expected capability baselines
 │   └── run-logs/                    # local ignored exact-question artifacts
 ├── docs/eval/                       # scorer and model-routing guidance
+├── docs/usage/                      # agent chooser, starter prompts, handoff map
 ├── bin/cli.js                       # GitHub-backed npx entrypoint
 ├── install.sh                       # multi-tool installer
 └── scripts/                         # lint and self-improvement kit helpers

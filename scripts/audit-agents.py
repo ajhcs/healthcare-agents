@@ -2,11 +2,12 @@
 """Heuristic quality audit for healthcare agent prompts.
 
 This is intentionally lightweight. It scores each agent against the repo's
-contribution standards using four signals:
+contribution standards using five signals:
 1. required section coverage
 2. target length range
 3. domain citation density
 4. template/deliverable richness
+5. usability contract coverage
 """
 
 from __future__ import annotations
@@ -127,11 +128,27 @@ class AuditRow:
     sections: int
     citations: int
     template_signals: float
+    usability: float
 
 
 def score_length(line_count: int) -> float:
     # Full score near the target range, softer decay at the edges.
-    return max(0.0, 1.0 - abs(line_count - 500) / 250.0) * 20.0
+    return max(0.0, 1.0 - abs(line_count - 500) / 250.0) * 15.0
+
+
+def score_usability(text: str) -> float:
+    signals = [
+        "### Best Inputs",
+        "### Output Modes",
+        "### Collaboration & Handoffs",
+        "**Quick triage**",
+        "**Workplan**",
+        "**Audit/checklist**",
+        "**Artifact/template**",
+        "when the request crosses role boundaries",
+        "keep your output framed as decision support",
+    ]
+    return sum(1 for signal in signals if signal in text)
 
 
 def audit_file(path: Path) -> AuditRow:
@@ -142,36 +159,39 @@ def audit_file(path: Path) -> AuditRow:
     placeholders = len(PLACEHOLDER_RE.findall(text))
     code_blocks = text.count("```") // 2
     deliverable_markers = sum(text.count(token) for token in TEMPLATE_TOKENS)
+    usability = score_usability(text)
 
-    structure_score = sections / len(REQUIRED_SECTIONS) * 30.0
+    structure_score = sections / len(REQUIRED_SECTIONS) * 25.0
     length_score = score_length(line_count)
-    citation_score = min(citations, 20) / 20.0 * 30.0
+    citation_score = min(citations, 20) / 20.0 * 25.0
     template_signal = min(placeholders + code_blocks * 2 + deliverable_markers / 4.0, 20.0)
     template_score = template_signal / 20.0 * 20.0
+    usability_score = min(usability, 9) / 9.0 * 15.0
 
     return AuditRow(
         name=path.name,
-        total=round(structure_score + length_score + citation_score + template_score, 1),
+        total=round(structure_score + length_score + citation_score + template_score + usability_score, 1),
         lines=line_count,
         sections=sections,
         citations=citations,
         template_signals=round(template_signal, 1),
+        usability=round(usability_score, 1),
     )
 
 
 def render(rows: list[AuditRow], top: int) -> str:
-    header = "score  lines  sect  cites  templ  file"
+    header = "score  lines  sect  cites  templ  usab  file"
     rule = "-" * len(header)
     lowest = rows[:top]
     highest = rows[-top:] if top < len(rows) else rows
     parts = ["LOWEST", header, rule]
     parts.extend(
-        f"{row.total:>5.1f}  {row.lines:>5}  {row.sections:>4}  {row.citations:>5}  {row.template_signals:>5}  {row.name}"
+        f"{row.total:>5.1f}  {row.lines:>5}  {row.sections:>4}  {row.citations:>5}  {row.template_signals:>5}  {row.usability:>5}  {row.name}"
         for row in lowest
     )
     parts.extend(["", "HIGHEST", header, rule])
     parts.extend(
-        f"{row.total:>5.1f}  {row.lines:>5}  {row.sections:>4}  {row.citations:>5}  {row.template_signals:>5}  {row.name}"
+        f"{row.total:>5.1f}  {row.lines:>5}  {row.sections:>4}  {row.citations:>5}  {row.template_signals:>5}  {row.usability:>5}  {row.name}"
         for row in highest
     )
     return "\n".join(parts)

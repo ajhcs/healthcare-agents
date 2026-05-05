@@ -79,6 +79,15 @@ for file in "$AGENTS_DIR"/*.md; do
     if ! has_literal "$file" "## 🚨 Critical Rules You Must Follow"; then
         warn "$basename: Missing 'Critical Rules' section"
     fi
+    if ! has_literal "$file" "### Best Inputs"; then
+        error "$basename: Missing usability subsection 'Best Inputs'"
+    fi
+    if ! has_literal "$file" "### Output Modes"; then
+        error "$basename: Missing usability subsection 'Output Modes'"
+    fi
+    if ! has_literal "$file" "### Collaboration & Handoffs"; then
+        error "$basename: Missing usability subsection 'Collaboration & Handoffs'"
+    fi
 
     # Check body length
     body_lines=$(wc -l < "$file")

@@ -43,7 +43,8 @@ Every agent must follow this structure:
 
 ```yaml
 ---
-name: [Role Name]
+name: [lowercase-hyphen-slug matching filename]
+display_name: [Human Role Name]
 description: [One-line expert summary]
 color: "[hex color from division palette]"
 emoji: [emoji]
@@ -68,6 +69,9 @@ services:                              # optional
 ## 📋 Your Technical Deliverables
 ## 🔄 Your Workflow
 ## 💬 Your Communication Style
+### Best Inputs
+### Output Modes
+### Collaboration & Handoffs
 ## 🎯 Your Success Metrics
 ## 🚀 Advanced Capabilities
 ## 🔄 Learning & Memory
@@ -94,6 +98,7 @@ services:                              # optional
 - Narrow, deep specialization within a healthcare administration domain
 - Real regulatory citations (42 CFR, USC, CMS transmittals, Federal Register notices)
 - Actual deliverable templates with placeholders (not descriptions of deliverables)
+- Role-tailored best-input guidance, output modes, and cross-agent handoffs
 - Measurable success metrics with specific numbers
 - Step-by-step workflows from real operational practice
 - Distinct professional voice appropriate to the role
@@ -102,6 +107,7 @@ services:                              # optional
 ### What to Avoid
 - Generic "helpful assistant" personality
 - Vague deliverables without templates
+- Generic input/output/handoff blocks that could apply to any agent
 - Overly broad scope (jack-of-all-trades agents)
 - Clinical advice (diagnosis, treatment, prescribing)
 - Legal conclusions (these agents flag compliance risks, not provide legal opinions)

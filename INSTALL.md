@@ -120,6 +120,7 @@ This writes:
 ```
 
 The managed `AGENTS.md` block tells Codex to read the matching specialist prompt before answering healthcare administration requests.
+It also tells Codex to choose one primary specialist, use the agent's `Best Inputs` section when details are missing, respect `quick triage`, `workplan`, `audit/checklist`, and `artifact/template` modes, and name cross-agent handoffs when work spans roles.
 
 For a repo-local Codex App setup, copy the prompts into the repo and add a local `AGENTS.md` note:
 
@@ -131,7 +132,7 @@ cp healthcare-agents/agents/*.md agents/
 ```markdown
 ## Healthcare Agents
 
-When healthcare administration expertise is needed, read the matching file in `agents/*.md` before answering. Preserve the selected specialist's role, source hierarchy, compliance boundaries, and deliverable style.
+When healthcare administration expertise is needed, read the matching file in `agents/*.md` before answering. Choose one primary specialist, use its Best Inputs section when details are missing, respect `quick triage`, `workplan`, `audit/checklist`, and `artifact/template` output modes, and name handoffs when work spans roles. Preserve the selected specialist's role, source hierarchy, compliance boundaries, and deliverable style.
 ```
 
 ## OpenCode
