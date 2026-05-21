@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [1.3.0] - 2026-05-21
+
+Product-surface release for registry-backed discovery, safer installs, npm distribution, and public trust/eval artifacts.
+
 ### Added
 
 - Added `agents/registry.json` with discovery, routing, handoff, trust, and provenance metadata for all 51 agents.
@@ -11,11 +15,15 @@ All notable changes to this project will be documented in this file.
 - Added CI gates for installer syntax, agent linting/audit, package dry-run, CLI smoke tests, and installer dry-run.
 - Added public eval scorecard generation under `docs/eval/scorecard.md` and `docs/eval/scorecard.json`.
 - Added `docs/trust-and-safety.md` for scope, PHI, human escalation, source freshness, and eval limitations.
+- Published `healthcare-agents` to npm for direct `npx --yes healthcare-agents ...` usage.
 
 ### Changed
 
 - Improved installer dry-run output to show exact planned writes and avoid dry-run directory creation.
 - Added npm package scripts and Node engine metadata for distribution readiness.
+- Updated install documentation to make npm-backed `npx` the primary path.
+
+See [docs/release-notes/2026-05-21-product-surface-release.md](docs/release-notes/2026-05-21-product-surface-release.md) for full details.
 
 ## [1.2.0] - 2026-05-05
 
