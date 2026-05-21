@@ -10,11 +10,11 @@
 </p>
 
 <p align="center">
-  <a href="#install"><img src="https://img.shields.io/badge/install-curl%20%7C%20github--npx-success?style=flat-square" alt="Install with curl or GitHub npx"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/install-npm%20npx-success?style=flat-square" alt="Install with npm npx"></a>
   <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
   <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20improved-brightgreen?style=flat-square" alt="51 of 51 agents improved"></a>
   <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
-  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.2.0"><img src="https://img.shields.io/badge/version-1.2.0-blue?style=flat-square" alt="v1.2.0"></a>
+  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.3.0"><img src="https://img.shields.io/badge/version-1.3.0-blue?style=flat-square" alt="v1.3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
 </p>
 
@@ -49,59 +49,63 @@ These agents are for healthcare administration support. They are not clinicians,
 Fast path:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
+npx --yes healthcare-agents install
 ```
 
-GitHub-backed `npx`:
+GitHub-backed fallback:
 
 ```bash
 npx --yes github:ajhcs/healthcare-agents install
 ```
 
-The package is npm-ready and validates with `npm pack --dry-run`. If consuming before npm publication, use the GitHub-backed `npx` command above.
+Shell installer fallback:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
+```
 
 Target a specific tool:
 
 | Runtime | Command |
 |---|---|
-| Claude Code subagents | `npx --yes github:ajhcs/healthcare-agents install --claude` |
-| Claude Skills, Claude Desktop, Claude Cowork | `npx --yes github:ajhcs/healthcare-agents install --claude-skills` |
-| Codex CLI / Codex App | `npx --yes github:ajhcs/healthcare-agents install --codex` |
-| OpenCode skills | `npx --yes github:ajhcs/healthcare-agents install --opencode` |
-| Open Agent Skills convention | `npx --yes github:ajhcs/healthcare-agents install --agent-skills` |
-| Cursor rules | `npx --yes github:ajhcs/healthcare-agents install --cursor` |
-| Windsurf rules | `npx --yes github:ajhcs/healthcare-agents install --windsurf` |
-| GitHub Copilot instructions | `npx --yes github:ajhcs/healthcare-agents install --copilot` |
-| All known targets | `npx --yes github:ajhcs/healthcare-agents install --all` |
+| Claude Code subagents | `npx --yes healthcare-agents install --claude` |
+| Claude Skills, Claude Desktop, Claude Cowork | `npx --yes healthcare-agents install --claude-skills` |
+| Codex CLI / Codex App | `npx --yes healthcare-agents install --codex` |
+| OpenCode skills | `npx --yes healthcare-agents install --opencode` |
+| Open Agent Skills convention | `npx --yes healthcare-agents install --agent-skills` |
+| Cursor rules | `npx --yes healthcare-agents install --cursor` |
+| Windsurf rules | `npx --yes healthcare-agents install --windsurf` |
+| GitHub Copilot instructions | `npx --yes healthcare-agents install --copilot` |
+| All known targets | `npx --yes healthcare-agents install --all` |
 
 Preview before writing files:
 
 ```bash
-npx --yes github:ajhcs/healthcare-agents install --all --dry-run
+npx --yes healthcare-agents install --all --dry-run
 ```
 
 Inspect local install targets and collisions:
 
 ```bash
-npx --yes github:ajhcs/healthcare-agents doctor
+npx --yes healthcare-agents doctor
 ```
 
 Install one agent instead of the full pack:
 
 ```bash
-npx --yes github:ajhcs/healthcare-agents install revenue-cycle-specialist --codex
+npx --yes healthcare-agents install revenue-cycle-specialist --codex
 ```
 
 Update existing installs:
 
 ```bash
-npx --yes github:ajhcs/healthcare-agents install --all --force
+npx --yes healthcare-agents install --all --force
 ```
 
 Uninstall:
 
 ```bash
-npx --yes github:ajhcs/healthcare-agents uninstall --all
+npx --yes healthcare-agents uninstall --all
 ```
 
 ## Choose the Right Agent
@@ -427,7 +431,7 @@ bash install.sh --all --dry-run
 Check CLI help:
 
 ```bash
-npx --yes github:ajhcs/healthcare-agents --help
+npx --yes healthcare-agents --help
 ```
 
 ## Limitations
@@ -442,7 +446,7 @@ npx --yes github:ajhcs/healthcare-agents --help
 
 | Problem | Fix |
 |---|---|
-| `npx healthcare-agents` cannot find the package | Use `npx --yes github:ajhcs/healthcare-agents install`; the npm package is not published yet. |
+| `npx healthcare-agents` cannot find the package | Use `npx --yes healthcare-agents install`, confirm network access to the npm registry, or use the GitHub-backed fallback command above. |
 | Existing files are skipped | Re-run with `--force` after reviewing `--dry-run` output. |
 | Your tool does not auto-discover the agents | Install to a custom path with `--path <dir>` or copy the relevant `agents/<slug>.md` file into the tool's documented rule/context folder. |
 | Claude/OpenCode rejects a skill name | Use v1.1.1 or newer; agent and skill names are lowercase hyphen slugs. |
