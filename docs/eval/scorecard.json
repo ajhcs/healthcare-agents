@@ -1,0 +1,519 @@
+{
+  "generated": "2026-05-21",
+  "source": "eval/results.tsv",
+  "registry": "agents/registry.json",
+  "disclaimer": "Internal rubric results only; not certification or authority for healthcare decisions.",
+  "average_latest_score": 80.97,
+  "agents": [
+    {
+      "agent": "clinical-care-management-specialist",
+      "display_name": "Care Management Specialist",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "clinical-case-manager",
+      "display_name": "Case Manager",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "clinical-documentation-improvement-specialist",
+      "display_name": "Documentation Improvement Specialist",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "clinical-infection-prevention-specialist",
+      "display_name": "Infection Prevention Specialist",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "clinical-prior-authorization-specialist",
+      "display_name": "Prior Authorization Specialist",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "clinical-referral-specialist",
+      "display_name": "Referral Specialist",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "clinical-research-coordinator",
+      "display_name": "Clinical Research Coordinator",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "clinical-utilization-management-specialist",
+      "display_name": "Utilization Management Specialist",
+      "domain": "Clinical Operations",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "emergency-preparedness-coordinator",
+      "display_name": "Emergency Preparedness Coordinator",
+      "domain": "Emergency Preparedness",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "healthit-clinical-data-analyst",
+      "display_name": "Clinical Data Analyst",
+      "domain": "Health IT & Informatics",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "healthit-epic-applications-analyst",
+      "display_name": "Epic Applications Analyst",
+      "domain": "Health IT & Informatics",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "healthit-informatics-manager",
+      "display_name": "Health Informatics Manager",
+      "domain": "Health IT & Informatics",
+      "latest_score": 80.3,
+      "improvement_delta": 3.9,
+      "status": "improved",
+      "weak_areas": "FHIR/SMART production operations;public-health reporting controls;identity and downtime governance",
+      "notes": "Added focused sections for FHIR/SMART operational controls, public-health and quality-reporting interface governance, enterprise identity integrity, and downtime/cutover risk management without broadening the role."
+    },
+    {
+      "agent": "healthit-information-manager",
+      "display_name": "Health Information Manager",
+      "domain": "Health IT & Informatics",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "healthit-interoperability-engineer",
+      "display_name": "Healthcare Interoperability Engineer",
+      "domain": "Health IT & Informatics",
+      "latest_score": 81.1,
+      "improvement_delta": 4.15,
+      "status": "improved",
+      "weak_areas": "SMART on FHIR operational security and auth troubleshooting;HL7 ACK/idempotency and patient-identity event handling;Direct/TEFCA patient-matching governance and FHIR runtime error handling",
+      "notes": "Added ACK-mode and merge-event controls, SMART discovery/PKCE/JWT details, bulk-export operational steps, Direct and TEFCA governance specifics, patient-matching guardrails, and concrete FHIR troubleshooting heuristics."
+    },
+    {
+      "agent": "healthit-telehealth-program-manager",
+      "display_name": "Telehealth Program Manager",
+      "domain": "Health IT & Informatics",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "operations-ambulatory-manager",
+      "display_name": "Ambulatory Operations Manager",
+      "domain": "Operations & Administration",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "operations-home-health-administrator",
+      "display_name": "Home Health Administrator",
+      "domain": "Operations & Administration",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "operations-hospital-administrator",
+      "display_name": "Hospital Operations Administrator",
+      "domain": "Operations & Administration",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "operations-long-term-care-administrator",
+      "display_name": "Long-Term Care Administrator",
+      "domain": "Operations & Administration",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "operations-physician-practice-manager",
+      "display_name": "Physician Practice Manager",
+      "domain": "Operations & Administration",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "operations-supply-chain-manager",
+      "display_name": "Supply Chain Manager",
+      "domain": "Operations & Administration",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "operations-workforce-manager",
+      "display_name": "Healthcare Workforce Manager",
+      "domain": "Operations & Administration",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "payer-credentialing-enrollment-coordinator",
+      "display_name": "Credentialing & Enrollment Coordinator",
+      "domain": "Payer & Managed Care",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "payer-managed-care-analyst",
+      "display_name": "Managed Care Analyst",
+      "domain": "Payer & Managed Care",
+      "latest_score": 80.3,
+      "improvement_delta": 3.35,
+      "status": "improved",
+      "weak_areas": "Medicaid directed payment mechanics;settlement and retro eligibility reconciliation;Medicare Advantage bid-to-revenue bridge",
+      "notes": "Added focused sections for settlement and retro eligibility math, Medicaid directed-payment and pass-through controls, and Medicare Advantage bid/rebate/RAF revenue mechanics without broadening the role."
+    },
+    {
+      "agent": "payer-medicare-medicaid-specialist",
+      "display_name": "Medicare & Medicaid Specialist",
+      "domain": "Payer & Managed Care",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "payer-medicare-outreach-coordinator",
+      "display_name": "Medicare Outreach Coordinator",
+      "domain": "Payer & Managed Care",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "payer-relations-specialist",
+      "display_name": "Payer Relations Specialist",
+      "domain": "Payer & Managed Care",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "payer-value-based-care-manager",
+      "display_name": "Value-Based Care Manager",
+      "domain": "Payer & Managed Care",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "pharmacy-benefits-specialist",
+      "display_name": "Pharmacy Benefits Specialist",
+      "domain": "Pharmacy Programs",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "pharmacy-medication-safety-specialist",
+      "display_name": "Medication Safety Specialist",
+      "domain": "Pharmacy Programs",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "pophealth-community-health-coordinator",
+      "display_name": "Community Health Coordinator",
+      "domain": "Population Health & Community Health",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "pophealth-population-health-manager",
+      "display_name": "Population Health Manager",
+      "domain": "Population Health & Community Health",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "pophealth-surveillance-coordinator",
+      "display_name": "Public Health Surveillance Coordinator",
+      "domain": "Population Health & Community Health",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "quality-accreditation-specialist",
+      "display_name": "Accreditation Specialist",
+      "domain": "Quality, Safety & Compliance",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "quality-compliance-officer",
+      "display_name": "Compliance Officer",
+      "domain": "Quality, Safety & Compliance",
+      "latest_score": 81.15,
+      "improvement_delta": 3.9,
+      "status": "improved",
+      "weak_areas": "HIPAA breach exceptions and unsecured PHI; Stark operational failure modes; exclusion reinstatement controls",
+      "notes": "Added breach-notification exceptions, unsecured-PHI nuance, arrangement failure-mode controls, and reinstatement verification for excluded parties."
+    },
+    {
+      "agent": "quality-improvement-specialist",
+      "display_name": "Quality Improvement Specialist",
+      "domain": "Quality, Safety & Compliance",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "quality-patient-experience-coordinator",
+      "display_name": "Patient Experience Coordinator",
+      "domain": "Quality, Safety & Compliance",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "quality-patient-safety-officer",
+      "display_name": "Patient Safety Officer",
+      "domain": "Quality, Safety & Compliance",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "quality-process-improvement-analyst",
+      "display_name": "Process Improvement Analyst",
+      "domain": "Quality, Safety & Compliance",
+      "latest_score": 80.85,
+      "improvement_delta": 3.3,
+      "status": "improved",
+      "weak_areas": "Managed-care QAPI mechanics;sentinel event RCA/CAPA workflow;risk-adjusted outcome and balancing-measure design",
+      "notes": "Added 42 CFR 438.330 managed-care QAPI guidance, Joint Commission-sensitive sentinel-event/RCA discipline, NHSN SIR and observed-to-expected measure interpretation, and explicit balancing-measure/reliability design."
+    },
+    {
+      "agent": "quality-risk-manager",
+      "display_name": "Risk Manager",
+      "domain": "Quality, Safety & Compliance",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "revenue-340b-program-manager",
+      "display_name": "340B Program Manager",
+      "domain": "Revenue Cycle & Finance",
+      "latest_score": 81.2,
+      "improvement_delta": 3.4,
+      "status": "improved",
+      "weak_areas": "Orphan drug exclusion and entity-type variation;Medicare Part B 340B modifier/payment mechanics;ADR/CMP dispute workflow and MCO duplicate-discount controls",
+      "notes": "Added orphan-drug exclusion rules, Medicare Part B modifier and tie-out mechanics, ADR/CMP dispute-file requirements, tighter Medicaid MCO claim-tagging controls, and mixed-use infusion/covered outpatient drug replenishment guardrails."
+    },
+    {
+      "agent": "revenue-chargemaster-analyst",
+      "display_name": "Chargemaster Analyst",
+      "domain": "Revenue Cycle & Finance",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "revenue-contract-analyst",
+      "display_name": "Healthcare Contract Analyst",
+      "domain": "Revenue Cycle & Finance",
+      "latest_score": 80.45,
+      "improvement_delta": 3.6,
+      "status": "improved",
+      "weak_areas": "Contract build hierarchy and payer product mapping;Outpatient/professional edit logic and modifier payment mechanics;Prompt-pay, offset, recoupment, and denial-yield economics",
+      "notes": "Added sections for amendment and pricing hierarchy, payer product mapping, outpatient/professional edit mechanics, denial-vs-underpayment economics, and prompt-pay/offset modeling to tighten real-world contract valuation and dispute support."
+    },
+    {
+      "agent": "revenue-cycle-specialist",
+      "display_name": "Revenue Cycle Specialist",
+      "domain": "Revenue Cycle & Finance",
+      "latest_score": 80.65,
+      "improvement_delta": 4.8,
+      "status": "improved",
+      "weak_areas": "835/ERA payment posting controls;credit balance and overpayment workflow;appeal assembly by denial type",
+      "notes": "Added concise 835 control points, observation/status checkpoints, stronger credit-balance and ERA posting controls, line-level underpayment logic, and denial-type-specific appeal assembly without broadening the role."
+    },
+    {
+      "agent": "revenue-finance-manager",
+      "display_name": "Healthcare Finance Manager",
+      "domain": "Revenue Cycle & Finance",
+      "latest_score": 81.55,
+      "improvement_delta": 4.85,
+      "status": "improved",
+      "weak_areas": "Multi-campus and multi-provider-number cost report operations;Capital post-implementation review and benefit-realization governance;Department-manager budget review and productivity accountability mechanics",
+      "notes": "Added a capital post-implementation review checklist with ownership and escalation, tightened department-manager budget review expectations, and added multi-campus/provider-number cost-report controls with crosswalk and sign-off flow."
+    },
+    {
+      "agent": "revenue-medical-coding-specialist",
+      "display_name": "Medical Coding Specialist",
+      "domain": "Revenue Cycle & Finance",
+      "latest_score": 82.15,
+      "improvement_delta": 11,
+      "status": "improved",
+      "weak_areas": "Charge capture and denial management workflow;LCD/NCD medical necessity alignment;Surgical global period, anesthesia, and pathology/lab coding mechanics",
+      "notes": "Added focused sections for medical-necessity/LCD-NCD review, charge reconciliation and denial appeals, global-period and professional modifier triage, plus anesthesia and pathology/lab coding rules."
+    },
+    {
+      "agent": "strategy-actuarial-advisor",
+      "display_name": "Healthcare Actuarial Advisor",
+      "domain": "Strategy & Advisory",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "strategy-clinical-operations-consultant",
+      "display_name": "Clinical Operations Consultant",
+      "domain": "Strategy & Advisory",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "strategy-healthcare-consultant",
+      "display_name": "Healthcare Strategy Consultant",
+      "domain": "Strategy & Advisory",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "strategy-operations-consultant",
+      "display_name": "Healthcare Operations Consultant",
+      "domain": "Strategy & Advisory",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    },
+    {
+      "agent": "strategy-structural-improvement-consultant",
+      "display_name": "Structural Improvement Consultant",
+      "domain": "Strategy & Advisory",
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
+    }
+  ]
+}

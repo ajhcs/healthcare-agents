@@ -9,10 +9,12 @@ TARGETS=()
 FORCE=false
 DRY_RUN=false
 UNINSTALL=false
+DOCTOR=false
 CUSTOM_PATH=""
 ALL=false
 EXPLICIT=false
 TOTAL_INSTALLED=0
+AGENT_SLUG=""
 
 if [[ -z "${NO_COLOR:-}" ]] && [[ -t 1 ]]; then
   GREEN=$'\033[32m' RED=$'\033[31m' YELLOW=$'\033[33m'
@@ -41,8 +43,12 @@ Targets:  --claude --claude-code --codex --codex-app --gemini
 Flags:    --force       Overwrite existing files
           --uninstall   Remove agents from detected paths
           --dry-run     Preview without changes
+          --doctor      Report detected tools, paths, and existing installs
           --version     Print version
           -h, --help    Show this help
+
+Single agent:
+          install.sh revenue-cycle-specialist --codex
 EOF
   exit 0
 }
@@ -70,9 +76,17 @@ while [[ $# -gt 0 ]]; do
     --force)     FORCE=true; shift ;;
     --uninstall) UNINSTALL=true; shift ;;
     --dry-run)   DRY_RUN=true; shift ;;
+    --doctor)    DOCTOR=true; shift ;;
     --version)   echo "healthcare-agents installer v$VERSION"; exit 0 ;;
     -h|--help)   usage ;;
-    *)           err "unknown option: $1"; usage ;;
+    *)
+      if [[ "$1" != --* && -z "$AGENT_SLUG" ]]; then
+        AGENT_SLUG="$1"
+        shift
+      else
+        err "unknown option: $1"; usage
+      fi
+      ;;
   esac
 done
 
@@ -152,6 +166,104 @@ tool_exists() {
   fi
 }
 
+suggest_agent_slugs() {
+  local wanted="$1" stem slug count=0
+  stem="${wanted%%-*}"
+  for f in "$AGENTS_DIR"/*.md; do
+    slug="$(basename "$f" .md)"
+    if [[ "$slug" == *"$wanted"* || "$slug" == "$stem"* || "$wanted" == *"$slug"* ]]; then
+      printf "  %s\n" "$slug"
+      count=$((count + 1))
+      [[ $count -ge 5 ]] && return
+    fi
+  done
+  if [[ $count -eq 0 ]]; then
+    for f in "$AGENTS_DIR"/*.md; do
+      slug="$(basename "$f" .md)"
+      printf "  %s\n" "$slug"
+      count=$((count + 1))
+      [[ $count -ge 5 ]] && return
+    done
+  fi
+}
+
+validate_agent_slug() {
+  if [[ -z "$AGENT_SLUG" ]]; then return; fi
+  if [[ ! "$AGENT_SLUG" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+    err "invalid agent slug: $AGENT_SLUG"
+    exit 1
+  fi
+  if [[ ! -f "$AGENTS_DIR/$AGENT_SLUG.md" ]]; then
+    err "unknown agent: $AGENT_SLUG"
+    printf "Close matches:\n" >&2
+    suggest_agent_slugs "$AGENT_SLUG" >&2
+    exit 1
+  fi
+}
+
+agent_files() {
+  if [[ -n "$AGENT_SLUG" ]]; then
+    printf "%s\n" "$AGENTS_DIR/$AGENT_SLUG.md"
+  else
+    printf "%s\n" "$AGENTS_DIR"/*.md
+  fi
+}
+
+agent_file_count() {
+  agent_files | wc -l | tr -d ' '
+}
+
+plan_write() {
+  local target="$1" source="$2"
+  printf "  %s write %s <- %s\n" "${GREEN}->${RESET}" "$target" "$source"
+}
+
+plan_remove() {
+  local target="$1"
+  printf "  %s remove %s\n" "${RED}<-${RESET}" "$target"
+}
+
+installed_count_for_tool() {
+  local tool="$1" path count=0 slug
+  path="$(resolve_path "$tool")"
+  while IFS= read -r f; do
+    slug="$(basename "$f" .md)"
+    if [[ "$tool" == "aider" ]]; then
+      [[ -f "$path" ]] && grep -Fq "$slug.md" "$path" && count=$((count + 1))
+    elif [[ "$tool" == "claude-skills" || "$tool" == "opencode" || "$tool" == "agent-skills" ]]; then
+      [[ -f "$path/$slug/SKILL.md" ]] && count=$((count + 1))
+    else
+      [[ -f "$path/$slug.md" ]] && count=$((count + 1))
+    fi
+  done < <(agent_files)
+  printf "%s" "$count"
+}
+
+doctor_report() {
+  printf "\n${BOLD}Healthcare Agents Doctor${RESET}\n"
+  printf "Agents source: %s\n" "$AGENTS_DIR"
+  if [[ -n "$AGENT_SLUG" ]]; then
+    printf "Selected agent: %s\n" "$AGENT_SLUG"
+  else
+    printf "Selected agents: %s\n" "$(agent_file_count)"
+  fi
+  printf "\nDetected tools and target paths:\n"
+  local tool path disp installed detected
+  for tool in "${TOOL_ORDER[@]}"; do
+    path="$(resolve_path "$tool")"
+    disp="${TOOL_DISPLAY[$tool]}"
+    installed="$(installed_count_for_tool "$tool")"
+    if tool_exists "$tool"; then detected="yes"; else detected="no"; fi
+    printf "  %-24s detected=%-3s installed=%-3s path=%s\n" "$disp" "$detected" "$installed" "$path"
+  done
+  printf "\nRecommended next command:\n"
+  if [[ -n "$AGENT_SLUG" ]]; then
+    printf "  install.sh %s --codex --dry-run\n" "$AGENT_SLUG"
+  else
+    printf "  install.sh --all --dry-run\n"
+  fi
+}
+
 detect_targets() {
   printf "\n${BOLD}Detected tools:${RESET}\n"
   for tool in "${TOOL_ORDER[@]}"; do
@@ -171,28 +283,25 @@ detect_targets() {
 install_to_dir() {
   local dest="$1" label="$2"
   local count=0
-  mkdir -p "$dest"
-  for f in "$AGENTS_DIR"/*.md; do
+  if ! $DRY_RUN; then mkdir -p "$dest"; fi
+  while IFS= read -r f; do
     local base
     base="$(basename "$f")"
     local target="$dest/$base"
     if [[ -f "$target" ]] && ! $FORCE; then
-      if [[ $count -eq 0 ]]; then
-        warn "$label: files exist (use --force to update)"
-      fi
-      return 0
+      skip "$label: exists $target (use --force to update)"
+      continue
     fi
     if $DRY_RUN; then
+      plan_write "$target" "$f"
       count=$((count + 1))
       continue
     fi
     cp "$f" "$target"
     count=$((count + 1))
-  done
-  local agent_count
-  agent_count="$(ls "$AGENTS_DIR"/*.md 2>/dev/null | wc -l)"
-  printf "  %s %s (%d files)\n" "${GREEN}->${RESET}" "$label" "$agent_count"
-  TOTAL_INSTALLED=$((TOTAL_INSTALLED + agent_count))
+  done < <(agent_files)
+  printf "  %s %s (%d files)\n" "${GREEN}->${RESET}" "$label" "$count"
+  TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
 }
 
 field_value() {
@@ -233,20 +342,22 @@ write_skill_file() {
 install_skills_tree() {
   local dest="$1" label="$2"
   local count=0
-  mkdir -p "$dest"
-  for f in "$AGENTS_DIR"/*.md; do
+  if ! $DRY_RUN; then mkdir -p "$dest"; fi
+  while IFS= read -r f; do
     local slug target
     slug="$(basename "$f" .md)"
     target="$dest/$slug/SKILL.md"
     if [[ -f "$target" ]] && ! $FORCE; then
-      if [[ $count -eq 0 ]]; then
-        warn "$label: skill files exist (use --force to update)"
-      fi
-      return 0
+      skip "$label: exists $target (use --force to update)"
+      continue
     fi
-    if ! $DRY_RUN; then write_skill_file "$f" "$dest"; fi
+    if $DRY_RUN; then
+      plan_write "$target" "$f"
+    else
+      write_skill_file "$f" "$dest"
+    fi
     count=$((count + 1))
-  done
+  done < <(agent_files)
   printf "  %s %s (%d skills)\n" "${GREEN}->${RESET}" "$label" "$count"
   TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
 }
@@ -254,15 +365,15 @@ install_skills_tree() {
 uninstall_skills_tree() {
   local dest="$1" label="$2"
   local count=0
-  for f in "$AGENTS_DIR"/*.md; do
+  while IFS= read -r f; do
     local slug target
     slug="$(basename "$f" .md)"
     target="$dest/$slug"
     if [[ -d "$target" ]]; then
-      if ! $DRY_RUN; then rm -rf "$target"; fi
+      if $DRY_RUN; then plan_remove "$target"; else rm -rf "$target"; fi
       count=$((count + 1))
     fi
-  done
+  done < <(agent_files)
   if [[ $count -gt 0 ]]; then
     printf "  %s %s (%d skills removed)\n" "${RED}<-${RESET}" "$label" "$count"
     TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
@@ -273,7 +384,7 @@ uninstall_skills_tree() {
 
 upsert_block() {
   local file="$1" start="$2" end="$3" body="$4"
-  mkdir -p "$(dirname "$file")"
+  if ! $DRY_RUN; then mkdir -p "$(dirname "$file")"; fi
   local tmp
   tmp="$(mktemp)"
   printf '%s\n%s\n%s\n' "$start" "$body" "$end" > "$tmp"
@@ -320,21 +431,25 @@ install_codex() {
 
 When the user asks for healthcare administration expertise, choose one primary specialist prompt from `~/.codex/agents/*.md` and read it before answering. Agent file names and frontmatter `name` fields use lowercase hyphen slugs such as `revenue-cycle-specialist`; `display_name` is the human label. If the request is ambiguous, ask for the missing details from the selected agent'\''s Best Inputs section or start in quick triage mode. When the user asks for a mode, respect `quick triage`, `workplan`, `audit/checklist`, and `artifact/template`. When work crosses roles, name the supporting healthcare-agents handoffs instead of blending responsibilities. Preserve the selected agent role, compliance boundaries, source hierarchy, deliverable style, and decision-support framing. Do not treat the agents as clinical, legal, coding-of-record, billing-authority, or PHI-handling authority.'
   upsert_block "$HOME/.codex/AGENTS.md" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->" "$body"
+  if $DRY_RUN; then
+    plan_write "$HOME/.codex/AGENTS.md" "managed Codex instructions block"
+  fi
+  TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
   printf "  %s Codex instructions (%s)\n" "${GREEN}->${RESET}" "$HOME/.codex/AGENTS.md"
 }
 
 uninstall_from_dir() {
   local dest="$1" label="$2"
   local count=0
-  for f in "$AGENTS_DIR"/*.md; do
+  while IFS= read -r f; do
     local base target
     base="$(basename "$f")"
     target="$dest/$base"
     if [[ -f "$target" ]]; then
-      if ! $DRY_RUN; then rm "$target"; fi
+      if $DRY_RUN; then plan_remove "$target"; else rm "$target"; fi
       count=$((count + 1))
     fi
-  done
+  done < <(agent_files)
   if [[ $count -gt 0 ]]; then
     printf "  %s %s (%d files removed)\n" "${RED}<-${RESET}" "$label" "$count"
     TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
@@ -346,10 +461,12 @@ uninstall_from_dir() {
 install_aider() {
   local conf="${PWD}/.aider.conf.yml"
   local agent_count
-  agent_count="$(ls "$AGENTS_DIR"/*.md 2>/dev/null | wc -l)"
+  agent_count="$(agent_file_count)"
   if $UNINSTALL; then
     if [[ -f "$conf" ]] && grep -q "# healthcare-agents" "$conf" 2>/dev/null; then
-      if ! $DRY_RUN; then
+      if $DRY_RUN; then
+        plan_remove "$conf"
+      else
         sed -i '/# healthcare-agents start/,/# healthcare-agents end/d' "$conf"
       fi
       printf "  %s Aider (.aider.conf.yml block removed)\n" "${RED}<-${RESET}"
@@ -363,13 +480,14 @@ install_aider() {
     warn "Aider: config block exists (use --force to update)"; return
   fi
   local block="# healthcare-agents start"$'\n'"read:"
-  for f in "$AGENTS_DIR"/*.md; do
+  while IFS= read -r f; do
     block+=$'\n'"  - $f"
-  done
+  done < <(agent_files)
   block+=$'\n'"# healthcare-agents end"
   if $DRY_RUN; then
+    plan_write "$conf" "managed Aider read block"
     printf "  %s Aider (.aider.conf.yml, %d read entries)\n" "${GREEN}->${RESET}" "$agent_count"
-    TOTAL_INSTALLED=$((TOTAL_INSTALLED + agent_count))
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
     return
   fi
   # Remove old block if --force, then append
@@ -378,7 +496,7 @@ install_aider() {
   fi
   echo "$block" >> "$conf"
   printf "  %s Aider (.aider.conf.yml, %d read entries)\n" "${GREEN}->${RESET}" "$agent_count"
-  TOTAL_INSTALLED=$((TOTAL_INSTALLED + agent_count))
+  TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
 }
 
 printf "\n${BOLD}Healthcare Agents Installer v%s${RESET}\n" "$VERSION"
@@ -388,7 +506,13 @@ if ! find_agents; then
   download_agents
 fi
 
-AGENT_COUNT="$(ls "$AGENTS_DIR"/*.md 2>/dev/null | wc -l)"
+validate_agent_slug
+AGENT_COUNT="$(agent_file_count)"
+
+if $DOCTOR; then
+  doctor_report
+  exit 0
+fi
 
 if $ALL; then TARGETS=("${TOOL_ORDER[@]}")
 elif ! $EXPLICIT; then detect_targets; fi

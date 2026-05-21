@@ -21,6 +21,13 @@
   "bin": {
     "healthcare-agents": "bin/cli.js"
   },
+  "scripts": {
+    "scorecard": "node scripts/generate-scorecard.js",
+    "test": "bash -n install.sh && bash scripts/lint-agents.sh && python3 scripts/audit-agents.py --top 10 && npm pack --dry-run && node bin/cli.js --help && node bin/cli.js list && bash install.sh --all --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "files": [
     ".claude/commands/eval.md",
     "AGENTS.md",
@@ -30,6 +37,7 @@
     "docs/assets/",
     "docs/eval/",
     "docs/release-notes/",
+    "docs/trust-and-safety.md",
     "docs/usage/",
     "eval/meta/",
     "eval/role-baselines/",

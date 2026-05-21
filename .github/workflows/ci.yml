@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check install script syntax
+        run: bash -n install.sh
+
+      - name: Lint agent prompts
+        run: bash scripts/lint-agents.sh
+
+      - name: Audit agent prompt quality
+        run: python3 scripts/audit-agents.py --top 10
+
+      - name: Generate eval scorecard
+        run: node scripts/generate-scorecard.js
+
+      - name: Check package contents
+        run: npm pack --dry-run
+
+      - name: Check CLI help
+        run: node bin/cli.js --help
+
+      - name: Check CLI list
+        run: node bin/cli.js list
+
+      - name: Check installer dry run
+        run: bash install.sh --all --dry-run

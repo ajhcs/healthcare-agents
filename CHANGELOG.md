@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Added
+
+- Added `agents/registry.json` with discovery, routing, handoff, trust, and provenance metadata for all 51 agents.
+- Added CLI commands for `list`, `show`, `choose`, `prompt`, and `doctor`, plus slug-validated single-agent installs.
+- Added CI gates for installer syntax, agent linting/audit, package dry-run, CLI smoke tests, and installer dry-run.
+- Added public eval scorecard generation under `docs/eval/scorecard.md` and `docs/eval/scorecard.json`.
+- Added `docs/trust-and-safety.md` for scope, PHI, human escalation, source freshness, and eval limitations.
+
+### Changed
+
+- Improved installer dry-run output to show exact planned writes and avoid dry-run directory creation.
+- Added npm package scripts and Node engine metadata for distribution readiness.
+
 ## [1.2.0] - 2026-05-05
 
 Usability release for task-based agent selection, output modes, and handoffs.
