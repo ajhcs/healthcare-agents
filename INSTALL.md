@@ -23,6 +23,12 @@ Use `--dry-run` before writing files:
 npx --yes github:ajhcs/healthcare-agents install --all --dry-run
 ```
 
+Run doctor to inspect detected tools, target paths, collisions, and existing installed files:
+
+```bash
+npx --yes github:ajhcs/healthcare-agents doctor
+```
+
 Use `--force` to update an existing install:
 
 ```bash
@@ -197,6 +203,28 @@ Copy the source agent files to any directory:
 
 ```bash
 npx --yes github:ajhcs/healthcare-agents install --path ./vendor/healthcare-agents
+```
+
+## Single-Agent Install
+
+Install one prompt when a full pack is unnecessary:
+
+```bash
+npx --yes github:ajhcs/healthcare-agents install revenue-cycle-specialist --codex
+npx --yes github:ajhcs/healthcare-agents install quality-compliance-officer --claude-skills --dry-run
+```
+
+Slugs are validated against `agents/registry.json`; invalid slugs return close-match suggestions.
+
+## CLI Discovery
+
+The package includes registry-backed discovery commands:
+
+```bash
+healthcare-agents list [--domain revenue] [--json]
+healthcare-agents show revenue-cycle-specialist [--json]
+healthcare-agents choose "prior authorization denials are rising" [--json]
+healthcare-agents prompt revenue-cycle-specialist --mode "quick triage"
 ```
 
 ## Uninstall

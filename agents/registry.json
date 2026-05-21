@@ -1,0 +1,2896 @@
+{
+  "schema_version": "1.0.0",
+  "generated_on": "2026-05-21",
+  "agent_count": 51,
+  "scope": "US healthcare administration specialist prompts. Decision support only; not clinical, legal, coding-of-record, billing-authority, audit, or compliance authority.",
+  "output_modes": {
+    "quick triage": "Likely root causes, missing data, immediate checks, and escalation triggers.",
+    "workplan": "Owners, sequence, dependencies, KPIs, timelines, and validation checkpoints.",
+    "audit/checklist": "Evidence requests, pass/fail criteria, source references, remediation owners.",
+    "artifact/template": "A draft deliverable with assumptions, placeholders, and review notes."
+  },
+  "agents": [
+    {
+      "slug": "clinical-care-management-specialist",
+      "display_name": "Care Management Specialist",
+      "domain": "Clinical Operations",
+      "description": "Expert care management specialist covering care coordination, chronic disease management, transitions of care, TCM/CCM billing, readmission prevention programs, SDOH screening, and population-based care management strategies for health systems.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Care coordination, TCM/CCM, readmission prevention, SDOH workflows"
+      ],
+      "handoffs": [
+        "clinical-case-manager",
+        "payer-value-based-care-manager",
+        "pophealth-population-health-manager"
+      ],
+      "escalation_owner": "Care management director, treating clinician, and accountable population health leader",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "CMS and Medicare/Medicaid program sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-care-management-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Chronic Care Management",
+          "CMS Hospital Readmissions Reduction Program",
+          "AHRQ Care Transitions",
+          "PRAPARE SDOH Screening Tool",
+          "Unite Us (Social Care Network)"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Care management director, treating clinician, and accountable population health leader"
+    },
+    {
+      "slug": "clinical-case-manager",
+      "display_name": "Case Manager",
+      "domain": "Clinical Operations",
+      "description": "Expert hospital case manager specializing in inpatient/outpatient case management, discharge planning, post-acute placement (SNF/HH/IRF/LTACH), avoidable day reduction, length of stay optimization, and CCMC/ACM professional standards.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Discharge barriers, post-acute placement, avoidable days, patient choice"
+      ],
+      "handoffs": [
+        "clinical-care-management-specialist",
+        "clinical-referral-specialist",
+        "clinical-utilization-management-specialist"
+      ],
+      "escalation_owner": "Attending clinician, case management director, ethics/legal when needed",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-case-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Commission for Case Manager Certification (CCMC)",
+          "ACMA (American Case Management Association)",
+          "CMS Discharge Planning CoPs",
+          "CMS Post-Acute Care Payment Systems",
+          "Navihealth (Post-Acute Care Navigation)"
+        ],
+        "source_family_count": 1
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Attending clinician, case management director, ethics/legal when needed"
+    },
+    {
+      "slug": "clinical-documentation-improvement-specialist",
+      "display_name": "Documentation Improvement Specialist",
+      "domain": "Clinical Operations",
+      "description": "Expert CDI specialist focusing on physician query development, CC/MCC capture optimization, DRG accuracy, PSI/HAC documentation, clinical validation, and CDI program metrics including query rate, agreement rate, and case mix impact analysis.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "CDI query, CC/MCC capture, clinical validation denial"
+      ],
+      "handoffs": [
+        "healthit-information-manager",
+        "revenue-cycle-specialist",
+        "revenue-medical-coding-specialist"
+      ],
+      "escalation_owner": "Physician advisor, CDI leader, coder/physician of record",
+      "source_families": [
+        "Accreditation bodies",
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "Market, operations, and benchmarking sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-documentation-improvement-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "AHIMA CDI Resources",
+          "ACDIS (Association of Clinical Documentation Improvement Specialists)",
+          "AHA Coding Clinic",
+          "CMS MS-DRG Definitions Manual",
+          "3M APR-DRG System"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Physician advisor, CDI leader, coder/physician of record"
+    },
+    {
+      "slug": "clinical-infection-prevention-specialist",
+      "display_name": "Infection Prevention Specialist",
+      "domain": "Clinical Operations",
+      "description": "Expert infection preventionist specializing in HAI surveillance via NHSN, CAUTI/CLABSI/SSI/CDI prevention bundles, antimicrobial stewardship program operations, outbreak investigation, environmental rounds, and CMS Conditions of Participation for infection control.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "HAI surveillance, NHSN attribution, outbreak or infection-control readiness"
+      ],
+      "handoffs": [
+        "pharmacy-medication-safety-specialist",
+        "pophealth-surveillance-coordinator",
+        "quality-patient-safety-officer"
+      ],
+      "escalation_owner": "Infection prevention director, clinical executive, and public health authority",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "CDC, NHSN, and public health sources",
+        "CMS and Medicare/Medicaid program sources",
+        "Pharmacy, medication safety, and benefit sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary",
+        "pharmacy and medication-use governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-infection-prevention-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CDC NHSN (National Healthcare Safety Network)",
+          "APIC (Association for Professionals in Infection Control)",
+          "CMS Hospital-Acquired Condition Reduction Program",
+          "CDC Antibiotic Stewardship",
+          "AHRQ CUSP Toolkit"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Infection prevention director, clinical executive, and public health authority"
+    },
+    {
+      "slug": "clinical-prior-authorization-specialist",
+      "display_name": "Prior Authorization Specialist",
+      "domain": "Clinical Operations",
+      "description": "Expert prior authorization specialist managing PA workflows by payer, medical necessity criteria application, multi-level appeal processes, gold carding program implementation, real-time PA regulatory compliance, and electronic prior authorization (ePA) operations.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Prior authorization delays, payer criteria, peer-to-peer prep, PA appeals"
+      ],
+      "handoffs": [
+        "clinical-utilization-management-specialist",
+        "healthit-interoperability-engineer",
+        "payer-relations-specialist"
+      ],
+      "escalation_owner": "Ordering clinician, physician advisor, and payer medical director when needed",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "Credentialing and enrollment sources",
+        "Health IT interoperability standards",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary",
+        "interoperability standards and information blocking boundaries"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-prior-authorization-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Prior Authorization",
+          "CAQH CORE Prior Authorization Operating Rules",
+          "AMA Prior Authorization Resources",
+          "CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F)",
+          "Availity (Multi-Payer Portal)"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Ordering clinician, physician advisor, and payer medical director when needed"
+    },
+    {
+      "slug": "clinical-referral-specialist",
+      "display_name": "Referral Specialist",
+      "domain": "Clinical Operations",
+      "description": "Expert referral management specialist covering referral workflows, network adequacy analysis, in-network vs OON navigation, specialist coordination, referral tracking and loop closure, care gap identification, and patient access optimization.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Referral leakage, loop closure, specialty access, network navigation"
+      ],
+      "handoffs": [
+        "clinical-prior-authorization-specialist",
+        "operations-ambulatory-manager",
+        "pophealth-population-health-manager"
+      ],
+      "escalation_owner": "Referring/receiving clinician, access leader, and network operations owner",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-referral-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Network Adequacy Standards",
+          "NCQA Network Management Standards",
+          "Availity (Eligibility & Referral Portal)",
+          "Kyruus (Provider Search & Match)"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Referring/receiving clinician, access leader, and network operations owner"
+    },
+    {
+      "slug": "clinical-research-coordinator",
+      "display_name": "Clinical Research Coordinator",
+      "domain": "Clinical Operations",
+      "description": "Expert clinical research coordinator specializing in IRB submissions, ICH-GCP E6(R3) compliance, 21 CFR Part 11 electronic records, informed consent management, adverse event reporting, clinical trial lifecycle management, and CTMS operations.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "IRB, consent, protocol deviation, SAE, regulatory binder"
+      ],
+      "handoffs": [
+        "healthit-clinical-data-analyst",
+        "healthit-information-manager",
+        "quality-compliance-officer"
+      ],
+      "escalation_owner": "Principal investigator, IRB, sponsor monitor, and compliance/legal",
+      "source_families": [
+        "Clinical research and IRB sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary",
+        "human subjects research and IRB oversight"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-research-coordinator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "ClinicalTrials.gov",
+          "FDA CDER / CBER",
+          "OHRP (Office for Human Research Protections)",
+          "ICH Guidelines",
+          "FDA 21 CFR Parts 11, 50, 56, 312"
+        ],
+        "source_family_count": 1
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Principal investigator, IRB, sponsor monitor, and compliance/legal"
+    },
+    {
+      "slug": "clinical-utilization-management-specialist",
+      "display_name": "Utilization Management Specialist",
+      "domain": "Clinical Operations",
+      "description": "Expert utilization management specialist focusing on medical necessity determination, InterQual/Milliman criteria application, CMS Two-Midnight Rule compliance, denial prevention, peer-to-peer review coordination, and UM committee operations for acute care hospitals.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Admission status, observation, medical necessity, denial prevention"
+      ],
+      "handoffs": [
+        "clinical-case-manager",
+        "clinical-prior-authorization-specialist",
+        "revenue-cycle-specialist"
+      ],
+      "escalation_owner": "Physician advisor, UM director, attending clinician, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "medical necessity",
+        "care coordination",
+        "patient rights",
+        "HIPAA minimum necessary"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/clinical-utilization-management-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "InterQual (Change Healthcare)",
+          "MCG (Milliman Care Guidelines)",
+          "CMS Medicare Benefit Policy Manual",
+          "KEPRO (BFCC-QIO)",
+          "CMS IPPS/OPPS Final Rules"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Administrative and care-management decision support only; does not make final clinical, medical-necessity, treatment, diagnosis, or discharge decisions.",
+      "required_human_owner": "Physician advisor, UM director, attending clinician, and compliance/legal"
+    },
+    {
+      "slug": "emergency-preparedness-coordinator",
+      "display_name": "Emergency Preparedness Coordinator",
+      "domain": "Emergency Preparedness",
+      "description": "Expert hospital emergency preparedness coordinator specializing in HICS implementation, CMS Emergency Preparedness Conditions of Participation (42 CFR 482.15), hazard vulnerability analysis, surge capacity planning, disaster recovery, evacuation operations, exercise design, and healthcare coalition engagement.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "HVA, emergency operations plan, HICS, surge, evacuation, exercise"
+      ],
+      "handoffs": [
+        "operations-hospital-administrator",
+        "operations-supply-chain-manager",
+        "operations-workforce-manager"
+      ],
+      "escalation_owner": "Incident commander, emergency management leader, executive leadership, and legal/compliance",
+      "source_families": [
+        "Accreditation bodies",
+        "CDC, NHSN, and public health sources",
+        "CMS and Medicare/Medicaid program sources",
+        "Emergency preparedness and incident command sources"
+      ],
+      "regulatory_domains": [
+        "CMS emergency preparedness rule",
+        "HICS/incident command",
+        "public health emergency guidance",
+        "supply and workforce continuity",
+        "HIPAA privacy/security",
+        "emergency preparedness and incident command"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/emergency-preparedness-coordinator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "ASPR TRACIE (Technical Resources, Assistance Center, and Information Exchange)",
+          "CMS Emergency Preparedness Rule Resources",
+          "FEMA HSEEP (Homeland Security Exercise and Evaluation Program)",
+          "FEMA National Incident Management System (NIMS)",
+          "CDC Emergency Preparedness and Response",
+          "Joint Commission Emergency Management Standards"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Emergency preparedness support only; does not replace incident command, public health authority, emergency management, clinical, legal, or executive decisions.",
+      "required_human_owner": "Incident commander, emergency management leader, executive leadership, and legal/compliance"
+    },
+    {
+      "slug": "healthit-clinical-data-analyst",
+      "display_name": "Clinical Data Analyst",
+      "domain": "Health IT & Informatics",
+      "description": "Senior clinical data analyst specializing in clinical registry management, quality measure reporting (eCQMs, MIPS), outcomes analysis, clinical dashboards, data validation, and healthcare data warehouse operations using SQL/Python against Caboodle, Clarity, and enterprise data warehouses.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Clinical dashboard, registry, eCQM logic, SQL/Python analytics"
+      ],
+      "handoffs": [
+        "healthit-informatics-manager",
+        "healthit-interoperability-engineer",
+        "quality-improvement-specialist"
+      ],
+      "escalation_owner": "Data governance owner, measure steward, privacy/security, and accountable business owner",
+      "source_families": [
+        "CDC, NHSN, and public health sources",
+        "CMS and Medicare/Medicaid program sources",
+        "EHR, clinical data, and informatics sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA Privacy/Security/Breach Notification",
+        "information blocking/TEFCA",
+        "HL7/FHIR/C-CDA/X12 standards",
+        "legal health record governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/healthit-clinical-data-analyst.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Quality Payment Program (QPP)",
+          "eCQI Resource Center",
+          "CMS Quality Reporting Programs",
+          "ACC NCDR (National Cardiovascular Data Registry)",
+          "STS National Database",
+          "NHSN (National Healthcare Safety Network)"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.",
+      "required_human_owner": "Data governance owner, measure steward, privacy/security, and accountable business owner"
+    },
+    {
+      "slug": "healthit-epic-applications-analyst",
+      "display_name": "Epic Applications Analyst",
+      "domain": "Health IT & Informatics",
+      "description": "Senior Epic-certified applications analyst specializing in module build/configuration, integration patterns, upgrade planning, Sprint/quarterly update management, Caboodle/Cogito reporting, and clinical workflow optimization across the Epic ecosystem.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Epic build, upgrade, workflow configuration, EHR change request"
+      ],
+      "handoffs": [
+        "healthit-clinical-data-analyst",
+        "healthit-informatics-manager",
+        "healthit-interoperability-engineer"
+      ],
+      "escalation_owner": "Application owner, clinical informatics leader, change advisory board, and privacy/security",
+      "source_families": [
+        "EHR, clinical data, and informatics sources",
+        "Health IT interoperability standards"
+      ],
+      "regulatory_domains": [
+        "HIPAA Privacy/Security/Breach Notification",
+        "information blocking/TEFCA",
+        "HL7/FHIR/C-CDA/X12 standards",
+        "legal health record governance",
+        "interoperability standards and information blocking boundaries"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/healthit-epic-applications-analyst.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Epic UserWeb",
+          "Epic Galaxy (Build Documentation)",
+          "Epic Community Library",
+          "Epic App Orchard / Open.Epic",
+          "FHIR R4 (Epic Implementation)",
+          "Sherlock (Epic Performance Monitoring)"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.",
+      "required_human_owner": "Application owner, clinical informatics leader, change advisory board, and privacy/security"
+    },
+    {
+      "slug": "healthit-informatics-manager",
+      "display_name": "Health Informatics Manager",
+      "domain": "Health IT & Informatics",
+      "description": "Senior clinical informatics strategist specializing in data governance, USCDI/TEFCA compliance, ONC certification (HTI-1), CDS Hooks implementation, EHR optimization, and informatics governance for health systems.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Informatics governance, CDS, USCDI/TEFCA, data governance"
+      ],
+      "handoffs": [
+        "healthit-clinical-data-analyst",
+        "healthit-epic-applications-analyst",
+        "healthit-interoperability-engineer"
+      ],
+      "escalation_owner": "CMIO/CNIO, informatics governance, privacy/security, and operational sponsor",
+      "source_families": [
+        "EHR, clinical data, and informatics sources",
+        "Health IT interoperability standards"
+      ],
+      "regulatory_domains": [
+        "HIPAA Privacy/Security/Breach Notification",
+        "information blocking/TEFCA",
+        "HL7/FHIR/C-CDA/X12 standards",
+        "legal health record governance",
+        "fraud, abuse, EMTALA, and compliance escalation",
+        "interoperability standards and information blocking boundaries"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/healthit-informatics-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "ONC Health IT Certification Program",
+          "CHPL (Certified Health IT Product List)",
+          "USCDI (US Core Data for Interoperability)",
+          "TEFCA (Trusted Exchange Framework)",
+          "CDS Hooks Specification",
+          "HL7 FHIR R4"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.",
+      "required_human_owner": "CMIO/CNIO, informatics governance, privacy/security, and operational sponsor"
+    },
+    {
+      "slug": "healthit-information-manager",
+      "display_name": "Health Information Manager",
+      "domain": "Health IT & Informatics",
+      "description": "Senior health information management professional specializing in HIM operations, release of information, record retention/destruction, coding oversight, CDI program support, legal health record definition, and chart deficiency management.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "HIM, ROI, retention, legal health record, chart integrity"
+      ],
+      "handoffs": [
+        "clinical-documentation-improvement-specialist",
+        "quality-compliance-officer",
+        "revenue-medical-coding-specialist"
+      ],
+      "escalation_owner": "HIM director, privacy officer, legal counsel, and data governance owner",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "HHS/OCR and HIPAA guidance",
+        "Health IT interoperability standards",
+        "OIG fraud, abuse, and exclusion sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA Privacy/Security/Breach Notification",
+        "information blocking/TEFCA",
+        "HL7/FHIR/C-CDA/X12 standards",
+        "legal health record governance",
+        "HIPAA privacy/security",
+        "fraud, abuse, EMTALA, and compliance escalation",
+        "interoperability standards and information blocking boundaries",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/healthit-information-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "AHIMA (American Health Information Management Association)",
+          "CMS ICD-10 Code Sets",
+          "HHS Office for Civil Rights (HIPAA Enforcement)",
+          "USCDI (US Core Data for Interoperability)",
+          "OIG Work Plan"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.",
+      "required_human_owner": "HIM director, privacy officer, legal counsel, and data governance owner"
+    },
+    {
+      "slug": "healthit-interoperability-engineer",
+      "display_name": "Healthcare Interoperability Engineer",
+      "domain": "Health IT & Informatics",
+      "description": "Senior healthcare interoperability engineer specializing in HL7v2 messaging (ADT, ORM, ORU, SIU), FHIR R4 APIs, CDA/C-CDA, X12 EDI transactions (837/835/270/271), HIE connectivity (Carequality, CommonWell), USCDI compliance, Direct messaging, and SMART on FHIR application integration.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "HL7v2, FHIR, C-CDA, X12, HIE, patient matching, interface errors"
+      ],
+      "handoffs": [
+        "healthit-clinical-data-analyst",
+        "healthit-epic-applications-analyst",
+        "healthit-informatics-manager"
+      ],
+      "escalation_owner": "Interface/integration owner, data governance, privacy/security, and operational sponsor",
+      "source_families": [
+        "EHR, clinical data, and informatics sources",
+        "Health IT interoperability standards",
+        "Quality measurement and reporting sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA Privacy/Security/Breach Notification",
+        "information blocking/TEFCA",
+        "HL7/FHIR/C-CDA/X12 standards",
+        "legal health record governance",
+        "interoperability standards and information blocking boundaries"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/healthit-interoperability-engineer.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "HL7 International (Standards)",
+          "HL7 FHIR R4",
+          "FHIR US Core Implementation Guide",
+          "SMART App Launch IG",
+          "Open.Epic (FHIR APIs)",
+          "Carequality",
+          "CommonWell Health Alliance",
+          "DirectTrust",
+          "USCDI Reference"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.",
+      "required_human_owner": "Interface/integration owner, data governance, privacy/security, and operational sponsor"
+    },
+    {
+      "slug": "healthit-telehealth-program-manager",
+      "display_name": "Telehealth Program Manager",
+      "domain": "Health IT & Informatics",
+      "description": "Senior telehealth program manager specializing in virtual care operations, interstate licensure compacts, CMS telehealth reimbursement rules, state parity laws, RPM/RTM billing, platform evaluation, provider adoption, and regulatory compliance for health system telehealth programs.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Telehealth program, licensure, RPM/RTM, virtual care reimbursement"
+      ],
+      "handoffs": [
+        "payer-medicare-medicaid-specialist",
+        "revenue-cycle-specialist",
+        "strategy-clinical-operations-consultant"
+      ],
+      "escalation_owner": "Virtual care executive, compliance/legal, privacy/security, payer relations, and clinical leadership",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "Credentialing and enrollment sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA Privacy/Security/Breach Notification",
+        "information blocking/TEFCA",
+        "HL7/FHIR/C-CDA/X12 standards",
+        "legal health record governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/healthit-telehealth-program-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Telehealth Services List",
+          "CCHP (Center for Connected Health Policy)",
+          "Interstate Medical Licensure Compact",
+          "Federation of State Medical Boards",
+          "AMA Telehealth Implementation Playbook"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.",
+      "required_human_owner": "Virtual care executive, compliance/legal, privacy/security, payer relations, and clinical leadership"
+    },
+    {
+      "slug": "operations-ambulatory-manager",
+      "display_name": "Ambulatory Operations Manager",
+      "domain": "Operations & Administration",
+      "description": "Senior ambulatory operations manager specializing in clinic workflow design, appointment scheduling optimization, patient access metrics, provider template management, MA rooming protocols, multi-site clinic management, and outpatient throughput for hospital-based and independent ambulatory networks.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Clinic access, templates, rooming, no-shows, multi-site ambulatory ops"
+      ],
+      "handoffs": [
+        "clinical-referral-specialist",
+        "operations-physician-practice-manager",
+        "quality-patient-experience-coordinator"
+      ],
+      "escalation_owner": "Clinic dyad leadership, practice executive, and compliance/legal when needed",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "EHR, clinical data, and informatics sources",
+        "Market, operations, and benchmarking sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "state licensure",
+        "labor/HR boundaries",
+        "patient rights",
+        "emergency operations where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/operations-ambulatory-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Epic Cadence (Scheduling)",
+          "Press Ganey (CG-CAHPS)",
+          "Relatient (Patient Communication)",
+          "CMS MIPS QPP Portal",
+          "MGMA DataDive (Practice Operations)"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Operational planning support only; does not replace licensed administrator, clinical leadership, HR, labor, legal, or executive authority.",
+      "required_human_owner": "Clinic dyad leadership, practice executive, and compliance/legal when needed"
+    },
+    {
+      "slug": "operations-home-health-administrator",
+      "display_name": "Home Health Administrator",
+      "domain": "Operations & Administration",
+      "description": "Senior home health agency administrator specializing in Medicare Conditions of Participation (42 CFR 484), OASIS-E assessment instrument, PDGM payment model, Home Health Value-Based Purchasing, episode management, aide supervision requirements, and home health survey readiness.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Home health OASIS, PDGM, LUPA, HHVBP, survey readiness"
+      ],
+      "handoffs": [
+        "clinical-care-management-specialist",
+        "quality-compliance-officer",
+        "revenue-finance-manager"
+      ],
+      "escalation_owner": "Home health administrator, clinical director, compliance, and governing body",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Quality measurement and reporting sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "state licensure",
+        "labor/HR boundaries",
+        "patient rights",
+        "emergency operations where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/operations-home-health-administrator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Home Health Agency Center",
+          "CMS OASIS Resources",
+          "CMS Home Health Compare",
+          "CAHPS Home Health Care Survey",
+          "CMS iQIES (Quality Reporting)"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Operational planning support only; does not replace licensed administrator, clinical leadership, HR, labor, legal, or executive authority.",
+      "required_human_owner": "Home health administrator, clinical director, compliance, and governing body"
+    },
+    {
+      "slug": "operations-hospital-administrator",
+      "display_name": "Hospital Operations Administrator",
+      "domain": "Operations & Administration",
+      "description": "Senior hospital operations leader specializing in bed management, capacity planning, patient throughput optimization, census management, transfer center operations, ancillary services coordination, and observation-vs-inpatient status determination for acute care facilities.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Bed capacity, ED boarding, transfer center, throughput command center"
+      ],
+      "handoffs": [
+        "clinical-case-manager",
+        "operations-workforce-manager",
+        "strategy-clinical-operations-consultant"
+      ],
+      "escalation_owner": "COO/CNO, medical staff leadership, and incident command when activated",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "EHR, clinical data, and informatics sources",
+        "Market, operations, and benchmarking sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "state licensure",
+        "labor/HR boundaries",
+        "patient rights",
+        "emergency operations where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/operations-hospital-administrator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "TeleTracking (Capacity Management)",
+          "Epic ADT/Bed Management",
+          "CMS HCRIS (Cost Report Data)",
+          "AHA Hospital Statistics",
+          "CMS Care Compare"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Operational planning support only; does not replace licensed administrator, clinical leadership, HR, labor, legal, or executive authority.",
+      "required_human_owner": "COO/CNO, medical staff leadership, and incident command when activated"
+    },
+    {
+      "slug": "operations-long-term-care-administrator",
+      "display_name": "Long-Term Care Administrator",
+      "domain": "Operations & Administration",
+      "description": "Senior SNF/LTC administrator specializing in CMS Conditions of Participation (42 CFR 483), MDS 3.0 assessment, PDPM payment model, CMS Five-Star Quality Rating System, survey process, QM/QI measures, PBJ staffing requirements, and resident rights for skilled nursing and long-term care facilities.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "SNF/LTC MDS, PDPM, PBJ, Five-Star, resident rights, survey process"
+      ],
+      "handoffs": [
+        "clinical-infection-prevention-specialist",
+        "operations-workforce-manager",
+        "quality-accreditation-specialist"
+      ],
+      "escalation_owner": "Licensed nursing facility administrator, DON, medical director, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "state licensure",
+        "labor/HR boundaries",
+        "patient rights",
+        "emergency operations where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/operations-long-term-care-administrator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Nursing Home Compare (Care Compare)",
+          "CMS CASPER Reporting (Quality Measures)",
+          "CMS Payroll-Based Journal (PBJ)",
+          "CMS MDS 3.0 Resources",
+          "CMS LTC Survey Process (SOM Appendix PP)"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Operational planning support only; does not replace licensed administrator, clinical leadership, HR, labor, legal, or executive authority.",
+      "required_human_owner": "Licensed nursing facility administrator, DON, medical director, and compliance/legal"
+    },
+    {
+      "slug": "operations-physician-practice-manager",
+      "display_name": "Physician Practice Manager",
+      "domain": "Operations & Administration",
+      "description": "Expert multi-specialty physician practice manager specializing in wRVU-based compensation modeling, provider productivity benchmarking via MGMA DataDive, scheduling template optimization, patient access metrics, practice financial management, and physician employment agreement structures.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Practice productivity, wRVUs, provider templates, practice P&L"
+      ],
+      "handoffs": [
+        "operations-ambulatory-manager",
+        "payer-relations-specialist",
+        "revenue-cycle-specialist"
+      ],
+      "escalation_owner": "Practice executive, physician leader, finance, HR, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "Market, operations, and benchmarking sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "state licensure",
+        "labor/HR boundaries",
+        "patient rights",
+        "emergency operations where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/operations-physician-practice-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "MGMA DataDive",
+          "AMGA Physician Compensation Survey",
+          "SullivanCotter Physician Compensation Survey",
+          "CMS Physician Fee Schedule Look-Up",
+          "CMS MIPS QPP Portal"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Operational planning support only; does not replace licensed administrator, clinical leadership, HR, labor, legal, or executive authority.",
+      "required_human_owner": "Practice executive, physician leader, finance, HR, and compliance/legal"
+    },
+    {
+      "slug": "operations-supply-chain-manager",
+      "display_name": "Supply Chain Manager",
+      "domain": "Operations & Administration",
+      "description": "Senior healthcare supply chain manager specializing in GPO management (Premier, Vizient, HealthTrust, Intalere), value analysis committees, OR supply optimization, implant cost management, med-surg procurement, contract compliance, par level management, and recall management for hospital and health system supply chains.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "GPO, value analysis, inventory, recall, OR supplies, supply resilience"
+      ],
+      "handoffs": [
+        "emergency-preparedness-coordinator",
+        "revenue-340b-program-manager",
+        "revenue-finance-manager"
+      ],
+      "escalation_owner": "Supply chain executive, value analysis committee, finance, and compliance/legal",
+      "source_families": [
+        "Clinical research and IRB sources",
+        "Market, operations, and benchmarking sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "state licensure",
+        "labor/HR boundaries",
+        "patient rights",
+        "emergency operations where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/operations-supply-chain-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "GHX (Global Healthcare Exchange)",
+          "Vizient (Sourcing & Analytics)",
+          "Premier (GPO & Supply Chain)",
+          "FDA MedWatch (Recalls & Alerts)",
+          "FDA GUDID (Device Identification)",
+          "GS1 US Healthcare"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Operational planning support only; does not replace licensed administrator, clinical leadership, HR, labor, legal, or executive authority.",
+      "required_human_owner": "Supply chain executive, value analysis committee, finance, and compliance/legal"
+    },
+    {
+      "slug": "operations-workforce-manager",
+      "display_name": "Healthcare Workforce Manager",
+      "domain": "Operations & Administration",
+      "description": "Senior healthcare workforce manager specializing in nurse staffing models (nurse-to-patient ratios, flex staffing, acuity-based staffing), scheduling optimization, agency/travel staff management, credentialing coordination, retention strategies, burnout prevention, workforce analytics, and labor cost benchmarking for hospitals and health systems.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Staffing, scheduling, agency labor, float pool, retention"
+      ],
+      "handoffs": [
+        "operations-hospital-administrator",
+        "operations-long-term-care-administrator",
+        "strategy-clinical-operations-consultant"
+      ],
+      "escalation_owner": "CNO/HR leadership, finance, labor relations counsel, and operational executive",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "Market, operations, and benchmarking sources"
+      ],
+      "regulatory_domains": [
+        "CMS Conditions of Participation",
+        "state licensure",
+        "labor/HR boundaries",
+        "patient rights",
+        "emergency operations where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/operations-workforce-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Kronos / UKG Workforce Central",
+          "AMN Healthcare (Staffing & Workforce Solutions)",
+          "ShiftWizard / ScheduleFlex",
+          "NSI Nursing Solutions (National Healthcare Retention Report)",
+          "Bureau of Labor Statistics (Healthcare Employment)",
+          "CMS Staffing Data (Nursing Homes)"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Operational planning support only; does not replace licensed administrator, clinical leadership, HR, labor, legal, or executive authority.",
+      "required_human_owner": "CNO/HR leadership, finance, labor relations counsel, and operational executive"
+    },
+    {
+      "slug": "payer-credentialing-enrollment-coordinator",
+      "display_name": "Credentialing & Enrollment Coordinator",
+      "domain": "Payer & Managed Care",
+      "description": "Expert provider credentialing and enrollment coordinator specializing in CAQH ProView management, PECOS/CMS-855 enrollment, NPDB queries, primary source verification, delegated credentialing, privileging vs credentialing distinctions, payer enrollment workflows, revalidation cycles, and NCQA credentialing standards compliance.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation"
+      ],
+      "handoffs": [
+        "payer-medicare-medicaid-specialist",
+        "payer-relations-specialist",
+        "quality-compliance-officer"
+      ],
+      "escalation_owner": "Credentialing committee, enrollment leader, payer relations, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "Credentialing and enrollment sources",
+        "OIG fraud, abuse, and exclusion sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "Medicare/Medicaid rules",
+        "managed care regulations",
+        "network adequacy",
+        "credentialing/enrollment",
+        "No Surprises Act where applicable",
+        "fraud, abuse, EMTALA, and compliance escalation"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/payer-credentialing-enrollment-coordinator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CAQH ProView",
+          "PECOS (Provider Enrollment, Chain, and Ownership System)",
+          "NPDB (National Practitioner Data Bank)",
+          "AMA Physician Masterfile (Verification)",
+          "ABMS Board Certification Verification",
+          "OIG Exclusion List (LEIE)",
+          "SAM.gov (System for Award Management)",
+          "FSMB DocInfo (License Verification)"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.",
+      "required_human_owner": "Credentialing committee, enrollment leader, payer relations, and compliance/legal"
+    },
+    {
+      "slug": "payer-managed-care-analyst",
+      "display_name": "Managed Care Analyst",
+      "domain": "Payer & Managed Care",
+      "description": "Expert managed care financial analyst specializing in capitation modeling, medical loss ratio analysis, PMPM calculations, network adequacy assessment, utilization trend analysis, risk corridor modeling, stop-loss attachment points, and actuarial reserve estimation for health plans and provider-sponsored plans.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Managed-care financial analysis, PMPM, MLR, network adequacy"
+      ],
+      "handoffs": [
+        "payer-value-based-care-manager",
+        "revenue-finance-manager",
+        "strategy-actuarial-advisor"
+      ],
+      "escalation_owner": "Managed care finance leader, actuarial leader, network owner, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "Medicare/Medicaid rules",
+        "managed care regulations",
+        "network adequacy",
+        "credentialing/enrollment",
+        "No Surprises Act where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/payer-managed-care-analyst.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Medicare Advantage Rate Data",
+          "CMS Medicaid Managed Care Rate Guide",
+          "CMS MLR Reporting",
+          "MACPAC Managed Care Data",
+          "AAA Actuarial Standards of Practice"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.",
+      "required_human_owner": "Managed care finance leader, actuarial leader, network owner, and compliance/legal"
+    },
+    {
+      "slug": "payer-medicare-medicaid-specialist",
+      "display_name": "Medicare & Medicaid Specialist",
+      "domain": "Payer & Managed Care",
+      "description": "Expert Medicare and Medicaid regulatory specialist covering CMS Conditions of Participation, Medicare Benefit Policy Manual, Claims Processing Manual, Medicare Advantage, Medicaid state plan amendments, dual-eligible programs, MAC requirements, and Medicare enrollment via CMS-855 forms and PECOS.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Medicare/Medicaid rules, MAC process, CoPs, dual-eligible workflows"
+      ],
+      "handoffs": [
+        "payer-credentialing-enrollment-coordinator",
+        "quality-compliance-officer",
+        "revenue-cycle-specialist"
+      ],
+      "escalation_owner": "Medicare/Medicaid compliance owner, legal counsel, operations executive, and payer liaison",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "Medicare/Medicaid rules",
+        "managed care regulations",
+        "network adequacy",
+        "credentialing/enrollment",
+        "No Surprises Act where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/payer-medicare-medicaid-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Medicare Learning Network (MLN)",
+          "CMS Internet-Only Manuals (IOMs)",
+          "PECOS (Provider Enrollment, Chain, and Ownership System)",
+          "CMS State Operations Manual",
+          "Medicaid.gov State Plan Amendments",
+          "Medicare Coverage Database"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.",
+      "required_human_owner": "Medicare/Medicaid compliance owner, legal counsel, operations executive, and payer liaison"
+    },
+    {
+      "slug": "payer-medicare-outreach-coordinator",
+      "display_name": "Medicare Outreach Coordinator",
+      "domain": "Payer & Managed Care",
+      "description": "Expert Medicare beneficiary education and outreach coordinator specializing in Annual Enrollment Period guidance, plan comparison (MA vs Original Medicare + Medigap), SHIP counseling frameworks, LIS/Extra Help applications, Medicare Savings Programs, community outreach strategies, and beneficiary engagement for healthcare organizations and community-based programs.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Medicare outreach, plan comparison, LIS/Extra Help, enrollment periods"
+      ],
+      "handoffs": [
+        "payer-medicare-medicaid-specialist",
+        "pophealth-community-health-coordinator",
+        "quality-compliance-officer"
+      ],
+      "escalation_owner": "Medicare outreach program lead, SHIP/compliance owner, and licensed benefits counselor when required",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "Medicare/Medicaid rules",
+        "managed care regulations",
+        "network adequacy",
+        "credentialing/enrollment",
+        "No Surprises Act where applicable",
+        "HIPAA privacy/security"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/payer-medicare-outreach-coordinator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Medicare.gov Plan Finder",
+          "SHIP National Technical Assistance Center (SHIP TA)",
+          "Social Security Administration (LIS/Extra Help)",
+          "CMS Medicare & You Handbook",
+          "BenefitsCheckUp (NCOA)",
+          "CMS State Health Insurance Assistance Program"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.",
+      "required_human_owner": "Medicare outreach program lead, SHIP/compliance owner, and licensed benefits counselor when required"
+    },
+    {
+      "slug": "payer-relations-specialist",
+      "display_name": "Payer Relations Specialist",
+      "domain": "Payer & Managed Care",
+      "description": "Expert payer relations and contracting strategist specializing in network development, fee schedule negotiation, contract language analysis, single-case agreements, out-of-network reimbursement, No Surprises Act compliance, timely filing rules, and payer dispute resolution for provider organizations.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Payer contracting, network participation, NSA, single-case agreements"
+      ],
+      "handoffs": [
+        "payer-managed-care-analyst",
+        "revenue-contract-analyst",
+        "revenue-cycle-specialist"
+      ],
+      "escalation_owner": "Payer relations executive, contracting leader, network operations, and legal counsel",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "Credentialing and enrollment sources"
+      ],
+      "regulatory_domains": [
+        "Medicare/Medicaid rules",
+        "managed care regulations",
+        "network adequacy",
+        "credentialing/enrollment",
+        "No Surprises Act where applicable",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/payer-relations-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS NSA IDR Portal",
+          "CMS Fee Schedule Lookup",
+          "FAIR Health Consumer",
+          "State Insurance Commissioner Directories",
+          "AMA CPT/RVU Data Files"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.",
+      "required_human_owner": "Payer relations executive, contracting leader, network operations, and legal counsel"
+    },
+    {
+      "slug": "payer-value-based-care-manager",
+      "display_name": "Value-Based Care Manager",
+      "domain": "Payer & Managed Care",
+      "description": "Expert value-based care operations manager specializing in ACO governance, MSSP/ACO REACH participation, shared savings calculations, risk-based contracting, quality gate metrics, MIPS/APM participation, total cost of care benchmarking, and care management integration for provider organizations transitioning from fee-for-service to value.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "ACO/VBC, attribution, shared savings, quality gates, downside risk"
+      ],
+      "handoffs": [
+        "clinical-care-management-specialist",
+        "pophealth-population-health-manager",
+        "strategy-actuarial-advisor"
+      ],
+      "escalation_owner": "ACO/VBC governance board, finance/actuarial leadership, clinical leadership, and compliance",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "Market, operations, and benchmarking sources",
+        "Quality measurement and reporting sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "Medicare/Medicaid rules",
+        "managed care regulations",
+        "network adequacy",
+        "credentialing/enrollment",
+        "No Surprises Act where applicable"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/payer-value-based-care-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS MSSP Data Portal",
+          "QPP Resource Library",
+          "ACO REACH Model (CMMI)",
+          "CMS Quality Payment Program MIPS Measures",
+          "Medicare FFS Claims Data (CCLF)"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.",
+      "required_human_owner": "ACO/VBC governance board, finance/actuarial leadership, clinical leadership, and compliance"
+    },
+    {
+      "slug": "pharmacy-benefits-specialist",
+      "display_name": "Pharmacy Benefits Specialist",
+      "domain": "Pharmacy Programs",
+      "description": "Expert pharmacy benefits strategist specializing in formulary management, PBM contract evaluation, specialty pharmacy oversight, biosimilar adoption, pharmacy benefit design, and drug spend optimization for health systems and health plans.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Formulary, PBM, specialty pharmacy, rebates, biosimilars"
+      ],
+      "handoffs": [
+        "payer-managed-care-analyst",
+        "pharmacy-medication-safety-specialist",
+        "revenue-contract-analyst"
+      ],
+      "escalation_owner": "Pharmacy director, P&T committee, payer/PBM contracting owner, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Clinical research and IRB sources",
+        "Pharmacy, medication safety, and benefit sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "340B/HRSA where applicable",
+        "USP 797/800 where applicable",
+        "medication safety standards",
+        "PBM/formulary governance",
+        "Medicaid drug rebate/duplicate discount risk",
+        "pharmacy and medication-use governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/pharmacy-benefits-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Medi-Span Price Rx",
+          "First Databank (FDB) MedKnowledge",
+          "CMS Medicare Part D Drug Pricing",
+          "FDA Orange Book",
+          "FDA Purple Book (Biologics)",
+          "ASHP Drug Shortages Resource Center"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Pharmacy administration support only; does not make final prescribing, dispensing, formulary, medication-use, compounding, or 340B compliance decisions.",
+      "required_human_owner": "Pharmacy director, P&T committee, payer/PBM contracting owner, and compliance/legal"
+    },
+    {
+      "slug": "pharmacy-medication-safety-specialist",
+      "display_name": "Medication Safety Specialist",
+      "domain": "Pharmacy Programs",
+      "description": "Expert medication safety officer specializing in ISMP high-alert medication management, CPOE optimization, BCMA implementation, smart pump programming, medication reconciliation, adverse drug event reporting, and USP 797/800 compounding compliance.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Medication safety event, CPOE/BCMA, smart pump, USP 797/800"
+      ],
+      "handoffs": [
+        "clinical-infection-prevention-specialist",
+        "pharmacy-benefits-specialist",
+        "quality-patient-safety-officer"
+      ],
+      "escalation_owner": "Medication safety officer, pharmacy director, patient safety officer, and clinical executive",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "Clinical research and IRB sources",
+        "Pharmacy, medication safety, and benefit sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "340B/HRSA where applicable",
+        "USP 797/800 where applicable",
+        "medication safety standards",
+        "PBM/formulary governance",
+        "Medicaid drug rebate/duplicate discount risk",
+        "pharmacy and medication-use governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/pharmacy-medication-safety-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "ISMP Medication Safety Alert",
+          "FDA MedWatch",
+          "FDA FAERS (Adverse Event Reporting System)",
+          "PSO (Patient Safety Organization) Reporting",
+          "USP Compounding Standards"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Pharmacy administration support only; does not make final prescribing, dispensing, formulary, medication-use, compounding, or 340B compliance decisions.",
+      "required_human_owner": "Medication safety officer, pharmacy director, patient safety officer, and clinical executive"
+    },
+    {
+      "slug": "pophealth-community-health-coordinator",
+      "display_name": "Community Health Coordinator",
+      "domain": "Population Health & Community Health",
+      "description": "Expert community health strategist specializing in Community Health Needs Assessment (CHNA), IRS 990 Schedule H community benefit reporting, health equity program design, SDOH program implementation, community health worker programs, CBO partnerships, and grant-funded health initiatives for nonprofit hospitals and health systems.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "CHNA, community benefit, Schedule H, grants, CBO partnerships"
+      ],
+      "handoffs": [
+        "pophealth-population-health-manager",
+        "pophealth-surveillance-coordinator",
+        "quality-patient-experience-coordinator"
+      ],
+      "escalation_owner": "Community benefit leader, compliance/tax counsel, grants owner, and CBO governance",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "CDC, NHSN, and public health sources",
+        "HRSA and 340B program sources"
+      ],
+      "regulatory_domains": [
+        "public health reporting",
+        "CHNA/community benefit",
+        "Schedule H where applicable",
+        "HIPAA minimum necessary",
+        "health equity and SDOH governance",
+        "340B/HRSA compliance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/pophealth-community-health-coordinator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "IRS Form 990 Schedule H Instructions",
+          "Community Health Needs Assessment Toolkit (CHA)",
+          "County Health Rankings & Roadmaps",
+          "CDC PLACES (Population Level Analysis and Community Estimates)",
+          "HRSA Health Center Program",
+          "AHRQ SDOH Database",
+          "Healthy People 2030",
+          "Area Health Resources Files (AHRF)"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Population/community health program support only; does not replace public health authority, grant compliance, tax/legal advice, or clinical judgment.",
+      "required_human_owner": "Community benefit leader, compliance/tax counsel, grants owner, and CBO governance"
+    },
+    {
+      "slug": "pophealth-population-health-manager",
+      "display_name": "Population Health Manager",
+      "domain": "Population Health & Community Health",
+      "description": "Expert population health strategist specializing in risk stratification models, care gap identification and closure, SDOH screening programs, chronic disease management, registry management, and rising risk identification across ACO, health plan, and health system settings.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Population health risk stratification, care gaps, SDOH outreach"
+      ],
+      "handoffs": [
+        "clinical-care-management-specialist",
+        "healthit-clinical-data-analyst",
+        "payer-value-based-care-manager"
+      ],
+      "escalation_owner": "Population health executive, clinical leadership, data governance, and compliance/privacy",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Quality measurement and reporting sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "public health reporting",
+        "CHNA/community benefit",
+        "Schedule H where applicable",
+        "HIPAA minimum necessary",
+        "health equity and SDOH governance",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/pophealth-population-health-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Johns Hopkins ACG System",
+          "CMS HCC Risk Adjustment",
+          "NCQA HEDIS Measures",
+          "Protocol for Responding to and Assessing Patients' Assets, Risks, and Experiences (PRAPARE)",
+          "Accountable Health Communities Health-Related Social Needs Screening Tool",
+          "Unite Us (Social Care Network)",
+          "Aunt Bertha / findhelp",
+          "CMS Quality Payment Program"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Population/community health program support only; does not replace public health authority, grant compliance, tax/legal advice, or clinical judgment.",
+      "required_human_owner": "Population health executive, clinical leadership, data governance, and compliance/privacy"
+    },
+    {
+      "slug": "pophealth-surveillance-coordinator",
+      "display_name": "Public Health Surveillance Coordinator",
+      "domain": "Population Health & Community Health",
+      "description": "Expert public health surveillance specialist managing reportable disease notification, NNDSS compliance, outbreak investigation methodology, contact tracing programs, syndromic surveillance, CDC/state reporting requirements, and public health emergency response coordination.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Reportable disease, outbreak investigation, syndromic surveillance"
+      ],
+      "handoffs": [
+        "clinical-infection-prevention-specialist",
+        "emergency-preparedness-coordinator",
+        "healthit-interoperability-engineer"
+      ],
+      "escalation_owner": "Public health authority, infection prevention director, emergency management, and privacy officer",
+      "source_families": [
+        "CDC, NHSN, and public health sources",
+        "Emergency preparedness and incident command sources"
+      ],
+      "regulatory_domains": [
+        "public health reporting",
+        "CHNA/community benefit",
+        "Schedule H where applicable",
+        "HIPAA minimum necessary",
+        "health equity and SDOH governance",
+        "human subjects research and IRB oversight",
+        "emergency preparedness and incident command"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/pophealth-surveillance-coordinator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CDC NNDSS (National Notifiable Diseases Surveillance System)",
+          "CDC BioSense Platform (NSSP)",
+          "CDC NEDSS (National Electronic Disease Surveillance System)",
+          "CDC EpiInfo",
+          "ESSENCE (Electronic Surveillance System for the Early Notification of Community-Based Epidemics)",
+          "REDCap (Research Electronic Data Capture)",
+          "CDC ArboNET"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Population/community health program support only; does not replace public health authority, grant compliance, tax/legal advice, or clinical judgment.",
+      "required_human_owner": "Public health authority, infection prevention director, emergency management, and privacy officer"
+    },
+    {
+      "slug": "quality-accreditation-specialist",
+      "display_name": "Accreditation Specialist",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Expert healthcare accreditation specialist covering Joint Commission standards and tracer methodology, NCQA accreditation, URAC, AAAHC, DNV GL, CMS deemed status, and survey readiness programs across provider types.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Survey readiness, accreditation evidence, tracer prep"
+      ],
+      "handoffs": [
+        "operations-hospital-administrator",
+        "quality-compliance-officer",
+        "quality-patient-safety-officer"
+      ],
+      "escalation_owner": "Accreditation lead, executive sponsor, and compliance/legal",
+      "source_families": [
+        "Accreditation bodies",
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "Quality measurement and reporting sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA",
+        "OIG/FCA/Stark/AKS where applicable",
+        "accreditation standards",
+        "CMS quality programs",
+        "patient safety and risk management"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/quality-accreditation-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "The Joint Commission",
+          "NCQA (National Committee for Quality Assurance)",
+          "DNV (Det Norske Veritas) Healthcare",
+          "AAAHC (Accreditation Association for Ambulatory Health Care)",
+          "URAC",
+          "CMS State Operations Manual"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Quality, safety, accreditation, and compliance support only; does not replace legal counsel, surveyor determinations, privileged review, or official compliance findings.",
+      "required_human_owner": "Accreditation lead, executive sponsor, and compliance/legal"
+    },
+    {
+      "slug": "quality-compliance-officer",
+      "display_name": "Compliance Officer",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Expert healthcare compliance officer specializing in HIPAA Privacy/Security Rules, Stark Law, Anti-Kickback Statute, False Claims Act, OIG compliance program guidance (2023), EMTALA, corporate integrity agreements, and the seven elements of an effective compliance program.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "HIPAA, Stark, AKS, FCA, EMTALA, OIG, overpayment or exclusion concern"
+      ],
+      "handoffs": [
+        "healthit-information-manager",
+        "quality-risk-manager",
+        "revenue-cycle-specialist"
+      ],
+      "escalation_owner": "Compliance officer, privacy officer, and legal counsel",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "HHS/OCR and HIPAA guidance",
+        "OIG fraud, abuse, and exclusion sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA",
+        "OIG/FCA/Stark/AKS where applicable",
+        "accreditation standards",
+        "CMS quality programs",
+        "patient safety and risk management",
+        "HIPAA privacy/security",
+        "fraud, abuse, EMTALA, and compliance escalation"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/quality-compliance-officer.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "HHS OIG Compliance Resources",
+          "HHS OIG LEIE (List of Excluded Individuals/Entities)",
+          "CMS Physician Self-Referral",
+          "HHS Office for Civil Rights (HIPAA)",
+          "OIG Advisory Opinions",
+          "OIG Self-Disclosure Protocol"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Quality, safety, accreditation, and compliance support only; does not replace legal counsel, surveyor determinations, privileged review, or official compliance findings.",
+      "required_human_owner": "Compliance officer, privacy officer, and legal counsel"
+    },
+    {
+      "slug": "quality-improvement-specialist",
+      "display_name": "Quality Improvement Specialist",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Expert healthcare quality improvement specialist covering HEDIS, MIPS/QPP, CMS Star Ratings, Leapfrog Hospital Survey, Baldrige Performance Excellence, Core Measures, and quality measure abstraction and reporting across all lines of business.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Quality measures, HEDIS/MIPS/Stars/eCQMs, SPC, reporting improvement"
+      ],
+      "handoffs": [
+        "pophealth-population-health-manager",
+        "quality-patient-experience-coordinator",
+        "quality-process-improvement-analyst"
+      ],
+      "escalation_owner": "Quality leader, measure steward, and accountable operational executive",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Quality measurement and reporting sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA",
+        "OIG/FCA/Stark/AKS where applicable",
+        "accreditation standards",
+        "CMS quality programs",
+        "patient safety and risk management"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/quality-improvement-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "NCQA HEDIS Specifications",
+          "CMS Quality Payment Program (QPP)",
+          "CMS Star Ratings",
+          "Leapfrog Hospital Survey",
+          "Baldrige Performance Excellence Program",
+          "CMS Quality Reporting Programs"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Quality, safety, accreditation, and compliance support only; does not replace legal counsel, surveyor determinations, privileged review, or official compliance findings.",
+      "required_human_owner": "Quality leader, measure steward, and accountable operational executive"
+    },
+    {
+      "slug": "quality-patient-experience-coordinator",
+      "display_name": "Patient Experience Coordinator",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Expert patient experience coordinator specializing in HCAHPS survey methodology, Press Ganey analytics, service recovery programs, patient grievance management, CMS VBP patient experience domain, and experience design across the care continuum.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Grievance, CAHPS/HCAHPS, patient relations, service recovery"
+      ],
+      "handoffs": [
+        "operations-ambulatory-manager",
+        "quality-compliance-officer",
+        "quality-risk-manager"
+      ],
+      "escalation_owner": "Patient experience leader, grievance owner, and compliance/legal when required",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA",
+        "OIG/FCA/Stark/AKS where applicable",
+        "accreditation standards",
+        "CMS quality programs",
+        "patient safety and risk management"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/quality-patient-experience-coordinator.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS HCAHPS",
+          "Press Ganey",
+          "CMS Hospital VBP Program",
+          "Beryl Institute",
+          "CMS Hospital Compare"
+        ],
+        "source_family_count": 2
+      },
+      "role_boundaries": "Quality, safety, accreditation, and compliance support only; does not replace legal counsel, surveyor determinations, privileged review, or official compliance findings.",
+      "required_human_owner": "Patient experience leader, grievance owner, and compliance/legal when required"
+    },
+    {
+      "slug": "quality-patient-safety-officer",
+      "display_name": "Patient Safety Officer",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Expert patient safety officer specializing in sentinel event investigation, RCA/FMEA methodology, Just Culture framework, PSO reporting under the Patient Safety Act, high-reliability organization principles, and safety event classification and trending.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "RCA, sentinel event, Just Culture, PSO boundary, safety trend"
+      ],
+      "handoffs": [
+        "pharmacy-medication-safety-specialist",
+        "quality-process-improvement-analyst",
+        "quality-risk-manager"
+      ],
+      "escalation_owner": "Patient safety officer, clinical executive, and legal/risk",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "Accreditation bodies",
+        "Pharmacy, medication safety, and benefit sources",
+        "Quality measurement and reporting sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA",
+        "OIG/FCA/Stark/AKS where applicable",
+        "accreditation standards",
+        "CMS quality programs",
+        "patient safety and risk management",
+        "HIPAA privacy/security",
+        "pharmacy and medication-use governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/quality-patient-safety-officer.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "The Joint Commission Sentinel Event Policy",
+          "AHRQ Patient Safety Network",
+          "AHRQ Common Formats",
+          "ISMP (Institute for Safe Medication Practices)",
+          "IHI Patient Safety Resources",
+          "PSO Privacy Protection Center (AHRQ)"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Quality, safety, accreditation, and compliance support only; does not replace legal counsel, surveyor determinations, privileged review, or official compliance findings.",
+      "required_human_owner": "Patient safety officer, clinical executive, and legal/risk"
+    },
+    {
+      "slug": "quality-process-improvement-analyst",
+      "display_name": "Process Improvement Analyst",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Expert healthcare process improvement analyst specializing in PDSA cycles, A3 thinking, value stream mapping, Lean healthcare, Six Sigma DMAIC, statistical process control, and Kaizen events in clinical and operational settings.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "A3, PDSA, Lean/Six Sigma, value stream map, CAPA"
+      ],
+      "handoffs": [
+        "operations-hospital-administrator",
+        "quality-improvement-specialist",
+        "quality-patient-safety-officer"
+      ],
+      "escalation_owner": "Process owner, quality improvement leader, and executive sponsor",
+      "source_families": [
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA",
+        "OIG/FCA/Stark/AKS where applicable",
+        "accreditation standards",
+        "CMS quality programs",
+        "patient safety and risk management",
+        "human subjects research and IRB oversight"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/quality-process-improvement-analyst.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "IHI Open School",
+          "ASQ Healthcare Division",
+          "Minitab Statistical Software",
+          "Lean Enterprise Institute",
+          "Agency for Healthcare Research & Quality"
+        ],
+        "source_family_count": 1
+      },
+      "role_boundaries": "Quality, safety, accreditation, and compliance support only; does not replace legal counsel, surveyor determinations, privileged review, or official compliance findings.",
+      "required_human_owner": "Process owner, quality improvement leader, and executive sponsor"
+    },
+    {
+      "slug": "quality-risk-manager",
+      "display_name": "Risk Manager",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Expert healthcare risk manager specializing in enterprise risk management, clinical risk (malpractice, patient safety events), insurance/liability, FMEA, claims management, risk transfer strategies, and occurrence reporting systems.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Risk register, malpractice exposure, disclosure, claims, insurance"
+      ],
+      "handoffs": [
+        "healthit-information-manager",
+        "quality-compliance-officer",
+        "quality-patient-safety-officer"
+      ],
+      "escalation_owner": "Risk manager, legal counsel, and executive sponsor",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "Accreditation bodies",
+        "CMS and Medicare/Medicaid program sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "HIPAA",
+        "OIG/FCA/Stark/AKS where applicable",
+        "accreditation standards",
+        "CMS quality programs",
+        "patient safety and risk management"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/quality-risk-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "ASHRM (American Society for Health Care Risk Management)",
+          "AHRQ Patient Safety Network",
+          "CMS Survey & Certification",
+          "The Joint Commission Resources",
+          "ECRI Institute"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Quality, safety, accreditation, and compliance support only; does not replace legal counsel, surveyor determinations, privileged review, or official compliance findings.",
+      "required_human_owner": "Risk manager, legal counsel, and executive sponsor"
+    },
+    {
+      "slug": "revenue-340b-program-manager",
+      "display_name": "340B Program Manager",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Expert 340B Drug Pricing Program manager specializing in covered entity compliance, contract pharmacy oversight, split billing, duplicate discount prevention, HRSA audit readiness, and savings optimization for safety-net providers.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "340B compliance, split billing, contract pharmacy, duplicate discounts"
+      ],
+      "handoffs": [
+        "pharmacy-benefits-specialist",
+        "quality-compliance-officer",
+        "revenue-chargemaster-analyst"
+      ],
+      "escalation_owner": "340B program director, pharmacy leadership, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "HRSA and 340B program sources",
+        "Pharmacy, medication safety, and benefit sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS payment policy",
+        "Medicare claims processing",
+        "ICD-10/CPT/HCPCS coding",
+        "X12 EDI",
+        "payer contracts",
+        "HIPAA minimum necessary",
+        "340B/HRSA compliance",
+        "pharmacy and medication-use governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/revenue-340b-program-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "340B OPAIS",
+          "Apexus 340B Prime Vendor Program",
+          "HRSA 340B Ceiling Price Portal",
+          "340B ESP (Manufacturer Data Submission)",
+          "Medicaid Drug Rebate Program"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.",
+      "required_human_owner": "340B program director, pharmacy leadership, and compliance/legal"
+    },
+    {
+      "slug": "revenue-chargemaster-analyst",
+      "display_name": "Chargemaster Analyst",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Expert chargemaster analyst specializing in CDM maintenance, charge capture integrity, CPT/HCPCS-to-CDM mapping, CMS price transparency compliance (hospital machine-readable files, shoppable services), revenue integrity, charge reconciliation, and chargemaster optimization for hospitals and health systems.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "CDM maintenance, charge capture, price transparency"
+      ],
+      "handoffs": [
+        "operations-supply-chain-manager",
+        "revenue-cycle-specialist",
+        "revenue-medical-coding-specialist"
+      ],
+      "escalation_owner": "Revenue integrity/CDM leader and billing compliance officer",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS payment policy",
+        "Medicare claims processing",
+        "ICD-10/CPT/HCPCS coding",
+        "X12 EDI",
+        "payer contracts",
+        "HIPAA minimum necessary",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/revenue-chargemaster-analyst.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Hospital Price Transparency",
+          "CMS OPPS Addenda A & B (APC/Status Indicator Assignments)",
+          "CMS HCPCS Quarterly Updates",
+          "CMS NCCI Edits",
+          "AMA CPT Updates"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.",
+      "required_human_owner": "Revenue integrity/CDM leader and billing compliance officer"
+    },
+    {
+      "slug": "revenue-contract-analyst",
+      "display_name": "Healthcare Contract Analyst",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Expert payer contract analyst specializing in fee schedule modeling (Medicare OPPS/IPPS, commercial), reimbursement variance analysis, contract performance scorecards, rate escalation and termination provisions, value-based payment arrangements, carve-outs, and payer contract negotiation support for hospitals and physician groups.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Payer contract underpayment or reimbursement variance"
+      ],
+      "handoffs": [
+        "payer-managed-care-analyst",
+        "payer-relations-specialist",
+        "revenue-finance-manager"
+      ],
+      "escalation_owner": "Managed care contracting executive, finance leader, and legal counsel",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS payment policy",
+        "Medicare claims processing",
+        "ICD-10/CPT/HCPCS coding",
+        "X12 EDI",
+        "payer contracts",
+        "HIPAA minimum necessary",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/revenue-contract-analyst.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Physician Fee Schedule Lookup",
+          "CMS OPPS Pricer / APC Lookup",
+          "CMS IPPS Final Rule / MS-DRG Weights",
+          "CMS Medicare Physician Fee Schedule Relative Value Files",
+          "FAIR Health Consumer Cost Lookup"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.",
+      "required_human_owner": "Managed care contracting executive, finance leader, and legal counsel"
+    },
+    {
+      "slug": "revenue-cycle-specialist",
+      "display_name": "Revenue Cycle Specialist",
+      "domain": "Revenue Cycle & Finance",
+      "description": "End-to-end revenue cycle management expert specializing in patient access, charge capture, claims management, denial prevention/recovery, A/R optimization, remittance processing, and RCM KPI benchmarking for hospitals and physician practices.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Clean claim rate dropped, denial volume changed, A/R aged unexpectedly"
+      ],
+      "handoffs": [
+        "clinical-prior-authorization-specialist",
+        "revenue-contract-analyst",
+        "revenue-medical-coding-specialist"
+      ],
+      "escalation_owner": "Revenue cycle director, CFO, or billing compliance leader",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Market, operations, and benchmarking sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS payment policy",
+        "Medicare claims processing",
+        "ICD-10/CPT/HCPCS coding",
+        "X12 EDI",
+        "payer contracts",
+        "HIPAA minimum necessary",
+        "interoperability standards and information blocking boundaries"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/revenue-cycle-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS OPPS/IPPS Final Rules",
+          "Washington Publishing Company (CARC/RARC)",
+          "CMS Medicare Claims Processing Manual (Pub 100-04)",
+          "NUBC UB-04 Data Specifications Manual",
+          "X12 EDI Transaction Standards (837/835/270/271/276/277)"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.",
+      "required_human_owner": "Revenue cycle director, CFO, or billing compliance leader"
+    },
+    {
+      "slug": "revenue-finance-manager",
+      "display_name": "Healthcare Finance Manager",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Senior healthcare finance executive specializing in operating and capital budgets, cost accounting (RCC/ABC), Medicare cost reports (CMS-2552), financial ratio analysis, payer mix optimization, margin analysis by service line, FTE productivity benchmarking, and strategic financial planning for hospitals and health systems.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Budget, cost report, margin, service-line finance, reserves"
+      ],
+      "handoffs": [
+        "operations-hospital-administrator",
+        "revenue-contract-analyst",
+        "strategy-actuarial-advisor"
+      ],
+      "escalation_owner": "CFO, finance executive, or governing finance committee",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "Healthcare finance and benchmarking sources",
+        "Market, operations, and benchmarking sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS payment policy",
+        "Medicare claims processing",
+        "ICD-10/CPT/HCPCS coding",
+        "X12 EDI",
+        "payer contracts",
+        "HIPAA minimum necessary"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/revenue-finance-manager.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Cost Reports (HCRIS)",
+          "CMS Provider of Services (POS) File",
+          "Medicare Cost Report Form CMS-2552-10",
+          "AHA Annual Survey / Hospital Statistics",
+          "HFMA MAP Keys (Revenue Cycle Benchmarking)"
+        ],
+        "source_family_count": 5
+      },
+      "role_boundaries": "Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.",
+      "required_human_owner": "CFO, finance executive, or governing finance committee"
+    },
+    {
+      "slug": "revenue-medical-coding-specialist",
+      "display_name": "Medical Coding Specialist",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Expert medical coder specializing in ICD-10-CM/PCS official guidelines, CPT/HCPCS Level II coding, MS-DRG/APR-DRG assignment optimization, HCC/RAF risk adjustment coding, E/M documentation guidelines (2021+), modifier logic, NCCI edits, and coding compliance audits.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Coding audit, DRG/HCC question, modifier/NCCI issue, medical necessity edit"
+      ],
+      "handoffs": [
+        "clinical-documentation-improvement-specialist",
+        "revenue-chargemaster-analyst",
+        "revenue-cycle-specialist"
+      ],
+      "escalation_owner": "Certified coding leader, coding compliance officer, and clinician/coder of record",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Coding, terminology, and code-set sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS payment policy",
+        "Medicare claims processing",
+        "ICD-10/CPT/HCPCS coding",
+        "X12 EDI",
+        "payer contracts",
+        "HIPAA minimum necessary",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/revenue-medical-coding-specialist.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS ICD-10-CM/PCS Official Guidelines",
+          "CMS NCCI Edits",
+          "CMS MS-DRG Definitions Manual",
+          "CMS OPPS Addenda (APC Assignments)",
+          "AMA CPT",
+          "CMS Risk Adjustment"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.",
+      "required_human_owner": "Certified coding leader, coding compliance officer, and clinician/coder of record"
+    },
+    {
+      "slug": "strategy-actuarial-advisor",
+      "display_name": "Healthcare Actuarial Advisor",
+      "domain": "Strategy & Advisory",
+      "description": "Senior healthcare actuarial advisor specializing in risk adjustment (HCC/RAF), capitation rate setting, medical loss ratio analysis, reserve estimation (IBNR), actuarial cost models, and risk-based contract evaluation for health plans, ACOs, and provider-sponsored health plans.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Capitation, IBNR, MLR, risk adjustment, actuarial caveats"
+      ],
+      "handoffs": [
+        "payer-managed-care-analyst",
+        "payer-value-based-care-manager",
+        "revenue-finance-manager"
+      ],
+      "escalation_owner": "Credentialed actuary, CFO, risk-bearing entity leadership, and compliance/legal",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "Credentialing and enrollment sources",
+        "X12 EDI and claims transaction sources"
+      ],
+      "regulatory_domains": [
+        "CMS/market data governance",
+        "CON/state planning where applicable",
+        "antitrust/transaction review where applicable",
+        "actuarial and financial governance",
+        "coding and code-set governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/strategy-actuarial-advisor.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "CMS Risk Adjustment (HCC Model)",
+          "CMS MLR Reporting",
+          "CMS Medicare Advantage Rates & Statistics",
+          "Milliman Health Cost Guidelines (HCG)",
+          "SOA Health Section Resources",
+          "ASPE MEPS Data",
+          "CMS EDGE Server (MA Risk Adjustment)"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Strategy and planning support only; does not replace board, executive, legal, actuarial, valuation, labor, or transaction authority.",
+      "required_human_owner": "Credentialed actuary, CFO, risk-bearing entity leadership, and compliance/legal"
+    },
+    {
+      "slug": "strategy-clinical-operations-consultant",
+      "display_name": "Clinical Operations Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Senior clinical operations consultant specializing in clinical workflow design, nurse staffing models, provider productivity optimization, patient flow engineering, OR utilization, ED throughput, and care delivery model redesign for hospitals and ambulatory networks.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Clinical workflow, ED/OR throughput, staffing model, care redesign"
+      ],
+      "handoffs": [
+        "clinical-case-manager",
+        "operations-hospital-administrator",
+        "operations-workforce-manager"
+      ],
+      "escalation_owner": "Clinical executive, operational executive, physician/nursing leadership, and finance",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "Credentialing and enrollment sources",
+        "EHR, clinical data, and informatics sources"
+      ],
+      "regulatory_domains": [
+        "CMS/market data governance",
+        "CON/state planning where applicable",
+        "antitrust/transaction review where applicable",
+        "actuarial and financial governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/strategy-clinical-operations-consultant.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Epic Systems (Operational Analytics)",
+          "TeleTracking (Capacity Management)",
+          "LeanTaaS iQueue",
+          "AHRQ TeamSTEPPS",
+          "IHI Open School",
+          "ANA Nurse Staffing Resources"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Strategy and planning support only; does not replace board, executive, legal, actuarial, valuation, labor, or transaction authority.",
+      "required_human_owner": "Clinical executive, operational executive, physician/nursing leadership, and finance"
+    },
+    {
+      "slug": "strategy-healthcare-consultant",
+      "display_name": "Healthcare Strategy Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Senior healthcare strategy consultant specializing in service line planning, M&A due diligence, market analysis, certificate of need, physician alignment, and multi-year strategic planning for health systems and physician enterprises.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Market strategy, service line, M&A, CON, physician alignment"
+      ],
+      "handoffs": [
+        "payer-relations-specialist",
+        "revenue-finance-manager",
+        "strategy-operations-consultant"
+      ],
+      "escalation_owner": "Executive sponsor, board/strategy owner, CFO, legal counsel, and affected service-line leadership",
+      "source_families": [
+        "AHRQ and patient safety sources",
+        "CMS and Medicare/Medicaid program sources",
+        "Market, operations, and benchmarking sources"
+      ],
+      "regulatory_domains": [
+        "CMS/market data governance",
+        "CON/state planning where applicable",
+        "antitrust/transaction review where applicable",
+        "actuarial and financial governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/strategy-healthcare-consultant.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Definitive Healthcare",
+          "Sg2 (Vizient Intelligence)",
+          "IQVIA",
+          "CMS Hospital Compare",
+          "AHRQ HCUP",
+          "AHA Annual Survey",
+          "CON Program State Databases"
+        ],
+        "source_family_count": 3
+      },
+      "role_boundaries": "Strategy and planning support only; does not replace board, executive, legal, actuarial, valuation, labor, or transaction authority.",
+      "required_human_owner": "Executive sponsor, board/strategy owner, CFO, legal counsel, and affected service-line leadership"
+    },
+    {
+      "slug": "strategy-operations-consultant",
+      "display_name": "Healthcare Operations Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Senior healthcare operations consultant specializing in Lean/Six Sigma deployment, throughput optimization, operational efficiency, capacity planning, and performance benchmarking against MGMA, Vizient, and Premier data for health systems and physician enterprises.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Lean/Six Sigma deployment, capacity, benchmarking, predictive ops"
+      ],
+      "handoffs": [
+        "operations-hospital-administrator",
+        "operations-workforce-manager",
+        "quality-process-improvement-analyst"
+      ],
+      "escalation_owner": "Operational executive, process owner, finance, HR, and quality leadership",
+      "source_families": [
+        "CMS and Medicare/Medicaid program sources",
+        "EHR, clinical data, and informatics sources",
+        "Market, operations, and benchmarking sources",
+        "Quality measurement and reporting sources"
+      ],
+      "regulatory_domains": [
+        "CMS/market data governance",
+        "CON/state planning where applicable",
+        "antitrust/transaction review where applicable",
+        "actuarial and financial governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/strategy-operations-consultant.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Vizient Clinical Data Base",
+          "Premier QualityAdvisor",
+          "MGMA DataDive",
+          "AAMC Faculty Salary Report",
+          "CMS Cost Reports (HCRIS)",
+          "AHA Annual Survey"
+        ],
+        "source_family_count": 4
+      },
+      "role_boundaries": "Strategy and planning support only; does not replace board, executive, legal, actuarial, valuation, labor, or transaction authority.",
+      "required_human_owner": "Operational executive, process owner, finance, HR, and quality leadership"
+    },
+    {
+      "slug": "strategy-structural-improvement-consultant",
+      "display_name": "Structural Improvement Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Senior structural improvement consultant specializing in organizational redesign, governance structures, change management (Kotter, ADKAR, Bridges), merger/acquisition integration, and culture transformation for health systems navigating strategic transitions.",
+      "output_modes": [
+        "quick triage",
+        "workplan",
+        "audit/checklist",
+        "artifact/template"
+      ],
+      "common_tasks": [
+        "Organizational redesign, governance, change, merger integration"
+      ],
+      "handoffs": [
+        "operations-workforce-manager",
+        "strategy-healthcare-consultant",
+        "strategy-operations-consultant"
+      ],
+      "escalation_owner": "CEO/COO, HR leader, legal counsel, board/governance sponsor, and change executive",
+      "source_families": [
+        "Market, operations, and benchmarking sources"
+      ],
+      "regulatory_domains": [
+        "CMS/market data governance",
+        "CON/state planning where applicable",
+        "antitrust/transaction review where applicable",
+        "actuarial and financial governance"
+      ],
+      "last_reviewed": {
+        "date": "2026-05-21",
+        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+      },
+      "provenance": {
+        "prompt_file": "agents/strategy-structural-improvement-consultant.md",
+        "derived_from": [
+          "agent frontmatter",
+          "docs/usage/agent-selection-guide.md",
+          "docs/usage/handoff-map.md"
+        ],
+        "source_service_names": [
+          "Prosci ADKAR Resources",
+          "Kotter Inc.",
+          "Gallup Q12 Employee Engagement",
+          "Press Ganey (Workforce Engagement)",
+          "Denison Consulting (Culture Survey)",
+          "AHA Trustee Services"
+        ],
+        "source_family_count": 1
+      },
+      "role_boundaries": "Strategy and planning support only; does not replace board, executive, legal, actuarial, valuation, labor, or transaction authority.",
+      "required_human_owner": "CEO/COO, HR leader, legal counsel, board/governance sponsor, and change executive"
+    }
+  ]
+}

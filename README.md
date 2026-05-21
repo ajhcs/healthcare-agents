@@ -36,13 +36,13 @@ Each agent is a long-form Markdown specialist with YAML frontmatter, role-specif
 | You need | Healthcare Agents gives you |
 |---|---|
 | Healthcare-specific agent behavior | 51 narrow specialists instead of one generic "healthcare assistant." |
-| Easier agent selection | Task-based chooser docs, starter prompts, output modes, and handoff maps. |
+| Easier agent selection | CLI chooser, task-based docs, starter prompts, output modes, and handoff maps. |
 | Practical administrative output | Appeal packets, audit binders, gap analyses, dashboards, charters, payer matrices, readiness plans, and workflow checklists. |
 | Better regulatory handling | Role-aware references to HIPAA, CMS, OIG, HEDIS, Stars, MIPS/QPP, HRSA 340B, NHSN, TEFCA, HL7/FHIR, X12, and other domain sources. |
 | Portable installation | Claude Code agents, Claude/OpenCode skills, Codex agent prompts, Cursor/Windsurf/Copilot rules, Aider context, and plain Markdown. |
 | Prompt quality controls | An included self-improvement kit with a frozen rubric, role baselines, scorer guidance, and append-only eval results. |
 
-These agents are for healthcare administration support. They are not clinicians, attorneys, auditors, coders of record, billing authorities, or a safe PHI-processing environment.
+These agents are for healthcare administration support. They are not clinicians, attorneys, auditors, coders of record, billing authorities, or a safe PHI-processing environment. See [Trust and Safety](docs/trust-and-safety.md) for scope, PHI, human escalation, source freshness, and eval limits.
 
 ## Install
 
@@ -58,7 +58,7 @@ GitHub-backed `npx`:
 npx --yes github:ajhcs/healthcare-agents install
 ```
 
-The package metadata is ready for npm, but the package is not currently published to the npm registry from this environment. Use the GitHub-backed `npx` command above.
+The package is npm-ready and validates with `npm pack --dry-run`. If consuming before npm publication, use the GitHub-backed `npx` command above.
 
 Target a specific tool:
 
@@ -80,6 +80,18 @@ Preview before writing files:
 npx --yes github:ajhcs/healthcare-agents install --all --dry-run
 ```
 
+Inspect local install targets and collisions:
+
+```bash
+npx --yes github:ajhcs/healthcare-agents doctor
+```
+
+Install one agent instead of the full pack:
+
+```bash
+npx --yes github:ajhcs/healthcare-agents install revenue-cycle-specialist --codex
+```
+
 Update existing installs:
 
 ```bash
@@ -95,6 +107,15 @@ npx --yes github:ajhcs/healthcare-agents uninstall --all
 ## Choose the Right Agent
 
 Start with the task, not the agent name. Use the [agent selection guide](docs/usage/agent-selection-guide.md) when you know the operational problem, the [starter prompts](docs/usage/starter-prompts.md) when you want copy-ready examples, and the [handoff map](docs/usage/handoff-map.md) when the request spans departments.
+
+The CLI exposes the same discovery surface:
+
+```bash
+healthcare-agents list --domain revenue
+healthcare-agents show revenue-cycle-specialist
+healthcare-agents choose "clean claim rate dropped after an EHR update"
+healthcare-agents prompt quality-compliance-officer --mode audit/checklist
+```
 
 Every agent now supports four output modes:
 
