@@ -23,6 +23,7 @@
   },
   "scripts": {
     "scorecard": "node scripts/generate-scorecard.js",
+    "validate:eval-coverage": "node scripts/validate-eval-coverage.js",
     "validate:scorecard": "node scripts/generate-scorecard.js && node scripts/validate-scorecard-claims.js",
     "validate:registry": "node scripts/validate-registry-consistency.js && node scripts/validate-source-freshness.js",
     "validate:safety": "node scripts/validate-safety-boundaries.js",
@@ -72,6 +73,7 @@
     "scripts/test-installer-e2e.sh",
     "scripts/test-tarball-smoke.js",
     "scripts/validate-packlist.js",
+    "scripts/validate-eval-coverage.js",
     "scripts/validate-registry-consistency.js",
     "scripts/validate-release-manifest.js",
     "scripts/validate-safety-boundaries.js",
