@@ -27,6 +27,7 @@ const required = [
   'docs/eval/scorecard.json',
   'docs/eval/routing-benchmark.json',
   'docs/trust-and-safety.md',
+  'docs/release-publishing.md',
   'workflows/workflows.json',
   'workflows/schema.json',
   'platforms/platforms.json',
@@ -41,7 +42,8 @@ const required = [
   'scripts/validate-workup-canaries.js',
   'scripts/validate-platform-exports.js',
   'scripts/test-platform-render-snapshots.js',
-  'scripts/validate-public-version-sync.js'
+  'scripts/validate-public-version-sync.js',
+  'scripts/validate-npm-publish-workflow.js'
 ];
 
 for (const file of files) {
