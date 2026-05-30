@@ -7,6 +7,14 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const REGISTRY_PATH = path.join(ROOT, 'agents', 'registry.json');
 const AGENTS_DIR = path.join(ROOT, 'agents');
+const {
+  loadWorkflows,
+  findWorkflow,
+  createWorkup,
+  formatWorkupMarkdown,
+  normalizeTarget
+} = require('../lib/workflows');
+const renderers = require('../lib/renderers');
 const VALID_MODES = ['quick triage', 'workplan', 'audit/checklist', 'artifact/template'];
 
 const TOOL_ORDER = [
@@ -52,6 +60,10 @@ Usage:
   healthcare-agents list [--domain <name>] [--json]
   healthcare-agents show <agent> [--json]
   healthcare-agents choose "<problem>" [--json]
+  healthcare-agents workflows [--json]
+  healthcare-agents workflow <workflow-id> [--json]
+  healthcare-agents workup "<problem>" [--target codex|claude|copilot|m365-copilot] [--json]
+  healthcare-agents export <platform> <workflow-id> [--output <dir>]
   healthcare-agents prompt <agent> --mode <mode>
   healthcare-agents doctor [--json]
   healthcare-agents install [agent] [target/options]
@@ -61,6 +73,9 @@ Installer targets:
   --claude, --claude-code, --codex, --codex-app, --opencode,
   --cursor, --copilot, --gemini, --windsurf, --cline,
   --amazonq, --aider, --continue, --agent-skills, --skills, --all
+  --claude-workflow-skills, --codex-skills, --copilot-all
+  --copilot-repo, --copilot-instructions, --copilot-agents,
+  --copilot-prompts, --copilot-issue-templates
 
 Installer options:
   --path <dir>  Install to a custom directory
@@ -74,6 +89,8 @@ Examples:
   healthcare-agents list --domain revenue
   healthcare-agents show revenue-cycle-specialist
   healthcare-agents choose "clean claim rate dropped after an EHR update"
+  healthcare-agents workup "Commercial payer denial rate jumped 18 percent" --target codex
+  healthcare-agents export m365-declarative-agent denial-spike-workup
   healthcare-agents prompt quality-compliance-officer --mode audit/checklist
   healthcare-agents install revenue-cycle-specialist --codex --dry-run`);
 }
@@ -354,6 +371,189 @@ function promptAgent(args) {
   console.log(buildStarterPrompt(agent, mode, '[describe the healthcare administration problem, setting, data, constraints, and deadline]', agent.handoffs.slice(0, 3)));
 }
 
+function argsWithoutOptions(args, optionsWithValues = []) {
+  const output = [];
+  for (let i = 0; i < args.length; i += 1) {
+    const arg = args[i];
+    if (arg.startsWith('--')) {
+      if (optionsWithValues.includes(arg)) i += 1;
+      continue;
+    }
+    output.push(arg);
+  }
+  return output;
+}
+
+function listWorkflows(args) {
+  const workflows = loadWorkflows();
+  if (hasFlag(args, '--json')) {
+    console.log(JSON.stringify({ count: workflows.length, workflows }, null, 2));
+    return;
+  }
+  const rows = workflows.map(workflow => ({
+    id: workflow.id,
+    category: workflow.category,
+    primary: workflow.primary_agent,
+    artifact: workflow.output_artifact
+  }));
+  console.log(formatTable(rows, [
+    { key: 'id', header: 'Workflow' },
+    { key: 'category', header: 'Category' },
+    { key: 'primary', header: 'Primary agent' },
+    { key: 'artifact', header: 'Artifact' }
+  ]));
+}
+
+function showWorkflow(args) {
+  const id = args[0];
+  if (!id) {
+    console.error('error: workflow requires a workflow id');
+    process.exit(1);
+  }
+  const workflow = findWorkflow(id);
+  if (!workflow) {
+    console.error('error: unknown workflow: ' + id);
+    process.exit(1);
+  }
+  if (hasFlag(args, '--json')) {
+    console.log(JSON.stringify(workflow, null, 2));
+    return;
+  }
+  console.log(workflow.name + ' (' + workflow.id + ')');
+  console.log('Category: ' + workflow.category);
+  console.log('Summary: ' + workflow.summary);
+  console.log('Primary agent: ' + workflow.primary_agent);
+  console.log('Handoffs: ' + (workflow.handoff_agents.join(', ') || 'None'));
+  console.log('Output artifact: ' + workflow.output_artifact);
+  console.log('Required inputs: ' + workflow.required_inputs.join('; '));
+  console.log('Red flags: ' + workflow.red_flags.join('; '));
+}
+
+function workupCommand(args) {
+  const json = hasFlag(args, '--json');
+  const target = normalizeTarget(readOption(args, '--target') || 'codex');
+  const problem = argsWithoutOptions(args, ['--target']).filter(arg => arg !== '--json' && arg !== '--markdown').join(' ').trim();
+  if (!problem) {
+    console.error('error: workup requires a healthcare administration problem description');
+    process.exit(1);
+  }
+  const workup = createWorkup(problem, { target });
+  if (json) {
+    console.log(JSON.stringify(workup, null, 2));
+    return;
+  }
+  console.log(formatWorkupMarkdown(workup));
+}
+
+const COPILOT_PATH_GROUPS = [
+  {
+    slug: 'healthcare-revenue-cycle',
+    title: 'Healthcare Revenue Cycle Instructions',
+    applyTo: '**/{revenue,claims,billing,denials,contracts}/**',
+    description: 'Apply revenue cycle, claims, denial, payer contract, and payment review workflow standards.'
+  },
+  {
+    slug: 'healthcare-compliance',
+    title: 'Healthcare Compliance Instructions',
+    applyTo: '**/{compliance,privacy,security,audit,policies}/**',
+    description: 'Apply HIPAA, compliance evidence, audit readiness, privacy, and security review standards.'
+  },
+  {
+    slug: 'healthcare-quality-safety',
+    title: 'Healthcare Quality and Safety Instructions',
+    applyTo: '**/{quality,safety,hedis,stars,survey}/**',
+    description: 'Apply quality improvement, patient safety, accreditation, HEDIS, Stars, and survey readiness standards.'
+  },
+  {
+    slug: 'healthcare-analytics',
+    title: 'Healthcare Analytics Instructions',
+    applyTo: '**/{analytics,dashboards,metrics,bi,reports}/**',
+    description: 'Apply dashboard specification, metric definition, validation, and data governance standards.'
+  },
+  {
+    slug: 'healthcare-operations',
+    title: 'Healthcare Operations Instructions',
+    applyTo: '**/{operations,access,capacity,discharge,emergency}/**',
+    description: 'Apply healthcare operations, access, capacity, discharge, and emergency preparedness workflow standards.'
+  }
+];
+
+const COPILOT_AGENTS = [
+  ['healthcare-revenue-cycle-agent', 'Healthcare Revenue Cycle Agent', 'Revenue cycle workups for denials, clean claims, payment variance, and AR exposure.', ['Revenue cycle administration only', 'No coding-of-record, billing-authority, or legal final decisions']],
+  ['healthcare-compliance-agent', 'Healthcare Compliance Agent', 'HIPAA, audit evidence, policy, survey, and compliance checklist workups.', ['Compliance decision support only', 'No final legal, breach, audit, or regulator-response authority']],
+  ['healthcare-quality-safety-agent', 'Healthcare Quality and Safety Agent', 'Quality improvement, survey readiness, HEDIS/Stars, and RCA2 planning workups.', ['Quality and safety administration only', 'No diagnosis, treatment, blame assignment, or final clinical judgment']],
+  ['healthcare-operations-agent', 'Healthcare Operations Agent', 'Hospital, ambulatory, discharge, capacity, and emergency preparedness operations workups.', ['Operational planning only', 'No emergency medical guidance or live incident command authority']],
+  ['healthcare-data-analytics-agent', 'Healthcare Data Analytics Agent', 'Dashboard, metric, data validation, and healthcare analytics specification workups.', ['Analytics specification only', 'No unapproved PHI disclosure or source-of-truth override']],
+  ['healthcare-it-integration-agent', 'Healthcare IT Integration Agent', 'HL7, FHIR, interface incident, and health IT workflow triage.', ['Health IT administration only', 'No production changes without local change control or security review']],
+  ['healthcare-payer-contracting-agent', 'Healthcare Payer Contracting Agent', 'Payer contract, underpayment, PBM, and negotiation evidence workups.', ['Contracting support only', 'No final legal, finance, or contracting authority']],
+  ['healthcare-workup-orchestrator-agent', 'Healthcare Workup Orchestrator Agent', 'Routes messy healthcare administration problems into the right workflow and specialist handoffs.', ['Orchestration and triage only', 'Do not flatten specialist boundaries or skip missing required inputs']]
+].map(([name, title, description, boundaries]) => ({ name, title, description, boundaries }));
+
+function exportContent(platform, workflow) {
+  if (platform === 'm365-declarative-agent') return { file: 'agent.md', content: renderers.renderM365DeclarativeAgent(workflow) };
+  if (platform === 'copilot-studio') return { file: 'agent-build-guide.md', content: renderers.renderCopilotStudioGuide(workflow) };
+  if (platform === 'azure-foundry') return { file: 'agent-spec.md', content: renderers.renderAzureFoundrySpec(workflow) };
+  if (platform === 'claude-skill') return { file: 'SKILL.md', content: renderers.renderClaudeWorkflowSkill(workflow) };
+  if (platform === 'codex-skill') return { file: 'SKILL.md', content: renderers.renderCodexWorkflowSkill(workflow) };
+  if (platform === 'copilot-prompt') return { file: workflow.id + '.prompt.md', content: renderers.renderCopilotPrompt(workflow) };
+  if (platform === 'copilot-issue-template') return { file: workflow.id + '.yml', content: renderers.renderIssueTemplate(workflow) };
+  console.error('error: unsupported export platform: ' + platform);
+  process.exit(1);
+}
+
+function exportCommand(args) {
+  const platform = args[0];
+  const id = args[1];
+  if (!platform || !id) {
+    console.error('error: export requires <platform> <workflow-id>');
+    process.exit(1);
+  }
+  const workflow = findWorkflow(id);
+  if (!workflow) {
+    console.error('error: unknown workflow: ' + id);
+    process.exit(1);
+  }
+  const output = exportContent(platform, workflow);
+  const outputDir = readOption(args, '--output');
+  if (outputDir) {
+    fs.mkdirSync(outputDir, { recursive: true });
+    const file = path.join(outputDir, output.file);
+    fs.writeFileSync(file, output.content);
+    console.log(file);
+    return;
+  }
+  console.log(output.content);
+}
+
+function internalRender(args) {
+  const surface = args[0];
+  const key = args[1];
+  const workflows = loadWorkflows();
+  if (surface === 'codex-agents') {
+    console.log(renderers.renderCodexAgentsMd());
+    return;
+  }
+  if (surface === 'copilot-repo') {
+    console.log(renderers.renderCopilotRepoInstructions(workflows));
+    return;
+  }
+  if (surface === 'copilot-path') {
+    const group = COPILOT_PATH_GROUPS.find(item => item.slug === key);
+    if (!group) process.exit(2);
+    console.log(renderers.renderCopilotPathInstruction(group));
+    return;
+  }
+  if (surface === 'copilot-agent') {
+    const agent = COPILOT_AGENTS.find(item => item.name === key);
+    if (!agent) process.exit(2);
+    console.log(renderers.renderCopilotAgent(agent));
+    return;
+  }
+  const workflow = findWorkflow(key);
+  if (!workflow) process.exit(2);
+  console.log(exportContent(surface, workflow).content);
+}
+
 function resolveToolPath(tool) {
   const config = TOOL_CONFIG[tool];
   return path.join(config.home ? os.homedir() : process.cwd(), config.rel);
@@ -478,6 +678,11 @@ function main() {
   if (command === 'list') return listAgents(rest);
   if (command === 'show') return showAgent(rest);
   if (command === 'choose') return chooseAgent(rest);
+  if (command === 'workflows') return listWorkflows(rest);
+  if (command === 'workflow') return showWorkflow(rest);
+  if (command === 'workup') return workupCommand(rest);
+  if (command === 'export') return exportCommand(rest);
+  if (command === 'internal-render') return internalRender(rest);
   if (command === 'prompt') return promptAgent(rest);
   if (command === 'doctor') return doctor(rest);
   if (command === 'install' || command === 'uninstall') return runInstaller(command, rest);

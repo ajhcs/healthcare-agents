@@ -60,6 +60,23 @@ assert_contains "$SKILL" "## 🚨 Critical Rules You Must Follow"
 run_install quality-compliance-officer --agent-skills --uninstall
 assert_missing "$HOME_DIR/.agents/skills/quality-compliance-officer"
 
+run_install --claude-workflow-skills
+CLAUDE_WORKFLOW="$HOME_DIR/.claude/skills/healthcare-denial-spike-workup/SKILL.md"
+assert_file "$CLAUDE_WORKFLOW"
+assert_contains "$CLAUDE_WORKFLOW" "Revenue Cycle Denial Spike Workup"
+assert_contains "$CLAUDE_WORKFLOW" "Safety Constraints"
+assert_file "$HOME_DIR/.claude/skills/.healthcare-agents-manifest.json"
+run_install --claude-workflow-skills --uninstall
+assert_missing "$HOME_DIR/.claude/skills/healthcare-denial-spike-workup"
+
+run_install --codex-skills
+CODEX_WORKFLOW="$HOME_DIR/.codex/skills/healthcare-hipaa-security-evidence-checklist/SKILL.md"
+assert_file "$CODEX_WORKFLOW"
+assert_contains "$CODEX_WORKFLOW" "HIPAA Security Evidence Checklist"
+assert_contains "$CODEX_WORKFLOW" "Read the primary specialist prompt"
+run_install --codex-skills --uninstall
+assert_missing "$HOME_DIR/.codex/skills/healthcare-hipaa-security-evidence-checklist"
+
 CUSTOM="$TMP/custom prompts"
 run_install revenue-contract-analyst --path "$CUSTOM"
 assert_file "$CUSTOM/revenue-contract-analyst.md"
@@ -85,6 +102,21 @@ assert_file "$PROJECT_DIR/.clinerules/revenue-cycle-specialist.md"
 assert_file "$PROJECT_DIR/.amazonq/rules/revenue-cycle-specialist.md"
 assert_file "$PROJECT_DIR/.continue/revenue-cycle-specialist.md"
 
+run_install --copilot-all
+assert_file "$PROJECT_DIR/.github/copilot-instructions.md"
+assert_file "$PROJECT_DIR/.github/instructions/healthcare-revenue-cycle.instructions.md"
+assert_file "$PROJECT_DIR/.github/agents/healthcare-workup-orchestrator-agent.agent.md"
+assert_file "$PROJECT_DIR/.github/prompts/denial-spike-workup.prompt.md"
+assert_file "$PROJECT_DIR/.github/ISSUE_TEMPLATE/healthcare-denial-spike-workup.yml"
+assert_contains "$PROJECT_DIR/.github/copilot-instructions.md" "<!-- healthcare-agents:start -->"
+assert_contains "$PROJECT_DIR/.github/prompts/denial-spike-workup.prompt.md" "Acceptance Criteria"
+run_install --copilot-all --uninstall
+assert_missing "$PROJECT_DIR/.github/instructions/healthcare-revenue-cycle.instructions.md"
+assert_missing "$PROJECT_DIR/.github/agents/healthcare-workup-orchestrator-agent.agent.md"
+assert_missing "$PROJECT_DIR/.github/prompts/denial-spike-workup.prompt.md"
+assert_missing "$PROJECT_DIR/.github/ISSUE_TEMPLATE/healthcare-denial-spike-workup.yml"
+! grep -Fq "<!-- healthcare-agents:start -->" "$PROJECT_DIR/.github/copilot-instructions.md"
+
 run_install --doctor > "$TMP/doctor.txt"
 grep -Fq "Healthcare Agents Doctor" "$TMP/doctor.txt"
 
@@ -94,4 +126,4 @@ if run_install "../bad-slug" --codex 2>"$TMP/bad-slug.err"; then
 fi
 grep -Fq "invalid agent slug" "$TMP/bad-slug.err"
 
-echo "installer e2e ok: dry-run, real writes, force, uninstall, Codex/Aider blocks, skills, custom paths, static slug safety"
+echo "installer e2e ok: dry-run, real writes, force, uninstall, Codex/Aider blocks, skills, workflow skills, Copilot surfaces, custom paths, static slug safety"

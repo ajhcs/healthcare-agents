@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "platforms": [
+    {
+      "id": "claude",
+      "name": "Claude Code and Claude Skills",
+      "install_surface": "User-level agents under ~/.claude/agents and workflow skills under ~/.claude/skills.",
+      "export_surface": "Markdown subagents, SKILL.md workflow packages, and command snippets.",
+      "file_paths": ["~/.claude/agents/*.md", "~/.claude/skills/healthcare-*/SKILL.md"],
+      "frontmatter_rules": "Markdown files use YAML frontmatter with name and description fields that should be concise enough for routing.",
+      "instruction_limits": "Keep workflow skills compact and role-specific; place examples after the required workflow steps.",
+      "managed_block_strategy": "Generated workflow skills are owned files in healthcare-* directories.",
+      "uninstall_strategy": "Remove only generated healthcare-* workflow skill directories and installed specialist files.",
+      "test_strategy": "Dry-run install, idempotent install, uninstall, and frontmatter linting."
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "install_surface": "AGENTS.md instruction blocks, ~/.codex/agents specialist prompts, and ~/.codex/skills workflow skills.",
+      "export_surface": "AGENTS.md managed block, specialist prompts, and SKILL.md workflow packages.",
+      "file_paths": ["~/.codex/AGENTS.md", "~/.codex/agents/*.md", "~/.codex/skills/healthcare-*/SKILL.md"],
+      "frontmatter_rules": "Skills use YAML frontmatter. AGENTS.md follows directory precedence rules and must preserve user content.",
+      "instruction_limits": "Keep global instructions limited to operating boundaries and routing policy.",
+      "managed_block_strategy": "Use <!-- healthcare-agents:start --> managed blocks for AGENTS.md and owned healthcare-* skill directories.",
+      "uninstall_strategy": "Remove managed blocks and owned generated directories only.",
+      "test_strategy": "Dry-run, diff, idempotency, uninstall, and AGENTS.md preservation checks."
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "install_surface": "Repository instructions, path-specific instructions, custom agents, prompt files, and issue templates.",
+      "export_surface": ".github/copilot-instructions.md, .github/instructions, .github/agents, .github/prompts, and .github/ISSUE_TEMPLATE.",
+      "file_paths": [".github/copilot-instructions.md", ".github/instructions/*.instructions.md", ".github/agents/*.agent.md", ".github/prompts/*.prompt.md", ".github/ISSUE_TEMPLATE/*.yml"],
+      "frontmatter_rules": "Path instructions use applyTo frontmatter. Agent and prompt files use GitHub-supported Markdown conventions.",
+      "instruction_limits": "Keep custom agents curated and governable; do not generate the full specialist catalog by default.",
+      "managed_block_strategy": "Use managed blocks for repository instructions and owned generated files for other Copilot surfaces.",
+      "uninstall_strategy": "Remove managed blocks and healthcare-generated files only.",
+      "test_strategy": "Snapshot renderers, dry-run install, idempotency, and docs review."
+    },
+    {
+      "id": "m365-copilot",
+      "name": "Microsoft 365 Copilot Declarative Agents",
+      "install_surface": "Governed enterprise export package for tenant review.",
+      "export_surface": "Declarative agent instructions, starter prompts, knowledge guidance, action placeholders, tests, and admin checklist.",
+      "file_paths": ["exports/m365-declarative-agent/<workflow-id>/agent.md"],
+      "frontmatter_rules": "No hidden system instructions in knowledge documents; instructions stay in supported agent definition fields.",
+      "instruction_limits": "Keep core instructions concise and move examples, tests, and review checklists into supported companion fields.",
+      "managed_block_strategy": "Export packages are generated artifacts for review, not direct tenant writes.",
+      "uninstall_strategy": "Delete generated export folders; tenant deployment removal is handled by enterprise admins.",
+      "test_strategy": "Validate safety boundaries, test prompts, expected outputs, and admin review checklist."
+    },
+    {
+      "id": "copilot-studio",
+      "name": "Microsoft Copilot Studio",
+      "install_surface": "Governed build-guide export.",
+      "export_surface": "Agent instructions, topics, triggers, inputs, knowledge mapping, action placeholders, escalation paths, and test scripts.",
+      "file_paths": ["exports/copilot-studio/<workflow-id>/agent-build-guide.md"],
+      "frontmatter_rules": "Use explicit agent instructions and topic descriptions; do not rely on knowledge files as hidden instructions.",
+      "instruction_limits": "Split instructions, topics, triggers, and tests into their supported product fields.",
+      "managed_block_strategy": "Export guides are generated artifacts for admins/builders.",
+      "uninstall_strategy": "Delete generated export folders; tenant agent lifecycle is managed in Copilot Studio.",
+      "test_strategy": "Validate trigger phrases, test scripts, safety boundaries, and human review path."
+    },
+    {
+      "id": "azure-foundry",
+      "name": "Azure AI Foundry Agent Service",
+      "install_surface": "Governed architecture/spec export.",
+      "export_surface": "Prompt agent spec, workflow agent spec, tool placeholders, identity/RBAC notes, observability, versioning, private networking, and Teams/M365 distribution notes.",
+      "file_paths": ["exports/azure-foundry/<workflow-id>/agent-spec.md"],
+      "frontmatter_rules": "Specs must separate prompt instructions, tool schemas, identity, observability, and distribution concerns.",
+      "instruction_limits": "Use versioned prompt sections and explicit tool/action contracts.",
+      "managed_block_strategy": "Export specs are generated artifacts for enterprise architecture review.",
+      "uninstall_strategy": "Delete generated export folders; Azure resources are managed separately.",
+      "test_strategy": "Validate governance, identity, RBAC, private networking, and observability checklist coverage."
+    }
+  ]
+}

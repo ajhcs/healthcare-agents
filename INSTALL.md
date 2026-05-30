@@ -4,6 +4,7 @@ Healthcare Agents ships in two compatible formats:
 
 - `agents/*.md`: full specialist prompts for subagent/rules/custom-instruction systems.
 - generated `SKILL.md` folders: portable skill packages for Claude Skills, OpenCode, and tools that follow the open agent-skills layout.
+- workflow skills, Copilot repository surfaces, and Microsoft enterprise export templates generated from `workflows/workflows.json`.
 
 The installed prompts provide healthcare administration decision support only.
 They do not make final clinical, legal, coding, billing, audit, compliance,
@@ -60,6 +61,9 @@ npx --yes healthcare-agents install --all --force
 | Cursor | `npx --yes healthcare-agents install --cursor` | `.cursor/rules/*.md` |
 | Windsurf | `npx --yes healthcare-agents install --windsurf` | `.windsurf/rules/*.md` |
 | GitHub Copilot | `npx --yes healthcare-agents install --copilot` | `.github/instructions/*.md` |
+| Claude workflow skills | `npx --yes healthcare-agents install --claude-workflow-skills` | `~/.claude/skills/healthcare-*/SKILL.md` |
+| Codex workflow skills | `npx --yes healthcare-agents install --codex-skills` | `~/.codex/skills/healthcare-*/SKILL.md` |
+| GitHub Copilot repo setup | `npx --yes healthcare-agents install --copilot-all` | `.github/copilot-instructions.md`, `.github/instructions`, `.github/agents`, `.github/prompts`, `.github/ISSUE_TEMPLATE` |
 | Gemini CLI | `npx --yes healthcare-agents install --gemini` | `~/.gemini/agents/*.md` |
 | Cline | `npx --yes healthcare-agents install --cline` | `.clinerules/*.md` |
 | Amazon Q Developer | `npx --yes healthcare-agents install --amazonq` | `.amazonq/rules/*.md` |
@@ -237,6 +241,35 @@ healthcare-agents show revenue-cycle-specialist [--json]
 healthcare-agents choose "prior authorization denials are rising" [--json]
 healthcare-agents prompt revenue-cycle-specialist --mode "quick triage"
 ```
+
+## Workflow Engine
+
+Workflow commands route a plain-language healthcare administration problem to a structured workup packet:
+
+```bash
+healthcare-agents workflows
+healthcare-agents workflow denial-spike-workup
+healthcare-agents workup "Commercial payer denial rate jumped 18 percent after a policy change" --target codex
+healthcare-agents workup "Prepare a HIPAA evidence checklist for a vendor security review" --target copilot --json
+```
+
+Install workflow-level runtime support:
+
+```bash
+npx --yes healthcare-agents install --claude-workflow-skills
+npx --yes healthcare-agents install --codex-skills
+npx --yes healthcare-agents install --copilot-all
+```
+
+Microsoft enterprise paths are exported for governed review instead of installed directly into a tenant:
+
+```bash
+healthcare-agents export m365-declarative-agent denial-spike-workup
+healthcare-agents export copilot-studio hipaa-security-evidence-checklist
+healthcare-agents export azure-foundry survey-readiness-gap-review
+```
+
+These exports include instructions, starter prompts or trigger phrases, knowledge-source guidance, action placeholders, safety boundaries, test cases, and admin review checklists.
 
 ## Uninstall
 

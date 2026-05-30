@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Added
+
+- Added the Healthcare Admin Workup Engine with workflow listing, workflow detail, workup routing, and Microsoft/Copilot export commands.
+- Added 16 canonical healthcare administration workflows, workflow/platform schemas, centralized safety snippets, platform renderers, routing canaries, platform export validation, snapshot checks, and workflow docs validation.
+- Added Claude and Codex workflow skill installation, stronger Codex AGENTS.md generation, GitHub Copilot repository instructions, path instructions, custom agents, prompt files, and issue templates.
+- Added Microsoft 365 Copilot declarative agent, Copilot Studio, and Azure AI Foundry export templates for governed enterprise review.
+- Added workflow gallery pages, 35 example workup prompts, platform compatibility guides, demo setup folders, and workflow contribution guidance.
+
+### Changed
+
+- Expanded README and INSTALL around workflow-first routing, multi-runtime workflow installs, Copilot compatibility, and enterprise export paths.
+
+See [docs/release-notes/2026-05-30-healthcare-admin-workup-engine.md](docs/release-notes/2026-05-30-healthcare-admin-workup-engine.md) for full details.
+
 ## [1.4.0] - 2026-05-30
 
 Release-grade eval coverage for the full Healthcare Agents catalog.

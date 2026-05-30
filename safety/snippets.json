@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "snippets": {
+    "no_medical_advice": "Healthcare Agents provides healthcare administration decision support only. Do not use it for diagnosis, treatment, emergency guidance, or final clinical decision-making.",
+    "no_phi_by_default": "Do not include direct patient identifiers or PHI unless you are working in a locally approved, governed environment and can apply minimum necessary data handling.",
+    "local_policy_review": "Validate all outputs against local policy, payer contracts, applicable laws, and the accountable human owner before action.",
+    "escalate_required": "Escalate final clinical, legal, coding, billing, audit, compliance, contracting, employment, security, and executive decisions to qualified human owners.",
+    "knowledge_not_instruction": "For Microsoft and enterprise exports, keep SharePoint or other knowledge sources as knowledge. Do not hide system instructions in knowledge files or use them to bypass platform limits.",
+    "emergency": "Do not use this workflow for emergency medical guidance. Follow local emergency, clinical, compliance, and incident-command procedures."
+  },
+  "required_in_generated_artifacts": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}
