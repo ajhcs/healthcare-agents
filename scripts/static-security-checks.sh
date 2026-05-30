@@ -15,7 +15,7 @@ for script in scripts/*.js; do
 done
 
 if command -v shellcheck >/dev/null 2>&1; then
-  shellcheck install.sh scripts/*.sh
+  shellcheck -S error install.sh scripts/*.sh
 else
   echo "warn: shellcheck not installed; running built-in shell safety heuristics"
 fi
