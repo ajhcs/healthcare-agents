@@ -5,6 +5,11 @@ Healthcare Agents ships in two compatible formats:
 - `agents/*.md`: full specialist prompts for subagent/rules/custom-instruction systems.
 - generated `SKILL.md` folders: portable skill packages for Claude Skills, OpenCode, and tools that follow the open agent-skills layout.
 
+The installed prompts provide healthcare administration decision support only.
+They do not make final clinical, legal, coding, billing, audit, compliance,
+contracting, employment, or executive decisions, and they do not make a runtime
+safe for PHI without an approved environment and minimum necessary controls.
+
 ## Fast Install
 
 ```bash
@@ -257,6 +262,22 @@ Installed files:
 - `eval/rubric.md`
 - `eval/results.tsv`
 - `eval/role-baselines/*.md`
+
+## Maintainer Release Check
+
+Before publishing or updating release claims, run the same no-network gate used
+by CI:
+
+```bash
+npm run release:check
+```
+
+Use the optional networked artifact check only when verifying an already
+published npm/GitHub release:
+
+```bash
+npm run verify:public-release:network
+```
 
 Run in Claude Code:
 

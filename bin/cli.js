@@ -305,6 +305,12 @@ function chooseAgent(args) {
     primary_display_name: primary.display_name,
     recommended_output_mode: mode,
     confidence: ranked[0].score > 30 ? 'high' : ranked[0].score > 12 ? 'medium' : 'low',
+    top_matches: ranked.slice(0, 5).map(item => ({
+      slug: item.agent.slug,
+      display_name: item.agent.display_name,
+      domain: item.agent.domain,
+      score: item.score
+    })),
     missing_inputs: inferMissingInputs(problem, primary),
     supporting_agents: supporting,
     human_escalation_owner: primary.escalation_owner,
@@ -327,7 +333,7 @@ function chooseAgent(args) {
 
 function buildStarterPrompt(agent, mode, problem, supporting) {
   const handoffText = supporting.length ? ` Name supporting handoffs to ${supporting.join(', ')} where the work crosses role boundaries.` : '';
-  return `Use the ${agent.slug} healthcare administration agent in ${mode} mode for this problem: ${problem}. Start by stating assumptions, missing inputs, immediate risks, and the human owner for final decisions. Keep the response within this role boundary: ${agent.role_boundaries}${handoffText}`;
+  return `Use the ${agent.slug} healthcare administration agent in ${mode} mode for this problem: ${problem}. Start by stating assumptions, missing inputs, immediate risks, and the human owner for final decisions. Use PHI only in an approved environment and apply minimum necessary data handling. Do not make final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions. Keep the response within this role boundary: ${agent.role_boundaries}${handoffText}`;
 }
 
 function promptAgent(args) {

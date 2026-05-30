@@ -339,7 +339,7 @@ write_skill_file() {
     printf 'license: Apache-2.0\n'
     printf 'compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex\n'
     printf '%s\n\n' '---'
-    printf 'Use this skill as the %s healthcare administration specialist. Preserve the role identity, regulatory boundaries, source hierarchy, deliverable style, and safety constraints below.\n\n' "$display"
+    printf 'Use this skill as the %s healthcare administration specialist. Preserve the role identity, regulatory boundaries, source hierarchy, deliverable style, and safety constraints below. Use PHI only in an approved environment, apply minimum necessary data handling, and escalate final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions to the named human owner.\n\n' "$display"
     sed '1,/^---$/d' "$src"
   } > "$dest_dir/$slug/SKILL.md"
 }
@@ -424,17 +424,40 @@ upsert_block() {
   rm -f "$tmp"
 }
 
+remove_block() {
+  local file="$1" start="$2" end="$3"
+  if [[ ! -f "$file" ]] || ! grep -Fq "$start" "$file"; then
+    return 1
+  fi
+  if ! $DRY_RUN; then
+    awk -v start="$start" -v end="$end" '
+      $0 == start { skip = 1; next }
+      $0 == end { skip = 0; next }
+      !skip { print }
+    ' "$file" >"$file.tmp"
+    mv "$file.tmp" "$file"
+  fi
+  return 0
+}
+
 install_codex() {
   local dest="$HOME/.codex/agents"
   if $UNINSTALL; then
     uninstall_from_dir "$dest" "Codex / Codex App ($dest)"
+    if remove_block "$HOME/.codex/AGENTS.md" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->"; then
+      if $DRY_RUN; then plan_remove "$HOME/.codex/AGENTS.md managed block"; fi
+      printf "  %s Codex instructions block (%s)\n" "${RED}<-${RESET}" "$HOME/.codex/AGENTS.md"
+      TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
+    else
+      skip "Codex instructions block (nothing to remove)"
+    fi
     return
   fi
   install_to_dir "$dest" "Codex / Codex App ($dest)"
   local body
   body='## Healthcare Agents
 
-When the user asks for healthcare administration expertise, choose one primary specialist prompt from `~/.codex/agents/*.md` and read it before answering. Agent file names and frontmatter `name` fields use lowercase hyphen slugs such as `revenue-cycle-specialist`; `display_name` is the human label. If the request is ambiguous, ask for the missing details from the selected agent'\''s Best Inputs section or start in quick triage mode. When the user asks for a mode, respect `quick triage`, `workplan`, `audit/checklist`, and `artifact/template`. When work crosses roles, name the supporting healthcare-agents handoffs instead of blending responsibilities. Preserve the selected agent role, compliance boundaries, source hierarchy, deliverable style, and decision-support framing. Do not treat the agents as clinical, legal, coding-of-record, billing-authority, or PHI-handling authority.'
+When the user asks for healthcare administration expertise, choose one primary specialist prompt from `~/.codex/agents/*.md` and read it before answering. Agent file names and frontmatter `name` fields use lowercase hyphen slugs such as `revenue-cycle-specialist`; `display_name` is the human label. If the request is ambiguous, ask for the missing details from the selected agent'\''s Best Inputs section or start in quick triage mode. When the user asks for a mode, respect `quick triage`, `workplan`, `audit/checklist`, and `artifact/template`. When work crosses roles, name the supporting healthcare-agents handoffs instead of blending responsibilities. Preserve the selected agent role, compliance boundaries, source hierarchy, deliverable style, and decision-support framing. Use PHI only in an approved environment and apply minimum necessary data handling. Do not treat the agents as clinical, legal, coding-of-record, billing-authority, audit, compliance, or PHI-handling authority.'
   upsert_block "$HOME/.codex/AGENTS.md" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->" "$body"
   if $DRY_RUN; then
     plan_write "$HOME/.codex/AGENTS.md" "managed Codex instructions block"
