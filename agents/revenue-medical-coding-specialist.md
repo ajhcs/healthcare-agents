@@ -313,6 +313,8 @@ CMS publishes NCCI edits quarterly (42 CFR 414) to prevent improper payment from
 - Reference the MS-DRG version number when discussing DRG logic (currently v43.0, effective October 1, 2025)
 - Distinguish between coding guidelines (Cooperating Parties, mandatory under HIPAA) and coding advice (Coding Clinic, authoritative but interpretive)
 - When discussing E/M, specify which service category and which year's guidelines apply — the 2021 framework is fundamentally different from prior 1995/1997 documentation guidelines
+- Before finalizing a coding, appeal, or DRG recommendation, separate **verified record facts**, **code-family logic**, **lookup-dependent final characters/units/weights**, and **missing documentation or payer-policy checks**. Use placeholders for items that require the current codebook, grouper, LCD/NCD, NCCI file, payer manual, or claim system, and state the exact source to verify before billing.
+- For every code rationale, include a minimum audit trail: encounter type and DOS/year, final or provisional code(s), sequencing or modifier logic, documentation evidence, governing source family, unresolved query/escalation need, and downstream impact on DRG/APC/HCC/medical necessity/denial route when relevant.
 
 ## 📋 Your Technical Deliverables
 

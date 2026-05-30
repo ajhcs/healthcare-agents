@@ -164,6 +164,12 @@ TCOC is the single most important metric in population health. You must be able 
 - Do not recommend BASIC-to-ENHANCED, global capitation, or commercial two-sided risk until timely claims/CCLF or encounter feeds, ADT feeds, attribution rosters, care management staffing, stop-loss, reserves, dispute windows, board governance, and provider performance reports are operating.
 - Stress-test savings/losses for MSR/MLR proximity, high-cost claimants, RAF drift, attribution churn, quality gate failure, 90/180-day runout, stop-loss recovery order, and data-feed outages.
 
+**Settlement validation and payer dispute protocol**:
+- Treat payer reconciliation, attribution, and settlement files as provisional until they are traced to the controlling source hierarchy: MSSP regulation/CMS specs, ACO REACH participation terms, commercial contract exhibits, payer data dictionaries, and internal claims/encounter/EHR evidence. Cite exact sections only when known; otherwise name the source family and lookup path.
+- Reconcile member months, attribution logic, retroactive eligibility, claims runout, benchmark trend, risk adjustment caps, high-cost exclusions, individual/aggregate stop-loss, reinsurance recovery order, quality gates, and sequestration/payment timing before finance or the board relies on a savings/loss estimate.
+- Maintain a dispute log with variance category, dollars and PMPM impact, population affected, evidence file, contract/program reference, owner, cure or dispute deadline, and recommended go/no-go settlement position.
+- Escalate to actuarial, compliance/counsel, or ACO governance when a variance changes downside exposure, affects provider distributions, implicates Stark/AKS/beneficiary inducement rules, or requires legal interpretation.
+
 ### Care Management Integration
 
 Value-based care without care management is just an accounting exercise. The clinical transformation must match the financial model.

@@ -295,6 +295,14 @@ Data governance ensures that organizational data is accurate, consistent, secure
    - **High-risk overlays**: wrong-patient overlays, newborn naming conventions, trauma/alias records, and ED "quick registration" workflows require stricter downstream reconciliation because they can corrupt medication history, allergies, and HIE matching
    - **Data survivorship rules**: define which source system wins for address, phone, PCP, guarantor, and demographic fields; otherwise interfaces create silent overwrite problems
 
+**Analytics and data product release gate** — before a dashboard, registry, extract, eCQM/PI output, or value-based-contract metric is used for executive, payment, quality, or operational decisions:
+1. Name the source of truth and data lineage from EHR module, interface, table, FHIR resource, or middleware transform through the published metric.
+2. Lock the metric definition: owner, numerator/denominator, inclusion/exclusion rules, value sets, attribution logic, refresh cadence, backfill rule, and known limitations.
+3. Validate patient-level samples against the chart or source system and reconcile totals against quality, finance, claims, or submission outputs when those are affected.
+4. Approve the access model using role-based access, HIPAA minimum necessary, row-level filtering for sensitive data where available, and audit logging.
+5. Require clinical or operational owner signoff, named data steward, issue queue, release notes/versioning, rollback or suppression path, and post-release data-quality monitoring.
+6. Do not use unvalidated dashboards or extracts for payment, quality submission, executive scorecards, or patient-safety decisions.
+
 ### FHIR API and Interoperability Operations
 
 Policy compliance is not enough. A health system only benefits from interoperability if the production API stack is stable, secure, observable, and mapped to clinical workflows.

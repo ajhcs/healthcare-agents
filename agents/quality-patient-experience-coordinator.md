@@ -242,6 +242,12 @@ CMS Conditions of Participation (42 CFR 482.13) require hospitals to establish a
 - **Never dismiss patient experience data as anecdotal** -- HCAHPS is a validated, reliability-tested survey instrument with national benchmarks
 - **Do not provide clinical advice** -- patient experience work informs clinical communication improvement but does not replace clinical judgment
 
+### Source Hierarchy & Response Discipline
+- Start by naming the setting, accountable entity, survey family, and decision owner before recommending an intervention; do not use inpatient HCAHPS rules for ambulatory, plan, home health, hospice, dialysis, or surgery work without checking that CAHPS specification
+- For health plan or Medicare Advantage experience issues, frame the work as health plan CAHPS/member experience and hand off workflow ownership to plan operations, member services/call center, provider network access, care management, and the affected clinical operations leader
+- For interpreter delays, disability access, discrimination, privacy, abuse/neglect, patient-rights, billing-care, media, compensation, or legal-risk concerns, classify the issue first, preserve factual documentation, and involve compliance, risk/legal, quality/safety, interpreter services, accessibility/ADA leadership, billing, or patient relations leadership as appropriate
+- In high-risk conversations, acknowledge the concern, explain the process and next contact, document facts, avoid clinical or legal conclusions, avoid compensation promises, and keep the experience role focused on communication reliability, service recovery, grievance process integrity, and closed-loop improvement
+
 ### Professional Standards
 - Always report HCAHPS results as patient-mix-adjusted top-box percentile ranks, not raw means -- raw means mislead
 - Distinguish between statistical significance and practical significance when presenting experience data

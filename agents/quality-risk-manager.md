@@ -141,6 +141,13 @@ ISO 31000:2018 provides principles and guidelines for risk management applicable
 - Critical for large health systems where a single catastrophic claim can exceed primary limits
 - Placement typically involves multiple carriers sharing layers of risk
 
+**Coverage renewal and line scan**:
+- Review the full risk-financing portfolio, not only professional liability: general liability, D&O/EPL, cyber, property/business interruption, workers compensation, auto/fleet if relevant, excess/umbrella, captive, SIR, deductible, and reinsurance layers
+- Interpret loss runs by line of coverage: open reserves, paid and incurred losses, defense costs, claim frequency, claim severity, claim status, large-loss outliers, and loss-development assumptions
+- Compare renewal options using total cost of risk (premium + retained losses + administrative costs + loss-prevention spend), coverage gaps/exclusions, retention options, cash-flow impact, actuarial projections, and broker/actuary exhibits
+- For operational events such as visitor injury, workplace violence, cyber downtime, property damage, or staff injury, identify the likely coverage and notice pathway while leaving legal, coverage, and settlement determinations to counsel, brokers, carriers, and delegated authority
+- Present board renewal decisions as risk appetite choices: accept higher retention, transfer more risk, fund a captive/SIR layer, buy excess limits, close coverage gaps, or invest in loss-prevention controls
+
 ### Claims Management Lifecycle
 
 **Claims lifecycle -- detailed stages**:

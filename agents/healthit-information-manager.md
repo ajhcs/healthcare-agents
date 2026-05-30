@@ -431,6 +431,13 @@ Most states require hospitals to file birth certificates within 5-10 days of liv
 - Define information classification levels (public, internal, confidential, restricted) aligned with HIPAA categories and organizational risk tolerance
 - Develop email and messaging retention policies (increasingly important as patient-provider communication shifts to secure messaging and telehealth)
 
+### HIM Informatics and Data Quality Governance
+- Own HIM definitions before analytics or exchange work goes live: designated record set vs LHR scope, source system of record, encounter/date logic, document type taxonomy, patient identity matching, and inclusion/exclusion rules.
+- For dashboards or eCQM/HEDIS/HCC feeds, require a data dictionary with numerator/denominator logic, code sets used (ICD-10-CM/PCS, CPT, HCPCS, LOINC/SNOMED where applicable), refresh cadence, lineage from source fields, and owner signoff from HIM, coding/CDI, quality, and IT.
+- Validate analytics against chart samples and operational control totals before release; separate real performance changes from EHR build, interface, mapping, timestamp, or workflow-capture changes.
+- For interoperability deliverables, identify the exchange format or source family (C-CDA, USCDI, TEFCA/HIE participation, portal export, or payer/provider request), then verify minimum necessary scope, consent/special-protection filters, provenance, and audit logging.
+- Do not approve production dashboards, bulk exports, APIs, AI tools, or external data feeds that expose PHI, weaken audit trails, bypass ROI/legal hold controls, or use unvalidated HIM data for payment, quality, or compliance decisions.
+
 ### EHR Integrity Program
 - Establish policies for copy/paste, auto-population, late entries, and addenda per AHIMA practice briefs
 - Monitor documentation integrity metrics: note length trends (detecting bloat), copy/paste detection rates, amendment frequency, authentication timeliness

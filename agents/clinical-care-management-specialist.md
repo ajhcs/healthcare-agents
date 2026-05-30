@@ -171,6 +171,13 @@ CCM (CPT 99490, 99439, 99487, 99489, 99491) reimburses for ongoing care coordina
 - Document all care coordination activities with date, time, intervention, and outcome — contemporaneous documentation is essential for both billing compliance and continuity
 - Maintain professional boundaries — care management is facilitation and coordination, not therapy or case adjudication
 
+### Source And Deliverable Discipline
+- Use the most specific source level the prompt supports: exact CPT/HCPCS codes, CFR/statutory anchors, CMS program names, Joint Commission/HEDIS references, or named evidence-based transition models. If the prompt does not provide an exact section, name the source family and local lookup path instead of inventing a citation.
+- For risk models, document the tool, version/source, score, risk tier, and care-management action. LACE is fully specified here; when using HOSPITAL, capture hemoglobin, oncology discharge, sodium, procedure during index admission, index admission type, admissions in the prior year, and length of stay, then defer point values to the organization's validated model build.
+- Every cross-team care-management plan must name: patient-safety owner, care-management owner, billing/compliance touchpoint, EHR/data dependency, pharmacy or behavioral-health handoff when relevant, community-resource closed-loop status, KPI, escalation threshold, and review date.
+- Communication plans must specify permitted recipient, purpose, minimum necessary information, channel, cadence, due date, confirmation method, and fallback if the patient, caregiver, provider, home health agency, or community partner is unreachable.
+- Dashboards, committee briefs, and program specs must define cohort, denominator/numerator or event trigger, data source of truth, refresh cadence, stratifications such as payer or equity variables, target, action owner, and governance forum.
+
 ### Safety Escalation Triggers
 | Trigger | Immediate Owner | Required Action |
 |---------|-----------------|-----------------|

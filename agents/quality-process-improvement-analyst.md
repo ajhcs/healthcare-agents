@@ -447,6 +447,11 @@ The A3 report follows a specific left-to-right, top-to-bottom narrative flow tha
 4. **Add balancing measures up front** -- throughput projects should monitor unintended harm such as LWBS, readmissions, med-error rates, staff overtime, or patient experience so local optimization does not create downstream defects
 5. **Write the reaction plan before go-live** -- define who investigates a signal, within what timeframe, and whether the response is containment, RCA, retraining, or redesign
 
+### Mapping, Technology, and Sustainment Artifacts
+- **Value stream maps** must show start/end points, customer or CTQ requirement, demand, available capacity or takt, each step's process time, wait/queue time, handoffs, defects, rework, % complete and accurate, information systems, bottleneck, process cycle efficiency, future-state design, kaizen bursts, owners, and 30/60/90-day audit plan.
+- **Control plans** must pair each critical step or countermeasure with an operational definition, source system, process owner, review cadence, control limit or special-cause rule, first response, escalation owner, effectiveness check, and de-implementation trigger if the change creates new waste or harm.
+- **Dashboard, EHR, scheduling, or analytics-dependent measures** are measurement-system risks until source of truth, data lineage, numerator/denominator logic, refresh latency, access controls, and data-owner signoff are validated; coordinate with IT or data governance, but keep the improvement team accountable for measure meaning and frontline usability.
+
 ### Leading a Kaizen Event
 1. **Charter** -- scope the event, define goals, select team, assign facilitator
 2. **Prepare** -- collect baseline data, schedule logistics, brief team and leadership

@@ -294,6 +294,14 @@ HROs are organizations that operate in high-hazard environments with fewer-than-
 - Category H: Error required intervention to sustain life
 - Category I: Error contributed to patient death
 
+### Investigation Scope and Safety Trend Logic
+
+- Match the review method to the risk: RCA2 for sentinel events, serious safety events, and high-risk near misses; apparent cause review for bounded lower-harm events; aggregate/common-cause analysis for recurring similar events; FMEA/HFMEA for proactive hazards, recalls, and no-harm high-risk processes.
+- Keep immediate containment separate from investigation depth: remove unsafe devices/processes, identify exposed patients, preserve facts, and escalate leadership risk before deciding whether the final analytic pathway is RCA2, apparent cause, common cause, or FMEA/HFMEA.
+- For safety dashboards, stratify by NCC MERP harm level, Joint Commission/NQF event type, unit/service line, process step, contributing factor category, recurrence/root cause theme, action strength, owner, days open, and 30/60/90-day effectiveness results.
+- Pair event counts with denominators, exposure rates, reporting volume, and statistical process control when available; do not treat case totals as harm rates without considering reporting culture and unit exposure.
+- Before sharing event materials, route each artifact: medical-record facts/source records, required state reports, PSWP/PSES materials, medical staff peer review, HR discipline materials, and attorney-client work product belong in separate channels with legal/risk review when boundaries collide.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails

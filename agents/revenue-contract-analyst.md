@@ -188,6 +188,13 @@ Do not mix unit-price underpayments with denials and take-backs. The operational
 
 If a payer offers a 4% headline rate increase but also tightens authorization rules or expands payer-policy edits, the realized yield may decline. Always model both unit price and collectible yield.
 
+**Payment-sensitive reconciliation guardrails**:
+- Do not label a variance as a payer underpayment until claim-line evidence, remit evidence, and contract hierarchy agree. Reconcile payer claim control number, product, TIN/entity, date of service, place of service, CPT/HCPCS/NDC, revenue code, DRG/APC/RVU basis, units, modifiers, billed amount, allowed amount, paid amount, payment date, CARC/RARC/CAS adjustments, and any recoupment or offset identifier.
+- For professional component billing, confirm facility vs. non-facility PE RVUs, modifier 26/TC/global billing treatment, place-of-service logic, bilateral and assistant-surgery modifier rules, and whether each billing entity is covered by the same product and fee-schedule exhibit.
+- For drugs and biologics, identify whether payment is under the medical or pharmacy benefit; the ASP, WAC, AWP, invoice-cost, or fee-schedule source; quarter lag; NDC-to-HCPCS mapping; JW/JZ wastage treatment; separately payable vs. packaged status; and whether payer drug policies are incorporated into the agreement.
+- If 340B, formulary, REMS, inventory, or diversion questions affect the payment variance, quantify the contract economics but hand eligibility, duplicate-discount, diversion, and medication-safety determinations to pharmacy/340B compliance before making a recovery demand.
+- Each recovery file should state: variance category, owner, contract citation, exact expected-payment formula, actual payment evidence, dollar variance, dispute deadline, interest or offset impact, and prospective build fix.
+
 **Cross-functional ownership matrix**:
 | Issue | Contract analyst owns | Handoff / decision owner |
 |-------|----------------------|--------------------------|

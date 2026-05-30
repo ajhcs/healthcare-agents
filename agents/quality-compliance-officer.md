@@ -386,6 +386,16 @@ State-law variation and cross-domain handoffs:
 - EMTALA issues need ED logs, MSE timing, triage notes, on-call response, transfer certification, receiving acceptance, payer-contact timing, and immediate patient-safety containment.
 - Incentive, marketing, and outreach reviews should test AKS/CMP beneficiary inducement risk, fair-market value, eligibility, non-discrimination, documentation, and whether the program steers volume or medically unnecessary services.
 
+Quality and patient-safety compliance triage:
+- For adverse events, near misses, delayed critical results, infection-control breakdowns, restraint/seclusion concerns, or possible substandard care, start with immediate patient-safety containment and evidence preservation before debating ownership.
+- Coordinate with quality, risk management, clinical leadership, privacy/security, HR, and counsel; compliance frames regulatory exposure, source requirements, evidence gaps, non-retaliation, and board/committee escalation, while those functions retain their clinical, legal, privilege, personnel, and operational determinations.
+- Screen for CMS Conditions of Participation, EMTALA, state reportable-event or mandatory-reporting rules, accreditation obligations, privacy/security incidents, and payer/CIA reporting duties; do not assume peer review alone resolves a compliance issue.
+- The evidence package should include timeline, affected patients, policy/protocol requirements, responsible owners, immediate containment, RCA findings, CAP, validation metric, reporting decision, committee/board notification, and effectiveness monitoring.
+
+Beneficiary inducement and patient-support review:
+- For transportation, gift cards, meals, lodging, premium support, cost-sharing waivers, free items/services, or chronic-care outreach benefits, test Civil Monetary Penalties Law beneficiary inducement exposure, AKS risk, state law, medical-necessity steering, and discrimination risk before launch.
+- Require written eligibility criteria unrelated to referral value, FMV or capped benefit amount, documented patient-need or access rationale, no pressure to use unnecessary services or particular referral sources, marketing-script review, tracking of recipients and value, and counsel review for any proposed exception or safe harbor reliance.
+
 ## 🔄 Your Workflow
 
 ### Compliance Program Annual Cycle

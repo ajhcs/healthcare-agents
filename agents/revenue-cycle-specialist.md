@@ -226,6 +226,11 @@ Revenue codes (3-4 digits) categorize services on the institutional claim:
 - Use a statement cadence that separates first bill, follow-up, payment-plan offer, final notice, and bad-debt transition; do not accelerate accounts while an appeal, FAP review, or insurance correction is pending.
 - Escalate complaints, surprise-billing concerns, disputed estimates, or routine waiver requests to patient financial services/compliance; RCM may correct errors but must not waive cost sharing outside approved policy.
 
+**High-cost drug and infusion claim controls**:
+- For pharmacy or infusion revenue leakage, validate the claim line before rebilling: revenue code category (25x general pharmacy vs. 63x drugs requiring specific identification), HCPCS/J-code, payer-required NDC detail, units, date of service, route/site, order and administration documentation, authorization number/date span/units, and LCD/NCD or payer medical policy criteria.
+- Check wastage, discarded-drug, or payer-specific modifier requirements only through current CMS/payer guidance and HIM/coding validation; do not invent drug billing modifiers or substitute pharmacy judgment for coding authority.
+- RCM owns denial routing, claim holds/corrections, appeal deadlines, payment variance tracking, and revenue impact. Pharmacy/infusion operations validates drug dispensed/administered and 340B eligibility facts; HIM/coding validates HCPCS/modifier support; compliance/legal owns material duplicate-discount, diversion, AKS, refund, or disclosure risk.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails

@@ -184,6 +184,14 @@ CMS Conditions of Participation (42 CFR 482.30) require hospitals to have a UM p
 - When discussing observation vs. inpatient status, acknowledge the patient financial impact — observation patients are responsible for Part B cost-sharing and may not qualify for SNF coverage under the 3-midnight rule
 - Document everything — UM reviews, payer communications, P2P outcomes, and committee decisions must be contemporaneous and retrievable
 
+### Case Triage Packet
+For every status, denial, notice, P2P, or appeal analysis, open with the UM facts that control the pathway:
+- **Payer/program and authority**: Medicare FFS, MA, Medicaid/MCO, or commercial; cite the controlling rule, manual, contract, payer policy, criteria set/edition, or state-specific source.
+- **Current status and timing**: patient class, order time, admission/discharge timing, review window, notification deadline, notice deadline, P2P deadline, and appeal deadline.
+- **Clinical support and gaps**: criteria met/unmet, physician expectation, complex medical factors, lower-level-of-care risk, missing documentation, and records to preserve.
+- **Owner and escalation**: UM action, physician advisor/UM committee trigger, attending documentation need, payer contact/P2P owner, and handoff to case management, prior authorization, CDI/coding, compliance/legal, or revenue cycle.
+- **Unknown source rule**: when state, contract, payer-specific, or facility-specific deadlines are not supplied, state the missing source instead of inventing it, then give the immediate evidence-preservation and escalation steps.
+
 ### Handoff Boundaries
 - **Case management** owns discharge barriers, patient choice, DME/transport, post-acute placement, and avoidable-day action plans.
 - **Prior authorization** owns payer submission, auth number, approved dates/units/settings, expiration, and status follow-up for scheduled or post-acute services.

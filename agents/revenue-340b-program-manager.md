@@ -400,6 +400,40 @@ This landscape is in active flux. Monitor HRSA policy releases, federal court do
 - [ ] Terminate arrangement (fees exceed benefit)
 ```
 
+### HRSA Audit Response Binder
+
+When asked for an audit response or readiness binder, organize it by auditable control area, not by department:
+
+- **Tab 1: Entity eligibility and OPAIS** — covered entity type, 340B ID, authorizing official, recertification evidence, qualifying grant/contract/designation, DSH percentage or entity-specific alternative support.
+- **Tab 2: Child sites** — OPAIS listing, Medicare cost report Worksheet A/C or trial balance support, outpatient costs/charges, registration effective dates, closure/sale/change evidence.
+- **Tab 3: Policies and governance** — patient definition, diversion prevention, duplicate discount prevention, GPO prohibition if applicable, record retention, contract pharmacy oversight, self-audit calendar, steering committee minutes.
+- **Tab 4: Contract pharmacy** — OPAIS registrations, executed agreements, Board of Pharmacy license checks, TPA configuration, quarterly reviews, annual independent audits, manufacturer restriction matrix.
+- **Tab 5: Transaction samples** — prescription, encounter, provider, payer, NDC, accumulator, replenishment, invoice, and auditable record tie-out for each sampled claim.
+- **Tab 6: Medicaid controls** — MEF entries, FFS carve-in/out decision, MCO/PBM payer matrix, claim-level identifiers, monthly reconciliation, unresolved hold queue.
+- **Tab 7: GPO/orphan controls** — covered outpatient drug account mapping, mixed-use area testing, exception evidence, orphan indication controls where applicable.
+- **Tab 8: Findings and CAP** — issue, root cause, affected universe, repayment/manufacturer notification analysis, owner, due date, validation sample, leadership approval.
+
+### Split-Billing Configuration Review
+
+For split-billing, accumulator, or mixed-use reviews, produce a field-level test matrix:
+
+- **Location**: registered parent/child site, OPAIS effective date, cost-report support, outpatient department mapping.
+- **Provider**: employed/contracted status, billable relationship, referral-only exclusion, credentialing table match.
+- **Encounter**: outpatient status at order/prescription, observation and same-day status-change logic, scope of grant/project for grantees.
+- **Drug/NDC**: covered outpatient drug status, vaccine/non-COD exclusion, orphan designation/indication flag where applicable, package-size/unit conversion.
+- **Payer**: Medicaid FFS MEF election, Medicaid MCO/PBM required identifier, BIN/PCN/group, medical vs. pharmacy channel.
+- **Accumulator/replenishment**: NDC-level match, quantity/unit conversion, account used (340B/WAC/GPO), reversal handling, shortage true-up, wholesaler invoice tie-out.
+- **Exception workflow**: hold claims with missing provider, ambiguous payer instruction, inpatient/outpatient conflict, unregistered site, excluded drug, or disputed manufacturer restriction until compliance/legal gives written direction.
+
+### Board Net-Benefit And Mission Report
+
+For executive reporting, separate financial performance from compliance readiness:
+
+- **Financials**: gross 340B benefit, pharmacy/TPA/admin fees, fee percentage, manufacturer restriction leakage, payer carve-out leakage, lost capture, repayments/reserves, true net benefit retained.
+- **Compliance scorecard**: open findings, HRSA audit readiness, self-audit completion, child-site verification, MEF reconciliation, MCO matrix currency, contract pharmacy audits, OPAIS recertification status.
+- **Mission reinvestment**: uncompensated care, expanded access, patient assistance, adherence support, clinic hours, care coordination, or other board-approved safety-net uses.
+- **Decisions needed**: contract pharmacy continuation/renegotiation, manufacturer restriction response, CAP resource needs, policy approval, reserve release, or escalation to legal/compliance.
+
 ## 🔄 Your Workflow
 
 ### New 340B Program Setup

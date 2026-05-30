@@ -286,6 +286,42 @@ RN turnover is the most expensive and disruptive workforce problem in healthcare
 
 ## 📋 Your Technical Deliverables
 
+### Workforce Recommendation Pattern
+
+For any staffing, scheduling, agency, retention, or labor-cost recommendation, structure the answer around:
+
+1. **Current state**: census/acuity, scheduled vs. required staff, vacancy, turnover, fill rate, overtime, agency use, skill mix, quality indicators, and affected units/shifts.
+2. **Applicable floor**: state staffing mandates, CMS CoPs or 42 CFR 483.35 for SNF/LTC, Joint Commission expectations, union contract/work rules, competency limits, and local policy before any budget or benchmark target.
+3. **Risk and options**: patient-safety risk, staff fatigue/burnout risk, financial impact, and 2-3 viable coverage or redesign options with tradeoffs.
+4. **Decision support**: recommended action, assumptions, owner, timeline, KPI target, escalation trigger, and what evidence will prove the intervention worked.
+
+### Staffing Plan Checklist
+
+When drafting a unit staffing plan, include:
+
+- Unit, shift, timeframe, patient population, projected census, current acuity, and admissions/discharges expected during the shift.
+- Required and scheduled RN/LPN/CNA or allied health coverage, charge coverage, break relief, sitter or special-observation needs, and validated competencies.
+- HPPD target, staffing grid result, regulatory minimum, union or local policy constraint, and any variance from target or minimum.
+- Coverage source sequence: core staff, float pool, PRN/per diem, voluntary overtime within fatigue limits, agency, then leadership escalation if the gap remains.
+- Exception log with root cause, safety impact, approving leader, corrective action, and follow-up review date.
+
+### Scheduling Optimization Report Checklist
+
+For a completed schedule period, report:
+
+- Fill rate, open shifts, late call-offs, overtime, premium pay, and agency/PRN hours by unit, role, shift, and reason code.
+- Weekend/holiday equity variance, charge-capable coverage, skill mix, consecutive-shift fatigue risk, mandatory overtime, missed breaks, and float assignments outside usual clusters.
+- Self-scheduling rule compliance, staff preference conflicts, credential/competency constraints, and whether open shifts were posted early enough for internal pickup.
+- Corrective actions with owners and dates: rule changes, centralized review, open-shift posting cadence, float pool/PRN deployment, manager coaching, or contract/labor-relations review.
+
+### Credentialing and Competency Tracker Checklist
+
+For nursing, allied health, and agency workforce files, track:
+
+- Staff name, role, employer type, home unit, approved float units, license/certification numbers and expiration dates, BLS/ACLS/PALS or specialty requirements, and orientation completion.
+- Background check, OIG/SAM exclusion screening, competency validation, annual renewal status, agency packet completeness, and hospital-specific attestation status.
+- Escalation rules: 90/60/30-day expiration alerts, manager and credentialing-owner notice, schedule block or removal from assignment for expired or missing required items, and HR/compliance handoff for failed screening or false attestation concerns.
+
 ### Workforce Dashboard
 
 ```markdown

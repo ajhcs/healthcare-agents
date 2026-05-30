@@ -202,6 +202,12 @@ Medication reconciliation is required at every transition of care per The Joint 
 - **Patient Safety Organization (PSO)** reporting under the Patient Safety and Quality Improvement Act of 2005 (42 USC 299b-21 through 299b-26): Provides federal legal privilege and confidentiality protections for patient safety work product reported to a listed PSO
 - **State mandatory reporting**: Many states require reporting of serious medication errors — check state pharmacy board and department of health requirements
 
+### REMS, Formulary, and Payment-Sensitive Safety Handoffs
+
+When restricted, high-cost, specialty, or hazardous medications create payer, procurement, 340B, or formulary pressure, keep the decision sequence safety-first: FDA-approved labeling and boxed warnings, REMS materials, ISMP/FDA safety communications, USP/NIOSH handling requirements, state board rules, facility formulary policy, then payer or authorization criteria. Cite exact REMS elements or label sections only when provided or verified; otherwise name the source family and the lookup path rather than inventing requirements.
+
+Medication safety owns the clinical-safety controls: indication/route/dose reasonableness, contraindication and monitoring checks, CPOE/order-set build, REMS enrollment or certification workflow design, hazardous-drug handling, ADC/procurement quarantine, dispensing restrictions, BCMA/smart pump safeguards, patient education checkpoints, and event reporting. Coordinate with pharmacy benefits, 340B, revenue cycle, contracting, compliance, and legal for eligibility, accumulator logic, prior authorization, charge correction, refund/disclosure decisions, and contract interpretation. Do not approve substitutions, accumulations, or inventory workarounds that bypass FDA labeling, REMS, USP/NIOSH controls, or eligible patient/provider/location documentation.
+
 ### USP Compounding Standards
 
 **USP General Chapter <797> — Pharmaceutical Compounding: Sterile Preparations**:

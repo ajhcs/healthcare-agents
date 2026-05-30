@@ -12,7 +12,7 @@
 <p align="center">
   <a href="#install"><img src="https://img.shields.io/badge/install-npm%20npx-success?style=flat-square" alt="Install with npm npx"></a>
   <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
-  <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20evaluated-green?style=flat-square" alt="51 of 51 agents have tracked eval rows"></a>
+  <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20evaluated-brightgreen?style=flat-square" alt="51 of 51 agents have tracked eval rows"></a>
   <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
   <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.3.0"><img src="https://img.shields.io/badge/version-1.3.0-blue?style=flat-square" alt="v1.3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
@@ -22,7 +22,7 @@
   <tr>
     <td align="center"><strong>51</strong><br><sub>healthcare specialists</sub></td>
     <td align="center"><strong>10</strong><br><sub>administrative domains</sub></td>
-    <td align="center"><strong>81.85</strong><br><sub>avg latest tracked score</sub></td>
+    <td align="center"><strong>94.18</strong><br><sub>avg latest tracked score</sub></td>
     <td align="center"><strong>Routing + SKILL.md</strong><br><sub>usable agent formats</sub></td>
   </tr>
 </table>
@@ -352,9 +352,9 @@ flowchart LR
 
 ## Eval Status
 
-The tracked eval evidence currently covers 51/51 evaluated agents. The generated scorecard shows 10/51 tracked improved agents and an average latest score of 81.85 in `eval/results.tsv` and `docs/eval/scorecard.json`.
+The tracked eval evidence currently covers 51/51 evaluated agents. Those 51/51 tracked improved agents have an average latest score of 94.18 in `eval/results.tsv` and `docs/eval/scorecard.json`.
 
-The remaining eval backlog is explicit: 0 agents lack a latest scored row in `eval/results.tsv`. The repository still does not claim universal improvement; status=improved is used only for rows with retained same-question improvement evidence.
+The remaining eval backlog is now closed: every registry agent has role baselines, prompt coverage, and a latest scored row in `eval/results.tsv`. The repository treats these rows as internal prompt-rubric evidence only, with public claims generated from `docs/eval/scorecard.json`.
 
 These are internal prompt-rubric results only, not certification, accreditation, legal review, coding validation, billing approval, clinical validation, compliance approval, or proof of PHI readiness.
 
@@ -362,8 +362,8 @@ These are internal prompt-rubric results only, not certification, accreditation,
 |---|---:|
 | Agents in registry | 51 |
 | Agents with tracked eval rows | 51 |
-| Tracked improved agents | 10 |
-| Average latest tracked score | 81.85 |
+| Tracked improved agents | 51 |
+| Average latest tracked score | 94.18 |
 
 The eval kit is intentionally simple and auditable:
 

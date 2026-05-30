@@ -21,8 +21,6 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   git diff --exit-code -- docs/eval/scorecard.md docs/eval/scorecard.json
 fi
 node scripts/validate-scorecard-claims.js
-
-section "strict eval coverage"
 REQUIRE_FULL_EVAL_COVERAGE=1 node scripts/validate-eval-coverage.js
 
 section "registry, source freshness, safety, and release manifest"
