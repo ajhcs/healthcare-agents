@@ -7,10 +7,16 @@
 - The old Python eval harness has been removed. The active eval path is the simple self-improvement kit above.
 - This repo uses `bd` as the active bead tracker. If external skills or copied
   prompts mention `br` or `bv`, translate to the equivalent `bd` workflow
-  instead of abandoning tracker work. Useful local commands: `bd show <id>`,
-  `bd children <id>`, `bd ready -n 100`, `bd list --json`, `bd dep tree <id>`,
-  `bd update <id> --status in_progress`, and `bd close <id> --reason "..."`
+  instead of abandoning tracker work. Useful local commands: `bd prime`,
+  `bd show <id>`, `bd children <id>`, `bd ready -n 100`, `bd list --json`,
+  `bd dep tree <id>`, `bd update <id> --claim`, and `bd close <id> --reason "..."`
   after current evidence proves the acceptance criteria.
+- Use `bd-agent-sync pull` before creating, claiming, updating, or closing
+  beads, and `bd-agent-sync push` after Beads changes. Do not create markdown
+  TODO ledgers, scratch JSONL files, or parallel agent backlogs. `.beads/issues.jsonl`
+  is the only supported JSONL bridge and must be managed by `bd import` and
+  `bd export`, not hand-edited. `bd sync` is not available in bd 1.0.2 on
+  Plumbob.
 
 ## Git Workflow
 
