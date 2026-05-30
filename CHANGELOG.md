@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [1.4.0] - 2026-05-30
+
+Release-grade eval coverage for the full Healthcare Agents catalog.
+
+### Added
+
+- Added latest tracked eval rows for all 51 registry agents in `eval/results.tsv`.
+- Added strict full-coverage validation to the release-readiness gate via `REQUIRE_FULL_EVAL_COVERAGE=1 npm run validate:eval-coverage`.
+- Added release notes for the 2026-05-30 eval coverage campaign.
+
+### Changed
+
+- Updated all 51 agent prompts with narrow, role-specific improvements retained from canonical eval loops.
+- Regenerated `docs/eval/scorecard.md` and `docs/eval/scorecard.json` to show 51/51 evaluated agents, 51/51 tracked improved agents, and a 94.18 average latest tracked score.
+- Updated README and `docs/release-manifest.json` claims to match generated scorecard evidence and preserve internal-eval scope limits.
+- Bumped package, installer, and version metadata to v1.4.0.
+
+See [docs/release-notes/2026-05-30-release-grade-eval-coverage.md](docs/release-notes/2026-05-30-release-grade-eval-coverage.md) for full details.
+
 ## [1.3.0] - 2026-05-21
 
 Product-surface release for registry-backed discovery, safer installs, npm distribution, and public trust/eval artifacts.
