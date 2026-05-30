@@ -14,7 +14,7 @@
   <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
   <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20evaluated-brightgreen?style=flat-square" alt="51 of 51 agents have tracked eval rows"></a>
   <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
-  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.3.0"><img src="https://img.shields.io/badge/version-1.3.0-blue?style=flat-square" alt="v1.3.0"></a>
+  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.4.0"><img src="https://img.shields.io/badge/version-1.4.0-blue?style=flat-square" alt="v1.4.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
 </p>
 
@@ -43,6 +43,14 @@ Each agent is a long-form Markdown specialist with YAML frontmatter, role-specif
 | Prompt quality controls | An included self-improvement kit with a frozen rubric, role baselines, scorer guidance, and append-only eval results. |
 
 These agents are for healthcare administration support. They are not clinicians, attorneys, auditors, coders of record, billing authorities, or a safe PHI-processing environment. See [Trust and Safety](docs/trust-and-safety.md) for scope, PHI, human escalation, source freshness, and eval limits.
+
+## Current Release
+
+Version 1.4.0 is the release-grade eval coverage release. It closes the tracked
+eval backlog with 51/51 evaluated agents, 51/51 tracked improved agents, and a
+94.18 average latest tracked score from the generated scorecard. See
+[the v1.4.0 release notes](docs/release-notes/2026-05-30-release-grade-eval-coverage.md)
+for the evidence summary and scope limits.
 
 ## Install
 
