@@ -4,119 +4,119 @@
   "registry": "agents/registry.json",
   "disclaimer": "Internal rubric results only; not certification or authority for healthcare decisions.",
   "agent_count": 51,
-  "evaluated_agent_count": 51,
+  "evaluated_agent_count": 10,
   "improved_agent_count": 10,
-  "average_latest_score": 81.85,
+  "average_latest_score": 80.97,
   "agents": [
     {
       "agent": "clinical-care-management-specialist",
       "display_name": "Care Management Specialist",
       "domain": "Clinical Operations",
-      "latest_score": 82.15,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-care-management-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "clinical-case-manager",
       "display_name": "Case Manager",
       "domain": "Clinical Operations",
-      "latest_score": 83.25,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-case-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "clinical-documentation-improvement-specialist",
       "display_name": "Documentation Improvement Specialist",
       "domain": "Clinical Operations",
-      "latest_score": 82.56,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "Accreditation bodies;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-documentation-improvement-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "clinical-infection-prevention-specialist",
       "display_name": "Infection Prevention Specialist",
       "domain": "Clinical Operations",
-      "latest_score": 82.1,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-infection-prevention-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "clinical-prior-authorization-specialist",
       "display_name": "Prior Authorization Specialist",
       "domain": "Clinical Operations",
-      "latest_score": 81.68,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-prior-authorization-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "clinical-referral-specialist",
       "display_name": "Referral Specialist",
       "domain": "Clinical Operations",
-      "latest_score": 83.25,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-referral-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "clinical-research-coordinator",
       "display_name": "Clinical Research Coordinator",
       "domain": "Clinical Operations",
-      "latest_score": 80.57,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "Clinical research and IRB sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-research-coordinator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "clinical-utilization-management-specialist",
       "display_name": "Utilization Management Specialist",
       "domain": "Clinical Operations",
-      "latest_score": 80.99,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/clinical-operations/clinical-utilization-management-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "emergency-preparedness-coordinator",
       "display_name": "Emergency Preparedness Coordinator",
       "domain": "Emergency Preparedness",
-      "latest_score": 81.5,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "Accreditation bodies;CMS emergency preparedness rule;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/emergency-preparedness-coordinator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "healthit-clinical-data-analyst",
       "display_name": "Clinical Data Analyst",
       "domain": "Health IT & Informatics",
-      "latest_score": 83.25,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CDC, NHSN, and public health sources;HIPAA Privacy/Security/Breach Notification;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/healthit-informatics/healthit-clinical-data-analyst/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "healthit-epic-applications-analyst",
       "display_name": "Epic Applications Analyst",
       "domain": "Health IT & Informatics",
-      "latest_score": 82.43,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "EHR, clinical data, and informatics sources;HIPAA Privacy/Security/Breach Notification;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/healthit-informatics/healthit-epic-applications-analyst/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "healthit-informatics-manager",
@@ -132,11 +132,11 @@
       "agent": "healthit-information-manager",
       "display_name": "Health Information Manager",
       "domain": "Health IT & Informatics",
-      "latest_score": 83.25,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;HIPAA Privacy/Security/Breach Notification;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/healthit-informatics/healthit-information-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "healthit-interoperability-engineer",
@@ -152,91 +152,91 @@
       "agent": "healthit-telehealth-program-manager",
       "display_name": "Telehealth Program Manager",
       "domain": "Health IT & Informatics",
-      "latest_score": 83.25,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;HIPAA Privacy/Security/Breach Notification;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/healthit-informatics/healthit-telehealth-program-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "operations-ambulatory-manager",
       "display_name": "Ambulatory Operations Manager",
       "domain": "Operations & Administration",
-      "latest_score": 82.07,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/operations-administration/operations-ambulatory-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "operations-home-health-administrator",
       "display_name": "Home Health Administrator",
       "domain": "Operations & Administration",
-      "latest_score": 81.78,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/operations-administration/operations-home-health-administrator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "operations-hospital-administrator",
       "display_name": "Hospital Operations Administrator",
       "domain": "Operations & Administration",
-      "latest_score": 83.25,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/operations-administration/operations-hospital-administrator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "operations-long-term-care-administrator",
       "display_name": "Long-Term Care Administrator",
       "domain": "Operations & Administration",
-      "latest_score": 81.21,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/operations-administration/operations-long-term-care-administrator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "operations-physician-practice-manager",
       "display_name": "Physician Practice Manager",
       "domain": "Operations & Administration",
-      "latest_score": 82.94,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/operations-administration/operations-physician-practice-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "operations-supply-chain-manager",
       "display_name": "Supply Chain Manager",
       "domain": "Operations & Administration",
-      "latest_score": 80.21,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "Clinical research and IRB sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/operations-administration/operations-supply-chain-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "operations-workforce-manager",
       "display_name": "Healthcare Workforce Manager",
       "domain": "Operations & Administration",
-      "latest_score": 81.21,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS Conditions of Participation;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/operations-administration/operations-workforce-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "payer-credentialing-enrollment-coordinator",
       "display_name": "Credentialing & Enrollment Coordinator",
       "domain": "Payer & Managed Care",
-      "latest_score": 82.71,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;Medicare/Medicaid rules;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/payer-managed-care/payer-credentialing-enrollment-coordinator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "payer-managed-care-analyst",
@@ -252,101 +252,101 @@
       "agent": "payer-medicare-medicaid-specialist",
       "display_name": "Medicare & Medicaid Specialist",
       "domain": "Payer & Managed Care",
-      "latest_score": 81.42,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;Medicare/Medicaid rules;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/payer-managed-care/payer-medicare-medicaid-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "payer-medicare-outreach-coordinator",
       "display_name": "Medicare Outreach Coordinator",
       "domain": "Payer & Managed Care",
-      "latest_score": 80.36,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;Medicare/Medicaid rules;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/payer-managed-care/payer-medicare-outreach-coordinator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "payer-relations-specialist",
       "display_name": "Payer Relations Specialist",
       "domain": "Payer & Managed Care",
-      "latest_score": 82.6,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;Medicare/Medicaid rules;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/payer-managed-care/payer-relations-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "payer-value-based-care-manager",
       "display_name": "Value-Based Care Manager",
       "domain": "Payer & Managed Care",
-      "latest_score": 82.24,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;Medicare/Medicaid rules;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/payer-managed-care/payer-value-based-care-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "pharmacy-benefits-specialist",
       "display_name": "Pharmacy Benefits Specialist",
       "domain": "Pharmacy Programs",
-      "latest_score": 81.84,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;340B/HRSA where applicable;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/revenue-pharmacy-payment-sensitive/pharmacy-benefits-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "pharmacy-medication-safety-specialist",
       "display_name": "Medication Safety Specialist",
       "domain": "Pharmacy Programs",
-      "latest_score": 80.23,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;340B/HRSA where applicable;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/revenue-pharmacy-payment-sensitive/pharmacy-medication-safety-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "pophealth-community-health-coordinator",
       "display_name": "Community Health Coordinator",
       "domain": "Population Health & Community Health",
-      "latest_score": 83.25,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;public health reporting;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/pophealth-community-health-coordinator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "pophealth-population-health-manager",
       "display_name": "Population Health Manager",
       "domain": "Population Health & Community Health",
-      "latest_score": 82.79,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;public health reporting;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/pophealth-population-health-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "pophealth-surveillance-coordinator",
       "display_name": "Public Health Surveillance Coordinator",
       "domain": "Population Health & Community Health",
-      "latest_score": 83.22,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CDC, NHSN, and public health sources;public health reporting;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/pophealth-surveillance-coordinator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "quality-accreditation-specialist",
       "display_name": "Accreditation Specialist",
       "domain": "Quality, Safety & Compliance",
-      "latest_score": 81.92,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "Accreditation bodies;HIPAA;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/quality-safety-compliance/quality-accreditation-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "quality-compliance-officer",
@@ -362,31 +362,31 @@
       "agent": "quality-improvement-specialist",
       "display_name": "Quality Improvement Specialist",
       "domain": "Quality, Safety & Compliance",
-      "latest_score": 81.77,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;HIPAA;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/quality-safety-compliance/quality-improvement-specialist/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "quality-patient-experience-coordinator",
       "display_name": "Patient Experience Coordinator",
       "domain": "Quality, Safety & Compliance",
-      "latest_score": 82.37,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;HIPAA;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/quality-safety-compliance/quality-patient-experience-coordinator/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "quality-patient-safety-officer",
       "display_name": "Patient Safety Officer",
       "domain": "Quality, Safety & Compliance",
-      "latest_score": 82.32,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;HIPAA;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/quality-safety-compliance/quality-patient-safety-officer/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "quality-process-improvement-analyst",
@@ -402,11 +402,11 @@
       "agent": "quality-risk-manager",
       "display_name": "Risk Manager",
       "domain": "Quality, Safety & Compliance",
-      "latest_score": 81.66,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;HIPAA;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/quality-safety-compliance/quality-risk-manager/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "revenue-340b-program-manager",
@@ -422,11 +422,11 @@
       "agent": "revenue-chargemaster-analyst",
       "display_name": "Chargemaster Analyst",
       "domain": "Revenue Cycle & Finance",
-      "latest_score": 81.49,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS payment policy;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/revenue-pharmacy-payment-sensitive/revenue-chargemaster-analyst/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "revenue-contract-analyst",
@@ -472,51 +472,51 @@
       "agent": "strategy-actuarial-advisor",
       "display_name": "Healthcare Actuarial Advisor",
       "domain": "Strategy & Advisory",
-      "latest_score": 82.06,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS/market data governance;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/strategy-actuarial-advisor/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "strategy-clinical-operations-consultant",
       "display_name": "Clinical Operations Consultant",
       "domain": "Strategy & Advisory",
-      "latest_score": 82.33,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;CMS/market data governance;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/strategy-clinical-operations-consultant/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "strategy-healthcare-consultant",
       "display_name": "Healthcare Strategy Consultant",
       "domain": "Strategy & Advisory",
-      "latest_score": 82.38,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "AHRQ and patient safety sources;CMS/market data governance;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/strategy-healthcare-consultant/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "strategy-operations-consultant",
       "display_name": "Healthcare Operations Consultant",
       "domain": "Strategy & Advisory",
-      "latest_score": 81.88,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "CMS and Medicare/Medicaid program sources;CMS/market data governance;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/strategy-operations-consultant/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     },
     {
       "agent": "strategy-structural-improvement-consultant",
       "display_name": "Structural Improvement Consultant",
       "domain": "Strategy & Advisory",
-      "latest_score": 80.86,
-      "improvement_delta": 0,
-      "status": "evaluated",
-      "weak_areas": "Market, operations, and benchmarking sources;CMS/market data governance;Scenario-specific validation evidence",
-      "notes": "Release coverage audit row; current prompt scored without retained edit. Full questions and scorer artifacts recorded in eval/run-logs/2026-05-30-51-agent-release-coverage/batches/population-emergency-strategy/strategy-structural-improvement-consultant/manifest.json."
+      "latest_score": null,
+      "improvement_delta": null,
+      "status": "not evaluated",
+      "weak_areas": "",
+      "notes": "No row found in eval/results.tsv."
     }
   ]
 }
