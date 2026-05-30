@@ -30,7 +30,36 @@ Thank you for considering contributing! This pack aims to provide MHA-level heal
 - Expand domain knowledge sections
 - Fix inaccuracies
 
-### 3. Report Issues
+### 3. Keep Registry And Release Evidence In Sync
+
+`agents/registry.json` is a maintained product index, not a scratch cache. Any
+change to an agent slug, frontmatter display name, domain, handoff, source
+family, role boundary, prompt file, or reviewed date must update the registry in
+the same pull request.
+
+Before opening a release-oriented PR, run:
+
+```bash
+npm run release:check
+```
+
+That command is the same no-network release gate CI runs. It regenerates the eval
+scorecard, validates README claims against tracked scorecard evidence, checks the
+registry against agent files and usage docs, runs CLI and installer regression
+tests, validates package contents, smokes the packed tarball, checks source
+freshness, and validates the release manifest.
+
+Before updating public publication claims, also run the optional network check:
+
+```bash
+npm run verify:public-release:network
+```
+
+The release manifest in `docs/release-manifest.json` maps major README/release
+claims to evidence, commands, artifacts, and bead IDs. Update it when adding,
+removing, or materially changing a product claim.
+
+### 4. Report Issues
 
 - Outdated regulatory references
 - Missing agent specialties

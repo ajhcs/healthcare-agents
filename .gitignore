@@ -12,6 +12,9 @@ build/
 .ruff_cache/
 *.log
 
+# Local extraction scratch trees are not part of the packaged product docs.
+docs/extracted/
+
 # Eval runtime data
 eval/items/
 eval/results/

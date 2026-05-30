@@ -34,6 +34,13 @@ Agent prompts include source awareness, but healthcare rules change. Verify curr
 
 The registry last-reviewed date is provenance metadata for the prompt pack. It is not evidence that every external source is current on that date.
 
+Release readiness now treats source freshness as a gated lifecycle control:
+
+- Each registry entry must name source families, regulatory domains, source-service provenance, a `last_reviewed.date`, and a review basis.
+- `node scripts/validate-source-freshness.js` fails the release gate when any registry entry is missing source metadata or exceeds the configured freshness limit.
+- The default stale-source limit is 180 days, with a 120-day warning threshold. Maintainers can override those values with `SOURCE_FRESHNESS_MAX_DAYS` and `SOURCE_FRESHNESS_WARN_DAYS` for a stricter release.
+- A fresh registry review means the prompt metadata and source-family map were reviewed. Users still need current primary-source verification for local decisions.
+
 ## Eval Limits
 
 The public scorecard reports internal rubric results for prompt quality, role coverage, and usability. Scores are not certification, accreditation, legal review, coding validation, billing approval, clinical validation, compliance approval, or proof of fitness for PHI.

@@ -12,7 +12,7 @@
 <p align="center">
   <a href="#install"><img src="https://img.shields.io/badge/install-npm%20npx-success?style=flat-square" alt="Install with npm npx"></a>
   <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
-  <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20improved-brightgreen?style=flat-square" alt="51 of 51 agents improved"></a>
+  <a href="#eval-status"><img src="https://img.shields.io/badge/eval-10%2F51%20evaluated-yellow?style=flat-square" alt="10 of 51 agents have tracked eval rows"></a>
   <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
   <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.3.0"><img src="https://img.shields.io/badge/version-1.3.0-blue?style=flat-square" alt="v1.3.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
@@ -22,7 +22,7 @@
   <tr>
     <td align="center"><strong>51</strong><br><sub>healthcare specialists</sub></td>
     <td align="center"><strong>10</strong><br><sub>administrative domains</sub></td>
-    <td align="center"><strong>95.50</strong><br><sub>avg final-pass score</sub></td>
+    <td align="center"><strong>80.97</strong><br><sub>avg latest tracked score</sub></td>
     <td align="center"><strong>Routing + SKILL.md</strong><br><sub>usable agent formats</sub></td>
   </tr>
 </table>
@@ -352,12 +352,18 @@ flowchart LR
 
 ## Eval Status
 
-All 51 agents have been improved through the repository's lightweight self-improvement loop.
+The tracked eval evidence currently covers 10/51 evaluated agents. Those 10/51 tracked improved agents have an average latest score of 80.97 in `eval/results.tsv` and `docs/eval/scorecard.json`.
 
-| Pass | Agents | Average Before | Average After | Delta |
-|---|---:|---:|---:|---:|
-| First before/after pass | 15 | 85.0 | 93.9 | +8.9 |
-| Remaining before/after pass | 36 | 85.11 | 95.50 | +10.40 |
+The remaining eval backlog is explicit: 41 agents have role baselines and prompt coverage, but no latest scored row in `eval/results.tsv`. The repository does not claim universal 51/51 improvement until those rows exist and the generated scorecard proves it.
+
+These are internal prompt-rubric results only, not certification, accreditation, legal review, coding validation, billing approval, clinical validation, compliance approval, or proof of PHI readiness.
+
+| Source | Current value |
+|---|---:|
+| Agents in registry | 51 |
+| Agents with tracked eval rows | 10 |
+| Tracked improved agents | 10 |
+| Average latest tracked score | 80.97 |
 
 The eval kit is intentionally simple and auditable:
 
@@ -407,7 +413,7 @@ During a normal eval run, only the requested `agents/<slug>.md` file should chan
 │   ├── results.tsv                  # append-only eval log
 │   ├── role-baselines/              # expected capability baselines
 │   └── run-logs/                    # local ignored exact-question artifacts
-├── docs/eval/                       # scorer and model-routing guidance
+├── docs/eval/                       # scorecard, routing benchmark, canary suite, scorer guidance
 ├── docs/usage/                      # agent chooser, starter prompts, handoff map
 ├── bin/cli.js                       # GitHub-backed npx entrypoint
 ├── install.sh                       # multi-tool installer
@@ -420,6 +426,12 @@ Validate agent prompt structure:
 
 ```bash
 bash scripts/lint-agents.sh
+```
+
+Run the full local release gate used by CI:
+
+```bash
+npm run release:check
 ```
 
 Preview installer behavior:

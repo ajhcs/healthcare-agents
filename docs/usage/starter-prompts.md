@@ -4,6 +4,11 @@ These prompts are copy-ready entry points. Replace bracketed values with local
 details and add one output mode: `quick triage`, `workplan`,
 `audit/checklist`, or `artifact/template`.
 
+Use these prompts for healthcare administration decision support only. They do
+not make final clinical, legal, coding, billing, audit, compliance, contracting,
+employment, or executive decisions. Use PHI only in an approved environment with
+minimum necessary data.
+
 ## Strategy & Advisory
 
 - Use `strategy-healthcare-consultant` in `workplan` mode: assess whether we should expand [service line] in [market], using [volume trend], [competitor data], [payer mix], [capital constraint], and [decision deadline].

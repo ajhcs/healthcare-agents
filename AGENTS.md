@@ -5,6 +5,12 @@
 - Agent prompts live in `agents/*.md`.
 - The simple self-improvement kit lives in `.claude/commands/eval.md`, `eval/rubric.md`, `eval/results.tsv`, and `eval/role-baselines/`.
 - The old Python eval harness has been removed. The active eval path is the simple self-improvement kit above.
+- This repo uses `bd` as the active bead tracker. If external skills or copied
+  prompts mention `br` or `bv`, translate to the equivalent `bd` workflow
+  instead of abandoning tracker work. Useful local commands: `bd show <id>`,
+  `bd children <id>`, `bd ready -n 100`, `bd list --json`, `bd dep tree <id>`,
+  `bd update <id> --status in_progress`, and `bd close <id> --reason "..."`
+  after current evidence proves the acceptance criteria.
 
 ## Git Workflow
 

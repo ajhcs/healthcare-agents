@@ -1,0 +1,316 @@
+{
+  "schema_version": "1.0.0",
+  "minimums": {
+    "top1_accuracy": 0.9,
+    "top3_accuracy": 1,
+    "mrr": 0.95
+  },
+  "cases": [
+    {
+      "id": "route-01",
+      "prompt": "Care Management Specialist support needed for Care coordination, TCM/CCM, readmission prevention, SDOH workflows; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-care-management-specialist",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-02",
+      "prompt": "Case Manager support needed for Discharge barriers, post-acute placement, avoidable days, patient choice; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-case-manager",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-03",
+      "prompt": "Documentation Improvement Specialist support needed for CDI query, CC/MCC capture, clinical validation denial; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-documentation-improvement-specialist",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-04",
+      "prompt": "Infection Prevention Specialist support needed for HAI surveillance, NHSN attribution, outbreak or infection-control readiness; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-infection-prevention-specialist",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-05",
+      "prompt": "Prior Authorization Specialist support needed for Prior authorization delays, payer criteria, peer-to-peer prep, PA appeals; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-prior-authorization-specialist",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-06",
+      "prompt": "Referral Specialist support needed for Referral leakage, loop closure, specialty access, network navigation; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-referral-specialist",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-07",
+      "prompt": "Clinical Research Coordinator support needed for IRB, consent, protocol deviation, SAE, regulatory binder; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-research-coordinator",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-08",
+      "prompt": "Utilization Management Specialist support needed for Admission status, observation, medical necessity, denial prevention; use Clinical Operations source-aware workflow and name handoffs.",
+      "expected_agent": "clinical-utilization-management-specialist",
+      "expected_domain": "Clinical Operations"
+    },
+    {
+      "id": "route-09",
+      "prompt": "Emergency Preparedness Coordinator support needed for HVA, emergency operations plan, HICS, surge, evacuation, exercise; use Emergency Preparedness source-aware workflow and name handoffs.",
+      "expected_agent": "emergency-preparedness-coordinator",
+      "expected_domain": "Emergency Preparedness"
+    },
+    {
+      "id": "route-10",
+      "prompt": "Clinical Data Analyst support needed for Clinical dashboard, registry, eCQM logic, SQL/Python analytics; use Health IT & Informatics source-aware workflow and name handoffs.",
+      "expected_agent": "healthit-clinical-data-analyst",
+      "expected_domain": "Health IT & Informatics"
+    },
+    {
+      "id": "route-11",
+      "prompt": "Epic Applications Analyst support needed for Epic build, upgrade, workflow configuration, EHR change request; use Health IT & Informatics source-aware workflow and name handoffs.",
+      "expected_agent": "healthit-epic-applications-analyst",
+      "expected_domain": "Health IT & Informatics"
+    },
+    {
+      "id": "route-12",
+      "prompt": "Health Informatics Manager support needed for Informatics governance, CDS, USCDI/TEFCA, data governance; use Health IT & Informatics source-aware workflow and name handoffs.",
+      "expected_agent": "healthit-informatics-manager",
+      "expected_domain": "Health IT & Informatics"
+    },
+    {
+      "id": "route-13",
+      "prompt": "Health Information Manager support needed for HIM, ROI, retention, legal health record, chart integrity; use Health IT & Informatics source-aware workflow and name handoffs.",
+      "expected_agent": "healthit-information-manager",
+      "expected_domain": "Health IT & Informatics"
+    },
+    {
+      "id": "route-14",
+      "prompt": "Healthcare Interoperability Engineer support needed for HL7v2, FHIR, C-CDA, X12, HIE, patient matching, interface errors; use Health IT & Informatics source-aware workflow and name handoffs.",
+      "expected_agent": "healthit-interoperability-engineer",
+      "expected_domain": "Health IT & Informatics"
+    },
+    {
+      "id": "route-15",
+      "prompt": "Telehealth Program Manager support needed for Telehealth program, licensure, RPM/RTM, virtual care reimbursement; use Health IT & Informatics source-aware workflow and name handoffs.",
+      "expected_agent": "healthit-telehealth-program-manager",
+      "expected_domain": "Health IT & Informatics"
+    },
+    {
+      "id": "route-16",
+      "prompt": "Ambulatory Operations Manager support needed for Clinic access, templates, rooming, no-shows, multi-site ambulatory ops; use Operations & Administration source-aware workflow and name handoffs.",
+      "expected_agent": "operations-ambulatory-manager",
+      "expected_domain": "Operations & Administration"
+    },
+    {
+      "id": "route-17",
+      "prompt": "Home Health Administrator support needed for Home health OASIS, PDGM, LUPA, HHVBP, survey readiness; use Operations & Administration source-aware workflow and name handoffs.",
+      "expected_agent": "operations-home-health-administrator",
+      "expected_domain": "Operations & Administration"
+    },
+    {
+      "id": "route-18",
+      "prompt": "Hospital Operations Administrator support needed for Bed capacity, ED boarding, transfer center, throughput command center; use Operations & Administration source-aware workflow and name handoffs.",
+      "expected_agent": "operations-hospital-administrator",
+      "expected_domain": "Operations & Administration"
+    },
+    {
+      "id": "route-19",
+      "prompt": "Long-Term Care Administrator support needed for SNF/LTC MDS, PDPM, PBJ, Five-Star, resident rights, survey process; use Operations & Administration source-aware workflow and name handoffs.",
+      "expected_agent": "operations-long-term-care-administrator",
+      "expected_domain": "Operations & Administration"
+    },
+    {
+      "id": "route-20",
+      "prompt": "Physician Practice Manager support needed for Practice productivity, wRVUs, provider templates, practice P&L; use Operations & Administration source-aware workflow and name handoffs.",
+      "expected_agent": "operations-physician-practice-manager",
+      "expected_domain": "Operations & Administration"
+    },
+    {
+      "id": "route-21",
+      "prompt": "Supply Chain Manager support needed for GPO, value analysis, inventory, recall, OR supplies, supply resilience; use Operations & Administration source-aware workflow and name handoffs.",
+      "expected_agent": "operations-supply-chain-manager",
+      "expected_domain": "Operations & Administration"
+    },
+    {
+      "id": "route-22",
+      "prompt": "Healthcare Workforce Manager support needed for Staffing, scheduling, agency labor, float pool, retention; use Operations & Administration source-aware workflow and name handoffs.",
+      "expected_agent": "operations-workforce-manager",
+      "expected_domain": "Operations & Administration"
+    },
+    {
+      "id": "route-23",
+      "prompt": "Credentialing & Enrollment Coordinator support needed for Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation; use Payer & Managed Care source-aware workflow and name handoffs.",
+      "expected_agent": "payer-credentialing-enrollment-coordinator",
+      "expected_domain": "Payer & Managed Care"
+    },
+    {
+      "id": "route-24",
+      "prompt": "Managed Care Analyst support needed for Managed-care financial analysis, PMPM, MLR, network adequacy; use Payer & Managed Care source-aware workflow and name handoffs.",
+      "expected_agent": "payer-managed-care-analyst",
+      "expected_domain": "Payer & Managed Care"
+    },
+    {
+      "id": "route-25",
+      "prompt": "Medicare & Medicaid Specialist support needed for Medicare/Medicaid rules, MAC process, CoPs, dual-eligible workflows; use Payer & Managed Care source-aware workflow and name handoffs.",
+      "expected_agent": "payer-medicare-medicaid-specialist",
+      "expected_domain": "Payer & Managed Care"
+    },
+    {
+      "id": "route-26",
+      "prompt": "Medicare Outreach Coordinator support needed for Medicare outreach, plan comparison, LIS/Extra Help, enrollment periods; use Payer & Managed Care source-aware workflow and name handoffs.",
+      "expected_agent": "payer-medicare-outreach-coordinator",
+      "expected_domain": "Payer & Managed Care"
+    },
+    {
+      "id": "route-27",
+      "prompt": "Payer Relations Specialist support needed for Payer contracting, network participation, NSA, single-case agreements; use Payer & Managed Care source-aware workflow and name handoffs.",
+      "expected_agent": "payer-relations-specialist",
+      "expected_domain": "Payer & Managed Care"
+    },
+    {
+      "id": "route-28",
+      "prompt": "Value-Based Care Manager support needed for ACO/VBC, attribution, shared savings, quality gates, downside risk; use Payer & Managed Care source-aware workflow and name handoffs.",
+      "expected_agent": "payer-value-based-care-manager",
+      "expected_domain": "Payer & Managed Care"
+    },
+    {
+      "id": "route-29",
+      "prompt": "Pharmacy Benefits Specialist support needed for Formulary, PBM, specialty pharmacy, rebates, biosimilars; use Pharmacy Programs source-aware workflow and name handoffs.",
+      "expected_agent": "pharmacy-benefits-specialist",
+      "expected_domain": "Pharmacy Programs"
+    },
+    {
+      "id": "route-30",
+      "prompt": "Medication Safety Specialist support needed for Medication safety event, CPOE/BCMA, smart pump, USP 797/800; use Pharmacy Programs source-aware workflow and name handoffs.",
+      "expected_agent": "pharmacy-medication-safety-specialist",
+      "expected_domain": "Pharmacy Programs"
+    },
+    {
+      "id": "route-31",
+      "prompt": "Community Health Coordinator support needed for CHNA, community benefit, Schedule H, grants, CBO partnerships; use Population Health & Community Health source-aware workflow and name handoffs.",
+      "expected_agent": "pophealth-community-health-coordinator",
+      "expected_domain": "Population Health & Community Health"
+    },
+    {
+      "id": "route-32",
+      "prompt": "Population Health Manager support needed for Population health risk stratification, care gaps, SDOH outreach; use Population Health & Community Health source-aware workflow and name handoffs.",
+      "expected_agent": "pophealth-population-health-manager",
+      "expected_domain": "Population Health & Community Health"
+    },
+    {
+      "id": "route-33",
+      "prompt": "Public Health Surveillance Coordinator support needed for Reportable disease, outbreak investigation, syndromic surveillance; use Population Health & Community Health source-aware workflow and name handoffs.",
+      "expected_agent": "pophealth-surveillance-coordinator",
+      "expected_domain": "Population Health & Community Health"
+    },
+    {
+      "id": "route-34",
+      "prompt": "Accreditation Specialist support needed for Survey readiness, accreditation evidence, tracer prep; use Quality, Safety & Compliance source-aware workflow and name handoffs.",
+      "expected_agent": "quality-accreditation-specialist",
+      "expected_domain": "Quality, Safety & Compliance"
+    },
+    {
+      "id": "route-35",
+      "prompt": "Compliance Officer support needed for HIPAA, Stark, AKS, FCA, EMTALA, OIG, overpayment or exclusion concern; use Quality, Safety & Compliance source-aware workflow and name handoffs.",
+      "expected_agent": "quality-compliance-officer",
+      "expected_domain": "Quality, Safety & Compliance"
+    },
+    {
+      "id": "route-36",
+      "prompt": "Quality Improvement Specialist support needed for Quality measures, HEDIS/MIPS/Stars/eCQMs, SPC, reporting improvement; use Quality, Safety & Compliance source-aware workflow and name handoffs.",
+      "expected_agent": "quality-improvement-specialist",
+      "expected_domain": "Quality, Safety & Compliance"
+    },
+    {
+      "id": "route-37",
+      "prompt": "Patient Experience Coordinator support needed for Grievance, CAHPS/HCAHPS, patient relations, service recovery; use Quality, Safety & Compliance source-aware workflow and name handoffs.",
+      "expected_agent": "quality-patient-experience-coordinator",
+      "expected_domain": "Quality, Safety & Compliance"
+    },
+    {
+      "id": "route-38",
+      "prompt": "Patient Safety Officer support needed for RCA, sentinel event, Just Culture, PSO boundary, safety trend; use Quality, Safety & Compliance source-aware workflow and name handoffs.",
+      "expected_agent": "quality-patient-safety-officer",
+      "expected_domain": "Quality, Safety & Compliance"
+    },
+    {
+      "id": "route-39",
+      "prompt": "Process Improvement Analyst support needed for A3, PDSA, Lean/Six Sigma, value stream map, CAPA; use Quality, Safety & Compliance source-aware workflow and name handoffs.",
+      "expected_agent": "quality-process-improvement-analyst",
+      "expected_domain": "Quality, Safety & Compliance"
+    },
+    {
+      "id": "route-40",
+      "prompt": "Risk Manager support needed for Risk register, malpractice exposure, disclosure, claims, insurance; use Quality, Safety & Compliance source-aware workflow and name handoffs.",
+      "expected_agent": "quality-risk-manager",
+      "expected_domain": "Quality, Safety & Compliance"
+    },
+    {
+      "id": "route-41",
+      "prompt": "340B Program Manager support needed for 340B compliance, split billing, contract pharmacy, duplicate discounts; use Revenue Cycle & Finance source-aware workflow and name handoffs.",
+      "expected_agent": "revenue-340b-program-manager",
+      "expected_domain": "Revenue Cycle & Finance"
+    },
+    {
+      "id": "route-42",
+      "prompt": "Chargemaster Analyst support needed for CDM maintenance, charge capture, price transparency; use Revenue Cycle & Finance source-aware workflow and name handoffs.",
+      "expected_agent": "revenue-chargemaster-analyst",
+      "expected_domain": "Revenue Cycle & Finance"
+    },
+    {
+      "id": "route-43",
+      "prompt": "Healthcare Contract Analyst support needed for Payer contract underpayment or reimbursement variance; use Revenue Cycle & Finance source-aware workflow and name handoffs.",
+      "expected_agent": "revenue-contract-analyst",
+      "expected_domain": "Revenue Cycle & Finance"
+    },
+    {
+      "id": "route-44",
+      "prompt": "Revenue Cycle Specialist support needed for Clean claim rate dropped, denial volume changed, A/R aged unexpectedly; use Revenue Cycle & Finance source-aware workflow and name handoffs.",
+      "expected_agent": "revenue-cycle-specialist",
+      "expected_domain": "Revenue Cycle & Finance"
+    },
+    {
+      "id": "route-45",
+      "prompt": "Healthcare Finance Manager support needed for Budget, cost report, margin, service-line finance, reserves; use Revenue Cycle & Finance source-aware workflow and name handoffs.",
+      "expected_agent": "revenue-finance-manager",
+      "expected_domain": "Revenue Cycle & Finance"
+    },
+    {
+      "id": "route-46",
+      "prompt": "Medical Coding Specialist support needed for Coding audit, DRG/HCC question, modifier/NCCI issue, medical necessity edit; use Revenue Cycle & Finance source-aware workflow and name handoffs.",
+      "expected_agent": "revenue-medical-coding-specialist",
+      "expected_domain": "Revenue Cycle & Finance"
+    },
+    {
+      "id": "route-47",
+      "prompt": "Healthcare Actuarial Advisor support needed for Capitation, IBNR, MLR, risk adjustment, actuarial caveats; use Strategy & Advisory source-aware workflow and name handoffs.",
+      "expected_agent": "strategy-actuarial-advisor",
+      "expected_domain": "Strategy & Advisory"
+    },
+    {
+      "id": "route-48",
+      "prompt": "Clinical Operations Consultant support needed for Clinical workflow, ED/OR throughput, staffing model, care redesign; use Strategy & Advisory source-aware workflow and name handoffs.",
+      "expected_agent": "strategy-clinical-operations-consultant",
+      "expected_domain": "Strategy & Advisory"
+    },
+    {
+      "id": "route-49",
+      "prompt": "Healthcare Strategy Consultant support needed for Market strategy, service line, M&A, CON, physician alignment; use Strategy & Advisory source-aware workflow and name handoffs.",
+      "expected_agent": "strategy-healthcare-consultant",
+      "expected_domain": "Strategy & Advisory"
+    },
+    {
+      "id": "route-50",
+      "prompt": "Healthcare Operations Consultant support needed for Lean/Six Sigma deployment, capacity, benchmarking, predictive ops; use Strategy & Advisory source-aware workflow and name handoffs.",
+      "expected_agent": "strategy-operations-consultant",
+      "expected_domain": "Strategy & Advisory"
+    },
+    {
+      "id": "route-51",
+      "prompt": "Structural Improvement Consultant support needed for Organizational redesign, governance, change, merger integration; use Strategy & Advisory source-aware workflow and name handoffs.",
+      "expected_agent": "strategy-structural-improvement-consultant",
+      "expected_domain": "Strategy & Advisory"
+    }
+  ]
+}

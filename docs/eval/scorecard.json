@@ -3,6 +3,9 @@
   "source": "eval/results.tsv",
   "registry": "agents/registry.json",
   "disclaimer": "Internal rubric results only; not certification or authority for healthcare decisions.",
+  "agent_count": 51,
+  "evaluated_agent_count": 10,
+  "improved_agent_count": 10,
   "average_latest_score": 80.97,
   "agents": [
     {

@@ -70,7 +70,8 @@ function main() {
 
   const evaluated = scoreRows.filter(row => row.latest_score != null);
   const average = evaluated.reduce((sum, row) => sum + row.latest_score, 0) / Math.max(evaluated.length, 1);
-  const generated = new Date().toISOString().slice(0, 10);
+  const generated = registry.generated_on || 'unknown';
+  const improvedCount = scoreRows.filter(row => row.status === 'improved').length;
   const markdown = [
     '# Healthcare Agents Eval Scorecard',
     '',
@@ -99,6 +100,9 @@ function main() {
     source: 'eval/results.tsv',
     registry: 'agents/registry.json',
     disclaimer: 'Internal rubric results only; not certification or authority for healthcare decisions.',
+    agent_count: registry.agent_count,
+    evaluated_agent_count: evaluated.length,
+    improved_agent_count: improvedCount,
     average_latest_score: Number(average.toFixed(2)),
     agents: scoreRows
   }, null, 2) + '\n');
