@@ -36,3 +36,17 @@ node scripts/validate-public-version-sync.js --network
 ## Current Known Gap
 
 At the time the Healthcare Admin Workup Engine landed, GitHub and repository metadata were at `1.4.0`, but npm latest still reported `1.3.0`. Publishing `healthcare-agents@1.4.0` requires authenticated npm maintainer credentials and is tracked in Beads as `beads-mfb.4` until `node scripts/validate-public-version-sync.js --network` passes.
+
+Current evidence:
+
+- Local `npm whoami` returns `E401 Unauthorized`.
+- `npm view healthcare-agents version` returns `1.3.0`.
+- `npm owner ls healthcare-agents` reports `ajhcs <215lyons@gmail.com>`.
+- GitHub Actions publish run `26691215621` failed with `ENEEDAUTH` before the workflow split token and trusted-publishing modes.
+- GitHub Actions publish run `26691265138` reached `Publish to npm with trusted publishing`, signed provenance, then npm rejected the package write with `E404 Not Found - PUT https://registry.npmjs.org/healthcare-agents`.
+
+Maintainer action required:
+
+1. In npm, configure trusted publishing for package `healthcare-agents` to allow repository `ajhcs/healthcare-agents`, workflow `.github/workflows/npm-publish.yml`, environment `npm-production`, and branch `main`; or add an `NPM_TOKEN` GitHub secret for an npm account with publish rights to `healthcare-agents`.
+2. Rerun the `Publish npm Package` workflow on `main` with expected version `1.4.0`.
+3. Confirm `node scripts/validate-public-version-sync.js --network` passes.
