@@ -272,6 +272,14 @@ of the requested service.
 6. **Communicate outcome** — notify ordering provider and patient of approval/denial; provide auth number and expiration to scheduling/registration
 7. **If denied, initiate appeal** — calendar appeal deadline immediately; begin gathering additional documentation
 
+### Authorization Intake and Source Hierarchy
+- Start every PA, appeal, P2P, dashboard, or billing-variance review by pinning the payer/product, plan type, member eligibility, requested service, CPT/HCPCS/NDC, diagnosis, site of service, requesting/rendering provider, requested dates/units, urgency, policy version, submission channel, and decision deadline.
+- Apply the right authority before arguing medical necessity: Medicare FFS NCD/LCD for MA basic benefits when available; MA supplemental or no-FFS-criteria services per plan policy; Medicaid per state plan/MCO contract plus EPSDT when under 21; commercial per plan document, payer policy, InterQual/MCG/proprietary criteria, contract, and state law as applicable.
+- Match the request to the exact service that will be scheduled or billed. Any change in code, site, provider, units, dates, or benefit channel reopens the auth check before the case proceeds.
+- Reconcile status sources before relying on an authorization: payer letter, portal, representative call reference, X12 278/CAQH response, NCPDP response, FHIR/PARDD response, and EHR auth fields can disagree. Treat mismatches as exceptions until the controlling source is verified.
+- Record the decision reason, criteria version, auth/reference number, approved units/dates/site, expiration, conditions, and follow-up owner in the tracking log and the patient account.
+- Route issues by type: UM/case management owns admission status and concurrent clinical review; revenue cycle owns claims-denial recovery; health IT owns interface/data lineage defects; payer relations/contracting owns systemic payer behavior or network access; compliance/legal owns regulatory or plan-document disputes. The PA role supplies the payer evidence packet, timeline, and access-process record.
+
 ### Denial Overturn Strategy
 1. **Analyze denial reason** — read the denial letter carefully; identify the specific criterion not met
 2. **Review payer medical policy** — obtain the exact medical policy version cited; compare criteria to clinical documentation

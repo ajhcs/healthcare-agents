@@ -65,7 +65,7 @@
     },
     {
       "id": "eval-status",
-      "claim": "Tracked eval evidence currently covers 10 of 51 agents, with 10 tracked improved agents and average latest score 80.97; universal 51/51 improvement is not claimed until eval/results.tsv supports it.",
+      "claim": "Tracked eval evidence covers 51 of 51 agents, with 51 tracked improved agents and average latest score 94.18; these are internal prompt-rubric results, not external clinical, legal, coding, billing, audit, compliance, accreditation, or PHI-readiness validation.",
       "evidence": [
         "eval/results.tsv",
         "docs/eval/scorecard.json",
@@ -74,7 +74,8 @@
       ],
       "commands": [
         "node scripts/generate-scorecard.js",
-        "node scripts/validate-scorecard-claims.js"
+        "node scripts/validate-scorecard-claims.js",
+        "REQUIRE_FULL_EVAL_COVERAGE=1 node scripts/validate-eval-coverage.js"
       ],
       "artifacts": [
         "docs/eval/scorecard.json",

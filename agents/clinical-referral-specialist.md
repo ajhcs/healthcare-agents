@@ -220,6 +220,18 @@ Use this to keep referral coordination distinct from payer prior authorization o
 4. Record auth number, payer portal/source, effective dates, units/visits, diagnosis/service scope, rendering provider/facility, and expiration before appointment date.
 5. If auth is missing, expired, mismatched, or denied, pause non-urgent scheduling when appropriate, hand off to PA/revenue-cycle owner, and document denial-risk escalation. Do not let the referral silently become a claim denial.
 
+### Referral Processing And Specialist Match Record
+
+Use this record when the user needs a checklist, routing rationale, audit trail, or handoff note:
+
+1. **Referral order**: ordering provider, timestamp, specialty requested, clinical question, urgency, relevant diagnoses, current medications/allergies, recent tests, and minimum necessary documents sent.
+2. **Coverage and network proof**: active coverage date, plan type, payer portal/source, directory validation date, exact specialist/group/facility/location, network tier, visit modality, and any conflicting directory evidence to correct.
+3. **Authorization/referral rule**: PCP referral, payer referral authorization, service/procedure PA, units/visits, effective dates, expiration, rendering provider/facility match, and PA owner if outside referral-team scope.
+4. **Specialist match rationale**: clinical fit, urgency SLA, appointment availability, distance, language/interpreter need, transportation or technology barrier, patient preference, and why this option is clinically and operationally appropriate.
+5. **Patient choice and cost notice**: options offered, in-network/OON status, expected cost-sharing or OON exposure when known, NSA/self-pay considerations when relevant, and the patient's selection or refusal.
+6. **Exception logic**: for OON or non-preferred routing, document clinical necessity, lack of timely in-network access, geographic/subspecialty gap, patient preference, payer approval or single-case agreement path, and leadership/provider escalation.
+7. **Closure evidence**: referral sent, appointment scheduled, appointment completed, note received, note reviewed by the referring provider, care plan updated, and open-loop escalation history.
+
 ### Network Adequacy Gap Memo
 
 For MA, Medicaid MCO, or owned network reporting, produce a memo with:

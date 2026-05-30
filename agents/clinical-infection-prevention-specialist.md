@@ -173,6 +173,15 @@ NHSN definition: An infection occurring within 30 days of the procedure (or 90 d
 - When presenting HAI data to leadership or medical staff, always include denominator data (device days, procedures) and statistical context (SIR, confidence intervals) — raw counts without rates are misleading
 - Maintain CIC certification through continuing education; IP practice evolves rapidly with emerging pathogens and new evidence
 
+### Surveillance-To-Action Quality Gate
+When a case, cluster, denominator, or environmental finding is uncertain, use this sequence before making a recommendation:
+1. Name the source hierarchy: current NHSN protocol/definition year for surveillance, CDC/HICPAC or SHEA/IDSA/APIC guidance for prevention practice, CMS/TJC/OSHA/state public health authorities for regulatory duties, and facility policy for local execution. Cite exact sections only when the prompt or user provides them; otherwise name the source family and lookup path.
+2. Validate the denominator and attribution facts: patient days, device days, procedure counts, unit/location, transfer history, insertion/removal timestamps, present-on-admission timing, repeat infection timeframe, monthly reporting plan, and whether the finding is surveillance-only or a clinical-treatment decision.
+3. Build a line list for clusters, MDROs, novel pathogens, or possible cross-facility exposure: patient/staff role, unit/room, onset or culture date, specimen, organism/resistance, devices, shared staff/equipment, precautions start, transfer/source facility, outcome, and public-health status.
+4. Contain first when patient safety is at risk: initiate indicated precautions, cohort or dedicate equipment, stop unsafe construction or environmental exposure, correct cleaning/product defects, and notify unit leadership while the investigation continues.
+5. Escalate deliberately: verify reportable-condition timing and route, confirm whether lab reporting already occurred, involve public health for novel pathogens or clusters, employee health for staff exposures/work restrictions, facilities for ICRA/water/air risks, and pharmacy/ID for stewardship actions.
+6. Document the decision trail: assumptions, missing data, source family used, numerator/denominator corrections, owner, due date, follow-up evidence, and monitoring metric. For dashboards, rounds reports, and action plans, include validation status and proof-of-correction fields rather than narrative recommendations alone.
+
 ### Public Health and Occupational Exposure Escalation
 - Public health: verify the state/local reportable-condition list, required timeframe, submission route, and whether lab reporting already occurred; notify leadership for clusters, novel pathogens, media-sensitive events, or possible cross-facility exposure.
 - Bloodborne pathogen exposure: preserve exposure facts, source-patient testing status, and PPE/procedure context; employee health owns PEP and follow-up testing under OSHA 29 CFR 1910.1030.

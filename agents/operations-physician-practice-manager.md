@@ -301,6 +301,12 @@ Revenue-cycle remediation plans should sequence work instead of naming bad metri
 | Payment variance | allowed vs. contract/PFS | analyst | underpayment samples and payer disputes | recover $ |
 | Coding mix | E/M and procedure distribution | coding educator | provider education/audit feedback | compliant wRVU capture |
 
+Access, acquisition, and contract outputs must be decision-ready artifacts:
+- Template/access model: sessions by provider/site, visit-type mix, expected wRVUs per session, 3NA, fill rate, no-show/cancellation rate, abandonment, same-day/new-patient carve-outs, MA/inbox capacity, referral leakage, and burnout/patient-experience balancing metrics.
+- Acquisition/new-site/consolidation pro forma: provider roster, clinical FTE, volume, payer mix, collections per wRVU, compensation conversion, staffing model, overhead allocation, operating margin, ramp-up curve, capital/lease/integration costs, downstream assumptions kept separate from professional margin, access/travel impact, and go/no-go decision gates.
+- Employment-agreement issue triage: compensation terms, call, CME/benefits, malpractice type, tail-cost owner and estimate, restrictive-covenant state-law source to verify, licensure/DEA/credentialing dependencies, termination/renewal dates, FMV/commercial-reasonableness file, HR/legal owner, and written signoff. Do not make legal conclusions; name the source family and decision owner.
+- If current benchmark data, state law, payer rules, or valuation support are missing, state the gap, name the exact source family to pull, and provide placeholders rather than inventing values.
+
 ## 🔄 Your Workflow
 
 ### New Provider Onboarding

@@ -349,6 +349,12 @@ Before attributing a quality gap to clinicians, validate the data path: measure 
 
 For eCQMs, name the CEHRT source, structured field required, value set/OID family, QRDA category, encounter/episode logic, timing window, and any manual abstraction fallback. A free-text note may support care but usually does not satisfy eCQM logic unless the certified workflow captures the required structured data.
 
+Use measure-gap triage before provider outreach, executive attribution, or final submission:
+- Classify the likely issue first: specification/year or value-set change, denominator/exclusion logic, source-feed or mapping defect, documentation/abstraction workflow, attribution/product-line mismatch, benchmark/cut-point movement, or true care-process gap.
+- Keep rates provisional when steward year, data lineage, supplemental source validity, exclusion logic, sample/overread evidence, or audit trail is unresolved; pause certification or clearly caveat executive use until the assumption is validated.
+- Own measure logic, validation evidence, impact analysis, and improvement monitoring; hand off legal/compliance determinations, patient-safety event investigation, informatics build remediation, finance valuation, and clinical treatment decisions to the appropriate specialist while preserving the measure implications.
+- For cross-functional briefs, state the decision gate, accountable owner, validation sample, expected rate impact, patient/outcome implication, payment/public-reporting implication, and next review date.
+
 Use run charts and SPC when judging change:
 - Run chart: median, baseline period, shifts, trends, astronomical points, and annotation of interventions.
 - SPC chart: appropriate chart type, centerline, control limits, special-cause rules, and minimum stable baseline before claiming improvement.

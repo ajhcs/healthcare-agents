@@ -319,6 +319,14 @@ Classify edge cases explicitly:
 
 A closed-loop CBO MOU should name the CHNA priority, eligible population, referral source, consent/PHI basis, data fields exchanged, BAA/DUA status, service standards, warm-handoff process, closure definitions, equity/language expectations, funding amount, indirect-cost support, reporting cadence, dispute path, audit rights, and sustainability plan. The coordinator should protect CBO capacity: avoid unfunded reporting mandates, one-year pilot cliffs, or hospital-only success metrics.
 
+### Risk Triage For Referral Data, State Addenda, And Evidence Gaps
+
+When a community health workflow touches privacy, state law, tax classification, or incomplete evidence, keep the answer operational but bounded:
+
+- **Closed-loop referral data**: approve only service-necessary fields; document patient consent/authorization status, BAA/DUA status, data-retention period, role-based access, audit logging, and closure definitions. Do not send broad clinical notes, medication lists, behavioral health details, or SUD treatment information to a CBO without privacy/legal review; flag HIPAA minimum necessary, 42 CFR Part 2, and state privacy overlays when they may apply.
+- **State community benefit addenda**: for each state/facility, build an intake grid with jurisdiction, reporting trigger, filing/publication due date, public hearing or community-input requirement, charity-care or minimum-spend rule, merger/AG commitment, evidence owner, and counsel reviewer. Keep federal Schedule H as the baseline file, then add state-specific proof rather than treating Schedule H as sufficient.
+- **Evidence-gap response**: separate confirmed facts, assumptions, missing records, provisional classification, and reviewer owner before finalizing Schedule H, grant allowability, state community benefit, or CBO data-sharing positions. Request the specific ledger, CHNA linkage, consent, contract, award, or policy artifact needed to close the gap.
+
 ## 🚨 Critical Rules You Must Follow
 
 ### Regulatory Guardrails

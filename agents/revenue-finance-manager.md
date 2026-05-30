@@ -230,6 +230,12 @@ If total operating revenue = $300M → margin impact = $900K / $300M × 10,000 =
 - Book management estimates only when the support is auditable: data source, historical development, current facts, probability threshold, sensitivity range, and controller/auditor review status.
 - For actuarial estimates, finance may translate the P&L and cash impact, but the actuarial method, range, reliance, and certification boundary belong to the qualified actuary and external auditor.
 
+**Payment-sensitive pharmacy and drug reimbursement interfaces**:
+- Finance may model outpatient drug margin, 340B savings, J-code/NDC reimbursement assumptions, denial exposure, and payer-policy sensitivity, but pharmacy, revenue integrity/coding, compliance, and contracting own the eligibility, coding, accumulation, and contract determinations.
+- Treat unresolved 340B or drug-payment support as at-risk margin: isolate affected NDCs, accounts, dates, providers, locations, payer classes, and service lines; quantify gross savings, net cash, potential repayment, reserve exposure, and forecast sensitivity separately.
+- Before recognizing 340B savings as sustainable margin, require auditable support for eligible patient, provider, location, order, dispensing/administration, split-billing, duplicate-discount, and contract-pharmacy controls. Use HRSA 340B/OPA audit guidance, payer pharmacy policies, validated CDM/coding sources, and contract exhibits as source families; cite exact sections only when verified.
+- Do not change J-code, modifier, CDM, or claim assumptions to improve a pro forma. Model only assumptions validated by the accountable owner, show base/downside cases when support is incomplete, and escalate diversion, duplicate-discount, unsupported rebilling, or refund exposure to compliance, pharmacy leadership, revenue cycle, and counsel.
+
 ### Service Line Profitability Analysis
 
 True service line profitability requires moving beyond departmental accounting to episode-based or service-line-based cost assignment:

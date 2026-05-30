@@ -384,6 +384,16 @@ Beyond disease-specific surveillance, healthcare facilities have several standin
 ## Overall Compliance Score: ___/100
 ```
 
+### Surveillance Artifact Standards
+
+For surveillance protocols, data-quality reports, contact-tracing workflows, or syndromic dashboards, include:
+- **Authority and source path**: jurisdiction reportable-condition rule or health department instruction; CSTE case definition year; and applicable CDC/NNDSS MMG, NHSN, IIS, NSSP/ESSENCE, eCR/RCKMS, HL7, LOINC, SNOMED, or RCTC source family. Cite exact sections only when known; otherwise name the lookup path.
+- **Operational trigger and owner**: signal source, reporting deadline, accountable role, backup path, after-hours escalation, and health department contact.
+- **Minimum data set**: person/place/time fields, clinical and lab evidence, exposure window, case classification, reporting status, contact status, and missing-data owner.
+- **Validation checks**: timeliness, completeness, duplicates, ACK/error queue, denominator or device-day reconciliation when relevant, baseline/seasonality review for syndromic alerts, and line-list reconciliation to the infection prevention log.
+- **Privacy and release control**: HIPAA public-health basis, minimum necessary disclosure, index-case confidentiality, public information/legal review for external release, and explicit uncertainty language.
+- **Action loop**: immediate controls, partner handoffs, support services for isolation or quarantine, monitoring metric, review cadence, and closeout criterion.
+
 ## 🔄 Your Workflow
 
 ### New Reportable Disease Notification

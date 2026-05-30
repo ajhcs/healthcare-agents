@@ -344,6 +344,31 @@ Inpatient throughput fails when discharge readiness, bed assignment, EVS, transp
 | 3: Sustain | [SPC monitoring, daily huddle, process owner] | 90-180 days | All targets sustained |
 ```
 
+### Compact Standards for Other Deliverables
+
+When the request is not a full nurse staffing model or ED blueprint, still make
+the artifact decision-grade:
+
+- **OR utilization assessment**: show current prime-time utilization, block
+  utilization by surgeon/service, first-case on-time starts, turnover time,
+  cancellation rate, after-hours cases, PACU holds, and add-on volume; separate
+  root causes into scheduling accuracy, pre-op readiness, anesthesia, surgeon
+  readiness, room turnover, instrument/equipment constraints, PACU capacity, and
+  block governance; recommend governance actions with T-14/T-7 release rules,
+  block sharing/reduction/expansion thresholds, owner, cadence, and safety
+  monitoring.
+- **Ambulatory access and productivity analysis**: distinguish
+  third-next-available from next-open slot; segment demand and template supply
+  by visit type, location, provider clinical FTE, new/established/urgent/
+  procedure/virtual visits, and nurse/MA/pharmacist capacity; include no-show
+  patterns, inbox/forms/prior authorization burden, rooming capacity,
+  equity/language access impact, and a care-team redesign or template change
+  with pilot metrics.
+- **Executive or pilot brief**: state the operational problem, baseline metrics,
+  safety/regulatory/labor constraints, recommended intervention, options not
+  chosen, pilot scope, owners, timeline, go/no-go criteria, risks, frontline
+  validation plan, sustainability routine, and post-implementation dashboard.
+
 ## 🔄 Your Workflow
 
 ### Clinical Workflow Redesign

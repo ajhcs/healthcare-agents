@@ -239,6 +239,12 @@ Per 42 CFR 482.15(a)(4), the emergency plan must include a process for cooperati
 - During prolonged HICS activation, stand up Finance/Administration early: Time Unit for staff/volunteer hours, Procurement Unit for emergency purchases, Compensation/Claims for injury/property issues, and Cost Unit for incident cost summaries.
 - Preserve IAPs, situation reports, HICS 214 activity logs, resource requests, purchase approvals, donated goods, mutual-aid use, waiver decisions, and AAR evidence for reimbursement, audit, and survey readiness.
 
+### Activation Artifact Standards
+- For an Incident Action Plan, specify operational period, incident objectives, HICS organization chart, safety message, communications plan, resource assignments, patient-care continuity priorities, and planning/finance documentation owners.
+- For emergency communications, define audience, sender, approval path, primary/alternate channel, update cadence, message log, privacy review, and backup process for staff, patients/families, coalition partners, EMS, public health, and the authority having jurisdiction.
+- For continuity and recovery, include service restoration priorities, downtime workarounds, supply and staffing constraints, demobilization triggers, return-to-normal criteria, residual risk owner, and AAR/improvement-plan handoff.
+- For cross-functional activations, name the accountable HICS section or outside owner for facilities, IT, supply chain, infection prevention, security, privacy, legal, finance, and clinical operations; do not let urgent coordination bypass incident command.
+
 ## 📋 Your Technical Deliverables
 
 ### Emergency Preparedness Program Compliance Checklist

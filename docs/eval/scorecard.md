@@ -4,62 +4,62 @@ This scorecard reports internal prompt-rubric results from eval/results.tsv. The
 
 Generated: 2026-05-21
 Agents in registry: 51
-Agents with eval rows: 10
-Average latest score: 80.97
+Agents with eval rows: 51
+Average latest score: 94.18
 
 | Agent | Latest score | Improvement delta | Status | Notes |
 |---|---:|---:|---|---|
-| clinical-care-management-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| clinical-case-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| clinical-documentation-improvement-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| clinical-infection-prevention-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| clinical-prior-authorization-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| clinical-referral-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| clinical-research-coordinator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| clinical-utilization-management-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| emergency-preparedness-coordinator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| healthit-clinical-data-analyst | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| healthit-epic-applications-analyst | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| healthit-informatics-manager | 80.30 | +3.90 | improved | Added focused sections for FHIR/SMART operational controls, public-health and quality-reporting interface governance, enterprise identity integrity, and downtime/cutover risk management without broadening the role. |
-| healthit-information-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| healthit-interoperability-engineer | 81.10 | +4.15 | improved | Added ACK-mode and merge-event controls, SMART discovery/PKCE/JWT details, bulk-export operational steps, Direct and TEFCA governance specifics, patient-matching guardrails, and concrete FHIR troubleshooting heuristics. |
-| healthit-telehealth-program-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| operations-ambulatory-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| operations-home-health-administrator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| operations-hospital-administrator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| operations-long-term-care-administrator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| operations-physician-practice-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| operations-supply-chain-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| operations-workforce-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| payer-credentialing-enrollment-coordinator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| payer-managed-care-analyst | 80.30 | +3.35 | improved | Added focused sections for settlement and retro eligibility math, Medicaid directed-payment and pass-through controls, and Medicare Advantage bid/rebate/RAF revenue mechanics without broadening the role. |
-| payer-medicare-medicaid-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| payer-medicare-outreach-coordinator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| payer-relations-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| payer-value-based-care-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| pharmacy-benefits-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| pharmacy-medication-safety-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| pophealth-community-health-coordinator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| pophealth-population-health-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| pophealth-surveillance-coordinator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| quality-accreditation-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| quality-compliance-officer | 81.15 | +3.90 | improved | Added breach-notification exceptions, unsecured-PHI nuance, arrangement failure-mode controls, and reinstatement verification for excluded parties. |
-| quality-improvement-specialist | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| quality-patient-experience-coordinator | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| quality-patient-safety-officer | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| quality-process-improvement-analyst | 80.85 | +3.30 | improved | Added 42 CFR 438.330 managed-care QAPI guidance, Joint Commission-sensitive sentinel-event/RCA discipline, NHSN SIR and observed-to-expected measure interpretation, and explicit balancing-measure/reliability design. |
-| quality-risk-manager | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| revenue-340b-program-manager | 81.20 | +3.40 | improved | Added orphan-drug exclusion rules, Medicare Part B modifier and tie-out mechanics, ADR/CMP dispute-file requirements, tighter Medicaid MCO claim-tagging controls, and mixed-use infusion/covered outpatient drug replenishment guardrails. |
-| revenue-chargemaster-analyst | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| revenue-contract-analyst | 80.45 | +3.60 | improved | Added sections for amendment and pricing hierarchy, payer product mapping, outpatient/professional edit mechanics, denial-vs-underpayment economics, and prompt-pay/offset modeling to tighten real-world contract valuation and dispute support. |
-| revenue-cycle-specialist | 80.65 | +4.80 | improved | Added concise 835 control points, observation/status checkpoints, stronger credit-balance and ERA posting controls, line-level underpayment logic, and denial-type-specific appeal assembly without broadening the role. |
-| revenue-finance-manager | 81.55 | +4.85 | improved | Added a capital post-implementation review checklist with ownership and escalation, tightened department-manager budget review expectations, and added multi-campus/provider-number cost-report controls with crosswalk and sign-off flow. |
-| revenue-medical-coding-specialist | 82.15 | +11.00 | improved | Added focused sections for medical-necessity/LCD-NCD review, charge reconciliation and denial appeals, global-period and professional modifier triage, plus anesthesia and pathology/lab coding rules. |
-| strategy-actuarial-advisor | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| strategy-clinical-operations-consultant | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| strategy-healthcare-consultant | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| strategy-operations-consultant | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
-| strategy-structural-improvement-consultant | N/A | N/A | not evaluated | No row found in eval/results.tsv. |
+| clinical-care-management-specialist | 96.55 | +8.95 | improved | Improved clinical-care-management-specialist with narrow source, handoff, and deliverable guardrails; run log at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-care-management-specialist |
+| clinical-case-manager | 89.15 | +5.15 | improved | Improved clinical-case-manager with compact source and decision hierarchy; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-case-manager |
+| clinical-documentation-improvement-specialist | 97.65 | +8.30 | improved | Improved CDI prompt with compact Case Output Standards; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-documentation-improvement-specialist |
+| clinical-infection-prevention-specialist | 92.10 | +14.35 | improved | Improved clinical-infection-prevention-specialist with narrow Surveillance-To-Action Quality Gate; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-infection-prevention-specialist |
+| clinical-prior-authorization-specialist | 96.00 | +6.45 | improved | Improved source hierarchy and intake guardrail; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-prior-authorization-specialist |
+| clinical-referral-specialist | 95.70 | +4.70 | improved | Improved role-specific referral processing and specialist match record; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-referral-specialist |
+| clinical-research-coordinator | 98.00 | +9.85 | improved | Improved clinical-research-coordinator with compact triage/submission packet rule; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-research-coordinator |
+| clinical-utilization-management-specialist | 97.50 | +3.80 | improved | Improved with compact UM Case Triage Packet guardrail; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/clinical-utilization-management-specialist |
+| emergency-preparedness-coordinator | 89.90 | +6.80 | improved | Improved emergency-preparedness-coordinator activation artifact standards; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/emergency-preparedness-coordinator |
+| healthit-clinical-data-analyst | 97.25 | +6.90 | improved | Improved with compact source hierarchy and production release gate; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/healthit-clinical-data-analyst |
+| healthit-epic-applications-analyst | 93.05 | +5.65 | improved | Improved Epic Applications Analyst prompt with source hierarchy guardrail and production issue triage note; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/healthit-epic-applications-analyst |
+| healthit-informatics-manager | 96.25 | +4.50 | improved | Improved healthit-informatics-manager from 91.75 to 96.25 (+4.50) with a compact analytics/data-product release gate; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/healthit-informatics-manager |
+| healthit-information-manager | 91.15 | +5.40 | improved | Improved healthit-information-manager with compact HIM informatics/data-quality governance block; run log at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/healthit-information-manager |
+| healthit-interoperability-engineer | 98.40 | +4.05 | improved | improved 94.35->98.40 (+4.05); run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/healthit-interoperability-engineer |
+| healthit-telehealth-program-manager | 92.20 | +10.90 | improved | Improved telehealth source hierarchy and evidence-pack discipline; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/healthit-telehealth-program-manager |
+| operations-ambulatory-manager | 98.55 | +8.75 | improved | Improved operations-ambulatory-manager with compact decision discipline guardrail; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/operations-ambulatory-manager |
+| operations-home-health-administrator | 99.40 | +4.90 | improved | Improved with compact source hierarchy and high-risk issue response guardrail; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/operations-home-health-administrator |
+| operations-hospital-administrator | 99.60 | +4.35 | improved | Retained a 2-line Professional Standards source/evidence guardrail under cap; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/operations-hospital-administrator |
+| operations-long-term-care-administrator | 95.95 | +8.20 | improved | Improved LTC administrator prompt with compact high-risk F-tag triage and survey-facing evidence workflow; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/operations-long-term-care-administrator |
+| operations-physician-practice-manager | 98.50 | +7.20 | improved | Improved prompt with decision-ready artifact guardrails; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/operations-physician-practice-manager |
+| operations-supply-chain-manager | 97.85 | +3.65 | improved | Improved operations-supply-chain-manager with compact source hierarchy and exception ledger; score 94.20 to 97.85; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/operations-supply-chain-manager |
+| operations-workforce-manager | 100.00 | +4.90 | improved | Improved operations-workforce-manager prompt with compact workforce recommendation and deliverable checklists; run log at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/operations-workforce-manager |
+| payer-credentialing-enrollment-coordinator | 94.75 | +5.25 | improved | Improved source hierarchy and payer-by-payer activation guardrails; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/payer-credentialing-enrollment-coordinator |
+| payer-managed-care-analyst | 95.60 | +4.05 | improved | Improved payer-managed-care-analyst with compact source hierarchy and audit-packet guardrails; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/payer-managed-care-analyst |
+| payer-medicare-medicaid-specialist | 90.60 | +4.55 | improved | Improved with narrow Medicaid MCO oversight edit; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/payer-medicare-medicaid-specialist |
+| payer-medicare-outreach-coordinator | 94.30 | +3.20 | improved | Improved with compact Medicare-specific source hierarchy and handoff guardrail; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/payer-medicare-outreach-coordinator |
+| payer-relations-specialist | 90.65 | +2.80 | improved | Improved payer-relations-specialist with two compact operating guardrails; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/payer-relations-specialist |
+| payer-value-based-care-manager | 90.75 | +6.10 | improved | Improved payer settlement validation and dispute protocol; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/payer-value-based-care-manager |
+| pharmacy-benefits-specialist | 93.60 | +4.60 | improved | Improved pharmacy-benefits-specialist with compact payment-sensitive source hierarchy; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/pharmacy-benefits-specialist |
+| pharmacy-medication-safety-specialist | 95.85 | +5.20 | improved | Improved pharmacy-medication-safety-specialist with compact REMS/FDA-label/payment-sensitive safety handoff guardrail; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/pharmacy-medication-safety-specialist |
+| pophealth-community-health-coordinator | 84.05 | +5.30 | improved | Improved with compact referral-data, state-addendum, and evidence-gap triage guardrail; run log: eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/pophealth-community-health-coordinator |
+| pophealth-population-health-manager | 89.90 | +6.00 | improved | Improved pophealth population health manager prompt with compact source hierarchy, equity/access, cross-functional handoff, and CBO accountability guardrails; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/pophealth-population-health-manager |
+| pophealth-surveillance-coordinator | 97.65 | +4.05 | improved | Improved with compact Surveillance Artifact Standards section; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/pophealth-surveillance-coordinator |
+| quality-accreditation-specialist | 90.55 | +5.55 | improved | Improved source hierarchy and high-risk response guardrails; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/quality-accreditation-specialist |
+| quality-compliance-officer | 100.00 | +3.75 | improved | Improved quality-compliance-officer with narrow patient-safety triage and beneficiary-inducement guardrails; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/quality-compliance-officer |
+| quality-improvement-specialist | 90.60 | +4.85 | improved | Improved quality-improvement-specialist with compact measure-gap triage and governance guardrail; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/quality-improvement-specialist |
+| quality-patient-experience-coordinator | 94.05 | +3.95 | improved | Improved prompt with compact source hierarchy and response discipline guardrail; run log at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/quality-patient-experience-coordinator |
+| quality-patient-safety-officer | 90.95 | +6.15 | improved | Improved quality-patient-safety-officer with narrow safety trend, investigation-scope, and artifact-routing guidance; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/quality-patient-safety-officer |
+| quality-process-improvement-analyst | 97.10 | +4.40 | improved | Improved prompt with compact mapping technology and sustainment artifact guardrails; run log at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/quality-process-improvement-analyst |
+| quality-risk-manager | 89.20 | +5.20 | improved | Retained narrow coverage-renewal and line-scan prompt edit after same-question improvement; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/quality-risk-manager/. |
+| revenue-340b-program-manager | 95.80 | +8.20 | improved | Improved release-grade eval for revenue-340b-program-manager; retained compact 340B audit binder, split-billing review, and board report deliverable backbones; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/revenue-340b-program-manager |
+| revenue-chargemaster-analyst | 98.00 | +6.15 | improved | Improved with compact source hierarchy, payment-sensitive activation gate, and drug-line validation guardrail. Run log: eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/revenue-chargemaster-analyst |
+| revenue-contract-analyst | 84.80 | +3.30 | improved | Improved revenue-contract-analyst with a compact payment-sensitive reconciliation guardrail; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/revenue-contract-analyst |
+| revenue-cycle-specialist | 98.50 | +2.25 | improved | Improved revenue-cycle-specialist with narrow high-cost drug/infusion claim controls; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/revenue-cycle-specialist |
+| revenue-finance-manager | 92.85 | +3.60 | improved | Improved revenue-finance-manager with a compact payment-sensitive pharmacy/drug reimbursement finance interface; run log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/revenue-finance-manager |
+| revenue-medical-coding-specialist | 82.30 | +5.00 | improved | Improved source-discipline guardrails and completed artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/revenue-medical-coding-specialist |
+| strategy-actuarial-advisor | 99.00 | +5.25 | improved | Improved prompt from 93.75 to 99.00; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/strategy-actuarial-advisor |
+| strategy-clinical-operations-consultant | 91.50 | +4.20 | improved | Improved prompt with compact OR ambulatory and executive pilot deliverable standards; run-log eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/strategy-clinical-operations-consultant |
+| strategy-healthcare-consultant | 97.15 | +5.00 | improved | Improved strategy-healthcare-consultant with compact board decision portfolio standard and specialist handoff boundary; run log at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/strategy-healthcare-consultant |
+| strategy-operations-consultant | 97.25 | +4.30 | improved | Improved with compact role-specific Default Answer Architecture; artifacts complete at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/strategy-operations-consultant |
+| strategy-structural-improvement-consultant | 85.25 | +5.25 | improved | Improved strategy-structural-improvement-consultant 80.00 to 85.25 delta +5.25; artifacts at eval/run-logs/20260530T153526Z-51-agent-release-coverage/agents/strategy-structural-improvement-consultant |
 
 ## Interpretation Limits
 

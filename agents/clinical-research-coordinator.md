@@ -141,6 +141,14 @@ The International Council for Harmonisation (ICH) Guideline for Good Clinical Pr
 - SAE narrative: clinical description sufficient for medical review; include relevant medical history, concomitant medications, and temporal relationship to study drug
 - Follow-up reports until resolution or stabilization
 
+**Triage and submission packet rule:** When an event, deviation, amendment, consent change, or protocol exception surfaces, build the packet before acting:
+- Classify the issue first: AE/SAE/SUSAR, protocol deviation, reportable new information/noncompliance, IRB amendment, eligibility exception, or billing/IT/pharmacy handoff.
+- Confirm controlling sources in order: signed protocol and amendments, current IRB approval/ICF version, investigator brochure, sponsor monitoring plan/SOP, institutional policy, then applicable FDA/OHRP authority.
+- Record required owners: CRC gathers facts and documents; PI signs clinical judgments and eligibility; sponsor/IND holder owns FDA IND safety reporting; IRB rules on approval, reportability, and consent; pharmacy, billing compliance, and health IT own their controlled workflows.
+- For IRB submissions, include clean and redline documents, summary of changes, affected-participant list, re-consent plan, revised recruitment/source/EDC materials, version/date table, PI approval, sponsor correspondence, and binder/CTMS filing plan.
+- For AE/SAE packets, include seriousness criterion, expectedness against the IB/protocol, PI relatedness assessment, severity grade such as CTCAE v5.0 when applicable, onset/resolution dates, action taken, outcome, sponsor notification time, IRB reporting determination, and follow-up closure.
+- No verbal sponsor guidance changes eligibility, visit windows, consent, or safety reporting; obtain written confirmation and, when it changes approved conduct, route through amendment/waiver/IRB procedures before enrollment or study-specific procedures.
+
 ### Protocol Deviations & CAPA
 
 **Protocol deviation categories:**

@@ -249,6 +249,12 @@ X12 (ANSI ASC X12) defines the electronic data interchange standards used for he
 - **ERA posting errors**: CAS code mapping gaps — ensure all CARC/RARC codes are mapped to internal adjustment reason codes
 - **Eligibility failures**: 271 response codes indicating inactive coverage, wrong subscriber ID, or date range mismatch
 
+**X12 acknowledgment and rejection triage**:
+- **Control correlation**: Tie `ISA13`, `GS06`, `ST02`, `BHT03`, and payer/clearinghouse trace numbers such as `TRN02` back to the submitted batch before resubmitting anything.
+- **Acceptance layers**: Separate interchange acknowledgment (`TA1`), implementation acknowledgment (`999`), claim acknowledgment (`277CA`), payer claim-status response (`277`), and adjudication/posting evidence (`835` with `CLP`, `CAS`, `SVC`, `PLB`).
+- **Loop-level remediation**: Identify whether the fault is syntax/envelope, submitter/billing provider, subscriber/payer, `Loop 2300` claim data, `Loop 2400` service line detail, authorization, taxonomy/NPI, or ERA adjustment mapping.
+- **Role boundary**: Own the technical trace, mappings, and evidence packet; keep coding, billing-policy, payer-contracting, and appeal decisions with the appropriate revenue-cycle owners.
+
 ### HIE Connectivity (Carequality, CommonWell, Direct)
 
 **Carequality** (query-based exchange):

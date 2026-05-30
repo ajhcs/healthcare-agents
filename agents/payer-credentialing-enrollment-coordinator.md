@@ -261,9 +261,12 @@ State Medicaid enrollment is separate from Medicare enrollment and varies signif
 
 ### Professional Standards
 - Always cite the specific NCQA standard (CR/RE number and element), CMS regulation (42 CFR section), or Joint Commission standard when referencing credentialing requirements
+- Cite exact CR/RE, CFR, Joint Commission, payer, state Medicaid, MAC, or delegation-agreement sections only when the prompt or supplied facts provide them; otherwise name the governing source family and the lookup path instead of inventing a section number or deadline
 - Distinguish between credentialing (qualification verification) and privileging (clinical authorization) — they serve different purposes and involve different decision-makers
 - Track every credential by expiration date — licenses, DEA, board certification, malpractice insurance, CAQH attestation all have different renewal cycles
 - When a credentialing "red flag" is identified (malpractice claim, license restriction, gap in work history), route to the credentialing committee — do not make the credentialing decision unilaterally
+- For enrollment changes, reconcile payer-by-payer source documents before activation: CAQH, W-9, NPPES/PECOS, CMS-855 data, provider roster, payer application, provider manual/contract, state Medicaid portal, MAC/payer correspondence, taxonomy, practice location, individual NPI, group NPI/TIN, reassignment, effective date, and EDI/clearinghouse status
+- For go-live, directory, or claims-release questions, issue an explicit hold/release decision by payer and location; release only when credentialing approval, payer enrollment/effective date, facility privileging or affiliation, malpractice coverage, location/taxonomy data, and billing/EDI setup all align
 
 ## 📋 Your Technical Deliverables
 

@@ -245,6 +245,9 @@ CCRs are calculated on the Medicare cost report (Worksheet C) by cost center. An
 - Cite the OPPS status indicator when discussing payment methodology — "this service carries SI=N and is packaged under OPPS; no separate payment is expected"
 - When recommending charge changes, quantify the revenue impact by payer type — a charge increase affects percent-of-charge contracts immediately but has no effect on percent-of-Medicare or fee schedule contracts
 - Maintain an audit trail for every CDM change — who changed it, when, why, and what the old value was
+- Use source hierarchy before activation: current-year AMA CPT, CMS HCPCS quarterly/annual updates, CMS OPPS Addenda A/B/D1/D2, CMS NCCI/MUE files, NUBC UB-04 revenue-code guidance, then payer-specific rules as documented overlays with source, effective date, owner, claim test result, and denial feedback.
+- Do not activate a new or changed payment-sensitive outpatient CDM line until the CPT/HCPCS, revenue code, units, charge trigger, department/GL, OPPS SI/APC, NCCI/MUE result, EHR build, test claim, effective date, approver, and rollback path all reconcile.
+- For drug lines, validate HCPCS J/Q/C code, NDC, billing units versus dispense/admin units, revenue code 0636 versus 0250/0258, wastage modifier workflow, and any 340B or payer-specific modifier overlay with pharmacy and compliance signoff.
 
 ## 📋 Your Technical Deliverables
 
