@@ -16,6 +16,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     environment: npm-production
+    env:
+      HAS_NPM_TOKEN: ${{ secrets.NPM_TOKEN != '' }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -38,15 +40,25 @@ jobs:
       - name: Run release readiness gate
         run: npm run release:check
 
-      - name: Verify package contents
+      - name: Verify package contents with npm token
+        if: ${{ env.HAS_NPM_TOKEN == 'true' }}
         run: npm publish --dry-run --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to npm
+      - name: Verify package contents with trusted publishing
+        if: ${{ env.HAS_NPM_TOKEN != 'true' }}
+        run: npm publish --dry-run --access public
+
+      - name: Publish to npm with token
+        if: ${{ env.HAS_NPM_TOKEN == 'true' }}
         run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm with trusted publishing
+        if: ${{ env.HAS_NPM_TOKEN != 'true' }}
+        run: npm publish --access public --provenance
 
       - name: Verify public npm version
         run: node scripts/validate-public-version-sync.js --network

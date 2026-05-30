@@ -19,9 +19,11 @@ const runbook = requireFile(runbookPath);
 for (const needle of [
   'workflow_dispatch:',
   'environment: npm-production',
+  'HAS_NPM_TOKEN:',
   'id-token: write',
   'npm run release:check',
-  'npm publish --dry-run --access public',
+  'Verify package contents with npm token',
+  'Verify package contents with trusted publishing',
   'npm publish --access public --provenance',
   'node scripts/validate-public-version-sync.js --network'
 ]) {
