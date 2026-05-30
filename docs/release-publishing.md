@@ -9,6 +9,7 @@ Use this runbook after `main` is green and the package version has been reviewed
 - `node scripts/validate-public-version-sync.js` passes local metadata checks.
 - The GitHub release tag, `package.json`, `VERSION`, and `install.sh` version agree.
 - The npm maintainer has either configured npm trusted publishing for this repository workflow or added an `NPM_TOKEN` repository secret scoped to publish `healthcare-agents`.
+- If neither is configured, the publish job fails with `ENEEDAUTH`; configure one of those auth paths and rerun the workflow.
 
 ## GitHub Actions Publish
 
@@ -17,6 +18,8 @@ Use this runbook after `main` is green and the package version has been reviewed
 3. Enter the expected version, for example `1.4.0`.
 4. Approve the `npm-production` environment if GitHub requires review.
 5. Confirm the workflow runs release readiness, package dry-run, `npm publish --access public --provenance`, and public version verification.
+
+The workflow automatically uses `NPM_TOKEN` when the secret exists. If the secret is absent, it runs npm without `NODE_AUTH_TOKEN` so npm trusted publishing can use GitHub's OIDC token when the package is configured for trusted publishing.
 
 ## Local Publish Fallback
 
