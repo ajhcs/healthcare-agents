@@ -85,7 +85,16 @@ function hasFlag(args, flag) {
 function readOption(args, name) {
   const index = args.indexOf(name);
   if (index === -1) return undefined;
-  return args[index + 1];
+  const value = args[index + 1];
+  if (!value || value.startsWith('--')) return undefined;
+  return value;
+}
+
+function requireOptionValue(args, name, context) {
+  const value = readOption(args, name);
+  if (value !== undefined) return value;
+  console.error(`error: ${context} requires ${name} <value>`);
+  process.exit(2);
 }
 
 function normalize(value) {
@@ -161,7 +170,7 @@ function formatTable(rows, columns) {
 
 function listAgents(args) {
   const registry = loadRegistry();
-  const domain = readOption(args, '--domain');
+  const domain = hasFlag(args, '--domain') ? requireOptionValue(args, '--domain', 'list') : undefined;
   let agents = registry.agents;
   if (domain) {
     const needle = normalize(domain);
@@ -330,11 +339,7 @@ function promptAgent(args) {
   }
   const agent = findAgent(registry, slug);
   if (!agent) failUnknownAgent(registry, slug);
-  const mode = readOption(args, '--mode');
-  if (!mode) {
-    console.error('error: prompt requires --mode <mode>');
-    process.exit(1);
-  }
+  const mode = requireOptionValue(args, '--mode', 'prompt');
   if (!VALID_MODES.includes(mode)) {
     console.error(`error: invalid mode: ${mode}`);
     console.error(`valid modes: ${VALID_MODES.join(', ')}`);
