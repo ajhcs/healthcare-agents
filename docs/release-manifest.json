@@ -65,20 +65,23 @@
     },
     {
       "id": "eval-status",
-      "claim": "Tracked eval evidence currently covers 10 of 51 agents, with 10 tracked improved agents and average latest score 80.97; universal 51/51 improvement is not claimed until eval/results.tsv supports it.",
+      "claim": "Tracked eval evidence covers 51 of 51 agents, with 10 tracked improved agents and average latest score 81.85; universal 51/51 improvement is not claimed because only rows with retained same-question improvement evidence use status=improved.",
       "evidence": [
         "eval/results.tsv",
         "docs/eval/scorecard.json",
         "docs/eval/scorecard.md",
-        "README.md#eval-status"
+        "README.md#eval-status",
+        "scripts/validate-eval-coverage.js"
       ],
       "commands": [
         "node scripts/generate-scorecard.js",
-        "node scripts/validate-scorecard-claims.js"
+        "node scripts/validate-scorecard-claims.js",
+        "REQUIRE_FULL_EVAL_COVERAGE=1 node scripts/validate-eval-coverage.js"
       ],
       "artifacts": [
         "docs/eval/scorecard.json",
-        "docs/eval/scorecard.md"
+        "docs/eval/scorecard.md",
+        "scripts/validate-eval-coverage.js"
       ],
       "beads": [
         "beads-i70.1",

@@ -22,6 +22,9 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 fi
 node scripts/validate-scorecard-claims.js
 
+section "strict eval coverage"
+REQUIRE_FULL_EVAL_COVERAGE=1 node scripts/validate-eval-coverage.js
+
 section "registry, source freshness, safety, and release manifest"
 node scripts/validate-registry-consistency.js
 node scripts/validate-source-freshness.js
