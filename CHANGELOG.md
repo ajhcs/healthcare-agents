@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Added Claude and Codex workflow skill installation, stronger Codex AGENTS.md generation, GitHub Copilot repository instructions, path instructions, custom agents, prompt files, and issue templates.
 - Added Microsoft 365 Copilot declarative agent, Copilot Studio, and Azure AI Foundry export templates for governed enterprise review.
 - Added workflow gallery pages, 35 example workup prompts, platform compatibility guides, demo setup folders, and workflow contribution guidance.
+- Added a governed npm publication workflow and release publishing runbook for maintainer-authenticated public distribution.
 
 ### Changed
 

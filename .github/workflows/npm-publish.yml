@@ -1,0 +1,52 @@
+name: Publish npm Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_version:
+        description: 'Optional package version expected to be published, for example 1.4.0'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm-production
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Verify requested version
+        if: ${{ inputs.expected_version != '' }}
+        run: |
+          actual="$(node -p "require('./package.json').version")"
+          if [ "$actual" != "${{ inputs.expected_version }}" ]; then
+            echo "Expected version ${{ inputs.expected_version }} but package.json is $actual" >&2
+            exit 1
+          fi
+
+      - name: Run release readiness gate
+        run: npm run release:check
+
+      - name: Verify package contents
+        run: npm publish --dry-run --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify public npm version
+        run: node scripts/validate-public-version-sync.js --network

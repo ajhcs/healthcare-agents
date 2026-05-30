@@ -44,5 +44,6 @@ node scripts/test-tarball-smoke.js
 section "local public-release metadata"
 node scripts/verify-public-release.js
 node scripts/validate-public-version-sync.js
+node scripts/validate-npm-publish-workflow.js
 
 printf "\nRelease readiness complete. Routing metrics written to /tmp/healthcare-agents-routing-benchmark.json\n"
