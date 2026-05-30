@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/platforms/schema.json",
+  "title": "Healthcare Agents Platform Registry",
+  "type": "object",
+  "required": ["schema_version", "platforms"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "install_surface",
+          "export_surface",
+          "file_paths",
+          "frontmatter_rules",
+          "instruction_limits",
+          "managed_block_strategy",
+          "uninstall_strategy",
+          "test_strategy"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "name": { "type": "string", "minLength": 1 },
+          "install_surface": { "type": "string" },
+          "export_surface": { "type": "string" },
+          "file_paths": { "type": "array", "items": { "type": "string" } },
+          "frontmatter_rules": { "type": "string" },
+          "instruction_limits": { "type": "string" },
+          "managed_block_strategy": { "type": "string" },
+          "uninstall_strategy": { "type": "string" },
+          "test_strategy": { "type": "string" }
+        }
+      }
+    }
+  }
+}

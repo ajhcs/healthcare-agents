@@ -5,7 +5,10 @@ VERSION="1.4.0"
 REPO="ajhcs/healthcare-agents"
 REPO_URL="https://github.com/$REPO"
 AGENTS_DIR=""
+PACKAGE_ROOT=""
 TARGETS=()
+WORKFLOW_TARGETS=()
+COPILOT_SURFACES=()
 FORCE=false
 DRY_RUN=false
 UNINSTALL=false
@@ -37,6 +40,9 @@ Targets:  --claude --claude-code --codex --codex-app --gemini
           --cursor --windsurf --copilot --cline --amazonq
           --aider --continue
           --claude-skills --claude-desktop --claude-cowork
+          --claude-workflow-skills --codex-skills
+          --copilot-repo --copilot-instructions --copilot-agents
+          --copilot-prompts --copilot-issue-templates --copilot-all
           --opencode --agent-skills --skills
           --all (force all)  --path DIR (custom directory)
 
@@ -61,6 +67,22 @@ while [[ $# -gt 0 ]]; do
     --cursor)    TARGETS+=(cursor);    EXPLICIT=true; shift ;;
     --windsurf)  TARGETS+=(windsurf);  EXPLICIT=true; shift ;;
     --copilot)   TARGETS+=(copilot);   EXPLICIT=true; shift ;;
+    --claude-workflow-skills)
+                  WORKFLOW_TARGETS+=(claude-workflow-skills); EXPLICIT=true; shift ;;
+    --codex-skills)
+                  WORKFLOW_TARGETS+=(codex-skills); EXPLICIT=true; shift ;;
+    --copilot-repo)
+                  COPILOT_SURFACES+=(repo); EXPLICIT=true; shift ;;
+    --copilot-instructions)
+                  COPILOT_SURFACES+=(instructions); EXPLICIT=true; shift ;;
+    --copilot-agents)
+                  COPILOT_SURFACES+=(agents); EXPLICIT=true; shift ;;
+    --copilot-prompts)
+                  COPILOT_SURFACES+=(prompts); EXPLICIT=true; shift ;;
+    --copilot-issue-templates|--copilot-issues)
+                  COPILOT_SURFACES+=(issues); EXPLICIT=true; shift ;;
+    --copilot-all)
+                  COPILOT_SURFACES+=(repo instructions agents prompts issues); EXPLICIT=true; shift ;;
     --cline)     TARGETS+=(cline);     EXPLICIT=true; shift ;;
     --amazonq)   TARGETS+=(amazonq);   EXPLICIT=true; shift ;;
     --aider)     TARGETS+=(aider);     EXPLICIT=true; shift ;;
@@ -98,6 +120,7 @@ done
 find_agents() {
   # Running via npx (HEALTHCARE_AGENTS_ROOT set by bin/cli.js)?
   if [[ -n "${HEALTHCARE_AGENTS_ROOT:-}" ]] && [[ -d "$HEALTHCARE_AGENTS_ROOT/agents" ]]; then
+    PACKAGE_ROOT="$HEALTHCARE_AGENTS_ROOT"
     AGENTS_DIR="$HEALTHCARE_AGENTS_ROOT/agents"
     return 0
   fi
@@ -105,6 +128,7 @@ find_agents() {
   local script_dir
   script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
   if [[ -d "$script_dir/agents" ]]; then
+    PACKAGE_ROOT="$script_dir"
     AGENTS_DIR="$script_dir/agents"
     return 0
   fi
@@ -120,9 +144,11 @@ download_agents() {
   printf "%s\n" "Downloading agents from $REPO..."
   if command -v git &>/dev/null; then
     git clone --depth 1 --quiet "$REPO_URL.git" "$tmp/repo"
+    PACKAGE_ROOT="$tmp/repo"
     AGENTS_DIR="$tmp/repo/agents"
   elif command -v curl &>/dev/null; then
     curl -fsSL "$REPO_URL/archive/refs/heads/main.tar.gz" | tar -xz -C "$tmp"
+    PACKAGE_ROOT="$tmp/healthcare-agents-main"
     AGENTS_DIR="$tmp/healthcare-agents-main/agents"
   else
     err "need git or curl to download agents"; exit 1
@@ -344,6 +370,83 @@ write_skill_file() {
   } > "$dest_dir/$slug/SKILL.md"
 }
 
+workflow_ids() {
+  node "$PACKAGE_ROOT/bin/cli.js" workflows --json | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>JSON.parse(d).workflows.forEach(w=>console.log(w.id)))'
+}
+
+render_surface() {
+  local surface="$1" key="${2:-}"
+  if [[ -n "$key" ]]; then
+    node "$PACKAGE_ROOT/bin/cli.js" internal-render "$surface" "$key"
+  else
+    node "$PACKAGE_ROOT/bin/cli.js" internal-render "$surface"
+  fi
+}
+
+write_generated_file() {
+  local target="$1" surface="$2" key="$3" label="$4"
+  if [[ -f "$target" && "$FORCE" != true ]]; then
+    skip "$label: exists $target (use --force to update)"
+    return
+  fi
+  if $DRY_RUN; then
+    plan_write "$target" "$surface:$key"
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
+    return
+  fi
+  mkdir -p "$(dirname "$target")"
+  render_surface "$surface" "$key" > "$target"
+  TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
+}
+
+write_manifest() {
+  local dest="$1" target_name="$2"
+  local manifest="$dest/.healthcare-agents-manifest.json"
+  if $UNINSTALL; then
+    if [[ -f "$manifest" ]]; then
+      if $DRY_RUN; then plan_remove "$manifest"; else rm "$manifest"; fi
+      TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
+    fi
+    return
+  fi
+  if $DRY_RUN; then
+    plan_write "$manifest" "install manifest"
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
+    return
+  fi
+  mkdir -p "$dest"
+  node -e 'const fs=require("fs"); const path=process.argv[1]; const data={package:"healthcare-agents",version:process.argv[2],target:process.argv[3],generated_at:new Date().toISOString(),source_commit:process.argv[4]}; fs.writeFileSync(path, JSON.stringify(data,null,2)+"\n");' "$manifest" "$VERSION" "$target_name" "$(git -C "$PACKAGE_ROOT" rev-parse --short HEAD 2>/dev/null || echo unknown)"
+}
+
+install_workflow_skills() {
+  local dest="$1" label="$2" surface="$3"
+  local count=0 id target
+  if $UNINSTALL; then
+    while IFS= read -r id; do
+      target="$dest/healthcare-$id"
+      if [[ -d "$target" ]]; then
+        if $DRY_RUN; then plan_remove "$target"; else rm -rf "$target"; fi
+        count=$((count + 1))
+      fi
+    done < <(workflow_ids)
+    write_manifest "$dest" "$label"
+    if [[ $count -gt 0 ]]; then
+      printf "  %s %s (%d workflow skills removed)\n" "${RED}<-${RESET}" "$label" "$count"
+      TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
+    else
+      skip "$label workflow skills (nothing to remove)"
+    fi
+    return
+  fi
+  while IFS= read -r id; do
+    target="$dest/healthcare-$id/SKILL.md"
+    write_generated_file "$target" "$surface" "$id" "$label"
+    count=$((count + 1))
+  done < <(workflow_ids)
+  write_manifest "$dest" "$label"
+  printf "  %s %s (%d workflow skills)\n" "${GREEN}->${RESET}" "$label" "$count"
+}
+
 install_skills_tree() {
   local dest="$1" label="$2"
   local count=0
@@ -455,9 +558,7 @@ install_codex() {
   fi
   install_to_dir "$dest" "Codex / Codex App ($dest)"
   local body
-  body='## Healthcare Agents
-
-When the user asks for healthcare administration expertise, choose one primary specialist prompt from `~/.codex/agents/*.md` and read it before answering. Agent file names and frontmatter `name` fields use lowercase hyphen slugs such as `revenue-cycle-specialist`; `display_name` is the human label. If the request is ambiguous, ask for the missing details from the selected agent'\''s Best Inputs section or start in quick triage mode. When the user asks for a mode, respect `quick triage`, `workplan`, `audit/checklist`, and `artifact/template`. When work crosses roles, name the supporting healthcare-agents handoffs instead of blending responsibilities. Preserve the selected agent role, compliance boundaries, source hierarchy, deliverable style, and decision-support framing. Use PHI only in an approved environment and apply minimum necessary data handling. Do not treat the agents as clinical, legal, coding-of-record, billing-authority, audit, compliance, or PHI-handling authority.'
+  body="$(render_surface codex-agents)"
   upsert_block "$HOME/.codex/AGENTS.md" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->" "$body"
   if $DRY_RUN; then
     plan_write "$HOME/.codex/AGENTS.md" "managed Codex instructions block"
@@ -527,6 +628,122 @@ install_aider() {
   TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
 }
 
+install_copilot_repo_instructions() {
+  local file="${PWD}/.github/copilot-instructions.md"
+  if $UNINSTALL; then
+    if remove_block "$file" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->"; then
+      if $DRY_RUN; then plan_remove "$file managed block"; fi
+      printf "  %s GitHub Copilot repository instructions (%s)\n" "${RED}<-${RESET}" "$file"
+      TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
+    else
+      skip "GitHub Copilot repository instructions (nothing to remove)"
+    fi
+    return
+  fi
+  local body
+  body="$(render_surface copilot-repo)"
+  upsert_block "$file" "<!-- healthcare-agents:start -->" "<!-- healthcare-agents:end -->" "$body"
+  if $DRY_RUN; then plan_write "$file" "managed Copilot instructions block"; fi
+  printf "  %s GitHub Copilot repository instructions (%s)\n" "${GREEN}->${RESET}" "$file"
+  TOTAL_INSTALLED=$((TOTAL_INSTALLED + 1))
+}
+
+install_copilot_path_instructions() {
+  local dest="${PWD}/.github/instructions"
+  local groups=(healthcare-revenue-cycle healthcare-compliance healthcare-quality-safety healthcare-analytics healthcare-operations)
+  local group target count=0
+  if $UNINSTALL; then
+    for group in "${groups[@]}"; do
+      target="$dest/$group.instructions.md"
+      if [[ -f "$target" ]]; then
+        if $DRY_RUN; then plan_remove "$target"; else rm "$target"; fi
+        count=$((count + 1))
+      fi
+    done
+    printf "  %s GitHub Copilot path instructions (%d removed)\n" "${RED}<-${RESET}" "$count"
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
+    return
+  fi
+  for group in "${groups[@]}"; do
+    target="$dest/$group.instructions.md"
+    write_generated_file "$target" copilot-path "$group" "GitHub Copilot path instructions"
+    count=$((count + 1))
+  done
+  printf "  %s GitHub Copilot path instructions (%d files)\n" "${GREEN}->${RESET}" "$count"
+}
+
+install_copilot_agents() {
+  local dest="${PWD}/.github/agents"
+  local agents=(healthcare-revenue-cycle-agent healthcare-compliance-agent healthcare-quality-safety-agent healthcare-operations-agent healthcare-data-analytics-agent healthcare-it-integration-agent healthcare-payer-contracting-agent healthcare-workup-orchestrator-agent)
+  local agent target count=0
+  if $UNINSTALL; then
+    for agent in "${agents[@]}"; do
+      target="$dest/$agent.agent.md"
+      if [[ -f "$target" ]]; then
+        if $DRY_RUN; then plan_remove "$target"; else rm "$target"; fi
+        count=$((count + 1))
+      fi
+    done
+    printf "  %s GitHub Copilot custom agents (%d removed)\n" "${RED}<-${RESET}" "$count"
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
+    return
+  fi
+  for agent in "${agents[@]}"; do
+    target="$dest/$agent.agent.md"
+    write_generated_file "$target" copilot-agent "$agent" "GitHub Copilot custom agents"
+    count=$((count + 1))
+  done
+  printf "  %s GitHub Copilot custom agents (%d files)\n" "${GREEN}->${RESET}" "$count"
+}
+
+install_copilot_prompts() {
+  local dest="${PWD}/.github/prompts"
+  local workflows=(denial-spike-workup discharge-barrier-workplan hipaa-security-evidence-checklist survey-readiness-gap-review hedis-stars-gap-closure-sprint clinical-dashboard-specification)
+  local id target count=0
+  if $UNINSTALL; then
+    for id in "${workflows[@]}"; do
+      target="$dest/$id.prompt.md"
+      if [[ -f "$target" ]]; then
+        if $DRY_RUN; then plan_remove "$target"; else rm "$target"; fi
+        count=$((count + 1))
+      fi
+    done
+    printf "  %s GitHub Copilot prompt files (%d removed)\n" "${RED}<-${RESET}" "$count"
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
+    return
+  fi
+  for id in "${workflows[@]}"; do
+    target="$dest/$id.prompt.md"
+    write_generated_file "$target" copilot-prompt "$id" "GitHub Copilot prompt files"
+    count=$((count + 1))
+  done
+  printf "  %s GitHub Copilot prompt files (%d files)\n" "${GREEN}->${RESET}" "$count"
+}
+
+install_copilot_issue_templates() {
+  local dest="${PWD}/.github/ISSUE_TEMPLATE"
+  local workflows=(denial-spike-workup clean-claim-rate-decline hipaa-security-evidence-checklist hedis-stars-gap-closure-sprint clinical-dashboard-specification)
+  local id target count=0
+  if $UNINSTALL; then
+    for id in "${workflows[@]}"; do
+      target="$dest/healthcare-$id.yml"
+      if [[ -f "$target" ]]; then
+        if $DRY_RUN; then plan_remove "$target"; else rm "$target"; fi
+        count=$((count + 1))
+      fi
+    done
+    printf "  %s GitHub issue templates (%d removed)\n" "${RED}<-${RESET}" "$count"
+    TOTAL_INSTALLED=$((TOTAL_INSTALLED + count))
+    return
+  fi
+  for id in "${workflows[@]}"; do
+    target="$dest/healthcare-$id.yml"
+    write_generated_file "$target" copilot-issue-template "$id" "GitHub issue templates"
+    count=$((count + 1))
+  done
+  printf "  %s GitHub issue templates (%d files)\n" "${GREEN}->${RESET}" "$count"
+}
+
 printf "\n${BOLD}Healthcare Agents Installer v%s${RESET}\n" "$VERSION"
 
 # Get agents
@@ -546,18 +763,26 @@ if $ALL; then TARGETS=("${TOOL_ORDER[@]}")
 elif ! $EXPLICIT; then detect_targets; fi
 [[ -n "$CUSTOM_PATH" ]] && TARGETS+=(custom)
 
-if [[ ${#TARGETS[@]} -eq 0 ]]; then
+if [[ ${#TARGETS[@]} -eq 0 && ${#WORKFLOW_TARGETS[@]} -eq 0 && ${#COPILOT_SURFACES[@]} -eq 0 ]]; then
   warn "no supported tools detected"
   printf "  Use --all to install everywhere, or target a specific tool (e.g. --claude)\n"
   exit 1
 fi
-TARGETS=($(printf '%s\n' "${TARGETS[@]}" | sort -u))
+if [[ ${#TARGETS[@]} -gt 0 ]]; then
+  TARGETS=($(printf '%s\n' "${TARGETS[@]}" | sort -u))
+fi
+if [[ ${#WORKFLOW_TARGETS[@]} -gt 0 ]]; then
+  WORKFLOW_TARGETS=($(printf '%s\n' "${WORKFLOW_TARGETS[@]}" | sort -u))
+fi
+if [[ ${#COPILOT_SURFACES[@]} -gt 0 ]]; then
+  COPILOT_SURFACES=($(printf '%s\n' "${COPILOT_SURFACES[@]}" | sort -u))
+fi
 
 ACTION="Installing"
 $UNINSTALL && ACTION="Uninstalling"
 $DRY_RUN && ACTION="Would install"
 $DRY_RUN && $UNINSTALL && ACTION="Would uninstall"
-printf "%s %d agents to %d target(s)...\n\n" "$ACTION" "$AGENT_COUNT" "${#TARGETS[@]}"
+printf "%s %d agents to %d agent target(s), %d workflow target(s), and %d Copilot surface group(s)...\n\n" "$ACTION" "$AGENT_COUNT" "${#TARGETS[@]}" "${#WORKFLOW_TARGETS[@]}" "${#COPILOT_SURFACES[@]}"
 
 for tool in "${TARGETS[@]}"; do
   if [[ "$tool" == "custom" ]]; then
@@ -575,6 +800,22 @@ for tool in "${TARGETS[@]}"; do
   fi
   if $UNINSTALL; then uninstall_from_dir "$local_path" "${TOOL_DISPLAY[$tool]} ($local_path)"
   else install_to_dir "$local_path" "${TOOL_DISPLAY[$tool]} ($local_path)"; fi
+done
+
+for workflow_target in "${WORKFLOW_TARGETS[@]}"; do
+  if [[ "$workflow_target" == "claude-workflow-skills" ]]; then
+    install_workflow_skills "$HOME/.claude/skills" "Claude workflow skills ($HOME/.claude/skills)" claude-skill
+  elif [[ "$workflow_target" == "codex-skills" ]]; then
+    install_workflow_skills "$HOME/.codex/skills" "Codex workflow skills ($HOME/.codex/skills)" codex-skill
+  fi
+done
+
+for surface in "${COPILOT_SURFACES[@]}"; do
+  if [[ "$surface" == "repo" ]]; then install_copilot_repo_instructions; fi
+  if [[ "$surface" == "instructions" ]]; then install_copilot_path_instructions; fi
+  if [[ "$surface" == "agents" ]]; then install_copilot_agents; fi
+  if [[ "$surface" == "prompts" ]]; then install_copilot_prompts; fi
+  if [[ "$surface" == "issues" ]]; then install_copilot_issue_templates; fi
 done
 
 echo

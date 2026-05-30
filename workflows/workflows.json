@@ -1,0 +1,456 @@
+{
+  "schema_version": "1.0.0",
+  "workflows": [
+    {
+      "id": "denial-spike-workup",
+      "name": "Revenue Cycle Denial Spike Workup",
+      "category": "Revenue Cycle",
+      "summary": "Triage a denial-rate increase, payer policy shift, AR aging issue, or write-off spike into an evidence-backed recovery plan.",
+      "triggers": ["denial spike", "denial rate", "payer policy change", "AR days", "write-offs", "appeal backlog", "CARC", "RARC"],
+      "anti_triggers": ["clinical diagnosis", "treatment recommendation", "individual patient appeal without administrative context"],
+      "primary_agent": "revenue-cycle-specialist",
+      "handoff_agents": ["revenue-contract-analyst", "healthit-clinical-data-analyst", "quality-compliance-officer"],
+      "required_inputs": ["payer or product", "denial codes or reason categories", "timeframe and baseline", "service lines affected", "estimated dollar exposure", "current appeal status"],
+      "optional_inputs": ["sample remits", "policy citation", "clearinghouse edits", "coding audit notes", "contract language"],
+      "red_flags": ["possible coding compliance risk", "payer policy retroactivity", "large dollar exposure", "patient access impact", "appeal deadline risk"],
+      "output_artifact": "denial spike triage brief",
+      "artifact_sections": ["Executive summary", "Trend and exposure", "Root-cause hypotheses", "Evidence pull list", "Appeal and escalation strategy", "Owner matrix", "Monitoring plan"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use the revenue-cycle-specialist as primary for a denial spike workup. Ask for payer, denial codes, timeframe, service lines, exposure, and appeal status before drafting the triage brief.",
+        "codex": "Read the revenue-cycle-specialist prompt first, then produce a structured denial spike triage brief with missing inputs, evidence pulls, handoffs, and safety constraints.",
+        "copilot": "Create a scoped denial spike workup issue or prompt packet with acceptance criteria, evidence requests, and revenue-cycle/compliance handoffs.",
+        "m365_copilot": "Use governed tenant data only. Produce an executive denial spike triage brief and clearly separate instructions, knowledge sources, and action placeholders."
+      },
+      "examples": [
+        { "input": "Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing.", "expected_workflow": "denial-spike-workup" },
+        { "input": "Medicare Advantage denials doubled for imaging auth after a new policy bulletin.", "expected_workflow": "denial-spike-workup" }
+      ],
+      "canary_tests": [
+        { "input": "CARC denial spike for cardiology claims with appeal backlog and rising write-offs", "expected_workflow": "denial-spike-workup" }
+      ]
+    },
+    {
+      "id": "clean-claim-rate-decline",
+      "name": "Clean Claim Rate Decline",
+      "category": "Revenue Cycle",
+      "summary": "Diagnose a clean-claim-rate drop from edits, clearinghouse rejections, registration defects, coding quality, or system changes.",
+      "triggers": ["clean claim rate", "claim edits", "clearinghouse rejection", "front-end denial", "registration quality", "EHR update"],
+      "anti_triggers": ["payer contract dispute without claim quality issue"],
+      "primary_agent": "revenue-cycle-specialist",
+      "handoff_agents": ["operations-physician-practice-manager", "revenue-medical-coding-specialist", "healthit-clinical-data-analyst"],
+      "required_inputs": ["baseline clean claim rate", "current clean claim rate", "edit categories", "affected clinics or service lines", "recent system or workflow changes"],
+      "optional_inputs": ["clearinghouse report", "registration audit", "coding quality sample", "claim scrubber rules"],
+      "red_flags": ["patient access impact", "cash acceleration pressure", "repeatable registration defect", "coding compliance concern"],
+      "output_artifact": "clean claim recovery plan",
+      "artifact_sections": ["Issue segmentation", "Likely process defects", "Owner matrix", "Fix plan", "Dashboard specification", "Validation cadence"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use the revenue-cycle-specialist for clean claim recovery and ask for baseline/current rates, edit categories, affected clinics, and recent system changes.",
+        "codex": "Produce a clean claim recovery plan with segmentation, workflow fixes, owner matrix, and monitoring spec.",
+        "copilot": "Draft a clean claim rate issue with required data pulls, process owners, acceptance criteria, and safety notes.",
+        "m365_copilot": "Build a governed clean claim recovery memo from approved reports and keep claim examples de-identified unless approved."
+      },
+      "examples": [
+        { "input": "Clean claim rate dropped from 92 to 81 after a registration workflow change.", "expected_workflow": "clean-claim-rate-decline" }
+      ],
+      "canary_tests": [
+        { "input": "Clearinghouse rejections increased after EHR update and claim edits are failing", "expected_workflow": "clean-claim-rate-decline" }
+      ]
+    },
+    {
+      "id": "payer-contract-underpayment-review",
+      "name": "Payer Contract Underpayment Review",
+      "category": "Payer Contracting",
+      "summary": "Prepare an underpayment evidence packet for suspected payment variance, fee schedule mismatch, contract renewal, or payer dispute.",
+      "triggers": ["underpayment", "payment variance", "fee schedule", "contract terms", "payer dispute", "allowed amount", "carve-out"],
+      "anti_triggers": ["single patient balance question", "medical necessity appeal"],
+      "primary_agent": "revenue-contract-analyst",
+      "handoff_agents": ["revenue-cycle-specialist", "revenue-finance-manager", "payer-relations-specialist"],
+      "required_inputs": ["contract terms", "allowed amounts", "billed charges", "payment history", "carve-outs or exclusions"],
+      "optional_inputs": ["835 sample", "contract amendment", "fee schedule", "payer correspondence"],
+      "red_flags": ["legal dispute posture", "large recurring variance", "contract ambiguity", "timely filing or dispute deadline"],
+      "output_artifact": "underpayment evidence packet",
+      "artifact_sections": ["Variance logic", "Evidence table", "Contract citation map", "Payer dispute letter scaffold", "Negotiation talking points"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use revenue-contract-analyst as primary and build an underpayment evidence packet from contract terms, payments, and variance rules.",
+        "codex": "Produce a defensible underpayment review with data assumptions, evidence table, and payer escalation handoffs.",
+        "copilot": "Create a payer underpayment analysis prompt file or issue with contract inputs, expected calculations, and acceptance criteria.",
+        "m365_copilot": "Use approved finance and contract sources only and produce an admin-reviewed underpayment memo."
+      },
+      "examples": [
+        { "input": "Claims are being underpaid against the payer contract and allowed amounts do not match the fee schedule.", "expected_workflow": "payer-contract-underpayment-review" }
+      ],
+      "canary_tests": [
+        { "input": "Payer payment variance against contract carve-outs needs dispute evidence packet", "expected_workflow": "payer-contract-underpayment-review" }
+      ]
+    },
+    {
+      "id": "prior-authorization-appeal-workup",
+      "name": "Prior Authorization Appeal Workup",
+      "category": "Clinical Administration",
+      "summary": "Organize a non-clinical prior authorization denial or delayed authorization into appeal evidence, missing documentation, and escalation steps.",
+      "triggers": ["prior authorization", "auth denial", "medical necessity request", "payer criteria", "appeal deadline", "delayed care"],
+      "anti_triggers": ["diagnose patient", "choose treatment", "write clinical attestation as clinician"],
+      "primary_agent": "clinical-prior-authorization-specialist",
+      "handoff_agents": ["clinical-care-management-specialist", "quality-compliance-officer", "clinical-utilization-management-specialist"],
+      "required_inputs": ["payer", "service or item", "denial reason", "policy citation", "documentation available"],
+      "optional_inputs": ["deadline", "peer-to-peer status", "coverage policy", "prior similar approvals"],
+      "red_flags": ["urgent care delay", "appeal deadline", "medical necessity dispute needing licensed review", "potential adverse patient impact"],
+      "output_artifact": "appeal workup and documentation checklist",
+      "artifact_sections": ["Case restatement", "Payer criteria map", "Missing documentation", "Non-clinical appeal structure", "Escalation path", "Review checklist"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use clinical-prior-authorization-specialist and keep the output administrative, with clinician review for medical necessity.",
+        "codex": "Draft a prior authorization appeal workup that asks for payer, service, denial reason, policy citation, and available documentation.",
+        "copilot": "Generate a scoped appeal workup prompt with required inputs, acceptance criteria, and licensed-review checkpoints.",
+        "m365_copilot": "Use approved case materials and keep the artifact as administrative appeal support, not clinical judgment."
+      },
+      "examples": [
+        { "input": "Prepare a prior authorization appeal workup after a payer denied the requested service for medical necessity.", "expected_workflow": "prior-authorization-appeal-workup" }
+      ],
+      "canary_tests": [
+        { "input": "Denied authorization with payer policy citation and missing documentation checklist needed", "expected_workflow": "prior-authorization-appeal-workup" }
+      ]
+    },
+    {
+      "id": "discharge-barrier-workplan",
+      "name": "Discharge Barrier Workplan",
+      "category": "Care Coordination",
+      "summary": "Convert discharge delays, avoidable days, placement barriers, DME delays, or family decision delays into a daily action plan.",
+      "triggers": ["discharge delay", "SNF placement", "DME delay", "avoidable days", "length of stay", "family decision", "post-acute"],
+      "anti_triggers": ["clinical discharge order decision", "treatment recommendation"],
+      "primary_agent": "clinical-case-manager",
+      "handoff_agents": ["clinical-utilization-management-specialist", "clinical-care-management-specialist", "revenue-finance-manager"],
+      "required_inputs": ["barrier categories", "service line", "payer mix", "avoidable days", "escalation rules"],
+      "optional_inputs": ["post-acute network constraints", "patient choice process", "DME vendor list", "daily huddle cadence"],
+      "red_flags": ["unsafe discharge risk", "patient rights concern", "avoidable day escalation", "payer denial risk"],
+      "output_artifact": "discharge barrier action plan",
+      "artifact_sections": ["Barrier taxonomy", "Immediate next actions", "Owner list", "Daily huddle script", "Escalation triggers", "KPI plan"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use clinical-case-manager to build a discharge barrier action plan and require clinical ownership for discharge decisions.",
+        "codex": "Produce a barrier taxonomy, owner matrix, huddle script, and KPI plan for discharge delay work.",
+        "copilot": "Draft a discharge barrier workplan issue with barrier categories, owners, acceptance criteria, and patient-rights safety notes.",
+        "m365_copilot": "Use de-identified operational data where possible and produce a Teams-ready discharge barrier briefing."
+      },
+      "examples": [
+        { "input": "Our discharge delays are mostly awaiting SNF placement and family decisions.", "expected_workflow": "discharge-barrier-workplan" },
+        { "input": "Avoidable days are increasing because DME and post-acute placement are delayed.", "expected_workflow": "discharge-barrier-workplan" }
+      ],
+      "canary_tests": [
+        { "input": "SNF placement delay and avoidable days require discharge barrier huddle plan", "expected_workflow": "discharge-barrier-workplan" }
+      ]
+    },
+    {
+      "id": "hipaa-security-evidence-checklist",
+      "name": "HIPAA Security Evidence Checklist",
+      "category": "Compliance",
+      "summary": "Prepare an evidence checklist and gap register for a HIPAA audit, vendor security review, policy refresh, or questionnaire.",
+      "triggers": ["HIPAA", "security evidence", "vendor review", "security questionnaire", "audit evidence", "risk analysis", "BAA"],
+      "anti_triggers": ["legal opinion", "breach determination without privacy officer"],
+      "primary_agent": "quality-compliance-officer",
+      "handoff_agents": ["healthit-information-manager", "quality-risk-manager", "payer-relations-specialist"],
+      "required_inputs": ["entity type", "system scope", "vendor involvement", "current controls", "requested framework"],
+      "optional_inputs": ["prior risk analysis", "policies", "access review", "incident history", "BAA status"],
+      "red_flags": ["possible breach", "missing BAA", "unapproved PHI sharing", "critical control gap", "regulator deadline"],
+      "output_artifact": "evidence checklist and gap register",
+      "artifact_sections": ["Scope", "Evidence map", "Gap register", "Responsible owners", "Collection timeline", "Review sign-off"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use quality-compliance-officer for a HIPAA evidence checklist and name privacy, legal, and IT security handoffs.",
+        "codex": "Produce a HIPAA evidence checklist with scope, evidence map, gaps, owners, and collection timeline.",
+        "copilot": "Generate a compliance evidence checklist prompt with PHI cautions, controls, owners, and acceptance criteria.",
+        "m365_copilot": "Use governed policy and control documents; do not store hidden instructions in SharePoint knowledge files."
+      },
+      "examples": [
+        { "input": "Prepare a HIPAA evidence checklist for a vendor security review.", "expected_workflow": "hipaa-security-evidence-checklist" }
+      ],
+      "canary_tests": [
+        { "input": "Vendor security questionnaire needs HIPAA Security Rule evidence and gap register", "expected_workflow": "hipaa-security-evidence-checklist" }
+      ]
+    },
+    {
+      "id": "survey-readiness-gap-review",
+      "name": "Survey Readiness Gap Review",
+      "category": "Compliance",
+      "summary": "Plan accreditation or CMS survey readiness work with tracer preparation, policy evidence, corrective actions, and leadership briefing.",
+      "triggers": ["survey readiness", "accreditation", "CMS survey", "tracer", "corrective action", "policy gap"],
+      "anti_triggers": ["clinical order decision", "legal defense strategy"],
+      "primary_agent": "quality-accreditation-specialist",
+      "handoff_agents": ["quality-improvement-specialist", "quality-compliance-officer", "clinical-infection-prevention-specialist"],
+      "required_inputs": ["standard set", "site", "last survey findings", "open corrective actions"],
+      "optional_inputs": ["policy inventory", "tracer schedule", "department owners", "mock survey findings"],
+      "red_flags": ["immediate jeopardy concern", "open corrective action deadline", "repeat deficiency", "patient safety risk"],
+      "output_artifact": "survey readiness gap plan",
+      "artifact_sections": ["Standards map", "Tracer plan", "Policy evidence list", "Owner matrix", "Leadership briefing", "Readiness cadence"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use quality-accreditation-specialist to produce a survey readiness gap plan with standards, evidence, tracers, and owners.",
+        "codex": "Draft a survey readiness workup with standard set, site, prior findings, open actions, and leadership briefing.",
+        "copilot": "Create a survey readiness prompt or issue template with evidence tasks and acceptance criteria.",
+        "m365_copilot": "Use approved survey documents and produce a governed survey readiness briefing."
+      },
+      "examples": [
+        { "input": "We need a CMS survey readiness gap review for open corrective actions and tracer prep.", "expected_workflow": "survey-readiness-gap-review" }
+      ],
+      "canary_tests": [
+        { "input": "Accreditation tracer preparation and policy evidence list for survey readiness", "expected_workflow": "survey-readiness-gap-review" }
+      ]
+    },
+    {
+      "id": "patient-safety-rca2-workup",
+      "name": "Patient Safety RCA2 Workup",
+      "category": "Quality and Safety",
+      "summary": "Organize serious safety event, near miss, or sentinel-event-style review preparation into an RCA2-style planning packet.",
+      "triggers": ["RCA2", "root cause analysis", "serious safety event", "near miss", "sentinel event", "harm level", "causal factors"],
+      "anti_triggers": ["assign blame", "legal conclusion", "clinical treatment decision"],
+      "primary_agent": "quality-patient-safety-officer",
+      "handoff_agents": ["quality-risk-manager", "quality-improvement-specialist", "operations-hospital-administrator"],
+      "required_inputs": ["event summary", "timeline", "harm level", "involved processes", "immediate containment"],
+      "optional_inputs": ["interview list", "policy references", "equipment or staffing context", "prior similar events"],
+      "red_flags": ["ongoing safety risk", "mandatory reporting question", "legal privilege concern", "media or regulator sensitivity"],
+      "output_artifact": "RCA2-style planning packet",
+      "artifact_sections": ["Fact-gathering plan", "Timeline gaps", "Causal factor categories", "Interview guide", "Action strength checklist", "Escalation notes"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use quality-patient-safety-officer and keep RCA2 output fact-focused, blame-free, and reviewed by safety/risk leadership.",
+        "codex": "Produce an RCA2 planning packet with event facts, timeline gaps, interview guide, and action-strength checklist.",
+        "copilot": "Draft a patient safety RCA2 workup prompt with non-PHI facts, owners, acceptance criteria, and escalation notes.",
+        "m365_copilot": "Use approved safety event materials only and maintain privilege/governance cautions."
+      },
+      "examples": [
+        { "input": "Create an RCA2 workup plan for a serious safety event with a partial timeline and immediate containment.", "expected_workflow": "patient-safety-rca2-workup" }
+      ],
+      "canary_tests": [
+        { "input": "Near miss patient safety event needs RCA2 interview guide and causal factor plan", "expected_workflow": "patient-safety-rca2-workup" }
+      ]
+    },
+    {
+      "id": "ed-boarding-capacity-workup",
+      "name": "ED Boarding and Capacity Workup",
+      "category": "Operations",
+      "summary": "Triage ED boarding, throughput issues, inpatient bed constraints, staffing limits, or ambulance diversion risk into a command-center brief.",
+      "triggers": ["ED boarding", "throughput", "bed capacity", "ambulance diversion", "boarding hours", "inpatient beds", "staffing constraint"],
+      "anti_triggers": ["individual clinical triage decision", "emergency medical advice"],
+      "primary_agent": "operations-hospital-administrator",
+      "handoff_agents": ["clinical-case-manager", "revenue-finance-manager", "healthit-clinical-data-analyst"],
+      "required_inputs": ["boarding hours", "arrival and admission rates", "discharge timing", "bed types", "staffing constraints"],
+      "optional_inputs": ["transfer data", "diversion policy", "surge plan", "command center cadence"],
+      "red_flags": ["ambulance diversion risk", "unsafe staffing concern", "regulatory reporting issue", "high occupancy escalation"],
+      "output_artifact": "capacity command-center brief",
+      "artifact_sections": ["Bottleneck map", "Immediate operational moves", "Escalation triggers", "Metric dashboard spec", "Leadership update"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required", "emergency"],
+      "platform_prompt_templates": {
+        "claude": "Use operations-hospital-administrator to build an ED boarding capacity brief with operational owners and safety escalation triggers.",
+        "codex": "Produce a capacity workup with bottlenecks, immediate moves, metrics, and command-center update format.",
+        "copilot": "Create an ED capacity workup prompt with data inputs, owners, and acceptance criteria.",
+        "m365_copilot": "Use governed operations reports and produce a Teams-ready command-center brief."
+      },
+      "examples": [
+        { "input": "ED boarding hours are rising because inpatient bed capacity and discharge timing are constrained.", "expected_workflow": "ed-boarding-capacity-workup" }
+      ],
+      "canary_tests": [
+        { "input": "Ambulance diversion risk from ED boarding and inpatient bed constraints", "expected_workflow": "ed-boarding-capacity-workup" }
+      ]
+    },
+    {
+      "id": "ambulatory-access-backlog",
+      "name": "Ambulatory Access Backlog",
+      "category": "Operations",
+      "summary": "Plan recovery for specialty access backlog, referral queue growth, template design problems, or no-show pressure.",
+      "triggers": ["third next available", "referral backlog", "no-show", "template design", "ambulatory access", "scheduling backlog"],
+      "anti_triggers": ["individual clinical triage decision"],
+      "primary_agent": "operations-ambulatory-manager",
+      "handoff_agents": ["healthit-clinical-data-analyst", "clinical-referral-specialist", "operations-physician-practice-manager"],
+      "required_inputs": ["specialty", "backlog size", "template design", "referral sources", "no-show rate"],
+      "optional_inputs": ["provider FTE", "visit types", "slot utilization", "scheduling rules", "patient outreach channels"],
+      "red_flags": ["clinically urgent referrals waiting", "access equity concern", "provider burnout risk", "payer network adequacy issue"],
+      "output_artifact": "access recovery plan",
+      "artifact_sections": ["Demand and capacity view", "Backlog segmentation", "Scheduling rule changes", "Referral triage approach", "Monitoring metrics"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use operations-ambulatory-manager to produce an access recovery plan with demand/capacity assumptions and referral triage handoffs.",
+        "codex": "Draft an ambulatory access backlog workup with template, referral, no-show, and monitoring sections.",
+        "copilot": "Create an access backlog issue with required inputs, constraints, owners, and acceptance criteria.",
+        "m365_copilot": "Use approved scheduling and referral data, keeping patient-level details out unless governed."
+      },
+      "examples": [
+        { "input": "Dermatology third-next-available is 120 days and referrals are backing up.", "expected_workflow": "ambulatory-access-backlog" }
+      ],
+      "canary_tests": [
+        { "input": "Referral backlog and high no-show rate require ambulatory access recovery plan", "expected_workflow": "ambulatory-access-backlog" }
+      ]
+    },
+    {
+      "id": "value-based-care-downside-risk-readiness",
+      "name": "Value-Based Care Downside Risk Readiness",
+      "category": "Value-Based Care",
+      "summary": "Assess readiness for a new or troubled downside-risk contract across quality, cost, attribution, care management, and governance.",
+      "triggers": ["downside risk", "risk contract", "attributed lives", "quality measures", "cost benchmark", "care management model", "ACO"],
+      "anti_triggers": ["actuarial certification", "final contract approval"],
+      "primary_agent": "payer-value-based-care-manager",
+      "handoff_agents": ["pophealth-population-health-manager", "revenue-finance-manager", "healthit-clinical-data-analyst"],
+      "required_inputs": ["contract model", "attributed lives", "quality measures", "cost benchmark", "care management model"],
+      "optional_inputs": ["stop-loss terms", "high-risk cohort", "network leakage", "payer reporting cadence"],
+      "red_flags": ["unbounded downside exposure", "data lag", "unclear attribution", "quality penalty risk"],
+      "output_artifact": "downside-risk readiness memo",
+      "artifact_sections": ["Risk register", "Intervention map", "Data gaps", "Governance cadence", "Decision points"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use payer-value-based-care-manager to produce a downside-risk readiness memo with finance, population health, and analytics handoffs.",
+        "codex": "Draft a VBC risk readiness memo with contract model, lives, quality, cost, data gaps, and governance cadence.",
+        "copilot": "Create a value-based care readiness prompt with required inputs and acceptance criteria.",
+        "m365_copilot": "Use governed payer and population health reports to produce an executive readiness memo."
+      },
+      "examples": [
+        { "input": "We are entering downside risk and need readiness across quality measures, cost benchmark, and care management.", "expected_workflow": "value-based-care-downside-risk-readiness" }
+      ],
+      "canary_tests": [
+        { "input": "ACO downside risk contract with attributed lives and cost benchmark needs readiness memo", "expected_workflow": "value-based-care-downside-risk-readiness" }
+      ]
+    },
+    {
+      "id": "hedis-stars-gap-closure-sprint",
+      "name": "HEDIS or Stars Gap Closure Sprint",
+      "category": "Quality",
+      "summary": "Plan a focused quality gap closure sprint for HEDIS, Stars, payer quality programs, denominator/numerator gaps, and outreach.",
+      "triggers": ["HEDIS", "Stars", "gap closure", "quality measure", "denominator", "numerator", "diabetic eye exam", "outreach"],
+      "anti_triggers": ["clinical treatment recommendation", "measure gaming"],
+      "primary_agent": "quality-improvement-specialist",
+      "handoff_agents": ["pophealth-population-health-manager", "healthit-clinical-data-analyst", "quality-compliance-officer"],
+      "required_inputs": ["measure", "denominator", "numerator gap", "patient segment", "outreach channels"],
+      "optional_inputs": ["payer program", "measure year", "documentation source", "provider owner", "vendor outreach capacity"],
+      "red_flags": ["measure documentation uncertainty", "patient consent or communication limits", "clinical prioritization needed", "data lag"],
+      "output_artifact": "gap closure sprint plan",
+      "artifact_sections": ["Gap stratification", "Outreach plan", "Documentation checklist", "Weekly operating rhythm", "Measure validation"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use quality-improvement-specialist to produce a HEDIS or Stars gap closure sprint with measure documentation safeguards.",
+        "codex": "Draft a gap closure sprint plan with measure, denominator, numerator gap, outreach channels, and weekly rhythm.",
+        "copilot": "Create a quality gap closure prompt with measure inputs, outreach tasks, and acceptance criteria.",
+        "m365_copilot": "Use governed quality data and produce a sprint plan that separates outreach operations from clinical judgment."
+      },
+      "examples": [
+        { "input": "We need a HEDIS gap closure sprint for diabetic eye exams.", "expected_workflow": "hedis-stars-gap-closure-sprint" },
+        { "input": "Stars rating pressure requires a gap closure plan for open quality measures.", "expected_workflow": "hedis-stars-gap-closure-sprint" }
+      ],
+      "canary_tests": [
+        { "input": "HEDIS diabetic eye exam denominator gap and outreach sprint plan", "expected_workflow": "hedis-stars-gap-closure-sprint" }
+      ]
+    },
+    {
+      "id": "hl7-fhir-interface-incident",
+      "name": "HL7 or FHIR Interface Incident",
+      "category": "Health IT",
+      "summary": "Triage interface failures, feed latency, mapping errors, data quality defects, or possible PHI exposure into an incident workup.",
+      "triggers": ["HL7", "FHIR", "interface failure", "feed latency", "mapping error", "ADT", "message type", "data quality"],
+      "anti_triggers": ["direct API implementation", "patient-specific clinical interpretation"],
+      "primary_agent": "healthit-interoperability-engineer",
+      "handoff_agents": ["healthit-clinical-data-analyst", "healthit-information-manager", "quality-compliance-officer"],
+      "required_inputs": ["system names", "message type or resource", "failure mode", "timeline", "affected workflows"],
+      "optional_inputs": ["sample de-identified message", "interface engine logs", "mapping table", "recent deployment"],
+      "red_flags": ["possible PHI exposure", "patient safety workflow impact", "downtime procedure needed", "vendor escalation required"],
+      "output_artifact": "interface incident workup",
+      "artifact_sections": ["Incident summary", "Triage checklist", "Evidence to collect", "Communications", "Root-cause hypotheses", "Remediation plan"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use healthit-interoperability-engineer for an interface incident workup and escalate PHI/security concerns to compliance.",
+        "codex": "Produce an HL7/FHIR incident workup with system names, message type, failure mode, timeline, and remediation plan.",
+        "copilot": "Create an interface incident issue template with logs, mapping evidence, affected workflows, and acceptance criteria.",
+        "m365_copilot": "Use approved incident records and keep sample messages de-identified unless governed."
+      },
+      "examples": [
+        { "input": "HL7 ADT interface is failing ACKs and patient matching errors are affecting downstream workflows.", "expected_workflow": "hl7-fhir-interface-incident" }
+      ],
+      "canary_tests": [
+        { "input": "FHIR feed latency and HL7 mapping error caused interface incident", "expected_workflow": "hl7-fhir-interface-incident" }
+      ]
+    },
+    {
+      "id": "clinical-dashboard-specification",
+      "name": "Clinical Dashboard Specification",
+      "category": "Analytics",
+      "summary": "Turn a disputed or requested clinical/operational dashboard into metric definitions, grain, filters, validation plan, and ownership.",
+      "triggers": ["dashboard", "KPI definitions", "metric definitions", "data sources", "leadership wants", "validation plan", "trusted report"],
+      "anti_triggers": ["build production BI system without data owner", "clinical diagnosis"],
+      "primary_agent": "healthit-clinical-data-analyst",
+      "handoff_agents": ["operations-hospital-administrator", "quality-improvement-specialist", "revenue-finance-manager"],
+      "required_inputs": ["decision owner", "decisions supported", "metrics", "data sources", "cadence"],
+      "optional_inputs": ["filters", "grain", "refresh latency", "known disputes", "source-of-truth owner"],
+      "red_flags": ["metric definition conflict", "unvalidated source", "patient-level PHI exposure", "executive decision risk"],
+      "output_artifact": "dashboard requirements spec",
+      "artifact_sections": ["Decision context", "Metric definitions", "Data grain and filters", "Mock table", "Validation plan", "Owner sign-off"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use healthit-clinical-data-analyst to specify a dashboard with metric definitions, grain, filters, validation, and owner sign-off.",
+        "codex": "Draft a dashboard requirements spec with decisions supported, metrics, data sources, cadence, and validation plan.",
+        "copilot": "Create a dashboard spec prompt or issue with metric definitions, acceptance criteria, and data validation tasks.",
+        "m365_copilot": "Use governed data catalog references and produce a dashboard spec for review, not patient-level disclosure."
+      },
+      "examples": [
+        { "input": "Leadership wants a clinical dashboard but KPI definitions conflict and users distrust the current report.", "expected_workflow": "clinical-dashboard-specification" }
+      ],
+      "canary_tests": [
+        { "input": "Dashboard requirements spec for conflicting KPI definitions and data sources", "expected_workflow": "clinical-dashboard-specification" }
+      ]
+    },
+    {
+      "id": "pharmacy-contract-scorecard",
+      "name": "PBM or Pharmacy Contract Scorecard",
+      "category": "Pharmacy",
+      "summary": "Frame pharmacy spend, PBM terms, rebate questions, formulary performance, specialty spend, and negotiation evidence into a scorecard.",
+      "triggers": ["PBM", "pharmacy contract", "rebate", "formulary", "specialty spend", "pharmacy spend", "contract scorecard"],
+      "anti_triggers": ["patient medication advice", "formulary clinical decision"],
+      "primary_agent": "pharmacy-benefits-specialist",
+      "handoff_agents": ["revenue-finance-manager", "revenue-contract-analyst", "healthit-clinical-data-analyst"],
+      "required_inputs": ["contract terms", "utilization", "rebate terms", "specialty spend", "claims sample"],
+      "optional_inputs": ["formulary tier data", "guarantees", "audit rights", "spread pricing terms"],
+      "red_flags": ["legal contract dispute", "clinical formulary governance needed", "large unvalidated savings claim", "PHI in claims sample"],
+      "output_artifact": "pharmacy contract scorecard",
+      "artifact_sections": ["Scorecard structure", "Data request list", "Variance hypotheses", "Rebate and specialty spend review", "Negotiation points"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
+      "platform_prompt_templates": {
+        "claude": "Use pharmacy-benefits-specialist for a PBM/pharmacy contract scorecard and hand off legal/finance decisions.",
+        "codex": "Produce a pharmacy contract scorecard with terms, utilization, rebates, specialty spend, and data requests.",
+        "copilot": "Create a PBM scorecard prompt with contract inputs, data pulls, acceptance criteria, and governance notes.",
+        "m365_copilot": "Use approved pharmacy and contract sources and keep patient claims de-identified unless governed."
+      },
+      "examples": [
+        { "input": "PBM rebate and specialty pharmacy spend need a contract performance scorecard.", "expected_workflow": "pharmacy-contract-scorecard" }
+      ],
+      "canary_tests": [
+        { "input": "PBM contract scorecard for rebate terms formulary performance and specialty spend", "expected_workflow": "pharmacy-contract-scorecard" }
+      ]
+    },
+    {
+      "id": "emergency-preparedness-exercise-readiness",
+      "name": "Emergency Preparedness Exercise Readiness",
+      "category": "Emergency Preparedness",
+      "summary": "Prepare exercise objectives, injects, evaluation checklists, and after-action templates for CMS emergency preparedness or internal exercises.",
+      "triggers": ["emergency preparedness", "exercise", "after-action", "HVA", "hazard scenario", "inject list", "CMS emergency"],
+      "anti_triggers": ["live emergency command", "clinical emergency guidance"],
+      "primary_agent": "emergency-preparedness-coordinator",
+      "handoff_agents": ["operations-hospital-administrator", "quality-compliance-officer", "operations-supply-chain-manager"],
+      "required_inputs": ["hazard scenario", "sites", "participants", "current plan", "prior after-action findings"],
+      "optional_inputs": ["HVA", "communications plan", "exercise type", "evaluation roles", "supply constraints"],
+      "red_flags": ["active emergency", "incident command activation", "regulatory deadline", "critical infrastructure dependency"],
+      "output_artifact": "exercise readiness packet",
+      "artifact_sections": ["Exercise objectives", "Scenario assumptions", "Inject list", "Evaluation checklist", "After-action template", "Owner timeline"],
+      "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required", "emergency"],
+      "platform_prompt_templates": {
+        "claude": "Use emergency-preparedness-coordinator to create an exercise readiness packet and defer live emergency decisions to incident command.",
+        "codex": "Draft exercise objectives, injects, evaluation checklist, and after-action template from the hazard scenario and current plan.",
+        "copilot": "Create an emergency preparedness exercise issue with scenario, participants, inputs, safety notes, and acceptance criteria.",
+        "m365_copilot": "Use approved preparedness documents and produce a Teams/SharePoint-ready exercise packet."
+      },
+      "examples": [
+        { "input": "We need emergency preparedness exercise readiness for a severe weather scenario and prior after-action gaps.", "expected_workflow": "emergency-preparedness-exercise-readiness" }
+      ],
+      "canary_tests": [
+        { "input": "CMS emergency preparedness exercise needs HVA scenario inject list and after-action template", "expected_workflow": "emergency-preparedness-exercise-readiness" }
+      ]
+    }
+  ]
+}

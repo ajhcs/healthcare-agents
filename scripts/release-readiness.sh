@@ -28,15 +28,21 @@ node scripts/validate-registry-consistency.js
 node scripts/validate-source-freshness.js
 node scripts/validate-safety-boundaries.js
 node scripts/validate-release-manifest.js
+node scripts/validate-workflows.js
+node scripts/validate-workup-canaries.js
+node scripts/validate-platform-exports.js
+node scripts/validate-workflow-docs.js
 
 section "CLI, installer, routing, package, and tarball"
 node scripts/test-cli-regression.js
 bash scripts/test-installer-e2e.sh
 node scripts/run-routing-benchmark.js >/tmp/healthcare-agents-routing-benchmark.json
+node scripts/test-platform-render-snapshots.js
 node scripts/validate-packlist.js
 node scripts/test-tarball-smoke.js
 
 section "local public-release metadata"
 node scripts/verify-public-release.js
+node scripts/validate-public-version-sync.js
 
 printf "\nRelease readiness complete. Routing metrics written to /tmp/healthcare-agents-routing-benchmark.json\n"

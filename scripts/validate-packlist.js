@@ -27,9 +27,21 @@ const required = [
   'docs/eval/scorecard.json',
   'docs/eval/routing-benchmark.json',
   'docs/trust-and-safety.md',
+  'workflows/workflows.json',
+  'workflows/schema.json',
+  'platforms/platforms.json',
+  'platforms/schema.json',
+  'safety/snippets.json',
+  'lib/workflows.js',
+  'lib/renderers.js',
   'eval/results.tsv',
   'scripts/validate-packlist.js',
-  'scripts/test-tarball-smoke.js'
+  'scripts/test-tarball-smoke.js',
+  'scripts/validate-workflows.js',
+  'scripts/validate-workup-canaries.js',
+  'scripts/validate-platform-exports.js',
+  'scripts/test-platform-render-snapshots.js',
+  'scripts/validate-public-version-sync.js'
 ];
 
 for (const file of files) {

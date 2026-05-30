@@ -44,6 +44,22 @@ Each agent is a long-form Markdown specialist with YAML frontmatter, role-specif
 
 These agents are for healthcare administration support. They are not clinicians, attorneys, auditors, coders of record, billing authorities, or a safe PHI-processing environment. See [Trust and Safety](docs/trust-and-safety.md) for scope, PHI, human escalation, source freshness, and eval limits.
 
+## Healthcare Admin Workup Engine
+
+The Workup Engine routes a plain-language healthcare administration problem to a canonical workflow, primary specialist, supporting handoffs, missing questions, evidence list, safety boundaries, and a platform-ready prompt.
+
+~~~bash
+healthcare-agents workflows
+healthcare-agents workflow denial-spike-workup
+healthcare-agents workup "Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing."
+healthcare-agents workup "Prepare a HIPAA evidence checklist for a vendor security review." --target copilot
+healthcare-agents export m365-declarative-agent denial-spike-workup
+~~~
+
+The first workflow pack includes 16 healthcare operations workflows covering denial spikes, clean claim rate decline, payer underpayment, prior authorization appeals, discharge barriers, HIPAA evidence, survey readiness, patient safety RCA2, ED boarding, ambulatory access, value-based care risk, HEDIS/Stars gap closure, HL7/FHIR incidents, dashboard specs, pharmacy contract scorecards, and emergency preparedness exercises.
+
+Start with the [workflow gallery](docs/workflows/README.md), [example workup packets](docs/examples/workup-packets.md), and [platform compatibility guides](docs/platforms/github-copilot.md).
+
 ## Current Release
 
 Version 1.4.0 is the release-grade eval coverage release. It closes the tracked
@@ -84,6 +100,9 @@ Target a specific tool:
 | Cursor rules | `npx --yes healthcare-agents install --cursor` |
 | Windsurf rules | `npx --yes healthcare-agents install --windsurf` |
 | GitHub Copilot instructions | `npx --yes healthcare-agents install --copilot` |
+| GitHub Copilot full repo setup | `npx --yes healthcare-agents install --copilot-all` |
+| Claude workflow skills | `npx --yes healthcare-agents install --claude-workflow-skills` |
+| Codex workflow skills | `npx --yes healthcare-agents install --codex-skills` |
 | All known targets | `npx --yes healthcare-agents install --all` |
 
 Preview before writing files:

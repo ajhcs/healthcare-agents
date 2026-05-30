@@ -54,6 +54,28 @@ const low = cliJson(['choose', 'unstructured miscellaneous help']);
 assert.strictEqual(low.confidence, 'low');
 assert.ok(low.missing_inputs.length > 0);
 
+const workflows = cliJson(['workflows']);
+assert.strictEqual(workflows.count, 16);
+assert.ok(workflows.workflows.some(workflow => workflow.id === 'denial-spike-workup'));
+
+const workflow = cliJson(['workflow', 'denial-spike-workup']);
+assert.strictEqual(workflow.primary_agent, 'revenue-cycle-specialist');
+assert.ok(workflow.required_inputs.includes('payer or product'));
+
+const workup = cliJson(['workup', 'Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing.', '--target', 'codex']);
+assert.strictEqual(workup.workflow.id, 'denial-spike-workup');
+assert.strictEqual(workup.roles.primary, 'revenue-cycle-specialist');
+assert.ok(workup.platform_prompts.codex.includes('denial spike'));
+assert.ok(workup.safety.phi.includes('PHI'));
+
+const hipaaWorkup = cliJson(['workup', 'Prepare a HIPAA evidence checklist for a vendor security review.', '--target', 'm365-copilot']);
+assert.strictEqual(hipaaWorkup.workflow.id, 'hipaa-security-evidence-checklist');
+assert.ok(hipaaWorkup.selected_platform_prompt.includes('SharePoint'));
+
+const exportText = cli(['export', 'm365-declarative-agent', 'denial-spike-workup']);
+assert.match(exportText, /Declarative Agent Export/);
+assert.match(exportText, /Admin Review Checklist/);
+
 const prompt = cli(['prompt', 'quality-compliance-officer', '--mode', 'audit/checklist']);
 assert.match(prompt, /approved environment/);
 assert.match(prompt, /minimum necessary/);
