@@ -72,7 +72,12 @@ while [[ $# -gt 0 ]]; do
                   TARGETS+=(agent-skills); EXPLICIT=true; shift ;;
     --skills)    TARGETS+=(claude-skills opencode agent-skills); EXPLICIT=true; shift ;;
     --all)       ALL=true; shift ;;
-    --path)      CUSTOM_PATH="$2"; EXPLICIT=true; shift 2 ;;
+    --path)
+                  if [[ $# -lt 2 || "$2" == --* ]]; then
+                    err "--path requires a directory argument"
+                    exit 2
+                  fi
+                  CUSTOM_PATH="$2"; EXPLICIT=true; shift 2 ;;
     --force)     FORCE=true; shift ;;
     --uninstall) UNINSTALL=true; shift ;;
     --dry-run)   DRY_RUN=true; shift ;;
