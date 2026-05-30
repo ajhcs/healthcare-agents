@@ -29,24 +29,33 @@ Use this only from a maintainer shell authenticated to npm:
 npm whoami
 npm run release:check
 npm publish --dry-run --access public
-npm publish --access public --provenance
+npm publish --access public --otp=<one-time-password>
 node scripts/validate-public-version-sync.js --network
 ```
 
-## Current Known Gap
+## Current Publication Status
 
-At the time the Healthcare Admin Workup Engine landed, GitHub and repository metadata were at `1.4.0`, but npm latest still reported `1.3.0`. Publishing `healthcare-agents@1.4.0` requires authenticated npm maintainer credentials and is tracked in Beads as `beads-mfb.4` until `node scripts/validate-public-version-sync.js --network` passes.
+`healthcare-agents@1.4.0` is published to npm and the `latest` dist-tag resolves to `1.4.0`. The release tracker item `beads-mfb.4` and the release hygiene epic are closed.
 
-Current evidence:
+Verification commands:
 
-- Local `npm whoami` returns `E401 Unauthorized`.
-- `npm view healthcare-agents version` returns `1.3.0`.
-- `npm owner ls healthcare-agents` reports `ajhcs <215lyons@gmail.com>`.
-- GitHub Actions publish run `26691215621` failed with `ENEEDAUTH` before the workflow split token and trusted-publishing modes.
-- GitHub Actions publish run `26691265138` reached `Publish to npm with trusted publishing`, signed provenance, then npm rejected the package write with `E404 Not Found - PUT https://registry.npmjs.org/healthcare-agents`.
+```bash
+npm view healthcare-agents@latest version
+node scripts/validate-public-version-sync.js --network
+node scripts/verify-public-release.js --network
+```
 
-Maintainer action required:
+Expected result:
 
-1. In npm, configure trusted publishing for package `healthcare-agents` to allow repository `ajhcs/healthcare-agents`, workflow `.github/workflows/npm-publish.yml`, environment `npm-production`, and branch `main`; or add an `NPM_TOKEN` GitHub secret for an npm account with publish rights to `healthcare-agents`.
-2. Rerun the `Publish npm Package` workflow on `main` with expected version `1.4.0`.
-3. Confirm `node scripts/validate-public-version-sync.js --network` passes.
+- npm latest reports `1.4.0`.
+- Public version sync passes.
+- Public npm and GitHub release artifacts verify for `v1.4.0`.
+
+## Future Publish Auth Notes
+
+GitHub Actions publishing should use one of the supported npm auth paths before the next release:
+
+1. npm trusted publishing for package `healthcare-agents`, repository `ajhcs/healthcare-agents`, workflow `.github/workflows/npm-publish.yml`, environment `npm-production`, and branch `main`.
+2. An npm automation token stored as the GitHub Actions secret `NPM_TOKEN`.
+
+Classic or granular tokens that still require interactive 2FA will fail in CI with `EOTP`. For an emergency maintainer fallback, publish from a local authenticated shell with a live OTP, then run the network verification commands above.

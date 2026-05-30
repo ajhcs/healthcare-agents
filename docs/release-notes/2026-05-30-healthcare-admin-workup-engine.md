@@ -34,4 +34,4 @@ Microsoft 365 Copilot, Copilot Studio, Azure AI Foundry, Teams, SharePoint, Serv
 - bash scripts/test-installer-e2e.sh
 - node scripts/validate-public-version-sync.js
 
-Local release readiness passes. Public npm version sync still requires an authenticated npm maintainer publish because npm latest currently reports 1.3.0 while the repo and GitHub release are 1.4.0.
+Local release readiness passes. Public release verification also passes: npm latest resolves to `healthcare-agents@1.4.0`, the GitHub `v1.4.0` release is available, and `node scripts/verify-public-release.js --network` verifies the public artifacts.
