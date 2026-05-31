@@ -32,6 +32,7 @@ const required = [
   'docs/trust-and-safety.md',
   'docs/operator-os/catalog.md',
   'docs/operator-os/evidence-pack-authoring.md',
+  'docs/release-notes/2026-05-31-operator-os-catalog-hardening.md',
   'docs/release-publishing.md',
   'workflows/workflows.json',
   'workflows/schema.json',

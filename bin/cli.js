@@ -96,6 +96,10 @@ Installer options:
 Output modes:
   quick triage | workplan | audit/checklist | artifact/template
 
+Data modes:
+  prompt_only | public_evidence | synthetic_only | hybrid_synthetic_public | public_search | internal_private
+  Hyphenated aliases are accepted, for example public-evidence.
+
 Examples:
   healthcare-agents list --domain revenue
   healthcare-agents show revenue-cycle-specialist

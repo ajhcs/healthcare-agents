@@ -4,6 +4,7 @@ const { createWorkupAsync } = require('../lib/workflows');
 const {
   DATA_MODES,
   DEFAULT_DATA_MODE,
+  VALID_DATA_MODE_VALUES,
   normalizeDataMode,
   isNetworkMode,
   requiresExplicitInput
@@ -51,6 +52,9 @@ function assertNoPrivateFixturePayload(value) {
 
 assert.strictEqual(DEFAULT_DATA_MODE, DATA_MODES.PROMPT_ONLY);
 assert.strictEqual(normalizeDataMode(undefined), DATA_MODES.PROMPT_ONLY);
+assert.ok(VALID_DATA_MODE_VALUES.includes(DATA_MODES.PUBLIC_EVIDENCE));
+assert.strictEqual(normalizeDataMode('public-evidence'), DATA_MODES.PUBLIC_EVIDENCE);
+assert.strictEqual(normalizeDataMode('hybrid-synthetic-public'), DATA_MODES.HYBRID_SYNTHETIC_PUBLIC);
 assert.strictEqual(isNetworkMode(DATA_MODES.PUBLIC_SEARCH), true);
 assert.strictEqual(requiresExplicitInput(DATA_MODES.INTERNAL_PRIVATE), true);
 assert.throws(() => normalizeDataMode('bad_mode'), /unsupported data mode/);

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+No unreleased changes.
+
+## [1.5.0] - 2026-05-31
+
+Operator OS catalog hardening for all 16 healthcare administration workflows.
+
 ### Added
 
 - Added the Healthcare Admin Workup Engine with workflow listing, workflow detail, workup routing, and Microsoft/Copilot export commands.
@@ -12,12 +18,25 @@ All notable changes to this project will be documented in this file.
 - Added Microsoft 365 Copilot declarative agent, Copilot Studio, and Azure AI Foundry export templates for governed enterprise review.
 - Added workflow gallery pages, 35 example workup prompts, platform compatibility guides, demo setup folders, and workflow contribution guidance.
 - Added a governed npm publication workflow and release publishing runbook for maintainer-authenticated public distribution.
+- Added Operator OS coverage metadata and offline-first standard evidence packs for all 16 workflows, including citation-card source families, human owners, verification status, red flags, and PHI/compliance notes.
+- Added scaffold generation for workflow-specific Operator OS evidence packs.
 
 ### Changed
 
 - Expanded README and INSTALL around workflow-first routing, multi-runtime workflow installs, Copilot compatibility, and enterprise export paths.
+- Expanded Operator OS docs with catalog coverage and evidence-pack authoring guidance.
+- Bumped package, installer, README badge, and version metadata to v1.5.0.
 
-See [docs/release-notes/2026-05-30-healthcare-admin-workup-engine.md](docs/release-notes/2026-05-30-healthcare-admin-workup-engine.md) for full details.
+### Fixed
+
+- Accepted hyphenated `--data-mode` aliases such as `public-evidence` and documented valid data modes in CLI help.
+
+### Validation
+
+- Ran `npm test` / `npm run release:check` successfully on merged main before release edits.
+- Dogfooded all 16 workflows through `operator-os coverage --json`, `evidence-pack show <workflow> --json`, `evidence-pack scaffold <workflow>`, and routed `workup ... --target codex --data-mode public-evidence --json`.
+
+See [docs/release-notes/2026-05-31-operator-os-catalog-hardening.md](docs/release-notes/2026-05-31-operator-os-catalog-hardening.md) for full details.
 
 ## [1.4.0] - 2026-05-30
 
