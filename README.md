@@ -23,7 +23,7 @@
     <td align="center"><strong>51</strong><br><sub>healthcare specialists</sub></td>
     <td align="center"><strong>10</strong><br><sub>administrative domains</sub></td>
     <td align="center"><strong>94.18</strong><br><sub>avg latest tracked score</sub></td>
-    <td align="center"><strong>Routing + SKILL.md</strong><br><sub>usable agent formats</sub></td>
+    <td align="center"><strong>16</strong><br><sub>Operator OS workflows</sub></td>
   </tr>
 </table>
 
@@ -38,30 +38,112 @@ Each agent is a long-form Markdown specialist with YAML frontmatter, role-specif
 | Healthcare-specific agent behavior | 51 narrow specialists instead of one generic "healthcare assistant." |
 | Easier agent selection | CLI chooser, task-based docs, starter prompts, output modes, and handoff maps. |
 | Practical administrative output | Appeal packets, audit binders, gap analyses, dashboards, charters, payer matrices, readiness plans, and workflow checklists. |
+| Operator OS workflow support | 16 offline-first workflow evidence packs with coverage metadata, citation cards, provenance rules, and secure-environment defaults. |
 | Better regulatory handling | Role-aware references to HIPAA, CMS, OIG, HEDIS, Stars, MIPS/QPP, HRSA 340B, NHSN, TEFCA, HL7/FHIR, X12, and other domain sources. |
 | Portable installation | Claude Code agents, Claude/OpenCode skills, Codex agent prompts, Cursor/Windsurf/Copilot rules, Aider context, and plain Markdown. |
 | Prompt quality controls | An included self-improvement kit with a frozen rubric, role baselines, scorer guidance, and append-only eval results. |
 
 These agents are for healthcare administration support. They are not clinicians, attorneys, auditors, coders of record, billing authorities, or a safe PHI-processing environment. See [Trust and Safety](docs/trust-and-safety.md) for scope, PHI, human escalation, source freshness, and eval limits.
 
-## Healthcare Admin Workup Engine
+## Healthcare Admin Workup Engine and Operator OS
 
-The Workup Engine routes a plain-language healthcare administration problem to a canonical workflow, primary specialist, supporting handoffs, missing questions, evidence list, safety boundaries, and a platform-ready prompt.
+The Workup Engine routes a plain-language healthcare administration problem to a canonical workflow, primary specialist, supporting handoffs, missing questions, evidence list, safety boundaries, and a platform-ready prompt. Operator OS adds the release-gated layer around those workflows: coverage status, offline evidence packs, citation cards, fixture provenance, package validation, and secure-environment defaults.
+
+Use the Workup Engine when you want a structured first pass for an operational problem. Use the Operator OS commands when you need to inspect the evidence-control surface behind that workflow, generate a local evidence-pack scaffold, or verify which workflows have exemplar or standard-pack coverage.
 
 ~~~bash
 healthcare-agents workflows
 healthcare-agents workflow denial-spike-workup
+healthcare-agents operator-os coverage
 healthcare-agents evidence-pack list
 healthcare-agents evidence-pack show denial-spike-workup
+healthcare-agents evidence-pack scaffold clean-claim-rate-decline
 healthcare-agents workup "Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing."
 healthcare-agents workup "Commercial payer denial rate jumped" --data-mode synthetic_only
+healthcare-agents workup "Commercial payer denial rate jumped" --data-mode public-evidence
 healthcare-agents workup "Prepare a HIPAA evidence checklist for a vendor security review." --target copilot
 healthcare-agents export m365-declarative-agent denial-spike-workup
 ~~~
 
-The first workflow pack includes 16 healthcare operations workflows covering denial spikes, clean claim rate decline, payer underpayment, prior authorization appeals, discharge barriers, HIPAA evidence, survey readiness, patient safety RCA2, ED boarding, ambulatory access, value-based care risk, HEDIS/Stars gap closure, HL7/FHIR incidents, dashboard specs, pharmacy contract scorecards, and emergency preparedness exercises.
+### What a workup returns
+
+Each routed workup includes:
+
+- the selected workflow and routing confidence;
+- the primary specialist and handoff agents;
+- missing required inputs and optional evidence questions;
+- evidence to collect from local systems or accountable owners;
+- red flags and safety constraints;
+- a platform-specific prompt for Codex, Claude, GitHub Copilot, or Microsoft 365 Copilot;
+- evidence-pack context when the workflow has Operator OS coverage;
+- optional fixture case data when an explicit data mode asks for it.
+
+### Operator OS coverage
+
+Version 1.5.0 gives all 16 workflow-pack entries an Operator OS status. Denial Spike is the first exemplar; the remaining workflows ship as standard packs with offline evidence metadata and citation-card scaffolds.
+
+| Workflow | Category | Status | Primary specialist |
+|---|---|---|---|
+| `denial-spike-workup` | Revenue Cycle | exemplar | `revenue-cycle-specialist` |
+| `clean-claim-rate-decline` | Revenue Cycle | standard pack | `revenue-cycle-specialist` |
+| `payer-contract-underpayment-review` | Payer Contracting | standard pack | `revenue-contract-analyst` |
+| `prior-authorization-appeal-workup` | Clinical Administration | standard pack | `clinical-prior-authorization-specialist` |
+| `discharge-barrier-workplan` | Care Coordination | standard pack | `clinical-case-manager` |
+| `hipaa-security-evidence-checklist` | Compliance | standard pack | `quality-compliance-officer` |
+| `survey-readiness-gap-review` | Compliance | standard pack | `quality-accreditation-specialist` |
+| `patient-safety-rca2-workup` | Quality and Safety | standard pack | `quality-patient-safety-officer` |
+| `ed-boarding-capacity-workup` | Operations | standard pack | `operations-hospital-administrator` |
+| `ambulatory-access-backlog` | Operations | standard pack | `operations-ambulatory-manager` |
+| `value-based-care-downside-risk-readiness` | Value-Based Care | standard pack | `payer-value-based-care-manager` |
+| `hedis-stars-gap-closure-sprint` | Quality | standard pack | `quality-improvement-specialist` |
+| `hl7-fhir-interface-incident` | Health IT | standard pack | `healthit-interoperability-engineer` |
+| `clinical-dashboard-specification` | Analytics | standard pack | `healthit-clinical-data-analyst` |
+| `pharmacy-contract-scorecard` | Pharmacy | standard pack | `pharmacy-benefits-specialist` |
+| `emergency-preparedness-exercise-readiness` | Emergency Preparedness | standard pack | `emergency-preparedness-coordinator` |
+
+The source of truth is [workflows/operator-os-coverage.json](workflows/operator-os-coverage.json). The human-readable table lives in [Operator OS Catalog Coverage](docs/operator-os/catalog.md).
 
 Denial Spike is the first Operator OS exemplar. It ships with a versioned, offline-first evidence pack and citation cards that identify source families, lookup paths, review owners, verification status, and red flags without requiring live network access. Runtime case enrichment is explicit-mode only: default workups use the prompt plus public evidence-pack metadata, while synthetic demo data requires `--data-mode synthetic_only` or `--data-mode hybrid_synthetic_public` and every generated field carries provenance. Hyphenated data-mode aliases such as `--data-mode public-evidence` are accepted for CLI ergonomics. Live evidence refresh/search and private case ingestion are future maintenance paths, not default runtime dependencies.
+
+### Evidence packs and citation cards
+
+Evidence packs are committed, offline-first source-control artifacts. They do not store payer portal exports, private contract text, downloaded policy payloads, PHI, screenshots, or live-search results. They tell the agent which source families, local lookup paths, required fields, owners, and red flags matter for a workflow.
+
+Citation-card statuses are intentionally conservative:
+
+| Status | Meaning |
+|---|---|
+| `verified-pinpoint` | Exact source text or citation was locally verified. This is rare in the public pack. |
+| `source-family-not-pinpoint` | The pack names the right source family and lookup path, but not an exact verified citation. |
+| `local-policy-required` | Final interpretation depends on local policy, payer contract, provider manual, legal/compliance owner, clinical owner, coding owner, or system owner. |
+| `expired-review` | The card is stale and cannot be active in a release pack. |
+
+This is deliberate. The catalog is designed for Azure, Codex Cloud, locked-down enterprise workstations, and other secure environments that cannot rely on live external fetching. Live evidence refresh/search, payer portal connectors, private case ingestion, and MCP adapters are future integration paths, not default runtime dependencies.
+
+### Case data modes and provenance
+
+Runtime case enrichment is explicit-mode only. Default workups use the prompt and public workflow metadata. Fixture or evidence metadata appears only when the user requests a data mode.
+
+| Data mode | Network? | Private data? | Behavior |
+|---|---:|---:|---|
+| `prompt_only` | No | No | Default. No case-data enrichment. |
+| `public_evidence` | No | No | Attaches offline evidence-pack metadata for the routed workflow. |
+| `synthetic_only` | No | No | Attaches deterministic synthetic fixture data where a fixture exists. |
+| `hybrid_synthetic_public` | No | No | Combines synthetic fixture data with evidence-pack metadata. |
+| `public_search` | Disabled | No | Reserved for a future explicit refresh/search adapter; fails closed today. |
+| `internal_private` | No by default | Requires future local input | Reserved for future governed private-data ingestion; fails closed today. |
+
+Hyphenated aliases are accepted for CLI ergonomics, so `--data-mode public-evidence` and `--data-mode hybrid-synthetic-public` normalize to the underscore forms.
+
+Every generated fixture field carries provenance:
+
+| Provenance | Meaning |
+|---|---|
+| `synthetic` | Deterministic demo or test fixture value. |
+| `user_supplied` | Directly derived from the CLI prompt or future local user input. |
+| `source_derived` | Derived from a named citation card, evidence-pack card, uploaded local file, or other explicit local source. |
+
+Prompt-derived facts such as payer, product, CARC/RARC code, interface type, dashboard domain, or review scope must not be labeled as purely synthetic.
 
 Phase 2 expands the same Operator OS pattern across the workflow catalog. Use `healthcare-agents operator-os coverage` to see exemplar and standard-pack status for all 16 workflows, and see [Operator OS Catalog Coverage](docs/operator-os/catalog.md) plus [Evidence Pack Authoring](docs/operator-os/evidence-pack-authoring.md) for coverage rules, provenance labels, citation-card status meanings, and secure-environment boundaries.
 
@@ -449,10 +531,14 @@ During a normal eval run, only the requested `agents/<slug>.md` file should chan
 │   ├── role-baselines/              # expected capability baselines
 │   └── run-logs/                    # local ignored exact-question artifacts
 ├── docs/eval/                       # scorecard, routing benchmark, canary suite, scorer guidance
+├── docs/operator-os/                # catalog coverage and evidence-pack authoring docs
 ├── docs/usage/                      # agent chooser, starter prompts, handoff map
+├── workflows/                       # workflow registry, Operator OS coverage, evidence packs
+│   └── evidence-packs/              # offline-first evidence-pack JSON files
+├── lib/operator-os/                 # data modes, provenance, fixtures, golden artifacts
 ├── bin/cli.js                       # GitHub-backed npx entrypoint
 ├── install.sh                       # multi-tool installer
-└── scripts/                         # lint and self-improvement kit helpers
+└── scripts/                         # release, validation, scaffold, and self-improvement helpers
 ```
 
 ## Validation
@@ -467,6 +553,35 @@ Run the full local release gate used by CI:
 
 ```bash
 npm run release:check
+```
+
+Run the Operator OS validators directly:
+
+```bash
+npm run validate:evidence-packs
+npm run validate:operator-os-coverage
+npm run test:evidence-packs
+npm run test:case-data-provider
+npm run test:operator-os-coverage
+```
+
+Dogfood the Operator OS catalog:
+
+```bash
+healthcare-agents operator-os coverage --json
+healthcare-agents evidence-pack list --json
+healthcare-agents evidence-pack show denial-spike-workup --json
+healthcare-agents evidence-pack scaffold clean-claim-rate-decline
+healthcare-agents workup "CARC 197 denials doubled for imaging authorizations" --target codex --data-mode public-evidence --json
+```
+
+Release maintainers should also run:
+
+```bash
+node scripts/verify-public-release.js
+node scripts/validate-public-version-sync.js
+npm pack --json --dry-run
+npm publish --dry-run --access public
 ```
 
 Preview installer behavior:
@@ -484,6 +599,9 @@ npx --yes healthcare-agents --help
 ## Limitations
 
 - The agents provide healthcare administration support, not final clinical, legal, coding, billing, audit, or compliance determinations.
+- Operator OS evidence packs are source-family and local-governance controls. Most public cards are not verified pinpoint citations.
+- Standard-pack workflows have evidence metadata and validation, but Denial Spike is the only exemplar with full golden-artifact scoring in v1.5.0.
+- Live public search, scheduled evidence refresh, payer portal connectors, private payer contract ingestion, PHI-bearing upload parsing, and MCP adapters are not part of the default runtime.
 - Regulations, code sets, payer policies, accreditation standards, and program manuals change. Verify against current primary sources before operational use.
 - The prompts do not make an AI tool HIPAA-compliant and do not create a safe PHI-processing environment. Use approved privacy, security, de-identification, and vendor-review workflows.
 - Tool support differs by runtime. The installer uses best-known current file layouts and keeps plain Markdown as the fallback.
@@ -498,6 +616,8 @@ npx --yes healthcare-agents --help
 | Your tool does not auto-discover the agents | Install to a custom path with `--path <dir>` or copy the relevant `agents/<slug>.md` file into the tool's documented rule/context folder. |
 | Claude/OpenCode rejects a skill name | Use v1.1.1 or newer; agent and skill names are lowercase hyphen slugs. |
 | You only want one agent | Copy the specific `agents/<slug>.md` file or generated `SKILL.md` folder manually. The installer is pack-oriented. |
+| `--data-mode public-evidence` fails in older installs | Upgrade to v1.5.0 or use the underscore form `--data-mode public_evidence`. |
+| A workflow has no synthetic fixture | Use `--data-mode public-evidence` or plain workup mode. Only priority workflows have deterministic fixtures in v1.5.0. |
 
 ## FAQ
 
@@ -520,6 +640,28 @@ Use them for structured analysis, checklists, source-aware workflows, and draft 
 ### Can I use these with PHI?
 
 Only inside an environment your organization has approved for PHI, with the right vendor agreements, access controls, retention settings, and de-identification practices. The prompts themselves do not solve that governance problem.
+
+### Does Operator OS fetch external evidence?
+
+No. Normal workup generation, evidence-pack display, scaffold generation, tests, package validation, and release readiness do not fetch live external resources. Evidence packs contain offline metadata and lookup paths so teams can bring their own current local sources.
+
+### What is the difference between exemplar and standard pack?
+
+An exemplar has the full Operator OS treatment: evidence pack, citation cards, fixture/provenance support, artifact scoring, docs, and domain review. A standard pack has evidence-pack metadata, citation cards, docs, and validation, but not full golden-artifact scoring yet. In v1.5.0, `denial-spike-workup` is the exemplar and the other 15 workflows are standard packs.
+
+### How do I publish the npm package after a release PR merges?
+
+Publishing is maintainer-controlled. Use the [release publishing runbook](docs/release-publishing.md). The short local path is:
+
+```bash
+npm login --auth-type=legacy
+npm whoami
+npm run release:check
+npm publish --dry-run --access public
+npm publish --access public --otp=<one-time-password>
+node scripts/validate-public-version-sync.js --network
+node scripts/verify-public-release.js --network
+```
 
 ### Can I add my own agents?
 
