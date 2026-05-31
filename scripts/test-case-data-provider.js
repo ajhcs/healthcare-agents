@@ -31,10 +31,16 @@ const defaultProvider = createCaseDataProvider();
 assert.strictEqual(defaultProvider.mode, DATA_MODES.PROMPT_ONLY);
 assert.strictEqual(defaultProvider.getCaseData('denial-spike-workup', 'denials').status, 'not_requested');
 
-const synthetic = buildSyntheticDenialSpikeCase({ prompt: 'Medicare Advantage denials spiked' });
+const synthetic = buildSyntheticDenialSpikeCase({ prompt: 'Medicare Advantage denials spiked with CARC 197' });
 assertAllFieldsProvenanced(synthetic);
 const summary = summarizeProvenance(synthetic);
-assert.strictEqual(summary.counts[PROVENANCE_TYPES.SYNTHETIC], Object.keys(synthetic).length);
+assert.strictEqual(synthetic.payer.provenance.type, PROVENANCE_TYPES.USER_SUPPLIED);
+assert.strictEqual(synthetic.payer.provenance.source, 'cli.problem');
+assert.strictEqual(synthetic.product.provenance.type, PROVENANCE_TYPES.USER_SUPPLIED);
+assert.strictEqual(synthetic.dominant_carc_rarc.provenance.type, PROVENANCE_TYPES.USER_SUPPLIED);
+assert.match(synthetic.dominant_carc_rarc.value, /CARC 197/);
+assert.strictEqual(summary.counts[PROVENANCE_TYPES.USER_SUPPLIED], 3);
+assert.strictEqual(summary.counts[PROVENANCE_TYPES.SYNTHETIC], Object.keys(synthetic).length - 3);
 assert.strictEqual(stripProvenance(synthetic).payer, 'Medicare Advantage payer');
 
 assert.throws(() => assertAllFieldsProvenanced({ payer: 'Commercial payer' }), /field lacks provenance/);
