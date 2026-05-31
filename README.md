@@ -51,12 +51,17 @@ The Workup Engine routes a plain-language healthcare administration problem to a
 ~~~bash
 healthcare-agents workflows
 healthcare-agents workflow denial-spike-workup
+healthcare-agents evidence-pack list
+healthcare-agents evidence-pack show denial-spike-workup
 healthcare-agents workup "Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing."
+healthcare-agents workup "Commercial payer denial rate jumped" --data-mode synthetic_only
 healthcare-agents workup "Prepare a HIPAA evidence checklist for a vendor security review." --target copilot
 healthcare-agents export m365-declarative-agent denial-spike-workup
 ~~~
 
 The first workflow pack includes 16 healthcare operations workflows covering denial spikes, clean claim rate decline, payer underpayment, prior authorization appeals, discharge barriers, HIPAA evidence, survey readiness, patient safety RCA2, ED boarding, ambulatory access, value-based care risk, HEDIS/Stars gap closure, HL7/FHIR incidents, dashboard specs, pharmacy contract scorecards, and emergency preparedness exercises.
+
+Denial Spike is the first Operator OS exemplar. It ships with a versioned, offline-first evidence pack and citation cards that identify source families, lookup paths, review owners, verification status, and red flags without requiring live network access. Runtime case enrichment is explicit-mode only: default workups use the prompt plus public evidence-pack metadata, while synthetic demo data requires `--data-mode synthetic_only` or `--data-mode hybrid_synthetic_public` and every generated field carries provenance. Live evidence refresh/search and private case ingestion are future maintenance paths, not default runtime dependencies.
 
 Start with the [workflow gallery](docs/workflows/README.md), [example workup packets](docs/examples/workup-packets.md), and [platform compatibility guides](docs/platforms/github-copilot.md).
 

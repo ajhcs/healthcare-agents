@@ -28,11 +28,15 @@ Use PHI only in an approved environment with the required security, privacy, con
 
 Do not paste PHI into public models, unapproved tools, issue trackers, logs, pull requests, screenshots, or chat transcripts.
 
+Evidence packs and fixtures in this repository must not contain PHI, private payer contract text, payer portal exports, local caches, or downloaded source payloads. Demo case data must be synthetic and provenance-labeled.
+
 ## Source Freshness
 
 Agent prompts include source awareness, but healthcare rules change. Verify current source materials before relying on outputs, especially for CMS rules, payer policies, ICD-10/CPT/HCPCS code sets, NCCI edits, HEDIS/Stars/MIPS specifications, HIPAA/OIG guidance, 340B/HRSA rules, accreditation standards, state Medicaid and licensure rules, contracts, and local policies.
 
 The registry last-reviewed date is provenance metadata for the prompt pack. It is not evidence that every external source is current on that date.
+
+Operator OS evidence packs use citation cards. When exact source text has not been locally verified, cards use source-family or local-policy-required status and name the lookup path, human owner, effective/review date, and red flags. They must not invent page numbers, fake URLs, unsupported payer policies, appeal deadlines, or billing/legal claims.
 
 Release readiness now treats source freshness as a gated lifecycle control:
 
@@ -46,6 +50,8 @@ Release readiness now treats source freshness as a gated lifecycle control:
 The public scorecard reports internal rubric results for prompt quality, role coverage, and usability. Scores are not certification, accreditation, legal review, coding validation, billing approval, clinical validation, compliance approval, or proof of fitness for PHI.
 
 Use eval scores as maintenance signals only. A high score does not remove the need for current-source verification and human review.
+
+Human review remains required for payer-specific contracts, policy interpretation, appeals, coding, billing, medical necessity, legal/compliance decisions, and any use of private or PHI-bearing case material.
 
 ## Installation Safety
 

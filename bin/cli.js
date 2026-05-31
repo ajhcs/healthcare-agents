@@ -11,9 +11,15 @@ const {
   loadWorkflows,
   findWorkflow,
   createWorkup,
+  createWorkupAsync,
   formatWorkupMarkdown,
   normalizeTarget
 } = require('../lib/workflows');
+const {
+  listEvidencePacks,
+  getEvidencePackForWorkflow,
+  formatEvidencePackMarkdown
+} = require('../lib/evidence-packs');
 const renderers = require('../lib/renderers');
 const VALID_MODES = ['quick triage', 'workplan', 'audit/checklist', 'artifact/template'];
 
@@ -62,7 +68,9 @@ Usage:
   healthcare-agents choose "<problem>" [--json]
   healthcare-agents workflows [--json]
   healthcare-agents workflow <workflow-id> [--json]
-  healthcare-agents workup "<problem>" [--target codex|claude|copilot|m365-copilot] [--json]
+  healthcare-agents evidence-pack list [--json]
+  healthcare-agents evidence-pack show <workflow-id|pack-id> [--json]
+  healthcare-agents workup "<problem>" [--target codex|claude|copilot|m365-copilot] [--data-mode <mode>] [--json]
   healthcare-agents export <platform> <workflow-id> [--output <dir>]
   healthcare-agents prompt <agent> --mode <mode>
   healthcare-agents doctor [--json]
@@ -89,6 +97,7 @@ Examples:
   healthcare-agents list --domain revenue
   healthcare-agents show revenue-cycle-specialist
   healthcare-agents choose "clean claim rate dropped after an EHR update"
+  healthcare-agents evidence-pack show denial-spike-workup
   healthcare-agents workup "Commercial payer denial rate jumped 18 percent" --target codex
   healthcare-agents export m365-declarative-agent denial-spike-workup
   healthcare-agents prompt quality-compliance-officer --mode audit/checklist
@@ -429,15 +438,72 @@ function showWorkflow(args) {
   console.log('Red flags: ' + workflow.red_flags.join('; '));
 }
 
-function workupCommand(args) {
+function evidencePackCommand(args) {
+  const subcommand = args[0];
+  const json = hasFlag(args, '--json');
+  if (subcommand === 'list') {
+    const packs = listEvidencePacks().map(pack => ({
+      id: pack.id,
+      workflow_id: pack.workflow_id,
+      version: pack.version,
+      status: pack.status,
+      last_reviewed: pack.last_reviewed
+    }));
+    if (json) {
+      console.log(JSON.stringify({ count: packs.length, packs }, null, 2));
+      return;
+    }
+    console.log(formatTable(packs, [
+      { key: 'workflow_id', header: 'Workflow' },
+      { key: 'id', header: 'Pack' },
+      { key: 'version', header: 'Version' },
+      { key: 'status', header: 'Status' },
+      { key: 'last_reviewed', header: 'Last reviewed' }
+    ]));
+    return;
+  }
+  if (subcommand === 'show') {
+    const id = args.find(arg => !arg.startsWith('--') && arg !== 'show');
+    if (!id) {
+      console.error('error: evidence-pack show requires a workflow id or pack id');
+      process.exit(2);
+    }
+    const pack = getEvidencePackForWorkflow(id);
+    if (!pack) {
+      const available = listEvidencePacks().map(item => item.workflow_id).join(', ');
+      console.error('error: unknown evidence pack: ' + id);
+      console.error('available workflow ids: ' + (available || 'none'));
+      process.exit(1);
+    }
+    if (json) {
+      console.log(JSON.stringify(pack, null, 2));
+      return;
+    }
+    console.log(formatEvidencePackMarkdown(pack));
+    return;
+  }
+  console.error('error: evidence-pack requires list or show');
+  process.exit(2);
+}
+
+async function workupCommand(args) {
   const json = hasFlag(args, '--json');
   const target = normalizeTarget(readOption(args, '--target') || 'codex');
-  const problem = argsWithoutOptions(args, ['--target']).filter(arg => arg !== '--json' && arg !== '--markdown').join(' ').trim();
+  const dataMode = readOption(args, '--data-mode');
+  const problem = argsWithoutOptions(args, ['--target', '--data-mode']).filter(arg => arg !== '--json' && arg !== '--markdown').join(' ').trim();
   if (!problem) {
     console.error('error: workup requires a healthcare administration problem description');
     process.exit(1);
   }
-  const workup = createWorkup(problem, { target });
+  let workup;
+  try {
+    workup = dataMode
+      ? await createWorkupAsync(problem, { target, dataMode })
+      : createWorkup(problem, { target });
+  } catch (e) {
+    console.error('error: ' + e.message);
+    process.exit(2);
+  }
   if (json) {
     console.log(JSON.stringify(workup, null, 2));
     return;
@@ -667,7 +733,7 @@ function runInstaller(command, args) {
   }
 }
 
-function main() {
+async function main() {
   const args = process.argv.slice(2);
   if (args.length === 0 || hasFlag(args, '--help') || hasFlag(args, '-h')) {
     printHelp();
@@ -680,6 +746,7 @@ function main() {
   if (command === 'choose') return chooseAgent(rest);
   if (command === 'workflows') return listWorkflows(rest);
   if (command === 'workflow') return showWorkflow(rest);
+  if (command === 'evidence-pack') return evidencePackCommand(rest);
   if (command === 'workup') return workupCommand(rest);
   if (command === 'export') return exportCommand(rest);
   if (command === 'internal-render') return internalRender(rest);
@@ -689,4 +756,7 @@ function main() {
   runInstaller('install', args);
 }
 
-main();
+main().catch(error => {
+  console.error('error: ' + error.message);
+  process.exit(1);
+});

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/workflows/evidence-packs/schema.json",
+  "title": "Operator OS Evidence Pack Registry",
+  "type": "object",
+  "required": ["schema_version", "packs"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "operator-os.evidence-packs.v1"
+    },
+    "packs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/pack" }
+    }
+  },
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "pack": {
+      "type": "object",
+      "required": [
+        "id",
+        "workflow_id",
+        "exemplar",
+        "version",
+        "status",
+        "title",
+        "last_reviewed",
+        "offline_first",
+        "phi_policy",
+        "source_categories",
+        "citation_cards",
+        "required_evidence",
+        "failure_modes",
+        "test_prompts"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "workflow_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "exemplar": { "type": "boolean" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "status": { "type": "string", "enum": ["active", "draft", "retired"] },
+        "title": { "type": "string", "minLength": 1 },
+        "last_reviewed": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "offline_first": { "type": "boolean" },
+        "phi_policy": { "type": "string", "minLength": 1 },
+        "source_categories": { "$ref": "#/$defs/stringArray" },
+        "citation_cards": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/citationCard" }
+        },
+        "required_evidence": { "$ref": "#/$defs/stringArray" },
+        "failure_modes": { "$ref": "#/$defs/stringArray" },
+        "test_prompts": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "citationCard": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "source_category",
+        "source_family",
+        "authority_level",
+        "citation_text",
+        "last_verified",
+        "effective_date",
+        "offline_locator",
+        "required_fields",
+        "applies_to_sections",
+        "human_owner",
+        "verification_status",
+        "red_flags"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "source_category": { "type": "string", "minLength": 1 },
+        "source_family": { "type": "string", "minLength": 1 },
+        "authority_level": { "type": "string", "minLength": 1 },
+        "citation_text": { "type": "string", "minLength": 1 },
+        "last_verified": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "effective_date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$|^local-policy-required$|^varies-by-payer$|^varies-by-contract$" },
+        "offline_locator": { "type": "string", "minLength": 1 },
+        "required_fields": { "$ref": "#/$defs/stringArray" },
+        "applies_to_sections": { "$ref": "#/$defs/stringArray" },
+        "human_owner": { "type": "string", "minLength": 1 },
+        "verification_status": {
+          "type": "string",
+          "enum": ["verified-pinpoint", "source-family-not-pinpoint", "local-policy-required", "expired-review"]
+        },
+        "red_flags": { "$ref": "#/$defs/stringArray" }
+      }
+    }
+  }
+}
