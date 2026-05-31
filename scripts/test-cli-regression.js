@@ -71,6 +71,11 @@ const coverageText = cli(['operator-os', 'coverage']);
 assert.match(coverageText, /denial-spike-workup/);
 assert.match(coverageText, /standard_pack/);
 
+const helpText = cli(['--help']);
+assert.match(helpText, /Data modes:/);
+assert.match(helpText, /public_evidence/);
+assert.match(helpText, /Hyphenated aliases are accepted/);
+
 const evidencePackList = cliJson(['evidence-pack', 'list']);
 assert.strictEqual(evidencePackList.count, 16);
 assert.ok(evidencePackList.packs.some(pack => pack.workflow_id === 'denial-spike-workup'));
@@ -102,6 +107,11 @@ const syntheticWorkup = cliJson(['workup', 'denial spike for payer X', '--data-m
 assert.strictEqual(syntheticWorkup.case_data.mode, 'synthetic_only');
 assert.strictEqual(syntheticWorkup.case_data.status, 'ok');
 assert.ok(syntheticWorkup.case_data.case_data.payer.provenance);
+
+const publicEvidenceAlias = cliJson(['workup', 'denial spike for payer X', '--data-mode', 'public-evidence']);
+assert.strictEqual(publicEvidenceAlias.case_data.mode, 'public_evidence');
+assert.strictEqual(publicEvidenceAlias.case_data.status, 'ok');
+assert.ok(publicEvidenceAlias.case_data.evidence_pack);
 
 const hybridWorkupText = cli(['workup', 'denial spike for payer X', '--data-mode', 'hybrid_synthetic_public']);
 assert.match(hybridWorkupText, /## Case Data/);

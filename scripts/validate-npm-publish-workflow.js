@@ -34,7 +34,8 @@ for (const needle of [
   'Release Publishing Runbook',
   'npm trusted publishing',
   'NPM_TOKEN',
-  'beads-mfb.4',
+  'expected version',
+  'dist-tag',
   'validate-public-version-sync.js --network'
 ]) {
   if (!runbook.includes(needle)) failures.push(runbookPath + ' missing ' + needle);

@@ -14,7 +14,7 @@
   <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
   <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20evaluated-brightgreen?style=flat-square" alt="51 of 51 agents have tracked eval rows"></a>
   <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
-  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.4.0"><img src="https://img.shields.io/badge/version-1.4.0-blue?style=flat-square" alt="v1.4.0"></a>
+  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.5.0"><img src="https://img.shields.io/badge/version-1.5.0-blue?style=flat-square" alt="v1.5.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
 </p>
 
@@ -61,7 +61,7 @@ healthcare-agents export m365-declarative-agent denial-spike-workup
 
 The first workflow pack includes 16 healthcare operations workflows covering denial spikes, clean claim rate decline, payer underpayment, prior authorization appeals, discharge barriers, HIPAA evidence, survey readiness, patient safety RCA2, ED boarding, ambulatory access, value-based care risk, HEDIS/Stars gap closure, HL7/FHIR incidents, dashboard specs, pharmacy contract scorecards, and emergency preparedness exercises.
 
-Denial Spike is the first Operator OS exemplar. It ships with a versioned, offline-first evidence pack and citation cards that identify source families, lookup paths, review owners, verification status, and red flags without requiring live network access. Runtime case enrichment is explicit-mode only: default workups use the prompt plus public evidence-pack metadata, while synthetic demo data requires `--data-mode synthetic_only` or `--data-mode hybrid_synthetic_public` and every generated field carries provenance. Live evidence refresh/search and private case ingestion are future maintenance paths, not default runtime dependencies.
+Denial Spike is the first Operator OS exemplar. It ships with a versioned, offline-first evidence pack and citation cards that identify source families, lookup paths, review owners, verification status, and red flags without requiring live network access. Runtime case enrichment is explicit-mode only: default workups use the prompt plus public evidence-pack metadata, while synthetic demo data requires `--data-mode synthetic_only` or `--data-mode hybrid_synthetic_public` and every generated field carries provenance. Hyphenated data-mode aliases such as `--data-mode public-evidence` are accepted for CLI ergonomics. Live evidence refresh/search and private case ingestion are future maintenance paths, not default runtime dependencies.
 
 Phase 2 expands the same Operator OS pattern across the workflow catalog. Use `healthcare-agents operator-os coverage` to see exemplar and standard-pack status for all 16 workflows, and see [Operator OS Catalog Coverage](docs/operator-os/catalog.md) plus [Evidence Pack Authoring](docs/operator-os/evidence-pack-authoring.md) for coverage rules, provenance labels, citation-card status meanings, and secure-environment boundaries.
 
@@ -69,11 +69,12 @@ Start with the [workflow gallery](docs/workflows/README.md), [example workup pac
 
 ## Current Release
 
-Version 1.4.0 is the release-grade eval coverage release. It closes the tracked
-eval backlog with 51/51 evaluated agents, 51/51 tracked improved agents, and a
-94.18 average latest tracked score from the generated scorecard. See
-[the v1.4.0 release notes](docs/release-notes/2026-05-30-release-grade-eval-coverage.md)
-for the evidence summary and scope limits.
+Version 1.5.0 is the Operator OS catalog hardening release. It makes all 16
+healthcare administration workflows visible through Operator OS coverage,
+evidence-pack show, evidence-pack scaffold, and routed workup commands, with
+offline-first standard evidence packs across the catalog. See
+[the v1.5.0 release notes](docs/release-notes/2026-05-31-operator-os-catalog-hardening.md)
+for dogfood evidence, release checks, and scope limits.
 
 ## Install
 

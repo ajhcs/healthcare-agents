@@ -15,7 +15,7 @@ Use this runbook after `main` is green and the package version has been reviewed
 
 1. Open Actions -> Publish npm Package.
 2. Choose `Run workflow` on `main`.
-3. Enter the expected version, for example `1.4.0`.
+3. Enter the expected version, for example `1.5.0`.
 4. Approve the `npm-production` environment if GitHub requires review.
 5. Confirm the workflow runs release readiness, package dry-run, `npm publish --access public --provenance`, and public version verification.
 
@@ -35,7 +35,7 @@ node scripts/validate-public-version-sync.js --network
 
 ## Current Publication Status
 
-`healthcare-agents@1.4.0` is published to npm and the `latest` dist-tag resolves to `1.4.0`. The release tracker item `beads-mfb.4` and the release hygiene epic are closed.
+`healthcare-agents@1.4.0` is the latest published npm package at the start of the v1.5.0 release-prep branch. After v1.5.0 publication, the `latest` dist-tag and GitHub release should resolve to `1.5.0`.
 
 Verification commands:
 
@@ -47,9 +47,9 @@ node scripts/verify-public-release.js --network
 
 Expected result:
 
-- npm latest reports `1.4.0`.
+- npm latest reports `1.5.0`.
 - Public version sync passes.
-- Public npm and GitHub release artifacts verify for `v1.4.0`.
+- Public npm and GitHub release artifacts verify for `v1.5.0`.
 
 ## Future Publish Auth Notes
 
