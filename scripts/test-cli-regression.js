@@ -62,11 +62,41 @@ const workflow = cliJson(['workflow', 'denial-spike-workup']);
 assert.strictEqual(workflow.primary_agent, 'revenue-cycle-specialist');
 assert.ok(workflow.required_inputs.includes('payer or product'));
 
+const evidencePackList = cliJson(['evidence-pack', 'list']);
+assert.ok(evidencePackList.packs.some(pack => pack.workflow_id === 'denial-spike-workup'));
+
+const evidencePackShow = cli(['evidence-pack', 'show', 'denial-spike-workup']);
+assert.match(evidencePackShow, /Operator OS Denial Spike Evidence Pack/);
+assert.match(evidencePackShow, /Citation Cards/);
+
+const evidencePackJson = cliJson(['evidence-pack', 'show', 'denial-spike-workup']);
+assert.strictEqual(evidencePackJson.workflow_id, 'denial-spike-workup');
+assert.ok(evidencePackJson.citation_cards.length >= 10);
+
 const workup = cliJson(['workup', 'Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing.', '--target', 'codex']);
 assert.strictEqual(workup.workflow.id, 'denial-spike-workup');
 assert.strictEqual(workup.roles.primary, 'revenue-cycle-specialist');
 assert.ok(workup.platform_prompts.codex.includes('denial spike'));
 assert.ok(workup.safety.phi.includes('PHI'));
+assert.strictEqual(workup.evidence_pack.workflow_id, 'denial-spike-workup');
+
+const workupText = cli(['workup', 'denials spiked for payer X']);
+assert.match(workupText, /Evidence Pack/);
+assert.match(workupText, /Operator OS Denial Spike Evidence Pack/);
+
+const syntheticWorkup = cliJson(['workup', 'denial spike for payer X', '--data-mode', 'synthetic_only']);
+assert.strictEqual(syntheticWorkup.case_data.mode, 'synthetic_only');
+assert.strictEqual(syntheticWorkup.case_data.status, 'ok');
+assert.ok(syntheticWorkup.case_data.case_data.payer.provenance);
+
+const hybridWorkupText = cli(['workup', 'denial spike for payer X', '--data-mode', 'hybrid_synthetic_public']);
+assert.match(hybridWorkupText, /## Case Data/);
+assert.match(hybridWorkupText, /payer: .* \[provenance: synthetic; source: operator-os\.synthetic\.denial-spike\.v1\]/);
+assert.match(hybridWorkupText, /Provenance: synthetic=/);
+
+const publicSearchWorkup = cliJson(['workup', 'denial spike for payer X', '--data-mode', 'public_search']);
+assert.strictEqual(publicSearchWorkup.case_data.status, 'unsupported');
+assert.match(publicSearchWorkup.case_data.summary, /disabled by default/);
 
 const hipaaWorkup = cliJson(['workup', 'Prepare a HIPAA evidence checklist for a vendor security review.', '--target', 'm365-copilot']);
 assert.strictEqual(hipaaWorkup.workflow.id, 'hipaa-security-evidence-checklist');
@@ -87,6 +117,8 @@ assert.ok(doctor.tools.some(tool => tool.tool === 'codex'));
 assert.ok(doctor.recommended_next_command.includes('healthcare-agents install'));
 
 expectFail(['show', 'revenue-cycle'], /did you mean:.*revenue-cycle-specialist/);
+expectFail(['evidence-pack', 'show', 'not-a-pack'], /available workflow ids:.*denial-spike-workup/);
+expectFail(['workup', 'denial spike for payer X', '--data-mode', 'bad_mode'], /unsupported data mode/);
 expectFail(['prompt', 'revenue-cycle-specialist', '--mode', 'memo'], /invalid mode/);
 expectFail(['choose'], /choose requires a problem description/);
 

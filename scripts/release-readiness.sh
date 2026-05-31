@@ -32,9 +32,13 @@ node scripts/validate-workflows.js
 node scripts/validate-workup-canaries.js
 node scripts/validate-platform-exports.js
 node scripts/validate-workflow-docs.js
+node scripts/validate-evidence-packs.js
 
 section "CLI, installer, routing, package, and tarball"
 node scripts/test-cli-regression.js
+node scripts/test-evidence-pack-regression.js
+node scripts/test-case-data-provider.js
+node scripts/test-denial-spike-golden-artifact.js
 bash scripts/test-installer-e2e.sh
 node scripts/run-routing-benchmark.js >/tmp/healthcare-agents-routing-benchmark.json
 node scripts/test-platform-render-snapshots.js
