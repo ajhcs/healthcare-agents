@@ -16,10 +16,38 @@ const {
 } = require('../lib/operator-os/case-provenance');
 const { buildSyntheticDenialSpikeCase } = require('../lib/operator-os/denial-spike-synthetic');
 const {
+  buildCleanClaimRateFixture,
+  buildUnderpaymentVarianceFixture,
+  buildPriorAuthorizationAppealFixture
+} = require('../lib/operator-os/fixtures/revenue-cycle');
+const { buildHipaaEvidenceBinderFixture } = require('../lib/operator-os/fixtures/compliance-quality');
+const {
+  buildInterfaceIncidentFixture,
+  buildDashboardMetricFixture
+} = require('../lib/operator-os/fixtures/operations-it');
+const {
   createCaseDataProvider,
   getCaseDataForWorkflow,
   formatCaseDataMarkdown
 } = require('../lib/operator-os/case-data-provider');
+
+function assertNoPrivateFixturePayload(value) {
+  const text = JSON.stringify(value) + '\n' + String(value || '');
+  const forbidden = [
+    /\bMRN\s*[:#]?\s*\d{4,}\b/i,
+    /\bDOB\s*[:#]?\s*\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b/i,
+    /\bSSN\s*[:#]?\s*\d{3}-\d{2}-\d{4}\b/i,
+    /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i,
+    /\b(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}\b/,
+    /\b(?:MBI|Medicare Beneficiary Identifier|account|acct)\s*[:#]?\s*[A-Z0-9-]{5,}\b/i,
+    /https?:\/\//i,
+    /\b\d{1,3}(?:\.\d{1,3}){3}\b/,
+    /\b(?:token|secret|password|api[_-]?key)\s*[:=]\s*[A-Z0-9._-]{6,}\b/i,
+    /payer portal export/i,
+    /private contract text/i
+  ];
+  for (const pattern of forbidden) assert.doesNotMatch(text, pattern);
+}
 
 assert.strictEqual(DEFAULT_DATA_MODE, DATA_MODES.PROMPT_ONLY);
 assert.strictEqual(normalizeDataMode(undefined), DATA_MODES.PROMPT_ONLY);
@@ -59,6 +87,26 @@ assertAllFieldsProvenanced(syntheticResult.case_data);
 assert.match(formatCaseDataMarkdown(syntheticResult), /synthetic_only/);
 assert.match(formatCaseDataMarkdown(syntheticResult), /\[provenance: synthetic; source: operator-os\.synthetic\.denial-spike\.v1\]/);
 assert.match(formatCaseDataMarkdown(syntheticResult), /Provenance/);
+
+const fixtureCases = [
+  ['clean-claim-rate-decline', 'Medicare Advantage clean claim rate dropped', buildCleanClaimRateFixture],
+  ['payer-contract-underpayment-review', 'Commercial underpayment variance', buildUnderpaymentVarianceFixture],
+  ['prior-authorization-appeal-workup', 'Medicare Advantage imaging authorization appeal', buildPriorAuthorizationAppealFixture],
+  ['hipaa-security-evidence-checklist', 'vendor HIPAA evidence review', buildHipaaEvidenceBinderFixture],
+  ['hl7-fhir-interface-incident', 'FHIR interface errors', buildInterfaceIncidentFixture],
+  ['clinical-dashboard-specification', 'quality dashboard metric definitions', buildDashboardMetricFixture]
+];
+for (const [workflowId, prompt, builder] of fixtureCases) {
+  const direct = builder({ prompt });
+  assertAllFieldsProvenanced(direct);
+  assertNoPrivateFixturePayload(direct);
+  const providerResult = getCaseDataForWorkflow(workflowId, prompt, { dataMode: DATA_MODES.SYNTHETIC_ONLY });
+  assert.strictEqual(providerResult.status, 'ok');
+  assertAllFieldsProvenanced(providerResult.case_data);
+  assertNoPrivateFixturePayload(providerResult.case_data);
+  assertNoPrivateFixturePayload(formatCaseDataMarkdown(providerResult));
+  assert.ok(Object.keys(providerResult.case_data).length >= 7);
+}
 
 (async () => {
   const promptOnly = await createWorkupAsync('Commercial payer denial rate jumped');

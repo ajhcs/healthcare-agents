@@ -1,0 +1,150 @@
+{
+  "schema_version": "operator-os.coverage.v1",
+  "last_reviewed": "2026-05-31",
+  "workflows": [
+    {
+      "workflow_id": "denial-spike-workup",
+      "operator_os_status": "exemplar",
+      "evidence_pack_id": "denial-spike-workup-operator-os-v1",
+      "case_fixture_status": "implemented",
+      "golden_artifact_status": "implemented",
+      "domain_reviewer": "revenue-cycle-specialist",
+      "priority_wave": 0
+    },
+    {
+      "workflow_id": "clean-claim-rate-decline",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "clean-claim-rate-decline-operator-os-v1",
+      "case_fixture_status": "implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "revenue-cycle-specialist",
+      "priority_wave": 1
+    },
+    {
+      "workflow_id": "payer-contract-underpayment-review",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "payer-contract-underpayment-review-operator-os-v1",
+      "case_fixture_status": "implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "revenue-contract-analyst",
+      "priority_wave": 1
+    },
+    {
+      "workflow_id": "prior-authorization-appeal-workup",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "prior-authorization-appeal-workup-operator-os-v1",
+      "case_fixture_status": "implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "clinical-prior-authorization-specialist",
+      "priority_wave": 1
+    },
+    {
+      "workflow_id": "discharge-barrier-workplan",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "discharge-barrier-workplan-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "clinical-case-manager",
+      "priority_wave": 4
+    },
+    {
+      "workflow_id": "hipaa-security-evidence-checklist",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "hipaa-security-evidence-checklist-operator-os-v1",
+      "case_fixture_status": "implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "quality-compliance-officer",
+      "priority_wave": 2
+    },
+    {
+      "workflow_id": "survey-readiness-gap-review",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "survey-readiness-gap-review-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "quality-accreditation-specialist",
+      "priority_wave": 2
+    },
+    {
+      "workflow_id": "patient-safety-rca2-workup",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "patient-safety-rca2-workup-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "quality-patient-safety-officer",
+      "priority_wave": 2
+    },
+    {
+      "workflow_id": "ed-boarding-capacity-workup",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "ed-boarding-capacity-workup-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "operations-hospital-administrator",
+      "priority_wave": 3
+    },
+    {
+      "workflow_id": "ambulatory-access-backlog",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "ambulatory-access-backlog-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "operations-ambulatory-manager",
+      "priority_wave": 3
+    },
+    {
+      "workflow_id": "value-based-care-downside-risk-readiness",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "value-based-care-downside-risk-readiness-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "payer-value-based-care-manager",
+      "priority_wave": 4
+    },
+    {
+      "workflow_id": "hedis-stars-gap-closure-sprint",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "hedis-stars-gap-closure-sprint-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "quality-improvement-specialist",
+      "priority_wave": 2
+    },
+    {
+      "workflow_id": "hl7-fhir-interface-incident",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "hl7-fhir-interface-incident-operator-os-v1",
+      "case_fixture_status": "implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "healthit-interoperability-engineer",
+      "priority_wave": 3
+    },
+    {
+      "workflow_id": "clinical-dashboard-specification",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "clinical-dashboard-specification-operator-os-v1",
+      "case_fixture_status": "implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "healthit-clinical-data-analyst",
+      "priority_wave": 3
+    },
+    {
+      "workflow_id": "pharmacy-contract-scorecard",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "pharmacy-contract-scorecard-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "pharmacy-benefits-specialist",
+      "priority_wave": 4
+    },
+    {
+      "workflow_id": "emergency-preparedness-exercise-readiness",
+      "operator_os_status": "standard_pack",
+      "evidence_pack_id": "emergency-preparedness-exercise-readiness-operator-os-v1",
+      "case_fixture_status": "not_implemented",
+      "golden_artifact_status": "not_applicable",
+      "domain_reviewer": "emergency-preparedness-coordinator",
+      "priority_wave": 4
+    }
+  ]
+}

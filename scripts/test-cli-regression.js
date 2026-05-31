@@ -62,7 +62,17 @@ const workflow = cliJson(['workflow', 'denial-spike-workup']);
 assert.strictEqual(workflow.primary_agent, 'revenue-cycle-specialist');
 assert.ok(workflow.required_inputs.includes('payer or product'));
 
+const coverage = cliJson(['operator-os', 'coverage']);
+assert.strictEqual(coverage.schema_version, 'operator-os.coverage.v1');
+assert.strictEqual(coverage.workflows.length, 16);
+assert.ok(coverage.workflows.every(item => item.operator_os_status));
+
+const coverageText = cli(['operator-os', 'coverage']);
+assert.match(coverageText, /denial-spike-workup/);
+assert.match(coverageText, /standard_pack/);
+
 const evidencePackList = cliJson(['evidence-pack', 'list']);
+assert.strictEqual(evidencePackList.count, 16);
 assert.ok(evidencePackList.packs.some(pack => pack.workflow_id === 'denial-spike-workup'));
 
 const evidencePackShow = cli(['evidence-pack', 'show', 'denial-spike-workup']);
@@ -72,6 +82,10 @@ assert.match(evidencePackShow, /Citation Cards/);
 const evidencePackJson = cliJson(['evidence-pack', 'show', 'denial-spike-workup']);
 assert.strictEqual(evidencePackJson.workflow_id, 'denial-spike-workup');
 assert.ok(evidencePackJson.citation_cards.length >= 10);
+
+const scaffold = JSON.parse(cli(['evidence-pack', 'scaffold', 'clean-claim-rate-decline']));
+assert.strictEqual(scaffold.packs[0].workflow_id, 'clean-claim-rate-decline');
+assert.ok(scaffold.packs[0].citation_cards.length >= 8);
 
 const workup = cliJson(['workup', 'Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing.', '--target', 'codex']);
 assert.strictEqual(workup.workflow.id, 'denial-spike-workup');
@@ -93,6 +107,11 @@ const hybridWorkupText = cli(['workup', 'denial spike for payer X', '--data-mode
 assert.match(hybridWorkupText, /## Case Data/);
 assert.match(hybridWorkupText, /payer: .* \[provenance: synthetic; source: operator-os\.synthetic\.denial-spike\.v1\]/);
 assert.match(hybridWorkupText, /Provenance: synthetic=/);
+
+const cleanClaimFixture = cliJson(['workup', 'Medicare Advantage clean claim rate dropped', '--data-mode', 'synthetic_only']);
+assert.strictEqual(cleanClaimFixture.workflow.id, 'clean-claim-rate-decline');
+assert.strictEqual(cleanClaimFixture.case_data.status, 'ok');
+assert.ok(cleanClaimFixture.case_data.case_data.payer.provenance);
 
 const publicSearchWorkup = cliJson(['workup', 'denial spike for payer X', '--data-mode', 'public_search']);
 assert.strictEqual(publicSearchWorkup.case_data.status, 'unsupported');

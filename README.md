@@ -63,6 +63,8 @@ The first workflow pack includes 16 healthcare operations workflows covering den
 
 Denial Spike is the first Operator OS exemplar. It ships with a versioned, offline-first evidence pack and citation cards that identify source families, lookup paths, review owners, verification status, and red flags without requiring live network access. Runtime case enrichment is explicit-mode only: default workups use the prompt plus public evidence-pack metadata, while synthetic demo data requires `--data-mode synthetic_only` or `--data-mode hybrid_synthetic_public` and every generated field carries provenance. Live evidence refresh/search and private case ingestion are future maintenance paths, not default runtime dependencies.
 
+Phase 2 expands the same Operator OS pattern across the workflow catalog. Use `healthcare-agents operator-os coverage` to see exemplar and standard-pack status for all 16 workflows, and see [Operator OS Catalog Coverage](docs/operator-os/catalog.md) plus [Evidence Pack Authoring](docs/operator-os/evidence-pack-authoring.md) for coverage rules, provenance labels, citation-card status meanings, and secure-environment boundaries.
+
 Start with the [workflow gallery](docs/workflows/README.md), [example workup packets](docs/examples/workup-packets.md), and [platform compatibility guides](docs/platforms/github-copilot.md).
 
 ## Current Release
