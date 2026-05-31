@@ -1,0 +1,3962 @@
+{
+  "schema_version": "operator-os.evidence-packs.v1",
+  "packs": [
+    {
+      "id": "clean-claim-rate-decline-operator-os-v1",
+      "workflow_id": "clean-claim-rate-decline",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Clean Claim Rate Decline Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use aggregated or de-identified revenue-cycle data by default; case-level claim data requires approved environment and minimum necessary handling.",
+      "source_categories": [
+        "standards",
+        "payer_policy",
+        "internal_operations",
+        "clearinghouse",
+        "coding_audit",
+        "finance",
+        "governance",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "standards-claim-submission-evidence",
+          "title": "Standards - claim submission evidence",
+          "source_category": "standards",
+          "source_family": "837 claim submission records; current standard-set lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved 837 claim submission records for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / standards",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "claim submission evidence"
+          ],
+          "applies_to_sections": [
+            "Issue segmentation"
+          ],
+          "human_owner": "Revenue Cycle Denials Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating gross charges as collectible recovery",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "payer-policy-payer-product-segmentation",
+          "title": "Payer Policy - payer/product segmentation",
+          "source_category": "payer_policy",
+          "source_family": "835 remittance records; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved 835 remittance records for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / payer_policy",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "payer/product segmentation"
+          ],
+          "applies_to_sections": [
+            "Likely process defects"
+          ],
+          "human_owner": "Revenue Cycle Denials Lead",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Ignoring payer mix or volume denominator",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "internal-operations-ar-and-finance-impact",
+          "title": "Internal Operations - AR and finance impact",
+          "source_category": "internal_operations",
+          "source_family": "claim scrubber or clearinghouse edits; local Clean Claim Rate Decline source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved claim scrubber or clearinghouse edits for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / internal_operations",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "AR and finance impact"
+          ],
+          "applies_to_sections": [
+            "Owner matrix"
+          ],
+          "human_owner": "Revenue Cycle Denials Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Resolving coding issues without coding review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "clearinghouse-coding-or-edit-review",
+          "title": "Clearinghouse - coding or edit review",
+          "source_category": "clearinghouse",
+          "source_family": "billing-system workqueue trends; local transaction or system log evidence",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved billing-system workqueue trends for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / clearinghouse",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "coding or edit review"
+          ],
+          "applies_to_sections": [
+            "Fix plan"
+          ],
+          "human_owner": "Revenue Cycle Denials Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using PHI outside an approved environment",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "coding-audit-compliance-and-privacy",
+          "title": "Coding Audit - compliance and privacy",
+          "source_category": "coding_audit",
+          "source_family": "finance KPI definitions; local Clean Claim Rate Decline source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved finance KPI definitions for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / coding_audit",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "compliance and privacy"
+          ],
+          "applies_to_sections": [
+            "Dashboard specification"
+          ],
+          "human_owner": "Coding Compliance Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating gross charges as collectible recovery",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "finance-claim-submission-evidence",
+          "title": "Finance - claim submission evidence",
+          "source_category": "finance",
+          "source_family": "837 claim submission records; local Clean Claim Rate Decline source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved 837 claim submission records for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / finance",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "claim submission evidence"
+          ],
+          "applies_to_sections": [
+            "Validation cadence"
+          ],
+          "human_owner": "Revenue Cycle Denials Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring payer mix or volume denominator",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-payer-product-segmentation",
+          "title": "Governance - payer/product segmentation",
+          "source_category": "governance",
+          "source_family": "835 remittance records; local Clean Claim Rate Decline source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved 835 remittance records for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / governance",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "payer/product segmentation"
+          ],
+          "applies_to_sections": [
+            "Issue segmentation"
+          ],
+          "human_owner": "Revenue Cycle Denials Lead",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Resolving coding issues without coding review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-ar-and-finance-impact",
+          "title": "Human Escalation - AR and finance impact",
+          "source_category": "human_escalation",
+          "source_family": "claim scrubber or clearinghouse edits; local Clean Claim Rate Decline source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved claim scrubber or clearinghouse edits for Clean Claim Rate Decline. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clean-claim-rate-decline / human_escalation",
+          "required_fields": [
+            "baseline clean claim rate",
+            "current clean claim rate",
+            "edit categories",
+            "affected clinics or service lines",
+            "recent system or workflow changes",
+            "AR and finance impact"
+          ],
+          "applies_to_sections": [
+            "Likely process defects"
+          ],
+          "human_owner": "Revenue Cycle Denials Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using PHI outside an approved environment",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "837 claim submission records",
+        "835 remittance records",
+        "claim scrubber or clearinghouse edits",
+        "billing-system workqueue trends",
+        "finance KPI definitions"
+      ],
+      "failure_modes": [
+        "Treating gross charges as collectible recovery",
+        "Ignoring payer mix or volume denominator",
+        "Resolving coding issues without coding review",
+        "Using PHI outside an approved environment"
+      ],
+      "test_prompts": [
+        "Clearinghouse rejections increased after EHR update and claim edits are failing"
+      ]
+    },
+    {
+      "id": "payer-contract-underpayment-review-operator-os-v1",
+      "workflow_id": "payer-contract-underpayment-review",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Payer Contract Underpayment Review Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Avoid private payer contract text and claim-level identifiers; use lookup paths and owner review for contract interpretation.",
+      "source_categories": [
+        "contract",
+        "payer_policy",
+        "finance",
+        "internal_operations",
+        "standards",
+        "governance",
+        "human_escalation",
+        "compliance_privacy"
+      ],
+      "citation_cards": [
+        {
+          "id": "contract-contract-lookup-path",
+          "title": "Contract - contract lookup path",
+          "source_category": "contract",
+          "source_family": "contract management record; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved contract management record for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / contract",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "contract lookup path"
+          ],
+          "applies_to_sections": [
+            "Variance logic"
+          ],
+          "human_owner": "Revenue Contract Analyst",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Quoting private contract text into output",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "payer-policy-payment-variance-evidence",
+          "title": "Payer Policy - payment variance evidence",
+          "source_category": "payer_policy",
+          "source_family": "allowed amount history; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved allowed amount history for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / payer_policy",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "payment variance evidence"
+          ],
+          "applies_to_sections": [
+            "Evidence table"
+          ],
+          "human_owner": "Revenue Contract Analyst",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Making legal conclusions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "finance-payer-escalation-owner",
+          "title": "Finance - payer escalation owner",
+          "source_category": "finance",
+          "source_family": "835 remittance records; local Payer Contract Underpayment Review source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved 835 remittance records for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / finance",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "payer escalation owner"
+          ],
+          "applies_to_sections": [
+            "Contract citation map"
+          ],
+          "human_owner": "Revenue Contract Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing billed charges with allowed amount",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "internal-operations-dispute-timeline",
+          "title": "Internal Operations - dispute timeline",
+          "source_category": "internal_operations",
+          "source_family": "fee schedule or exhibit lookup path; local Payer Contract Underpayment Review source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved fee schedule or exhibit lookup path for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / internal_operations",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "dispute timeline"
+          ],
+          "applies_to_sections": [
+            "Payer dispute letter scaffold"
+          ],
+          "human_owner": "Revenue Contract Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Missing dispute deadline owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "standards-compliance-and-privacy",
+          "title": "Standards - compliance and privacy",
+          "source_category": "standards",
+          "source_family": "payer correspondence; current standard-set lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved payer correspondence for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / standards",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "compliance and privacy"
+          ],
+          "applies_to_sections": [
+            "Negotiation talking points"
+          ],
+          "human_owner": "Revenue Contract Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Quoting private contract text into output",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-contract-lookup-path",
+          "title": "Governance - contract lookup path",
+          "source_category": "governance",
+          "source_family": "contract management record; local Payer Contract Underpayment Review source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved contract management record for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / governance",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "contract lookup path"
+          ],
+          "applies_to_sections": [
+            "Variance logic"
+          ],
+          "human_owner": "Revenue Contract Analyst",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Making legal conclusions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-payment-variance-evidence",
+          "title": "Human Escalation - payment variance evidence",
+          "source_category": "human_escalation",
+          "source_family": "allowed amount history; local Payer Contract Underpayment Review source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved allowed amount history for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / human_escalation",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "payment variance evidence"
+          ],
+          "applies_to_sections": [
+            "Evidence table"
+          ],
+          "human_owner": "Revenue Contract Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing billed charges with allowed amount",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "compliance-privacy-payer-escalation-owner",
+          "title": "Compliance Privacy - payer escalation owner",
+          "source_category": "compliance_privacy",
+          "source_family": "835 remittance records; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved 835 remittance records for Payer Contract Underpayment Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for payer-contract-underpayment-review / compliance_privacy",
+          "required_fields": [
+            "contract terms",
+            "allowed amounts",
+            "billed charges",
+            "payment history",
+            "carve-outs or exclusions",
+            "payer escalation owner"
+          ],
+          "applies_to_sections": [
+            "Contract citation map"
+          ],
+          "human_owner": "Legal or Compliance Owner",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing dispute deadline owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "contract management record",
+        "allowed amount history",
+        "835 remittance records",
+        "fee schedule or exhibit lookup path",
+        "payer correspondence"
+      ],
+      "failure_modes": [
+        "Quoting private contract text into output",
+        "Making legal conclusions",
+        "Confusing billed charges with allowed amount",
+        "Missing dispute deadline owner"
+      ],
+      "test_prompts": [
+        "Payer payment variance against contract carve-outs needs dispute evidence packet"
+      ]
+    },
+    {
+      "id": "prior-authorization-appeal-workup-operator-os-v1",
+      "workflow_id": "prior-authorization-appeal-workup",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Prior Authorization Appeal Workup Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Keep output administrative; clinical facts and medical necessity require approved source material and licensed review.",
+      "source_categories": [
+        "payer_policy",
+        "clinical_admin",
+        "internal_operations",
+        "appeal_process",
+        "documentation",
+        "governance",
+        "human_escalation",
+        "compliance_privacy"
+      ],
+      "citation_cards": [
+        {
+          "id": "payer-policy-payer-criteria-lookup",
+          "title": "Payer Policy - payer criteria lookup",
+          "source_category": "payer_policy",
+          "source_family": "authorization log; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved authorization log for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / payer_policy",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "payer criteria lookup"
+          ],
+          "applies_to_sections": [
+            "Case restatement"
+          ],
+          "human_owner": "Prior Authorization Lead",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Making medical necessity determinations",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "clinical-admin-authorization-evidence",
+          "title": "Clinical Admin - authorization evidence",
+          "source_category": "clinical_admin",
+          "source_family": "eligibility response; local Prior Authorization Appeal Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved eligibility response for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / clinical_admin",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "authorization evidence"
+          ],
+          "applies_to_sections": [
+            "Payer criteria map"
+          ],
+          "human_owner": "Clinical Reviewer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Calculating deadlines without source dates",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "internal-operations-appeal-timeline",
+          "title": "Internal Operations - appeal timeline",
+          "source_category": "internal_operations",
+          "source_family": "denial notice; local Prior Authorization Appeal Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved denial notice for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / internal_operations",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "appeal timeline"
+          ],
+          "applies_to_sections": [
+            "Missing documentation"
+          ],
+          "human_owner": "Prior Authorization Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Missing licensed review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "appeal-process-clinical-review-boundary",
+          "title": "Appeal Process - clinical review boundary",
+          "source_category": "appeal_process",
+          "source_family": "payer policy lookup path; local Prior Authorization Appeal Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved payer policy lookup path for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / appeal_process",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "clinical review boundary"
+          ],
+          "applies_to_sections": [
+            "Non-clinical appeal structure"
+          ],
+          "human_owner": "Prior Authorization Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using PHI outside approved workflow",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "documentation-minimum-necessary-handling",
+          "title": "Documentation - minimum necessary handling",
+          "source_category": "documentation",
+          "source_family": "clinical documentation checklist; local Prior Authorization Appeal Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved clinical documentation checklist for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / documentation",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "minimum necessary handling"
+          ],
+          "applies_to_sections": [
+            "Escalation path"
+          ],
+          "human_owner": "Prior Authorization Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Making medical necessity determinations",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-payer-criteria-lookup",
+          "title": "Governance - payer criteria lookup",
+          "source_category": "governance",
+          "source_family": "authorization log; local Prior Authorization Appeal Workup source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved authorization log for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / governance",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "payer criteria lookup"
+          ],
+          "applies_to_sections": [
+            "Review checklist"
+          ],
+          "human_owner": "Prior Authorization Lead",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Calculating deadlines without source dates",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-authorization-evidence",
+          "title": "Human Escalation - authorization evidence",
+          "source_category": "human_escalation",
+          "source_family": "eligibility response; local Prior Authorization Appeal Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved eligibility response for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / human_escalation",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "authorization evidence"
+          ],
+          "applies_to_sections": [
+            "Case restatement"
+          ],
+          "human_owner": "Prior Authorization Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Missing licensed review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "compliance-privacy-appeal-timeline",
+          "title": "Compliance Privacy - appeal timeline",
+          "source_category": "compliance_privacy",
+          "source_family": "denial notice; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved denial notice for Prior Authorization Appeal Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for prior-authorization-appeal-workup / compliance_privacy",
+          "required_fields": [
+            "payer",
+            "service or item",
+            "denial reason",
+            "policy citation",
+            "documentation available",
+            "appeal timeline"
+          ],
+          "applies_to_sections": [
+            "Payer criteria map"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Using PHI outside approved workflow",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "authorization log",
+        "eligibility response",
+        "denial notice",
+        "payer policy lookup path",
+        "clinical documentation checklist"
+      ],
+      "failure_modes": [
+        "Making medical necessity determinations",
+        "Calculating deadlines without source dates",
+        "Missing licensed review",
+        "Using PHI outside approved workflow"
+      ],
+      "test_prompts": [
+        "Denied authorization with payer policy citation and missing documentation checklist needed"
+      ]
+    },
+    {
+      "id": "discharge-barrier-workplan-operator-os-v1",
+      "workflow_id": "discharge-barrier-workplan",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Discharge Barrier Workplan Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Keep outputs operational and de-identified; discharge decisions stay with qualified clinical owners.",
+      "source_categories": [
+        "care_coordination",
+        "payer_policy",
+        "post_acute_network",
+        "local_policy",
+        "operational_telemetry",
+        "governance",
+        "human_escalation",
+        "compliance_privacy"
+      ],
+      "citation_cards": [
+        {
+          "id": "care-coordination-barrier-taxonomy-source",
+          "title": "Care Coordination - barrier taxonomy source",
+          "source_category": "care_coordination",
+          "source_family": "barrier dashboard; local Discharge Barrier Workplan source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved barrier dashboard for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / care_coordination",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "barrier taxonomy source"
+          ],
+          "applies_to_sections": [
+            "Barrier taxonomy"
+          ],
+          "human_owner": "Case Management Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Making clinical discharge decisions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "payer-policy-payer-post-acute-evidence",
+          "title": "Payer Policy - payer/post-acute evidence",
+          "source_category": "payer_policy",
+          "source_family": "post-acute network source; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved post-acute network source for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / payer_policy",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "payer/post-acute evidence"
+          ],
+          "applies_to_sections": [
+            "Immediate next actions"
+          ],
+          "human_owner": "Case Management Lead",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Ignoring patient choice rights",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "post-acute-network-owner-escalation",
+          "title": "Post Acute Network - owner escalation",
+          "source_category": "post_acute_network",
+          "source_family": "payer authorization rule lookup; local Discharge Barrier Workplan source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved payer authorization rule lookup for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / post_acute_network",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "owner escalation"
+          ],
+          "applies_to_sections": [
+            "Owner list"
+          ],
+          "human_owner": "Case Management Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using patient identifiers unnecessarily",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-policy-monitoring-cadence",
+          "title": "Local Policy - monitoring cadence",
+          "source_category": "local_policy",
+          "source_family": "local discharge policy; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved local discharge policy for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / local_policy",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "monitoring cadence"
+          ],
+          "applies_to_sections": [
+            "Daily huddle script"
+          ],
+          "human_owner": "Case Management Lead",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing escalation threshold",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "operational-telemetry-patient-rights-privacy-boundary",
+          "title": "Operational Telemetry - patient-rights/privacy boundary",
+          "source_category": "operational_telemetry",
+          "source_family": "daily huddle cadence; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved daily huddle cadence for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / operational_telemetry",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "patient-rights/privacy boundary",
+            "denominator grain, exclusions, time window, and refresh timestamp"
+          ],
+          "applies_to_sections": [
+            "Escalation triggers"
+          ],
+          "human_owner": "Case Management Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Making clinical discharge decisions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-barrier-taxonomy-source",
+          "title": "Governance - barrier taxonomy source",
+          "source_category": "governance",
+          "source_family": "barrier dashboard; local Discharge Barrier Workplan source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved barrier dashboard for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / governance",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "barrier taxonomy source"
+          ],
+          "applies_to_sections": [
+            "KPI plan"
+          ],
+          "human_owner": "Case Management Lead",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Ignoring patient choice rights",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-payer-post-acute-evidence",
+          "title": "Human Escalation - payer/post-acute evidence",
+          "source_category": "human_escalation",
+          "source_family": "post-acute network source; local Discharge Barrier Workplan source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved post-acute network source for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / human_escalation",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "payer/post-acute evidence"
+          ],
+          "applies_to_sections": [
+            "Barrier taxonomy"
+          ],
+          "human_owner": "Case Management Lead",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using patient identifiers unnecessarily",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "compliance-privacy-owner-escalation",
+          "title": "Compliance Privacy - owner escalation",
+          "source_category": "compliance_privacy",
+          "source_family": "payer authorization rule lookup; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved payer authorization rule lookup for Discharge Barrier Workplan. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for discharge-barrier-workplan / compliance_privacy",
+          "required_fields": [
+            "barrier categories",
+            "service line",
+            "payer mix",
+            "avoidable days",
+            "escalation rules",
+            "owner escalation"
+          ],
+          "applies_to_sections": [
+            "Immediate next actions"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing escalation threshold",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "barrier dashboard",
+        "post-acute network source",
+        "payer authorization rule lookup",
+        "local discharge policy",
+        "daily huddle cadence"
+      ],
+      "failure_modes": [
+        "Making clinical discharge decisions",
+        "Ignoring patient choice rights",
+        "Using patient identifiers unnecessarily",
+        "Missing escalation threshold"
+      ],
+      "test_prompts": [
+        "SNF placement delay and avoidable days require discharge barrier huddle plan"
+      ]
+    },
+    {
+      "id": "hipaa-security-evidence-checklist-operator-os-v1",
+      "workflow_id": "hipaa-security-evidence-checklist",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS HIPAA Security Evidence Checklist Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Do not include PHI, credentials, secrets, or unapproved evidence artifacts in prompts, fixtures, packs, or logs.",
+      "source_categories": [
+        "regulatory",
+        "local_policy",
+        "evidence_binder",
+        "control_owner",
+        "risk_register",
+        "corrective_action",
+        "governance",
+        "compliance_privacy"
+      ],
+      "citation_cards": [
+        {
+          "id": "regulatory-regulatory-source-family",
+          "title": "Regulatory - regulatory source family",
+          "source_category": "regulatory",
+          "source_family": "policy repository; regulator or program source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved policy repository for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / regulatory",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "regulatory source family"
+          ],
+          "applies_to_sections": [
+            "Scope"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Providing legal conclusions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-policy-local-policy-evidence",
+          "title": "Local Policy - local policy evidence",
+          "source_category": "local_policy",
+          "source_family": "evidence binder; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved evidence binder for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / local_policy",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "local policy evidence"
+          ],
+          "applies_to_sections": [
+            "Evidence map"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Treating checklist as audit approval",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "evidence-binder-owner-sign-off",
+          "title": "Evidence Binder - owner sign-off",
+          "source_category": "evidence_binder",
+          "source_family": "risk register; local HIPAA Security Evidence Checklist source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved risk register for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / evidence_binder",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "owner sign-off"
+          ],
+          "applies_to_sections": [
+            "Gap register"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Missing accountable owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "control-owner-corrective-action-monitoring",
+          "title": "Control Owner - corrective action monitoring",
+          "source_category": "control_owner",
+          "source_family": "owner sign-off record; local HIPAA Security Evidence Checklist source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved owner sign-off record for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / control_owner",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "corrective action monitoring"
+          ],
+          "applies_to_sections": [
+            "Responsible owners"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Exposing security secrets or PHI",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "risk-register-legal-compliance-boundary",
+          "title": "Risk Register - legal/compliance boundary",
+          "source_category": "risk_register",
+          "source_family": "corrective action tracker; local HIPAA Security Evidence Checklist source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved corrective action tracker for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / risk_register",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "legal/compliance boundary"
+          ],
+          "applies_to_sections": [
+            "Collection timeline"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Providing legal conclusions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "corrective-action-regulatory-source-family",
+          "title": "Corrective Action - regulatory source family",
+          "source_category": "corrective_action",
+          "source_family": "policy repository; local HIPAA Security Evidence Checklist source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved policy repository for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / corrective_action",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "regulatory source family"
+          ],
+          "applies_to_sections": [
+            "Review sign-off"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating checklist as audit approval",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-local-policy-evidence",
+          "title": "Governance - local policy evidence",
+          "source_category": "governance",
+          "source_family": "evidence binder; local HIPAA Security Evidence Checklist source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved evidence binder for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / governance",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "local policy evidence"
+          ],
+          "applies_to_sections": [
+            "Scope"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing accountable owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "compliance-privacy-owner-sign-off",
+          "title": "Compliance Privacy - owner sign-off",
+          "source_category": "compliance_privacy",
+          "source_family": "risk register; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved risk register for HIPAA Security Evidence Checklist. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hipaa-security-evidence-checklist / compliance_privacy",
+          "required_fields": [
+            "entity type",
+            "system scope",
+            "vendor involvement",
+            "current controls",
+            "requested framework",
+            "owner sign-off"
+          ],
+          "applies_to_sections": [
+            "Evidence map"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Exposing security secrets or PHI",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "policy repository",
+        "evidence binder",
+        "risk register",
+        "owner sign-off record",
+        "corrective action tracker"
+      ],
+      "failure_modes": [
+        "Providing legal conclusions",
+        "Treating checklist as audit approval",
+        "Missing accountable owner",
+        "Exposing security secrets or PHI"
+      ],
+      "test_prompts": [
+        "Vendor security questionnaire needs HIPAA Security Rule evidence and gap register"
+      ]
+    },
+    {
+      "id": "survey-readiness-gap-review-operator-os-v1",
+      "workflow_id": "survey-readiness-gap-review",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Survey Readiness Gap Review Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use local policy/evidence binder references and de-identified tracer observations; survey readiness output cannot guarantee survey results.",
+      "source_categories": [
+        "accreditation_standard",
+        "cms_or_state_regulatory",
+        "local_policy",
+        "prior_findings",
+        "tracer_methodology",
+        "corrective_action",
+        "governance",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "accreditation-standard-standard-set-source-family",
+          "title": "Accreditation Standard - standard-set source family",
+          "source_category": "accreditation_standard",
+          "source_family": "CMS CoPs, state survey agency guidance, or accreditor standards lookup; current standard-set lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved CMS CoPs, state survey agency guidance, or accreditor standards lookup for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / accreditation_standard",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "standard-set source family",
+            "standard set, tracer method, and prior finding reference"
+          ],
+          "applies_to_sections": [
+            "Standards map"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Guaranteeing survey outcome",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "cms-or-state-regulatory-prior-finding-or-rfi-evidence",
+          "title": "Cms Or State Regulatory - prior finding or RFI evidence",
+          "source_category": "cms_or_state_regulatory",
+          "source_family": "prior survey findings or RFI log; regulator or program source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved prior survey findings or RFI log for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / cms_or_state_regulatory",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "prior finding or RFI evidence"
+          ],
+          "applies_to_sections": [
+            "Tracer plan"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using stale standard set",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-policy-department-owner-sign-off",
+          "title": "Local Policy - department owner sign-off",
+          "source_category": "local_policy",
+          "source_family": "local policy evidence binder; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved local policy evidence binder for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / local_policy",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "department owner sign-off"
+          ],
+          "applies_to_sections": [
+            "Policy evidence list"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing department owner sign-off",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "prior-findings-corrective-action-monitoring",
+          "title": "Prior Findings - corrective-action monitoring",
+          "source_category": "prior_findings",
+          "source_family": "tracer methodology or mock survey notes; local Survey Readiness Gap Review source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved tracer methodology or mock survey notes for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / prior_findings",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "corrective-action monitoring"
+          ],
+          "applies_to_sections": [
+            "Owner matrix"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating checklist as legal or accreditation approval",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "tracer-methodology-no-survey-guarantee-boundary",
+          "title": "Tracer Methodology - no survey guarantee boundary",
+          "source_category": "tracer_methodology",
+          "source_family": "corrective action tracker; local Survey Readiness Gap Review source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved corrective action tracker for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / tracer_methodology",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "no survey guarantee boundary",
+            "standard set, tracer method, and prior finding reference"
+          ],
+          "applies_to_sections": [
+            "Leadership briefing"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Guaranteeing survey outcome",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "corrective-action-standard-set-source-family",
+          "title": "Corrective Action - standard-set source family",
+          "source_category": "corrective_action",
+          "source_family": "CMS CoPs, state survey agency guidance, or accreditor standards lookup; local Survey Readiness Gap Review source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved CMS CoPs, state survey agency guidance, or accreditor standards lookup for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / corrective_action",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "standard-set source family"
+          ],
+          "applies_to_sections": [
+            "Readiness cadence"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using stale standard set",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-prior-finding-or-rfi-evidence",
+          "title": "Governance - prior finding or RFI evidence",
+          "source_category": "governance",
+          "source_family": "prior survey findings or RFI log; local Survey Readiness Gap Review source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved prior survey findings or RFI log for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / governance",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "prior finding or RFI evidence"
+          ],
+          "applies_to_sections": [
+            "Standards map"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing department owner sign-off",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-department-owner-sign-off",
+          "title": "Human Escalation - department owner sign-off",
+          "source_category": "human_escalation",
+          "source_family": "local policy evidence binder; local Survey Readiness Gap Review source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved local policy evidence binder for Survey Readiness Gap Review. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for survey-readiness-gap-review / human_escalation",
+          "required_fields": [
+            "standard set",
+            "site",
+            "last survey findings",
+            "open corrective actions",
+            "department owner sign-off"
+          ],
+          "applies_to_sections": [
+            "Tracer plan"
+          ],
+          "human_owner": "Accreditation Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating checklist as legal or accreditation approval",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "CMS CoPs, state survey agency guidance, or accreditor standards lookup",
+        "prior survey findings or RFI log",
+        "local policy evidence binder",
+        "tracer methodology or mock survey notes",
+        "corrective action tracker"
+      ],
+      "failure_modes": [
+        "Guaranteeing survey outcome",
+        "Using stale standard set",
+        "Missing department owner sign-off",
+        "Treating checklist as legal or accreditation approval"
+      ],
+      "test_prompts": [
+        "Accreditation tracer preparation and policy evidence list for survey readiness"
+      ]
+    },
+    {
+      "id": "patient-safety-rca2-workup-operator-os-v1",
+      "workflow_id": "patient-safety-rca2-workup",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Patient Safety RCA2 Workup Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use de-identified event facts only; protected safety review, legal privilege, reporting, and clinical conclusions require accountable human owners.",
+      "source_categories": [
+        "event_facts",
+        "protected_review_boundary",
+        "rca2_methodology",
+        "local_policy",
+        "mandatory_reporting_triage",
+        "action_strength",
+        "effectiveness_monitoring",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "event-facts-de-identified-event-facts",
+          "title": "Event Facts - de-identified event facts",
+          "source_category": "event_facts",
+          "source_family": "de-identified event report; local Patient Safety RCA2 Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved de-identified event report for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / event_facts",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "de-identified event facts",
+            "de-identified event timeline and protected review boundary"
+          ],
+          "applies_to_sections": [
+            "Fact-gathering plan"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Assigning blame",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "protected-review-boundary-protected-review-boundary",
+          "title": "Protected Review Boundary - protected review boundary",
+          "source_category": "protected_review_boundary",
+          "source_family": "event timeline and immediate containment record; local Patient Safety RCA2 Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved event timeline and immediate containment record for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / protected_review_boundary",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "protected review boundary"
+          ],
+          "applies_to_sections": [
+            "Timeline gaps"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Making clinical causality conclusions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "rca2-methodology-rca2-action-strength-method",
+          "title": "Rca2 Methodology - RCA2/action-strength method",
+          "source_category": "rca2_methodology",
+          "source_family": "RCA2 or action-strength methodology; local Patient Safety RCA2 Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved RCA2 or action-strength methodology for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / rca2_methodology",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "RCA2/action-strength method",
+            "de-identified event timeline and protected review boundary"
+          ],
+          "applies_to_sections": [
+            "Causal factor categories"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring privilege or protected-review boundary",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-policy-mandatory-reporting-triage",
+          "title": "Local Policy - mandatory reporting triage",
+          "source_category": "local_policy",
+          "source_family": "risk/legal/compliance escalation policy; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved risk/legal/compliance escalation policy for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / local_policy",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "mandatory reporting triage"
+          ],
+          "applies_to_sections": [
+            "Interview guide"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing effectiveness monitoring",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "mandatory-reporting-triage-effectiveness-monitoring",
+          "title": "Mandatory Reporting Triage - effectiveness monitoring",
+          "source_category": "mandatory_reporting_triage",
+          "source_family": "action effectiveness tracker; local Patient Safety RCA2 Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved action effectiveness tracker for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / mandatory_reporting_triage",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "effectiveness monitoring"
+          ],
+          "applies_to_sections": [
+            "Action strength checklist"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Assigning blame",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "action-strength-de-identified-event-facts",
+          "title": "Action Strength - de-identified event facts",
+          "source_category": "action_strength",
+          "source_family": "de-identified event report; local Patient Safety RCA2 Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved de-identified event report for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / action_strength",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "de-identified event facts"
+          ],
+          "applies_to_sections": [
+            "Escalation notes"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Making clinical causality conclusions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "effectiveness-monitoring-protected-review-boundary",
+          "title": "Effectiveness Monitoring - protected review boundary",
+          "source_category": "effectiveness_monitoring",
+          "source_family": "event timeline and immediate containment record; local Patient Safety RCA2 Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved event timeline and immediate containment record for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / effectiveness_monitoring",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "protected review boundary"
+          ],
+          "applies_to_sections": [
+            "Fact-gathering plan"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring privilege or protected-review boundary",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-rca2-action-strength-method",
+          "title": "Human Escalation - RCA2/action-strength method",
+          "source_category": "human_escalation",
+          "source_family": "RCA2 or action-strength methodology; local Patient Safety RCA2 Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved RCA2 or action-strength methodology for Patient Safety RCA2 Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for patient-safety-rca2-workup / human_escalation",
+          "required_fields": [
+            "event summary",
+            "timeline",
+            "harm level",
+            "involved processes",
+            "immediate containment",
+            "RCA2/action-strength method"
+          ],
+          "applies_to_sections": [
+            "Timeline gaps"
+          ],
+          "human_owner": "Patient Safety Officer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Missing effectiveness monitoring",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "de-identified event report",
+        "event timeline and immediate containment record",
+        "RCA2 or action-strength methodology",
+        "risk/legal/compliance escalation policy",
+        "action effectiveness tracker"
+      ],
+      "failure_modes": [
+        "Assigning blame",
+        "Making clinical causality conclusions",
+        "Ignoring privilege or protected-review boundary",
+        "Missing effectiveness monitoring"
+      ],
+      "test_prompts": [
+        "Near miss patient safety event needs RCA2 interview guide and causal factor plan"
+      ]
+    },
+    {
+      "id": "ed-boarding-capacity-workup-operator-os-v1",
+      "workflow_id": "ed-boarding-capacity-workup",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS ED Boarding and Capacity Workup Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use aggregate operational measures; avoid patient-level examples unless approved and minimum necessary.",
+      "source_categories": [
+        "operational_telemetry",
+        "local_policy",
+        "staffing_capacity",
+        "safety_escalation",
+        "change_log",
+        "governance",
+        "monitoring",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "operational-telemetry-telemetry-denominator",
+          "title": "Operational Telemetry - telemetry denominator",
+          "source_category": "operational_telemetry",
+          "source_family": "operations dashboard; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved operations dashboard for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / operational_telemetry",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "telemetry denominator",
+            "denominator grain, exclusions, time window, and refresh timestamp"
+          ],
+          "applies_to_sections": [
+            "Bottleneck map"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing decision support with incident command",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-policy-local-operating-policy",
+          "title": "Local Policy - local operating policy",
+          "source_category": "local_policy",
+          "source_family": "staffing or capacity source; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved staffing or capacity source for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / local_policy",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "local operating policy"
+          ],
+          "applies_to_sections": [
+            "Immediate operational moves"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing denominator definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "staffing-capacity-safety-escalation",
+          "title": "Staffing Capacity - safety escalation",
+          "source_category": "staffing_capacity",
+          "source_family": "local policy; local ED Boarding and Capacity Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved local policy for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / staffing_capacity",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "safety escalation"
+          ],
+          "applies_to_sections": [
+            "Escalation triggers"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring safety escalation",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "safety-escalation-owner-cadence",
+          "title": "Safety Escalation - owner cadence",
+          "source_category": "safety_escalation",
+          "source_family": "daily huddle or command log; local ED Boarding and Capacity Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved daily huddle or command log for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / safety_escalation",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "owner cadence"
+          ],
+          "applies_to_sections": [
+            "Metric dashboard spec"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overstating authority",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "change-log-monitoring-proof",
+          "title": "Change Log - monitoring proof",
+          "source_category": "change_log",
+          "source_family": "monitoring cadence; approved change ticket, production approval, rollback owner, and validation evidence",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved monitoring cadence for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / change_log",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "monitoring proof",
+            "approved change ticket/status",
+            "rollback owner and validation evidence"
+          ],
+          "applies_to_sections": [
+            "Leadership update"
+          ],
+          "human_owner": "Data Owner",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing decision support with incident command",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-telemetry-denominator",
+          "title": "Governance - telemetry denominator",
+          "source_category": "governance",
+          "source_family": "operations dashboard; local ED Boarding and Capacity Workup source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved operations dashboard for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / governance",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "telemetry denominator"
+          ],
+          "applies_to_sections": [
+            "Bottleneck map"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing denominator definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "monitoring-local-operating-policy",
+          "title": "Monitoring - local operating policy",
+          "source_category": "monitoring",
+          "source_family": "staffing or capacity source; local ED Boarding and Capacity Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved staffing or capacity source for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / monitoring",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "local operating policy"
+          ],
+          "applies_to_sections": [
+            "Immediate operational moves"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring safety escalation",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-safety-escalation",
+          "title": "Human Escalation - safety escalation",
+          "source_category": "human_escalation",
+          "source_family": "local policy; local ED Boarding and Capacity Workup source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved local policy for ED Boarding and Capacity Workup. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ed-boarding-capacity-workup / human_escalation",
+          "required_fields": [
+            "boarding hours",
+            "arrival and admission rates",
+            "discharge timing",
+            "bed types",
+            "staffing constraints",
+            "safety escalation"
+          ],
+          "applies_to_sections": [
+            "Escalation triggers"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overstating authority",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "operations dashboard",
+        "staffing or capacity source",
+        "local policy",
+        "daily huddle or command log",
+        "monitoring cadence"
+      ],
+      "failure_modes": [
+        "Confusing decision support with incident command",
+        "Missing denominator definitions",
+        "Ignoring safety escalation",
+        "Overstating authority"
+      ],
+      "test_prompts": [
+        "Ambulance diversion risk from ED boarding and inpatient bed constraints"
+      ]
+    },
+    {
+      "id": "ambulatory-access-backlog-operator-os-v1",
+      "workflow_id": "ambulatory-access-backlog",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Ambulatory Access Backlog Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use aggregate operational measures; avoid patient-level examples unless approved and minimum necessary.",
+      "source_categories": [
+        "operational_telemetry",
+        "local_policy",
+        "staffing_capacity",
+        "safety_escalation",
+        "change_log",
+        "governance",
+        "monitoring",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "operational-telemetry-telemetry-denominator",
+          "title": "Operational Telemetry - telemetry denominator",
+          "source_category": "operational_telemetry",
+          "source_family": "operations dashboard; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved operations dashboard for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / operational_telemetry",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "telemetry denominator",
+            "denominator grain, exclusions, time window, and refresh timestamp"
+          ],
+          "applies_to_sections": [
+            "Demand and capacity view"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing decision support with incident command",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-policy-local-operating-policy",
+          "title": "Local Policy - local operating policy",
+          "source_category": "local_policy",
+          "source_family": "staffing or capacity source; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved staffing or capacity source for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / local_policy",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "local operating policy"
+          ],
+          "applies_to_sections": [
+            "Backlog segmentation"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing denominator definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "staffing-capacity-safety-escalation",
+          "title": "Staffing Capacity - safety escalation",
+          "source_category": "staffing_capacity",
+          "source_family": "local policy; local Ambulatory Access Backlog source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved local policy for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / staffing_capacity",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "safety escalation"
+          ],
+          "applies_to_sections": [
+            "Scheduling rule changes"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring safety escalation",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "safety-escalation-owner-cadence",
+          "title": "Safety Escalation - owner cadence",
+          "source_category": "safety_escalation",
+          "source_family": "daily huddle or command log; local Ambulatory Access Backlog source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved daily huddle or command log for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / safety_escalation",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "owner cadence"
+          ],
+          "applies_to_sections": [
+            "Referral triage approach"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overstating authority",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "change-log-monitoring-proof",
+          "title": "Change Log - monitoring proof",
+          "source_category": "change_log",
+          "source_family": "monitoring cadence; approved change ticket, production approval, rollback owner, and validation evidence",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved monitoring cadence for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / change_log",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "monitoring proof",
+            "approved change ticket/status",
+            "rollback owner and validation evidence"
+          ],
+          "applies_to_sections": [
+            "Monitoring metrics"
+          ],
+          "human_owner": "Data Owner",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing decision support with incident command",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-telemetry-denominator",
+          "title": "Governance - telemetry denominator",
+          "source_category": "governance",
+          "source_family": "operations dashboard; local Ambulatory Access Backlog source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved operations dashboard for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / governance",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "telemetry denominator"
+          ],
+          "applies_to_sections": [
+            "Demand and capacity view"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing denominator definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "monitoring-local-operating-policy",
+          "title": "Monitoring - local operating policy",
+          "source_category": "monitoring",
+          "source_family": "staffing or capacity source; local Ambulatory Access Backlog source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved staffing or capacity source for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / monitoring",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "local operating policy"
+          ],
+          "applies_to_sections": [
+            "Backlog segmentation"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring safety escalation",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-safety-escalation",
+          "title": "Human Escalation - safety escalation",
+          "source_category": "human_escalation",
+          "source_family": "local policy; local Ambulatory Access Backlog source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved local policy for Ambulatory Access Backlog. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for ambulatory-access-backlog / human_escalation",
+          "required_fields": [
+            "specialty",
+            "backlog size",
+            "template design",
+            "referral sources",
+            "no-show rate",
+            "safety escalation"
+          ],
+          "applies_to_sections": [
+            "Scheduling rule changes"
+          ],
+          "human_owner": "Operations Administrator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overstating authority",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "operations dashboard",
+        "staffing or capacity source",
+        "local policy",
+        "daily huddle or command log",
+        "monitoring cadence"
+      ],
+      "failure_modes": [
+        "Confusing decision support with incident command",
+        "Missing denominator definitions",
+        "Ignoring safety escalation",
+        "Overstating authority"
+      ],
+      "test_prompts": [
+        "Referral backlog and high no-show rate require ambulatory access recovery plan"
+      ]
+    },
+    {
+      "id": "value-based-care-downside-risk-readiness-operator-os-v1",
+      "workflow_id": "value-based-care-downside-risk-readiness",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Value-Based Care Downside Risk Readiness Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use aggregate performance data where possible; member-level gap data requires governed access and minimum necessary handling.",
+      "source_categories": [
+        "contract",
+        "measure_definition",
+        "actuarial_assumption",
+        "performance_data",
+        "care_gap_evidence",
+        "finance",
+        "governance",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "contract-contract-or-model-source",
+          "title": "Contract - contract or model source",
+          "source_category": "contract",
+          "source_family": "risk contract lookup; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved risk contract lookup for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / contract",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "contract or model source"
+          ],
+          "applies_to_sections": [
+            "Risk register"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Treating actuarial assumptions as operational facts",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "measure-definition-measure-definition",
+          "title": "Measure Definition - measure definition",
+          "source_category": "measure_definition",
+          "source_family": "measure specification; local Value-Based Care Downside Risk Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved measure specification for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / measure_definition",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "measure definition",
+            "measurement year, product line, collection method, and spec version"
+          ],
+          "applies_to_sections": [
+            "Intervention map"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using stale measure definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "actuarial-assumption-actuarial-assumption-boundary",
+          "title": "Actuarial Assumption - actuarial assumption boundary",
+          "source_category": "actuarial_assumption",
+          "source_family": "performance dashboard; local Value-Based Care Downside Risk Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved performance dashboard for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / actuarial_assumption",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "actuarial assumption boundary"
+          ],
+          "applies_to_sections": [
+            "Data gaps"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Making final contract or finance decisions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "performance-data-performance-evidence",
+          "title": "Performance Data - performance evidence",
+          "source_category": "performance_data",
+          "source_family": "care gap source; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved care gap source for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / performance_data",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "performance evidence"
+          ],
+          "applies_to_sections": [
+            "Governance cadence"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring compliance review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "care-gap-evidence-operational-owner",
+          "title": "Care Gap Evidence - operational owner",
+          "source_category": "care_gap_evidence",
+          "source_family": "finance or actuarial model owner; local Value-Based Care Downside Risk Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved finance or actuarial model owner for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / care_gap_evidence",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "operational owner"
+          ],
+          "applies_to_sections": [
+            "Decision points"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating actuarial assumptions as operational facts",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "finance-contract-or-model-source",
+          "title": "Finance - contract or model source",
+          "source_category": "finance",
+          "source_family": "risk contract lookup; local Value-Based Care Downside Risk Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved risk contract lookup for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / finance",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "contract or model source"
+          ],
+          "applies_to_sections": [
+            "Risk register"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using stale measure definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-measure-definition",
+          "title": "Governance - measure definition",
+          "source_category": "governance",
+          "source_family": "measure specification; local Value-Based Care Downside Risk Readiness source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved measure specification for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / governance",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "measure definition"
+          ],
+          "applies_to_sections": [
+            "Intervention map"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Making final contract or finance decisions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-actuarial-assumption-boundary",
+          "title": "Human Escalation - actuarial assumption boundary",
+          "source_category": "human_escalation",
+          "source_family": "performance dashboard; local Value-Based Care Downside Risk Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved performance dashboard for Value-Based Care Downside Risk Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for value-based-care-downside-risk-readiness / human_escalation",
+          "required_fields": [
+            "contract model",
+            "attributed lives",
+            "quality measures",
+            "cost benchmark",
+            "care management model",
+            "actuarial assumption boundary"
+          ],
+          "applies_to_sections": [
+            "Data gaps"
+          ],
+          "human_owner": "Value-Based Care Manager",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring compliance review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "risk contract lookup",
+        "measure specification",
+        "performance dashboard",
+        "care gap source",
+        "finance or actuarial model owner"
+      ],
+      "failure_modes": [
+        "Treating actuarial assumptions as operational facts",
+        "Using stale measure definitions",
+        "Making final contract or finance decisions",
+        "Ignoring compliance review"
+      ],
+      "test_prompts": [
+        "ACO downside risk contract with attributed lives and cost benchmark needs readiness memo"
+      ]
+    },
+    {
+      "id": "hedis-stars-gap-closure-sprint-operator-os-v1",
+      "workflow_id": "hedis-stars-gap-closure-sprint",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS HEDIS or Stars Gap Closure Sprint Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use current measure-year specifications and aggregate gap data where possible; member-level gap data requires governed access.",
+      "source_categories": [
+        "measure_specification",
+        "program_guidance",
+        "local_abstraction_policy",
+        "data_source",
+        "validation_owner",
+        "corrective_action",
+        "governance",
+        "compliance_privacy"
+      ],
+      "citation_cards": [
+        {
+          "id": "measure-specification-measurement-year-and-spec-source",
+          "title": "Measure Specification - measurement year and spec source",
+          "source_category": "measure_specification",
+          "source_family": "NCQA HEDIS measurement-year specification or CMS Stars technical note lookup; local HEDIS or Stars Gap Closure Sprint source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved NCQA HEDIS measurement-year specification or CMS Stars technical note lookup for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / measure_specification",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "measurement year and spec source",
+            "measurement year, product line, collection method, and spec version"
+          ],
+          "applies_to_sections": [
+            "Gap stratification"
+          ],
+          "human_owner": "Quality Improvement Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using stale measure specifications",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "program-guidance-product-line-program",
+          "title": "Program Guidance - product line/program",
+          "source_category": "program_guidance",
+          "source_family": "local abstraction policy; local HEDIS or Stars Gap Closure Sprint source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved local abstraction policy for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / program_guidance",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "product line/program"
+          ],
+          "applies_to_sections": [
+            "Outreach plan"
+          ],
+          "human_owner": "Quality Improvement Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Mixing product lines or programs",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-abstraction-policy-collection-method",
+          "title": "Local Abstraction Policy - collection method",
+          "source_category": "local_abstraction_policy",
+          "source_family": "measure source-system lineage; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved measure source-system lineage for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / local_abstraction_policy",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "collection method"
+          ],
+          "applies_to_sections": [
+            "Documentation checklist"
+          ],
+          "human_owner": "Quality Improvement Specialist",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Providing measure-level advice without current specs",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "data-source-validation-owner",
+          "title": "Data Source - validation owner",
+          "source_category": "data_source",
+          "source_family": "gap closure workqueue; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved gap closure workqueue for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / data_source",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "validation owner"
+          ],
+          "applies_to_sections": [
+            "Weekly operating rhythm"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using member-level data outside governed access",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "validation-owner-corrective-action-monitoring",
+          "title": "Validation Owner - corrective-action monitoring",
+          "source_category": "validation_owner",
+          "source_family": "quality validation sign-off; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved quality validation sign-off for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / validation_owner",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "corrective-action monitoring",
+            "validation owner and sign-off record"
+          ],
+          "applies_to_sections": [
+            "Measure validation"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using stale measure specifications",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "corrective-action-measurement-year-and-spec-source",
+          "title": "Corrective Action - measurement year and spec source",
+          "source_category": "corrective_action",
+          "source_family": "NCQA HEDIS measurement-year specification or CMS Stars technical note lookup; local HEDIS or Stars Gap Closure Sprint source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved NCQA HEDIS measurement-year specification or CMS Stars technical note lookup for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / corrective_action",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "measurement year and spec source"
+          ],
+          "applies_to_sections": [
+            "Gap stratification"
+          ],
+          "human_owner": "Quality Improvement Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Mixing product lines or programs",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-product-line-program",
+          "title": "Governance - product line/program",
+          "source_category": "governance",
+          "source_family": "local abstraction policy; local HEDIS or Stars Gap Closure Sprint source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved local abstraction policy for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / governance",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "product line/program"
+          ],
+          "applies_to_sections": [
+            "Outreach plan"
+          ],
+          "human_owner": "Quality Improvement Specialist",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Providing measure-level advice without current specs",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "compliance-privacy-collection-method",
+          "title": "Compliance Privacy - collection method",
+          "source_category": "compliance_privacy",
+          "source_family": "measure source-system lineage; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved measure source-system lineage for HEDIS or Stars Gap Closure Sprint. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hedis-stars-gap-closure-sprint / compliance_privacy",
+          "required_fields": [
+            "measure",
+            "denominator",
+            "numerator gap",
+            "patient segment",
+            "outreach channels",
+            "collection method"
+          ],
+          "applies_to_sections": [
+            "Documentation checklist"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Using member-level data outside governed access",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "NCQA HEDIS measurement-year specification or CMS Stars technical note lookup",
+        "local abstraction policy",
+        "measure source-system lineage",
+        "gap closure workqueue",
+        "quality validation sign-off"
+      ],
+      "failure_modes": [
+        "Using stale measure specifications",
+        "Mixing product lines or programs",
+        "Providing measure-level advice without current specs",
+        "Using member-level data outside governed access"
+      ],
+      "test_prompts": [
+        "HEDIS diabetic eye exam denominator gap and outreach sprint plan"
+      ]
+    },
+    {
+      "id": "hl7-fhir-interface-incident-operator-os-v1",
+      "workflow_id": "hl7-fhir-interface-incident",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS HL7 or FHIR Interface Incident Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Do not include live endpoints, credentials, secrets, or patient identifiers in fixtures or evidence packs.",
+      "source_categories": [
+        "system_logs",
+        "interface_transactions",
+        "change_control",
+        "data_dictionary",
+        "security_privacy",
+        "governance",
+        "monitoring",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "system-logs-system-log-evidence",
+          "title": "System Logs - system log evidence",
+          "source_category": "system_logs",
+          "source_family": "interface logs; local transaction or system log evidence",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved interface logs for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / system_logs",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "system log evidence"
+          ],
+          "applies_to_sections": [
+            "Incident summary"
+          ],
+          "human_owner": "Interface Engineer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Recommending production changes without change control",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "interface-transactions-transaction-sample-path",
+          "title": "Interface Transactions - transaction sample path",
+          "source_category": "interface_transactions",
+          "source_family": "HL7/FHIR transaction samples without credentials; local transaction or system log evidence",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved HL7/FHIR transaction samples without credentials for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / interface_transactions",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "transaction sample path"
+          ],
+          "applies_to_sections": [
+            "Triage checklist"
+          ],
+          "human_owner": "Interface Engineer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Including endpoints or credentials",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "change-control-change-control-owner",
+          "title": "Change Control - change-control owner",
+          "source_category": "change_control",
+          "source_family": "change ticket; approved change ticket, production approval, rollback owner, and validation evidence",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved change ticket for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / change_control",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "change-control owner",
+            "approved change ticket/status",
+            "rollback owner and validation evidence"
+          ],
+          "applies_to_sections": [
+            "Evidence to collect"
+          ],
+          "human_owner": "Interface Engineer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Skipping rollback owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "data-dictionary-source-of-truth-control",
+          "title": "Data Dictionary - source-of-truth control",
+          "source_category": "data_dictionary",
+          "source_family": "system owner map; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved system owner map for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / data_dictionary",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "source-of-truth control",
+            "source table/view or system of record"
+          ],
+          "applies_to_sections": [
+            "Communications"
+          ],
+          "human_owner": "Interface Engineer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing mapping hypothesis with root cause",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "security-privacy-security-privacy-boundary",
+          "title": "Security Privacy - security/privacy boundary",
+          "source_category": "security_privacy",
+          "source_family": "monitoring dashboard; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved monitoring dashboard for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / security_privacy",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "security/privacy boundary"
+          ],
+          "applies_to_sections": [
+            "Root-cause hypotheses"
+          ],
+          "human_owner": "Security or Privacy Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Recommending production changes without change control",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-system-log-evidence",
+          "title": "Governance - system log evidence",
+          "source_category": "governance",
+          "source_family": "interface logs; local HL7 or FHIR Interface Incident source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved interface logs for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / governance",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "system log evidence"
+          ],
+          "applies_to_sections": [
+            "Remediation plan"
+          ],
+          "human_owner": "Interface Engineer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Including endpoints or credentials",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "monitoring-transaction-sample-path",
+          "title": "Monitoring - transaction sample path",
+          "source_category": "monitoring",
+          "source_family": "HL7/FHIR transaction samples without credentials; local HL7 or FHIR Interface Incident source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved HL7/FHIR transaction samples without credentials for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / monitoring",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "transaction sample path"
+          ],
+          "applies_to_sections": [
+            "Incident summary"
+          ],
+          "human_owner": "Interface Engineer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Skipping rollback owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-change-control-owner",
+          "title": "Human Escalation - change-control owner",
+          "source_category": "human_escalation",
+          "source_family": "change ticket; local HL7 or FHIR Interface Incident source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved change ticket for HL7 or FHIR Interface Incident. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for hl7-fhir-interface-incident / human_escalation",
+          "required_fields": [
+            "system names",
+            "message type or resource",
+            "failure mode",
+            "timeline",
+            "affected workflows",
+            "change-control owner"
+          ],
+          "applies_to_sections": [
+            "Triage checklist"
+          ],
+          "human_owner": "Interface Engineer",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Confusing mapping hypothesis with root cause",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "interface logs",
+        "HL7/FHIR transaction samples without credentials",
+        "change ticket",
+        "system owner map",
+        "monitoring dashboard"
+      ],
+      "failure_modes": [
+        "Recommending production changes without change control",
+        "Including endpoints or credentials",
+        "Skipping rollback owner",
+        "Confusing mapping hypothesis with root cause"
+      ],
+      "test_prompts": [
+        "FHIR feed latency and HL7 mapping error caused interface incident"
+      ]
+    },
+    {
+      "id": "clinical-dashboard-specification-operator-os-v1",
+      "workflow_id": "clinical-dashboard-specification",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Clinical Dashboard Specification Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Prefer aggregate metrics and de-identified examples; patient-level dashboard data requires governed access.",
+      "source_categories": [
+        "data_dictionary",
+        "metric_definition",
+        "lineage",
+        "refresh_cadence",
+        "validation_owner",
+        "governance",
+        "privacy",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "data-dictionary-metric-definition",
+          "title": "Data Dictionary - metric definition",
+          "source_category": "data_dictionary",
+          "source_family": "data dictionary; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved data dictionary for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / data_dictionary",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "metric definition",
+            "source table/view or system of record"
+          ],
+          "applies_to_sections": [
+            "Decision context"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Building dashboards without definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "metric-definition-data-lineage",
+          "title": "Metric Definition - data lineage",
+          "source_category": "metric_definition",
+          "source_family": "metric definition record; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved metric definition record for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / metric_definition",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "data lineage"
+          ],
+          "applies_to_sections": [
+            "Metric definitions"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Missing source-of-truth owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "lineage-refresh-cadence",
+          "title": "Lineage - refresh cadence",
+          "source_category": "lineage",
+          "source_family": "lineage map; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved lineage map for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / lineage",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "refresh cadence",
+            "source table/view or system of record"
+          ],
+          "applies_to_sections": [
+            "Data grain and filters"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Ignoring refresh cadence",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "refresh-cadence-validation-owner",
+          "title": "Refresh Cadence - validation owner",
+          "source_category": "refresh_cadence",
+          "source_family": "refresh schedule; local Clinical Dashboard Specification source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved refresh schedule for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / refresh_cadence",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "validation owner"
+          ],
+          "applies_to_sections": [
+            "Mock table"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using patient-level data unnecessarily",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "validation-owner-privacy-boundary",
+          "title": "Validation Owner - privacy boundary",
+          "source_category": "validation_owner",
+          "source_family": "validation sign-off; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved validation sign-off for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / validation_owner",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "privacy boundary",
+            "validation owner and sign-off record"
+          ],
+          "applies_to_sections": [
+            "Validation plan"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Building dashboards without definitions",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-metric-definition",
+          "title": "Governance - metric definition",
+          "source_category": "governance",
+          "source_family": "data dictionary; local Clinical Dashboard Specification source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved data dictionary for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / governance",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "metric definition"
+          ],
+          "applies_to_sections": [
+            "Owner sign-off"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing source-of-truth owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "privacy-data-lineage",
+          "title": "Privacy - data lineage",
+          "source_category": "privacy",
+          "source_family": "metric definition record; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved metric definition record for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / privacy",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "data lineage"
+          ],
+          "applies_to_sections": [
+            "Decision context"
+          ],
+          "human_owner": "Privacy Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Ignoring refresh cadence",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-refresh-cadence",
+          "title": "Human Escalation - refresh cadence",
+          "source_category": "human_escalation",
+          "source_family": "lineage map; local Clinical Dashboard Specification source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved lineage map for Clinical Dashboard Specification. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for clinical-dashboard-specification / human_escalation",
+          "required_fields": [
+            "decision owner",
+            "decisions supported",
+            "metrics",
+            "data sources",
+            "cadence",
+            "refresh cadence"
+          ],
+          "applies_to_sections": [
+            "Metric definitions"
+          ],
+          "human_owner": "Clinical Data Analyst",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using patient-level data unnecessarily",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "data dictionary",
+        "metric definition record",
+        "lineage map",
+        "refresh schedule",
+        "validation sign-off"
+      ],
+      "failure_modes": [
+        "Building dashboards without definitions",
+        "Missing source-of-truth owner",
+        "Ignoring refresh cadence",
+        "Using patient-level data unnecessarily"
+      ],
+      "test_prompts": [
+        "Dashboard requirements spec for conflicting KPI definitions and data sources"
+      ]
+    },
+    {
+      "id": "pharmacy-contract-scorecard-operator-os-v1",
+      "workflow_id": "pharmacy-contract-scorecard",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS PBM or Pharmacy Contract Scorecard Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Avoid member-level pharmacy claims and private PBM contract text; use owner-reviewed lookup paths.",
+      "source_categories": [
+        "contract",
+        "pbm_policy",
+        "finance",
+        "claims_data",
+        "clinical_pharmacy_review",
+        "governance",
+        "human_escalation",
+        "compliance_privacy"
+      ],
+      "citation_cards": [
+        {
+          "id": "contract-contract-or-plan-source",
+          "title": "Contract - contract or plan source",
+          "source_category": "contract",
+          "source_family": "PBM contract lookup; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved PBM contract lookup for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / contract",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "contract or plan source"
+          ],
+          "applies_to_sections": [
+            "Scorecard structure"
+          ],
+          "human_owner": "Contracting Owner",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Making final legal or financial authority claims",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "pbm-policy-claims-evidence",
+          "title": "Pbm Policy - claims evidence",
+          "source_category": "pbm_policy",
+          "source_family": "claims extract; payer, contract, provider-manual, or plan-policy lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved claims extract for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / pbm_policy",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "claims evidence"
+          ],
+          "applies_to_sections": [
+            "Data request list"
+          ],
+          "human_owner": "Pharmacy Benefits Specialist",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Exposing contract text",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "finance-financial-scorecard-basis",
+          "title": "Finance - financial scorecard basis",
+          "source_category": "finance",
+          "source_family": "rebate or formulary source path; local PBM or Pharmacy Contract Scorecard source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved rebate or formulary source path for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / finance",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "financial scorecard basis"
+          ],
+          "applies_to_sections": [
+            "Variance hypotheses"
+          ],
+          "human_owner": "Pharmacy Benefits Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overlooking clinical pharmacy review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "claims-data-pharmacy-benefit-review",
+          "title": "Claims Data - pharmacy benefit review",
+          "source_category": "claims_data",
+          "source_family": "finance definition; governed data dictionary, source-of-truth, or validation record",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved finance definition for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / claims_data",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "pharmacy benefit review"
+          ],
+          "applies_to_sections": [
+            "Rebate and specialty spend review"
+          ],
+          "human_owner": "Pharmacy Benefits Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Using PHI outside approved environment",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "clinical-pharmacy-review-legal-compliance-boundary",
+          "title": "Clinical Pharmacy Review - legal/compliance boundary",
+          "source_category": "clinical_pharmacy_review",
+          "source_family": "pharmacy owner review; local PBM or Pharmacy Contract Scorecard source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved pharmacy owner review for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / clinical_pharmacy_review",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "legal/compliance boundary"
+          ],
+          "applies_to_sections": [
+            "Negotiation points"
+          ],
+          "human_owner": "Pharmacy Benefits Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Making final legal or financial authority claims",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-contract-or-plan-source",
+          "title": "Governance - contract or plan source",
+          "source_category": "governance",
+          "source_family": "PBM contract lookup; local PBM or Pharmacy Contract Scorecard source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved PBM contract lookup for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / governance",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "contract or plan source"
+          ],
+          "applies_to_sections": [
+            "Scorecard structure"
+          ],
+          "human_owner": "Pharmacy Benefits Specialist",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Exposing contract text",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-claims-evidence",
+          "title": "Human Escalation - claims evidence",
+          "source_category": "human_escalation",
+          "source_family": "claims extract; local PBM or Pharmacy Contract Scorecard source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved claims extract for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / human_escalation",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "claims evidence"
+          ],
+          "applies_to_sections": [
+            "Data request list"
+          ],
+          "human_owner": "Pharmacy Benefits Specialist",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overlooking clinical pharmacy review",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "compliance-privacy-financial-scorecard-basis",
+          "title": "Compliance Privacy - financial scorecard basis",
+          "source_category": "compliance_privacy",
+          "source_family": "rebate or formulary source path; local privacy/security/compliance policy and owner review",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved rebate or formulary source path for PBM or Pharmacy Contract Scorecard. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for pharmacy-contract-scorecard / compliance_privacy",
+          "required_fields": [
+            "contract terms",
+            "utilization",
+            "rebate terms",
+            "specialty spend",
+            "claims sample",
+            "financial scorecard basis"
+          ],
+          "applies_to_sections": [
+            "Variance hypotheses"
+          ],
+          "human_owner": "Compliance Officer",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Using PHI outside approved environment",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "PBM contract lookup",
+        "claims extract",
+        "rebate or formulary source path",
+        "finance definition",
+        "pharmacy owner review"
+      ],
+      "failure_modes": [
+        "Making final legal or financial authority claims",
+        "Exposing contract text",
+        "Overlooking clinical pharmacy review",
+        "Using PHI outside approved environment"
+      ],
+      "test_prompts": [
+        "PBM contract scorecard for rebate terms formulary performance and specialty spend"
+      ]
+    },
+    {
+      "id": "emergency-preparedness-exercise-readiness-operator-os-v1",
+      "workflow_id": "emergency-preparedness-exercise-readiness",
+      "exemplar": false,
+      "version": "1.0.0",
+      "status": "active",
+      "title": "Operator OS Emergency Preparedness Exercise Readiness Evidence Pack",
+      "last_reviewed": "2026-05-31",
+      "offline_first": true,
+      "phi_policy": "Use exercise artifacts and aggregate readiness data; do not include live emergency instructions or patient details.",
+      "source_categories": [
+        "exercise_documents",
+        "hva",
+        "incident_command",
+        "after_action",
+        "local_policy",
+        "regulatory",
+        "governance",
+        "human_escalation"
+      ],
+      "citation_cards": [
+        {
+          "id": "exercise-documents-exercise-document-source",
+          "title": "Exercise Documents - exercise document source",
+          "source_category": "exercise_documents",
+          "source_family": "exercise plan; local Emergency Preparedness Exercise Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved exercise plan for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / exercise_documents",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "exercise document source"
+          ],
+          "applies_to_sections": [
+            "Exercise objectives"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Providing live emergency guidance",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "hva-hva-or-plan-reference",
+          "title": "Hva - HVA or plan reference",
+          "source_category": "hva",
+          "source_family": "HVA; local Emergency Preparedness Exercise Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved HVA for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / hva",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "HVA or plan reference"
+          ],
+          "applies_to_sections": [
+            "Scenario assumptions"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overriding incident command",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "incident-command-incident-command-boundary",
+          "title": "Incident Command - incident command boundary",
+          "source_category": "incident_command",
+          "source_family": "EOP policy; local Emergency Preparedness Exercise Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved EOP policy for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / incident_command",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "incident command boundary"
+          ],
+          "applies_to_sections": [
+            "Inject list"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Missing after-action owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "after-action-after-action-monitoring",
+          "title": "After Action - after-action monitoring",
+          "source_category": "after_action",
+          "source_family": "after-action tracker; local Emergency Preparedness Exercise Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved after-action tracker for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / after_action",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "after-action monitoring"
+          ],
+          "applies_to_sections": [
+            "Evaluation checklist"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating exercise assumptions as real event facts",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "local-policy-regulatory-policy-owner",
+          "title": "Local Policy - regulatory/policy owner",
+          "source_category": "local_policy",
+          "source_family": "resource owner map; local policy, evidence binder, and accountable owner lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved resource owner map for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / local_policy",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "regulatory/policy owner"
+          ],
+          "applies_to_sections": [
+            "After-action template"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Providing live emergency guidance",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "regulatory-exercise-document-source",
+          "title": "Regulatory - exercise document source",
+          "source_category": "regulatory",
+          "source_family": "exercise plan; regulator or program source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved exercise plan for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / regulatory",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "exercise document source"
+          ],
+          "applies_to_sections": [
+            "Owner timeline"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Overriding incident command",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "governance-hva-or-plan-reference",
+          "title": "Governance - HVA or plan reference",
+          "source_category": "governance",
+          "source_family": "HVA; local Emergency Preparedness Exercise Readiness source-family lookup",
+          "authority_level": "local-governance",
+          "citation_text": "Use locally approved HVA for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / governance",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "HVA or plan reference"
+          ],
+          "applies_to_sections": [
+            "Exercise objectives"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "local-policy-required",
+          "red_flags": [
+            "Missing after-action owner",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        },
+        {
+          "id": "human-escalation-incident-command-boundary",
+          "title": "Human Escalation - incident command boundary",
+          "source_category": "human_escalation",
+          "source_family": "EOP policy; local Emergency Preparedness Exercise Readiness source-family lookup",
+          "authority_level": "source-family",
+          "citation_text": "Use locally approved EOP policy for Emergency Preparedness Exercise Readiness. This scaffold names the source family and lookup path; it is not a pinpoint citation.",
+          "last_verified": "2026-05-31",
+          "effective_date": "local-policy-required",
+          "offline_locator": "Local evidence binder or governed repository for emergency-preparedness-exercise-readiness / human_escalation",
+          "required_fields": [
+            "hazard scenario",
+            "sites",
+            "participants",
+            "current plan",
+            "prior after-action findings",
+            "incident command boundary"
+          ],
+          "applies_to_sections": [
+            "Scenario assumptions"
+          ],
+          "human_owner": "Emergency Preparedness Coordinator",
+          "verification_status": "source-family-not-pinpoint",
+          "red_flags": [
+            "Treating exercise assumptions as real event facts",
+            "Do not use this card as autonomous authority without human review."
+          ]
+        }
+      ],
+      "required_evidence": [
+        "exercise plan",
+        "HVA",
+        "EOP policy",
+        "after-action tracker",
+        "resource owner map"
+      ],
+      "failure_modes": [
+        "Providing live emergency guidance",
+        "Overriding incident command",
+        "Missing after-action owner",
+        "Treating exercise assumptions as real event facts"
+      ],
+      "test_prompts": [
+        "CMS emergency preparedness exercise needs HVA scenario inject list and after-action template"
+      ]
+    }
+  ]
+}

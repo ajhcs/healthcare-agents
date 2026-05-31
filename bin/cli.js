@@ -20,6 +20,7 @@ const {
   getEvidencePackForWorkflow,
   formatEvidencePackMarkdown
 } = require('../lib/evidence-packs');
+const { buildEvidencePack } = require('../scripts/scaffold-evidence-pack');
 const renderers = require('../lib/renderers');
 const VALID_MODES = ['quick triage', 'workplan', 'audit/checklist', 'artifact/template'];
 
@@ -68,8 +69,10 @@ Usage:
   healthcare-agents choose "<problem>" [--json]
   healthcare-agents workflows [--json]
   healthcare-agents workflow <workflow-id> [--json]
+  healthcare-agents operator-os coverage [--json]
   healthcare-agents evidence-pack list [--json]
   healthcare-agents evidence-pack show <workflow-id|pack-id> [--json]
+  healthcare-agents evidence-pack scaffold <workflow-id>
   healthcare-agents workup "<problem>" [--target codex|claude|copilot|m365-copilot] [--data-mode <mode>] [--json]
   healthcare-agents export <platform> <workflow-id> [--output <dir>]
   healthcare-agents prompt <agent> --mode <mode>
@@ -97,7 +100,9 @@ Examples:
   healthcare-agents list --domain revenue
   healthcare-agents show revenue-cycle-specialist
   healthcare-agents choose "clean claim rate dropped after an EHR update"
+  healthcare-agents operator-os coverage
   healthcare-agents evidence-pack show denial-spike-workup
+  healthcare-agents evidence-pack scaffold clean-claim-rate-decline
   healthcare-agents workup "Commercial payer denial rate jumped 18 percent" --target codex
   healthcare-agents export m365-declarative-agent denial-spike-workup
   healthcare-agents prompt quality-compliance-officer --mode audit/checklist
@@ -482,8 +487,53 @@ function evidencePackCommand(args) {
     console.log(formatEvidencePackMarkdown(pack));
     return;
   }
-  console.error('error: evidence-pack requires list or show');
+  if (subcommand === 'scaffold') {
+    const id = args.find(arg => !arg.startsWith('--') && arg !== 'scaffold');
+    if (!id) {
+      console.error('error: evidence-pack scaffold requires a workflow id');
+      process.exit(2);
+    }
+    const workflow = findWorkflow(id);
+    if (!workflow) {
+      console.error('error: unknown workflow: ' + id);
+      process.exit(1);
+    }
+    console.log(JSON.stringify(buildEvidencePack(workflow), null, 2));
+    return;
+  }
+  console.error('error: evidence-pack requires list, show, or scaffold');
   process.exit(2);
+}
+
+function operatorOsCommand(args) {
+  const subcommand = args[0];
+  const json = hasFlag(args, '--json');
+  if (subcommand !== 'coverage') {
+    console.error('error: operator-os requires coverage');
+    process.exit(2);
+  }
+  const coverage = JSON.parse(fs.readFileSync(path.join(ROOT, 'workflows', 'operator-os-coverage.json'), 'utf8'));
+  if (json) {
+    console.log(JSON.stringify(coverage, null, 2));
+    return;
+  }
+  const rows = coverage.workflows.map(item => ({
+    workflow: item.workflow_id,
+    status: item.operator_os_status,
+    pack: item.evidence_pack_id || '',
+    fixture: item.case_fixture_status,
+    golden: item.golden_artifact_status,
+    reviewer: item.domain_reviewer,
+    wave: item.priority_wave
+  }));
+  console.log(formatTable(rows, [
+    { key: 'workflow', header: 'Workflow' },
+    { key: 'status', header: 'Status' },
+    { key: 'wave', header: 'Wave' },
+    { key: 'fixture', header: 'Fixture' },
+    { key: 'golden', header: 'Golden' },
+    { key: 'reviewer', header: 'Reviewer' }
+  ]));
 }
 
 async function workupCommand(args) {
@@ -746,6 +796,7 @@ async function main() {
   if (command === 'choose') return chooseAgent(rest);
   if (command === 'workflows') return listWorkflows(rest);
   if (command === 'workflow') return showWorkflow(rest);
+  if (command === 'operator-os') return operatorOsCommand(rest);
   if (command === 'evidence-pack') return evidencePackCommand(rest);
   if (command === 'workup') return workupCommand(rest);
   if (command === 'export') return exportCommand(rest);

@@ -30,6 +30,8 @@ Do not paste PHI into public models, unapproved tools, issue trackers, logs, pul
 
 Evidence packs and fixtures in this repository must not contain PHI, private payer contract text, payer portal exports, local caches, or downloaded source payloads. Demo case data must be synthetic and provenance-labeled.
 
+Operator OS catalog coverage is documented in `workflows/operator-os-coverage.json` and `docs/operator-os/catalog.md`. Normal runtime behavior remains offline-first across the catalog; live search, payer portal connectors, private contract ingestion, PHI-bearing uploads, MCP adapters, scheduled refresh jobs, autonomous appeal drafting, production deployment, and UI work are outside Phase 2 scope.
+
 ## Source Freshness
 
 Agent prompts include source awareness, but healthcare rules change. Verify current source materials before relying on outputs, especially for CMS rules, payer policies, ICD-10/CPT/HCPCS code sets, NCCI edits, HEDIS/Stars/MIPS specifications, HIPAA/OIG guidance, 340B/HRSA rules, accreditation standards, state Medicaid and licensure rules, contracts, and local policies.
