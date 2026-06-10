@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Trust and Safety scope questions
+    url: https://github.com/ajhcs/healthcare-agents/blob/main/docs/trust-and-safety.md
+    about: Read this first for scope, PHI handling, human escalation, source freshness, and eval limits.
+  - name: Report a security vulnerability
+    url: https://github.com/ajhcs/healthcare-agents/security/advisories/new
+    about: Use private vulnerability reporting. Never include PHI or real patient data in any report.
