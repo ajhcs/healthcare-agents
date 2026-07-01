@@ -64,6 +64,7 @@ for (const agent of registry.agents) {
     const frontmatter = parseFrontmatter(fs.readFileSync(promptPath, 'utf8'));
     if (frontmatter.name !== agent.slug) messages.push(`${agent.slug} frontmatter name mismatch in ${rel(promptPath)}`);
     if (frontmatter.display_name !== agent.display_name) messages.push(`${agent.slug} display_name mismatch between registry and prompt`);
+    if (frontmatter.description !== agent.description) messages.push(`${agent.slug} description mismatch between registry and prompt`);
   }
 }
 

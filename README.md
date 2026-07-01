@@ -174,7 +174,15 @@ For local development from this checkout:
 bash scripts/install-codex-plugin.sh
 ```
 
-The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`. Start a new Codex thread after installing or updating the plugin so the router skill is loaded.
+The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`. Start a new Codex thread after installing or updating the plugin so the self-directing router is loaded.
+
+Use natural phrasing:
+
+```text
+Use the Healthcare Agents plugin for a prior authorization appeal.
+Use Healthcare Agents in the revenue cycle area for a denial spike.
+Use the quality department for a survey readiness checklist.
+```
 
 Fast path:
 
@@ -338,7 +346,7 @@ flowchart LR
 | Tool / Standard | Install Target | Notes |
 |---|---|---|
 | Claude Code subagents | `~/.claude/agents/*.md` | Source prompts use lowercase hyphen `name` values matching filenames. |
-| Codex plugin | repo-root `.codex-plugin/plugin.json` plus `skills/healthcare-agents/SKILL.md` | Adds one router skill that reads `agents/registry.json`, selects a primary specialist, then reads the full source prompt. |
+| Codex plugin | repo-root `.codex-plugin/plugin.json` plus `skills/healthcare-agents/SKILL.md` | Adds one self-directing router that checks workflows, department/area hints, and specialists, then reads the full source prompt. |
 | Claude Skills | `~/.claude/skills/<slug>/SKILL.md` | Generated skill wrappers include `name`, `description`, `license`, and `compatibility`. |
 | Claude Desktop / Claude Cowork | Claude-compatible skills | Use `--claude-desktop`, `--claude-cowork`, or `--claude-skills`. |
 | Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed discovery block telling Codex how to choose specialists, use output modes, and name handoffs. |
@@ -646,7 +654,7 @@ Both. The source files in `agents/*.md` install as Claude Code subagents. The in
 
 ### Do these work in Codex?
 
-Yes. The recommended Codex path is the plugin install, which loads one `healthcare-agents` router skill and keeps the 51 source prompts as external reference. Use it for prompts like "Use Healthcare Agents for a prior authorization appeal workup" or "Route a denial spike problem to the right healthcare specialist."
+Yes. The recommended Codex path is the plugin install, which loads one self-directing Healthcare Agents router and keeps the 51 source prompts as external reference. Use it for prompts like "Use the Healthcare Agents plugin for a prior authorization appeal," "Use Healthcare Agents in the revenue cycle area for a denial spike," or "Use the quality department for a survey readiness checklist."
 
 The older installer path still works: `npx --yes healthcare-agents install --codex` copies prompts to `~/.codex/agents` and writes a managed `~/.codex/AGENTS.md` block. Use that when you want prompt files copied into your Codex home instead of installing the repo as a plugin.
 

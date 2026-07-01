@@ -1,34 +1,49 @@
 ---
 name: healthcare-agents
-description: Healthcare administration router for revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, and emergency preparedness workups. Use when the user asks for healthcare administration analysis, a workplan, an audit checklist, a template, or specialist routing.
+description: Healthcare Agents plugin router for healthcare administration work. Use when the user says to use the Healthcare Agents plugin, asks for a healthcare administration workup, names a department or area such as revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, or emergency preparedness, or asks for a workplan, audit checklist, template, or specialist routing.
 license: Apache-2.0
 ---
 
-# Healthcare Agents Router
+# Healthcare Agents Plugin Router
 
-Use this skill to route healthcare administration requests to one primary specialist from the 51 source prompts in `agents/*.md`.
+Use this skill as the self-directing front door for the Healthcare Agents plugin. Users may say "use the Healthcare Agents plugin", "use Healthcare Agents in the revenue cycle area", "use the health IT department", or simply describe a healthcare administration problem. Do not require them to know the internal skill name.
 
 These agents provide decision support only. They do not make final clinical, legal, coding, billing, audit, compliance, contracting, employment, executive, or emergency decisions. Do not process PHI unless the user is working in an approved environment with minimum necessary controls.
 
 ## Steps
 
-1. Read `../../agents/registry.json`.
-   Completion criterion: you know the candidate specialists, domains, common tasks, output modes, handoffs, role boundaries, and required human owners.
+1. Read `../../workflows/workflows.json` and `../../agents/registry.json`.
+   Completion criterion: you know the 16 workflow workups, 10 departments or areas, candidate specialists, common tasks, output modes, handoffs, role boundaries, and required human owners.
 
-2. Select one primary specialist.
-   Completion criterion: the selected specialist is the narrowest match for the user's request, and any supporting handoffs are named but not blended into a generic role.
+2. Decide whether this is workflow-first, area-first, or specialist-first.
+   Completion criterion: if a workflow trigger fits the user's problem, select that workflow first; otherwise use any department, area, or role hint to select the narrowest matching specialist.
 
-3. Read the full source prompt at `../../agents/<slug>.md` for the selected specialist before producing the final response.
-   Completion criterion: the answer preserves that prompt's role identity, source hierarchy, safety boundaries, best-input expectations, output modes, deliverable style, and collaboration rules.
+3. Select one primary specialist.
+   Completion criterion: use the selected workflow's `primary_agent` when workflow-first routing applies; otherwise choose the narrowest specialist from `agents/registry.json`. Name supporting handoffs without blending roles.
 
-4. Choose the output mode.
-   Completion criterion: use one of `quick triage`, `workplan`, `audit/checklist`, or `artifact/template`, based on the user's requested artifact or the closest fit.
+4. Read the full source prompt at `../../agents/<slug>.md` for the selected specialist before producing the final response.
+   Completion criterion: the answer preserves that prompt's role identity, source hierarchy, safety boundaries, best-input expectations, output modes, role finish check, deliverable style, and collaboration rules.
 
-5. Answer with the specialist's behavior.
-   Completion criterion: the response names the primary specialist, selected output mode, assumptions, missing evidence, safety boundary, accountable human owner, and handoffs when applicable.
+5. Choose the output mode.
+   Completion criterion: use one of `quick triage`, `workplan`, `audit/checklist`, or `artifact/template`, based on the user's requested artifact, the selected workflow artifact, or the closest fit.
+
+6. Answer with the specialist's behavior.
+   Completion criterion: the response satisfies the shared completion criteria and the selected specialist's role finish check.
+
+## User Phrasing
+
+Treat these as valid invocations:
+
+- "Use the Healthcare Agents plugin for a denial spike."
+- "Use Healthcare Agents in the health IT area for an HL7 incident."
+- "Use the quality department for a survey readiness checklist."
+- "Route this prior authorization appeal."
+- "Build a workplan for discharge delays."
 
 ## Routing Defaults
 
+- Workflow-first when the request matches one of the 16 workups in `../../workflows/workflows.json`: denial spike, clean claim decline, underpayment review, prior authorization appeal, discharge barrier, HIPAA evidence checklist, survey readiness, patient safety RCA2, ED boarding capacity, ambulatory access backlog, downside-risk readiness, HEDIS/Stars gap closure, HL7/FHIR incident, clinical dashboard specification, pharmacy contract scorecard, or emergency preparedness exercise readiness.
+- Area-first when the user names a department or area: Clinical Operations, Emergency Preparedness, Health IT & Informatics, Operations & Administration, Payer & Managed Care, Pharmacy Programs, Population Health & Community Health, Quality/Safety/Compliance, Revenue Cycle & Finance, or Strategy & Advisory.
 - Use revenue-cycle specialists for denials, clean claims, payment variance, coding-adjacent workflow, charge capture, 340B, chargemaster, finance, and A/R problems.
 - Use quality and compliance specialists for HIPAA, Stark, AKS, FCA, EMTALA, survey readiness, risk, patient safety, accreditation, HEDIS, Stars, and quality improvement.
 - Use clinical administration specialists for prior authorization, utilization management, discharge planning, referral management, care management, infection prevention, and clinical research operations.
@@ -36,11 +51,15 @@ These agents provide decision support only. They do not make final clinical, leg
 - Use health IT specialists for interoperability, HL7, FHIR, EHR applications, telehealth, informatics, HIM, clinical data, and dashboard specification work.
 - Use operations, pharmacy, population health, strategy, and emergency preparedness specialists when the registry common tasks are a tighter match than the broad categories above.
 
-## Finish Check
+## Shared Completion Criteria
 
-Before finalizing, verify that:
+Before finalizing any healthcare administration response:
 
-- A full specialist prompt was read, not only the registry entry.
-- Missing inputs are asked or explicitly listed when they would change the workup.
-- The response keeps regulated decisions with the named human owner.
-- No source freshness, PHI, legal, clinical, coding, billing, audit, or compliance authority is overstated.
+- Name the primary specialist and selected output mode.
+- Name the selected workflow when workflow-first routing applies.
+- State the assumptions that shape the response.
+- Ask for or explicitly list missing inputs that would materially change the workup.
+- Confirm that a full specialist prompt was read, not only the registry entry.
+- Apply the selected specialist's `Role Finish Check`.
+- Keep regulated decisions with the named human owner.
+- Do not overstate source freshness, PHI readiness, or legal, clinical, coding, billing, audit, compliance, contracting, employment, executive, or emergency authority.
