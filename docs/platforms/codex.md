@@ -10,13 +10,14 @@ bash scripts/install-codex-plugin.sh
 
 The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`.
 
-The Codex plugin exposes one `healthcare-agents` router skill. The router reads `agents/registry.json`, selects one primary specialist, and then reads the full matching `agents/<slug>.md` source prompt before answering.
+The Codex plugin exposes one self-directing `healthcare-agents` router. The router reads `workflows/workflows.json` and `agents/registry.json`, chooses a workflow, department/area, or specialist route, and then reads the full matching `agents/<slug>.md` source prompt before answering.
 
 Use prompts like:
 
 ```text
-Use Healthcare Agents for a prior authorization appeal workup.
-Route a denial spike problem to the right healthcare specialist.
+Use the Healthcare Agents plugin for a prior authorization appeal.
+Use Healthcare Agents in the revenue cycle area for a denial spike.
+Use the quality department for a survey readiness checklist.
 ```
 
 Legacy prompt-copy install:

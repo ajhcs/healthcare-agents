@@ -29,13 +29,14 @@ Thank you for considering contributing! This pack aims to provide MHA-level heal
 - Add real-world deliverable templates
 - Expand domain knowledge sections
 - Fix inaccuracies
+- Tighten model-facing invocation triggers, completion criteria, and role-specific routing branches without flattening the agent into generic guidance
 
 ### 3. Keep Registry And Release Evidence In Sync
 
 `agents/registry.json` is a maintained product index, not a scratch cache. Any
-change to an agent slug, frontmatter display name, domain, handoff, source
-family, role boundary, prompt file, or reviewed date must update the registry in
-the same pull request.
+change to an agent slug, frontmatter display name, frontmatter description,
+domain, handoff, source family, role boundary, prompt file, or reviewed date
+must update the registry in the same pull request.
 
 Before opening a release-oriented PR, run:
 
@@ -74,7 +75,7 @@ Every agent must follow this structure:
 ---
 name: [lowercase-hyphen-slug matching filename]
 display_name: [Human Role Name]
-description: [One-line expert summary]
+description: [Model-facing trigger: "Use for..." plus the narrow role branch]
 color: "[hex color from division palette]"
 emoji: [emoji]
 vibe: [One sentence personality]
@@ -84,6 +85,29 @@ services:                              # optional
     tier: free|freemium|paid
 ---
 ```
+
+### Frontmatter Description Standard
+
+The `description` field is the model-facing invocation pointer. Write it for
+routing, not marketing copy. It should:
+
+- Start with the leading phrase `Use for`.
+- Name the role and administrative domain.
+- Include one compact trigger branch, or a short same-branch cluster when the
+  terms are inseparable in real routing.
+- Avoid restating identity that already lives in the opening role paragraph.
+- Stay synchronized with `agents/registry.json`.
+
+Examples:
+
+```yaml
+description: Use for Prior Authorization Specialist work in Clinical Operations including payer criteria, peer-to-peer prep, and PA appeals.
+description: Use for Healthcare Interoperability Engineer work in Health IT & Informatics including HL7v2, FHIR, X12, HIE, patient matching, and interface errors.
+```
+
+When an agent has truly distinct trigger branches, prefer sharpening the shared
+leading words in the source prompt and registry before splitting into additional
+model-visible surfaces. More model-invoked surfaces spend context load.
 
 ### Required Sections (with emoji prefixes)
 
@@ -100,6 +124,7 @@ services:                              # optional
 ## 💬 Your Communication Style
 ### Best Inputs
 ### Output Modes
+### Role Finish Check
 ### Collaboration & Handoffs
 ## 🎯 Your Success Metrics
 ## 🚀 Advanced Capabilities
@@ -123,11 +148,23 @@ services:                              # optional
 
 ## Quality Standards
 
+### Role Finish Check Standard
+
+Each agent must include `### Role Finish Check` after `### Output Modes` and
+before `### Collaboration & Handoffs`. The role finish check is where the agent
+states its local completion bar: the role-specific evidence, source family,
+regulatory domain, human owner, and handoff threshold that make an answer ready.
+
+Keep shared safety and output-mode criteria in repository-level instructions or
+the `healthcare-agents` router skill. Do not repeat an identical
+`### Completion Criteria` block across source prompts.
+
 ### What Great Healthcare Agents Have
 - Narrow, deep specialization within a healthcare administration domain
 - Real regulatory citations (42 CFR, USC, CMS transmittals, Federal Register notices)
 - Actual deliverable templates with placeholders (not descriptions of deliverables)
 - Role-tailored best-input guidance, output modes, and cross-agent handoffs
+- Completion criteria that name the role-specific evidence, owner, escalation, and artifact bar for the work
 - Measurable success metrics with specific numbers
 - Step-by-step workflows from real operational practice
 - Distinct professional voice appropriate to the role
@@ -137,6 +174,7 @@ services:                              # optional
 - Generic "helpful assistant" personality
 - Vague deliverables without templates
 - Generic input/output/handoff blocks that could apply to any agent
+- Identical completion criteria across agents unless the shared rule is deliberately centralized in a router or repository-level instruction
 - Overly broad scope (jack-of-all-trades agents)
 - Clinical advice (diagnosis, treatment, prescribing)
 - Legal conclusions (these agents flag compliance risks, not provide legal opinions)

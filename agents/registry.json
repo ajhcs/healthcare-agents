@@ -14,7 +14,7 @@
       "slug": "clinical-care-management-specialist",
       "display_name": "Care Management Specialist",
       "domain": "Clinical Operations",
-      "description": "Expert care management specialist covering care coordination, chronic disease management, transitions of care, TCM/CCM billing, readmission prevention programs, SDOH screening, and population-based care management strategies for health systems.",
+      "description": "Use for Care Management Specialist work in Clinical Operations including Care coordination, TCM/CCM, readmission prevention, SDOH workflows.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -68,7 +68,7 @@
       "slug": "clinical-case-manager",
       "display_name": "Case Manager",
       "domain": "Clinical Operations",
-      "description": "Expert hospital case manager specializing in inpatient/outpatient case management, discharge planning, post-acute placement (SNF/HH/IRF/LTACH), avoidable day reduction, length of stay optimization, and CCMC/ACM professional standards.",
+      "description": "Use for Case Manager work in Clinical Operations including Discharge barriers, post-acute placement, avoidable days, patient choice.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -121,7 +121,7 @@
       "slug": "clinical-documentation-improvement-specialist",
       "display_name": "Documentation Improvement Specialist",
       "domain": "Clinical Operations",
-      "description": "Expert CDI specialist focusing on physician query development, CC/MCC capture optimization, DRG accuracy, PSI/HAC documentation, clinical validation, and CDI program metrics including query rate, agreement rate, and case mix impact analysis.",
+      "description": "Use for Documentation Improvement Specialist work in Clinical Operations including CDI query, CC/MCC capture, clinical validation denial.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -178,7 +178,7 @@
       "slug": "clinical-infection-prevention-specialist",
       "display_name": "Infection Prevention Specialist",
       "domain": "Clinical Operations",
-      "description": "Expert infection preventionist specializing in HAI surveillance via NHSN, CAUTI/CLABSI/SSI/CDI prevention bundles, antimicrobial stewardship program operations, outbreak investigation, environmental rounds, and CMS Conditions of Participation for infection control.",
+      "description": "Use for Infection Prevention Specialist work in Clinical Operations including HAI surveillance, NHSN attribution, outbreak or infection-control readiness.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -235,7 +235,7 @@
       "slug": "clinical-prior-authorization-specialist",
       "display_name": "Prior Authorization Specialist",
       "domain": "Clinical Operations",
-      "description": "Expert prior authorization specialist managing PA workflows by payer, medical necessity criteria application, multi-level appeal processes, gold carding program implementation, real-time PA regulatory compliance, and electronic prior authorization (ePA) operations.",
+      "description": "Use for Prior Authorization Specialist work in Clinical Operations including Prior authorization delays, payer criteria, peer-to-peer prep, PA appeals.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -293,7 +293,7 @@
       "slug": "clinical-referral-specialist",
       "display_name": "Referral Specialist",
       "domain": "Clinical Operations",
-      "description": "Expert referral management specialist covering referral workflows, network adequacy analysis, in-network vs OON navigation, specialist coordination, referral tracking and loop closure, care gap identification, and patient access optimization.",
+      "description": "Use for Referral Specialist work in Clinical Operations including Referral leakage, loop closure, specialty access, network navigation.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -347,7 +347,7 @@
       "slug": "clinical-research-coordinator",
       "display_name": "Clinical Research Coordinator",
       "domain": "Clinical Operations",
-      "description": "Expert clinical research coordinator specializing in IRB submissions, ICH-GCP E6(R3) compliance, 21 CFR Part 11 electronic records, informed consent management, adverse event reporting, clinical trial lifecycle management, and CTMS operations.",
+      "description": "Use for Clinical Research Coordinator work in Clinical Operations including IRB, consent, protocol deviation, SAE, regulatory binder.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -401,7 +401,7 @@
       "slug": "clinical-utilization-management-specialist",
       "display_name": "Utilization Management Specialist",
       "domain": "Clinical Operations",
-      "description": "Expert utilization management specialist focusing on medical necessity determination, InterQual/Milliman criteria application, CMS Two-Midnight Rule compliance, denial prevention, peer-to-peer review coordination, and UM committee operations for acute care hospitals.",
+      "description": "Use for Utilization Management Specialist work in Clinical Operations including Admission status, observation, medical necessity, denial prevention.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -455,7 +455,7 @@
       "slug": "emergency-preparedness-coordinator",
       "display_name": "Emergency Preparedness Coordinator",
       "domain": "Emergency Preparedness",
-      "description": "Expert hospital emergency preparedness coordinator specializing in HICS implementation, CMS Emergency Preparedness Conditions of Participation (42 CFR 482.15), hazard vulnerability analysis, surge capacity planning, disaster recovery, evacuation operations, exercise design, and healthcare coalition engagement.",
+      "description": "Use for Emergency Preparedness Coordinator work in Emergency Preparedness including HVA, emergency operations plan, HICS, surge, evacuation, exercise.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -513,7 +513,7 @@
       "slug": "healthit-clinical-data-analyst",
       "display_name": "Clinical Data Analyst",
       "domain": "Health IT & Informatics",
-      "description": "Senior clinical data analyst specializing in clinical registry management, quality measure reporting (eCQMs, MIPS), outcomes analysis, clinical dashboards, data validation, and healthcare data warehouse operations using SQL/Python against Caboodle, Clarity, and enterprise data warehouses.",
+      "description": "Use for Clinical Data Analyst work in Health IT & Informatics including Clinical dashboard, registry, eCQM logic, SQL/Python analytics.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -569,7 +569,7 @@
       "slug": "healthit-epic-applications-analyst",
       "display_name": "Epic Applications Analyst",
       "domain": "Health IT & Informatics",
-      "description": "Senior Epic-certified applications analyst specializing in module build/configuration, integration patterns, upgrade planning, Sprint/quarterly update management, Caboodle/Cogito reporting, and clinical workflow optimization across the Epic ecosystem.",
+      "description": "Use for Epic Applications Analyst work in Health IT & Informatics including Epic build, upgrade, workflow configuration, EHR change request.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -624,7 +624,7 @@
       "slug": "healthit-informatics-manager",
       "display_name": "Health Informatics Manager",
       "domain": "Health IT & Informatics",
-      "description": "Senior clinical informatics strategist specializing in data governance, USCDI/TEFCA compliance, ONC certification (HTI-1), CDS Hooks implementation, EHR optimization, and informatics governance for health systems.",
+      "description": "Use for Health Informatics Manager work in Health IT & Informatics including Informatics governance, CDS, USCDI/TEFCA, data governance.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -680,7 +680,7 @@
       "slug": "healthit-information-manager",
       "display_name": "Health Information Manager",
       "domain": "Health IT & Informatics",
-      "description": "Senior health information management professional specializing in HIM operations, release of information, record retention/destruction, coding oversight, CDI program support, legal health record definition, and chart deficiency management.",
+      "description": "Use for Health Information Manager work in Health IT & Informatics including HIM, ROI, retention, legal health record, chart integrity.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -740,7 +740,7 @@
       "slug": "healthit-interoperability-engineer",
       "display_name": "Healthcare Interoperability Engineer",
       "domain": "Health IT & Informatics",
-      "description": "Senior healthcare interoperability engineer specializing in HL7v2 messaging (ADT, ORM, ORU, SIU), FHIR R4 APIs, CDA/C-CDA, X12 EDI transactions (837/835/270/271), HIE connectivity (Carequality, CommonWell), USCDI compliance, Direct messaging, and SMART on FHIR application integration.",
+      "description": "Use for Healthcare Interoperability Engineer work in Health IT & Informatics including HL7v2, FHIR, C-CDA, X12, HIE, patient matching, interface errors.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -800,7 +800,7 @@
       "slug": "healthit-telehealth-program-manager",
       "display_name": "Telehealth Program Manager",
       "domain": "Health IT & Informatics",
-      "description": "Senior telehealth program manager specializing in virtual care operations, interstate licensure compacts, CMS telehealth reimbursement rules, state parity laws, RPM/RTM billing, platform evaluation, provider adoption, and regulatory compliance for health system telehealth programs.",
+      "description": "Use for Telehealth Program Manager work in Health IT & Informatics including Telehealth program, licensure, RPM/RTM, virtual care reimbursement.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -855,7 +855,7 @@
       "slug": "operations-ambulatory-manager",
       "display_name": "Ambulatory Operations Manager",
       "domain": "Operations & Administration",
-      "description": "Senior ambulatory operations manager specializing in clinic workflow design, appointment scheduling optimization, patient access metrics, provider template management, MA rooming protocols, multi-site clinic management, and outpatient throughput for hospital-based and independent ambulatory networks.",
+      "description": "Use for Ambulatory Operations Manager work in Operations & Administration including Clinic access, templates, rooming, no-shows, multi-site ambulatory ops.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -912,7 +912,7 @@
       "slug": "operations-home-health-administrator",
       "display_name": "Home Health Administrator",
       "domain": "Operations & Administration",
-      "description": "Senior home health agency administrator specializing in Medicare Conditions of Participation (42 CFR 484), OASIS-E assessment instrument, PDGM payment model, Home Health Value-Based Purchasing, episode management, aide supervision requirements, and home health survey readiness.",
+      "description": "Use for Home Health Administrator work in Operations & Administration including Home health OASIS, PDGM, LUPA, HHVBP, survey readiness.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -967,7 +967,7 @@
       "slug": "operations-hospital-administrator",
       "display_name": "Hospital Operations Administrator",
       "domain": "Operations & Administration",
-      "description": "Senior hospital operations leader specializing in bed management, capacity planning, patient throughput optimization, census management, transfer center operations, ancillary services coordination, and observation-vs-inpatient status determination for acute care facilities.",
+      "description": "Use for Hospital Operations Administrator work in Operations & Administration including Bed capacity, ED boarding, transfer center, throughput command center.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1022,7 +1022,7 @@
       "slug": "operations-long-term-care-administrator",
       "display_name": "Long-Term Care Administrator",
       "domain": "Operations & Administration",
-      "description": "Senior SNF/LTC administrator specializing in CMS Conditions of Participation (42 CFR 483), MDS 3.0 assessment, PDPM payment model, CMS Five-Star Quality Rating System, survey process, QM/QI measures, PBJ staffing requirements, and resident rights for skilled nursing and long-term care facilities.",
+      "description": "Use for Long-Term Care Administrator work in Operations & Administration including SNF/LTC MDS, PDPM, PBJ, Five-Star, resident rights, survey process.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1076,7 +1076,7 @@
       "slug": "operations-physician-practice-manager",
       "display_name": "Physician Practice Manager",
       "domain": "Operations & Administration",
-      "description": "Expert multi-specialty physician practice manager specializing in wRVU-based compensation modeling, provider productivity benchmarking via MGMA DataDive, scheduling template optimization, patient access metrics, practice financial management, and physician employment agreement structures.",
+      "description": "Use for Physician Practice Manager work in Operations & Administration including Practice productivity, wRVUs, provider templates, practice P&L.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1131,7 +1131,7 @@
       "slug": "operations-supply-chain-manager",
       "display_name": "Supply Chain Manager",
       "domain": "Operations & Administration",
-      "description": "Senior healthcare supply chain manager specializing in GPO management (Premier, Vizient, HealthTrust, Intalere), value analysis committees, OR supply optimization, implant cost management, med-surg procurement, contract compliance, par level management, and recall management for hospital and health system supply chains.",
+      "description": "Use for Supply Chain Manager work in Operations & Administration including GPO, value analysis, inventory, recall, OR supplies, supply resilience.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1186,7 +1186,7 @@
       "slug": "operations-workforce-manager",
       "display_name": "Healthcare Workforce Manager",
       "domain": "Operations & Administration",
-      "description": "Senior healthcare workforce manager specializing in nurse staffing models (nurse-to-patient ratios, flex staffing, acuity-based staffing), scheduling optimization, agency/travel staff management, credentialing coordination, retention strategies, burnout prevention, workforce analytics, and labor cost benchmarking for hospitals and health systems.",
+      "description": "Use for Healthcare Workforce Manager work in Operations & Administration including Staffing, scheduling, agency labor, float pool, retention.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1242,7 +1242,7 @@
       "slug": "payer-credentialing-enrollment-coordinator",
       "display_name": "Credentialing & Enrollment Coordinator",
       "domain": "Payer & Managed Care",
-      "description": "Expert provider credentialing and enrollment coordinator specializing in CAQH ProView management, PECOS/CMS-855 enrollment, NPDB queries, primary source verification, delegated credentialing, privileging vs credentialing distinctions, payer enrollment workflows, revalidation cycles, and NCQA credentialing standards compliance.",
+      "description": "Use for Credentialing & Enrollment Coordinator work in Payer & Managed Care including Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1303,7 +1303,7 @@
       "slug": "payer-managed-care-analyst",
       "display_name": "Managed Care Analyst",
       "domain": "Payer & Managed Care",
-      "description": "Expert managed care financial analyst specializing in capitation modeling, medical loss ratio analysis, PMPM calculations, network adequacy assessment, utilization trend analysis, risk corridor modeling, stop-loss attachment points, and actuarial reserve estimation for health plans and provider-sponsored plans.",
+      "description": "Use for Managed Care Analyst work in Payer & Managed Care including Managed-care financial analysis, PMPM, MLR, network adequacy.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1358,7 +1358,7 @@
       "slug": "payer-medicare-medicaid-specialist",
       "display_name": "Medicare & Medicaid Specialist",
       "domain": "Payer & Managed Care",
-      "description": "Expert Medicare and Medicaid regulatory specialist covering CMS Conditions of Participation, Medicare Benefit Policy Manual, Claims Processing Manual, Medicare Advantage, Medicaid state plan amendments, dual-eligible programs, MAC requirements, and Medicare enrollment via CMS-855 forms and PECOS.",
+      "description": "Use for Medicare & Medicaid Specialist work in Payer & Managed Care including Medicare/Medicaid rules, MAC process, CoPs, dual-eligible workflows.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1414,7 +1414,7 @@
       "slug": "payer-medicare-outreach-coordinator",
       "display_name": "Medicare Outreach Coordinator",
       "domain": "Payer & Managed Care",
-      "description": "Expert Medicare beneficiary education and outreach coordinator specializing in Annual Enrollment Period guidance, plan comparison (MA vs Original Medicare + Medigap), SHIP counseling frameworks, LIS/Extra Help applications, Medicare Savings Programs, community outreach strategies, and beneficiary engagement for healthcare organizations and community-based programs.",
+      "description": "Use for Medicare Outreach Coordinator work in Payer & Managed Care including Medicare outreach, plan comparison, LIS/Extra Help, enrollment periods.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1471,7 +1471,7 @@
       "slug": "payer-relations-specialist",
       "display_name": "Payer Relations Specialist",
       "domain": "Payer & Managed Care",
-      "description": "Expert payer relations and contracting strategist specializing in network development, fee schedule negotiation, contract language analysis, single-case agreements, out-of-network reimbursement, No Surprises Act compliance, timely filing rules, and payer dispute resolution for provider organizations.",
+      "description": "Use for Payer Relations Specialist work in Payer & Managed Care including Payer contracting, network participation, NSA, single-case agreements.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1527,7 +1527,7 @@
       "slug": "payer-value-based-care-manager",
       "display_name": "Value-Based Care Manager",
       "domain": "Payer & Managed Care",
-      "description": "Expert value-based care operations manager specializing in ACO governance, MSSP/ACO REACH participation, shared savings calculations, risk-based contracting, quality gate metrics, MIPS/APM participation, total cost of care benchmarking, and care management integration for provider organizations transitioning from fee-for-service to value.",
+      "description": "Use for Value-Based Care Manager work in Payer & Managed Care including ACO/VBC, attribution, shared savings, quality gates, downside risk.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1584,7 +1584,7 @@
       "slug": "pharmacy-benefits-specialist",
       "display_name": "Pharmacy Benefits Specialist",
       "domain": "Pharmacy Programs",
-      "description": "Expert pharmacy benefits strategist specializing in formulary management, PBM contract evaluation, specialty pharmacy oversight, biosimilar adoption, pharmacy benefit design, and drug spend optimization for health systems and health plans.",
+      "description": "Use for Pharmacy Benefits Specialist work in Pharmacy Programs including Formulary, PBM, specialty pharmacy, rebates, biosimilars.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1642,7 +1642,7 @@
       "slug": "pharmacy-medication-safety-specialist",
       "display_name": "Medication Safety Specialist",
       "domain": "Pharmacy Programs",
-      "description": "Expert medication safety officer specializing in ISMP high-alert medication management, CPOE optimization, BCMA implementation, smart pump programming, medication reconciliation, adverse drug event reporting, and USP 797/800 compounding compliance.",
+      "description": "Use for Medication Safety Specialist work in Pharmacy Programs including Medication safety event, CPOE/BCMA, smart pump, USP 797/800.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1699,7 +1699,7 @@
       "slug": "pophealth-community-health-coordinator",
       "display_name": "Community Health Coordinator",
       "domain": "Population Health & Community Health",
-      "description": "Expert community health strategist specializing in Community Health Needs Assessment (CHNA), IRS 990 Schedule H community benefit reporting, health equity program design, SDOH program implementation, community health worker programs, CBO partnerships, and grant-funded health initiatives for nonprofit hospitals and health systems.",
+      "description": "Use for Community Health Coordinator work in Population Health & Community Health including CHNA, community benefit, Schedule H, grants, CBO partnerships.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1758,7 +1758,7 @@
       "slug": "pophealth-population-health-manager",
       "display_name": "Population Health Manager",
       "domain": "Population Health & Community Health",
-      "description": "Expert population health strategist specializing in risk stratification models, care gap identification and closure, SDOH screening programs, chronic disease management, registry management, and rising risk identification across ACO, health plan, and health system settings.",
+      "description": "Use for Population Health Manager work in Population Health & Community Health including Population health risk stratification, care gaps, SDOH outreach.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1817,7 +1817,7 @@
       "slug": "pophealth-surveillance-coordinator",
       "display_name": "Public Health Surveillance Coordinator",
       "domain": "Population Health & Community Health",
-      "description": "Expert public health surveillance specialist managing reportable disease notification, NNDSS compliance, outbreak investigation methodology, contact tracing programs, syndromic surveillance, CDC/state reporting requirements, and public health emergency response coordination.",
+      "description": "Use for Public Health Surveillance Coordinator work in Population Health & Community Health including Reportable disease, outbreak investigation, syndromic surveillance.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1875,7 +1875,7 @@
       "slug": "quality-accreditation-specialist",
       "display_name": "Accreditation Specialist",
       "domain": "Quality, Safety & Compliance",
-      "description": "Expert healthcare accreditation specialist covering Joint Commission standards and tracer methodology, NCQA accreditation, URAC, AAAHC, DNV GL, CMS deemed status, and survey readiness programs across provider types.",
+      "description": "Use for Accreditation Specialist work in Quality, Safety & Compliance including Survey readiness, accreditation evidence, tracer prep.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1933,7 +1933,7 @@
       "slug": "quality-compliance-officer",
       "display_name": "Compliance Officer",
       "domain": "Quality, Safety & Compliance",
-      "description": "Expert healthcare compliance officer specializing in HIPAA Privacy/Security Rules, Stark Law, Anti-Kickback Statute, False Claims Act, OIG compliance program guidance (2023), EMTALA, corporate integrity agreements, and the seven elements of an effective compliance program.",
+      "description": "Use for Compliance Officer work in Quality, Safety & Compliance including HIPAA, Stark, AKS, FCA, EMTALA, OIG, overpayment or exclusion concern.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -1992,7 +1992,7 @@
       "slug": "quality-improvement-specialist",
       "display_name": "Quality Improvement Specialist",
       "domain": "Quality, Safety & Compliance",
-      "description": "Expert healthcare quality improvement specialist covering HEDIS, MIPS/QPP, CMS Star Ratings, Leapfrog Hospital Survey, Baldrige Performance Excellence, Core Measures, and quality measure abstraction and reporting across all lines of business.",
+      "description": "Use for Quality Improvement Specialist work in Quality, Safety & Compliance including Quality measures, HEDIS/MIPS/Stars/eCQMs, SPC, reporting improvement.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2048,7 +2048,7 @@
       "slug": "quality-patient-experience-coordinator",
       "display_name": "Patient Experience Coordinator",
       "domain": "Quality, Safety & Compliance",
-      "description": "Expert patient experience coordinator specializing in HCAHPS survey methodology, Press Ganey analytics, service recovery programs, patient grievance management, CMS VBP patient experience domain, and experience design across the care continuum.",
+      "description": "Use for Patient Experience Coordinator work in Quality, Safety & Compliance including Grievance, CAHPS/HCAHPS, patient relations, service recovery.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2102,7 +2102,7 @@
       "slug": "quality-patient-safety-officer",
       "display_name": "Patient Safety Officer",
       "domain": "Quality, Safety & Compliance",
-      "description": "Expert patient safety officer specializing in sentinel event investigation, RCA/FMEA methodology, Just Culture framework, PSO reporting under the Patient Safety Act, high-reliability organization principles, and safety event classification and trending.",
+      "description": "Use for Patient Safety Officer work in Quality, Safety & Compliance including RCA, sentinel event, Just Culture, PSO boundary, safety trend.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2162,7 +2162,7 @@
       "slug": "quality-process-improvement-analyst",
       "display_name": "Process Improvement Analyst",
       "domain": "Quality, Safety & Compliance",
-      "description": "Expert healthcare process improvement analyst specializing in PDSA cycles, A3 thinking, value stream mapping, Lean healthcare, Six Sigma DMAIC, statistical process control, and Kaizen events in clinical and operational settings.",
+      "description": "Use for Process Improvement Analyst work in Quality, Safety & Compliance including A3, PDSA, Lean/Six Sigma, value stream map, CAPA.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2216,7 +2216,7 @@
       "slug": "quality-risk-manager",
       "display_name": "Risk Manager",
       "domain": "Quality, Safety & Compliance",
-      "description": "Expert healthcare risk manager specializing in enterprise risk management, clinical risk (malpractice, patient safety events), insurance/liability, FMEA, claims management, risk transfer strategies, and occurrence reporting systems.",
+      "description": "Use for Risk Manager work in Quality, Safety & Compliance including Risk register, malpractice exposure, disclosure, claims, insurance.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2272,7 +2272,7 @@
       "slug": "revenue-340b-program-manager",
       "display_name": "340B Program Manager",
       "domain": "Revenue Cycle & Finance",
-      "description": "Expert 340B Drug Pricing Program manager specializing in covered entity compliance, contract pharmacy oversight, split billing, duplicate discount prevention, HRSA audit readiness, and savings optimization for safety-net providers.",
+      "description": "Use for 340B Program Manager work in Revenue Cycle & Finance including 340B compliance, split billing, contract pharmacy, duplicate discounts.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2332,7 +2332,7 @@
       "slug": "revenue-chargemaster-analyst",
       "display_name": "Chargemaster Analyst",
       "domain": "Revenue Cycle & Finance",
-      "description": "Expert chargemaster analyst specializing in CDM maintenance, charge capture integrity, CPT/HCPCS-to-CDM mapping, CMS price transparency compliance (hospital machine-readable files, shoppable services), revenue integrity, charge reconciliation, and chargemaster optimization for hospitals and health systems.",
+      "description": "Use for Chargemaster Analyst work in Revenue Cycle & Finance including CDM maintenance, charge capture, price transparency.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2389,7 +2389,7 @@
       "slug": "revenue-contract-analyst",
       "display_name": "Healthcare Contract Analyst",
       "domain": "Revenue Cycle & Finance",
-      "description": "Expert payer contract analyst specializing in fee schedule modeling (Medicare OPPS/IPPS, commercial), reimbursement variance analysis, contract performance scorecards, rate escalation and termination provisions, value-based payment arrangements, carve-outs, and payer contract negotiation support for hospitals and physician groups.",
+      "description": "Use for Healthcare Contract Analyst work in Revenue Cycle & Finance including Payer contract underpayment or reimbursement variance.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2446,7 +2446,7 @@
       "slug": "revenue-cycle-specialist",
       "display_name": "Revenue Cycle Specialist",
       "domain": "Revenue Cycle & Finance",
-      "description": "End-to-end revenue cycle management expert specializing in patient access, charge capture, claims management, denial prevention/recovery, A/R optimization, remittance processing, and RCM KPI benchmarking for hospitals and physician practices.",
+      "description": "Use for Revenue Cycle Specialist work in Revenue Cycle & Finance including Clean claim rate dropped, denial volume changed, A/R aged unexpectedly.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2503,7 +2503,7 @@
       "slug": "revenue-finance-manager",
       "display_name": "Healthcare Finance Manager",
       "domain": "Revenue Cycle & Finance",
-      "description": "Senior healthcare finance executive specializing in operating and capital budgets, cost accounting (RCC/ABC), Medicare cost reports (CMS-2552), financial ratio analysis, payer mix optimization, margin analysis by service line, FTE productivity benchmarking, and strategic financial planning for hospitals and health systems.",
+      "description": "Use for Healthcare Finance Manager work in Revenue Cycle & Finance including Budget, cost report, margin, service-line finance, reserves.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2561,7 +2561,7 @@
       "slug": "revenue-medical-coding-specialist",
       "display_name": "Medical Coding Specialist",
       "domain": "Revenue Cycle & Finance",
-      "description": "Expert medical coder specializing in ICD-10-CM/PCS official guidelines, CPT/HCPCS Level II coding, MS-DRG/APR-DRG assignment optimization, HCC/RAF risk adjustment coding, E/M documentation guidelines (2021+), modifier logic, NCCI edits, and coding compliance audits.",
+      "description": "Use for Medical Coding Specialist work in Revenue Cycle & Finance including Coding audit, DRG/HCC question, modifier/NCCI issue, medical necessity edit.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2619,7 +2619,7 @@
       "slug": "strategy-actuarial-advisor",
       "display_name": "Healthcare Actuarial Advisor",
       "domain": "Strategy & Advisory",
-      "description": "Senior healthcare actuarial advisor specializing in risk adjustment (HCC/RAF), capitation rate setting, medical loss ratio analysis, reserve estimation (IBNR), actuarial cost models, and risk-based contract evaluation for health plans, ACOs, and provider-sponsored health plans.",
+      "description": "Use for Healthcare Actuarial Advisor work in Strategy & Advisory including Capitation, IBNR, MLR, risk adjustment, actuarial caveats.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2676,7 +2676,7 @@
       "slug": "strategy-clinical-operations-consultant",
       "display_name": "Clinical Operations Consultant",
       "domain": "Strategy & Advisory",
-      "description": "Senior clinical operations consultant specializing in clinical workflow design, nurse staffing models, provider productivity optimization, patient flow engineering, OR utilization, ED throughput, and care delivery model redesign for hospitals and ambulatory networks.",
+      "description": "Use for Clinical Operations Consultant work in Strategy & Advisory including Clinical workflow, ED/OR throughput, staffing model, care redesign.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2731,7 +2731,7 @@
       "slug": "strategy-healthcare-consultant",
       "display_name": "Healthcare Strategy Consultant",
       "domain": "Strategy & Advisory",
-      "description": "Senior healthcare strategy consultant specializing in service line planning, M&A due diligence, market analysis, certificate of need, physician alignment, and multi-year strategic planning for health systems and physician enterprises.",
+      "description": "Use for Healthcare Strategy Consultant work in Strategy & Advisory including Market strategy, service line, M&A, CON, physician alignment.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2787,7 +2787,7 @@
       "slug": "strategy-operations-consultant",
       "display_name": "Healthcare Operations Consultant",
       "domain": "Strategy & Advisory",
-      "description": "Senior healthcare operations consultant specializing in Lean/Six Sigma deployment, throughput optimization, operational efficiency, capacity planning, and performance benchmarking against MGMA, Vizient, and Premier data for health systems and physician enterprises.",
+      "description": "Use for Healthcare Operations Consultant work in Strategy & Advisory including Lean/Six Sigma deployment, capacity, benchmarking, predictive ops.",
       "output_modes": [
         "quick triage",
         "workplan",
@@ -2843,7 +2843,7 @@
       "slug": "strategy-structural-improvement-consultant",
       "display_name": "Structural Improvement Consultant",
       "domain": "Strategy & Advisory",
-      "description": "Senior structural improvement consultant specializing in organizational redesign, governance structures, change management (Kotter, ADKAR, Bridges), merger/acquisition integration, and culture transformation for health systems navigating strategic transitions.",
+      "description": "Use for Structural Improvement Consultant work in Strategy & Advisory including Organizational redesign, governance, change, merger integration.",
       "output_modes": [
         "quick triage",
         "workplan",

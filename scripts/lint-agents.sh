@@ -85,6 +85,12 @@ for file in "$AGENTS_DIR"/*.md; do
     if ! has_literal "$file" "### Output Modes"; then
         error "$basename: Missing usability subsection 'Output Modes'"
     fi
+    if ! has_literal "$file" "### Role Finish Check"; then
+        error "$basename: Missing usability subsection 'Role Finish Check'"
+    fi
+    if has_literal "$file" "### Completion Criteria"; then
+        error "$basename: Source prompts must use role-specific 'Role Finish Check'; shared completion criteria belong in the router"
+    fi
     if ! has_literal "$file" "### Collaboration & Handoffs"; then
         error "$basename: Missing usability subsection 'Collaboration & Handoffs'"
     fi

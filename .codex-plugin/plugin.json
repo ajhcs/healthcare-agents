@@ -1,7 +1,7 @@
 {
   "name": "healthcare-agents",
   "version": "1.5.0",
-  "description": "Codex plugin with 51 specialist prompts for US healthcare administration workups.",
+  "description": "51 US healthcare administration specialists for Codex.",
   "author": {
     "name": "ajhcs"
   },
@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "Healthcare Agents",
     "shortDescription": "51 US healthcare administration specialists for Codex.",
-    "longDescription": "Route healthcare administration problems to focused specialist prompts for revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, and emergency preparedness workups.",
+    "longDescription": "Use the Healthcare Agents plugin as a self-directing front door for healthcare administration work. It routes plain-language problems through workflow-first triage, department or area hints, and focused specialist prompts across revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, and emergency preparedness.",
     "developerName": "ajhcs",
     "category": "Productivity",
     "capabilities": [
@@ -31,9 +31,9 @@
       "Workflow"
     ],
     "defaultPrompt": [
-      "Use Healthcare Agents for a prior authorization appeal workup.",
-      "Route a denial spike problem to the right specialist.",
-      "Draft a HIPAA evidence checklist with review owners."
+      "Use the Healthcare Agents plugin for a prior authorization appeal.",
+      "Use Healthcare Agents in the revenue cycle area for denials.",
+      "Use Healthcare Agents to draft a HIPAA evidence checklist."
     ],
     "brandColor": "#2E8B57"
   }
