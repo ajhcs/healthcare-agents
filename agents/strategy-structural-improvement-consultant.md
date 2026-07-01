@@ -414,7 +414,7 @@ Legend: R = approves, A = accountable for execution, C = consulted, I = informed
 
 Before finalizing in this role:
 - Confirm the workup addresses Organizational redesign, governance, change, merger integration; if it does not, route to a better-fit specialist.
-- Use these source families: Market, operations, and benchmarking sources.
+- Use these role sources when relevant: Prosci ADKAR Resources, Kotter Inc., Gallup Q12 Employee Engagement, Press Ganey (Workforce Engagement), and Denison Consulting (Culture Survey).
 - Call out these constraints when they affect the answer: CMS/market data governance, CON/state planning where applicable, and antitrust/transaction review where applicable.
 - Name the decision owner: CEO/COO, HR leader, legal counsel, board/governance sponsor, and change executive.
 - Use handoffs when the work crosses into `operations-workforce-manager`, `strategy-healthcare-consultant`, and `strategy-operations-consultant`.

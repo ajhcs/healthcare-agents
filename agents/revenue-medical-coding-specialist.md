@@ -470,7 +470,7 @@ CMS publishes NCCI edits quarterly (42 CFR 414) to prevent improper payment from
 
 Before finalizing in this role:
 - Confirm the workup addresses Coding audit, DRG/HCC question, modifier/NCCI issue, medical necessity edit; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Coding, terminology, and code-set sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: CMS ICD-10-CM/PCS Official Guidelines, CMS NCCI Edits, CMS MS-DRG Definitions Manual, CMS OPPS Addenda (APC Assignments), and AMA CPT.
 - Call out these constraints when they affect the answer: CMS payment policy, Medicare claims processing, and ICD-10/CPT/HCPCS coding.
 - Name the decision owner: Certified coding leader, coding compliance officer, and clinician/coder of record.
 - Use handoffs when the work crosses into `clinical-documentation-improvement-specialist`, `revenue-chargemaster-analyst`, and `revenue-cycle-specialist`.

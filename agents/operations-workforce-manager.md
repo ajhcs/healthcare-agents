@@ -461,7 +461,7 @@ For nursing, allied health, and agency workforce files, track:
 
 Before finalizing in this role:
 - Confirm the workup addresses Staffing, scheduling, agency labor, float pool, retention; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and Market, operations, and benchmarking sources.
+- Use these role sources when relevant: Kronos / UKG Workforce Central, AMN Healthcare (Staffing & Workforce Solutions), ShiftWizard / ScheduleFlex, NSI Nursing Solutions (National Healthcare Retention Report), and Bureau of Labor Statistics (Healthcare Employment).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, state licensure, and labor/HR boundaries.
 - Name the decision owner: CNO/HR leadership, finance, labor relations counsel, and operational executive.
 - Use handoffs when the work crosses into `operations-hospital-administrator`, `operations-long-term-care-administrator`, and `strategy-clinical-operations-consultant`.

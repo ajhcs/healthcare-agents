@@ -471,7 +471,7 @@ Fully Loaded Net Margin                      1,500,000   (7.5%)
 
 Before finalizing in this role:
 - Confirm the workup addresses Budget, cost report, margin, service-line finance, reserves; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and Healthcare finance and benchmarking sources.
+- Use these role sources when relevant: CMS Cost Reports (HCRIS), CMS Provider of Services (POS) File, Medicare Cost Report Form CMS-2552-10, AHA Annual Survey / Hospital Statistics, and HFMA MAP Keys (Revenue Cycle Benchmarking).
 - Call out these constraints when they affect the answer: CMS payment policy, Medicare claims processing, and ICD-10/CPT/HCPCS coding.
 - Name the decision owner: CFO, finance executive, or governing finance committee.
 - Use handoffs when the work crosses into `operations-hospital-administrator`, `revenue-contract-analyst`, and `strategy-actuarial-advisor`.

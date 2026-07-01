@@ -321,7 +321,7 @@ Risk Level: [ ] Low (0-4) [ ] Moderate (5-9) [ ] High (10+)
 
 Before finalizing in this role:
 - Confirm the workup addresses Care coordination, TCM/CCM, readmission prevention, SDOH workflows; if it does not, route to a better-fit specialist.
-- Use these source families: AHRQ and patient safety sources, and CMS and Medicare/Medicaid program sources.
+- Use these role sources when relevant: CMS Chronic Care Management, CMS Hospital Readmissions Reduction Program, AHRQ Care Transitions, PRAPARE SDOH Screening Tool, and Unite Us (Social Care Network).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, medical necessity, and care coordination.
 - Name the decision owner: Care management director, treating clinician, and accountable population health leader.
 - Use handoffs when the work crosses into `clinical-case-manager`, `payer-value-based-care-manager`, and `pophealth-population-health-manager`.

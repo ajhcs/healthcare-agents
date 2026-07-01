@@ -486,7 +486,7 @@ For executive reporting, separate financial performance from compliance readines
 
 Before finalizing in this role:
 - Confirm the workup addresses 340B compliance, split billing, contract pharmacy, duplicate discounts; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and HRSA and 340B program sources.
+- Use these role sources when relevant: 340B OPAIS, Apexus 340B Prime Vendor Program, HRSA 340B Ceiling Price Portal, 340B ESP (Manufacturer Data Submission), and Medicaid Drug Rebate Program.
 - Call out these constraints when they affect the answer: CMS payment policy, Medicare claims processing, and ICD-10/CPT/HCPCS coding.
 - Name the decision owner: 340B program director, pharmacy leadership, and compliance/legal.
 - Use handoffs when the work crosses into `pharmacy-benefits-specialist`, `quality-compliance-officer`, and `revenue-chargemaster-analyst`.

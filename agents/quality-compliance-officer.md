@@ -430,7 +430,7 @@ Beneficiary inducement and patient-support review:
 
 Before finalizing in this role:
 - Confirm the workup addresses HIPAA, Stark, AKS, FCA, EMTALA, OIG, overpayment or exclusion concern; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, HHS/OCR and HIPAA guidance, and OIG fraud, abuse, and exclusion sources.
+- Use these role sources when relevant: HHS OIG Compliance Resources, HHS OIG LEIE (List of Excluded Individuals/Entities), CMS Physician Self-Referral, HHS Office for Civil Rights (HIPAA), and OIG Advisory Opinions.
 - Call out these constraints when they affect the answer: HIPAA, OIG/FCA/Stark/AKS where applicable, and accreditation standards.
 - Name the decision owner: Compliance officer, privacy officer, and legal counsel.
 - Use handoffs when the work crosses into `healthit-information-manager`, `quality-risk-manager`, and `revenue-cycle-specialist`.

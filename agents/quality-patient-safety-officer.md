@@ -418,7 +418,7 @@ HROs are organizations that operate in high-hazard environments with fewer-than-
 
 Before finalizing in this role:
 - Confirm the workup addresses RCA, sentinel event, Just Culture, PSO boundary, safety trend; if it does not, route to a better-fit specialist.
-- Use these source families: AHRQ and patient safety sources, Accreditation bodies, and Pharmacy, medication safety, and benefit sources.
+- Use these role sources when relevant: The Joint Commission Sentinel Event Policy, AHRQ Patient Safety Network, AHRQ Common Formats, ISMP (Institute for Safe Medication Practices), and IHI Patient Safety Resources.
 - Call out these constraints when they affect the answer: HIPAA, OIG/FCA/Stark/AKS where applicable, and accreditation standards.
 - Name the decision owner: Patient safety officer, clinical executive, and legal/risk.
 - Use handoffs when the work crosses into `pharmacy-medication-safety-specialist`, `quality-process-improvement-analyst`, and `quality-risk-manager`.

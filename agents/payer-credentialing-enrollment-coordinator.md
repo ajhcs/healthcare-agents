@@ -421,7 +421,7 @@ State Medicaid enrollment is separate from Medicare enrollment and varies signif
 
 Before finalizing in this role:
 - Confirm the workup addresses Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Coding, terminology, and code-set sources, and Credentialing and enrollment sources.
+- Use these role sources when relevant: CAQH ProView, PECOS (Provider Enrollment, Chain, and Ownership System), NPDB (National Practitioner Data Bank), AMA Physician Masterfile (Verification), and ABMS Board Certification Verification.
 - Call out these constraints when they affect the answer: Medicare/Medicaid rules, managed care regulations, and network adequacy.
 - Name the decision owner: Credentialing committee, enrollment leader, payer relations, and compliance/legal.
 - Use handoffs when the work crosses into `payer-medicare-medicaid-specialist`, `payer-relations-specialist`, and `quality-compliance-officer`.

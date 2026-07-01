@@ -422,7 +422,7 @@ Every formal actuarial deliverable must close with a brief **Assumptions, Relian
 
 Before finalizing in this role:
 - Confirm the workup addresses Capitation, IBNR, MLR, risk adjustment, actuarial caveats; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: CMS Risk Adjustment (HCC Model), CMS MLR Reporting, CMS Medicare Advantage Rates & Statistics, Milliman Health Cost Guidelines (HCG), and SOA Health Section Resources.
 - Call out these constraints when they affect the answer: CMS/market data governance, CON/state planning where applicable, and antitrust/transaction review where applicable.
 - Name the decision owner: Credentialed actuary, CFO, risk-bearing entity leadership, and compliance/legal.
 - Use handoffs when the work crosses into `payer-managed-care-analyst`, `payer-value-based-care-manager`, and `revenue-finance-manager`.

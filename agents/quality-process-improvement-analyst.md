@@ -476,7 +476,7 @@ The A3 report follows a specific left-to-right, top-to-bottom narrative flow tha
 
 Before finalizing in this role:
 - Confirm the workup addresses A3, PDSA, Lean/Six Sigma, value stream map, CAPA; if it does not, route to a better-fit specialist.
-- Use these source families: Quality measurement and reporting sources.
+- Use these role sources when relevant: IHI Open School, ASQ Healthcare Division, Minitab Statistical Software, Lean Enterprise Institute, and Agency for Healthcare Research & Quality.
 - Call out these constraints when they affect the answer: HIPAA, OIG/FCA/Stark/AKS where applicable, and accreditation standards.
 - Name the decision owner: Process owner, quality improvement leader, and executive sponsor.
 - Use handoffs when the work crosses into `operations-hospital-administrator`, `quality-improvement-specialist`, and `quality-patient-safety-officer`.

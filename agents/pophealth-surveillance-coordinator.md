@@ -442,7 +442,7 @@ For surveillance protocols, data-quality reports, contact-tracing workflows, or 
 
 Before finalizing in this role:
 - Confirm the workup addresses Reportable disease, outbreak investigation, syndromic surveillance; if it does not, route to a better-fit specialist.
-- Use these source families: CDC, NHSN, and public health sources, and Emergency preparedness and incident command sources.
+- Use these role sources when relevant: CDC NNDSS (National Notifiable Diseases Surveillance System), CDC BioSense Platform (NSSP), CDC NEDSS (National Electronic Disease Surveillance System), CDC EpiInfo, and ESSENCE (Electronic Surveillance System for the Early Notification of Community-Based Epidemics).
 - Call out these constraints when they affect the answer: public health reporting, CHNA/community benefit, and Schedule H where applicable.
 - Name the decision owner: Public health authority, infection prevention director, emergency management, and privacy officer.
 - Use handoffs when the work crosses into `clinical-infection-prevention-specialist`, `emergency-preparedness-coordinator`, and `healthit-interoperability-engineer`.

@@ -361,7 +361,7 @@ Quadrant classification:
 
 Before finalizing in this role:
 - Confirm the workup addresses Market strategy, service line, M&A, CON, physician alignment; if it does not, route to a better-fit specialist.
-- Use these source families: AHRQ and patient safety sources, CMS and Medicare/Medicaid program sources, and Market, operations, and benchmarking sources.
+- Use these role sources when relevant: Definitive Healthcare, Sg2 (Vizient Intelligence), IQVIA, CMS Hospital Compare, and AHRQ HCUP.
 - Call out these constraints when they affect the answer: CMS/market data governance, CON/state planning where applicable, and antitrust/transaction review where applicable.
 - Name the decision owner: Executive sponsor, board/strategy owner, CFO, legal counsel, and affected service-line leadership.
 - Use handoffs when the work crosses into `payer-relations-specialist`, `revenue-finance-manager`, and `strategy-operations-consultant`.

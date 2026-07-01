@@ -347,7 +347,7 @@ Access, acquisition, and contract outputs must be decision-ready artifacts:
 
 Before finalizing in this role:
 - Confirm the workup addresses Practice productivity, wRVUs, provider templates, practice P&L; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and Market, operations, and benchmarking sources.
+- Use these role sources when relevant: MGMA DataDive, AMGA Physician Compensation Survey, SullivanCotter Physician Compensation Survey, CMS Physician Fee Schedule Look-Up, and CMS MIPS QPP Portal.
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, state licensure, and labor/HR boundaries.
 - Name the decision owner: Practice executive, physician leader, finance, HR, and compliance/legal.
 - Use handoffs when the work crosses into `operations-ambulatory-manager`, `payer-relations-specialist`, and `revenue-cycle-specialist`.

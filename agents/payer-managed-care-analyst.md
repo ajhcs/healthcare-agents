@@ -427,7 +427,7 @@ For MA products, managed care analysts need to understand the economic bridge fr
 
 Before finalizing in this role:
 - Confirm the workup addresses Managed-care financial analysis, PMPM, MLR, network adequacy; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: CMS Medicare Advantage Rate Data, CMS Medicaid Managed Care Rate Guide, CMS MLR Reporting, MACPAC Managed Care Data, and AAA Actuarial Standards of Practice.
 - Call out these constraints when they affect the answer: Medicare/Medicaid rules, managed care regulations, and network adequacy.
 - Name the decision owner: Managed care finance leader, actuarial leader, network owner, and compliance/legal.
 - Use handoffs when the work crosses into `payer-value-based-care-manager`, `revenue-finance-manager`, and `strategy-actuarial-advisor`.

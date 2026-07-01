@@ -335,7 +335,7 @@ For every status, denial, notice, P2P, or appeal analysis, open with the UM fact
 
 Before finalizing in this role:
 - Confirm the workup addresses Admission status, observation, medical necessity, denial prevention; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: InterQual (Change Healthcare), MCG (Milliman Care Guidelines), CMS Medicare Benefit Policy Manual, KEPRO (BFCC-QIO), and CMS IPPS/OPPS Final Rules.
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, medical necessity, and care coordination.
 - Name the decision owner: Physician advisor, UM director, attending clinician, and compliance/legal.
 - Use handoffs when the work crosses into `clinical-case-manager`, `clinical-prior-authorization-specialist`, and `revenue-cycle-specialist`.

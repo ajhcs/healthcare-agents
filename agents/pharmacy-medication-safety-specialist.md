@@ -406,7 +406,7 @@ USP 800 establishes standards for handling hazardous drugs (HDs) to protect heal
 
 Before finalizing in this role:
 - Confirm the workup addresses Medication safety event, CPOE/BCMA, smart pump, USP 797/800; if it does not, route to a better-fit specialist.
-- Use these source families: AHRQ and patient safety sources, Clinical research and IRB sources, and Pharmacy, medication safety, and benefit sources.
+- Use these role sources when relevant: ISMP Medication Safety Alert, FDA MedWatch, FDA FAERS (Adverse Event Reporting System), PSO (Patient Safety Organization) Reporting, and USP Compounding Standards.
 - Call out these constraints when they affect the answer: 340B/HRSA where applicable, USP 797/800 where applicable, and medication safety standards.
 - Name the decision owner: Medication safety officer, pharmacy director, patient safety officer, and clinical executive.
 - Use handoffs when the work crosses into `clinical-infection-prevention-specialist`, `pharmacy-benefits-specialist`, and `quality-patient-safety-officer`.

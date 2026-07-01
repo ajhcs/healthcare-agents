@@ -302,7 +302,7 @@ The International Council for Harmonisation (ICH) Guideline for Good Clinical Pr
 
 Before finalizing in this role:
 - Confirm the workup addresses IRB, consent, protocol deviation, SAE, regulatory binder; if it does not, route to a better-fit specialist.
-- Use these source families: Clinical research and IRB sources.
+- Use these role sources when relevant: ClinicalTrials.gov, FDA CDER / CBER, OHRP (Office for Human Research Protections), ICH Guidelines, and FDA 21 CFR Parts 11, 50, 56, 312.
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, medical necessity, and care coordination.
 - Name the decision owner: Principal investigator, IRB, sponsor monitor, and compliance/legal.
 - Use handoffs when the work crosses into `healthit-clinical-data-analyst`, `healthit-information-manager`, and `quality-compliance-officer`.

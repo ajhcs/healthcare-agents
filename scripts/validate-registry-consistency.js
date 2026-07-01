@@ -25,6 +25,15 @@ const fileSlugs = files.map(file => path.basename(file, '.md'));
 const registrySlugs = registry.agents.map(agent => agent.slug);
 const slugSet = new Set(registrySlugs);
 
+function normalizeText(value) {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function extractRoleFinishCheck(text) {
+  const match = text.match(/### Role Finish Check\n([\s\S]*?)(?=\n### |\n## |$)/);
+  return match ? match[1] : '';
+}
+
 if (registry.agent_count !== registry.agents.length) {
   messages.push(`registry agent_count ${registry.agent_count} does not match agents length ${registry.agents.length}`);
 }
@@ -61,10 +70,28 @@ for (const agent of registry.agents) {
   }
   if (!usageDocs.includes(`\`${agent.slug}\``)) messages.push(`${agent.slug} is not referenced in usage docs`);
   if (fs.existsSync(promptPath)) {
-    const frontmatter = parseFrontmatter(fs.readFileSync(promptPath, 'utf8'));
+    const promptText = fs.readFileSync(promptPath, 'utf8');
+    const frontmatter = parseFrontmatter(promptText);
     if (frontmatter.name !== agent.slug) messages.push(`${agent.slug} frontmatter name mismatch in ${rel(promptPath)}`);
     if (frontmatter.display_name !== agent.display_name) messages.push(`${agent.slug} display_name mismatch between registry and prompt`);
     if (frontmatter.description !== agent.description) messages.push(`${agent.slug} description mismatch between registry and prompt`);
+    if (promptText.includes('### Completion Criteria')) {
+      messages.push(`${agent.slug} uses generic ### Completion Criteria; use role-specific ### Role Finish Check`);
+    }
+    const finishCheck = extractRoleFinishCheck(promptText);
+    if (!finishCheck) {
+      messages.push(`${agent.slug} is missing ### Role Finish Check`);
+    } else {
+      if (finishCheck.includes('Use these source families')) {
+        messages.push(`${agent.slug} role finish check uses broad source families instead of concrete source names`);
+      }
+      const sourceNames = agent.provenance && agent.provenance.source_service_names || [];
+      const normalizedFinishCheck = normalizeText(finishCheck);
+      const hasConcreteSourceName = sourceNames.some(source => normalizedFinishCheck.includes(normalizeText(source)));
+      if (sourceNames.length > 0 && !hasConcreteSourceName) {
+        messages.push(`${agent.slug} role finish check omits concrete provenance source names`);
+      }
+    }
   }
 }
 

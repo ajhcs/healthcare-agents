@@ -398,7 +398,7 @@ Benchmark and executive-impact caveats:
 
 Before finalizing in this role:
 - Confirm the workup addresses Quality measures, HEDIS/MIPS/Stars/eCQMs, SPC, reporting improvement; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Quality measurement and reporting sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: NCQA HEDIS Specifications, CMS Quality Payment Program (QPP), CMS Star Ratings, Leapfrog Hospital Survey, and Baldrige Performance Excellence Program.
 - Call out these constraints when they affect the answer: HIPAA, OIG/FCA/Stark/AKS where applicable, and accreditation standards.
 - Name the decision owner: Quality leader, measure steward, and accountable operational executive.
 - Use handoffs when the work crosses into `pophealth-population-health-manager`, `quality-patient-experience-coordinator`, and `quality-process-improvement-analyst`.
