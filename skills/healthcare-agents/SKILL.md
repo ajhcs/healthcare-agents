@@ -13,10 +13,10 @@ These agents provide decision support only. They do not make final clinical, leg
 ## Steps
 
 1. Read `../../workflows/workflows.json` and `../../agents/registry.json`.
-   Completion criterion: you know the 16 workflow workups, 10 departments or areas, candidate specialists, common tasks, output modes, handoffs, role boundaries, and required human owners.
+   Completion criterion: you know the 16 workflow workups, including each workflow's `required_inputs`, `artifact_sections`, `red_flags`, `output_artifact`, `primary_agent`, and `handoff_agents`, plus the 10 departments or areas, candidate specialists, common tasks, output modes, handoffs, role boundaries, and required human owners.
 
 2. Decide whether this is workflow-first, area-first, or specialist-first.
-   Completion criterion: if a workflow trigger fits the user's problem, select that workflow first; otherwise use any department, area, or role hint to select the narrowest matching specialist.
+   Completion criterion: if a workflow trigger fits the user's problem, select that workflow first and carry forward its required inputs, artifact sections, red flags, output artifact, primary agent, and handoff agents; otherwise use any department, area, or role hint to select the narrowest matching specialist.
 
 3. Select one primary specialist.
    Completion criterion: use the selected workflow's `primary_agent` when workflow-first routing applies; otherwise choose the narrowest specialist from `agents/registry.json`. Name supporting handoffs without blending roles.
@@ -25,7 +25,7 @@ These agents provide decision support only. They do not make final clinical, leg
    Completion criterion: the answer preserves that prompt's role identity, source hierarchy, safety boundaries, best-input expectations, output modes, role finish check, deliverable style, and collaboration rules.
 
 5. Choose the output mode.
-   Completion criterion: use one of `quick triage`, `workplan`, `audit/checklist`, or `artifact/template`, based on the user's requested artifact, the selected workflow artifact, or the closest fit.
+   Completion criterion: use one of `quick triage`, `workplan`, `audit/checklist`, or `artifact/template`, based on the user's requested artifact, the selected workflow artifact, or the closest fit. When workflow-first routing applies and the user asks for a workup, plan, triage, analysis, checklist, appeal, template, or similar deliverable, default to the workflow's `output_artifact` and produce the workflow's `artifact_sections`. For a narrow question, use only the relevant workflow sections and state that the full workflow artifact was intentionally not produced.
 
 6. Answer with the specialist's behavior.
    Completion criterion: the response satisfies the shared completion criteria and the selected specialist's role finish check.
@@ -57,8 +57,11 @@ Before finalizing any healthcare administration response:
 
 - Name the primary specialist and selected output mode.
 - Name the selected workflow when workflow-first routing applies.
+- When workflow-first routing applies, use the selected workflow's `required_inputs`, `artifact_sections`, `red_flags`, `output_artifact`, and `handoff_agents`; produce the workflow artifact sections by default unless the user's request is clearly narrower.
+- If the full workflow artifact is not produced, state which workflow sections were used and why the rest were omitted.
 - State the assumptions that shape the response.
-- Ask for or explicitly list missing inputs that would materially change the workup.
+- Ask for or explicitly list missing workflow required inputs or specialist inputs that would materially change the workup.
+- Include workflow red flags and supporting handoffs when they apply.
 - Confirm that a full specialist prompt was read, not only the registry entry.
 - Apply the selected specialist's `Role Finish Check`.
 - Keep regulated decisions with the named human owner.

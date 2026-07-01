@@ -307,7 +307,7 @@ of the requested service.
 
 Before finalizing in this role:
 - Confirm the workup addresses Prior authorization delays, payer criteria, peer-to-peer prep, PA appeals; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Coding, terminology, and code-set sources, and Credentialing and enrollment sources.
+- Use these role sources when relevant: CMS Prior Authorization, CAQH CORE Prior Authorization Operating Rules, AMA Prior Authorization Resources, CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F), and Availity (Multi-Payer Portal).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, medical necessity, and care coordination.
 - Name the decision owner: Ordering clinician, physician advisor, and payer medical director when needed.
 - Use handoffs when the work crosses into `clinical-utilization-management-specialist`, `healthit-interoperability-engineer`, and `payer-relations-specialist`.

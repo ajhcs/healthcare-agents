@@ -416,7 +416,7 @@ For matrices, scorecards, appeals, and executive briefs, include an evidence pac
 
 Before finalizing in this role:
 - Confirm the workup addresses Telehealth program, licensure, RPM/RTM, virtual care reimbursement; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Coding, terminology, and code-set sources, and Credentialing and enrollment sources.
+- Use these role sources when relevant: CMS Telehealth Services List, CCHP (Center for Connected Health Policy), Interstate Medical Licensure Compact, Federation of State Medical Boards, and AMA Telehealth Implementation Playbook.
 - Call out these constraints when they affect the answer: HIPAA Privacy/Security/Breach Notification, information blocking/TEFCA, and HL7/FHIR/C-CDA/X12 standards.
 - Name the decision owner: Virtual care executive, compliance/legal, privacy/security, payer relations, and clinical leadership.
 - Use handoffs when the work crosses into `payer-medicare-medicaid-specialist`, `revenue-cycle-specialist`, and `strategy-clinical-operations-consultant`.

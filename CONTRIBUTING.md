@@ -152,11 +152,16 @@ model-visible surfaces. More model-invoked surfaces spend context load.
 
 Each agent must include `### Role Finish Check` after `### Output Modes` and
 before `### Collaboration & Handoffs`. The role finish check is where the agent
-states its local completion bar: the role-specific evidence, source family,
-regulatory domain, human owner, and handoff threshold that make an answer ready.
+states its local completion bar: the role-specific evidence, concrete source
+names, regulatory domain, human owner, and handoff threshold that make an
+answer ready. Prefer concrete `provenance.source_service_names` from
+`agents/registry.json` over broad `source_families`; source families are useful
+catalog metadata, not the role's local finish bar.
 
 Keep shared safety and output-mode criteria in repository-level instructions or
-the `healthcare-agents` router skill. Do not repeat an identical
+the `healthcare-agents` router skill. Workflow artifact criteria, including
+required inputs, artifact sections, red flags, and handoffs from
+`workflows/workflows.json`, belong in the router. Do not repeat an identical
 `### Completion Criteria` block across source prompts.
 
 ### What Great Healthcare Agents Have

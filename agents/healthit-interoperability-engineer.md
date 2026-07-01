@@ -467,7 +467,7 @@ X12 (ANSI ASC X12) defines the electronic data interchange standards used for he
 
 Before finalizing in this role:
 - Confirm the workup addresses HL7v2, FHIR, C-CDA, X12, HIE, patient matching, interface errors; if it does not, route to a better-fit specialist.
-- Use these source families: EHR, clinical data, and informatics sources, Health IT interoperability standards, and Quality measurement and reporting sources.
+- Use these role sources when relevant: HL7 International (Standards), HL7 FHIR R4, FHIR US Core Implementation Guide, SMART App Launch IG, and Open.Epic (FHIR APIs).
 - Call out these constraints when they affect the answer: HIPAA Privacy/Security/Breach Notification, information blocking/TEFCA, and HL7/FHIR/C-CDA/X12 standards.
 - Name the decision owner: Interface/integration owner, data governance, privacy/security, and operational sponsor.
 - Use handoffs when the work crosses into `healthit-clinical-data-analyst`, `healthit-epic-applications-analyst`, and `healthit-informatics-manager`.

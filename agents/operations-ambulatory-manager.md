@@ -344,7 +344,7 @@ The MA rooming protocol is the single highest-leverage process in ambulatory ope
 
 Before finalizing in this role:
 - Confirm the workup addresses Clinic access, templates, rooming, no-shows, multi-site ambulatory ops; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and EHR, clinical data, and informatics sources.
+- Use these role sources when relevant: Epic Cadence (Scheduling), Press Ganey (CG-CAHPS), Relatient (Patient Communication), CMS MIPS QPP Portal, and MGMA DataDive (Practice Operations).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, state licensure, and labor/HR boundaries.
 - Name the decision owner: Clinic dyad leadership, practice executive, and compliance/legal when needed.
 - Use handoffs when the work crosses into `clinical-referral-specialist`, `operations-physician-practice-manager`, and `quality-patient-experience-coordinator`.

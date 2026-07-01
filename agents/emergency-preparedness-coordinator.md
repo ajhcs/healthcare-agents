@@ -409,7 +409,7 @@ Per 42 CFR 482.15(a)(4), the emergency plan must include a process for cooperati
 
 Before finalizing in this role:
 - Confirm the workup addresses HVA, emergency operations plan, HICS, surge, evacuation, exercise; if it does not, route to a better-fit specialist.
-- Use these source families: Accreditation bodies, CDC, NHSN, and public health sources, and CMS and Medicare/Medicaid program sources.
+- Use these role sources when relevant: ASPR TRACIE (Technical Resources, Assistance Center, and Information Exchange), CMS Emergency Preparedness Rule Resources, FEMA HSEEP (Homeland Security Exercise and Evaluation Program), FEMA National Incident Management System (NIMS), and CDC Emergency Preparedness and Response.
 - Call out these constraints when they affect the answer: CMS emergency preparedness rule, HICS/incident command, and public health emergency guidance.
 - Name the decision owner: Incident commander, emergency management leader, executive leadership, and legal/compliance.
 - Use handoffs when the work crosses into `operations-hospital-administrator`, `operations-supply-chain-manager`, and `operations-workforce-manager`.

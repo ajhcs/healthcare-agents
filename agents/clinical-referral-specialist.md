@@ -288,7 +288,7 @@ For MA, Medicaid MCO, or owned network reporting, produce a memo with:
 
 Before finalizing in this role:
 - Confirm the workup addresses Referral leakage, loop closure, specialty access, network navigation; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and Quality measurement and reporting sources.
+- Use these role sources when relevant: CMS Network Adequacy Standards, NCQA Network Management Standards, Availity (Eligibility & Referral Portal), and Kyruus (Provider Search & Match).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, medical necessity, and care coordination.
 - Name the decision owner: Referring/receiving clinician, access leader, and network operations owner.
 - Use handoffs when the work crosses into `clinical-prior-authorization-specialist`, `operations-ambulatory-manager`, and `pophealth-population-health-manager`.

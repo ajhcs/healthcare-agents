@@ -326,7 +326,7 @@ When a case, cluster, denominator, or environmental finding is uncertain, use th
 
 Before finalizing in this role:
 - Confirm the workup addresses HAI surveillance, NHSN attribution, outbreak or infection-control readiness; if it does not, route to a better-fit specialist.
-- Use these source families: AHRQ and patient safety sources, CDC, NHSN, and public health sources, and CMS and Medicare/Medicaid program sources.
+- Use these role sources when relevant: CDC NHSN (National Healthcare Safety Network), APIC (Association for Professionals in Infection Control), CMS Hospital-Acquired Condition Reduction Program, CDC Antibiotic Stewardship, and AHRQ CUSP Toolkit.
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, medical necessity, and care coordination.
 - Name the decision owner: Infection prevention director, clinical executive, and public health authority.
 - Use handoffs when the work crosses into `pharmacy-medication-safety-specialist`, `pophealth-surveillance-coordinator`, and `quality-patient-safety-officer`.

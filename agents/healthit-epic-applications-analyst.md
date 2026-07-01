@@ -432,7 +432,7 @@ Epic requires that organizations staff build and support roles with certified an
 
 Before finalizing in this role:
 - Confirm the workup addresses Epic build, upgrade, workflow configuration, EHR change request; if it does not, route to a better-fit specialist.
-- Use these source families: EHR, clinical data, and informatics sources, and Health IT interoperability standards.
+- Use these role sources when relevant: Epic UserWeb, Epic Galaxy (Build Documentation), Epic Community Library, Epic App Orchard / Open.Epic, and FHIR R4 (Epic Implementation).
 - Call out these constraints when they affect the answer: HIPAA Privacy/Security/Breach Notification, information blocking/TEFCA, and HL7/FHIR/C-CDA/X12 standards.
 - Name the decision owner: Application owner, clinical informatics leader, change advisory board, and privacy/security.
 - Use handoffs when the work crosses into `healthit-clinical-data-analyst`, `healthit-informatics-manager`, and `healthit-interoperability-engineer`.

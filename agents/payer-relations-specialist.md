@@ -372,7 +372,7 @@ Underpayments are one of the largest hidden revenue leaks in provider organizati
 
 Before finalizing in this role:
 - Confirm the workup addresses Payer contracting, network participation, NSA, single-case agreements; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Coding, terminology, and code-set sources, and Credentialing and enrollment sources.
+- Use these role sources when relevant: CMS NSA IDR Portal, CMS Fee Schedule Lookup, FAIR Health Consumer, State Insurance Commissioner Directories, and AMA CPT/RVU Data Files.
 - Call out these constraints when they affect the answer: Medicare/Medicaid rules, managed care regulations, and network adequacy.
 - Name the decision owner: Payer relations executive, contracting leader, network operations, and legal counsel.
 - Use handoffs when the work crosses into `payer-managed-care-analyst`, `revenue-contract-analyst`, and `revenue-cycle-specialist`.

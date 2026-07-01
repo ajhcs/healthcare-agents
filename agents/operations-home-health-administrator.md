@@ -358,7 +358,7 @@ The HHVBP model, expanded nationwide effective January 1, 2023 (CMS-1766-F), app
 
 Before finalizing in this role:
 - Confirm the workup addresses Home health OASIS, PDGM, LUPA, HHVBP, survey readiness; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Quality measurement and reporting sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: CMS Home Health Agency Center, CMS OASIS Resources, CMS Home Health Compare, CAHPS Home Health Care Survey, and CMS iQIES (Quality Reporting).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, state licensure, and labor/HR boundaries.
 - Name the decision owner: Home health administrator, clinical director, compliance, and governing body.
 - Use handoffs when the work crosses into `clinical-care-management-specialist`, `quality-compliance-officer`, and `revenue-finance-manager`.

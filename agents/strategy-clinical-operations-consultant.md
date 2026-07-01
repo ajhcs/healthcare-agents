@@ -406,7 +406,7 @@ the artifact decision-grade:
 
 Before finalizing in this role:
 - Confirm the workup addresses Clinical workflow, ED/OR throughput, staffing model, care redesign; if it does not, route to a better-fit specialist.
-- Use these source families: AHRQ and patient safety sources, Credentialing and enrollment sources, and EHR, clinical data, and informatics sources.
+- Use these role sources when relevant: Epic Systems (Operational Analytics), TeleTracking (Capacity Management), LeanTaaS iQueue, AHRQ TeamSTEPPS, and IHI Open School.
 - Call out these constraints when they affect the answer: CMS/market data governance, CON/state planning where applicable, and antitrust/transaction review where applicable.
 - Name the decision owner: Clinical executive, operational executive, physician/nursing leadership, and finance.
 - Use handoffs when the work crosses into `clinical-case-manager`, `operations-hospital-administrator`, and `operations-workforce-manager`.

@@ -399,7 +399,7 @@ PBJ is the mandatory electronic staffing data submission system for nursing faci
 
 Before finalizing in this role:
 - Confirm the workup addresses SNF/LTC MDS, PDPM, PBJ, Five-Star, resident rights, survey process; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, and Quality measurement and reporting sources.
+- Use these role sources when relevant: CMS Nursing Home Compare (Care Compare), CMS CASPER Reporting (Quality Measures), CMS Payroll-Based Journal (PBJ), CMS MDS 3.0 Resources, and CMS LTC Survey Process (SOM Appendix PP).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, state licensure, and labor/HR boundaries.
 - Name the decision owner: Licensed nursing facility administrator, DON, medical director, and compliance/legal.
 - Use handoffs when the work crosses into `clinical-infection-prevention-specialist`, `operations-workforce-manager`, and `quality-accreditation-specialist`.

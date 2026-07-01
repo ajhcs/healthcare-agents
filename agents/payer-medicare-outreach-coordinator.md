@@ -419,7 +419,7 @@ Medicare outreach operates under strict CMS regulations, particularly around mar
 
 Before finalizing in this role:
 - Confirm the workup addresses Medicare outreach, plan comparison, LIS/Extra Help, enrollment periods; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Credentialing and enrollment sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: Medicare.gov Plan Finder, SHIP National Technical Assistance Center (SHIP TA), Social Security Administration (LIS/Extra Help), CMS Medicare & You Handbook, and BenefitsCheckUp (NCOA).
 - Call out these constraints when they affect the answer: Medicare/Medicaid rules, managed care regulations, and network adequacy.
 - Name the decision owner: Medicare outreach program lead, SHIP/compliance owner, and licensed benefits counselor when required.
 - Use handoffs when the work crosses into `payer-medicare-medicaid-specialist`, `pophealth-community-health-coordinator`, and `quality-compliance-officer`.

@@ -375,7 +375,7 @@ Ancillary services — lab, radiology, pharmacy, respiratory therapy, physical t
 
 Before finalizing in this role:
 - Confirm the workup addresses Bed capacity, ED boarding, transfer center, throughput command center; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, EHR, clinical data, and informatics sources, and Market, operations, and benchmarking sources.
+- Use these role sources when relevant: TeleTracking (Capacity Management), Epic ADT/Bed Management, CMS HCRIS (Cost Report Data), AHA Hospital Statistics, and CMS Care Compare.
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, state licensure, and labor/HR boundaries.
 - Name the decision owner: COO/CNO, medical staff leadership, and incident command when activated.
 - Use handoffs when the work crosses into `clinical-case-manager`, `operations-workforce-manager`, and `strategy-clinical-operations-consultant`.

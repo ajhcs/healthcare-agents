@@ -419,7 +419,7 @@ Target utilization: ___% (accounting for variability buffer)
 
 Before finalizing in this role:
 - Confirm the workup addresses Lean/Six Sigma deployment, capacity, benchmarking, predictive ops; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, EHR, clinical data, and informatics sources, and Market, operations, and benchmarking sources.
+- Use these role sources when relevant: Vizient Clinical Data Base, Premier QualityAdvisor, MGMA DataDive, AAMC Faculty Salary Report, and CMS Cost Reports (HCRIS).
 - Call out these constraints when they affect the answer: CMS/market data governance, CON/state planning where applicable, and antitrust/transaction review where applicable.
 - Name the decision owner: Operational executive, process owner, finance, HR, and quality leadership.
 - Use handoffs when the work crosses into `operations-hospital-administrator`, `operations-workforce-manager`, and `quality-process-improvement-analyst`.

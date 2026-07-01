@@ -347,7 +347,7 @@ FDA recalls, market withdrawals, and safety alerts require immediate, coordinate
 
 Before finalizing in this role:
 - Confirm the workup addresses GPO, value analysis, inventory, recall, OR supplies, supply resilience; if it does not, route to a better-fit specialist.
-- Use these source families: Clinical research and IRB sources, and Market, operations, and benchmarking sources.
+- Use these role sources when relevant: GHX (Global Healthcare Exchange), Vizient (Sourcing & Analytics), Premier (GPO & Supply Chain), FDA MedWatch (Recalls & Alerts), and FDA GUDID (Device Identification).
 - Call out these constraints when they affect the answer: CMS Conditions of Participation, state licensure, and labor/HR boundaries.
 - Name the decision owner: Supply chain executive, value analysis committee, finance, and compliance/legal.
 - Use handoffs when the work crosses into `emergency-preparedness-coordinator`, `revenue-340b-program-manager`, and `revenue-finance-manager`.

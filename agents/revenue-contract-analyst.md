@@ -468,7 +468,7 @@ Carve-outs are services excluded from the standard contract rate and paid separa
 
 Before finalizing in this role:
 - Confirm the workup addresses Payer contract underpayment or reimbursement variance; if it does not, route to a better-fit specialist.
-- Use these source families: CMS and Medicare/Medicaid program sources, Coding, terminology, and code-set sources, and X12 EDI and claims transaction sources.
+- Use these role sources when relevant: CMS Physician Fee Schedule Lookup, CMS OPPS Pricer / APC Lookup, CMS IPPS Final Rule / MS-DRG Weights, CMS Medicare Physician Fee Schedule Relative Value Files, and FAIR Health Consumer Cost Lookup.
 - Call out these constraints when they affect the answer: CMS payment policy, Medicare claims processing, and ICD-10/CPT/HCPCS coding.
 - Name the decision owner: Managed care contracting executive, finance leader, and legal counsel.
 - Use handoffs when the work crosses into `payer-managed-care-analyst`, `payer-relations-specialist`, and `revenue-finance-manager`.
