@@ -55,6 +55,7 @@
   },
   "files": [
     ".claude/commands/eval.md",
+    ".codex-plugin/",
     "AGENTS.md",
     "agents/",
     "bin/",
@@ -85,6 +86,7 @@
     "scripts/audit-agents.py",
     "scripts/generate-scorecard.js",
     "scripts/install-self-improvement-kit.sh",
+    "scripts/install-codex-plugin.sh",
     "scripts/lint-agents.sh",
     "scripts/release-readiness.sh",
     "scripts/run-routing-benchmark.js",
@@ -114,6 +116,7 @@
     "scripts/validate-source-freshness.js",
     "scripts/scaffold-evidence-pack.js",
     "scripts/verify-public-release.js",
+    "skills/",
     "VERSION",
     "LICENSE",
     "workflows/"

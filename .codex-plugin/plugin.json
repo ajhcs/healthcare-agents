@@ -1,0 +1,40 @@
+{
+  "name": "healthcare-agents",
+  "version": "1.5.0",
+  "description": "Codex plugin with 51 specialist prompts for US healthcare administration workups.",
+  "author": {
+    "name": "ajhcs"
+  },
+  "homepage": "https://github.com/ajhcs/healthcare-agents",
+  "repository": "https://github.com/ajhcs/healthcare-agents",
+  "license": "Apache-2.0",
+  "keywords": [
+    "healthcare",
+    "healthcare-administration",
+    "codex",
+    "ai-agents",
+    "agent-skills",
+    "revenue-cycle",
+    "hipaa",
+    "cms"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Healthcare Agents",
+    "shortDescription": "51 US healthcare administration specialists for Codex.",
+    "longDescription": "Route healthcare administration problems to focused specialist prompts for revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, and emergency preparedness workups.",
+    "developerName": "ajhcs",
+    "category": "Productivity",
+    "capabilities": [
+      "Reference",
+      "Write",
+      "Workflow"
+    ],
+    "defaultPrompt": [
+      "Use Healthcare Agents for a prior authorization appeal workup.",
+      "Route a denial spike problem to the right specialist.",
+      "Draft a HIPAA evidence checklist with review owners."
+    ],
+    "brandColor": "#2E8B57"
+  }
+}

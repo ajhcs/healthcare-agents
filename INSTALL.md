@@ -13,6 +13,24 @@ safe for PHI without an approved environment and minimum necessary controls.
 
 ## Fast Install
 
+Codex plugin install from a clone:
+
+```bash
+git clone https://github.com/ajhcs/healthcare-agents.git
+cd healthcare-agents
+bash scripts/install-codex-plugin.sh
+```
+
+For local development from this checkout:
+
+```bash
+bash scripts/install-codex-plugin.sh
+```
+
+The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`.
+
+Start a new Codex thread after installing or updating the plugin. The plugin exposes one router skill, `healthcare-agents`, which reads `agents/registry.json`, selects a primary specialist, then reads the full source prompt in `agents/*.md`.
+
 ```bash
 npx --yes healthcare-agents install
 ```
@@ -51,6 +69,7 @@ npx --yes healthcare-agents install --all --force
 
 | Target | Command | Writes |
 |---|---|---|
+| Codex plugin | `bash scripts/install-codex-plugin.sh` | Local Codex marketplace wrapper and Codex plugin cache from repo-root `.codex-plugin/plugin.json` and `skills/healthcare-agents/SKILL.md` |
 | Claude Code | `npx --yes healthcare-agents install --claude` | `~/.claude/agents/*.md` |
 | Claude Skills | `npx --yes healthcare-agents install --claude-skills` | `~/.claude/skills/<slug>/SKILL.md` |
 | Claude Desktop | `npx --yes healthcare-agents install --claude-desktop` | `~/.claude/skills/<slug>/SKILL.md` |
@@ -126,6 +145,23 @@ compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex
 ```
 
 ## Codex CLI and Codex App
+
+Recommended plugin install:
+
+```bash
+bash scripts/install-codex-plugin.sh
+```
+
+Use the plugin when you want Codex to invoke Healthcare Agents through one model-visible router skill. Example prompts:
+
+```text
+Use Healthcare Agents for a prior authorization appeal workup.
+Route a denial spike problem to the right healthcare specialist.
+```
+
+The plugin keeps `agents/*.md` as the source of truth. The router skill must read `agents/registry.json`, select one primary specialist, and read the full matching prompt before answering.
+
+Legacy prompt-copy install:
 
 Install:
 

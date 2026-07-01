@@ -160,6 +160,22 @@ for dogfood evidence, release checks, and scope limits.
 
 ## Install
 
+Codex plugin install:
+
+```bash
+git clone https://github.com/ajhcs/healthcare-agents.git
+cd healthcare-agents
+bash scripts/install-codex-plugin.sh
+```
+
+For local development from this checkout:
+
+```bash
+bash scripts/install-codex-plugin.sh
+```
+
+The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`. Start a new Codex thread after installing or updating the plugin so the router skill is loaded.
+
 Fast path:
 
 ```bash
@@ -182,6 +198,7 @@ Target a specific tool:
 
 | Runtime | Command |
 |---|---|
+| Codex plugin | `bash scripts/install-codex-plugin.sh` |
 | Claude Code subagents | `npx --yes healthcare-agents install --claude` |
 | Claude Skills, Claude Desktop, Claude Cowork | `npx --yes healthcare-agents install --claude-skills` |
 | Codex CLI / Codex App | `npx --yes healthcare-agents install --codex` |
@@ -312,6 +329,7 @@ flowchart LR
   A --> C["Codex<br/>~/.codex/agents + AGENTS.md"]
   A --> D["Rules folders<br/>Cursor · Windsurf · Copilot"]
   A --> E["Generated SKILL.md"]
+  A --> I["Codex plugin<br/>router skill + source prompts"]
   E --> F["Claude Skills<br/>Desktop · Cowork"]
   E --> G["OpenCode Skills"]
   E --> H["Open Agent Skills<br/>.agents/skills"]
@@ -320,6 +338,7 @@ flowchart LR
 | Tool / Standard | Install Target | Notes |
 |---|---|---|
 | Claude Code subagents | `~/.claude/agents/*.md` | Source prompts use lowercase hyphen `name` values matching filenames. |
+| Codex plugin | repo-root `.codex-plugin/plugin.json` plus `skills/healthcare-agents/SKILL.md` | Adds one router skill that reads `agents/registry.json`, selects a primary specialist, then reads the full source prompt. |
 | Claude Skills | `~/.claude/skills/<slug>/SKILL.md` | Generated skill wrappers include `name`, `description`, `license`, and `compatibility`. |
 | Claude Desktop / Claude Cowork | Claude-compatible skills | Use `--claude-desktop`, `--claude-cowork`, or `--claude-skills`. |
 | Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed discovery block telling Codex how to choose specialists, use output modes, and name handoffs. |
@@ -627,7 +646,9 @@ Both. The source files in `agents/*.md` install as Claude Code subagents. The in
 
 ### Do these work in Codex?
 
-Yes. The installer copies prompts to `~/.codex/agents` and writes a managed `~/.codex/AGENTS.md` block telling Codex how to select and read specialists. For repo-local Codex App work, keep the prompts in the repository and reference them from `AGENTS.md`.
+Yes. The recommended Codex path is the plugin install, which loads one `healthcare-agents` router skill and keeps the 51 source prompts as external reference. Use it for prompts like "Use Healthcare Agents for a prior authorization appeal workup" or "Route a denial spike problem to the right healthcare specialist."
+
+The older installer path still works: `npx --yes healthcare-agents install --codex` copies prompts to `~/.codex/agents` and writes a managed `~/.codex/AGENTS.md` block. Use that when you want prompt files copied into your Codex home instead of installing the repo as a plugin.
 
 ### Why did the frontmatter names change?
 
