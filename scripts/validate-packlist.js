@@ -22,6 +22,7 @@ const forbidden = [
   /(^|\/)temp\//
 ];
 const required = [
+  '.codex-plugin/plugin.json',
   'bin/cli.js',
   'install.sh',
   'agents/registry.json',
@@ -70,7 +71,9 @@ const required = [
   'scripts/validate-platform-exports.js',
   'scripts/test-platform-render-snapshots.js',
   'scripts/validate-public-version-sync.js',
-  'scripts/validate-npm-publish-workflow.js'
+  'scripts/validate-npm-publish-workflow.js',
+  'scripts/install-codex-plugin.sh',
+  'skills/healthcare-agents/SKILL.md'
 ];
 
 for (const file of files) {
