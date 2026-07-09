@@ -11,6 +11,11 @@ release readiness.
   configured model before publication, store artifacts under ignored
   `eval/run-logs/<date>/canaries/`, and feed failures into the self-improvement
   loop for the named primary agent.
+- Scenarios whose IDs start with `hab-` are synthetic, prompt-level reliability
+  probes derived from HealthAdminBench's published failure taxonomy. They test
+  state carryover, document transitions, cross-system reconciliation, and
+  terminal completion. They are not substitutes for running the benchmark's
+  GUI environments.
 
 Canary runs are not a substitute for human healthcare authority. They check
 structure, safety boundaries, handoffs, and deliverable shape; final clinical,

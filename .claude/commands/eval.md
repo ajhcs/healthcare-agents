@@ -82,7 +82,7 @@ Run these checks before entering the loop. If any fail, print the error message 
 6. Record session-start line count:
    Run: `wc -l < agents/$ARGUMENTS.md`
    Store as `BASELINE_LINES` for the whole session. Do not recompute it in later iterations.
-   Compute `LINE_CAP = max(BASELINE_LINES * 1.2, BASELINE_LINES + 50)`, rounded up.
+   Compute `LINE_CAP = max(BASELINE_LINES * 1.1, BASELINE_LINES + 25)`, rounded up. This is a hard ceiling, not a target; prefer a net-neutral or smaller retained prompt.
    Print: "Preflight passed. Baseline: {BASELINE_LINES} lines. Cap: {LINE_CAP} lines."
 
 7. Create a local run-log directory:
@@ -126,6 +126,12 @@ Draw questions from both:
 
 - The agent prompt: what it claims to know.
 - The role baseline: what the role should know, including omitted responsibilities.
+
+For roles that perform multi-step, cross-system, document, or handoff-heavy work, include at least three workflow-reliability probes derived from the HealthAdminBench failure taxonomy:
+
+- state or evidence that must survive a long-horizon handoff;
+- document acquisition, transfer, or confirmation behavior;
+- the observable terminal state that distinguishes full completion from subtask progress.
 
 Default mix:
 
@@ -221,6 +227,7 @@ Edit `agents/$ARGUMENTS.md` to strengthen the weak areas identified in Step 5.
 Editor constraints:
 
 - Implement the highest-leverage 1-3 changes first.
+- Prefer deleting redundant instructions and examples before adding text. Aim for a net-neutral or smaller prompt unless the fixed questions prove that new role-specific mechanics are necessary.
 - Prefer adding specific guidance to existing sections over rewriting or reorganizing entire sections.
 - Preserve all items under `identity_to_preserve`.
 - Avoid all listed anti-patterns.
@@ -344,7 +351,9 @@ When improving many agents:
 
 For Codex and Claude Code under newer models:
 
-- Scorer/judge: strongest available reasoning model.
-- Editor: faster strong model.
-- Parent: reliable tool-using orchestrator.
-- Adjudicator: different strong model family when available.
+- GPT-5.6 scorer/judge: Sol at high or xhigh first; compare max on difficult quality-first cases instead of assuming it is best.
+- GPT-5.6 editor: Terra at low or medium for bounded edits.
+- GPT-5.6 parent: Terra at medium by default; use Sol when orchestration complexity warrants it.
+- GPT-5.6 smoke runner: Luna only for bounded routing, format, refusal, and obvious-regression checks.
+- Adjudicator: different strong model family when available, or an independent calibrated Sol run without the first judge's rationale.
+- Preserve the previous reasoning effort as the migration baseline, compare one level lower, and record standard versus pro mode as separate configurations.

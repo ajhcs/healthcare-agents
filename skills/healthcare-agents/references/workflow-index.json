@@ -1,0 +1,854 @@
+{
+  "schema_version": "1.0.0",
+  "generated_from": "workflows/workflows.json",
+  "routing_order": "Match triggers and reject anti_triggers before loading an agent index or full prompt.",
+  "workflows": [
+    {
+      "id": "denial-spike-workup",
+      "name": "Revenue Cycle Denial Spike Workup",
+      "category": "Revenue Cycle",
+      "summary": "Triage a denial-rate increase, payer policy shift, AR aging issue, or write-off spike into an evidence-backed recovery plan.",
+      "triggers": [
+        "denial spike",
+        "denial rate",
+        "payer policy change",
+        "AR days",
+        "write-offs",
+        "appeal backlog",
+        "CARC",
+        "RARC"
+      ],
+      "anti_triggers": [
+        "clinical diagnosis",
+        "treatment recommendation",
+        "individual patient appeal without administrative context"
+      ],
+      "primary_agent": "revenue-cycle-specialist",
+      "handoff_agents": [
+        "revenue-contract-analyst",
+        "healthit-clinical-data-analyst",
+        "quality-compliance-officer"
+      ],
+      "required_inputs": [
+        "payer or product",
+        "denial codes or reason categories",
+        "timeframe and baseline",
+        "service lines affected",
+        "estimated dollar exposure",
+        "current appeal status"
+      ],
+      "red_flags": [
+        "possible coding compliance risk",
+        "payer policy retroactivity",
+        "large dollar exposure",
+        "patient access impact",
+        "appeal deadline risk"
+      ],
+      "output_artifact": "denial spike triage brief",
+      "artifact_sections": [
+        "Executive summary",
+        "Trend and exposure",
+        "Root-cause hypotheses",
+        "Evidence pull list",
+        "Appeal and escalation strategy",
+        "Owner matrix",
+        "Monitoring plan"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "clean-claim-rate-decline",
+      "name": "Clean Claim Rate Decline",
+      "category": "Revenue Cycle",
+      "summary": "Diagnose a clean-claim-rate drop from edits, clearinghouse rejections, registration defects, coding quality, or system changes.",
+      "triggers": [
+        "clean claim rate",
+        "claim edits",
+        "clearinghouse rejection",
+        "front-end denial",
+        "registration quality",
+        "EHR update"
+      ],
+      "anti_triggers": [
+        "payer contract dispute without claim quality issue"
+      ],
+      "primary_agent": "revenue-cycle-specialist",
+      "handoff_agents": [
+        "operations-physician-practice-manager",
+        "revenue-medical-coding-specialist",
+        "healthit-clinical-data-analyst"
+      ],
+      "required_inputs": [
+        "baseline clean claim rate",
+        "current clean claim rate",
+        "edit categories",
+        "affected clinics or service lines",
+        "recent system or workflow changes"
+      ],
+      "red_flags": [
+        "patient access impact",
+        "cash acceleration pressure",
+        "repeatable registration defect",
+        "coding compliance concern"
+      ],
+      "output_artifact": "clean claim recovery plan",
+      "artifact_sections": [
+        "Issue segmentation",
+        "Likely process defects",
+        "Owner matrix",
+        "Fix plan",
+        "Dashboard specification",
+        "Validation cadence"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "payer-contract-underpayment-review",
+      "name": "Payer Contract Underpayment Review",
+      "category": "Payer Contracting",
+      "summary": "Prepare an underpayment evidence packet for suspected payment variance, fee schedule mismatch, contract renewal, or payer dispute.",
+      "triggers": [
+        "underpayment",
+        "payment variance",
+        "fee schedule",
+        "contract terms",
+        "payer dispute",
+        "allowed amount",
+        "carve-out"
+      ],
+      "anti_triggers": [
+        "single patient balance question",
+        "medical necessity appeal"
+      ],
+      "primary_agent": "revenue-contract-analyst",
+      "handoff_agents": [
+        "revenue-cycle-specialist",
+        "revenue-finance-manager",
+        "payer-relations-specialist"
+      ],
+      "required_inputs": [
+        "contract terms",
+        "allowed amounts",
+        "billed charges",
+        "payment history",
+        "carve-outs or exclusions"
+      ],
+      "red_flags": [
+        "legal dispute posture",
+        "large recurring variance",
+        "contract ambiguity",
+        "timely filing or dispute deadline"
+      ],
+      "output_artifact": "underpayment evidence packet",
+      "artifact_sections": [
+        "Variance logic",
+        "Evidence table",
+        "Contract citation map",
+        "Payer dispute letter scaffold",
+        "Negotiation talking points"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "prior-authorization-appeal-workup",
+      "name": "Prior Authorization Appeal Workup",
+      "category": "Clinical Administration",
+      "summary": "Organize a non-clinical prior authorization denial or delayed authorization into appeal evidence, missing documentation, and escalation steps.",
+      "triggers": [
+        "prior authorization",
+        "auth denial",
+        "medical necessity request",
+        "payer criteria",
+        "appeal deadline",
+        "delayed care"
+      ],
+      "anti_triggers": [
+        "diagnose patient",
+        "choose treatment",
+        "write clinical attestation as clinician"
+      ],
+      "primary_agent": "clinical-prior-authorization-specialist",
+      "handoff_agents": [
+        "clinical-care-management-specialist",
+        "quality-compliance-officer",
+        "clinical-utilization-management-specialist"
+      ],
+      "required_inputs": [
+        "payer",
+        "service or item",
+        "denial reason",
+        "policy citation",
+        "documentation available"
+      ],
+      "red_flags": [
+        "urgent care delay",
+        "appeal deadline",
+        "medical necessity dispute needing licensed review",
+        "potential adverse patient impact"
+      ],
+      "output_artifact": "appeal workup and documentation checklist",
+      "artifact_sections": [
+        "Case restatement",
+        "Payer criteria map",
+        "Missing documentation",
+        "Non-clinical appeal structure",
+        "Escalation path",
+        "Review checklist"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "discharge-barrier-workplan",
+      "name": "Discharge Barrier Workplan",
+      "category": "Care Coordination",
+      "summary": "Convert discharge delays, avoidable days, placement barriers, DME delays, or family decision delays into a daily action plan.",
+      "triggers": [
+        "discharge delay",
+        "SNF placement",
+        "DME delay",
+        "avoidable days",
+        "length of stay",
+        "family decision",
+        "post-acute"
+      ],
+      "anti_triggers": [
+        "clinical discharge order decision",
+        "treatment recommendation"
+      ],
+      "primary_agent": "clinical-case-manager",
+      "handoff_agents": [
+        "clinical-utilization-management-specialist",
+        "clinical-care-management-specialist",
+        "revenue-finance-manager"
+      ],
+      "required_inputs": [
+        "barrier categories",
+        "service line",
+        "payer mix",
+        "avoidable days",
+        "escalation rules"
+      ],
+      "red_flags": [
+        "unsafe discharge risk",
+        "patient rights concern",
+        "avoidable day escalation",
+        "payer denial risk"
+      ],
+      "output_artifact": "discharge barrier action plan",
+      "artifact_sections": [
+        "Barrier taxonomy",
+        "Immediate next actions",
+        "Owner list",
+        "Daily huddle script",
+        "Escalation triggers",
+        "KPI plan"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "hipaa-security-evidence-checklist",
+      "name": "HIPAA Security Evidence Checklist",
+      "category": "Compliance",
+      "summary": "Prepare an evidence checklist and gap register for a HIPAA audit, vendor security review, policy refresh, or questionnaire.",
+      "triggers": [
+        "HIPAA",
+        "security evidence",
+        "vendor review",
+        "security questionnaire",
+        "audit evidence",
+        "risk analysis",
+        "BAA"
+      ],
+      "anti_triggers": [
+        "legal opinion",
+        "breach determination without privacy officer"
+      ],
+      "primary_agent": "quality-compliance-officer",
+      "handoff_agents": [
+        "healthit-information-manager",
+        "quality-risk-manager",
+        "payer-relations-specialist"
+      ],
+      "required_inputs": [
+        "entity type",
+        "system scope",
+        "vendor involvement",
+        "current controls",
+        "requested framework"
+      ],
+      "red_flags": [
+        "possible breach",
+        "missing BAA",
+        "unapproved PHI sharing",
+        "critical control gap",
+        "regulator deadline"
+      ],
+      "output_artifact": "evidence checklist and gap register",
+      "artifact_sections": [
+        "Scope",
+        "Evidence map",
+        "Gap register",
+        "Responsible owners",
+        "Collection timeline",
+        "Review sign-off"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "survey-readiness-gap-review",
+      "name": "Survey Readiness Gap Review",
+      "category": "Compliance",
+      "summary": "Plan accreditation or CMS survey readiness work with tracer preparation, policy evidence, corrective actions, and leadership briefing.",
+      "triggers": [
+        "survey readiness",
+        "accreditation",
+        "CMS survey",
+        "tracer",
+        "corrective action",
+        "policy gap"
+      ],
+      "anti_triggers": [
+        "clinical order decision",
+        "legal defense strategy"
+      ],
+      "primary_agent": "quality-accreditation-specialist",
+      "handoff_agents": [
+        "quality-improvement-specialist",
+        "quality-compliance-officer",
+        "clinical-infection-prevention-specialist"
+      ],
+      "required_inputs": [
+        "standard set",
+        "site",
+        "last survey findings",
+        "open corrective actions"
+      ],
+      "red_flags": [
+        "immediate jeopardy concern",
+        "open corrective action deadline",
+        "repeat deficiency",
+        "patient safety risk"
+      ],
+      "output_artifact": "survey readiness gap plan",
+      "artifact_sections": [
+        "Standards map",
+        "Tracer plan",
+        "Policy evidence list",
+        "Owner matrix",
+        "Leadership briefing",
+        "Readiness cadence"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "patient-safety-rca2-workup",
+      "name": "Patient Safety RCA2 Workup",
+      "category": "Quality and Safety",
+      "summary": "Organize serious safety event, near miss, or sentinel-event-style review preparation into an RCA2-style planning packet.",
+      "triggers": [
+        "RCA2",
+        "root cause analysis",
+        "serious safety event",
+        "near miss",
+        "sentinel event",
+        "harm level",
+        "causal factors"
+      ],
+      "anti_triggers": [
+        "assign blame",
+        "legal conclusion",
+        "clinical treatment decision"
+      ],
+      "primary_agent": "quality-patient-safety-officer",
+      "handoff_agents": [
+        "quality-risk-manager",
+        "quality-improvement-specialist",
+        "operations-hospital-administrator"
+      ],
+      "required_inputs": [
+        "event summary",
+        "timeline",
+        "harm level",
+        "involved processes",
+        "immediate containment"
+      ],
+      "red_flags": [
+        "ongoing safety risk",
+        "mandatory reporting question",
+        "legal privilege concern",
+        "media or regulator sensitivity"
+      ],
+      "output_artifact": "RCA2-style planning packet",
+      "artifact_sections": [
+        "Fact-gathering plan",
+        "Timeline gaps",
+        "Causal factor categories",
+        "Interview guide",
+        "Action strength checklist",
+        "Escalation notes"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "ed-boarding-capacity-workup",
+      "name": "ED Boarding and Capacity Workup",
+      "category": "Operations",
+      "summary": "Triage ED boarding, throughput issues, inpatient bed constraints, staffing limits, or ambulance diversion risk into a command-center brief.",
+      "triggers": [
+        "ED boarding",
+        "throughput",
+        "bed capacity",
+        "ambulance diversion",
+        "boarding hours",
+        "inpatient beds",
+        "staffing constraint"
+      ],
+      "anti_triggers": [
+        "individual clinical triage decision",
+        "emergency medical advice"
+      ],
+      "primary_agent": "operations-hospital-administrator",
+      "handoff_agents": [
+        "clinical-case-manager",
+        "revenue-finance-manager",
+        "healthit-clinical-data-analyst"
+      ],
+      "required_inputs": [
+        "boarding hours",
+        "arrival and admission rates",
+        "discharge timing",
+        "bed types",
+        "staffing constraints"
+      ],
+      "red_flags": [
+        "ambulance diversion risk",
+        "unsafe staffing concern",
+        "regulatory reporting issue",
+        "high occupancy escalation"
+      ],
+      "output_artifact": "capacity command-center brief",
+      "artifact_sections": [
+        "Bottleneck map",
+        "Immediate operational moves",
+        "Escalation triggers",
+        "Metric dashboard spec",
+        "Leadership update"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required",
+        "emergency"
+      ]
+    },
+    {
+      "id": "ambulatory-access-backlog",
+      "name": "Ambulatory Access Backlog",
+      "category": "Operations",
+      "summary": "Plan recovery for specialty access backlog, referral queue growth, template design problems, or no-show pressure.",
+      "triggers": [
+        "third next available",
+        "referral backlog",
+        "no-show",
+        "template design",
+        "ambulatory access",
+        "scheduling backlog"
+      ],
+      "anti_triggers": [
+        "individual clinical triage decision"
+      ],
+      "primary_agent": "operations-ambulatory-manager",
+      "handoff_agents": [
+        "healthit-clinical-data-analyst",
+        "clinical-referral-specialist",
+        "operations-physician-practice-manager"
+      ],
+      "required_inputs": [
+        "specialty",
+        "backlog size",
+        "template design",
+        "referral sources",
+        "no-show rate"
+      ],
+      "red_flags": [
+        "clinically urgent referrals waiting",
+        "access equity concern",
+        "provider burnout risk",
+        "payer network adequacy issue"
+      ],
+      "output_artifact": "access recovery plan",
+      "artifact_sections": [
+        "Demand and capacity view",
+        "Backlog segmentation",
+        "Scheduling rule changes",
+        "Referral triage approach",
+        "Monitoring metrics"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "value-based-care-downside-risk-readiness",
+      "name": "Value-Based Care Downside Risk Readiness",
+      "category": "Value-Based Care",
+      "summary": "Assess readiness for a new or troubled downside-risk contract across quality, cost, attribution, care management, and governance.",
+      "triggers": [
+        "downside risk",
+        "risk contract",
+        "attributed lives",
+        "quality measures",
+        "cost benchmark",
+        "care management model",
+        "ACO"
+      ],
+      "anti_triggers": [
+        "actuarial certification",
+        "final contract approval"
+      ],
+      "primary_agent": "payer-value-based-care-manager",
+      "handoff_agents": [
+        "pophealth-population-health-manager",
+        "revenue-finance-manager",
+        "healthit-clinical-data-analyst"
+      ],
+      "required_inputs": [
+        "contract model",
+        "attributed lives",
+        "quality measures",
+        "cost benchmark",
+        "care management model"
+      ],
+      "red_flags": [
+        "unbounded downside exposure",
+        "data lag",
+        "unclear attribution",
+        "quality penalty risk"
+      ],
+      "output_artifact": "downside-risk readiness memo",
+      "artifact_sections": [
+        "Risk register",
+        "Intervention map",
+        "Data gaps",
+        "Governance cadence",
+        "Decision points"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "hedis-stars-gap-closure-sprint",
+      "name": "HEDIS or Stars Gap Closure Sprint",
+      "category": "Quality",
+      "summary": "Plan a focused quality gap closure sprint for HEDIS, Stars, payer quality programs, denominator/numerator gaps, and outreach.",
+      "triggers": [
+        "HEDIS",
+        "Stars",
+        "gap closure",
+        "quality measure",
+        "denominator",
+        "numerator",
+        "diabetic eye exam",
+        "outreach"
+      ],
+      "anti_triggers": [
+        "clinical treatment recommendation",
+        "measure gaming"
+      ],
+      "primary_agent": "quality-improvement-specialist",
+      "handoff_agents": [
+        "pophealth-population-health-manager",
+        "healthit-clinical-data-analyst",
+        "quality-compliance-officer"
+      ],
+      "required_inputs": [
+        "measure",
+        "denominator",
+        "numerator gap",
+        "patient segment",
+        "outreach channels"
+      ],
+      "red_flags": [
+        "measure documentation uncertainty",
+        "patient consent or communication limits",
+        "clinical prioritization needed",
+        "data lag"
+      ],
+      "output_artifact": "gap closure sprint plan",
+      "artifact_sections": [
+        "Gap stratification",
+        "Outreach plan",
+        "Documentation checklist",
+        "Weekly operating rhythm",
+        "Measure validation"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "hl7-fhir-interface-incident",
+      "name": "HL7 or FHIR Interface Incident",
+      "category": "Health IT",
+      "summary": "Triage interface failures, feed latency, mapping errors, data quality defects, or possible PHI exposure into an incident workup.",
+      "triggers": [
+        "HL7",
+        "FHIR",
+        "interface failure",
+        "feed latency",
+        "mapping error",
+        "ADT",
+        "message type",
+        "data quality"
+      ],
+      "anti_triggers": [
+        "direct API implementation",
+        "patient-specific clinical interpretation"
+      ],
+      "primary_agent": "healthit-interoperability-engineer",
+      "handoff_agents": [
+        "healthit-clinical-data-analyst",
+        "healthit-information-manager",
+        "quality-compliance-officer"
+      ],
+      "required_inputs": [
+        "system names",
+        "message type or resource",
+        "failure mode",
+        "timeline",
+        "affected workflows"
+      ],
+      "red_flags": [
+        "possible PHI exposure",
+        "patient safety workflow impact",
+        "downtime procedure needed",
+        "vendor escalation required"
+      ],
+      "output_artifact": "interface incident workup",
+      "artifact_sections": [
+        "Incident summary",
+        "Triage checklist",
+        "Evidence to collect",
+        "Communications",
+        "Root-cause hypotheses",
+        "Remediation plan"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "clinical-dashboard-specification",
+      "name": "Clinical Dashboard Specification",
+      "category": "Analytics",
+      "summary": "Turn a disputed or requested clinical/operational dashboard into metric definitions, grain, filters, validation plan, and ownership.",
+      "triggers": [
+        "dashboard",
+        "KPI definitions",
+        "metric definitions",
+        "data sources",
+        "leadership wants",
+        "validation plan",
+        "trusted report"
+      ],
+      "anti_triggers": [
+        "build production BI system without data owner",
+        "clinical diagnosis"
+      ],
+      "primary_agent": "healthit-clinical-data-analyst",
+      "handoff_agents": [
+        "operations-hospital-administrator",
+        "quality-improvement-specialist",
+        "revenue-finance-manager"
+      ],
+      "required_inputs": [
+        "decision owner",
+        "decisions supported",
+        "metrics",
+        "data sources",
+        "cadence"
+      ],
+      "red_flags": [
+        "metric definition conflict",
+        "unvalidated source",
+        "patient-level PHI exposure",
+        "executive decision risk"
+      ],
+      "output_artifact": "dashboard requirements spec",
+      "artifact_sections": [
+        "Decision context",
+        "Metric definitions",
+        "Data grain and filters",
+        "Mock table",
+        "Validation plan",
+        "Owner sign-off"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "pharmacy-contract-scorecard",
+      "name": "PBM or Pharmacy Contract Scorecard",
+      "category": "Pharmacy",
+      "summary": "Frame pharmacy spend, PBM terms, rebate questions, formulary performance, specialty spend, and negotiation evidence into a scorecard.",
+      "triggers": [
+        "PBM",
+        "pharmacy contract",
+        "rebate",
+        "formulary",
+        "specialty spend",
+        "pharmacy spend",
+        "contract scorecard"
+      ],
+      "anti_triggers": [
+        "patient medication advice",
+        "formulary clinical decision"
+      ],
+      "primary_agent": "pharmacy-benefits-specialist",
+      "handoff_agents": [
+        "revenue-finance-manager",
+        "revenue-contract-analyst",
+        "healthit-clinical-data-analyst"
+      ],
+      "required_inputs": [
+        "contract terms",
+        "utilization",
+        "rebate terms",
+        "specialty spend",
+        "claims sample"
+      ],
+      "red_flags": [
+        "legal contract dispute",
+        "clinical formulary governance needed",
+        "large unvalidated savings claim",
+        "PHI in claims sample"
+      ],
+      "output_artifact": "pharmacy contract scorecard",
+      "artifact_sections": [
+        "Scorecard structure",
+        "Data request list",
+        "Variance hypotheses",
+        "Rebate and specialty spend review",
+        "Negotiation points"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required"
+      ]
+    },
+    {
+      "id": "emergency-preparedness-exercise-readiness",
+      "name": "Emergency Preparedness Exercise Readiness",
+      "category": "Emergency Preparedness",
+      "summary": "Prepare exercise objectives, injects, evaluation checklists, and after-action templates for CMS emergency preparedness or internal exercises.",
+      "triggers": [
+        "emergency preparedness",
+        "exercise",
+        "after-action",
+        "HVA",
+        "hazard scenario",
+        "inject list",
+        "CMS emergency"
+      ],
+      "anti_triggers": [
+        "live emergency command",
+        "clinical emergency guidance"
+      ],
+      "primary_agent": "emergency-preparedness-coordinator",
+      "handoff_agents": [
+        "operations-hospital-administrator",
+        "quality-compliance-officer",
+        "operations-supply-chain-manager"
+      ],
+      "required_inputs": [
+        "hazard scenario",
+        "sites",
+        "participants",
+        "current plan",
+        "prior after-action findings"
+      ],
+      "red_flags": [
+        "active emergency",
+        "incident command activation",
+        "regulatory deadline",
+        "critical infrastructure dependency"
+      ],
+      "output_artifact": "exercise readiness packet",
+      "artifact_sections": [
+        "Exercise objectives",
+        "Scenario assumptions",
+        "Inject list",
+        "Evaluation checklist",
+        "After-action template",
+        "Owner timeline"
+      ],
+      "safety_constraints": [
+        "no_medical_advice",
+        "no_phi_by_default",
+        "local_policy_review",
+        "escalate_required",
+        "emergency"
+      ]
+    }
+  ]
+}

@@ -346,7 +346,7 @@ flowchart LR
 | Tool / Standard | Install Target | Notes |
 |---|---|---|
 | Claude Code subagents | `~/.claude/agents/*.md` | Source prompts use lowercase hyphen `name` values matching filenames. |
-| Codex plugin | repo-root `.codex-plugin/plugin.json` plus `skills/healthcare-agents/SKILL.md` | Adds one self-directing router that checks workflows, department/area hints, and specialists, then reads the full source prompt. |
+| Codex plugin | repo-root `.codex-plugin/plugin.json` plus `skills/healthcare-agents/SKILL.md` | Adds one self-directing router that checks compact workflow/agent indexes, then reads one full selected source prompt. |
 | Claude Skills | `~/.claude/skills/<slug>/SKILL.md` | Generated skill wrappers include `name`, `description`, `license`, and `compatibility`. |
 | Claude Desktop / Claude Cowork | Claude-compatible skills | Use `--claude-desktop`, `--claude-cowork`, or `--claude-skills`. |
 | Codex CLI / Codex App | `~/.codex/agents/*.md` plus `~/.codex/AGENTS.md` | Installer adds a managed discovery block telling Codex how to choose specialists, use output modes, and name handoffs. |
@@ -518,10 +518,14 @@ The eval kit is intentionally simple and auditable:
 | `eval/role-baselines/` | Expected-capability baselines for all 51 agents. |
 | `eval/results.tsv` | Append-only results log. |
 | `docs/eval/exam-architect-playbook.md` | Guidance for question writing and scoring behavior. |
-| `docs/eval/model-tuning.md` | Model-role routing notes for current SOTA models. |
+| `docs/eval/model-tuning.md` | GPT-5.6 family role, effort, pro-mode, and migration guidance. |
+| `docs/eval/gpt-5.6-migration.md` | Research evidence, architecture decision, evaluation matrix, and rollout plan. |
+| `docs/eval/canary-suite.json` | Domain canaries plus HealthAdminBench-derived workflow-reliability probes. |
 | `eval/run-logs/` | Local ignored artifacts for exact questions, scorer outputs, editor briefs, and summaries. |
 
 Same-question before/after comparisons must preserve full Q001-Q025 artifacts before answers are generated. This keeps score deltas tied to the exact same exam rather than paraphrased weak areas.
+
+The GPT-5.6 runtime path routes from compact generated indexes, then loads one selected specialist prompt. Shared platform instructions require a compact long-horizon state ledger and an evidence-backed `Completed`, `Partial`, or `Blocked` terminal status. This reduces irrelevant starting context and targets the state-loss, document-transition, and subtask-versus-full-task failures reported by HealthAdminBench; it does not claim external benchmark improvement until the actual GUI benchmark is run.
 
 ## Self-Improvement Kit
 
@@ -590,6 +594,13 @@ npm run validate:operator-os-coverage
 npm run test:evidence-packs
 npm run test:case-data-provider
 npm run test:operator-os-coverage
+```
+
+Validate the compact GPT-5.6 router inputs and HealthAdminBench-derived reliability canaries:
+
+```bash
+npm run validate:registry
+npm run validate:health-admin-canaries
 ```
 
 Dogfood the Operator OS catalog:

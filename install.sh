@@ -365,7 +365,7 @@ write_skill_file() {
     printf 'license: Apache-2.0\n'
     printf 'compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex\n'
     printf '%s\n\n' '---'
-    printf 'Use this skill as the %s healthcare administration specialist. Preserve the role identity, regulatory boundaries, source hierarchy, deliverable style, and safety constraints below. Use PHI only in an approved environment, apply minimum necessary data handling, and escalate final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions to the named human owner.\n\n' "$display"
+    printf 'Use this skill as the %s healthcare administration specialist. Preserve the role identity, regulatory boundaries, source hierarchy, deliverable style, and safety constraints below. For multi-step work, keep a compact ledger of verified facts and sources, documents, actions, owners, deadlines, discrepancies, and blockers; finish as Completed, Partial, or Blocked with terminal evidence and the next action. Use PHI only in an approved environment, apply minimum necessary data handling, and escalate final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions to the named human owner.\n\n' "$display"
     sed '1,/^---$/d' "$src"
   } > "$dest_dir/$slug/SKILL.md"
 }

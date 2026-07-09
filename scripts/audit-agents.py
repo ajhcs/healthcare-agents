@@ -4,7 +4,7 @@
 This is intentionally lightweight. It scores each agent against the repo's
 contribution standards using five signals:
 1. required section coverage
-2. target length range
+2. prompt economy
 3. domain citation density
 4. template/deliverable richness
 5. usability contract coverage
@@ -132,8 +132,13 @@ class AuditRow:
 
 
 def score_length(line_count: int) -> float:
-    # Full score near the target range, softer decay at the edges.
-    return max(0.0, 1.0 - abs(line_count - 500) / 250.0) * 15.0
+    # Reward enough role substance without making verbosity the objective.
+    # The review band is a heuristic, not a required line count.
+    if 250 <= line_count <= 450:
+        return 15.0
+    if line_count < 250:
+        return max(0.0, (line_count - 100) / 150.0) * 15.0
+    return max(0.0, 1.0 - (line_count - 450) / 300.0) * 15.0
 
 
 def score_usability(text: str) -> float:

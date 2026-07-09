@@ -27,25 +27,25 @@ const actual = Object.fromEntries(Object.entries(snapshots).map(([key, value]) =
 ]));
 
 const expected = {
-  "claude:denial-spike-workup": "fba3b30581ed3cb97f407a395c405fd7f6b3eab343ca3149c6a61f26634a0531",
-  "codex:denial-spike-workup": "19e71c8557cbd6f0b8cf6a0a5a6d202a2ccad68e42019454bb1644ca95b7ba69",
-  "copilot:denial-spike-workup": "adc683248722f443dd6eb26a3c20e049e971ff1133505bf1d8217841f0b573e2",
-  "m365:denial-spike-workup": "8db94cdb00bbf77639fe211d17926b0dae36b0d585206aed64646ef795c15c1d",
-  "studio:denial-spike-workup": "cb1f2bdcfe28846e6d51c95e4548f35fc72bf29508d753eda06af740007af23a",
-  "foundry:denial-spike-workup": "df410319e56b4a44dfa456d4501f08bd7c2364f2e800adfaf13b3c4ad568fcc6",
-  "claude:hipaa-security-evidence-checklist": "6e7e931f630484092fdbd5d632dab0f17255fc4a89421acd3467c91ffb952499",
-  "codex:hipaa-security-evidence-checklist": "f87370ed42140a994447c24592d617b5f984b6f537ba005567454cc88b271beb",
-  "copilot:hipaa-security-evidence-checklist": "1cf4a4c34d0f6b776203c181fbd2412928ed3d3a31d1cf70c11f2e247f894361",
-  "m365:hipaa-security-evidence-checklist": "4986c99b196fc0ecb0c29c5d9c25a16c33f220ce7df29d5eed4c11a22b454d32",
-  "studio:hipaa-security-evidence-checklist": "0f19ab9cce13b39faf777ec739c9a2d6ec5bc43906d0dc40b3b70dc1760b5a6d",
-  "foundry:hipaa-security-evidence-checklist": "862f9b47c99f9b2c9d6e2abdcd672a4ffa863addb43d5f4fc0e4db6f1fed3cc7",
-  "claude:hedis-stars-gap-closure-sprint": "f227dd683a8dbd6f9403ba0f43276ea31bf67380579a01ffdfdd9fd2d4667d21",
-  "codex:hedis-stars-gap-closure-sprint": "aad1020d69ac9842c3c5e07d1585095829a6cddc36c7c2e04ce270dfdde02e71",
-  "copilot:hedis-stars-gap-closure-sprint": "2fbeaad9b7413f6abacd7d3adf152f8b19ce5076735abe7aaaf7b3a76c50821f",
-  "m365:hedis-stars-gap-closure-sprint": "2636b137acb08f6ebecaa6353b52b5b2130ecc164b3c5e37bad7f806900c5bf6",
-  "studio:hedis-stars-gap-closure-sprint": "c3f4e9b0638ddff46ed403005f2a0d6657841b5f8f66304a473e88ea09dd728d",
-  "foundry:hedis-stars-gap-closure-sprint": "8bbafd33f9e368ac1bfad4e130dd7bd595338c46999d13bcc82e97b0b163e536",
-  "copilot-repo": "a204622df3a724c1505a37709048df79666faaa783f7c548bd4401e5793f92ed"
+  "claude:denial-spike-workup": "fcd07907630823b7daf7084d1d5101a41eb0d49b689b1b1d656d20ee41f13048",
+  "codex:denial-spike-workup": "6433bb12730cab7bc5e4d143314484e309be695d8ed0f4735e5e7fbe07a7f080",
+  "copilot:denial-spike-workup": "7df692f50bd33b1ef6029eacde692674302fa0f2fbe40087058138de04c31ce9",
+  "m365:denial-spike-workup": "9f0e7a78ac93ef408b37c7ea3811d5dd75fb494385859a9bf3f05904d3ee1064",
+  "studio:denial-spike-workup": "384d2c1a241b32d2512efe032d5086ce42902a2c7018bdd3528d668f4b085142",
+  "foundry:denial-spike-workup": "32bf1005f2b2708d0674f08ca07788e3747b3a501fbe494c622341f49548fe67",
+  "claude:hipaa-security-evidence-checklist": "c4a4096afc19ab71ddb54914cecdc19d1276aa8c4c3103f5abf19554d26be62a",
+  "codex:hipaa-security-evidence-checklist": "f0a60238952096414b65ac62168d3d6f893c7e655d1f9676ec0d8c1760b0541d",
+  "copilot:hipaa-security-evidence-checklist": "eadfa7f28840d05ab0574458e30d48bd8a76178d8037f401c2b79c3ea73e83e9",
+  "m365:hipaa-security-evidence-checklist": "7ffff50cf3c52eea69bda6ab5da6efcd5a499725317cad9d236dc43a6500033b",
+  "studio:hipaa-security-evidence-checklist": "5cb7ade71e4dbfe9c3ebc4eb76696df1acecbf3cc21402e49dc1acfb8134f051",
+  "foundry:hipaa-security-evidence-checklist": "e6939cad907ffc3ba32597f839f8ccc7f62e279594a7d83f26219e871e2ba2be",
+  "claude:hedis-stars-gap-closure-sprint": "05238280b3f32f12f0b41a278f6dccf3f043a2a578474a31a68af595774fb499",
+  "codex:hedis-stars-gap-closure-sprint": "241ed28b21037768c1a381924b9dd1e0b915802aca8404da2e87bb8c24e2d47a",
+  "copilot:hedis-stars-gap-closure-sprint": "09f9055752341a1413f9481f87fcf02785b67e2e43617cc6c1bd8d8f917bdde7",
+  "m365:hedis-stars-gap-closure-sprint": "bfc3e43ba138ccb8d9c8ef17549cce0e61535ca93841c49eee5146c3b3a79099",
+  "studio:hedis-stars-gap-closure-sprint": "46d592664de43b126fe59c9cc7ba1e773f825b897bea87690f3d6256081919e6",
+  "foundry:hedis-stars-gap-closure-sprint": "4c2880def9fba6c36c45e304795d326b05315617b284bf6b547327548cc87240",
+  "copilot-repo": "3580de9e9a68f2bf471a4aa9a97cfee57738aa6afc7e3b1f263c9048a6dc0200"
 };
 
 const failures = [];

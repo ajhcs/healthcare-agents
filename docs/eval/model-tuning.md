@@ -1,48 +1,59 @@
 # Eval Model Tuning
 
-This guide is volatile operating guidance for healthcare-agent eval runs. It should age by model class and role contract, not by hard-coded marketing names.
+This is volatile operating guidance for healthcare-agent eval runs. The GPT-5.6 guidance below was reviewed on 2026-07-09 against the official [model guidance](https://developers.openai.com/api/docs/guides/latest-model), [model catalog](https://developers.openai.com/api/docs/models), and [reasoning best practices](https://developers.openai.com/api/docs/guides/reasoning-best-practices). Every run must still pin the exact deployed model ID and configuration.
 
-Use the strongest current models available for judgment and adjudication, and use faster bounded models for edits. Examples such as GPT-5.5, Mythos, and Opus 4.7 should be treated as examples of model classes, not stable run identifiers. Every recorded run must pin the exact model ID actually used.
+GPT-5.6 is a tuning migration, not a slug replacement. Use smaller prompts, explicit authority and success criteria, lightweight task-specific structure, and representative same-question evals. Do not assume maximum reasoning, pro mode, or the longest prompt is best.
 
 ## Roles
 
 | Role | Model class | Effort | Temperature | Tools and search | Contract |
 |---|---|---:|---:|---|---|
-| Parent orchestrator | Reliable coding/agent model | Medium | 0-0.3 | Filesystem and git allowed | Owns preflight, fixed-question persistence, line caps, run manifests, result logging, commit/revert. |
-| Scorer/judge | Strongest available reasoning model | High or max | 0-0.2 | Read-only files; no web unless the run explicitly permits it | Generates questions, scores answers against `eval/rubric.md`, cites evidence from the answer, and produces an improvement brief. |
-| Editor | Fast strong coding/writing model | Low-medium | 0.2-0.5 | Edit only the assigned agent prompt | Implements the scorer brief without broadening the role or changing eval files. |
-| Adjudicator | Strong reasoning model from a different family than the scorer when possible | High or max | 0-0.2 | Read-only | Resolves close, disputed, or suspicious scoring decisions. |
+| Parent orchestrator | GPT-5.6 Terra or reliable equivalent | Medium | 0-0.3 | Filesystem and git allowed | Owns preflight, fixed-question persistence, line caps, run manifests, result logging, commit/revert. |
+| Scorer/judge | GPT-5.6 Sol or strongest available reasoning model | High, xhigh, or max after comparison | 0-0.2 | Read-only files; no web unless the run explicitly permits it | Generates questions, scores answers against `eval/rubric.md`, cites evidence from the answer, and produces an improvement brief. |
+| Editor | GPT-5.6 Terra or fast strong equivalent | Low-medium | 0.2-0.5 | Edit only the assigned agent prompt | Implements the scorer brief without broadening the role or changing eval files. |
+| Adjudicator | GPT-5.6 Sol or strong model from a different family than the scorer | High, xhigh, or max | 0-0.2 | Read-only | Resolves close, disputed, or suspicious scoring decisions. |
 | Meta-eval judge | Strongest available model or mixed panel | High or max | 0-0.2 | Read-only | Checks scorer drift, bias, calibration cases, and overfitting risk. |
+| Bounded smoke runner | GPT-5.6 Luna or efficient equivalent | Low-medium | 0-0.3 | Scenario-limited | Runs deterministic routing, format, refusal, and obvious-regression checks; never owns high-risk release scoring. |
 
 ## Model Selection
 
-Choose by role capability, then pin the exact ID in the run manifest.
+Choose by role capability, then pin the exact ID in the run manifest. For the OpenAI family, `gpt-5.6-sol` is the quality-first flagship (`gpt-5.6` aliases to Sol), `gpt-5.6-terra` balances intelligence and cost, and `gpt-5.6-luna` is the efficient high-volume tier.
 
-- Parent orchestrator: prioritize reliable tool use, git discipline, and local-file awareness. It does not need to be the most expensive reasoning model.
-- Scorer/judge: use the best available reasoning model, especially for release scoring, close deltas, role-boundary calls, and safety/compliance-heavy agents.
-- Editor: use a model that edits cleanly and follows file boundaries. It should be good enough to implement targeted prompt changes, but it should not be the final judge of its own work.
-- Adjudicator: prefer a different model family or provider lineage than the scorer when available. If the scorer used a GPT-5.5-class model, an Opus 4.7-class or Mythos-class adjudicator is useful; reverse the pairing if those roles are swapped.
+- Parent orchestrator: start with Terra at medium. Use Sol when orchestration itself is complex or a lower tier misses file and state constraints.
+- Scorer/judge: start with Sol at high or xhigh. Compare max only on the hardest quality-first cases; use pro mode only when a measured reliability gain justifies added latency and tokens.
+- Editor: start with Terra at low or medium. It should implement targeted prompt changes, not judge its own work.
+- Adjudicator: prefer a different model family or provider lineage than the scorer when available; otherwise use an independently prompted Sol run with calibration cases and no access to the first judge's rationale.
 - Meta-eval judge: use the strongest available model or a small mixed panel when judge drift would materially affect a release decision.
+- Luna: reserve for repeatable, low-risk smoke checks. Do not use Luna alone to grade coding, compliance, medication safety, patient safety, legal-risk, or payment-integrity prompts.
 
-Avoid treating names like GPT-5.5, Mythos, or Opus 4.7 as magic labels. The model class matters less than the exact deployed model, date, configuration, and role isolation.
+Do not treat a durable tier name or UI label as the exact deployment identity. Record the model ID, date, effort, mode, temperature, reasoning context, and role isolation that produced the result.
 
 ## Runtime Settings
 
-- Scorer/judge: high reasoning effort, low temperature, concise but evidence-rich output.
+- Preserve the prior model's reasoning effort as the first GPT-5.6 baseline, then compare one level lower. Measure task success, answer completeness, required evidence, tokens, latency, and cost.
+- Scorer/judge: high or xhigh reasoning effort, low temperature, prioritized but evidence-complete output. Test max rather than assuming it wins.
 - Editor: moderate effort, moderate temperature, bounded by the improvement brief and line cap.
 - Parent: deterministic settings are preferred because it is making filesystem and git decisions.
 - Adjudicator/meta-eval: high reasoning effort, low temperature, and explicit comparison against calibration expectations.
+- Pro mode is an API execution setting, not a prompt instruction. Use the same outcome-focused prompt in standard and pro comparisons.
+- For independent eval iterations, use current-turn reasoning context. Preserve reasoning across turns only when the goal, assumptions, and priorities remain stable; stale context can contaminate later scoring.
 - Search: default off for normal `/eval` scoring because the rubric judges against the agent prompt, not external truth. Enable search only for a separately documented research or baseline-building run.
 - Tools: scorer, adjudicator, and meta-eval roles should be read-only. The parent owns writes to `eval/results.tsv`, manifests, and git. The editor only touches the target agent file during a normal eval run.
 
 ## Prompting Style
 
-Newer instruction-following models usually need clear contracts more than heavy imperative phrasing.
+GPT-5.6 needs clear contracts more than accumulated prompt mass.
 
 - State file boundaries and role boundaries once, concretely.
+- State the goal, relevant context, constraints, required evidence, observable success criteria, and the narrow output shape.
+- Start with zero-shot instructions. Add examples only when a fixed eval demonstrates a specific gap.
 - Ask judges to cite response evidence, not preference or external memory.
 - Ask editors for targeted improvements tied to scored weaknesses.
 - Avoid generic "make it better" instructions.
+- Do not ask the model to think step by step or reveal chain of thought.
+- Avoid global "be concise," "keep it short," or "minimal text" instructions. Tell the model what must survive compression: the conclusion, evidence, material caveat, and next action.
+- Prefer a lightweight task outline over a universal response template.
+- Keep only task-relevant tools and context. Do not load the full agent registry, full workflow registry, and multiple specialist prompts when one compact route and one specialist prompt suffice.
 - Avoid excessive all-caps language except for frozen safety rules already present in canonical workflow files.
 
 ## Manifest Fields

@@ -67,6 +67,14 @@ Every iteration should include at least:
 - One question where the agent must refuse, caveat, or escalate instead of over-answering.
 - One question that tests preservation of the role's distinctive identity.
 
+For any role with multi-step, cross-system, document, queue, or handoff responsibilities, also include:
+
+- One long-horizon state question: which facts, source/version details, identifiers, owners, deadlines, and discrepancies must persist into a later step?
+- One document or evidence-transition question: what must be obtained, reviewed, transferred, acknowledged, and logged?
+- One terminal-state question: what evidence makes the whole task `Completed`, and what conditions require `Partial` or `Blocked` instead?
+
+These probes are adapted from the failure taxonomy in [HealthAdminBench](https://arxiv.org/abs/2604.09937). They test durable operating behavior, not knowledge of the benchmark or its portal-specific steps.
+
 ## Question Artifact Requirements
 
 Every scored run must preserve the exact question set. This is what makes same-question retesting and before/after deltas defensible.
@@ -132,6 +140,9 @@ Use this mapping in the scorer's improvement brief. The editor should receive ta
 | Hallucinated citations | Prompt encourages specificity without guardrails | Add "cite exact sections only when known; otherwise name the source family and lookup path." |
 | Unsafe certainty | Missing caveat/escalation rules | Add legal, clinical, privacy, patient-safety, or financial-risk escalation triggers. |
 | Overly generic voice | Prompt lacks role-specific differentiators | Add practitioner stance, decision criteria, and role-native terminology. |
+| Loses state across steps | No durable working ledger | Add role-specific facts, source/version, documents, actions, owners, deadlines, discrepancy, and blocker fields. |
+| Completes subtasks but not the workflow | No observable terminal state | Define completion evidence and require Completed, Partial, or Blocked status with the next action. |
+| Avoids document transfer | File/evidence transition is implicit | Name acquisition, review, transfer, receipt confirmation, and audit-log expectations without adding portal-specific click instructions. |
 
 ## Role-Family Blueprints
 
