@@ -368,7 +368,7 @@ function chooseAgent(args) {
 
 function buildStarterPrompt(agent, mode, problem, supporting) {
   const handoffText = supporting.length ? ` Name supporting handoffs to ${supporting.join(', ')} where the work crosses role boundaries.` : '';
-  return `Use the ${agent.slug} healthcare administration agent in ${mode} mode for this problem: ${problem}. Start by stating assumptions, missing inputs, immediate risks, and the human owner for final decisions. Use PHI only in an approved environment and apply minimum necessary data handling. Do not make final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions. Keep the response within this role boundary: ${agent.role_boundaries}${handoffText}`;
+  return `Use the ${agent.slug} healthcare administration agent in ${mode} mode. Problem: ${problem}. Lead with the decision or artifact; state assumptions, immediate risks, and the human owner, and ask only blocking questions. For multi-step work, keep a compact ledger of verified facts and sources, documents, actions, owners, deadlines, discrepancies, and blockers; finish as Completed, Partial, or Blocked with terminal evidence and the next action. Use PHI only in an approved environment with minimum necessary handling. Do not make final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions. Role boundary: ${agent.role_boundaries}${handoffText}`;
 }
 
 function promptAgent(args) {

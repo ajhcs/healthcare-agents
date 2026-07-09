@@ -4,7 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-No unreleased changes.
+### Added
+
+- Added generated compact workflow-first and agent-fallback router indexes with freshness and context-size validation.
+- Added GPT-5.6 model-role, prompting, reasoning-effort, and migration guidance grounded in current OpenAI documentation.
+- Added three synthetic HealthAdminBench-derived reliability canaries for prior authorization, denial appeals, and closed-loop DME processing.
+
+### Changed
+
+- Updated the plugin router, generated platform instructions, workflow skills, per-agent skill wrappers, and CLI starter prompts with a compact state-ledger and terminal-completion contract.
+- Updated the eval workflow and exam-architect playbook to test long-horizon state, document transitions, and full-task completion separately from subtask quality.
+- Replaced the 500-line prompt incentive with a prompt-economy review band and tightened eval growth caps for future compaction passes.
 
 ## [1.5.0] - 2026-05-31
 

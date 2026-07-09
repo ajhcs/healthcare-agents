@@ -29,7 +29,7 @@ bash scripts/install-codex-plugin.sh
 
 The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`.
 
-Start a new Codex thread after installing or updating the plugin. The plugin exposes one self-directing router, `healthcare-agents`, which reads `workflows/workflows.json` and `agents/registry.json`, chooses a workflow, department/area, or specialist route, then reads the full source prompt in `agents/*.md`.
+Start a new Codex thread after installing or updating the plugin. The plugin exposes one self-directing router, `healthcare-agents`, which checks the compact generated workflow index first, reads the compact agent index only when needed, chooses one workflow or specialist route, then reads the full matching source prompt in `agents/*.md`.
 
 ```bash
 npx --yes healthcare-agents install
@@ -160,7 +160,7 @@ Use Healthcare Agents in the revenue cycle area for a denial spike.
 Use the quality department for a survey readiness checklist.
 ```
 
-The plugin keeps `agents/*.md` as the source of truth. The router must check `workflows/workflows.json`, use department/area hints when present, select one primary specialist, and read the full matching prompt before answering.
+The plugin keeps `agents/*.md`, `workflows/workflows.json`, and `agents/registry.json` as canonical sources. Generated indexes under `skills/healthcare-agents/references/` reduce model context but are freshness-checked against those sources. The router checks workflow triggers first, uses department/area hints when needed, selects one primary specialist, and reads the full matching prompt before answering.
 
 Legacy prompt-copy install:
 

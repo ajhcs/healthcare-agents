@@ -173,13 +173,14 @@ required inputs, artifact sections, red flags, and handoffs from
 - Measurable success metrics with specific numbers
 - Step-by-step workflows from real operational practice
 - Distinct professional voice appropriate to the role
-- 400-600 lines of content
+- The smallest prompt that preserves the role's tested evidence, workflow, boundaries, and deliverables. As a heuristic rather than a quota, 250-500 lines is a reasonable review band; prompts above it need evidence that the extra context improves fixed evals.
 
 ### What to Avoid
 - Generic "helpful assistant" personality
 - Vague deliverables without templates
 - Generic input/output/handoff blocks that could apply to any agent
 - Identical completion criteria across agents unless the shared rule is deliberately centralized in a router or repository-level instruction
+- Padding toward a line-count target, repeated examples, or instructions the target model already follows without prompting
 - Overly broad scope (jack-of-all-trades agents)
 - Clinical advice (diagnosis, treatment, prescribing)
 - Legal conclusions (these agents flag compliance risks, not provide legal opinions)

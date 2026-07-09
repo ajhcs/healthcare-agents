@@ -25,9 +25,11 @@ REQUIRE_FULL_EVAL_COVERAGE=1 node scripts/validate-eval-coverage.js
 
 section "registry, source freshness, safety, and release manifest"
 node scripts/validate-registry-consistency.js
+node scripts/validate-router-indexes.js
 node scripts/validate-source-freshness.js
 node scripts/validate-safety-boundaries.js
 node scripts/validate-release-manifest.js
+node scripts/validate-health-admin-reliability-canaries.js
 node scripts/validate-workflows.js
 node scripts/validate-workup-canaries.js
 node scripts/validate-platform-exports.js

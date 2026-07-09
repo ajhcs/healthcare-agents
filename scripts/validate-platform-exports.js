@@ -11,6 +11,9 @@ function check(name, content) {
   for (const snippet of safety) {
     if (!content.includes(snippet)) failures.push(name + ' missing safety snippet: ' + snippet.slice(0, 48));
   }
+  for (const marker of ['Completed', 'Partial', 'Blocked', 'terminal evidence']) {
+    if (!content.includes(marker)) failures.push(name + ' missing end-to-end reliability marker: ' + marker);
+  }
   if (/medical device|medical-device/i.test(content) && !/Do not claim medical-device|Forbidden use cases|No unsupported .*medical-device/i.test(content)) {
     failures.push(name + ' may overclaim medical-device behavior');
   }

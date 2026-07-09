@@ -8,11 +8,14 @@
       "claim": "51 specialist US healthcare administration agents across 10 administrative domains.",
       "evidence": [
         "agents/registry.json",
+        "skills/healthcare-agents/references/agent-index.json",
+        "skills/healthcare-agents/references/workflow-index.json",
         "agents/*.md",
         "README.md#agent-catalog"
       ],
       "commands": [
-        "node scripts/validate-registry-consistency.js"
+        "node scripts/validate-registry-consistency.js",
+        "node scripts/validate-router-indexes.js"
       ],
       "artifacts": [
         "agents/registry.json"
@@ -148,13 +151,14 @@
     },
     {
       "id": "canary-suite",
-      "claim": "Scenario-level healthcare canaries cover every domain and all four output modes with deliverable, forbidden-overreach, handoff, and human-owner criteria.",
+      "claim": "Scenario-level healthcare canaries cover every domain and all four output modes, including HealthAdminBench-derived end-to-end reliability probes for state, document transfer, cross-system reconciliation, and terminal completion.",
       "evidence": [
         "docs/eval/canary-suite.json",
         "docs/eval/README.md"
       ],
       "commands": [
-        "node scripts/validate-release-manifest.js"
+        "node scripts/validate-release-manifest.js",
+        "node scripts/validate-health-admin-reliability-canaries.js"
       ],
       "artifacts": [
         "docs/eval/canary-suite.json"

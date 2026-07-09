@@ -1,0 +1,523 @@
+{
+  "schema_version": "1.0.0",
+  "generated_from": "agents/registry.json",
+  "routing_order": "Use only when no workflow in workflow-index.json is a fit. Select one narrow primary specialist.",
+  "output_modes": [
+    "quick triage",
+    "workplan",
+    "audit/checklist",
+    "artifact/template"
+  ],
+  "agents": [
+    {
+      "slug": "clinical-care-management-specialist",
+      "display_name": "Care Management Specialist",
+      "domain": "Clinical Operations",
+      "description": "Use for Care Management Specialist work in Clinical Operations including Care coordination, TCM/CCM, readmission prevention, SDOH workflows.",
+      "common_tasks": [
+        "Care coordination, TCM/CCM, readmission prevention, SDOH workflows"
+      ],
+      "prompt_file": "agents/clinical-care-management-specialist.md"
+    },
+    {
+      "slug": "clinical-case-manager",
+      "display_name": "Case Manager",
+      "domain": "Clinical Operations",
+      "description": "Use for Case Manager work in Clinical Operations including Discharge barriers, post-acute placement, avoidable days, patient choice.",
+      "common_tasks": [
+        "Discharge barriers, post-acute placement, avoidable days, patient choice"
+      ],
+      "prompt_file": "agents/clinical-case-manager.md"
+    },
+    {
+      "slug": "clinical-documentation-improvement-specialist",
+      "display_name": "Documentation Improvement Specialist",
+      "domain": "Clinical Operations",
+      "description": "Use for Documentation Improvement Specialist work in Clinical Operations including CDI query, CC/MCC capture, clinical validation denial.",
+      "common_tasks": [
+        "CDI query, CC/MCC capture, clinical validation denial"
+      ],
+      "prompt_file": "agents/clinical-documentation-improvement-specialist.md"
+    },
+    {
+      "slug": "clinical-infection-prevention-specialist",
+      "display_name": "Infection Prevention Specialist",
+      "domain": "Clinical Operations",
+      "description": "Use for Infection Prevention Specialist work in Clinical Operations including HAI surveillance, NHSN attribution, outbreak or infection-control readiness.",
+      "common_tasks": [
+        "HAI surveillance, NHSN attribution, outbreak or infection-control readiness"
+      ],
+      "prompt_file": "agents/clinical-infection-prevention-specialist.md"
+    },
+    {
+      "slug": "clinical-prior-authorization-specialist",
+      "display_name": "Prior Authorization Specialist",
+      "domain": "Clinical Operations",
+      "description": "Use for Prior Authorization Specialist work in Clinical Operations including Prior authorization delays, payer criteria, peer-to-peer prep, PA appeals.",
+      "common_tasks": [
+        "Prior authorization delays, payer criteria, peer-to-peer prep, PA appeals"
+      ],
+      "prompt_file": "agents/clinical-prior-authorization-specialist.md"
+    },
+    {
+      "slug": "clinical-referral-specialist",
+      "display_name": "Referral Specialist",
+      "domain": "Clinical Operations",
+      "description": "Use for Referral Specialist work in Clinical Operations including Referral leakage, loop closure, specialty access, network navigation.",
+      "common_tasks": [
+        "Referral leakage, loop closure, specialty access, network navigation"
+      ],
+      "prompt_file": "agents/clinical-referral-specialist.md"
+    },
+    {
+      "slug": "clinical-research-coordinator",
+      "display_name": "Clinical Research Coordinator",
+      "domain": "Clinical Operations",
+      "description": "Use for Clinical Research Coordinator work in Clinical Operations including IRB, consent, protocol deviation, SAE, regulatory binder.",
+      "common_tasks": [
+        "IRB, consent, protocol deviation, SAE, regulatory binder"
+      ],
+      "prompt_file": "agents/clinical-research-coordinator.md"
+    },
+    {
+      "slug": "clinical-utilization-management-specialist",
+      "display_name": "Utilization Management Specialist",
+      "domain": "Clinical Operations",
+      "description": "Use for Utilization Management Specialist work in Clinical Operations including Admission status, observation, medical necessity, denial prevention.",
+      "common_tasks": [
+        "Admission status, observation, medical necessity, denial prevention"
+      ],
+      "prompt_file": "agents/clinical-utilization-management-specialist.md"
+    },
+    {
+      "slug": "emergency-preparedness-coordinator",
+      "display_name": "Emergency Preparedness Coordinator",
+      "domain": "Emergency Preparedness",
+      "description": "Use for Emergency Preparedness Coordinator work in Emergency Preparedness including HVA, emergency operations plan, HICS, surge, evacuation, exercise.",
+      "common_tasks": [
+        "HVA, emergency operations plan, HICS, surge, evacuation, exercise"
+      ],
+      "prompt_file": "agents/emergency-preparedness-coordinator.md"
+    },
+    {
+      "slug": "healthit-clinical-data-analyst",
+      "display_name": "Clinical Data Analyst",
+      "domain": "Health IT & Informatics",
+      "description": "Use for Clinical Data Analyst work in Health IT & Informatics including Clinical dashboard, registry, eCQM logic, SQL/Python analytics.",
+      "common_tasks": [
+        "Clinical dashboard, registry, eCQM logic, SQL/Python analytics"
+      ],
+      "prompt_file": "agents/healthit-clinical-data-analyst.md"
+    },
+    {
+      "slug": "healthit-epic-applications-analyst",
+      "display_name": "Epic Applications Analyst",
+      "domain": "Health IT & Informatics",
+      "description": "Use for Epic Applications Analyst work in Health IT & Informatics including Epic build, upgrade, workflow configuration, EHR change request.",
+      "common_tasks": [
+        "Epic build, upgrade, workflow configuration, EHR change request"
+      ],
+      "prompt_file": "agents/healthit-epic-applications-analyst.md"
+    },
+    {
+      "slug": "healthit-informatics-manager",
+      "display_name": "Health Informatics Manager",
+      "domain": "Health IT & Informatics",
+      "description": "Use for Health Informatics Manager work in Health IT & Informatics including Informatics governance, CDS, USCDI/TEFCA, data governance.",
+      "common_tasks": [
+        "Informatics governance, CDS, USCDI/TEFCA, data governance"
+      ],
+      "prompt_file": "agents/healthit-informatics-manager.md"
+    },
+    {
+      "slug": "healthit-information-manager",
+      "display_name": "Health Information Manager",
+      "domain": "Health IT & Informatics",
+      "description": "Use for Health Information Manager work in Health IT & Informatics including HIM, ROI, retention, legal health record, chart integrity.",
+      "common_tasks": [
+        "HIM, ROI, retention, legal health record, chart integrity"
+      ],
+      "prompt_file": "agents/healthit-information-manager.md"
+    },
+    {
+      "slug": "healthit-interoperability-engineer",
+      "display_name": "Healthcare Interoperability Engineer",
+      "domain": "Health IT & Informatics",
+      "description": "Use for Healthcare Interoperability Engineer work in Health IT & Informatics including HL7v2, FHIR, C-CDA, X12, HIE, patient matching, interface errors.",
+      "common_tasks": [
+        "HL7v2, FHIR, C-CDA, X12, HIE, patient matching, interface errors"
+      ],
+      "prompt_file": "agents/healthit-interoperability-engineer.md"
+    },
+    {
+      "slug": "healthit-telehealth-program-manager",
+      "display_name": "Telehealth Program Manager",
+      "domain": "Health IT & Informatics",
+      "description": "Use for Telehealth Program Manager work in Health IT & Informatics including Telehealth program, licensure, RPM/RTM, virtual care reimbursement.",
+      "common_tasks": [
+        "Telehealth program, licensure, RPM/RTM, virtual care reimbursement"
+      ],
+      "prompt_file": "agents/healthit-telehealth-program-manager.md"
+    },
+    {
+      "slug": "operations-ambulatory-manager",
+      "display_name": "Ambulatory Operations Manager",
+      "domain": "Operations & Administration",
+      "description": "Use for Ambulatory Operations Manager work in Operations & Administration including Clinic access, templates, rooming, no-shows, multi-site ambulatory ops.",
+      "common_tasks": [
+        "Clinic access, templates, rooming, no-shows, multi-site ambulatory ops"
+      ],
+      "prompt_file": "agents/operations-ambulatory-manager.md"
+    },
+    {
+      "slug": "operations-home-health-administrator",
+      "display_name": "Home Health Administrator",
+      "domain": "Operations & Administration",
+      "description": "Use for Home Health Administrator work in Operations & Administration including Home health OASIS, PDGM, LUPA, HHVBP, survey readiness.",
+      "common_tasks": [
+        "Home health OASIS, PDGM, LUPA, HHVBP, survey readiness"
+      ],
+      "prompt_file": "agents/operations-home-health-administrator.md"
+    },
+    {
+      "slug": "operations-hospital-administrator",
+      "display_name": "Hospital Operations Administrator",
+      "domain": "Operations & Administration",
+      "description": "Use for Hospital Operations Administrator work in Operations & Administration including Bed capacity, ED boarding, transfer center, throughput command center.",
+      "common_tasks": [
+        "Bed capacity, ED boarding, transfer center, throughput command center"
+      ],
+      "prompt_file": "agents/operations-hospital-administrator.md"
+    },
+    {
+      "slug": "operations-long-term-care-administrator",
+      "display_name": "Long-Term Care Administrator",
+      "domain": "Operations & Administration",
+      "description": "Use for Long-Term Care Administrator work in Operations & Administration including SNF/LTC MDS, PDPM, PBJ, Five-Star, resident rights, survey process.",
+      "common_tasks": [
+        "SNF/LTC MDS, PDPM, PBJ, Five-Star, resident rights, survey process"
+      ],
+      "prompt_file": "agents/operations-long-term-care-administrator.md"
+    },
+    {
+      "slug": "operations-physician-practice-manager",
+      "display_name": "Physician Practice Manager",
+      "domain": "Operations & Administration",
+      "description": "Use for Physician Practice Manager work in Operations & Administration including Practice productivity, wRVUs, provider templates, practice P&L.",
+      "common_tasks": [
+        "Practice productivity, wRVUs, provider templates, practice P&L"
+      ],
+      "prompt_file": "agents/operations-physician-practice-manager.md"
+    },
+    {
+      "slug": "operations-supply-chain-manager",
+      "display_name": "Supply Chain Manager",
+      "domain": "Operations & Administration",
+      "description": "Use for Supply Chain Manager work in Operations & Administration including GPO, value analysis, inventory, recall, OR supplies, supply resilience.",
+      "common_tasks": [
+        "GPO, value analysis, inventory, recall, OR supplies, supply resilience"
+      ],
+      "prompt_file": "agents/operations-supply-chain-manager.md"
+    },
+    {
+      "slug": "operations-workforce-manager",
+      "display_name": "Healthcare Workforce Manager",
+      "domain": "Operations & Administration",
+      "description": "Use for Healthcare Workforce Manager work in Operations & Administration including Staffing, scheduling, agency labor, float pool, retention.",
+      "common_tasks": [
+        "Staffing, scheduling, agency labor, float pool, retention"
+      ],
+      "prompt_file": "agents/operations-workforce-manager.md"
+    },
+    {
+      "slug": "payer-credentialing-enrollment-coordinator",
+      "display_name": "Credentialing & Enrollment Coordinator",
+      "domain": "Payer & Managed Care",
+      "description": "Use for Credentialing & Enrollment Coordinator work in Payer & Managed Care including Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation.",
+      "common_tasks": [
+        "Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation"
+      ],
+      "prompt_file": "agents/payer-credentialing-enrollment-coordinator.md"
+    },
+    {
+      "slug": "payer-managed-care-analyst",
+      "display_name": "Managed Care Analyst",
+      "domain": "Payer & Managed Care",
+      "description": "Use for Managed Care Analyst work in Payer & Managed Care including Managed-care financial analysis, PMPM, MLR, network adequacy.",
+      "common_tasks": [
+        "Managed-care financial analysis, PMPM, MLR, network adequacy"
+      ],
+      "prompt_file": "agents/payer-managed-care-analyst.md"
+    },
+    {
+      "slug": "payer-medicare-medicaid-specialist",
+      "display_name": "Medicare & Medicaid Specialist",
+      "domain": "Payer & Managed Care",
+      "description": "Use for Medicare & Medicaid Specialist work in Payer & Managed Care including Medicare/Medicaid rules, MAC process, CoPs, dual-eligible workflows.",
+      "common_tasks": [
+        "Medicare/Medicaid rules, MAC process, CoPs, dual-eligible workflows"
+      ],
+      "prompt_file": "agents/payer-medicare-medicaid-specialist.md"
+    },
+    {
+      "slug": "payer-medicare-outreach-coordinator",
+      "display_name": "Medicare Outreach Coordinator",
+      "domain": "Payer & Managed Care",
+      "description": "Use for Medicare Outreach Coordinator work in Payer & Managed Care including Medicare outreach, plan comparison, LIS/Extra Help, enrollment periods.",
+      "common_tasks": [
+        "Medicare outreach, plan comparison, LIS/Extra Help, enrollment periods"
+      ],
+      "prompt_file": "agents/payer-medicare-outreach-coordinator.md"
+    },
+    {
+      "slug": "payer-relations-specialist",
+      "display_name": "Payer Relations Specialist",
+      "domain": "Payer & Managed Care",
+      "description": "Use for Payer Relations Specialist work in Payer & Managed Care including Payer contracting, network participation, NSA, single-case agreements.",
+      "common_tasks": [
+        "Payer contracting, network participation, NSA, single-case agreements"
+      ],
+      "prompt_file": "agents/payer-relations-specialist.md"
+    },
+    {
+      "slug": "payer-value-based-care-manager",
+      "display_name": "Value-Based Care Manager",
+      "domain": "Payer & Managed Care",
+      "description": "Use for Value-Based Care Manager work in Payer & Managed Care including ACO/VBC, attribution, shared savings, quality gates, downside risk.",
+      "common_tasks": [
+        "ACO/VBC, attribution, shared savings, quality gates, downside risk"
+      ],
+      "prompt_file": "agents/payer-value-based-care-manager.md"
+    },
+    {
+      "slug": "pharmacy-benefits-specialist",
+      "display_name": "Pharmacy Benefits Specialist",
+      "domain": "Pharmacy Programs",
+      "description": "Use for Pharmacy Benefits Specialist work in Pharmacy Programs including Formulary, PBM, specialty pharmacy, rebates, biosimilars.",
+      "common_tasks": [
+        "Formulary, PBM, specialty pharmacy, rebates, biosimilars"
+      ],
+      "prompt_file": "agents/pharmacy-benefits-specialist.md"
+    },
+    {
+      "slug": "pharmacy-medication-safety-specialist",
+      "display_name": "Medication Safety Specialist",
+      "domain": "Pharmacy Programs",
+      "description": "Use for Medication Safety Specialist work in Pharmacy Programs including Medication safety event, CPOE/BCMA, smart pump, USP 797/800.",
+      "common_tasks": [
+        "Medication safety event, CPOE/BCMA, smart pump, USP 797/800"
+      ],
+      "prompt_file": "agents/pharmacy-medication-safety-specialist.md"
+    },
+    {
+      "slug": "pophealth-community-health-coordinator",
+      "display_name": "Community Health Coordinator",
+      "domain": "Population Health & Community Health",
+      "description": "Use for Community Health Coordinator work in Population Health & Community Health including CHNA, community benefit, Schedule H, grants, CBO partnerships.",
+      "common_tasks": [
+        "CHNA, community benefit, Schedule H, grants, CBO partnerships"
+      ],
+      "prompt_file": "agents/pophealth-community-health-coordinator.md"
+    },
+    {
+      "slug": "pophealth-population-health-manager",
+      "display_name": "Population Health Manager",
+      "domain": "Population Health & Community Health",
+      "description": "Use for Population Health Manager work in Population Health & Community Health including Population health risk stratification, care gaps, SDOH outreach.",
+      "common_tasks": [
+        "Population health risk stratification, care gaps, SDOH outreach"
+      ],
+      "prompt_file": "agents/pophealth-population-health-manager.md"
+    },
+    {
+      "slug": "pophealth-surveillance-coordinator",
+      "display_name": "Public Health Surveillance Coordinator",
+      "domain": "Population Health & Community Health",
+      "description": "Use for Public Health Surveillance Coordinator work in Population Health & Community Health including Reportable disease, outbreak investigation, syndromic surveillance.",
+      "common_tasks": [
+        "Reportable disease, outbreak investigation, syndromic surveillance"
+      ],
+      "prompt_file": "agents/pophealth-surveillance-coordinator.md"
+    },
+    {
+      "slug": "quality-accreditation-specialist",
+      "display_name": "Accreditation Specialist",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Use for Accreditation Specialist work in Quality, Safety & Compliance including Survey readiness, accreditation evidence, tracer prep.",
+      "common_tasks": [
+        "Survey readiness, accreditation evidence, tracer prep"
+      ],
+      "prompt_file": "agents/quality-accreditation-specialist.md"
+    },
+    {
+      "slug": "quality-compliance-officer",
+      "display_name": "Compliance Officer",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Use for Compliance Officer work in Quality, Safety & Compliance including HIPAA, Stark, AKS, FCA, EMTALA, OIG, overpayment or exclusion concern.",
+      "common_tasks": [
+        "HIPAA, Stark, AKS, FCA, EMTALA, OIG, overpayment or exclusion concern"
+      ],
+      "prompt_file": "agents/quality-compliance-officer.md"
+    },
+    {
+      "slug": "quality-improvement-specialist",
+      "display_name": "Quality Improvement Specialist",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Use for Quality Improvement Specialist work in Quality, Safety & Compliance including Quality measures, HEDIS/MIPS/Stars/eCQMs, SPC, reporting improvement.",
+      "common_tasks": [
+        "Quality measures, HEDIS/MIPS/Stars/eCQMs, SPC, reporting improvement"
+      ],
+      "prompt_file": "agents/quality-improvement-specialist.md"
+    },
+    {
+      "slug": "quality-patient-experience-coordinator",
+      "display_name": "Patient Experience Coordinator",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Use for Patient Experience Coordinator work in Quality, Safety & Compliance including Grievance, CAHPS/HCAHPS, patient relations, service recovery.",
+      "common_tasks": [
+        "Grievance, CAHPS/HCAHPS, patient relations, service recovery"
+      ],
+      "prompt_file": "agents/quality-patient-experience-coordinator.md"
+    },
+    {
+      "slug": "quality-patient-safety-officer",
+      "display_name": "Patient Safety Officer",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Use for Patient Safety Officer work in Quality, Safety & Compliance including RCA, sentinel event, Just Culture, PSO boundary, safety trend.",
+      "common_tasks": [
+        "RCA, sentinel event, Just Culture, PSO boundary, safety trend"
+      ],
+      "prompt_file": "agents/quality-patient-safety-officer.md"
+    },
+    {
+      "slug": "quality-process-improvement-analyst",
+      "display_name": "Process Improvement Analyst",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Use for Process Improvement Analyst work in Quality, Safety & Compliance including A3, PDSA, Lean/Six Sigma, value stream map, CAPA.",
+      "common_tasks": [
+        "A3, PDSA, Lean/Six Sigma, value stream map, CAPA"
+      ],
+      "prompt_file": "agents/quality-process-improvement-analyst.md"
+    },
+    {
+      "slug": "quality-risk-manager",
+      "display_name": "Risk Manager",
+      "domain": "Quality, Safety & Compliance",
+      "description": "Use for Risk Manager work in Quality, Safety & Compliance including Risk register, malpractice exposure, disclosure, claims, insurance.",
+      "common_tasks": [
+        "Risk register, malpractice exposure, disclosure, claims, insurance"
+      ],
+      "prompt_file": "agents/quality-risk-manager.md"
+    },
+    {
+      "slug": "revenue-340b-program-manager",
+      "display_name": "340B Program Manager",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Use for 340B Program Manager work in Revenue Cycle & Finance including 340B compliance, split billing, contract pharmacy, duplicate discounts.",
+      "common_tasks": [
+        "340B compliance, split billing, contract pharmacy, duplicate discounts"
+      ],
+      "prompt_file": "agents/revenue-340b-program-manager.md"
+    },
+    {
+      "slug": "revenue-chargemaster-analyst",
+      "display_name": "Chargemaster Analyst",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Use for Chargemaster Analyst work in Revenue Cycle & Finance including CDM maintenance, charge capture, price transparency.",
+      "common_tasks": [
+        "CDM maintenance, charge capture, price transparency"
+      ],
+      "prompt_file": "agents/revenue-chargemaster-analyst.md"
+    },
+    {
+      "slug": "revenue-contract-analyst",
+      "display_name": "Healthcare Contract Analyst",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Use for Healthcare Contract Analyst work in Revenue Cycle & Finance including Payer contract underpayment or reimbursement variance.",
+      "common_tasks": [
+        "Payer contract underpayment or reimbursement variance"
+      ],
+      "prompt_file": "agents/revenue-contract-analyst.md"
+    },
+    {
+      "slug": "revenue-cycle-specialist",
+      "display_name": "Revenue Cycle Specialist",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Use for Revenue Cycle Specialist work in Revenue Cycle & Finance including Clean claim rate dropped, denial volume changed, A/R aged unexpectedly.",
+      "common_tasks": [
+        "Clean claim rate dropped, denial volume changed, A/R aged unexpectedly"
+      ],
+      "prompt_file": "agents/revenue-cycle-specialist.md"
+    },
+    {
+      "slug": "revenue-finance-manager",
+      "display_name": "Healthcare Finance Manager",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Use for Healthcare Finance Manager work in Revenue Cycle & Finance including Budget, cost report, margin, service-line finance, reserves.",
+      "common_tasks": [
+        "Budget, cost report, margin, service-line finance, reserves"
+      ],
+      "prompt_file": "agents/revenue-finance-manager.md"
+    },
+    {
+      "slug": "revenue-medical-coding-specialist",
+      "display_name": "Medical Coding Specialist",
+      "domain": "Revenue Cycle & Finance",
+      "description": "Use for Medical Coding Specialist work in Revenue Cycle & Finance including Coding audit, DRG/HCC question, modifier/NCCI issue, medical necessity edit.",
+      "common_tasks": [
+        "Coding audit, DRG/HCC question, modifier/NCCI issue, medical necessity edit"
+      ],
+      "prompt_file": "agents/revenue-medical-coding-specialist.md"
+    },
+    {
+      "slug": "strategy-actuarial-advisor",
+      "display_name": "Healthcare Actuarial Advisor",
+      "domain": "Strategy & Advisory",
+      "description": "Use for Healthcare Actuarial Advisor work in Strategy & Advisory including Capitation, IBNR, MLR, risk adjustment, actuarial caveats.",
+      "common_tasks": [
+        "Capitation, IBNR, MLR, risk adjustment, actuarial caveats"
+      ],
+      "prompt_file": "agents/strategy-actuarial-advisor.md"
+    },
+    {
+      "slug": "strategy-clinical-operations-consultant",
+      "display_name": "Clinical Operations Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Use for Clinical Operations Consultant work in Strategy & Advisory including Clinical workflow, ED/OR throughput, staffing model, care redesign.",
+      "common_tasks": [
+        "Clinical workflow, ED/OR throughput, staffing model, care redesign"
+      ],
+      "prompt_file": "agents/strategy-clinical-operations-consultant.md"
+    },
+    {
+      "slug": "strategy-healthcare-consultant",
+      "display_name": "Healthcare Strategy Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Use for Healthcare Strategy Consultant work in Strategy & Advisory including Market strategy, service line, M&A, CON, physician alignment.",
+      "common_tasks": [
+        "Market strategy, service line, M&A, CON, physician alignment"
+      ],
+      "prompt_file": "agents/strategy-healthcare-consultant.md"
+    },
+    {
+      "slug": "strategy-operations-consultant",
+      "display_name": "Healthcare Operations Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Use for Healthcare Operations Consultant work in Strategy & Advisory including Lean/Six Sigma deployment, capacity, benchmarking, predictive ops.",
+      "common_tasks": [
+        "Lean/Six Sigma deployment, capacity, benchmarking, predictive ops"
+      ],
+      "prompt_file": "agents/strategy-operations-consultant.md"
+    },
+    {
+      "slug": "strategy-structural-improvement-consultant",
+      "display_name": "Structural Improvement Consultant",
+      "domain": "Strategy & Advisory",
+      "description": "Use for Structural Improvement Consultant work in Strategy & Advisory including Organizational redesign, governance, change, merger integration.",
+      "common_tasks": [
+        "Organizational redesign, governance, change, merger integration"
+      ],
+      "prompt_file": "agents/strategy-structural-improvement-consultant.md"
+    }
+  ]
+}
