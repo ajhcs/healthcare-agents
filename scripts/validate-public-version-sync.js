@@ -5,10 +5,12 @@ const { run } = require('./_release-utils');
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const versionFile = fs.readFileSync('VERSION', 'utf8').trim();
 const installText = fs.readFileSync('install.sh', 'utf8');
+const plugin = JSON.parse(fs.readFileSync('.codex-plugin/plugin.json', 'utf8'));
 const failures = [];
 
 if (pkg.version !== versionFile) failures.push('package.json version ' + pkg.version + ' does not match VERSION ' + versionFile);
 if (!installText.includes('VERSION="' + pkg.version + '"')) failures.push('install.sh VERSION does not match package.json');
+if (plugin.version !== pkg.version) failures.push('Codex plugin version ' + plugin.version + ' does not match package.json ' + pkg.version);
 
 if (process.argv.includes('--network')) {
   const npm = run('npm', ['view', pkg.name, 'version']);

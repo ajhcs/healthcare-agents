@@ -14,7 +14,7 @@
   <a href="#agent-catalog"><img src="https://img.shields.io/badge/agents-51-blue?style=flat-square" alt="51 agents"></a>
   <a href="#eval-status"><img src="https://img.shields.io/badge/eval-51%2F51%20evaluated-brightgreen?style=flat-square" alt="51 of 51 agents have tracked eval rows"></a>
   <a href="#supported-tools"><img src="https://img.shields.io/badge/Claude%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Cursor-compatible-8A2BE2?style=flat-square" alt="Claude, Codex, OpenCode, and Cursor compatible"></a>
-  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.5.0"><img src="https://img.shields.io/badge/version-1.5.0-blue?style=flat-square" alt="v1.5.0"></a>
+  <a href="https://github.com/ajhcs/healthcare-agents/releases/tag/v1.6.0"><img src="https://img.shields.io/badge/version-1.6.0-blue?style=flat-square" alt="v1.6.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green?style=flat-square" alt="Apache 2.0 license"></a>
 </p>
 
@@ -80,7 +80,7 @@ Each routed workup includes:
 
 ### Operator OS coverage
 
-Version 1.5.0 gives all 16 workflow-pack entries an Operator OS status. Denial Spike is the first exemplar; the remaining workflows ship as standard packs with offline evidence metadata and citation-card scaffolds.
+Since version 1.5.0, all 16 workflow-pack entries have an Operator OS status. Denial Spike is the first exemplar; the remaining workflows ship as standard packs with offline evidence metadata and citation-card scaffolds.
 
 | Workflow | Category | Status | Primary specialist |
 |---|---|---|---|
@@ -151,12 +151,12 @@ Start with the [workflow gallery](docs/workflows/README.md), [example workup pac
 
 ## Current Release
 
-Version 1.5.0 is the Operator OS catalog hardening release. It makes all 16
-healthcare administration workflows visible through Operator OS coverage,
-evidence-pack show, evidence-pack scaffold, and routed workup commands, with
-offline-first standard evidence packs across the catalog. See
-[the v1.5.0 release notes](docs/release-notes/2026-05-31-operator-os-catalog-hardening.md)
-for dogfood evidence, release checks, and scope limits.
+Version 1.6.0 is the GPT-5.6 runtime and workflow-reliability release. It adds
+compact workflow-first routing indexes, cross-platform state-ledger and
+terminal-completion controls, Sol/Terra/Luna eval guidance, and synthetic
+HealthAdminBench-derived reliability canaries. See
+[the v1.6.0 release notes](docs/release-notes/2026-07-09-gpt-5-6-runtime-reliability.md)
+for the research basis, validation evidence, and scope limits.
 
 ## Install
 

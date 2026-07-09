@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+No unreleased changes.
+
+## [1.6.0] - 2026-07-09
+
 ### Added
 
 - Added generated compact workflow-first and agent-fallback router indexes with freshness and context-size validation.
@@ -15,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - Updated the plugin router, generated platform instructions, workflow skills, per-agent skill wrappers, and CLI starter prompts with a compact state-ledger and terminal-completion contract.
 - Updated the eval workflow and exam-architect playbook to test long-horizon state, document transitions, and full-task completion separately from subtask quality.
 - Replaced the 500-line prompt incentive with a prompt-economy review band and tightened eval growth caps for future compaction passes.
+- Bumped npm, installer, Codex plugin, README, changelog, and release metadata to v1.6.0.
 
 ## [1.5.0] - 2026-05-31
 

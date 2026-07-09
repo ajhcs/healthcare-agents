@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-VERSION="1.5.0"
+VERSION="1.6.0"
 REPO="ajhcs/healthcare-agents"
 REPO_URL="https://github.com/$REPO"
 AGENTS_DIR=""
