@@ -52,7 +52,14 @@ changedReviewContext.decision_scenario.hash = 'sha256:' + '3'.repeat(64);
 changedReviewContext.evidence_boundary = 'A deliberately different frozen evidence boundary.';
 const contextBoundReview = evaluateStrategicReview(changedReviewContext);
 assert.notStrictEqual(first.review_request_hash, contextBoundReview.review_request_hash);
+assert.notStrictEqual(first.review_context_hash, contextBoundReview.review_context_hash);
 assert.notStrictEqual(first.review_id, contextBoundReview.review_id);
+assert.match(validateConflictRequest({
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:context-drift',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, contextBoundReview]
+}).join('; '), /identical frozen review context/);
 
 for (const mutate of [
   request => { request.frozen_inputs.computations = [null]; },
@@ -70,6 +77,10 @@ const malformedRegistry = loadReviewProtocolRegistry();
 delete malformedRegistry.effective_date;
 malformedRegistry.unpublished_extension = true;
 assert.match(validateReviewProtocolRegistry(malformedRegistry).join('; '), /effective_date|additional properties/);
+const nullProtocolRegistry = loadReviewProtocolRegistry();
+nullProtocolRegistry.protocols = Array(7).fill(null);
+assert.doesNotThrow(() => validateReviewProtocolRegistry(nullProtocolRegistry));
+assert.match(validateReviewProtocolRegistry(nullProtocolRegistry).join('; '), /schema/);
 
 const unrouted = fixture();
 unrouted.reviewer.agent_slug = 'revenue-finance-manager';
