@@ -49,6 +49,22 @@ const protocolDrift = fixture();
 protocolDrift.protocol.protocol_hash = 'sha256:' + '0'.repeat(64);
 assert.match(validateReviewRequest(protocolDrift).join('; '), /protocol_hash does not match/);
 
+const recommendationLeak = fixture();
+recommendationLeak.candidate_review.recommended_posture = 'defer';
+assert.match(validateReviewRequest(recommendationLeak).join('; '), /prohibited field recommended_posture/);
+
+const fabricatedAuthority = fixture();
+fabricatedAuthority.candidate_review.human_approval = 'approved';
+assert.match(validateReviewRequest(fabricatedAuthority).join('; '), /prohibited field human_approval/);
+
+const missingCitation = fixture();
+missingCitation.candidate_review.posture_assessments[0].evidence_refs = [];
+assert.match(validateReviewRequest(missingCitation).join('; '), /must contain non-empty strings/);
+
+const malformedOutput = { ...first };
+delete malformedOutput.claim_dispositions;
+assert.match(validateStrategicReview(malformedOutput).join('; '), /preserve claim dispositions/);
+
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-agents-review-'));
 const outputPath = path.join(tempDir, 'review.json');
 evaluateStrategicReviewFile(FIXTURE_PATH, outputPath);
