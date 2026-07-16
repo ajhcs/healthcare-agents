@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/review-protocols/contracts/review-request.v1.schema.json",
+  "title": "USHSO Strategic Review Request v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "request_id", "review_tier", "protocol", "reviewer", "frozen_inputs", "decision_scenario", "posture_taxonomy", "evidence_boundary", "candidate_review"],
+  "properties": {
+    "schema_version": {"const": "ushso.review-request.v1"},
+    "request_id": {"$ref": "#/$defs/text"},
+    "review_tier": {"$ref": "#/$defs/reviewTier"},
+    "protocol": {"$ref": "#/$defs/protocolRef"},
+    "reviewer": {"$ref": "#/$defs/reviewer"},
+    "frozen_inputs": {"$ref": "#/$defs/frozenInputs"},
+    "decision_scenario": {"$ref": "#/$defs/refHash"},
+    "posture_taxonomy": {"$ref": "#/$defs/postures"},
+    "evidence_boundary": {"$ref": "#/$defs/text"},
+    "candidate_review": {"$ref": "#/$defs/candidateReview"}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "reviewTier": {"enum": ["ordinary_material_claim", "high_consequence_claim"]},
+    "stringList": {"type": "array", "items": {"$ref": "#/$defs/text"}},
+    "stringArray": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/text"}, "uniqueItems": true},
+    "postures": {"type": "array", "prefixItems": [{"const": "acquire"}, {"const": "merge_affiliate"}, {"const": "partner"}, {"const": "compete"}, {"const": "build_capacity"}, {"const": "defer"}], "minItems": 6, "maxItems": 6},
+    "protocolRef": {"type": "object", "additionalProperties": false, "required": ["protocol_id", "version", "protocol_hash"], "properties": {"protocol_id": {"$ref": "#/$defs/text"}, "version": {"$ref": "#/$defs/text"}, "protocol_hash": {"$ref": "#/$defs/hash"}}},
+    "resolvedProtocol": {"type": "object", "additionalProperties": false, "required": ["protocol_id", "version", "protocol_hash", "registry_hash", "competence_role"], "properties": {"protocol_id": {"$ref": "#/$defs/text"}, "version": {"$ref": "#/$defs/text"}, "protocol_hash": {"$ref": "#/$defs/hash"}, "registry_hash": {"$ref": "#/$defs/hash"}, "competence_role": {"$ref": "#/$defs/text"}}},
+    "independence": {"type": "object", "additionalProperties": false, "required": ["prior_exposure", "conflict_disclosures", "direct_material_conflict", "attestation"], "properties": {"prior_exposure": {"enum": ["none", "unavoidable_recorded"]}, "conflict_disclosures": {"$ref": "#/$defs/stringList"}, "direct_material_conflict": {"type": "boolean"}, "attestation": {"const": true}}},
+    "reviewer": {"type": "object", "additionalProperties": false, "required": ["reviewer_id", "agent_slug", "prompt_version", "repo_commit", "model", "runtime", "independence"], "properties": {"reviewer_id": {"$ref": "#/$defs/text"}, "agent_slug": {"$ref": "#/$defs/text"}, "prompt_version": {"$ref": "#/$defs/text"}, "repo_commit": {"type": "string", "pattern": "^[0-9a-f]{7,64}$"}, "model": {"$ref": "#/$defs/text"}, "runtime": {"$ref": "#/$defs/text"}, "independence": {"$ref": "#/$defs/independence"}}},
+    "refHash": {"type": "object", "additionalProperties": false, "required": ["ref", "hash"], "properties": {"ref": {"$ref": "#/$defs/text"}, "hash": {"$ref": "#/$defs/hash"}}},
+    "claimCandidate": {"type": "object", "additionalProperties": false, "required": ["claim_id", "claim_hash", "evidence_refs"], "properties": {"claim_id": {"$ref": "#/$defs/text"}, "claim_hash": {"$ref": "#/$defs/hash"}, "evidence_refs": {"$ref": "#/$defs/stringArray"}}},
+    "frozenInputs": {"type": "object", "additionalProperties": false, "required": ["evidence_bundle_ref", "evidence_bundle_hash", "identity_binding_ref", "identity_binding_hash", "computations", "claim_candidates"], "properties": {"evidence_bundle_ref": {"$ref": "#/$defs/text"}, "evidence_bundle_hash": {"$ref": "#/$defs/hash"}, "identity_binding_ref": {"$ref": "#/$defs/text"}, "identity_binding_hash": {"$ref": "#/$defs/hash"}, "computations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/refHash"}}, "claim_candidates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claimCandidate"}}}},
+    "claimDisposition": {"type": "object", "additionalProperties": false, "required": ["claim_id", "evidence_assessment", "review_disposition", "evidence_refs", "limitation", "overturn_condition"], "properties": {"claim_id": {"$ref": "#/$defs/text"}, "evidence_assessment": {"enum": ["supported_by_available_evidence", "not_supported_by_available_evidence", "uncertain_due_to_evidence_limits", "not_assessed_under_protocol"]}, "review_disposition": {"enum": ["accept_for_use", "reject_for_use", "revise_and_resubmit", "split_and_resubmit", "request_additional_evidence", "unresolved"]}, "evidence_refs": {"$ref": "#/$defs/stringArray"}, "limitation": {"$ref": "#/$defs/text"}, "overturn_condition": {"$ref": "#/$defs/text"}}},
+    "postureAssessment": {"type": "object", "additionalProperties": false, "required": ["posture", "effect", "claim_refs", "evidence_refs", "rationale", "limitation"], "properties": {"posture": {"enum": ["acquire", "merge_affiliate", "partner", "compete", "build_capacity", "defer"]}, "effect": {"enum": ["supports", "weakens", "unresolved", "not_applicable", "outside_scope"]}, "claim_refs": {"$ref": "#/$defs/stringArray"}, "evidence_refs": {"$ref": "#/$defs/stringArray"}, "rationale": {"$ref": "#/$defs/text"}, "limitation": {"$ref": "#/$defs/text"}}},
+    "missingEvidenceRequest": {"type": "object", "additionalProperties": false, "required": ["request_id", "description"], "properties": {"request_id": {"$ref": "#/$defs/text"}, "description": {"$ref": "#/$defs/text"}}},
+    "methodChallenge": {"type": "object", "additionalProperties": false, "required": ["challenge_id", "description"], "properties": {"challenge_id": {"$ref": "#/$defs/text"}, "description": {"$ref": "#/$defs/text"}}},
+    "criterionResult": {"type": "object", "additionalProperties": false, "required": ["criterion_id", "result", "claim_refs", "evidence_refs", "rationale"], "properties": {"criterion_id": {"$ref": "#/$defs/text"}, "result": {"enum": ["addressed", "not_addressed", "outside_scope"]}, "claim_refs": {"$ref": "#/$defs/stringArray"}, "evidence_refs": {"$ref": "#/$defs/stringList"}, "rationale": {"$ref": "#/$defs/text"}}},
+    "candidateReview": {"type": "object", "additionalProperties": false, "required": ["competence_role", "exposure_status", "evidence_mutated", "claim_dispositions", "posture_assessments", "criterion_results", "missing_evidence_requests", "method_challenges", "prohibited_claims", "preserved_reviewer_concerns", "overall_disposition"], "properties": {"competence_role": {"$ref": "#/$defs/text"}, "exposure_status": {"const": "independent_first"}, "evidence_mutated": {"const": false}, "claim_dispositions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claimDisposition"}}, "posture_assessments": {"type": "array", "minItems": 6, "maxItems": 6, "items": {"$ref": "#/$defs/postureAssessment"}}, "criterion_results": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/criterionResult"}}, "missing_evidence_requests": {"type": "array", "items": {"$ref": "#/$defs/missingEvidenceRequest"}}, "method_challenges": {"type": "array", "items": {"$ref": "#/$defs/methodChallenge"}}, "prohibited_claims": {"$ref": "#/$defs/stringList"}, "preserved_reviewer_concerns": {"$ref": "#/$defs/stringList"}, "overall_disposition": {"enum": ["pass", "pass_with_caveats", "block"]}}}
+  }
+}

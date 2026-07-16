@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_on": "2026-05-30",
+  "generated_on": "2026-07-16",
   "purpose": "Map major Healthcare Agents product claims to current evidence, release commands, artifacts, and bead coverage.",
   "claims": [
     {
@@ -203,6 +203,30 @@
       ],
       "beads": [
         "beads-i70.14"
+      ]
+    },
+    {
+      "id": "review-protocol-contracts",
+      "claim": "Healthcare Agents publishes seven versioned competence-routed CSO review protocols, a strict frozen-input Strategic Review v1 evaluator, and advisory-only discrepancy mapping while preserving human professional and release authority.",
+      "evidence": [
+        "review-protocols/registry.json",
+        "review-protocols/index.json",
+        "review-protocols/contracts/strategic-review.v1.schema.json",
+        "lib/strategic-review.js",
+        "lib/conflict-analysis.js",
+        "docs/review-protocols/README.md"
+      ],
+      "commands": [
+        "node scripts/validate-review-protocols.js",
+        "node scripts/test-strategic-review-contract.js"
+      ],
+      "artifacts": [
+        "review-protocols/registry.json",
+        "review-protocols/index.json",
+        "review-protocols/contracts/strategic-review.v1.schema.json"
+      ],
+      "beads": [
+        "beads-i70"
       ]
     },
     {

@@ -1,0 +1,331 @@
+#!/usr/bin/env node
+const assert = require('assert');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const {
+  evaluateStrategicReview,
+  evaluateStrategicReviewFile,
+  validateReviewRequest,
+  validateStrategicReview
+} = require('../lib/strategic-review');
+const {
+  analyzeReviewConflicts,
+  validateConflictAnalysis,
+  validateConflictRequest
+} = require('../lib/conflict-analysis');
+const {
+  findReviewProtocol,
+  loadReviewProtocolRegistry,
+  sha256,
+  validateReviewProtocolRegistry
+} = require('../lib/review-protocols');
+const {
+  validateReviewRequestShape,
+  validateStrategicReviewShape
+} = require('../lib/review-contract-schemas');
+
+const ROOT = path.join(__dirname, '..');
+const FIXTURE_PATH = path.join(ROOT, 'review-protocols', 'fixtures', 'evidence-methods-review-request.json');
+
+function fixture() {
+  return JSON.parse(fs.readFileSync(FIXTURE_PATH, 'utf8'));
+}
+
+const first = evaluateStrategicReview(fixture());
+const second = evaluateStrategicReview(fixture());
+assert.deepStrictEqual(first, second);
+assert.deepStrictEqual(validateStrategicReview(first), []);
+assert.strictEqual(first.posture_assessments.length, 6);
+assert.strictEqual(first.professional_disposition_authority, 'human_required');
+assert.deepStrictEqual(validateReviewRequestShape(fixture()), []);
+assert.deepStrictEqual(validateStrategicReviewShape(first), []);
+
+const secondReviewerRequest = fixture();
+secondReviewerRequest.reviewer.reviewer_id = 'fixture:evidence-methods-reviewer-2';
+const secondReviewer = evaluateStrategicReview(secondReviewerRequest);
+assert.notStrictEqual(first.review_id, secondReviewer.review_id);
+
+const changedReviewContext = fixture();
+changedReviewContext.decision_scenario.hash = 'sha256:' + '3'.repeat(64);
+changedReviewContext.evidence_boundary = 'A deliberately different frozen evidence boundary.';
+const contextBoundReview = evaluateStrategicReview(changedReviewContext);
+assert.notStrictEqual(first.review_request_hash, contextBoundReview.review_request_hash);
+assert.notStrictEqual(first.review_context_hash, contextBoundReview.review_context_hash);
+assert.notStrictEqual(first.review_id, contextBoundReview.review_id);
+assert.match(validateConflictRequest({
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:context-drift',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, contextBoundReview]
+}).join('; '), /identical frozen review context/);
+
+for (const mutate of [
+  request => { request.frozen_inputs.computations = [null]; },
+  request => { request.frozen_inputs.claim_candidates = [null]; },
+  request => { request.candidate_review.claim_dispositions = [null]; },
+  request => { request.candidate_review.posture_assessments = [null]; }
+]) {
+  const malformedNestedRequest = fixture();
+  mutate(malformedNestedRequest);
+  assert.doesNotThrow(() => validateReviewRequest(malformedNestedRequest));
+  assert.match(validateReviewRequest(malformedNestedRequest).join('; '), /schema/);
+}
+
+const malformedRegistry = loadReviewProtocolRegistry();
+delete malformedRegistry.effective_date;
+malformedRegistry.unpublished_extension = true;
+assert.match(validateReviewProtocolRegistry(malformedRegistry).join('; '), /effective_date|additional properties/);
+const nullProtocolRegistry = loadReviewProtocolRegistry();
+nullProtocolRegistry.protocols = Array(7).fill(null);
+assert.doesNotThrow(() => validateReviewProtocolRegistry(nullProtocolRegistry));
+assert.match(validateReviewProtocolRegistry(nullProtocolRegistry).join('; '), /schema/);
+
+const unrouted = fixture();
+unrouted.reviewer.agent_slug = 'revenue-finance-manager';
+assert.match(validateReviewRequest(unrouted).join('; '), /not routed by the selected protocol/);
+
+const conflicted = fixture();
+conflicted.reviewer.independence.direct_material_conflict = true;
+assert.match(validateReviewRequest(conflicted).join('; '), /direct material conflict/);
+
+const exposed = fixture();
+exposed.reviewer.independence.prior_exposure = 'unavoidable_recorded';
+assert.match(validateReviewRequest(exposed).join('; '), /cannot have prior exposure/);
+
+const missingCriterion = fixture();
+missingCriterion.candidate_review.criterion_results.pop();
+assert.match(validateReviewRequest(missingCriterion).join('; '), /cover every protocol criterion/);
+
+const unsupportedCriterion = fixture();
+unsupportedCriterion.candidate_review.criterion_results[0].evidence_refs = [];
+assert.match(validateReviewRequest(unsupportedCriterion).join('; '), /criterion evidence must contain non-empty strings/);
+
+const fabricatedNonAddressedCriterion = fixture();
+fabricatedNonAddressedCriterion.candidate_review.criterion_results[0].result = 'not_addressed';
+fabricatedNonAddressedCriterion.candidate_review.criterion_results[0].evidence_refs = ['receipt:fabricated'];
+assert.match(validateReviewRequest(fabricatedNonAddressedCriterion).join('; '), /criterion evidence references unknown id receipt:fabricated/);
+
+const validNonAddressedRequest = fixture();
+validNonAddressedRequest.candidate_review.criterion_results[0].result = 'not_addressed';
+validNonAddressedRequest.candidate_review.criterion_results[0].evidence_refs = [];
+const fabricatedNonAddressedOutput = evaluateStrategicReview(validNonAddressedRequest);
+fabricatedNonAddressedOutput.evaluation.criteria_results[0].evidence_refs = ['receipt:fabricated'];
+const fabricatedNonAddressedBody = { ...fabricatedNonAddressedOutput };
+delete fabricatedNonAddressedBody.output_sha256;
+fabricatedNonAddressedOutput.output_sha256 = sha256(fabricatedNonAddressedBody);
+assert.match(validateStrategicReview(fabricatedNonAddressedOutput).join('; '), /criterion evidence references unknown id receipt:fabricated/);
+
+const mutated = fixture();
+mutated.candidate_review.evidence_mutated = true;
+assert.match(validateReviewRequest(mutated).join('; '), /schema|evidence_mutated=false/);
+
+const collapsed = fixture();
+collapsed.candidate_review.posture_score = 0.8;
+assert.match(validateReviewRequest(collapsed).join('; '), /schema|prohibited field posture_score/);
+
+const omitted = fixture();
+omitted.candidate_review.posture_assessments.pop();
+assert.match(validateReviewRequest(omitted).join('; '), /schema|exactly six entries/);
+
+const unknownEvidence = fixture();
+unknownEvidence.candidate_review.claim_dispositions[0].evidence_refs = ['receipt:fabricated'];
+assert.match(validateReviewRequest(unknownEvidence).join('; '), /unknown id receipt:fabricated/);
+
+const duplicateDisposition = fixture();
+duplicateDisposition.candidate_review.claim_dispositions.push({
+  ...duplicateDisposition.candidate_review.claim_dispositions[0]
+});
+assert.match(validateReviewRequest(duplicateDisposition).join('; '), /claim disposition claim_id must be unique/);
+
+const crossClaimEvidence = fixture();
+crossClaimEvidence.frozen_inputs.claim_candidates.push({
+  claim_id: 'claim:staffed-bed-context',
+  claim_hash: 'sha256:' + '2'.repeat(64),
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+crossClaimEvidence.candidate_review.claim_dispositions.push({
+  ...crossClaimEvidence.candidate_review.claim_dispositions[0],
+  claim_id: 'claim:staffed-bed-context',
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+crossClaimEvidence.candidate_review.claim_dispositions[0].evidence_refs = ['obs:staffed-beds:fy2024'];
+assert.match(validateReviewRequest(crossClaimEvidence).join('; '), /unknown id obs:staffed-beds:fy2024/);
+
+const protocolDrift = fixture();
+protocolDrift.protocol.protocol_hash = 'sha256:' + '0'.repeat(64);
+assert.match(validateReviewRequest(protocolDrift).join('; '), /protocol_hash does not match/);
+
+const recommendationLeak = fixture();
+recommendationLeak.candidate_review.recommended_posture = 'defer';
+assert.match(validateReviewRequest(recommendationLeak).join('; '), /schema|prohibited field recommended_posture/);
+
+const fabricatedAuthority = fixture();
+fabricatedAuthority.candidate_review.human_approval = 'approved';
+assert.match(validateReviewRequest(fabricatedAuthority).join('; '), /schema|prohibited field human_approval/);
+
+const missingCitation = fixture();
+missingCitation.candidate_review.posture_assessments[0].evidence_refs = [];
+assert.match(validateReviewRequest(missingCitation).join('; '), /schema|must contain non-empty strings/);
+
+const malformedOutput = { ...first };
+malformedOutput.claim_dispositions = [{}];
+const malformedBody = { ...malformedOutput };
+delete malformedBody.output_sha256;
+malformedOutput.output_sha256 = sha256(malformedBody);
+assert.match(validateStrategicReview(malformedOutput).join('; '), /schema/);
+
+const duplicateOutputDisposition = JSON.parse(JSON.stringify(first));
+duplicateOutputDisposition.claim_dispositions.push({
+  ...duplicateOutputDisposition.claim_dispositions[0],
+  review_disposition: 'reject_for_use'
+});
+const duplicateOutputBody = { ...duplicateOutputDisposition };
+delete duplicateOutputBody.output_sha256;
+duplicateOutputDisposition.output_sha256 = sha256(duplicateOutputBody);
+assert.match(validateStrategicReview(duplicateOutputDisposition).join('; '), /claim disposition claim_id must be unique/);
+
+const validMultipleClaims = fixture();
+validMultipleClaims.frozen_inputs.claim_candidates.push({
+  claim_id: 'claim:staffed-bed-context',
+  claim_hash: 'sha256:' + '2'.repeat(64),
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+validMultipleClaims.candidate_review.claim_dispositions.push({
+  ...validMultipleClaims.candidate_review.claim_dispositions[0],
+  claim_id: 'claim:staffed-bed-context',
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+const crossClaimOutput = evaluateStrategicReview(validMultipleClaims);
+crossClaimOutput.claim_dispositions[0].evidence_refs = ['obs:staffed-beds:fy2024'];
+const crossClaimOutputBody = { ...crossClaimOutput };
+delete crossClaimOutputBody.output_sha256;
+crossClaimOutput.output_sha256 = sha256(crossClaimOutputBody);
+assert.match(validateStrategicReview(crossClaimOutput).join('; '), /unknown id obs:staffed-beds:fy2024/);
+
+const staleAssessmentHash = JSON.parse(JSON.stringify(first));
+staleAssessmentHash.claim_dispositions[0].limitation = 'Tampered after the independent first assessment.';
+const staleAssessmentBody = { ...staleAssessmentHash };
+delete staleAssessmentBody.output_sha256;
+staleAssessmentHash.output_sha256 = sha256(staleAssessmentBody);
+assert.match(validateStrategicReview(staleAssessmentHash).join('; '), /first_assessment_hash does not match/);
+
+const incompleteInputHashes = JSON.parse(JSON.stringify(first));
+incompleteInputHashes.input_hashes = [incompleteInputHashes.frozen_inputs.claim_candidates[0].claim_hash];
+const incompleteInputBody = { ...incompleteInputHashes };
+delete incompleteInputBody.output_sha256;
+incompleteInputHashes.output_sha256 = sha256(incompleteInputBody);
+assert.match(validateStrategicReview(incompleteInputHashes).join('; '), /input_hashes must exactly match/);
+
+const staleFrozenHash = JSON.parse(JSON.stringify(first));
+staleFrozenHash.frozen_inputs.claim_candidates[0].evidence_refs = ['receipt:fabricated'];
+const staleFrozenBody = { ...staleFrozenHash };
+delete staleFrozenBody.output_sha256;
+staleFrozenHash.output_sha256 = sha256(staleFrozenBody);
+assert.match(validateStrategicReview(staleFrozenHash).join('; '), /frozen_inputs_hash does not match/);
+
+const crossClaimCriterion = JSON.parse(JSON.stringify(validMultipleClaims));
+crossClaimCriterion.candidate_review.criterion_results[0].evidence_refs = ['obs:staffed-beds:fy2024'];
+assert.match(validateReviewRequest(crossClaimCriterion).join('; '), /criterion evidence references unknown id obs:staffed-beds:fy2024/);
+
+const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-agents-review-'));
+const outputPath = path.join(tempDir, 'review.json');
+evaluateStrategicReviewFile(FIXTURE_PATH, outputPath);
+assert.deepStrictEqual(JSON.parse(fs.readFileSync(outputPath, 'utf8')), first);
+
+const disagreeingRequest = fixture();
+disagreeingRequest.request_id = 'review-request:fixture:licensed-beds:second';
+disagreeingRequest.protocol = (() => {
+  const protocol = findReviewProtocol('cso.operations-access-capacity.v1', '1.0.0');
+  return { protocol_id: protocol.protocol_id, version: protocol.version, protocol_hash: protocol.protocol_hash };
+})();
+disagreeingRequest.reviewer.reviewer_id = 'fixture:operations-reviewer-1';
+disagreeingRequest.reviewer.agent_slug = 'operations-hospital-administrator';
+disagreeingRequest.candidate_review.competence_role = 'operations_access_capacity_workforce';
+disagreeingRequest.candidate_review.criterion_results = disagreeingRequest.candidate_review.criterion_results.map((item, index) => ({
+  ...item,
+  criterion_id: 'cso.operations-access-capacity.v1:criterion:' + String(index + 1)
+}));
+disagreeingRequest.candidate_review.posture_assessments[4].effect = 'supports';
+disagreeingRequest.candidate_review.posture_assessments[4].rationale = 'A deliberately divergent fixture position for conflict mapping.';
+disagreeingRequest.candidate_review.claim_dispositions[0].overturn_condition = 'Comparable staffed-capacity and workforce evidence resolves the limitation.';
+disagreeingRequest.candidate_review.method_challenges[0].description = 'Test whether licensed capacity is operationally available under workforce constraints.';
+disagreeingRequest.candidate_review.overall_disposition = 'pass_with_caveats';
+const disagreeing = evaluateStrategicReview(disagreeingRequest);
+const conflict = analyzeReviewConflicts({
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:fixture',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, disagreeing]
+});
+assert.deepStrictEqual(validateConflictAnalysis(conflict), []);
+assert.strictEqual(conflict.advisory_only, true);
+assert.strictEqual(conflict.resolution_authority, 'human_required');
+assert.ok(conflict.discrepancies.some(item => item.field_path === 'posture_assessments.build_capacity.effect'));
+assert.ok(conflict.discrepancies.some(item => item.field_path.endsWith('.overturn_condition')));
+assert.ok(conflict.discrepancies.some(item => item.field_path === 'method_challenges'));
+assert.ok(conflict.discrepancies.some(item => item.field_path === 'evaluation.criteria_results'));
+
+function withConflictHash(value) {
+  const body = { ...value };
+  delete body.output_sha256;
+  return { ...body, output_sha256: sha256(body) };
+}
+
+const malformedPosition = JSON.parse(JSON.stringify(conflict));
+delete malformedPosition.discrepancies[0].positions[0].value;
+assert.match(validateConflictAnalysis(withConflictHash(malformedPosition)).join('; '), /schema|preserve reviewer value/);
+
+const unknownConcernReviewer = JSON.parse(JSON.stringify(conflict));
+unknownConcernReviewer.preserved_reviewer_concerns.push({
+  review_id: 'review:unknown',
+  concern: 'A concern must remain bound to a participating reviewer.'
+});
+assert.match(validateConflictAnalysis(withConflictHash(unknownConcernReviewer)).join('; '), /unknown review_id/);
+
+const invalidConflictRoute = JSON.parse(JSON.stringify(conflict));
+invalidConflictRoute.proposed_route = 'no_material_discrepancy_detected';
+assert.match(validateConflictAnalysis(withConflictHash(invalidConflictRoute)).join('; '), /match discrepancy presence/);
+
+assert.throws(() => analyzeReviewConflicts({
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:duplicate-reviewer',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, first]
+}), /unique independent reviewer identities/);
+
+assert.throws(() => analyzeReviewConflicts({
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:high-consequence-incomplete',
+  review_tier: 'high_consequence_claim',
+  reviews: [
+    { ...first, review_tier: 'high_consequence_claim' },
+    { ...disagreeing, review_tier: 'high_consequence_claim' }
+  ]
+}), /two independent competence-matched subject reviewers/);
+
+const malformedConflictReview = JSON.parse(JSON.stringify(first));
+delete malformedConflictReview.frozen_inputs;
+const malformedConflictRequest = {
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:malformed-review',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, malformedConflictReview]
+};
+assert.doesNotThrow(() => validateConflictRequest(malformedConflictRequest));
+assert.match(validateConflictRequest(malformedConflictRequest).join('; '), /schema/);
+
+const omittedClaimReview = JSON.parse(JSON.stringify(disagreeing));
+omittedClaimReview.claim_dispositions = [];
+const omittedClaimBody = { ...omittedClaimReview };
+delete omittedClaimBody.output_sha256;
+omittedClaimReview.output_sha256 = sha256(omittedClaimBody);
+assert.throws(() => analyzeReviewConflicts({
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:omitted-claim',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, omittedClaimReview]
+}), /claim_dispositions|missing claim disposition/);
+
+console.log('strategic review contract ok');
