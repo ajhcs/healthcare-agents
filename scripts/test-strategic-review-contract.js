@@ -12,7 +12,8 @@ const {
 } = require('../lib/strategic-review');
 const {
   analyzeReviewConflicts,
-  validateConflictAnalysis
+  validateConflictAnalysis,
+  validateConflictRequest
 } = require('../lib/conflict-analysis');
 const {
   findReviewProtocol,
@@ -45,6 +46,25 @@ const secondReviewerRequest = fixture();
 secondReviewerRequest.reviewer.reviewer_id = 'fixture:evidence-methods-reviewer-2';
 const secondReviewer = evaluateStrategicReview(secondReviewerRequest);
 assert.notStrictEqual(first.review_id, secondReviewer.review_id);
+
+const changedReviewContext = fixture();
+changedReviewContext.decision_scenario.hash = 'sha256:' + '3'.repeat(64);
+changedReviewContext.evidence_boundary = 'A deliberately different frozen evidence boundary.';
+const contextBoundReview = evaluateStrategicReview(changedReviewContext);
+assert.notStrictEqual(first.review_request_hash, contextBoundReview.review_request_hash);
+assert.notStrictEqual(first.review_id, contextBoundReview.review_id);
+
+for (const mutate of [
+  request => { request.frozen_inputs.computations = [null]; },
+  request => { request.frozen_inputs.claim_candidates = [null]; },
+  request => { request.candidate_review.claim_dispositions = [null]; },
+  request => { request.candidate_review.posture_assessments = [null]; }
+]) {
+  const malformedNestedRequest = fixture();
+  mutate(malformedNestedRequest);
+  assert.doesNotThrow(() => validateReviewRequest(malformedNestedRequest));
+  assert.match(validateReviewRequest(malformedNestedRequest).join('; '), /schema/);
+}
 
 const malformedRegistry = loadReviewProtocolRegistry();
 delete malformedRegistry.effective_date;
@@ -88,15 +108,15 @@ assert.match(validateStrategicReview(fabricatedNonAddressedOutput).join('; '), /
 
 const mutated = fixture();
 mutated.candidate_review.evidence_mutated = true;
-assert.match(validateReviewRequest(mutated).join('; '), /evidence_mutated=false/);
+assert.match(validateReviewRequest(mutated).join('; '), /schema|evidence_mutated=false/);
 
 const collapsed = fixture();
 collapsed.candidate_review.posture_score = 0.8;
-assert.match(validateReviewRequest(collapsed).join('; '), /prohibited field posture_score/);
+assert.match(validateReviewRequest(collapsed).join('; '), /schema|prohibited field posture_score/);
 
 const omitted = fixture();
 omitted.candidate_review.posture_assessments.pop();
-assert.match(validateReviewRequest(omitted).join('; '), /exactly six entries/);
+assert.match(validateReviewRequest(omitted).join('; '), /schema|exactly six entries/);
 
 const unknownEvidence = fixture();
 unknownEvidence.candidate_review.claim_dispositions[0].evidence_refs = ['receipt:fabricated'];
@@ -128,15 +148,15 @@ assert.match(validateReviewRequest(protocolDrift).join('; '), /protocol_hash doe
 
 const recommendationLeak = fixture();
 recommendationLeak.candidate_review.recommended_posture = 'defer';
-assert.match(validateReviewRequest(recommendationLeak).join('; '), /prohibited field recommended_posture/);
+assert.match(validateReviewRequest(recommendationLeak).join('; '), /schema|prohibited field recommended_posture/);
 
 const fabricatedAuthority = fixture();
 fabricatedAuthority.candidate_review.human_approval = 'approved';
-assert.match(validateReviewRequest(fabricatedAuthority).join('; '), /prohibited field human_approval/);
+assert.match(validateReviewRequest(fabricatedAuthority).join('; '), /schema|prohibited field human_approval/);
 
 const missingCitation = fixture();
 missingCitation.candidate_review.posture_assessments[0].evidence_refs = [];
-assert.match(validateReviewRequest(missingCitation).join('; '), /must contain non-empty strings/);
+assert.match(validateReviewRequest(missingCitation).join('; '), /schema|must contain non-empty strings/);
 
 const malformedOutput = { ...first };
 malformedOutput.claim_dispositions = [{}];
@@ -273,6 +293,17 @@ assert.throws(() => analyzeReviewConflicts({
     { ...disagreeing, review_tier: 'high_consequence_claim' }
   ]
 }), /two independent competence-matched subject reviewers/);
+
+const malformedConflictReview = JSON.parse(JSON.stringify(first));
+delete malformedConflictReview.frozen_inputs;
+const malformedConflictRequest = {
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:malformed-review',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, malformedConflictReview]
+};
+assert.doesNotThrow(() => validateConflictRequest(malformedConflictRequest));
+assert.match(validateConflictRequest(malformedConflictRequest).join('; '), /schema/);
 
 const omittedClaimReview = JSON.parse(JSON.stringify(disagreeing));
 omittedClaimReview.claim_dispositions = [];
