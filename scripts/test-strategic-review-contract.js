@@ -72,6 +72,26 @@ const unknownEvidence = fixture();
 unknownEvidence.candidate_review.claim_dispositions[0].evidence_refs = ['receipt:fabricated'];
 assert.match(validateReviewRequest(unknownEvidence).join('; '), /unknown id receipt:fabricated/);
 
+const duplicateDisposition = fixture();
+duplicateDisposition.candidate_review.claim_dispositions.push({
+  ...duplicateDisposition.candidate_review.claim_dispositions[0]
+});
+assert.match(validateReviewRequest(duplicateDisposition).join('; '), /claim disposition claim_id must be unique/);
+
+const crossClaimEvidence = fixture();
+crossClaimEvidence.frozen_inputs.claim_candidates.push({
+  claim_id: 'claim:staffed-bed-context',
+  claim_hash: 'sha256:' + '2'.repeat(64),
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+crossClaimEvidence.candidate_review.claim_dispositions.push({
+  ...crossClaimEvidence.candidate_review.claim_dispositions[0],
+  claim_id: 'claim:staffed-bed-context',
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+crossClaimEvidence.candidate_review.claim_dispositions[0].evidence_refs = ['obs:staffed-beds:fy2024'];
+assert.match(validateReviewRequest(crossClaimEvidence).join('; '), /unknown id obs:staffed-beds:fy2024/);
+
 const protocolDrift = fixture();
 protocolDrift.protocol.protocol_hash = 'sha256:' + '0'.repeat(64);
 assert.match(validateReviewRequest(protocolDrift).join('; '), /protocol_hash does not match/);
@@ -131,6 +151,27 @@ assert.strictEqual(conflict.resolution_authority, 'human_required');
 assert.ok(conflict.discrepancies.some(item => item.field_path === 'posture_assessments.build_capacity.effect'));
 assert.ok(conflict.discrepancies.some(item => item.field_path.endsWith('.overturn_condition')));
 assert.ok(conflict.discrepancies.some(item => item.field_path === 'method_challenges'));
+
+function withConflictHash(value) {
+  const body = { ...value };
+  delete body.output_sha256;
+  return { ...body, output_sha256: sha256(body) };
+}
+
+const malformedPosition = JSON.parse(JSON.stringify(conflict));
+delete malformedPosition.discrepancies[0].positions[0].value;
+assert.match(validateConflictAnalysis(withConflictHash(malformedPosition)).join('; '), /schema|preserve reviewer value/);
+
+const unknownConcernReviewer = JSON.parse(JSON.stringify(conflict));
+unknownConcernReviewer.preserved_reviewer_concerns.push({
+  review_id: 'review:unknown',
+  concern: 'A concern must remain bound to a participating reviewer.'
+});
+assert.match(validateConflictAnalysis(withConflictHash(unknownConcernReviewer)).join('; '), /unknown review_id/);
+
+const invalidConflictRoute = JSON.parse(JSON.stringify(conflict));
+invalidConflictRoute.proposed_route = 'no_material_discrepancy_detected';
+assert.match(validateConflictAnalysis(withConflictHash(invalidConflictRoute)).join('; '), /match discrepancy presence/);
 
 assert.throws(() => analyzeReviewConflicts({
   schema_version: 'ushso.ai-conflict-analysis-request.v1',
