@@ -6,6 +6,7 @@ const { fail } = require('./_release-utils');
 const {
   loadReviewProtocolRegistry,
   reviewProtocolIndex,
+  sha256,
   validateReviewProtocolRegistry
 } = require('../lib/review-protocols');
 const {
@@ -47,4 +48,4 @@ if (!fs.existsSync(INDEX_PATH) || fs.readFileSync(INDEX_PATH, 'utf8') !== expect
 
 fail(messages);
 const loaded = loadReviewProtocolRegistry();
-console.log('review protocols ok: ' + loaded.protocols.length + ' protocol(s), registry ' + loaded.registry_hash);
+console.log('review protocols ok: ' + loaded.protocols.length + ' protocol(s), registry ' + sha256(loaded));

@@ -41,6 +41,11 @@ assert.strictEqual(first.professional_disposition_authority, 'human_required');
 assert.deepStrictEqual(validateReviewRequestShape(fixture()), []);
 assert.deepStrictEqual(validateStrategicReviewShape(first), []);
 
+const secondReviewerRequest = fixture();
+secondReviewerRequest.reviewer.reviewer_id = 'fixture:evidence-methods-reviewer-2';
+const secondReviewer = evaluateStrategicReview(secondReviewerRequest);
+assert.notStrictEqual(first.review_id, secondReviewer.review_id);
+
 const malformedRegistry = loadReviewProtocolRegistry();
 delete malformedRegistry.effective_date;
 malformedRegistry.unpublished_extension = true;
@@ -65,6 +70,21 @@ assert.match(validateReviewRequest(missingCriterion).join('; '), /cover every pr
 const unsupportedCriterion = fixture();
 unsupportedCriterion.candidate_review.criterion_results[0].evidence_refs = [];
 assert.match(validateReviewRequest(unsupportedCriterion).join('; '), /criterion evidence must contain non-empty strings/);
+
+const fabricatedNonAddressedCriterion = fixture();
+fabricatedNonAddressedCriterion.candidate_review.criterion_results[0].result = 'not_addressed';
+fabricatedNonAddressedCriterion.candidate_review.criterion_results[0].evidence_refs = ['receipt:fabricated'];
+assert.match(validateReviewRequest(fabricatedNonAddressedCriterion).join('; '), /criterion evidence references unknown id receipt:fabricated/);
+
+const validNonAddressedRequest = fixture();
+validNonAddressedRequest.candidate_review.criterion_results[0].result = 'not_addressed';
+validNonAddressedRequest.candidate_review.criterion_results[0].evidence_refs = [];
+const fabricatedNonAddressedOutput = evaluateStrategicReview(validNonAddressedRequest);
+fabricatedNonAddressedOutput.evaluation.criteria_results[0].evidence_refs = ['receipt:fabricated'];
+const fabricatedNonAddressedBody = { ...fabricatedNonAddressedOutput };
+delete fabricatedNonAddressedBody.output_sha256;
+fabricatedNonAddressedOutput.output_sha256 = sha256(fabricatedNonAddressedBody);
+assert.match(validateStrategicReview(fabricatedNonAddressedOutput).join('; '), /criterion evidence references unknown id receipt:fabricated/);
 
 const mutated = fixture();
 mutated.candidate_review.evidence_mutated = true;
@@ -152,6 +172,27 @@ const crossClaimOutputBody = { ...crossClaimOutput };
 delete crossClaimOutputBody.output_sha256;
 crossClaimOutput.output_sha256 = sha256(crossClaimOutputBody);
 assert.match(validateStrategicReview(crossClaimOutput).join('; '), /unknown id obs:staffed-beds:fy2024/);
+
+const staleAssessmentHash = JSON.parse(JSON.stringify(first));
+staleAssessmentHash.claim_dispositions[0].limitation = 'Tampered after the independent first assessment.';
+const staleAssessmentBody = { ...staleAssessmentHash };
+delete staleAssessmentBody.output_sha256;
+staleAssessmentHash.output_sha256 = sha256(staleAssessmentBody);
+assert.match(validateStrategicReview(staleAssessmentHash).join('; '), /first_assessment_hash does not match/);
+
+const incompleteInputHashes = JSON.parse(JSON.stringify(first));
+incompleteInputHashes.input_hashes = [incompleteInputHashes.frozen_inputs.claim_candidates[0].claim_hash];
+const incompleteInputBody = { ...incompleteInputHashes };
+delete incompleteInputBody.output_sha256;
+incompleteInputHashes.output_sha256 = sha256(incompleteInputBody);
+assert.match(validateStrategicReview(incompleteInputHashes).join('; '), /input_hashes must exactly match/);
+
+const staleFrozenHash = JSON.parse(JSON.stringify(first));
+staleFrozenHash.frozen_inputs.claim_candidates[0].evidence_refs = ['receipt:fabricated'];
+const staleFrozenBody = { ...staleFrozenHash };
+delete staleFrozenBody.output_sha256;
+staleFrozenHash.output_sha256 = sha256(staleFrozenBody);
+assert.match(validateStrategicReview(staleFrozenHash).join('; '), /frozen_inputs_hash does not match/);
 
 const crossClaimCriterion = JSON.parse(JSON.stringify(validMultipleClaims));
 crossClaimCriterion.candidate_review.criterion_results[0].evidence_refs = ['obs:staffed-beds:fy2024'];
