@@ -4,7 +4,8 @@ Tracking bead: `beads-0z7`
 
 Cross-repository parent: `healthcare-toolkit-2rr9.6`
 
-Upstream bead: Healthcare Data MCP `HDM-nuq`
+Upstream sequence: Healthcare Data MCP `HDM-nuq`, then Healthcare Toolkit
+`healthcare-toolkit-2rr9.6.2`
 
 Downstream bead: Healthcare Toolkit `healthcare-toolkit-2rr9.6.1`
 
@@ -20,7 +21,12 @@ authorize public release.
 
 - Start from merged Agents main `0618e4a688b6e5322b96ccce719dfca18d1a0305`.
 - Consume the exact `ushso.public-evidence-bundle.v1` hash handed off by
-  `HDM-nuq` and a Toolkit-owned Decision Scenario/identity binding hash.
+  `HDM-nuq` and the Decision Scenario/Identity Binding hashes frozen by Toolkit
+  bead `healthcare-toolkit-2rr9.6.2`.
+- Consume the same bead's explicit no-score Computation Result and bounded Claim
+  Candidate. The computation records structured missingness for Scale v1; it is
+  not a partial score. The claim states that the common nine-input packet is
+  incomplete and is the object of the data-fitness review.
 - Use the published Review Protocol Registry plus
   `ushso.review-request.v1`, `ushso.strategic-review.v1`, and
   `ushso.ai-conflict-analysis.v1` as the authoritative schema/runtime contract.
@@ -57,8 +63,8 @@ requires named human professional adjudication outside this bead.
 
 ## Deliverables
 
-- A frozen review request bound to the upstream bundle, Toolkit scenario, and
-  identity hashes.
+- A frozen review request bound to the upstream bundle plus Toolkit scenario,
+  identity, no-score computation, and bounded claim hashes.
 - Structured specialist review and AI conflict-analysis envelopes with complete
   protocol/reviewer provenance and no evidence mutation.
 - Adversarial fixtures for mismatched bed bases, stale ownership, roster double
@@ -77,10 +83,11 @@ medium findings require correction or an explicit packet disposition.
 
 ## Authority and sequencing
 
-This bead remains unassigned until `HDM-nuq` freezes its verified bundle. At
-handoff, assign exactly one implementation owner; do not overlap ownership with
-Toolkit implementation. Human professional review, adjudication, and release
-approval remain mandatory and outside the model's authority.
+This bead remains unassigned until `HDM-nuq` freezes its verified bundle and
+Toolkit `healthcare-toolkit-2rr9.6.2` freezes the required scenario/identity
+hashes. At handoff, assign exactly one implementation owner; do not overlap
+ownership with Toolkit implementation. Human professional review, adjudication,
+and release approval remain mandatory and outside the model's authority.
 
 ## No-go and rollback
 
