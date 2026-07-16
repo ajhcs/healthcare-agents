@@ -115,6 +115,34 @@ delete malformedBody.output_sha256;
 malformedOutput.output_sha256 = sha256(malformedBody);
 assert.match(validateStrategicReview(malformedOutput).join('; '), /schema/);
 
+const duplicateOutputDisposition = JSON.parse(JSON.stringify(first));
+duplicateOutputDisposition.claim_dispositions.push({
+  ...duplicateOutputDisposition.claim_dispositions[0],
+  review_disposition: 'reject_for_use'
+});
+const duplicateOutputBody = { ...duplicateOutputDisposition };
+delete duplicateOutputBody.output_sha256;
+duplicateOutputDisposition.output_sha256 = sha256(duplicateOutputBody);
+assert.match(validateStrategicReview(duplicateOutputDisposition).join('; '), /claim disposition claim_id must be unique/);
+
+const validMultipleClaims = fixture();
+validMultipleClaims.frozen_inputs.claim_candidates.push({
+  claim_id: 'claim:staffed-bed-context',
+  claim_hash: 'sha256:' + '2'.repeat(64),
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+validMultipleClaims.candidate_review.claim_dispositions.push({
+  ...validMultipleClaims.candidate_review.claim_dispositions[0],
+  claim_id: 'claim:staffed-bed-context',
+  evidence_refs: ['obs:staffed-beds:fy2024']
+});
+const crossClaimOutput = evaluateStrategicReview(validMultipleClaims);
+crossClaimOutput.claim_dispositions[0].evidence_refs = ['obs:staffed-beds:fy2024'];
+const crossClaimOutputBody = { ...crossClaimOutput };
+delete crossClaimOutputBody.output_sha256;
+crossClaimOutput.output_sha256 = sha256(crossClaimOutputBody);
+assert.match(validateStrategicReview(crossClaimOutput).join('; '), /unknown id obs:staffed-beds:fy2024/);
+
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-agents-review-'));
 const outputPath = path.join(tempDir, 'review.json');
 evaluateStrategicReviewFile(FIXTURE_PATH, outputPath);
@@ -189,5 +217,17 @@ assert.throws(() => analyzeReviewConflicts({
     { ...disagreeing, review_tier: 'high_consequence_claim' }
   ]
 }), /two independent competence-matched subject reviewers/);
+
+const omittedClaimReview = JSON.parse(JSON.stringify(disagreeing));
+omittedClaimReview.claim_dispositions = [];
+const omittedClaimBody = { ...omittedClaimReview };
+delete omittedClaimBody.output_sha256;
+omittedClaimReview.output_sha256 = sha256(omittedClaimBody);
+assert.throws(() => analyzeReviewConflicts({
+  schema_version: 'ushso.ai-conflict-analysis-request.v1',
+  request_id: 'conflict-request:omitted-claim',
+  review_tier: 'ordinary_material_claim',
+  reviews: [first, omittedClaimReview]
+}), /claim_dispositions|missing claim disposition/);
 
 console.log('strategic review contract ok');

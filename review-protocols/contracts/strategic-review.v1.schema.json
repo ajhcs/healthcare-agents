@@ -4,7 +4,7 @@
   "title": "USHSO Strategic Review v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "review_id", "request_id", "review_tier", "protocol", "reviewer", "input_hashes", "evidence_bundle_ref", "identity_binding_ref", "decision_scenario_ref", "first_assessment_hash", "exposure_status", "evidence_mutated", "posture_assessments", "claim_dispositions", "missing_evidence_requests", "method_challenges", "prohibited_claims", "preserved_reviewer_concerns", "overall_disposition", "professional_disposition_authority", "evaluation", "output_sha256"],
+  "required": ["schema_version", "review_id", "request_id", "review_tier", "protocol", "reviewer", "input_hashes", "claim_candidates", "evidence_bundle_ref", "identity_binding_ref", "decision_scenario_ref", "first_assessment_hash", "exposure_status", "evidence_mutated", "posture_assessments", "claim_dispositions", "missing_evidence_requests", "method_challenges", "prohibited_claims", "preserved_reviewer_concerns", "overall_disposition", "professional_disposition_authority", "evaluation", "output_sha256"],
   "properties": {
     "schema_version": {"const": "ushso.strategic-review.v1"},
     "review_id": {"$ref": "review-request.v1.schema.json#/$defs/text"},
@@ -13,6 +13,7 @@
     "protocol": {"$ref": "review-request.v1.schema.json#/$defs/resolvedProtocol"},
     "reviewer": {"$ref": "review-request.v1.schema.json#/$defs/reviewer"},
     "input_hashes": {"type": "array", "minItems": 1, "items": {"$ref": "review-request.v1.schema.json#/$defs/hash"}},
+    "claim_candidates": {"type": "array", "minItems": 1, "items": {"$ref": "review-request.v1.schema.json#/$defs/claimCandidate"}},
     "evidence_bundle_ref": {"$ref": "review-request.v1.schema.json#/$defs/text"},
     "identity_binding_ref": {"$ref": "review-request.v1.schema.json#/$defs/text"},
     "decision_scenario_ref": {"$ref": "review-request.v1.schema.json#/$defs/text"},
