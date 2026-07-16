@@ -8,7 +8,7 @@
   "properties": {
     "schema_version": {"const": "ushso.review-protocol-registry.v1"},
     "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
-    "effective_date": {"type": "string", "format": "date"},
+    "effective_date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
     "status": {"enum": ["draft", "active", "retired"]},
     "posture_taxonomy": {"$ref": "#/$defs/postures"},
     "shared_rules": {

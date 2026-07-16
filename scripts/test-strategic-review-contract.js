@@ -14,7 +14,12 @@ const {
   analyzeReviewConflicts,
   validateConflictAnalysis
 } = require('../lib/conflict-analysis');
-const { findReviewProtocol, sha256 } = require('../lib/review-protocols');
+const {
+  findReviewProtocol,
+  loadReviewProtocolRegistry,
+  sha256,
+  validateReviewProtocolRegistry
+} = require('../lib/review-protocols');
 const {
   validateReviewRequestShape,
   validateStrategicReviewShape
@@ -35,6 +40,11 @@ assert.strictEqual(first.posture_assessments.length, 6);
 assert.strictEqual(first.professional_disposition_authority, 'human_required');
 assert.deepStrictEqual(validateReviewRequestShape(fixture()), []);
 assert.deepStrictEqual(validateStrategicReviewShape(first), []);
+
+const malformedRegistry = loadReviewProtocolRegistry();
+delete malformedRegistry.effective_date;
+malformedRegistry.unpublished_extension = true;
+assert.match(validateReviewProtocolRegistry(malformedRegistry).join('; '), /effective_date|additional properties/);
 
 const unrouted = fixture();
 unrouted.reviewer.agent_slug = 'revenue-finance-manager';
@@ -143,6 +153,10 @@ delete crossClaimOutputBody.output_sha256;
 crossClaimOutput.output_sha256 = sha256(crossClaimOutputBody);
 assert.match(validateStrategicReview(crossClaimOutput).join('; '), /unknown id obs:staffed-beds:fy2024/);
 
+const crossClaimCriterion = JSON.parse(JSON.stringify(validMultipleClaims));
+crossClaimCriterion.candidate_review.criterion_results[0].evidence_refs = ['obs:staffed-beds:fy2024'];
+assert.match(validateReviewRequest(crossClaimCriterion).join('; '), /criterion evidence references unknown id obs:staffed-beds:fy2024/);
+
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-agents-review-'));
 const outputPath = path.join(tempDir, 'review.json');
 evaluateStrategicReviewFile(FIXTURE_PATH, outputPath);
@@ -179,6 +193,7 @@ assert.strictEqual(conflict.resolution_authority, 'human_required');
 assert.ok(conflict.discrepancies.some(item => item.field_path === 'posture_assessments.build_capacity.effect'));
 assert.ok(conflict.discrepancies.some(item => item.field_path.endsWith('.overturn_condition')));
 assert.ok(conflict.discrepancies.some(item => item.field_path === 'method_challenges'));
+assert.ok(conflict.discrepancies.some(item => item.field_path === 'evaluation.criteria_results'));
 
 function withConflictHash(value) {
   const body = { ...value };

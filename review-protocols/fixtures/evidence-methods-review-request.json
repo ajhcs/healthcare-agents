@@ -127,18 +127,21 @@
       {
         "criterion_id": "cso.evidence-methods-measurement.v1:criterion:1",
         "result": "addressed",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
         "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
         "rationale": "The fixture explicitly tests the observation-to-claim boundary and refuses to relabel licensed beds as system Scale or staffed capacity."
       },
       {
         "criterion_id": "cso.evidence-methods-measurement.v1:criterion:2",
         "result": "addressed",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
         "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
         "rationale": "The review identifies definition, denominator, comparability, and missing multi-component evidence limitations."
       },
       {
         "criterion_id": "cso.evidence-methods-measurement.v1:criterion:3",
         "result": "addressed",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
         "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
         "rationale": "The review treats the two observations as bounded evidence rather than independent corroboration of a broader strategic claim."
       }
