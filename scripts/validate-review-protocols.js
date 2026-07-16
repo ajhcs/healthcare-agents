@@ -23,6 +23,7 @@ const SCHEMA_EXPECTATIONS = [
   ['schema.json', 'ushso.review-protocol-registry.v1'],
   ['contracts/review-request.v1.schema.json', 'ushso.review-request.v1'],
   ['contracts/strategic-review.v1.schema.json', 'ushso.strategic-review.v1'],
+  ['contracts/ai-conflict-analysis-request.v1.schema.json', 'ushso.ai-conflict-analysis-request.v1'],
   ['contracts/ai-conflict-analysis.v1.schema.json', 'ushso.ai-conflict-analysis.v1']
 ];
 

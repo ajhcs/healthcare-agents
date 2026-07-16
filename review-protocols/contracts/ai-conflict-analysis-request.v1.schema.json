@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/review-protocols/contracts/ai-conflict-analysis-request.v1.schema.json",
+  "title": "USHSO AI-Assisted Conflict Analysis Request v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "request_id", "review_tier", "reviews"],
+  "properties": {
+    "schema_version": {"const": "ushso.ai-conflict-analysis-request.v1"},
+    "request_id": {"$ref": "review-request.v1.schema.json#/$defs/text"},
+    "review_tier": {"$ref": "review-request.v1.schema.json#/$defs/reviewTier"},
+    "reviews": {"type": "array", "minItems": 2, "items": {"$ref": "strategic-review.v1.schema.json"}}
+  }
+}

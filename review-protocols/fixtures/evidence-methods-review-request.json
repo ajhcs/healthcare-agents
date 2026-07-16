@@ -1,17 +1,25 @@
 {
   "schema_version": "ushso.review-request.v1",
   "request_id": "review-request:fixture:licensed-beds",
+  "review_tier": "ordinary_material_claim",
   "protocol": {
     "protocol_id": "cso.evidence-methods-measurement.v1",
     "version": "1.0.0",
     "protocol_hash": "sha256:37f245f9fadffda8e2faaeb67612eb3280859ae2e8f84b74e68df9a1dcfbbb72"
   },
   "reviewer": {
+    "reviewer_id": "fixture:methods-reviewer-1",
     "agent_slug": "healthit-clinical-data-analyst",
     "prompt_version": "review-protocol-registry-1.0.0",
     "repo_commit": "bfa827cfff275ff5a3dcd61610b882978146ab5f",
     "model": "fixture-deterministic-reviewer",
-    "runtime": "healthcare-agents-1.6.0"
+    "runtime": "healthcare-agents-1.6.0",
+    "independence": {
+      "prior_exposure": "none",
+      "conflict_disclosures": [],
+      "direct_material_conflict": false,
+      "attestation": true
+    }
   },
   "frozen_inputs": {
     "evidence_bundle_ref": "ushso-artifact://fixture/public-evidence-bundle",
@@ -113,6 +121,26 @@
         "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
         "rationale": "Material multi-family evidence is required before this bounded observation can change the decision frame.",
         "limitation": "This supports additional diligence, not a strategic recommendation."
+      }
+    ],
+    "criterion_results": [
+      {
+        "criterion_id": "cso.evidence-methods-measurement.v1:criterion:1",
+        "result": "addressed",
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
+        "rationale": "The fixture explicitly tests the observation-to-claim boundary and refuses to relabel licensed beds as system Scale or staffed capacity."
+      },
+      {
+        "criterion_id": "cso.evidence-methods-measurement.v1:criterion:2",
+        "result": "addressed",
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
+        "rationale": "The review identifies definition, denominator, comparability, and missing multi-component evidence limitations."
+      },
+      {
+        "criterion_id": "cso.evidence-methods-measurement.v1:criterion:3",
+        "result": "addressed",
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
+        "rationale": "The review treats the two observations as bounded evidence rather than independent corroboration of a broader strategic claim."
       }
     ],
     "missing_evidence_requests": [

@@ -20,15 +20,21 @@ healthcare-agents review evaluate \
 
 The evaluator accepts a frozen evidence bundle reference/hash, identity
 binding, deterministic computations, atomic claims, Decision Scenario, exact
-protocol hash, and an independently exposed candidate assessment. It rejects
-evidence mutation, unknown evidence/claim references, incomplete posture
-coverage, protocol drift, recommendation/score fields, and model-claimed human
-authority. Valid output is canonical `ushso.strategic-review.v1` JSON.
+protocol hash, review tier, competence-routed reviewer identity, independence
+and conflict disclosure, criterion-specific evidence, and an independently
+exposed candidate assessment. The checked-in JSON Schemas are the runtime
+structural authority. Semantic validation additionally rejects evidence
+mutation, unknown evidence/claim references, incomplete posture or criterion
+coverage, protocol drift, direct material conflicts, prior exposure,
+recommendation/score fields, and model-claimed human authority. Valid output is
+canonical `ushso.strategic-review.v1` JSON.
 
-`lib/conflict-analysis.js` compares two or more schema-valid reviews over the
-same frozen hashes. It preserves both positions, types discrepancies, and
-routes material differences to human competence-matched adjudication. Its
-output is advisory; automatic resolution is prohibited.
+`lib/conflict-analysis.js` compares schema-valid reviews over the same frozen
+hashes. It rejects duplicate reviewer identities and incomplete ordinary or
+high-consequence review cohorts, preserves both positions, compares evidence,
+warrants, limitations, overturn conditions, challenges, prohibited claims, and
+concerns, and routes material differences to human competence-matched
+adjudication. Its output is advisory; automatic resolution is prohibited.
 
 ## Human boundary
 

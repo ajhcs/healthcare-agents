@@ -4,11 +4,12 @@
   "title": "USHSO AI-Assisted Conflict Analysis v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "analysis_id", "request_id", "review_refs", "discrepancies", "preserved_reviewer_concerns", "proposed_route", "advisory_only", "resolution_authority", "automatic_resolution", "output_sha256"],
+  "required": ["schema_version", "analysis_id", "request_id", "review_tier", "review_refs", "discrepancies", "preserved_reviewer_concerns", "proposed_route", "advisory_only", "resolution_authority", "automatic_resolution", "output_sha256"],
   "properties": {
     "schema_version": {"const": "ushso.ai-conflict-analysis.v1"},
     "analysis_id": {"type": "string", "minLength": 1},
     "request_id": {"type": "string", "minLength": 1},
+    "review_tier": {"enum": ["ordinary_material_claim", "high_consequence_claim"]},
     "review_refs": {"type": "array", "minItems": 2, "items": {"type": "object", "additionalProperties": false, "required": ["review_id", "output_sha256"], "properties": {"review_id": {"type": "string", "minLength": 1}, "output_sha256": {"$ref": "#/$defs/hash"}}}},
     "discrepancies": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["discrepancy_id", "type", "field_path", "material", "positions", "deterministic_resolution", "human_route_required"], "properties": {"discrepancy_id": {"type": "string"}, "type": {"type": "string"}, "field_path": {"type": "string"}, "material": {"type": "boolean"}, "positions": {"type": "array", "minItems": 2}, "deterministic_resolution": {"type": ["string", "null"]}, "human_route_required": {"const": true}}}},
     "preserved_reviewer_concerns": {"type": "array"},
