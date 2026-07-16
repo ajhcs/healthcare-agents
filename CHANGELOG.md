@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-No unreleased changes.
+### Added
+
+- Added a machine-readable seven-role USHSO Review Protocol Registry with
+  content-addressed compact index and strict v1 JSON contracts.
+- Added a deterministic strategic-review evaluator and advisory-only conflict
+  mapper that preserve frozen inputs, six separate postures, dissent, and the
+  human professional-judgment boundary.
+- Added CLI, adversarial fixtures, validation, packaging, and release-readiness
+  coverage for the reusable review contracts.
 
 ## [1.6.0] - 2026-07-09
 

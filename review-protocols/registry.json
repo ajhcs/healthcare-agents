@@ -1,0 +1,172 @@
+{
+  "schema_version": "ushso.review-protocol-registry.v1",
+  "registry_version": "1.0.0",
+  "effective_date": "2026-07-16",
+  "status": "active",
+  "posture_taxonomy": [
+    "acquire",
+    "merge_affiliate",
+    "partner",
+    "compete",
+    "build_capacity",
+    "defer"
+  ],
+  "shared_rules": {
+    "evidence_states": ["supports", "weakens", "unresolved", "not_applicable", "outside_scope"],
+    "required_first_exposure": "independent_first",
+    "required_claim_fields": [
+      "claim_id",
+      "evidence_assessment",
+      "review_disposition",
+      "evidence_refs",
+      "limitation",
+      "overturn_condition"
+    ],
+    "prohibited_behaviors": [
+      "mutate_frozen_evidence",
+      "invent_source_or_receipt",
+      "perform_model_prose_arithmetic",
+      "claim_professional_credentials",
+      "approve_professional_judgment",
+      "adjudicate_material_disagreement",
+      "recommend_or_rank_posture",
+      "collapse_postures_to_score_or_vote",
+      "treat_model_agreement_as_confidence",
+      "hide_counterevidence_or_preserved_concern"
+    ],
+    "human_authority": [
+      "professional_judgment",
+      "material_residual_disagreement",
+      "reviewer_qualification_verification",
+      "release_approval"
+    ]
+  },
+  "protocols": [
+    {
+      "protocol_id": "cso.cardiovascular-clinical-quality.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "cardiovascular_clinical_quality",
+      "title": "Cardiovascular clinical quality and capability review",
+      "criteria": [
+        "Distinguish service availability, breadth, experience, process quality, outcomes, and academic capability.",
+        "Match clinical claims to the exact population, episode, setting, risk adjustment, denominator, and period.",
+        "Reject volume-as-quality and marketing-language-as-capability inferences."
+      ],
+      "falsification_habits": ["seek contradictory outcome measures", "test taxonomy drift", "inspect risk-adjustment mismatch"],
+      "permitted_tools": ["source-linked evidence review", "deterministic calculation inspection"],
+      "prohibited_inferences": ["clinical superiority from scale alone", "patient-specific clinical advice", "unsupported quality ranking"],
+      "escalation_rules": ["escalate clinical meaning disputes to an independent cardiovascular specialist"],
+      "required_human_competence": "Qualified cardiovascular clinical quality or outcomes expertise for professional disposition.",
+      "candidate_agent_slugs": ["strategy-clinical-operations-consultant", "clinical-research-coordinator"]
+    },
+    {
+      "protocol_id": "cso.population-health-services.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "population_health_services_research",
+      "title": "Population health, epidemiology, and health-services review",
+      "criteria": [
+        "Separate observed utilization, population burden, potential demand, and forecast claims.",
+        "Freeze geography, population, denominator, attribution, and time before comparison.",
+        "Assess selection, surveillance, ecological, and transportability limitations."
+      ],
+      "falsification_habits": ["change denominator", "test geography boundary", "withhold one source family"],
+      "permitted_tools": ["population dataset review", "reproducible descriptive statistics"],
+      "prohibited_inferences": ["utilization equals need", "association equals causation", "community preference without participation"],
+      "escalation_rules": ["escalate denominator or epidemiologic disputes to independent health-services expertise"],
+      "required_human_competence": "Qualified epidemiology, population-health, or health-services research expertise.",
+      "candidate_agent_slugs": ["pophealth-population-health-manager", "clinical-research-coordinator"]
+    },
+    {
+      "protocol_id": "cso.operations-access-capacity.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "operations_access_capacity_workforce",
+      "title": "Operations, access, capacity, and workforce review",
+      "criteria": [
+        "Separate installed capacity, staffed capacity, throughput, access friction, and achievable capacity.",
+        "Require explicit operating assumptions and bottleneck evidence.",
+        "Test feasibility against workforce, facility, scheduling, transfer, and referral constraints."
+      ],
+      "falsification_habits": ["identify binding bottleneck", "test peak versus average", "seek unavailable workforce inputs"],
+      "permitted_tools": ["operations evidence review", "deterministic capacity scenario inspection"],
+      "prohibited_inferences": ["potential access equals realized access", "beds equal staffed capacity", "operational feasibility without constraints"],
+      "escalation_rules": ["escalate feasibility disputes to an independent healthcare operations specialist"],
+      "required_human_competence": "Qualified health-system operations, access, capacity, or workforce expertise.",
+      "candidate_agent_slugs": ["operations-hospital-administrator", "operations-workforce-manager"]
+    },
+    {
+      "protocol_id": "cso.healthcare-finance-capital.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "healthcare_finance_capital",
+      "title": "Healthcare finance and capital review",
+      "criteria": [
+        "Separate accounting history, liquidity, leverage, operating performance, and forward capital capacity.",
+        "Match fiscal period, obligated group, consolidation scope, and one-time items.",
+        "Require scenario assumptions before capital-feasibility claims."
+      ],
+      "falsification_habits": ["remove one-time items", "test obligated-group scope", "stress debt and liquidity assumptions"],
+      "permitted_tools": ["audited financial evidence review", "deterministic sensitivity inspection"],
+      "prohibited_inferences": ["revenue equals strategic capacity", "valuation opinion", "capital approval or investment advice"],
+      "escalation_rules": ["escalate material finance disputes to independent healthcare-finance expertise"],
+      "required_human_competence": "Qualified healthcare finance, treasury, capital, or credit expertise.",
+      "candidate_agent_slugs": ["revenue-finance-manager", "strategy-actuarial-advisor"]
+    },
+    {
+      "protocol_id": "cso.health-economics-competition.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "health_economics_payer_competition",
+      "title": "Health economics, payer dynamics, and competition review",
+      "criteria": [
+        "Freeze market, product, service, geography, payer, and counterfactual before interpreting competition.",
+        "Separate descriptive concentration, bargaining conditions, substitution, and causal effects.",
+        "Preserve alternative explanations and public-data limitations."
+      ],
+      "falsification_habits": ["change market definition", "test payer mix", "seek substitution counterexamples"],
+      "permitted_tools": ["public market evidence review", "deterministic concentration calculation inspection"],
+      "prohibited_inferences": ["concentration proves harm", "legal antitrust conclusion", "unsupported price or volume causality"],
+      "escalation_rules": ["escalate competition interpretation to independent health-economics expertise"],
+      "required_human_competence": "Qualified health economics, payer-market, or healthcare competition expertise.",
+      "candidate_agent_slugs": ["payer-managed-care-analyst", "strategy-actuarial-advisor"]
+    },
+    {
+      "protocol_id": "cso.transaction-regulatory-governance.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "transaction_regulatory_governance",
+      "title": "Transaction, regulatory, and governance constraints review",
+      "criteria": [
+        "Distinguish transaction form, affiliation, governance, control, licensure, and approval pathways.",
+        "Identify jurisdiction, authority, current rule version, and unresolved counsel questions.",
+        "Treat public evidence as diligence input rather than a legal conclusion."
+      ],
+      "falsification_habits": ["test alternative transaction form", "check jurisdiction", "seek change-in-control constraint"],
+      "permitted_tools": ["primary regulatory source review", "governance document inspection"],
+      "prohibited_inferences": ["legal advice", "transaction approval prediction", "governance authority from branding"],
+      "escalation_rules": ["escalate legal or transaction judgment to qualified independent counsel or transaction expertise"],
+      "required_human_competence": "Qualified healthcare transaction, regulatory, governance, or legal expertise.",
+      "candidate_agent_slugs": ["quality-compliance-officer", "strategy-healthcare-consultant"]
+    },
+    {
+      "protocol_id": "cso.evidence-methods-measurement.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "evidence_methods_measurement_biostatistics",
+      "title": "Evidence methods, measurement, and biostatistics review",
+      "criteria": [
+        "Validate the observation-claim-warrant chain, dependency clusters, missingness, and inference class.",
+        "Test definition, denominator, vintage, comparability, uncertainty, and sensitivity.",
+        "Reject source repetition, model agreement, or citation count as independent corroboration."
+      ],
+      "falsification_habits": ["source withholding", "negative control", "scope perturbation", "dependency audit"],
+      "permitted_tools": ["primary-source verification", "reproducible statistical and schema checks"],
+      "prohibited_inferences": ["calculator correctness proves validity", "model agreement is confidence", "missing evidence is neutral"],
+      "escalation_rules": ["escalate residual method disputes to an independent methods or biostatistics reviewer"],
+      "required_human_competence": "Qualified evidence synthesis, measurement, epidemiologic methods, or biostatistics expertise.",
+      "candidate_agent_slugs": ["healthit-clinical-data-analyst", "clinical-research-coordinator"]
+    }
+  ]
+}

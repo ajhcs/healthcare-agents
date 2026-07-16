@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/review-protocols/contracts/review-request.v1.schema.json",
+  "title": "USHSO Strategic Review Request v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "request_id", "protocol", "reviewer", "frozen_inputs", "decision_scenario", "posture_taxonomy", "evidence_boundary", "candidate_review"],
+  "properties": {
+    "schema_version": {"const": "ushso.review-request.v1"},
+    "request_id": {"type": "string", "minLength": 1},
+    "protocol": {"$ref": "#/$defs/protocolRef"},
+    "reviewer": {"$ref": "#/$defs/reviewer"},
+    "frozen_inputs": {"$ref": "#/$defs/frozenInputs"},
+    "decision_scenario": {"$ref": "#/$defs/refHash"},
+    "posture_taxonomy": {"$ref": "#/$defs/postures"},
+    "evidence_boundary": {"type": "string", "minLength": 1},
+    "candidate_review": {"$ref": "#/$defs/candidateReview"}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "stringArray": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "postures": {"type": "array", "prefixItems": [{"const": "acquire"}, {"const": "merge_affiliate"}, {"const": "partner"}, {"const": "compete"}, {"const": "build_capacity"}, {"const": "defer"}], "minItems": 6, "maxItems": 6},
+    "protocolRef": {"type": "object", "additionalProperties": false, "required": ["protocol_id", "version", "protocol_hash"], "properties": {"protocol_id": {"type": "string", "minLength": 1}, "version": {"type": "string", "minLength": 1}, "protocol_hash": {"$ref": "#/$defs/hash"}}},
+    "reviewer": {"type": "object", "additionalProperties": false, "required": ["agent_slug", "prompt_version", "repo_commit", "model", "runtime"], "properties": {"agent_slug": {"type": "string", "minLength": 1}, "prompt_version": {"type": "string", "minLength": 1}, "repo_commit": {"type": "string", "pattern": "^[0-9a-f]{7,64}$"}, "model": {"type": "string", "minLength": 1}, "runtime": {"type": "string", "minLength": 1}}},
+    "refHash": {"type": "object", "additionalProperties": false, "required": ["ref", "hash"], "properties": {"ref": {"type": "string", "minLength": 1}, "hash": {"$ref": "#/$defs/hash"}}},
+    "claimCandidate": {"type": "object", "additionalProperties": false, "required": ["claim_id", "claim_hash", "evidence_refs"], "properties": {"claim_id": {"type": "string", "minLength": 1}, "claim_hash": {"$ref": "#/$defs/hash"}, "evidence_refs": {"$ref": "#/$defs/stringArray"}}},
+    "frozenInputs": {"type": "object", "additionalProperties": false, "required": ["evidence_bundle_ref", "evidence_bundle_hash", "identity_binding_ref", "identity_binding_hash", "computations", "claim_candidates"], "properties": {"evidence_bundle_ref": {"type": "string", "minLength": 1}, "evidence_bundle_hash": {"$ref": "#/$defs/hash"}, "identity_binding_ref": {"type": "string", "minLength": 1}, "identity_binding_hash": {"$ref": "#/$defs/hash"}, "computations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/refHash"}}, "claim_candidates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claimCandidate"}}}},
+    "claimDisposition": {"type": "object", "additionalProperties": false, "required": ["claim_id", "evidence_assessment", "review_disposition", "evidence_refs", "limitation", "overturn_condition"], "properties": {"claim_id": {"type": "string", "minLength": 1}, "evidence_assessment": {"enum": ["supported_by_available_evidence", "not_supported_by_available_evidence", "uncertain_due_to_evidence_limits", "not_assessed_under_protocol"]}, "review_disposition": {"enum": ["accept_for_use", "reject_for_use", "revise_and_resubmit", "split_and_resubmit", "request_additional_evidence", "unresolved"]}, "evidence_refs": {"$ref": "#/$defs/stringArray"}, "limitation": {"type": "string", "minLength": 1}, "overturn_condition": {"type": "string", "minLength": 1}}},
+    "postureAssessment": {"type": "object", "additionalProperties": false, "required": ["posture", "effect", "claim_refs", "evidence_refs", "rationale", "limitation"], "properties": {"posture": {"enum": ["acquire", "merge_affiliate", "partner", "compete", "build_capacity", "defer"]}, "effect": {"enum": ["supports", "weakens", "unresolved", "not_applicable", "outside_scope"]}, "claim_refs": {"$ref": "#/$defs/stringArray"}, "evidence_refs": {"$ref": "#/$defs/stringArray"}, "rationale": {"type": "string", "minLength": 1}, "limitation": {"type": "string", "minLength": 1}}},
+    "candidateReview": {"type": "object", "additionalProperties": false, "required": ["competence_role", "exposure_status", "evidence_mutated", "claim_dispositions", "posture_assessments", "missing_evidence_requests", "method_challenges", "prohibited_claims", "preserved_reviewer_concerns", "overall_disposition"], "properties": {"competence_role": {"type": "string", "minLength": 1}, "exposure_status": {"const": "independent_first"}, "evidence_mutated": {"const": false}, "claim_dispositions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/claimDisposition"}}, "posture_assessments": {"type": "array", "minItems": 6, "maxItems": 6, "items": {"$ref": "#/$defs/postureAssessment"}}, "missing_evidence_requests": {"type": "array", "items": {"type": "object"}}, "method_challenges": {"type": "array", "items": {"type": "object"}}, "prohibited_claims": {"type": "array", "items": {"type": "string"}}, "preserved_reviewer_concerns": {"type": "array", "items": {"type": "string"}}, "overall_disposition": {"enum": ["pass", "pass_with_caveats", "block"]}}}
+  }
+}

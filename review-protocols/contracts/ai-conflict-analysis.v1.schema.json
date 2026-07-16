@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/review-protocols/contracts/ai-conflict-analysis.v1.schema.json",
+  "title": "USHSO AI-Assisted Conflict Analysis v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "analysis_id", "request_id", "review_refs", "discrepancies", "preserved_reviewer_concerns", "proposed_route", "advisory_only", "resolution_authority", "automatic_resolution", "output_sha256"],
+  "properties": {
+    "schema_version": {"const": "ushso.ai-conflict-analysis.v1"},
+    "analysis_id": {"type": "string", "minLength": 1},
+    "request_id": {"type": "string", "minLength": 1},
+    "review_refs": {"type": "array", "minItems": 2, "items": {"type": "object", "additionalProperties": false, "required": ["review_id", "output_sha256"], "properties": {"review_id": {"type": "string", "minLength": 1}, "output_sha256": {"$ref": "#/$defs/hash"}}}},
+    "discrepancies": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["discrepancy_id", "type", "field_path", "material", "positions", "deterministic_resolution", "human_route_required"], "properties": {"discrepancy_id": {"type": "string"}, "type": {"type": "string"}, "field_path": {"type": "string"}, "material": {"type": "boolean"}, "positions": {"type": "array", "minItems": 2}, "deterministic_resolution": {"type": ["string", "null"]}, "human_route_required": {"const": true}}}},
+    "preserved_reviewer_concerns": {"type": "array"},
+    "proposed_route": {"enum": ["human_competence_matched_adjudication", "no_material_discrepancy_detected"]},
+    "advisory_only": {"const": true},
+    "resolution_authority": {"const": "human_required"},
+    "automatic_resolution": {"const": "prohibited"},
+    "output_sha256": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}}
+}

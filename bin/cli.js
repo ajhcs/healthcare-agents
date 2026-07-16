@@ -21,6 +21,8 @@ const {
   formatEvidencePackMarkdown
 } = require('../lib/evidence-packs');
 const { buildEvidencePack } = require('../scripts/scaffold-evidence-pack');
+const { loadReviewProtocolRegistry, reviewProtocolIndex } = require('../lib/review-protocols');
+const { evaluateStrategicReviewFile } = require('../lib/strategic-review');
 const renderers = require('../lib/renderers');
 const VALID_MODES = ['quick triage', 'workplan', 'audit/checklist', 'artifact/template'];
 
@@ -73,6 +75,8 @@ Usage:
   healthcare-agents evidence-pack list [--json]
   healthcare-agents evidence-pack show <workflow-id|pack-id> [--json]
   healthcare-agents evidence-pack scaffold <workflow-id>
+  healthcare-agents review protocols [--json]
+  healthcare-agents review evaluate --input <request.json> [--output <review.json>]
   healthcare-agents workup "<problem>" [--target codex|claude|copilot|m365-copilot] [--data-mode <mode>] [--json]
   healthcare-agents export <platform> <workflow-id> [--output <dir>]
   healthcare-agents prompt <agent> --mode <mode>
@@ -645,6 +649,26 @@ function exportCommand(args) {
   console.log(output.content);
 }
 
+function reviewCommand(args) {
+  const action = args[0];
+  if (action === 'protocols') {
+    const registry = loadReviewProtocolRegistry();
+    const payload = hasFlag(args, '--json') ? registry : reviewProtocolIndex();
+    console.log(JSON.stringify(payload, null, 2));
+    return;
+  }
+  if (action === 'evaluate') {
+    const input = requireOptionValue(args, '--input', 'review evaluate');
+    const output = readOption(args, '--output');
+    const payload = evaluateStrategicReviewFile(path.resolve(input), output ? path.resolve(output) : undefined);
+    if (!output) process.stdout.write(payload);
+    else console.log(path.resolve(output));
+    return;
+  }
+  console.error('error: review requires protocols or evaluate');
+  process.exit(2);
+}
+
 function internalRender(args) {
   const surface = args[0];
   const key = args[1];
@@ -802,6 +826,7 @@ async function main() {
   if (command === 'workflow') return showWorkflow(rest);
   if (command === 'operator-os') return operatorOsCommand(rest);
   if (command === 'evidence-pack') return evidencePackCommand(rest);
+  if (command === 'review') return reviewCommand(rest);
   if (command === 'workup') return workupCommand(rest);
   if (command === 'export') return exportCommand(rest);
   if (command === 'internal-render') return internalRender(rest);

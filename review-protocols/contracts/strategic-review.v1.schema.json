@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/review-protocols/contracts/strategic-review.v1.schema.json",
+  "title": "USHSO Strategic Review v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "review_id", "request_id", "protocol", "reviewer", "input_hashes", "evidence_bundle_ref", "identity_binding_ref", "decision_scenario_ref", "first_assessment_hash", "exposure_status", "evidence_mutated", "posture_assessments", "claim_dispositions", "missing_evidence_requests", "method_challenges", "prohibited_claims", "preserved_reviewer_concerns", "overall_disposition", "professional_disposition_authority", "evaluation", "output_sha256"],
+  "properties": {
+    "schema_version": {"const": "ushso.strategic-review.v1"},
+    "review_id": {"type": "string", "minLength": 1},
+    "request_id": {"type": "string", "minLength": 1},
+    "protocol": {"type": "object"},
+    "reviewer": {"type": "object"},
+    "input_hashes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/hash"}},
+    "evidence_bundle_ref": {"type": "string", "minLength": 1},
+    "identity_binding_ref": {"type": "string", "minLength": 1},
+    "decision_scenario_ref": {"type": "string", "minLength": 1},
+    "first_assessment_hash": {"$ref": "#/$defs/hash"},
+    "exposure_status": {"const": "independent_first"},
+    "evidence_mutated": {"const": false},
+    "posture_assessments": {"type": "array", "minItems": 6, "maxItems": 6},
+    "claim_dispositions": {"type": "array", "minItems": 1},
+    "missing_evidence_requests": {"type": "array"},
+    "method_challenges": {"type": "array"},
+    "prohibited_claims": {"type": "array"},
+    "preserved_reviewer_concerns": {"type": "array"},
+    "overall_disposition": {"enum": ["pass", "pass_with_caveats", "block"]},
+    "professional_disposition_authority": {"const": "human_required"},
+    "evaluation": {"type": "object", "required": ["valid", "criteria_results", "advisory_only"], "properties": {"valid": {"const": true}, "criteria_results": {"type": "array", "minItems": 1}, "advisory_only": {"const": true}}, "additionalProperties": false},
+    "output_sha256": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}}
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": "ushso.review-request.v1",
+  "request_id": "review-request:fixture:licensed-beds",
+  "protocol": {
+    "protocol_id": "cso.evidence-methods-measurement.v1",
+    "version": "1.0.0",
+    "protocol_hash": "sha256:37f245f9fadffda8e2faaeb67612eb3280859ae2e8f84b74e68df9a1dcfbbb72"
+  },
+  "reviewer": {
+    "agent_slug": "healthit-clinical-data-analyst",
+    "prompt_version": "review-protocol-registry-1.0.0",
+    "repo_commit": "bfa827cfff275ff5a3dcd61610b882978146ab5f",
+    "model": "fixture-deterministic-reviewer",
+    "runtime": "healthcare-agents-1.6.0"
+  },
+  "frozen_inputs": {
+    "evidence_bundle_ref": "ushso-artifact://fixture/public-evidence-bundle",
+    "evidence_bundle_hash": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "identity_binding_ref": "ushso-artifact://fixture/identity-binding",
+    "identity_binding_hash": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "computations": [
+      {
+        "ref": "ushso-artifact://fixture/computation-result",
+        "hash": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      }
+    ],
+    "claim_candidates": [
+      {
+        "claim_id": "claim:licensed-bed-scale-context",
+        "claim_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+        "evidence_refs": [
+          "obs:temple:licensed-beds:fy2024",
+          "obs:main-line:licensed-beds:fy2024"
+        ]
+      }
+    ]
+  },
+  "decision_scenario": {
+    "ref": "ushso-artifact://fixture/decision-scenario",
+    "hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "posture_taxonomy": [
+    "acquire",
+    "merge_affiliate",
+    "partner",
+    "compete",
+    "build_capacity",
+    "defer"
+  ],
+  "evidence_boundary": "Synthetic contract fixture only; no product or professional disposition.",
+  "candidate_review": {
+    "competence_role": "evidence_methods_measurement_biostatistics",
+    "exposure_status": "independent_first",
+    "evidence_mutated": false,
+    "claim_dispositions": [
+      {
+        "claim_id": "claim:licensed-bed-scale-context",
+        "evidence_assessment": "uncertain_due_to_evidence_limits",
+        "review_disposition": "revise_and_resubmit",
+        "evidence_refs": [
+          "obs:temple:licensed-beds:fy2024",
+          "obs:main-line:licensed-beds:fy2024"
+        ],
+        "limitation": "Licensed beds alone do not establish staffed capacity, clinical capability, or system Scale.",
+        "overturn_condition": "Receipted, comparable multi-component inputs pass the frozen metric protocol and sensitivity gates."
+      }
+    ],
+    "posture_assessments": [
+      {
+        "posture": "acquire",
+        "effect": "unresolved",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024"],
+        "rationale": "The bounded bed observation is insufficient for a transaction-form implication.",
+        "limitation": "No transaction, governance, finance, or capability evidence is present."
+      },
+      {
+        "posture": "merge_affiliate",
+        "effect": "unresolved",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024"],
+        "rationale": "The bounded bed observation is insufficient for an affiliation implication.",
+        "limitation": "No transaction, governance, finance, or capability evidence is present."
+      },
+      {
+        "posture": "partner",
+        "effect": "unresolved",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
+        "evidence_refs": ["obs:main-line:licensed-beds:fy2024"],
+        "rationale": "Capacity context may motivate diligence but does not establish complementary capability.",
+        "limitation": "Staffing, service mix, access, referral, and demand evidence are absent."
+      },
+      {
+        "posture": "compete",
+        "effect": "unresolved",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
+        "rationale": "A bed-count difference is not evidence of cardiology market advantage.",
+        "limitation": "No comparable cardiology utilization, access, capability, outcomes, or market data are present."
+      },
+      {
+        "posture": "build_capacity",
+        "effect": "unresolved",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
+        "rationale": "Licensed beds do not establish a cardiology capacity gap or achievable expansion.",
+        "limitation": "Need, staffed capacity, workforce, throughput, capital, and implementation constraints are absent."
+      },
+      {
+        "posture": "defer",
+        "effect": "supports",
+        "claim_refs": ["claim:licensed-bed-scale-context"],
+        "evidence_refs": ["obs:temple:licensed-beds:fy2024", "obs:main-line:licensed-beds:fy2024"],
+        "rationale": "Material multi-family evidence is required before this bounded observation can change the decision frame.",
+        "limitation": "This supports additional diligence, not a strategic recommendation."
+      }
+    ],
+    "missing_evidence_requests": [
+      {
+        "request_id": "missing:cardiology-multi-family",
+        "description": "Acquire comparable need, utilization, access/capacity, capability/outcomes, and market-relationship evidence."
+      }
+    ],
+    "method_challenges": [
+      {
+        "challenge_id": "method:bed-count-non-estimand",
+        "description": "Test whether licensed beds are being relabeled as staffed capacity or clinical capability."
+      }
+    ],
+    "prohibited_claims": [
+      "Do not describe licensed-bed count as cardiology capability, quality, demand, or a strategic posture."
+    ],
+    "preserved_reviewer_concerns": [
+      "The fixture proves the review contract, not the truth of a named-system comparison."
+    ],
+    "overall_disposition": "block"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": "ushso.review-protocol-index.v1",
+  "registry_version": "1.0.0",
+  "registry_hash": "sha256:383bbb58defe5cb5dd80382a01c68782052d9f44b4bc383f5c1ba4aa748dd12a",
+  "posture_taxonomy": [
+    "acquire",
+    "merge_affiliate",
+    "partner",
+    "compete",
+    "build_capacity",
+    "defer"
+  ],
+  "protocols": [
+    {
+      "protocol_id": "cso.cardiovascular-clinical-quality.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "cardiovascular_clinical_quality",
+      "title": "Cardiovascular clinical quality and capability review",
+      "protocol_hash": "sha256:75b027d551af1e51f54294b91c39b9b91f0fc56d48bc10499acdbaa7ca4fc2ae",
+      "required_human_competence": "Qualified cardiovascular clinical quality or outcomes expertise for professional disposition.",
+      "candidate_agent_slugs": [
+        "strategy-clinical-operations-consultant",
+        "clinical-research-coordinator"
+      ]
+    },
+    {
+      "protocol_id": "cso.population-health-services.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "population_health_services_research",
+      "title": "Population health, epidemiology, and health-services review",
+      "protocol_hash": "sha256:21e0847ab94fd49ceaa47ba7861aecbfcaf5fb7ac836d73e43959008f56c311e",
+      "required_human_competence": "Qualified epidemiology, population-health, or health-services research expertise.",
+      "candidate_agent_slugs": [
+        "pophealth-population-health-manager",
+        "clinical-research-coordinator"
+      ]
+    },
+    {
+      "protocol_id": "cso.operations-access-capacity.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "operations_access_capacity_workforce",
+      "title": "Operations, access, capacity, and workforce review",
+      "protocol_hash": "sha256:be86fda678ceb94f0a7b4b85d3c7b52259af15e27fb7d31da88247db6449a6d3",
+      "required_human_competence": "Qualified health-system operations, access, capacity, or workforce expertise.",
+      "candidate_agent_slugs": [
+        "operations-hospital-administrator",
+        "operations-workforce-manager"
+      ]
+    },
+    {
+      "protocol_id": "cso.healthcare-finance-capital.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "healthcare_finance_capital",
+      "title": "Healthcare finance and capital review",
+      "protocol_hash": "sha256:883a48c6dec37a236d2549427143027d801fbc18505d72c6a4290b6bee43ce09",
+      "required_human_competence": "Qualified healthcare finance, treasury, capital, or credit expertise.",
+      "candidate_agent_slugs": [
+        "revenue-finance-manager",
+        "strategy-actuarial-advisor"
+      ]
+    },
+    {
+      "protocol_id": "cso.health-economics-competition.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "health_economics_payer_competition",
+      "title": "Health economics, payer dynamics, and competition review",
+      "protocol_hash": "sha256:9db4e93c949f123463ee5ca0e7821d2ca3e7494bf712978bd178c2ab8a63af5f",
+      "required_human_competence": "Qualified health economics, payer-market, or healthcare competition expertise.",
+      "candidate_agent_slugs": [
+        "payer-managed-care-analyst",
+        "strategy-actuarial-advisor"
+      ]
+    },
+    {
+      "protocol_id": "cso.transaction-regulatory-governance.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "transaction_regulatory_governance",
+      "title": "Transaction, regulatory, and governance constraints review",
+      "protocol_hash": "sha256:fe1b88af4f97ce8db478e37ac6c1b11ec0904fe3dc832ede1332a059027db01b",
+      "required_human_competence": "Qualified healthcare transaction, regulatory, governance, or legal expertise.",
+      "candidate_agent_slugs": [
+        "quality-compliance-officer",
+        "strategy-healthcare-consultant"
+      ]
+    },
+    {
+      "protocol_id": "cso.evidence-methods-measurement.v1",
+      "version": "1.0.0",
+      "status": "active",
+      "competence_role": "evidence_methods_measurement_biostatistics",
+      "title": "Evidence methods, measurement, and biostatistics review",
+      "protocol_hash": "sha256:37f245f9fadffda8e2faaeb67612eb3280859ae2e8f84b74e68df9a1dcfbbb72",
+      "required_human_competence": "Qualified evidence synthesis, measurement, epidemiologic methods, or biostatistics expertise.",
+      "candidate_agent_slugs": [
+        "healthit-clinical-data-analyst",
+        "clinical-research-coordinator"
+      ]
+    }
+  ]
+}

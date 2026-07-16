@@ -39,11 +39,29 @@ Each agent is a long-form Markdown specialist with YAML frontmatter, role-specif
 | Easier agent selection | CLI chooser, task-based docs, starter prompts, output modes, and handoff maps. |
 | Practical administrative output | Appeal packets, audit binders, gap analyses, dashboards, charters, payer matrices, readiness plans, and workflow checklists. |
 | Operator OS workflow support | 16 offline-first workflow evidence packs with coverage metadata, citation cards, provenance rules, and secure-environment defaults. |
+| Structured CSO review | Seven versioned competence protocols, strict frozen-input review output, and advisory conflict mapping without posture recommendations or model-owned approval. |
 | Better regulatory handling | Role-aware references to HIPAA, CMS, OIG, HEDIS, Stars, MIPS/QPP, HRSA 340B, NHSN, TEFCA, HL7/FHIR, X12, and other domain sources. |
 | Portable installation | Claude Code agents, Claude/OpenCode skills, Codex agent prompts, Cursor/Windsurf/Copilot rules, Aider context, and plain Markdown. |
 | Prompt quality controls | An included self-improvement kit with a frozen rubric, role baselines, scorer guidance, and append-only eval results. |
 
 These agents are for healthcare administration support. They are not clinicians, attorneys, auditors, coders of record, billing authorities, or a safe PHI-processing environment. See [Trust and Safety](docs/trust-and-safety.md) for scope, PHI, human escalation, source freshness, and eval limits.
+
+## Versioned CSO Review Protocols
+
+The [Review Protocol Registry](docs/review-protocols/README.md) is a separate
+machine-readable seam from the general prompt catalog. It routes exact claims
+to seven competence classes and returns canonical `ushso.strategic-review.v1`
+records over frozen evidence, identity, computation, claim, and Decision
+Scenario hashes.
+
+```bash
+healthcare-agents review protocols --json
+healthcare-agents review evaluate --input request.json --output review.json
+```
+
+The evaluator validates model-assisted candidate assessments; it does not make
+professional judgments. Human reviewers retain competence verification,
+material disagreement resolution, adjudication, and release authority.
 
 ## Healthcare Admin Workup Engine and Operator OS
 

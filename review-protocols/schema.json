@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajhcs/healthcare-agents/review-protocols/schema.json",
+  "title": "USHSO Review Protocol Registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "registry_version", "effective_date", "status", "posture_taxonomy", "shared_rules", "protocols"],
+  "properties": {
+    "schema_version": {"const": "ushso.review-protocol-registry.v1"},
+    "registry_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "effective_date": {"type": "string", "format": "date"},
+    "status": {"enum": ["draft", "active", "retired"]},
+    "posture_taxonomy": {"$ref": "#/$defs/postures"},
+    "shared_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_states", "required_first_exposure", "required_claim_fields", "prohibited_behaviors", "human_authority"],
+      "properties": {
+        "evidence_states": {"type": "array", "items": {"enum": ["supports", "weakens", "unresolved", "not_applicable", "outside_scope"]}, "minItems": 5, "maxItems": 5, "uniqueItems": true},
+        "required_first_exposure": {"const": "independent_first"},
+        "required_claim_fields": {"$ref": "#/$defs/nonEmptyStrings"},
+        "prohibited_behaviors": {"$ref": "#/$defs/nonEmptyStrings"},
+        "human_authority": {"$ref": "#/$defs/nonEmptyStrings"}
+      }
+    },
+    "protocols": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/protocol"}}
+  },
+  "$defs": {
+    "nonEmptyStrings": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "postures": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "acquire"}, {"const": "merge_affiliate"}, {"const": "partner"},
+        {"const": "compete"}, {"const": "build_capacity"}, {"const": "defer"}
+      ],
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protocol_id", "version", "status", "competence_role", "title", "criteria", "falsification_habits", "permitted_tools", "prohibited_inferences", "escalation_rules", "required_human_competence", "candidate_agent_slugs"],
+      "properties": {
+        "protocol_id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "status": {"enum": ["draft", "active", "retired"]},
+        "competence_role": {"enum": ["cardiovascular_clinical_quality", "population_health_services_research", "operations_access_capacity_workforce", "healthcare_finance_capital", "health_economics_payer_competition", "transaction_regulatory_governance", "evidence_methods_measurement_biostatistics"]},
+        "title": {"type": "string", "minLength": 1},
+        "criteria": {"$ref": "#/$defs/nonEmptyStrings"},
+        "falsification_habits": {"$ref": "#/$defs/nonEmptyStrings"},
+        "permitted_tools": {"$ref": "#/$defs/nonEmptyStrings"},
+        "prohibited_inferences": {"$ref": "#/$defs/nonEmptyStrings"},
+        "escalation_rules": {"$ref": "#/$defs/nonEmptyStrings"},
+        "required_human_competence": {"type": "string", "minLength": 1},
+        "candidate_agent_slugs": {"$ref": "#/$defs/nonEmptyStrings"}
+      }
+    }
+  }
+}
