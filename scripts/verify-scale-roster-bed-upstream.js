@@ -43,6 +43,10 @@ for (const object of toolkitHandoff.objects) {
 }
 
 const dataInput = gitJson(dataMcpRepo, manifest.data_mcp.producer_commit, manifest.data_mcp.input_path);
+assert.strictEqual(dataInput.producer.commit, '0000000000000000000000000000000000000000', 'checked-in Data MCP input must retain its deterministic producer placeholder');
+dataInput.producer.commit = manifest.data_mcp.producer_commit;
+const rebuiltBundleHash = sha256({ schema_version: 'ushso.public-evidence-bundle.v1', ...dataInput });
+assert.strictEqual(rebuiltBundleHash, manifest.data_mcp.bundle_hash, 'rebuilt public evidence bundle hash must match manifest');
 const upstreamStrings = new Set();
 (function collect(value) {
   if (typeof value === 'string') upstreamStrings.add(value);

@@ -1,33 +1,33 @@
 [
   {
     "case_id": "mismatched-bed-bases",
-    "target": "handoff",
-    "remove_concern_id": "bed-basis-comparability",
-    "expected_error": "cover every required concern id"
+    "target": "request_evidence",
+    "remove_evidence_ref": "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+    "expected_error": "review must preserve required domain evidence"
   },
   {
     "case_id": "stale-ownership",
-    "target": "handoff",
-    "remove_concern_id": "identity-boundary-and-stale-ownership",
-    "expected_error": "cover every required concern id"
+    "target": "request_evidence",
+    "remove_evidence_ref": "conflict:chestnut-hill-ownership-and-bases",
+    "expected_error": "review must preserve conflict evidence"
   },
   {
     "case_id": "shared-entity-double-counting",
-    "target": "handoff",
-    "remove_concern_id": "shared-reporting-double-count",
-    "expected_error": "cover every required concern id"
+    "target": "request_evidence",
+    "remove_evidence_ref": "conflict:christianacare-shared-cms-reporting-entity",
+    "expected_error": "review must preserve conflict evidence"
   },
   {
     "case_id": "omitted-or-unresolved-facilities",
-    "target": "handoff",
-    "remove_concern_id": "roster-boundaries-and-coverage",
-    "expected_error": "cover every required concern id"
+    "target": "request_evidence",
+    "remove_evidence_ref": "coverage:bed-missing:penn-medicine:hup-cedar",
+    "expected_error": "review must preserve required domain evidence"
   },
   {
     "case_id": "missing-all-six-coverage",
-    "target": "handoff",
-    "remove_concern_id": "missing-scale-input-families",
-    "expected_error": "cover every required concern id"
+    "target": "request_evidence",
+    "remove_evidence_ref": "computation:scale-v1:all-six:no-score:2026-07-16",
+    "expected_error": "review must preserve required domain evidence"
   },
   {
     "case_id": "prohibited-partial-score",

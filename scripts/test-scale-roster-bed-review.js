@@ -136,14 +136,24 @@ for (const field of ['posture_score', 'recommended_posture', 'human_approval']) 
 
 // Concrete adversarial domain fixtures remove a required concern or attempt a prohibited pass.
 for (const adversarialCase of adversarialCases) {
-  if (adversarialCase.target === 'handoff') {
-    const mutatedHandoff = clone(handoff);
-    mutatedHandoff.concern_overturns = mutatedHandoff.concern_overturns.filter(item => item.concern_id !== adversarialCase.remove_concern_id);
-    assert.match(validateScaleReviewHandoff(mutatedHandoff, [methods, operations], conflict, upstreamManifest).join('; '), new RegExp(adversarialCase.expected_error));
+  if (adversarialCase.target === 'request_evidence') {
+    const mutatedRequest = clone(methodsRequest);
+    (function removeEvidenceRef(value) {
+      if (Array.isArray(value)) {
+        for (let index = value.length - 1; index >= 0; index -= 1) {
+          if (value[index] === adversarialCase.remove_evidence_ref) value.splice(index, 1);
+          else removeEvidenceRef(value[index]);
+        }
+      } else if (value && typeof value === 'object') {
+        for (const child of Object.values(value)) removeEvidenceRef(child);
+      }
+    })(mutatedRequest.candidate_review);
+    const messages = validateScaleReviewRequest(mutatedRequest, upstreamManifest).join('; ');
+    assert(messages.includes(adversarialCase.expected_error), `${adversarialCase.case_id} must reject its concrete evidence mutation: ${messages}`);
   } else {
     const mutatedRequest = clone(methodsRequest);
     mutatedRequest.candidate_review.overall_disposition = adversarialCase.set_overall_disposition;
-    assert.match(validateScaleReviewRequest(mutatedRequest, upstreamManifest).join('; '), new RegExp(adversarialCase.expected_error));
+    assert(validateScaleReviewRequest(mutatedRequest, upstreamManifest).join('; ').includes(adversarialCase.expected_error));
   }
 }
 
