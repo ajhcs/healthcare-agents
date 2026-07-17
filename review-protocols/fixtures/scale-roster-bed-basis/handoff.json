@@ -3,17 +3,18 @@
   "downstream_bead": "healthcare-toolkit-2rr9.6.1",
   "status": "blocked_pending_human_adjudication",
   "request_hashes": {
-    "methods": "sha256:2b671176e4b204e585cacb8b48b3fe55aac0b7b06a607c403ea94a53ec12ebf9",
-    "operations": "sha256:63db426d533cd7f40f9932251410650bc9d85dbadbd012a397744ead9f7cbf5c",
-    "conflict": "sha256:13f0bd2f4f6c189fac593a2b0ea7ed4b467e1229642b23ff1b489cd012005528"
+    "methods": "sha256:cdd4cb4780a546b6417ffd3fa5a3457d61eb6bd8e75210e114806616c2aa0eeb",
+    "operations": "sha256:85210278520d4435177598f5341b46ed17ba101133d047e3c2767bc730efdf4c",
+    "conflict": "sha256:0fe45a89729a231e812cec4d2af32572fed04dbf154f9e8180029c86ab9371d4"
   },
   "review_hashes": {
-    "methods_first_assessment": "sha256:501e5cfb8085aea31b24a7d0f71a72ef47a4673c774c61235c3c0cb62cd6403b",
-    "methods_output": "sha256:a65eefe3753f7e0d7dd67d1f28d43481fb9e03b005533e4a10a9486785f8f90d",
-    "operations_first_assessment": "sha256:f3d505d6fd9f9e5a4c896864656c0b7be8a24ad1357ff7d77899f1ebcccaadf6",
-    "operations_output": "sha256:c028519d1b468c746bf8e3c9f77ac77dda65541c10c1940c175a72340247e0e1"
+    "methods_first_assessment": "sha256:a0c0292742fb03a29afe643b3aa5e908a038a35c180aec15a5c83f11621d09f5",
+    "methods_output": "sha256:8779b4271bae0d9b430e9a353287d23addc48318f23c6e1765cb38206d6b84af",
+    "operations_first_assessment": "sha256:e0a05a5d1d272102091f9ad51fd587048bd9d2c9e0d4d3840ba267177a5ff610",
+    "operations_output": "sha256:2e54bc3b44292481c621e8e7b0dd07d57d174073441f90611dcc31c7437eeade"
   },
-  "conflict_output_hash": "sha256:1799b549514e4d07e71537ce54337000b2dbe5df8c7ebd9c861ce0ebeb6b2710",
+  "conflict_output_hash": "sha256:3fa93160501098abeb6dcd8964a642c9b7d079a721c32a63a918ef77d7c71c63",
+  "upstream_manifest_hash": "sha256:5f51d685dcd9723a10ea575be5bde65e3e9eb34cc0e005a2877b355470110b7c",
   "frozen_input_hashes": {
     "evidence": "sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568",
     "scenario": "sha256:8dbc16d8fb4c970a2b8514996e8f5f52ae3cfc0c219a12c6d6472494a7e00f15",
@@ -28,6 +29,143 @@
     "Heterogeneous 2023 through Q1/FY2026 periods and incompatible bed bases prevent a common all-six denominator without prohibited imputation or explicit roster narrowing.",
     "Seven additional Scale input families remain not yet researched.",
     "No staffed or achievable capacity inference is supported."
+  ],
+  "concern_overturns": [
+    {
+      "concern_id": "identity-boundary-and-stale-ownership",
+      "evidence_refs": [
+        "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+        "conflict:chestnut-hill-ownership-and-bases"
+      ],
+      "overturn_condition": "Provide authoritative, source-receipted legal ownership and control effective on one comparison date for every system and candidate, including aliases and ownership changes, then publish a human-adjudicated identity binding.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:0",
+        "review:5f079b05abb74e38b1354bda9cd7b863:0"
+      ]
+    },
+    {
+      "concern_id": "roster-boundaries-and-coverage",
+      "evidence_refs": [
+        "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+        "roster:temple-health:chestnut-hill",
+        "roster:penn-medicine:hup-cedar"
+      ],
+      "overturn_condition": "Adjudicate all 63 candidates at one effective date, retaining evidence-backed included, excluded, unresolved, and inactive states; demonstrate that the resulting all-six roster contains no silent narrowing, omission, or duplicate.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:1",
+        "review:c2882aa0c89fe6d4be27517f1c034a92:2",
+        "review:c2882aa0c89fe6d4be27517f1c034a92:7",
+        "review:5f079b05abb74e38b1354bda9cd7b863:1"
+      ]
+    },
+    {
+      "concern_id": "shared-reporting-double-count",
+      "evidence_refs": [
+        "conflict:christianacare-shared-cms-reporting-entity",
+        "conflict:temple-shared-cms-reporting-entity",
+        "cms-pos:390027:bed_cnt"
+      ],
+      "overturn_condition": "Supply authoritative campus-to-reporting-entity crosswalks and a prespecified, human-approved allocation or exclusion rule for CMS 080001 and 390027, followed by a reproducible no-double-count audit.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:3",
+        "review:5f079b05abb74e38b1354bda9cd7b863:2",
+        "review:5f079b05abb74e38b1354bda9cd7b863:3"
+      ]
+    },
+    {
+      "concern_id": "specialty-campus-omission",
+      "evidence_refs": [
+        "conflict:cooper-childrens-separate-hospital",
+        "coverage:bed-missing:penn-medicine:hup-cedar",
+        "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+        "conflict:chestnut-hill-ownership-and-bases"
+      ],
+      "overturn_condition": "For every child, specialty, behavioral, rehabilitation, remote-campus, co-located, and joint-venture candidate, provide current facility class, ownership, active status, CCN or license linkage, separable bed basis, and an adjudicated inclusion rule.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:4",
+        "review:c2882aa0c89fe6d4be27517f1c034a92:5",
+        "review:c2882aa0c89fe6d4be27517f1c034a92:6",
+        "review:5f079b05abb74e38b1354bda9cd7b863:4",
+        "review:5f079b05abb74e38b1354bda9cd7b863:5"
+      ]
+    },
+    {
+      "concern_id": "reporting-period-alignment",
+      "evidence_refs": [
+        "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+        "cms-hcris:210032:number-of-beds",
+        "md-bed:union:licensed-fy2026"
+      ],
+      "overturn_condition": "Reacquire every roster and bed observation for one common as-of date or overlapping reporting period, and demonstrate that intervening ownership, operating-status, facility, and bed-status changes do not alter the comparison.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:8",
+        "review:5f079b05abb74e38b1354bda9cd7b863:6"
+      ]
+    },
+    {
+      "concern_id": "bed-basis-comparability",
+      "evidence_refs": [
+        "conflict:union-bed-bases",
+        "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
+        "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+        "cms-pos:210032:bed_cnt",
+        "cms-hcris:210032:number-of-beds"
+      ],
+      "overturn_condition": "Obtain the same explicitly defined licensed, installed, staffed, in-service, or available-bed construct for every included facility and period; preserve other constructs separately and document why no conversion, averaging, or substitution is required.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:9",
+        "review:5f079b05abb74e38b1354bda9cd7b863:7"
+      ]
+    },
+    {
+      "concern_id": "aggregation-and-system-rollup",
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "identity-binding:scale-v1:all-six-roster-bed:2026-07-16"
+      ],
+      "overturn_condition": "Publish and independently verify a governed facility-to-system aggregation rule, duplicate-detection ledger, omission audit, shared-entity treatment, uncertainty policy, and sensitivity results before producing any system rollup.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:10",
+        "review:5f079b05abb74e38b1354bda9cd7b863:9"
+      ]
+    },
+    {
+      "concern_id": "missing-scale-input-families",
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16"
+      ],
+      "overturn_condition": "Populate all seven not-yet-researched Scale input families for every system under the same identity, roster, period, denominator, and aggregation boundaries, then rerun the frozen deterministic formula without imputation.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:11"
+      ]
+    },
+    {
+      "concern_id": "staffed-and-achievable-capacity",
+      "evidence_refs": [
+        "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+        "coverage:bed-missing:cooper-university-health-care:childrens-regional"
+      ],
+      "overturn_condition": "Provide comparable staffed and in-service beds, closures, occupancy, throughput, workforce coverage, scheduling delay, transfer acceptance, referral leakage, capital, and implementation constraints before inferring operational or achievable capacity.",
+      "review_concern_refs": [
+        "review:5f079b05abb74e38b1354bda9cd7b863:8"
+      ]
+    },
+    {
+      "concern_id": "human-authority-boundary",
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "conflict:chestnut-hill-ownership-and-bases",
+        "conflict:christianacare-shared-cms-reporting-entity",
+        "conflict:cooper-childrens-separate-hospital",
+        "conflict:temple-shared-cms-reporting-entity",
+        "conflict:union-bed-bases"
+      ],
+      "overturn_condition": "Obtain named, competence-matched human adjudication for every material discrepancy and preserved concern, followed by the separate accountable release authority required for calculation, projection, recommendation, admission, or promotion.",
+      "review_concern_refs": [
+        "review:c2882aa0c89fe6d4be27517f1c034a92:12",
+        "review:5f079b05abb74e38b1354bda9cd7b863:10"
+      ]
+    }
   ],
   "prohibited_until_adjudicated": [
     "system bed totals",

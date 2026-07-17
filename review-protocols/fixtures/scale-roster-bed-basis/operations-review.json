@@ -1,6 +1,6 @@
 {
   "schema_version": "ushso.strategic-review.v1",
-  "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+  "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
   "request_id": "review-request:scale-roster-bed:operations:2026-07-17",
   "review_tier": "ordinary_material_claim",
   "protocol": {
@@ -24,8 +24,8 @@
       "attestation": true
     }
   },
-  "review_request_hash": "sha256:63db426d533cd7f40f9932251410650bc9d85dbadbd012a397744ead9f7cbf5c",
-  "review_context_hash": "sha256:aad5064ff8d85ccf9e8477ac9dff7b8218d4bc25eef78aeb5b3b7ac05b8ece1d",
+  "review_request_hash": "sha256:85210278520d4435177598f5341b46ed17ba101133d047e3c2767bc730efdf4c",
+  "review_context_hash": "sha256:ed6848aad3ee9583b0a4da1e3d6f246c642e0ebe7d4e04c706d56d3f323a6899",
   "input_hashes": [
     "sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568",
     "sha256:64e4322e7561ede8b0b50129ed40b278987392480eb215f33e84336bffc7ebc3",
@@ -78,18 +78,18 @@
           "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
           "cms-pos:390027:bed_cnt",
           "cms-hcris:390027:number-of-beds",
-          "bed-missing:jefferson-health:jefferson-abington-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
-          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-          "bed-missing:penn-medicine:hup-cedar",
-          "bed-missing:cooper-university-health-care:childrens-regional",
-          "bed-missing:main-line-health:mirmont"
+          "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+          "coverage:bed-missing:main-line-health:mirmont"
         ]
       }
     ]
   },
-  "frozen_inputs_hash": "sha256:4ef1f335f15b79f1be26f7328ab8f45c2430691c4ac0fd9fe78bf647c97f947d",
+  "frozen_inputs_hash": "sha256:654bc508f00e98596edad74443ef852b50eff54325bb29bc58716cc9198587aa",
   "evidence_bundle_ref": "ushso-artifact://scale-roster-beds-20260716-08/public-evidence-bundle",
   "identity_binding_ref": "git:1f17d7cb8cc483a884ae4ed043d25012d73b225e:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/identity-binding.json",
   "decision_scenario": {
@@ -98,7 +98,7 @@
   },
   "decision_scenario_ref": "git:1f17d7cb8cc483a884ae4ed043d25012d73b225e:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/decision-scenario.json",
   "evidence_boundary": "Frozen source-local public aggregate evidence only. The packet preserves 63 roster candidates (54 included, six unresolved, three excluded), five open identity/bed conflicts, heterogeneous 2023 through Q1/FY2026 periods, and incompatible licensed, staffed, POS, HCRIS, AHRQ, and official bed bases. No evidence acquisition, allocation, imputation, formula execution, score, strategic conclusion, professional adjudication, projection, admission, deployment, or public promotion is authorized.",
-  "first_assessment_hash": "sha256:f3d505d6fd9f9e5a4c896864656c0b7be8a24ad1357ff7d77899f1ebcccaadf6",
+  "first_assessment_hash": "sha256:e0a05a5d1d272102091f9ad51fd587048bd9d2c9e0d4d3840ba267177a5ff610",
   "exposure_status": "independent_first",
   "evidence_mutated": false,
   "posture_assessments": [
@@ -138,7 +138,7 @@
       ],
       "evidence_refs": [
         "computation:scale-v1:all-six:no-score:2026-07-16",
-        "bed-missing:penn-medicine:hup-cedar",
+        "coverage:bed-missing:penn-medicine:hup-cedar",
         "conflict:cooper-childrens-separate-hospital"
       ],
       "rationale": "Campus and specialty ambiguity does not show complementary operational capacity or executable access pathways.",
@@ -208,10 +208,10 @@
         "cms-hcris:210032:number-of-beds",
         "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
         "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
-        "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-        "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-        "bed-missing:penn-medicine:hup-cedar",
-        "bed-missing:cooper-university-health-care:childrens-regional"
+        "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+        "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+        "coverage:bed-missing:penn-medicine:hup-cedar",
+        "coverage:bed-missing:cooper-university-health-care:childrens-regional"
       ],
       "limitation": "The bounded no-calculation conclusion is supported, but the packet establishes no operationally comparable all-six capacity denominator. It mixes licensed, official-unspecified, POS, certified, HCRIS period-end available, AHRQ, and set-up-and-staffed bases and lacks comparable workforce, occupancy, throughput, scheduling, transfer, referral, and temporary-closure constraints.",
       "overturn_condition": "Require one-date identity and control crosswalks for all 63 candidates; explicit alias, child, campus, joint-venture, specialty, inactive, and shared-CCN treatment; a no-double-count/no-omission audit; one consistent bed basis for every included facility; and, for any operational-capacity claim, comparable staffed and in-service beds, closures, occupancy, throughput, workforce, scheduling, transfer, and referral constraints. Complete the seven other Scale families and rerun the deterministic computation."
@@ -335,10 +335,10 @@
           "system-identity:penn-medicine",
           "system-identity:cooper-university-health-care",
           "system-identity:main-line-health",
-          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-          "bed-missing:penn-medicine:hup-cedar",
-          "bed-missing:cooper-university-health-care:childrens-regional",
+          "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional",
           "conflict:chestnut-hill-ownership-and-bases"
         ],
         "rationale": "All six source-local identities exist, but specialty, children’s, remote-campus, joint-ownership, and inactive-site boundaries create omission or double-count risk. No workforce, facility availability, scheduling, transfer, or referral evidence shows nominal capacity is usable or achievable."
@@ -346,5 +346,5 @@
     ],
     "advisory_only": true
   },
-  "output_sha256": "sha256:c028519d1b468c746bf8e3c9f77ac77dda65541c10c1940c175a72340247e0e1"
+  "output_sha256": "sha256:2e54bc3b44292481c621e8e7b0dd07d57d174073441f90611dcc31c7437eeade"
 }

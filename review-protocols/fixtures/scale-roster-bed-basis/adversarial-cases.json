@@ -1,0 +1,38 @@
+[
+  {
+    "case_id": "mismatched-bed-bases",
+    "target": "handoff",
+    "remove_concern_id": "bed-basis-comparability",
+    "expected_error": "cover every required concern id"
+  },
+  {
+    "case_id": "stale-ownership",
+    "target": "handoff",
+    "remove_concern_id": "identity-boundary-and-stale-ownership",
+    "expected_error": "cover every required concern id"
+  },
+  {
+    "case_id": "shared-entity-double-counting",
+    "target": "handoff",
+    "remove_concern_id": "shared-reporting-double-count",
+    "expected_error": "cover every required concern id"
+  },
+  {
+    "case_id": "omitted-or-unresolved-facilities",
+    "target": "handoff",
+    "remove_concern_id": "roster-boundaries-and-coverage",
+    "expected_error": "cover every required concern id"
+  },
+  {
+    "case_id": "missing-all-six-coverage",
+    "target": "handoff",
+    "remove_concern_id": "missing-scale-input-families",
+    "expected_error": "cover every required concern id"
+  },
+  {
+    "case_id": "prohibited-partial-score",
+    "target": "request",
+    "set_overall_disposition": "pass",
+    "expected_error": "must remain block"
+  }
+]

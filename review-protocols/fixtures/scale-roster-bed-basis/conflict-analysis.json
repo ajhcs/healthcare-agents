@@ -1,34 +1,34 @@
 {
   "schema_version": "ushso.ai-conflict-analysis.v1",
-  "analysis_id": "conflict:c679730ad4fb360cde3226b473a77469",
+  "analysis_id": "conflict:5c7dcb3430606da719e46e539592a22c",
   "request_id": "conflict-request:scale-roster-bed:2026-07-17",
   "review_tier": "ordinary_material_claim",
   "review_refs": [
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
-      "output_sha256": "sha256:a65eefe3753f7e0d7dd67d1f28d43481fb9e03b005533e4a10a9486785f8f90d"
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
+      "output_sha256": "sha256:8779b4271bae0d9b430e9a353287d23addc48318f23c6e1765cb38206d6b84af"
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
-      "output_sha256": "sha256:c028519d1b468c746bf8e3c9f77ac77dda65541c10c1940c175a72340247e0e1"
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
+      "output_sha256": "sha256:2e54bc3b44292481c621e8e7b0dd07d57d174073441f90611dcc31c7437eeade"
     }
   ],
   "discrepancies": [
     {
-      "discrepancy_id": "discrepancy:6843d8abca965c424d386dc7",
+      "discrepancy_id": "discrepancy:4d682970c79dc0aaf41da05b",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.acquire.evidence_refs",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "conflict:chestnut-hill-ownership-and-bases"
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "conflict:christianacare-shared-cms-reporting-entity",
@@ -40,17 +40,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:22964345324336971e96e94c",
+      "discrepancy_id": "discrepancy:0eb225d3304a1c859d58de1d",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.acquire.rationale",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "An incomplete packet and unresolved ownership/basis questions do not establish transaction suitability."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "The no-score result and unresolved ownership boundaries create diligence questions, not acquisition evidence."
         }
       ],
@@ -58,17 +58,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:441933c6310d49da6106e345",
+      "discrepancy_id": "discrepancy:634f1d72b17974686d49eae0",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.acquire.limitation",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Transaction, valuation, governance, control, integration, and forecast evidence are absent. This assessment does not recommend a posture."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Transaction scope, control, workforce, achievable capacity, integration, finance, regulation, and demand are absent. This assessment does not recommend a posture."
         }
       ],
@@ -76,20 +76,20 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:59f5f1acba6c29b165b43417",
+      "discrepancy_id": "discrepancy:6ffc96fe52b63ea30c62aa93",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.merge_affiliate.evidence_refs",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "conflict:christianacare-shared-cms-reporting-entity"
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "conflict:temple-shared-cms-reporting-entity",
@@ -101,17 +101,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:14948de4cbfaec678eb9325f",
+      "discrepancy_id": "discrepancy:54d7fc175077024652d2cc21",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.merge_affiliate.rationale",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Shared reporting entities demonstrate a measurement problem, not affiliation feasibility or benefit."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Shared reporting and joint ownership prevent a clean comparison and do not establish affiliation feasibility."
         }
       ],
@@ -119,17 +119,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:62926efb0db4b7d6374715e8",
+      "discrepancy_id": "discrepancy:d30d1e56e8782a21c8b89ac8",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.merge_affiliate.limitation",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Governance, control, affiliation, finance, capability, and implementation evidence are absent. This assessment does not recommend a posture."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Governance, operating model, workforce, referral, transfer, and integration constraints are absent. This assessment does not recommend a posture."
         }
       ],
@@ -137,23 +137,23 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:08017989770b263f529492f7",
+      "discrepancy_id": "discrepancy:eafca07f29d08253c8853f17",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.partner.evidence_refs",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
-            "bed-missing:jefferson-health:jefferson-abington-hospital"
+            "coverage:bed-missing:jefferson-health:jefferson-abington-hospital"
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
-            "bed-missing:penn-medicine:hup-cedar",
+            "coverage:bed-missing:penn-medicine:hup-cedar",
             "conflict:cooper-childrens-separate-hospital"
           ]
         }
@@ -162,17 +162,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:428eb996ec118b186cae2f02",
+      "discrepancy_id": "discrepancy:55b29a8e56433bb039590bc3",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.partner.rationale",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Missing facility crosswalks and Scale inputs cannot establish complementary capacity, demand, access, or partnership value."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Campus and specialty ambiguity does not show complementary operational capacity or executable access pathways."
         }
       ],
@@ -180,17 +180,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:9ccef8eb67f614031f89ca46",
+      "discrepancy_id": "discrepancy:b94cb65cb1ecc8ae8f8d4f7c",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.partner.limitation",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Service-line, referral, utilization, workforce, access, and partnership evidence are absent. This assessment does not recommend a posture."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Demand, staffed capacity, scheduling, transfer, referral, and workforce evidence are absent. This assessment does not recommend a posture."
         }
       ],
@@ -198,13 +198,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:3c0147ef352ca5c0c4bc00f2",
+      "discrepancy_id": "discrepancy:11e607807a374ecc0593a0b8",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.compete.evidence_refs",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "conflict:union-bed-bases",
@@ -212,7 +212,7 @@
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "union-official-103",
@@ -225,17 +225,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:eb14034ccb53bc888a15c5b1",
+      "discrepancy_id": "discrepancy:eefc31253b47f4f96a671172",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.compete.rationale",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Noncomparable bed definitions, periods, and reporting entities cannot support relative scale or competitive position."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Different bed bases and periods cannot establish operational scale, access, throughput, or competitive capacity."
         }
       ],
@@ -243,17 +243,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:13515febd5e216ea0f5b9b61",
+      "discrepancy_id": "discrepancy:2a28ffc858ca008fae174c05",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.compete.limitation",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "No valid denominator, market definition, utilization, quality, access, or competitive-effect evidence exists. This assessment does not recommend a posture."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "No common market, service, utilization, staffed-capacity, throughput, access-friction, or achievable-capacity evidence exists. This assessment does not recommend a posture."
         }
       ],
@@ -261,13 +261,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:0512560067219352c1ecda2b",
+      "discrepancy_id": "discrepancy:cfecf50630c70dd0d3428db4",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.build_capacity.evidence_refs",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
@@ -275,7 +275,7 @@
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
@@ -288,17 +288,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:16b58bfaad5ba5438639421a",
+      "discrepancy_id": "discrepancy:97882c55e3b4a54a2a8e66a7",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.build_capacity.rationale",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Distinct licensed and set-up-and-staffed measures do not identify an operational capacity gap."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Licensed, set-up-and-staffed, and available measures do not identify a gap, bottleneck, or feasible increment."
         }
       ],
@@ -306,17 +306,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:eeca65827309aa9059f040f0",
+      "discrepancy_id": "discrepancy:cb3cb3fff4169134c9d1286c",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.build_capacity.limitation",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Need, occupancy, staffed capacity, workforce, throughput, capital, site feasibility, and implementation evidence are absent. This assessment does not recommend a posture."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Installed and in-service capacity, occupancy, demand, workforce, scheduling, capital, transfer, referral, and implementation constraints are absent. This assessment does not recommend a posture."
         }
       ],
@@ -324,20 +324,20 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:76f595eb2e3271a91ed82eac",
+      "discrepancy_id": "discrepancy:f88d341abd553dc38cc737ab",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.defer.evidence_refs",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "identity-binding:scale-v1:all-six-roster-bed:2026-07-16"
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
             "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
@@ -349,17 +349,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:303ba41ced4e0d870580a62c",
+      "discrepancy_id": "discrepancy:c533b1ce3d0544f77ec1737c",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.defer.rationale",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "The evidence blocks the present calculation, but a process no-go is not evidence for a strategic posture."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "The objects authorize governed research and establish a calculation block, not selection of a strategic posture."
         }
       ],
@@ -367,17 +367,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:a890d1739c2ecbb1fced0e53",
+      "discrepancy_id": "discrepancy:947fe4df8f8a6471f5b31a5a",
       "type": "warrant_or_posture_mapping",
       "field_path": "posture_assessments.defer.limitation",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Timing and strategic consequences of additional diligence are outside this methods review. This assessment does not recommend a posture."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "A process block does not establish that deferral is strategically preferable. This assessment does not recommend a posture."
         }
       ],
@@ -385,13 +385,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:55900938a4d4c63c2f03f071",
+      "discrepancy_id": "discrepancy:de0efc0b656278a9600323eb",
       "type": "evidence_assessment",
       "field_path": "claim_dispositions.claim:scale-v1:all-six:not-calculable:2026-07-16.evidence_refs",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "computation:scale-v1:all-six:no-score:2026-07-16",
             "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
@@ -400,13 +400,13 @@
             "conflict:cooper-childrens-separate-hospital",
             "conflict:temple-shared-cms-reporting-entity",
             "conflict:union-bed-bases",
-            "bed-missing:jefferson-health:jefferson-abington-hospital",
-            "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
-            "bed-missing:penn-medicine:hup-cedar"
+            "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+            "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+            "coverage:bed-missing:penn-medicine:hup-cedar"
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
             "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
@@ -421,10 +421,10 @@
             "cms-hcris:210032:number-of-beds",
             "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
             "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
-            "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-            "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-            "bed-missing:penn-medicine:hup-cedar",
-            "bed-missing:cooper-university-health-care:childrens-regional"
+            "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+            "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+            "coverage:bed-missing:penn-medicine:hup-cedar",
+            "coverage:bed-missing:cooper-university-health-care:childrens-regional"
           ]
         }
       ],
@@ -432,17 +432,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:f19afa5dd57a7e9fce00f87c",
+      "discrepancy_id": "discrepancy:44989a5035a61f9a3ddeecb2",
       "type": "evidence_assessment",
       "field_path": "claim_dispositions.claim:scale-v1:all-six:not-calculable:2026-07-16.limitation",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "The descriptive process claim that calculation is blocked is supported: seven Scale input families remain not yet researched, the approved-roster and common-bed-basis gates remain unresolved, and open ownership, shared-reporting, period, and bed-definition conflicts prevent a common all-six denominator. This validates no system total, comparison, score, ranking, posture, or causal inference."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "The bounded no-calculation conclusion is supported, but the packet establishes no operationally comparable all-six capacity denominator. It mixes licensed, official-unspecified, POS, certified, HCRIS period-end available, AHRQ, and set-up-and-staffed bases and lacks comparable workforce, occupancy, throughput, scheduling, transfer, referral, and temporary-closure constraints."
         }
       ],
@@ -450,17 +450,17 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:fc360d311504dba6d10ae1d4",
+      "discrepancy_id": "discrepancy:5f2fa181744fcc4fdf13d7d3",
       "type": "evidence_assessment",
       "field_path": "claim_dispositions.claim:scale-v1:all-six:not-calculable:2026-07-16.overturn_condition",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": "Overturn only with a newly frozen packet containing all nine inputs for every system; one date-aligned and geography-bounded 63-candidate roster with every included, excluded, inactive, specialty, child, campus, joint-venture, alias, and ownership-change disposition adjudicated; one prespecified bed definition, period, denominator, and aggregation rule applied without silent shared-entity allocation; and evidence-specific resolution of all five preserved conflicts, Jefferson crosswalk missingness, and Penn HUP-Cedar ambiguity."
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": "Require one-date identity and control crosswalks for all 63 candidates; explicit alias, child, campus, joint-venture, specialty, inactive, and shared-CCN treatment; a no-double-count/no-omission audit; one consistent bed basis for every included facility; and, for any operational-capacity claim, comparable staffed and in-service beds, closures, occupancy, throughput, workforce, scheduling, transfer, and referral constraints. Complete the seven other Scale families and rerun the deterministic computation."
         }
       ],
@@ -468,13 +468,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:0416fcef1f610272afdc09c6",
+      "discrepancy_id": "discrepancy:b4335b3dc05ff5462f0936e2",
       "type": "review_concern_or_challenge",
       "field_path": "missing_evidence_requests",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             {
               "request_id": "missing:all-six-effective-date-roster",
@@ -511,7 +511,7 @@
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             {
               "request_id": "missing:all-six-common-date-roster-adjudication",
@@ -540,13 +540,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:e940609ebf987bd8adea0421",
+      "discrepancy_id": "discrepancy:198a1f3d83db60c85f1f13cb",
       "type": "review_concern_or_challenge",
       "field_path": "method_challenges",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             {
               "challenge_id": "method:scope-perturbation-roster",
@@ -575,7 +575,7 @@
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             {
               "challenge_id": "method:bed-basis-substitution",
@@ -604,13 +604,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:1dabcf09f8a4c22e840bc3ad",
+      "discrepancy_id": "discrepancy:a6d596049e2792c9855ca570",
       "type": "review_concern_or_challenge",
       "field_path": "prohibited_claims",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "Do not calculate, estimate, impute, normalize, rank, or publish a full or partial Scale v1 score.",
             "Do not assert comparable all-six rosters, system bed totals, operational capacity, or enterprise scale.",
@@ -625,7 +625,7 @@
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "Do not calculate, estimate, interpolate, rank, or publish a full or partial Scale score.",
             "Do not represent licensed, certified, POS, HCRIS, AHRQ, official, or staffed beds as interchangeable.",
@@ -642,13 +642,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:f09b10ad4b7a2fe553d9d2a0",
+      "discrepancy_id": "discrepancy:5508a759e18d92780080ad0a",
       "type": "review_concern_or_challenge",
       "field_path": "preserved_reviewer_concerns",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
             "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
@@ -666,7 +666,7 @@
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
             "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
@@ -686,13 +686,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:81f0990669a6643451cf74a8",
+      "discrepancy_id": "discrepancy:b40d8631018e8848ed9bf783",
       "type": "criterion_evidence_or_warrant",
       "field_path": "evaluation.criteria_results",
       "material": true,
       "positions": [
         {
-          "review_id": "review:711abb867369d9ef707f04334fcacb00",
+          "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
           "value": [
             {
               "criterion_id": "cso.evidence-methods-measurement.v1:criterion:1",
@@ -738,11 +738,11 @@
                 "conflict:chestnut-hill-ownership-and-bases",
                 "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
                 "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
-                "bed-missing:jefferson-health:jefferson-abington-hospital",
-                "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
-                "bed-missing:penn-medicine:hup-cedar",
-                "bed-missing:cooper-university-health-care:childrens-regional",
-                "bed-missing:main-line-health:mirmont"
+                "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+                "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+                "coverage:bed-missing:penn-medicine:hup-cedar",
+                "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+                "coverage:bed-missing:main-line-health:mirmont"
               ],
               "rationale": "Definition, denominator, vintage, comparability, uncertainty, and sensitivity fail. Periods span 2023 HCRIS/AHRQ, 2024 state reports, March 2025 rosters, FY2026 Maryland licensing, Q1 2026 POS, and current pages. Licensed, set-up-and-staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are incompatible. Structured missingness and unresolved roster coverage prevent a common all-six denominator without prohibited imputation or explicit roster narrowing."
             },
@@ -767,7 +767,7 @@
           ]
         },
         {
-          "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+          "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
           "value": [
             {
               "criterion_id": "cso.operations-access-capacity.v1:criterion:1",
@@ -815,10 +815,10 @@
                 "system-identity:penn-medicine",
                 "system-identity:cooper-university-health-care",
                 "system-identity:main-line-health",
-                "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-                "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-                "bed-missing:penn-medicine:hup-cedar",
-                "bed-missing:cooper-university-health-care:childrens-regional",
+                "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+                "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+                "coverage:bed-missing:penn-medicine:hup-cedar",
+                "coverage:bed-missing:cooper-university-health-care:childrens-regional",
                 "conflict:chestnut-hill-ownership-and-bases"
               ],
               "rationale": "All six source-local identities exist, but specialty, children’s, remote-campus, joint-ownership, and inactive-site boundaries create omission or double-count risk. No workforce, facility availability, scheduling, transfer, or referral evidence shows nominal capacity is usable or achievable."
@@ -832,99 +832,99 @@
   ],
   "preserved_reviewer_concerns": [
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Six unresolved and three excluded candidates prevent an approved all-six denominator."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Evidence periods span 2023 through Q1/FY2026; no common period is asserted."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient."
     },
     {
-      "review_id": "review:711abb867369d9ef707f04334fcacb00",
+      "review_id": "review:c2882aa0c89fe6d4be27517f1c034a92",
       "concern": "All conclusions require named human competence-matched adjudication and release authority."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "Penn HUP-Cedar is named as a campus but may be a remote HUP location."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "The no-score result is an appropriate block but resolves no underlying conflict or strategic question."
     },
     {
-      "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+      "review_id": "review:5f079b05abb74e38b1354bda9cd7b863",
       "concern": "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory."
     }
   ],
@@ -932,5 +932,5 @@
   "advisory_only": true,
   "resolution_authority": "human_required",
   "automatic_resolution": "prohibited",
-  "output_sha256": "sha256:1799b549514e4d07e71537ce54337000b2dbe5df8c7ebd9c861ce0ebeb6b2710"
+  "output_sha256": "sha256:3fa93160501098abeb6dcd8964a642c9b7d079a721c32a63a918ef77d7c71c63"
 }

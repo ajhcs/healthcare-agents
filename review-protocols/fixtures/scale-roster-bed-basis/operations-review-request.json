@@ -67,13 +67,13 @@
           "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
           "cms-pos:390027:bed_cnt",
           "cms-hcris:390027:number-of-beds",
-          "bed-missing:jefferson-health:jefferson-abington-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
-          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-          "bed-missing:penn-medicine:hup-cedar",
-          "bed-missing:cooper-university-health-care:childrens-regional",
-          "bed-missing:main-line-health:mirmont"
+          "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+          "coverage:bed-missing:main-line-health:mirmont"
         ]
       }
     ]
@@ -114,10 +114,10 @@
           "cms-hcris:210032:number-of-beds",
           "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
           "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
-          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-          "bed-missing:penn-medicine:hup-cedar",
-          "bed-missing:cooper-university-health-care:childrens-regional"
+          "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional"
         ],
         "limitation": "The bounded no-calculation conclusion is supported, but the packet establishes no operationally comparable all-six capacity denominator. It mixes licensed, official-unspecified, POS, certified, HCRIS period-end available, AHRQ, and set-up-and-staffed bases and lacks comparable workforce, occupancy, throughput, scheduling, transfer, referral, and temporary-closure constraints.",
         "overturn_condition": "Require one-date identity and control crosswalks for all 63 candidates; explicit alias, child, campus, joint-venture, specialty, inactive, and shared-CCN treatment; a no-double-count/no-omission audit; one consistent bed basis for every included facility; and, for any operational-capacity claim, comparable staffed and in-service beds, closures, occupancy, throughput, workforce, scheduling, transfer, and referral constraints. Complete the seven other Scale families and rerun the deterministic computation."
@@ -160,7 +160,7 @@
         ],
         "evidence_refs": [
           "computation:scale-v1:all-six:no-score:2026-07-16",
-          "bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
           "conflict:cooper-childrens-separate-hospital"
         ],
         "rationale": "Campus and specialty ambiguity does not show complementary operational capacity or executable access pathways.",
@@ -258,10 +258,10 @@
           "system-identity:penn-medicine",
           "system-identity:cooper-university-health-care",
           "system-identity:main-line-health",
-          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-          "bed-missing:penn-medicine:hup-cedar",
-          "bed-missing:cooper-university-health-care:childrens-regional",
+          "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional",
           "conflict:chestnut-hill-ownership-and-bases"
         ],
         "rationale": "All six source-local identities exist, but specialty, children’s, remote-campus, joint-ownership, and inactive-site boundaries create omission or double-count risk. No workforce, facility availability, scheduling, transfer, or referral evidence shows nominal capacity is usable or achievable."

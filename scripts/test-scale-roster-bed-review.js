@@ -6,12 +6,13 @@ const { spawnSync } = require('child_process');
 
 const { validateConflictAnalysis, validateConflictRequest } = require('../lib/conflict-analysis');
 const { sha256 } = require('../lib/review-protocols');
+const { validateScaleReviewHandoff, validateScaleReviewRequest, validateUpstreamManifest } = require('../lib/scale-roster-bed-review');
 const { validateReviewRequest, validateStrategicReview } = require('../lib/strategic-review');
 const { validateConflictAnalysisShape, validateConflictRequestShape, validateReviewRequestShape, validateStrategicReviewShape } = require('../lib/review-contract-schemas');
 
 const ROOT = path.join(__dirname, '..');
 const FIXTURES = path.join(ROOT, 'review-protocols', 'fixtures', 'scale-roster-bed-basis');
-const names = ['methods-review-request.json', 'operations-review-request.json', 'methods-review.json', 'operations-review.json', 'conflict-analysis-request.json', 'conflict-analysis.json', 'handoff.json'];
+const generatedNames = ['methods-review-request.json', 'operations-review-request.json', 'methods-review.json', 'operations-review.json', 'conflict-analysis-request.json', 'conflict-analysis.json', 'handoff.json', 'adversarial-cases.json'];
 
 function load(name) {
   return JSON.parse(fs.readFileSync(path.join(FIXTURES, name), 'utf8'));
@@ -25,18 +26,22 @@ function allReviewText(review) {
   return JSON.stringify(review).toLowerCase();
 }
 
-const before = new Map(names.map(name => [name, fs.readFileSync(path.join(FIXTURES, name))]));
+const before = new Map(generatedNames.map(name => [name, fs.readFileSync(path.join(FIXTURES, name))]));
 const rebuild = spawnSync(process.execPath, [path.join(ROOT, 'scripts', 'generate-scale-roster-bed-review.js')], { cwd: ROOT, encoding: 'utf8' });
 assert.strictEqual(rebuild.status, 0, rebuild.stderr);
-for (const name of names) assert(before.get(name).equals(fs.readFileSync(path.join(FIXTURES, name))), `${name} rebuild must be byte-identical`);
+for (const name of generatedNames) assert(before.get(name).equals(fs.readFileSync(path.join(FIXTURES, name))), `${name} rebuild must be byte-identical`);
 
-const methodsRequest = load(names[0]);
-const operationsRequest = load(names[1]);
-const methods = load(names[2]);
-const operations = load(names[3]);
-const conflictRequest = load(names[4]);
-const conflict = load(names[5]);
-const handoff = load(names[6]);
+const methodsRequest = load('methods-review-request.json');
+const operationsRequest = load('operations-review-request.json');
+const methods = load('methods-review.json');
+const operations = load('operations-review.json');
+const conflictRequest = load('conflict-analysis-request.json');
+const conflict = load('conflict-analysis.json');
+const handoff = load('handoff.json');
+const adversarialCases = load('adversarial-cases.json');
+const upstreamManifest = load('upstream-manifest.json');
+
+assert.deepStrictEqual(validateUpstreamManifest(upstreamManifest), []);
 
 for (const request of [methodsRequest, operationsRequest]) {
   assert.deepStrictEqual(validateReviewRequestShape(request), []);
@@ -47,6 +52,7 @@ for (const request of [methodsRequest, operationsRequest]) {
   assert.strictEqual(request.candidate_review.criterion_results.length, 3);
   assert.strictEqual(request.candidate_review.posture_assessments.length, 6);
   assert.strictEqual(request.candidate_review.overall_disposition, 'block');
+  assert.deepStrictEqual(validateScaleReviewRequest(request, upstreamManifest), []);
 }
 for (const review of [methods, operations]) {
   assert.deepStrictEqual(validateStrategicReviewShape(review), []);
@@ -78,6 +84,7 @@ assert.strictEqual(conflict.automatic_resolution, 'prohibited');
 assert(conflict.discrepancies.length > 0);
 assert(conflict.discrepancies.every(item => item.material && item.human_route_required && item.deterministic_resolution === null));
 assert.strictEqual(conflict.preserved_reviewer_concerns.length, methods.preserved_reviewer_concerns.length + operations.preserved_reviewer_concerns.length);
+assert.deepStrictEqual(validateScaleReviewHandoff(handoff, [methods, operations], conflict, upstreamManifest), []);
 
 const combined = `${allReviewText(methods)} ${allReviewText(operations)} ${JSON.stringify(handoff).toLowerCase()}`;
 for (const required of [
@@ -97,6 +104,8 @@ for (const prohibited of ['system bed totals', 'comparable all-six bed claims', 
   assert(handoff.prohibited_until_adjudicated.map(item => item.toLowerCase()).includes(prohibited), `handoff must prohibit ${prohibited}`);
 }
 for (const disposition of [...methods.claim_dispositions, ...operations.claim_dispositions]) assert(disposition.overturn_condition.length > 300, 'each material claim concern needs an evidence-specific overturn condition');
+assert.strictEqual(handoff.concern_overturns.length, 10);
+assert(handoff.concern_overturns.every(item => item.evidence_refs.length && item.overturn_condition.length >= 80));
 
 // Adversarial: duplicate reviewers, context/input drift, incomplete evidence, and fabricated authority.
 const duplicateReviewer = clone(conflictRequest);
@@ -125,7 +134,28 @@ for (const field of ['posture_score', 'recommended_posture', 'human_approval']) 
   assert.match(validateReviewRequest(prohibitedField).join('; '), /schema|prohibited field/);
 }
 
-// Adversarial domain coverage: each named failure mode has both a concern and a falsification/overturn route.
+// Concrete adversarial domain fixtures remove a required concern or attempt a prohibited pass.
+for (const adversarialCase of adversarialCases) {
+  if (adversarialCase.target === 'handoff') {
+    const mutatedHandoff = clone(handoff);
+    mutatedHandoff.concern_overturns = mutatedHandoff.concern_overturns.filter(item => item.concern_id !== adversarialCase.remove_concern_id);
+    assert.match(validateScaleReviewHandoff(mutatedHandoff, [methods, operations], conflict, upstreamManifest).join('; '), new RegExp(adversarialCase.expected_error));
+  } else {
+    const mutatedRequest = clone(methodsRequest);
+    mutatedRequest.candidate_review.overall_disposition = adversarialCase.set_overall_disposition;
+    assert.match(validateScaleReviewRequest(mutatedRequest, upstreamManifest).join('; '), new RegExp(adversarialCase.expected_error));
+  }
+}
+
+// Every review evidence reference must resolve through the immutable upstream manifest.
+const manifestIds = new Set(upstreamManifest.evidence_identifiers);
+for (const review of [methods, operations]) {
+  for (const item of [...review.claim_dispositions, ...review.posture_assessments, ...review.evaluation.criteria_results]) {
+    assert(item.evidence_refs.every(ref => manifestIds.has(ref)), `unmanifested evidence ref in ${review.review_id}`);
+  }
+}
+
+// Each named failure mode also has a falsification challenge in the first assessments.
 const methodsChallenges = methods.method_challenges.map(item => `${item.challenge_id} ${item.description}`).join(' ').toLowerCase();
 const operationsChallenges = operations.method_challenges.map(item => `${item.challenge_id} ${item.description}`).join(' ').toLowerCase();
 assert.match(methodsChallenges, /bed-basis-negative-control/);
@@ -143,6 +173,7 @@ assert.strictEqual(handoff.review_hashes.methods_output, methods.output_sha256);
 assert.strictEqual(handoff.review_hashes.operations_first_assessment, operations.first_assessment_hash);
 assert.strictEqual(handoff.review_hashes.operations_output, operations.output_sha256);
 assert.strictEqual(handoff.conflict_output_hash, conflict.output_sha256);
+assert.strictEqual(handoff.upstream_manifest_hash, upstreamManifest.manifest_sha256);
 assert.strictEqual(handoff.downstream_bead, 'healthcare-toolkit-2rr9.6.1');
 
 console.log('Scale roster/bed review fixtures, lineage, adversarial gates, and handoff validated.');

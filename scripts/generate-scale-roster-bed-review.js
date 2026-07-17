@@ -3,76 +3,46 @@ const fs = require('fs');
 const path = require('path');
 
 const { analyzeReviewConflicts } = require('../lib/conflict-analysis');
+const { sha256 } = require('../lib/review-protocols');
+const { validateScaleReviewHandoff, validateScaleReviewRequest, validateUpstreamManifest } = require('../lib/scale-roster-bed-review');
 const { evaluateStrategicReview } = require('../lib/strategic-review');
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'review-protocols', 'fixtures', 'scale-roster-bed-basis');
-const CLAIM_ID = 'claim:scale-v1:all-six:not-calculable:2026-07-16';
+const UPSTREAM_MANIFEST_PATH = path.join(OUT, 'upstream-manifest.json');
+const upstreamManifest = JSON.parse(fs.readFileSync(UPSTREAM_MANIFEST_PATH, 'utf8'));
+const manifestMessages = validateUpstreamManifest(upstreamManifest);
+if (manifestMessages.length) throw new Error(manifestMessages.join('; '));
+const CLAIM_ID = upstreamManifest.claim_id;
 const POSTURES = ['acquire', 'merge_affiliate', 'partner', 'compete', 'build_capacity', 'defer'];
-const TOOLKIT_COMMIT = '1f17d7cb8cc483a884ae4ed043d25012d73b225e';
+const TOOLKIT_COMMIT = upstreamManifest.toolkit.merge_commit;
 const AGENTS_REVIEW_BASE = 'e5292b470843f4526d0d1c53161cb44630e30318';
 
 const HASHES = {
-  evidence: 'sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568',
-  scenario: 'sha256:8dbc16d8fb4c970a2b8514996e8f5f52ae3cfc0c219a12c6d6472494a7e00f15',
-  identity: 'sha256:64e4322e7561ede8b0b50129ed40b278987392480eb215f33e84336bffc7ebc3',
-  computation: 'sha256:871b966f09219d6cfa9764b43fcf77bf735308c9958cf8db3c94485926f524f7',
-  claim: 'sha256:358a45c36f781cf62b32d0f025a1b86cfe190acdd5d5fad2b49c2650d6d5e8c1'
+  evidence: upstreamManifest.data_mcp.bundle_hash,
+  scenario: upstreamManifest.toolkit.objects.decision_scenario.hash,
+  identity: upstreamManifest.toolkit.objects.identity_binding.hash,
+  computation: upstreamManifest.toolkit.objects.computation_result.hash,
+  claim: upstreamManifest.toolkit.objects.claim_candidate.hash
 };
 
-const CONFLICTS = [
-  'conflict:chestnut-hill-ownership-and-bases',
-  'conflict:christianacare-shared-cms-reporting-entity',
-  'conflict:cooper-childrens-separate-hospital',
-  'conflict:temple-shared-cms-reporting-entity',
-  'conflict:union-bed-bases'
-];
-
-const EVIDENCE_REFS = [
-  'scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16',
-  'identity-binding:scale-v1:all-six-roster-bed:2026-07-16',
-  'computation:scale-v1:all-six:no-score:2026-07-16',
-  ...['christianacare', 'jefferson-health', 'temple-health', 'penn-medicine', 'cooper-university-health-care', 'main-line-health'].map(slug => `system-identity:${slug}`),
-  'roster:temple-health:chestnut-hill',
-  'roster:penn-medicine:good-shepherd',
-  'roster:penn-medicine:hup-cedar',
-  'roster:penn-medicine:lancaster-behavioral',
-  'roster:penn-medicine:princeton-house',
-  'roster:cooper-university-health-care:childrens-regional',
-  ...CONFLICTS,
-  'christiana-cecil-licensed-109',
-  'union-official-103',
-  'md-bed:union:licensed-fy2026',
-  'cms-pos:210032:bed_cnt',
-  'cms-pos:210032:crtfd_bed_cnt',
-  'cms-hcris:210032:number-of-beds',
-  'state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds',
-  'state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed',
-  'cms-pos:390027:bed_cnt',
-  'cms-hcris:390027:number-of-beds',
-  'bed-missing:jefferson-health:jefferson-abington-hospital',
-  'bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest',
-  'bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital',
-  'bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital',
-  'bed-missing:penn-medicine:hup-cedar',
-  'bed-missing:cooper-university-health-care:childrens-regional',
-  'bed-missing:main-line-health:mirmont'
-];
+const CONFLICTS = upstreamManifest.conflict_ids;
+const EVIDENCE_REFS = upstreamManifest.evidence_identifiers;
 
 const frozenInputs = {
-  evidence_bundle_ref: 'ushso-artifact://scale-roster-beds-20260716-08/public-evidence-bundle',
+  evidence_bundle_ref: upstreamManifest.data_mcp.bundle_ref,
   evidence_bundle_hash: HASHES.evidence,
-  identity_binding_ref: `git:${TOOLKIT_COMMIT}:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/identity-binding.json`,
+  identity_binding_ref: `git:${TOOLKIT_COMMIT}:${upstreamManifest.toolkit.objects.identity_binding.path}`,
   identity_binding_hash: HASHES.identity,
   computations: [{
-    ref: `git:${TOOLKIT_COMMIT}:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/computation-result.json`,
+    ref: `git:${TOOLKIT_COMMIT}:${upstreamManifest.toolkit.objects.computation_result.path}`,
     hash: HASHES.computation
   }],
   claim_candidates: [{ claim_id: CLAIM_ID, claim_hash: HASHES.claim, evidence_refs: EVIDENCE_REFS }]
 };
 
 const decisionScenario = {
-  ref: `git:${TOOLKIT_COMMIT}:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/decision-scenario.json`,
+  ref: `git:${TOOLKIT_COMMIT}:${upstreamManifest.toolkit.objects.decision_scenario.path}`,
   hash: HASHES.scenario
 };
 
@@ -268,6 +238,22 @@ const operationsReview = {
   overall_disposition: 'block'
 };
 
+function canonicalizeEvidenceRefs(value) {
+  if (Array.isArray(value)) {
+    for (let index = 0; index < value.length; index += 1) {
+      if (typeof value[index] === 'string' && value[index].startsWith('bed-missing:')) value[index] = `coverage:${value[index]}`;
+      else canonicalizeEvidenceRefs(value[index]);
+    }
+  } else if (value && typeof value === 'object') {
+    for (const child of Object.values(value)) canonicalizeEvidenceRefs(child);
+  }
+}
+
+// Independent reviewers used the source-local missingness suffix; publish the
+// exact upstream coverage identifiers without altering any assessment prose.
+canonicalizeEvidenceRefs(methodsReview);
+canonicalizeEvidenceRefs(operationsReview);
+
 function request({ requestId, protocolId, protocolHash, reviewerMetadata, candidateReview }) {
   return {
     schema_version: 'ushso.review-request.v1',
@@ -311,6 +297,8 @@ const conflictRequest = {
   reviews: [methodsOutput, operationsOutput]
 };
 const conflictOutput = analyzeReviewConflicts(conflictRequest);
+const methodsConcern = index => `${methodsOutput.review_id}:${index}`;
+const operationsConcern = index => `${operationsOutput.review_id}:${index}`;
 const handoff = {
   schema_version: 'ushso.scale-roster-bed-review-handoff.v1',
   downstream_bead: 'healthcare-toolkit-2rr9.6.1',
@@ -318,7 +306,7 @@ const handoff = {
   request_hashes: {
     methods: methodsOutput.review_request_hash,
     operations: operationsOutput.review_request_hash,
-    conflict: require('../lib/review-protocols').sha256(conflictRequest)
+    conflict: sha256(conflictRequest)
   },
   review_hashes: {
     methods_first_assessment: methodsOutput.first_assessment_hash,
@@ -327,6 +315,7 @@ const handoff = {
     operations_output: operationsOutput.output_sha256
   },
   conflict_output_hash: conflictOutput.output_sha256,
+  upstream_manifest_hash: upstreamManifest.manifest_sha256,
   frozen_input_hashes: HASHES,
   unresolved_concerns: [
     '63 roster candidates remain bounded as 54 included, six unresolved, and three excluded; no narrower roster is authorized.',
@@ -336,12 +325,91 @@ const handoff = {
     'Seven additional Scale input families remain not yet researched.',
     'No staffed or achievable capacity inference is supported.'
   ],
+  concern_overturns: [
+    {
+      concern_id: 'identity-boundary-and-stale-ownership',
+      evidence_refs: ['identity-binding:scale-v1:all-six-roster-bed:2026-07-16', 'conflict:chestnut-hill-ownership-and-bases'],
+      overturn_condition: 'Provide authoritative, source-receipted legal ownership and control effective on one comparison date for every system and candidate, including aliases and ownership changes, then publish a human-adjudicated identity binding.',
+      review_concern_refs: [methodsConcern(0), operationsConcern(0)]
+    },
+    {
+      concern_id: 'roster-boundaries-and-coverage',
+      evidence_refs: ['identity-binding:scale-v1:all-six-roster-bed:2026-07-16', 'roster:temple-health:chestnut-hill', 'roster:penn-medicine:hup-cedar'],
+      overturn_condition: 'Adjudicate all 63 candidates at one effective date, retaining evidence-backed included, excluded, unresolved, and inactive states; demonstrate that the resulting all-six roster contains no silent narrowing, omission, or duplicate.',
+      review_concern_refs: [methodsConcern(1), methodsConcern(2), methodsConcern(7), operationsConcern(1)]
+    },
+    {
+      concern_id: 'shared-reporting-double-count',
+      evidence_refs: ['conflict:christianacare-shared-cms-reporting-entity', 'conflict:temple-shared-cms-reporting-entity', 'cms-pos:390027:bed_cnt'],
+      overturn_condition: 'Supply authoritative campus-to-reporting-entity crosswalks and a prespecified, human-approved allocation or exclusion rule for CMS 080001 and 390027, followed by a reproducible no-double-count audit.',
+      review_concern_refs: [methodsConcern(3), operationsConcern(2), operationsConcern(3)]
+    },
+    {
+      concern_id: 'specialty-campus-omission',
+      evidence_refs: ['conflict:cooper-childrens-separate-hospital', 'bed-missing:penn-medicine:hup-cedar', 'bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital', 'conflict:chestnut-hill-ownership-and-bases'],
+      overturn_condition: 'For every child, specialty, behavioral, rehabilitation, remote-campus, co-located, and joint-venture candidate, provide current facility class, ownership, active status, CCN or license linkage, separable bed basis, and an adjudicated inclusion rule.',
+      review_concern_refs: [methodsConcern(4), methodsConcern(5), methodsConcern(6), operationsConcern(4), operationsConcern(5)]
+    },
+    {
+      concern_id: 'reporting-period-alignment',
+      evidence_refs: ['scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16', 'cms-hcris:210032:number-of-beds', 'md-bed:union:licensed-fy2026'],
+      overturn_condition: 'Reacquire every roster and bed observation for one common as-of date or overlapping reporting period, and demonstrate that intervening ownership, operating-status, facility, and bed-status changes do not alter the comparison.',
+      review_concern_refs: [methodsConcern(8), operationsConcern(6)]
+    },
+    {
+      concern_id: 'bed-basis-comparability',
+      evidence_refs: ['conflict:union-bed-bases', 'state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds', 'state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed', 'cms-pos:210032:bed_cnt', 'cms-hcris:210032:number-of-beds'],
+      overturn_condition: 'Obtain the same explicitly defined licensed, installed, staffed, in-service, or available-bed construct for every included facility and period; preserve other constructs separately and document why no conversion, averaging, or substitution is required.',
+      review_concern_refs: [methodsConcern(9), operationsConcern(7)]
+    },
+    {
+      concern_id: 'aggregation-and-system-rollup',
+      evidence_refs: ['computation:scale-v1:all-six:no-score:2026-07-16', 'identity-binding:scale-v1:all-six-roster-bed:2026-07-16'],
+      overturn_condition: 'Publish and independently verify a governed facility-to-system aggregation rule, duplicate-detection ledger, omission audit, shared-entity treatment, uncertainty policy, and sensitivity results before producing any system rollup.',
+      review_concern_refs: [methodsConcern(10), operationsConcern(9)]
+    },
+    {
+      concern_id: 'missing-scale-input-families',
+      evidence_refs: ['computation:scale-v1:all-six:no-score:2026-07-16'],
+      overturn_condition: 'Populate all seven not-yet-researched Scale input families for every system under the same identity, roster, period, denominator, and aggregation boundaries, then rerun the frozen deterministic formula without imputation.',
+      review_concern_refs: [methodsConcern(11)]
+    },
+    {
+      concern_id: 'staffed-and-achievable-capacity',
+      evidence_refs: ['state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed', 'bed-missing:cooper-university-health-care:childrens-regional'],
+      overturn_condition: 'Provide comparable staffed and in-service beds, closures, occupancy, throughput, workforce coverage, scheduling delay, transfer acceptance, referral leakage, capital, and implementation constraints before inferring operational or achievable capacity.',
+      review_concern_refs: [operationsConcern(8)]
+    },
+    {
+      concern_id: 'human-authority-boundary',
+      evidence_refs: ['computation:scale-v1:all-six:no-score:2026-07-16', ...CONFLICTS],
+      overturn_condition: 'Obtain named, competence-matched human adjudication for every material discrepancy and preserved concern, followed by the separate accountable release authority required for calculation, projection, recommendation, admission, or promotion.',
+      review_concern_refs: [methodsConcern(12), operationsConcern(10)]
+    }
+  ],
   prohibited_until_adjudicated: [
     'system bed totals', 'comparable all-six bed claims', 'staffed-capacity inference', 'partial or complete Scale scores', 'rankings', 'strategic recommendations', 'professional adjudication', 'projection approval', 'public promotion'
   ],
   route: conflictOutput.proposed_route,
   automatic_resolution: conflictOutput.automatic_resolution
 };
+const adversarialCases = [
+  { case_id: 'mismatched-bed-bases', target: 'handoff', remove_concern_id: 'bed-basis-comparability', expected_error: 'cover every required concern id' },
+  { case_id: 'stale-ownership', target: 'handoff', remove_concern_id: 'identity-boundary-and-stale-ownership', expected_error: 'cover every required concern id' },
+  { case_id: 'shared-entity-double-counting', target: 'handoff', remove_concern_id: 'shared-reporting-double-count', expected_error: 'cover every required concern id' },
+  { case_id: 'omitted-or-unresolved-facilities', target: 'handoff', remove_concern_id: 'roster-boundaries-and-coverage', expected_error: 'cover every required concern id' },
+  { case_id: 'missing-all-six-coverage', target: 'handoff', remove_concern_id: 'missing-scale-input-families', expected_error: 'cover every required concern id' },
+  { case_id: 'prohibited-partial-score', target: 'request', set_overall_disposition: 'pass', expected_error: 'must remain block' }
+];
+
+canonicalizeEvidenceRefs(handoff);
+
+for (const requestValue of [methodsRequest, operationsRequest]) {
+  const messages = validateScaleReviewRequest(requestValue, upstreamManifest);
+  if (messages.length) throw new Error(messages.join('; '));
+}
+const handoffMessages = validateScaleReviewHandoff(handoff, [methodsOutput, operationsOutput], conflictOutput, upstreamManifest);
+if (handoffMessages.length) throw new Error(handoffMessages.join('; '));
 
 writeJson('methods-review-request.json', methodsRequest);
 writeJson('operations-review-request.json', operationsRequest);
@@ -350,6 +418,7 @@ writeJson('operations-review.json', operationsOutput);
 writeJson('conflict-analysis-request.json', conflictRequest);
 writeJson('conflict-analysis.json', conflictOutput);
 writeJson('handoff.json', handoff);
+writeJson('adversarial-cases.json', adversarialCases);
 
 console.log(JSON.stringify(handoff.review_hashes, null, 2));
 console.log(`conflict_output=${handoff.conflict_output_hash}`);

@@ -67,13 +67,13 @@
           "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
           "cms-pos:390027:bed_cnt",
           "cms-hcris:390027:number-of-beds",
-          "bed-missing:jefferson-health:jefferson-abington-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
-          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
-          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
-          "bed-missing:penn-medicine:hup-cedar",
-          "bed-missing:cooper-university-health-care:childrens-regional",
-          "bed-missing:main-line-health:mirmont"
+          "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+          "coverage:bed-missing:main-line-health:mirmont"
         ]
       }
     ]
@@ -108,9 +108,9 @@
           "conflict:cooper-childrens-separate-hospital",
           "conflict:temple-shared-cms-reporting-entity",
           "conflict:union-bed-bases",
-          "bed-missing:jefferson-health:jefferson-abington-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
-          "bed-missing:penn-medicine:hup-cedar"
+          "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+          "coverage:bed-missing:penn-medicine:hup-cedar"
         ],
         "limitation": "The descriptive process claim that calculation is blocked is supported: seven Scale input families remain not yet researched, the approved-roster and common-bed-basis gates remain unresolved, and open ownership, shared-reporting, period, and bed-definition conflicts prevent a common all-six denominator. This validates no system total, comparison, score, ranking, posture, or causal inference.",
         "overturn_condition": "Overturn only with a newly frozen packet containing all nine inputs for every system; one date-aligned and geography-bounded 63-candidate roster with every included, excluded, inactive, specialty, child, campus, joint-venture, alias, and ownership-change disposition adjudicated; one prespecified bed definition, period, denominator, and aggregation rule applied without silent shared-entity allocation; and evidence-specific resolution of all five preserved conflicts, Jefferson crosswalk missingness, and Penn HUP-Cedar ambiguity."
@@ -151,7 +151,7 @@
         ],
         "evidence_refs": [
           "computation:scale-v1:all-six:no-score:2026-07-16",
-          "bed-missing:jefferson-health:jefferson-abington-hospital"
+          "coverage:bed-missing:jefferson-health:jefferson-abington-hospital"
         ],
         "rationale": "Missing facility crosswalks and Scale inputs cannot establish complementary capacity, demand, access, or partnership value.",
         "limitation": "Service-line, referral, utilization, workforce, access, and partnership evidence are absent. This assessment does not recommend a posture."
@@ -243,11 +243,11 @@
           "conflict:chestnut-hill-ownership-and-bases",
           "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
           "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
-          "bed-missing:jefferson-health:jefferson-abington-hospital",
-          "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
-          "bed-missing:penn-medicine:hup-cedar",
-          "bed-missing:cooper-university-health-care:childrens-regional",
-          "bed-missing:main-line-health:mirmont"
+          "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+          "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+          "coverage:bed-missing:main-line-health:mirmont"
         ],
         "rationale": "Definition, denominator, vintage, comparability, uncertainty, and sensitivity fail. Periods span 2023 HCRIS/AHRQ, 2024 state reports, March 2025 rosters, FY2026 Maryland licensing, Q1 2026 POS, and current pages. Licensed, set-up-and-staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are incompatible. Structured missingness and unresolved roster coverage prevent a common all-six denominator without prohibited imputation or explicit roster narrowing."
       },
