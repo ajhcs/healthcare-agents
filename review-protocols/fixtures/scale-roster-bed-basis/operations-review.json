@@ -1,0 +1,350 @@
+{
+  "schema_version": "ushso.strategic-review.v1",
+  "review_id": "review:b0dcb2884a130785a263a2ba460a1115",
+  "request_id": "review-request:scale-roster-bed:operations:2026-07-17",
+  "review_tier": "ordinary_material_claim",
+  "protocol": {
+    "protocol_id": "cso.operations-access-capacity.v1",
+    "version": "1.0.0",
+    "protocol_hash": "sha256:be86fda678ceb94f0a7b4b85d3c7b52259af15e27fb7d31da88247db6449a6d3",
+    "registry_hash": "sha256:383bbb58defe5cb5dd80382a01c68782052d9f44b4bc383f5c1ba4aa748dd12a",
+    "competence_role": "operations_access_capacity_workforce"
+  },
+  "reviewer": {
+    "reviewer_id": "scale-roster-bed:operations:1",
+    "agent_slug": "operations-hospital-administrator",
+    "prompt_version": "cso.operations-access-capacity.v1@1.0.0",
+    "repo_commit": "e5292b470843f4526d0d1c53161cb44630e30318",
+    "model": "gpt-5.6-sol",
+    "runtime": "codex-desktop-2026-07-17",
+    "independence": {
+      "prior_exposure": "none",
+      "conflict_disclosures": [],
+      "direct_material_conflict": false,
+      "attestation": true
+    }
+  },
+  "review_request_hash": "sha256:63db426d533cd7f40f9932251410650bc9d85dbadbd012a397744ead9f7cbf5c",
+  "review_context_hash": "sha256:aad5064ff8d85ccf9e8477ac9dff7b8218d4bc25eef78aeb5b3b7ac05b8ece1d",
+  "input_hashes": [
+    "sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568",
+    "sha256:64e4322e7561ede8b0b50129ed40b278987392480eb215f33e84336bffc7ebc3",
+    "sha256:871b966f09219d6cfa9764b43fcf77bf735308c9958cf8db3c94485926f524f7",
+    "sha256:358a45c36f781cf62b32d0f025a1b86cfe190acdd5d5fad2b49c2650d6d5e8c1"
+  ],
+  "frozen_inputs": {
+    "evidence_bundle_ref": "ushso-artifact://scale-roster-beds-20260716-08/public-evidence-bundle",
+    "evidence_bundle_hash": "sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568",
+    "identity_binding_ref": "git:1f17d7cb8cc483a884ae4ed043d25012d73b225e:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/identity-binding.json",
+    "identity_binding_hash": "sha256:64e4322e7561ede8b0b50129ed40b278987392480eb215f33e84336bffc7ebc3",
+    "computations": [
+      {
+        "ref": "git:1f17d7cb8cc483a884ae4ed043d25012d73b225e:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/computation-result.json",
+        "hash": "sha256:871b966f09219d6cfa9764b43fcf77bf735308c9958cf8db3c94485926f524f7"
+      }
+    ],
+    "claim_candidates": [
+      {
+        "claim_id": "claim:scale-v1:all-six:not-calculable:2026-07-16",
+        "claim_hash": "sha256:358a45c36f781cf62b32d0f025a1b86cfe190acdd5d5fad2b49c2650d6d5e8c1",
+        "evidence_refs": [
+          "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+          "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+          "computation:scale-v1:all-six:no-score:2026-07-16",
+          "system-identity:christianacare",
+          "system-identity:jefferson-health",
+          "system-identity:temple-health",
+          "system-identity:penn-medicine",
+          "system-identity:cooper-university-health-care",
+          "system-identity:main-line-health",
+          "roster:temple-health:chestnut-hill",
+          "roster:penn-medicine:good-shepherd",
+          "roster:penn-medicine:hup-cedar",
+          "roster:penn-medicine:lancaster-behavioral",
+          "roster:penn-medicine:princeton-house",
+          "roster:cooper-university-health-care:childrens-regional",
+          "conflict:chestnut-hill-ownership-and-bases",
+          "conflict:christianacare-shared-cms-reporting-entity",
+          "conflict:cooper-childrens-separate-hospital",
+          "conflict:temple-shared-cms-reporting-entity",
+          "conflict:union-bed-bases",
+          "christiana-cecil-licensed-109",
+          "union-official-103",
+          "md-bed:union:licensed-fy2026",
+          "cms-pos:210032:bed_cnt",
+          "cms-pos:210032:crtfd_bed_cnt",
+          "cms-hcris:210032:number-of-beds",
+          "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
+          "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+          "cms-pos:390027:bed_cnt",
+          "cms-hcris:390027:number-of-beds",
+          "bed-missing:jefferson-health:jefferson-abington-hospital",
+          "bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "bed-missing:penn-medicine:hup-cedar",
+          "bed-missing:cooper-university-health-care:childrens-regional",
+          "bed-missing:main-line-health:mirmont"
+        ]
+      }
+    ]
+  },
+  "frozen_inputs_hash": "sha256:4ef1f335f15b79f1be26f7328ab8f45c2430691c4ac0fd9fe78bf647c97f947d",
+  "evidence_bundle_ref": "ushso-artifact://scale-roster-beds-20260716-08/public-evidence-bundle",
+  "identity_binding_ref": "git:1f17d7cb8cc483a884ae4ed043d25012d73b225e:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/identity-binding.json",
+  "decision_scenario": {
+    "ref": "git:1f17d7cb8cc483a884ae4ed043d25012d73b225e:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/decision-scenario.json",
+    "hash": "sha256:8dbc16d8fb4c970a2b8514996e8f5f52ae3cfc0c219a12c6d6472494a7e00f15"
+  },
+  "decision_scenario_ref": "git:1f17d7cb8cc483a884ae4ed043d25012d73b225e:contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/decision-scenario.json",
+  "evidence_boundary": "Frozen source-local public aggregate evidence only. The packet preserves 63 roster candidates (54 included, six unresolved, three excluded), five open identity/bed conflicts, heterogeneous 2023 through Q1/FY2026 periods, and incompatible licensed, staffed, POS, HCRIS, AHRQ, and official bed bases. No evidence acquisition, allocation, imputation, formula execution, score, strategic conclusion, professional adjudication, projection, admission, deployment, or public promotion is authorized.",
+  "first_assessment_hash": "sha256:f3d505d6fd9f9e5a4c896864656c0b7be8a24ad1357ff7d77899f1ebcccaadf6",
+  "exposure_status": "independent_first",
+  "evidence_mutated": false,
+  "posture_assessments": [
+    {
+      "posture": "acquire",
+      "effect": "unresolved",
+      "claim_refs": [
+        "claim:scale-v1:all-six:not-calculable:2026-07-16"
+      ],
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "conflict:christianacare-shared-cms-reporting-entity",
+        "conflict:chestnut-hill-ownership-and-bases"
+      ],
+      "rationale": "The no-score result and unresolved ownership boundaries create diligence questions, not acquisition evidence.",
+      "limitation": "Transaction scope, control, workforce, achievable capacity, integration, finance, regulation, and demand are absent. This assessment does not recommend a posture."
+    },
+    {
+      "posture": "merge_affiliate",
+      "effect": "unresolved",
+      "claim_refs": [
+        "claim:scale-v1:all-six:not-calculable:2026-07-16"
+      ],
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "conflict:temple-shared-cms-reporting-entity",
+        "conflict:chestnut-hill-ownership-and-bases"
+      ],
+      "rationale": "Shared reporting and joint ownership prevent a clean comparison and do not establish affiliation feasibility.",
+      "limitation": "Governance, operating model, workforce, referral, transfer, and integration constraints are absent. This assessment does not recommend a posture."
+    },
+    {
+      "posture": "partner",
+      "effect": "unresolved",
+      "claim_refs": [
+        "claim:scale-v1:all-six:not-calculable:2026-07-16"
+      ],
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "bed-missing:penn-medicine:hup-cedar",
+        "conflict:cooper-childrens-separate-hospital"
+      ],
+      "rationale": "Campus and specialty ambiguity does not show complementary operational capacity or executable access pathways.",
+      "limitation": "Demand, staffed capacity, scheduling, transfer, referral, and workforce evidence are absent. This assessment does not recommend a posture."
+    },
+    {
+      "posture": "compete",
+      "effect": "unresolved",
+      "claim_refs": [
+        "claim:scale-v1:all-six:not-calculable:2026-07-16"
+      ],
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "union-official-103",
+        "md-bed:union:licensed-fy2026",
+        "cms-hcris:210032:number-of-beds"
+      ],
+      "rationale": "Different bed bases and periods cannot establish operational scale, access, throughput, or competitive capacity.",
+      "limitation": "No common market, service, utilization, staffed-capacity, throughput, access-friction, or achievable-capacity evidence exists. This assessment does not recommend a posture."
+    },
+    {
+      "posture": "build_capacity",
+      "effect": "unresolved",
+      "claim_refs": [
+        "claim:scale-v1:all-six:not-calculable:2026-07-16"
+      ],
+      "evidence_refs": [
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
+        "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+        "cms-hcris:390027:number-of-beds"
+      ],
+      "rationale": "Licensed, set-up-and-staffed, and available measures do not identify a gap, bottleneck, or feasible increment.",
+      "limitation": "Installed and in-service capacity, occupancy, demand, workforce, scheduling, capital, transfer, referral, and implementation constraints are absent. This assessment does not recommend a posture."
+    },
+    {
+      "posture": "defer",
+      "effect": "unresolved",
+      "claim_refs": [
+        "claim:scale-v1:all-six:not-calculable:2026-07-16"
+      ],
+      "evidence_refs": [
+        "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+        "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+        "computation:scale-v1:all-six:no-score:2026-07-16"
+      ],
+      "rationale": "The objects authorize governed research and establish a calculation block, not selection of a strategic posture.",
+      "limitation": "A process block does not establish that deferral is strategically preferable. This assessment does not recommend a posture."
+    }
+  ],
+  "claim_dispositions": [
+    {
+      "claim_id": "claim:scale-v1:all-six:not-calculable:2026-07-16",
+      "evidence_assessment": "supported_by_available_evidence",
+      "review_disposition": "request_additional_evidence",
+      "evidence_refs": [
+        "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+        "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+        "computation:scale-v1:all-six:no-score:2026-07-16",
+        "conflict:chestnut-hill-ownership-and-bases",
+        "conflict:christianacare-shared-cms-reporting-entity",
+        "conflict:cooper-childrens-separate-hospital",
+        "conflict:temple-shared-cms-reporting-entity",
+        "conflict:union-bed-bases",
+        "union-official-103",
+        "md-bed:union:licensed-fy2026",
+        "cms-hcris:210032:number-of-beds",
+        "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
+        "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+        "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+        "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+        "bed-missing:penn-medicine:hup-cedar",
+        "bed-missing:cooper-university-health-care:childrens-regional"
+      ],
+      "limitation": "The bounded no-calculation conclusion is supported, but the packet establishes no operationally comparable all-six capacity denominator. It mixes licensed, official-unspecified, POS, certified, HCRIS period-end available, AHRQ, and set-up-and-staffed bases and lacks comparable workforce, occupancy, throughput, scheduling, transfer, referral, and temporary-closure constraints.",
+      "overturn_condition": "Require one-date identity and control crosswalks for all 63 candidates; explicit alias, child, campus, joint-venture, specialty, inactive, and shared-CCN treatment; a no-double-count/no-omission audit; one consistent bed basis for every included facility; and, for any operational-capacity claim, comparable staffed and in-service beds, closures, occupancy, throughput, workforce, scheduling, transfer, and referral constraints. Complete the seven other Scale families and rerun the deterministic computation."
+    }
+  ],
+  "missing_evidence_requests": [
+    {
+      "request_id": "missing:all-six-common-date-roster-adjudication",
+      "description": "Provide a source-receipted one-date roster for all 63 candidates, with control, status, aliases, child/campus and joint-venture relationships, specialty and inactive status, CCN relationships, and no-double-count/no-omission audit."
+    },
+    {
+      "request_id": "missing:all-six-common-bed-basis-crosswalk",
+      "description": "Provide every included facility under one period and aggregation rule while preserving licensed, installed, certified, in-service, staffed, and available bases separately."
+    },
+    {
+      "request_id": "missing:operational-capacity-and-bottlenecks",
+      "description": "Provide staffed and in-service beds, closures, occupancy, peak census, discharges, length of stay, throughput, scheduling delays, transfers, referrals, and service bottlenecks."
+    },
+    {
+      "request_id": "missing:workforce-feasibility",
+      "description": "Provide filled FTEs, vacancies, agency dependence, skill mix, shift coverage, recruitment lead time, and assumptions translating physical beds into achievable capacity."
+    },
+    {
+      "request_id": "missing:remaining-scale-input-families",
+      "description": "Complete the seven other Scale families under identical identity, roster, period, and aggregation boundaries, then rerun the formula."
+    }
+  ],
+  "method_challenges": [
+    {
+      "challenge_id": "method:bed-basis-substitution",
+      "description": "Keep licensed, POS, certified, HCRIS, AHRQ, and staffed measures separate; any required substitution falsifies comparability."
+    },
+    {
+      "challenge_id": "method:shared-reporting-entity-allocation",
+      "description": "Reconcile shared CCNs 080001 and 390027 to campuses; preserve the block if separation requires assumptions."
+    },
+    {
+      "challenge_id": "method:roster-double-count-omission",
+      "description": "Audit aliases, campuses, children, joint ventures, specialty, rehabilitation, behavioral, excluded, and inactive sites against legal ownership and reporting."
+    },
+    {
+      "challenge_id": "method:licensed-to-achievable-capacity",
+      "description": "Test any licensed-bed inference against staffed/in-service beds, occupancy, throughput, workforce, scheduling, transfer, and referral constraints."
+    },
+    {
+      "challenge_id": "method:period-alignment",
+      "description": "Repeat on one as-of date or overlapping period; material ownership, status, or basis change invalidates transport from the heterogeneous snapshot."
+    }
+  ],
+  "prohibited_claims": [
+    "Do not calculate, estimate, interpolate, rank, or publish a full or partial Scale score.",
+    "Do not represent licensed, certified, POS, HCRIS, AHRQ, official, or staffed beds as interchangeable.",
+    "Do not describe nominal beds as installed, operationally available, staffed, in-service, throughput-producing, or achievable capacity.",
+    "Do not allocate shared entities or count child, specialty, remote, co-located, or joint-venture facilities separately without adjudication.",
+    "Do not infer access, feasibility, advantage, shortage, expansion need, or workforce sufficiency from beds.",
+    "Do not claim contemporaneous or complete rosters while ownership, status, aliases, and unresolved candidates remain.",
+    "Do not use the bounded process conclusion as a strategic recommendation or projection approval.",
+    "Do not represent this review as professional adjudication, human approval, release authority, or public-promotion authority."
+  ],
+  "preserved_reviewer_concerns": [
+    "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+    "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+    "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+    "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+    "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+    "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+    "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+    "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+    "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+    "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+    "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory."
+  ],
+  "overall_disposition": "block",
+  "professional_disposition_authority": "human_required",
+  "evaluation": {
+    "valid": true,
+    "criteria_results": [
+      {
+        "criterion_id": "cso.operations-access-capacity.v1:criterion:1",
+        "result": "addressed",
+        "claim_refs": [
+          "claim:scale-v1:all-six:not-calculable:2026-07-16"
+        ],
+        "evidence_refs": [
+          "union-official-103",
+          "md-bed:union:licensed-fy2026",
+          "cms-hcris:210032:number-of-beds",
+          "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
+          "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+          "cms-pos:390027:bed_cnt",
+          "cms-hcris:390027:number-of-beds"
+        ],
+        "rationale": "Official-unspecified, licensed, POS, certified, set-up-and-staffed, HCRIS, and AHRQ beds are distinct. None is interchangeable with installed, staffed, in-service, throughput, access-friction, or achievable capacity. Missing comparable throughput and availability evidence blocks an operational comparison."
+      },
+      {
+        "criterion_id": "cso.operations-access-capacity.v1:criterion:2",
+        "result": "addressed",
+        "claim_refs": [
+          "claim:scale-v1:all-six:not-calculable:2026-07-16"
+        ],
+        "evidence_refs": [
+          "computation:scale-v1:all-six:no-score:2026-07-16",
+          "conflict:chestnut-hill-ownership-and-bases",
+          "conflict:christianacare-shared-cms-reporting-entity",
+          "conflict:cooper-childrens-separate-hospital",
+          "conflict:temple-shared-cms-reporting-entity",
+          "conflict:union-bed-bases"
+        ],
+        "rationale": "The computation records roster and bed-basis gates, and the five conflicts identify boundary and measurement bottlenecks. No operating assumptions define closures, shared-entity allocation, specialty treatment, occupancy, peak demand, staffing ratios, or translation from licensed beds to achievable capacity."
+      },
+      {
+        "criterion_id": "cso.operations-access-capacity.v1:criterion:3",
+        "result": "addressed",
+        "claim_refs": [
+          "claim:scale-v1:all-six:not-calculable:2026-07-16"
+        ],
+        "evidence_refs": [
+          "system-identity:christianacare",
+          "system-identity:jefferson-health",
+          "system-identity:temple-health",
+          "system-identity:penn-medicine",
+          "system-identity:cooper-university-health-care",
+          "system-identity:main-line-health",
+          "bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+          "bed-missing:penn-medicine:hup-cedar",
+          "bed-missing:cooper-university-health-care:childrens-regional",
+          "conflict:chestnut-hill-ownership-and-bases"
+        ],
+        "rationale": "All six source-local identities exist, but specialty, children’s, remote-campus, joint-ownership, and inactive-site boundaries create omission or double-count risk. No workforce, facility availability, scheduling, transfer, or referral evidence shows nominal capacity is usable or achievable."
+      }
+    ],
+    "advisory_only": true
+  },
+  "output_sha256": "sha256:c028519d1b468c746bf8e3c9f77ac77dda65541c10c1940c175a72340247e0e1"
+}

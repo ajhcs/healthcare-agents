@@ -1,0 +1,45 @@
+{
+  "schema_version": "ushso.scale-roster-bed-review-handoff.v1",
+  "downstream_bead": "healthcare-toolkit-2rr9.6.1",
+  "status": "blocked_pending_human_adjudication",
+  "request_hashes": {
+    "methods": "sha256:2b671176e4b204e585cacb8b48b3fe55aac0b7b06a607c403ea94a53ec12ebf9",
+    "operations": "sha256:63db426d533cd7f40f9932251410650bc9d85dbadbd012a397744ead9f7cbf5c",
+    "conflict": "sha256:13f0bd2f4f6c189fac593a2b0ea7ed4b467e1229642b23ff1b489cd012005528"
+  },
+  "review_hashes": {
+    "methods_first_assessment": "sha256:501e5cfb8085aea31b24a7d0f71a72ef47a4673c774c61235c3c0cb62cd6403b",
+    "methods_output": "sha256:a65eefe3753f7e0d7dd67d1f28d43481fb9e03b005533e4a10a9486785f8f90d",
+    "operations_first_assessment": "sha256:f3d505d6fd9f9e5a4c896864656c0b7be8a24ad1357ff7d77899f1ebcccaadf6",
+    "operations_output": "sha256:c028519d1b468c746bf8e3c9f77ac77dda65541c10c1940c175a72340247e0e1"
+  },
+  "conflict_output_hash": "sha256:1799b549514e4d07e71537ce54337000b2dbe5df8c7ebd9c861ce0ebeb6b2710",
+  "frozen_input_hashes": {
+    "evidence": "sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568",
+    "scenario": "sha256:8dbc16d8fb4c970a2b8514996e8f5f52ae3cfc0c219a12c6d6472494a7e00f15",
+    "identity": "sha256:64e4322e7561ede8b0b50129ed40b278987392480eb215f33e84336bffc7ebc3",
+    "computation": "sha256:871b966f09219d6cfa9764b43fcf77bf735308c9958cf8db3c94485926f524f7",
+    "claim": "sha256:358a45c36f781cf62b32d0f025a1b86cfe190acdd5d5fad2b49c2650d6d5e8c1"
+  },
+  "unresolved_concerns": [
+    "63 roster candidates remain bounded as 54 included, six unresolved, and three excluded; no narrower roster is authorized.",
+    "All five identity and bed conflicts remain open and require competence-matched human adjudication.",
+    "Shared reporting entities, aliases, ownership timing, joint ventures, specialty/children’s/behavioral/rehabilitation facilities, inactive sites, and remote campuses create double-count and omission risk.",
+    "Heterogeneous 2023 through Q1/FY2026 periods and incompatible bed bases prevent a common all-six denominator without prohibited imputation or explicit roster narrowing.",
+    "Seven additional Scale input families remain not yet researched.",
+    "No staffed or achievable capacity inference is supported."
+  ],
+  "prohibited_until_adjudicated": [
+    "system bed totals",
+    "comparable all-six bed claims",
+    "staffed-capacity inference",
+    "partial or complete Scale scores",
+    "rankings",
+    "strategic recommendations",
+    "professional adjudication",
+    "projection approval",
+    "public promotion"
+  ],
+  "route": "human_competence_matched_adjudication",
+  "automatic_resolution": "prohibited"
+}

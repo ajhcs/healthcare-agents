@@ -1,0 +1,148 @@
+#!/usr/bin/env node
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+const { spawnSync } = require('child_process');
+
+const { validateConflictAnalysis, validateConflictRequest } = require('../lib/conflict-analysis');
+const { sha256 } = require('../lib/review-protocols');
+const { validateReviewRequest, validateStrategicReview } = require('../lib/strategic-review');
+const { validateConflictAnalysisShape, validateConflictRequestShape, validateReviewRequestShape, validateStrategicReviewShape } = require('../lib/review-contract-schemas');
+
+const ROOT = path.join(__dirname, '..');
+const FIXTURES = path.join(ROOT, 'review-protocols', 'fixtures', 'scale-roster-bed-basis');
+const names = ['methods-review-request.json', 'operations-review-request.json', 'methods-review.json', 'operations-review.json', 'conflict-analysis-request.json', 'conflict-analysis.json', 'handoff.json'];
+
+function load(name) {
+  return JSON.parse(fs.readFileSync(path.join(FIXTURES, name), 'utf8'));
+}
+
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function allReviewText(review) {
+  return JSON.stringify(review).toLowerCase();
+}
+
+const before = new Map(names.map(name => [name, fs.readFileSync(path.join(FIXTURES, name))]));
+const rebuild = spawnSync(process.execPath, [path.join(ROOT, 'scripts', 'generate-scale-roster-bed-review.js')], { cwd: ROOT, encoding: 'utf8' });
+assert.strictEqual(rebuild.status, 0, rebuild.stderr);
+for (const name of names) assert(before.get(name).equals(fs.readFileSync(path.join(FIXTURES, name))), `${name} rebuild must be byte-identical`);
+
+const methodsRequest = load(names[0]);
+const operationsRequest = load(names[1]);
+const methods = load(names[2]);
+const operations = load(names[3]);
+const conflictRequest = load(names[4]);
+const conflict = load(names[5]);
+const handoff = load(names[6]);
+
+for (const request of [methodsRequest, operationsRequest]) {
+  assert.deepStrictEqual(validateReviewRequestShape(request), []);
+  assert.deepStrictEqual(validateReviewRequest(request), []);
+  assert.strictEqual(request.review_tier, 'ordinary_material_claim');
+  assert.strictEqual(request.candidate_review.exposure_status, 'independent_first');
+  assert.strictEqual(request.candidate_review.evidence_mutated, false);
+  assert.strictEqual(request.candidate_review.criterion_results.length, 3);
+  assert.strictEqual(request.candidate_review.posture_assessments.length, 6);
+  assert.strictEqual(request.candidate_review.overall_disposition, 'block');
+}
+for (const review of [methods, operations]) {
+  assert.deepStrictEqual(validateStrategicReviewShape(review), []);
+  assert.deepStrictEqual(validateStrategicReview(review), []);
+  assert.strictEqual(review.professional_disposition_authority, 'human_required');
+  assert.strictEqual(review.evaluation.advisory_only, true);
+  assert.strictEqual(review.output_sha256, sha256(Object.fromEntries(Object.entries(review).filter(([key]) => key !== 'output_sha256'))));
+}
+assert.deepStrictEqual(validateConflictRequestShape(conflictRequest), []);
+assert.deepStrictEqual(validateConflictRequest(conflictRequest), []);
+assert.deepStrictEqual(validateConflictAnalysisShape(conflict), []);
+assert.deepStrictEqual(validateConflictAnalysis(conflict), []);
+
+assert.deepStrictEqual(methodsRequest.frozen_inputs, operationsRequest.frozen_inputs, 'both reviewers must receive identical frozen inputs');
+assert.deepStrictEqual(methodsRequest.decision_scenario, operationsRequest.decision_scenario);
+assert.strictEqual(methods.review_context_hash, operations.review_context_hash);
+assert.notStrictEqual(methods.reviewer.reviewer_id, operations.reviewer.reviewer_id);
+assert.notStrictEqual(methods.first_assessment_hash, operations.first_assessment_hash);
+assert.deepStrictEqual(methods.input_hashes, [
+  'sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568',
+  'sha256:64e4322e7561ede8b0b50129ed40b278987392480eb215f33e84336bffc7ebc3',
+  'sha256:871b966f09219d6cfa9764b43fcf77bf735308c9958cf8db3c94485926f524f7',
+  'sha256:358a45c36f781cf62b32d0f025a1b86cfe190acdd5d5fad2b49c2650d6d5e8c1'
+]);
+assert.strictEqual(methods.decision_scenario.hash, 'sha256:8dbc16d8fb4c970a2b8514996e8f5f52ae3cfc0c219a12c6d6472494a7e00f15');
+assert.strictEqual(conflict.review_refs.length, 2);
+assert.strictEqual(conflict.proposed_route, 'human_competence_matched_adjudication');
+assert.strictEqual(conflict.automatic_resolution, 'prohibited');
+assert(conflict.discrepancies.length > 0);
+assert(conflict.discrepancies.every(item => item.material && item.human_route_required && item.deterministic_resolution === null));
+assert.strictEqual(conflict.preserved_reviewer_concerns.length, methods.preserved_reviewer_concerns.length + operations.preserved_reviewer_concerns.length);
+
+const combined = `${allReviewText(methods)} ${allReviewText(operations)} ${JSON.stringify(handoff).toLowerCase()}`;
+for (const required of [
+  '63 roster candidates', '54 included', 'six unresolved', 'three excluded',
+  'shared reporting', 'alias', 'joint-venture', 'specialty', 'inactive', 'double-count', 'omission',
+  '2023 through q1/fy2026', 'licensed', 'set-up-and-staffed', 'pos', 'hcris', 'ahrq',
+  'common all-six denominator', 'imputation', 'roster narrowing', 'staffed', 'achievable capacity'
+]) assert(combined.includes(required), `review must preserve concern: ${required}`);
+for (const conflictId of [
+  'conflict:chestnut-hill-ownership-and-bases',
+  'conflict:christianacare-shared-cms-reporting-entity',
+  'conflict:cooper-childrens-separate-hospital',
+  'conflict:temple-shared-cms-reporting-entity',
+  'conflict:union-bed-bases'
+]) assert(combined.includes(conflictId), `review must preserve ${conflictId}`);
+for (const prohibited of ['system bed totals', 'comparable all-six bed claims', 'staffed-capacity inference', 'partial or complete scale scores', 'rankings', 'strategic recommendations', 'professional adjudication', 'projection approval', 'public promotion']) {
+  assert(handoff.prohibited_until_adjudicated.map(item => item.toLowerCase()).includes(prohibited), `handoff must prohibit ${prohibited}`);
+}
+for (const disposition of [...methods.claim_dispositions, ...operations.claim_dispositions]) assert(disposition.overturn_condition.length > 300, 'each material claim concern needs an evidence-specific overturn condition');
+
+// Adversarial: duplicate reviewers, context/input drift, incomplete evidence, and fabricated authority.
+const duplicateReviewer = clone(conflictRequest);
+duplicateReviewer.reviews[1].reviewer.reviewer_id = duplicateReviewer.reviews[0].reviewer.reviewer_id;
+assert.match(validateConflictRequest(duplicateReviewer).join('; '), /unique independent reviewer identities/);
+
+const inputDrift = clone(conflictRequest);
+inputDrift.reviews[1].input_hashes[0] = 'sha256:' + '0'.repeat(64);
+assert.match(validateConflictRequest(inputDrift).join('; '), /identical frozen input hashes|input_hashes must exactly match/);
+
+const contextDrift = clone(conflictRequest);
+contextDrift.reviews[1].review_context_hash = 'sha256:' + '1'.repeat(64);
+assert.match(validateConflictRequest(contextDrift).join('; '), /identical frozen review context|review_context_hash does not match/);
+
+const incompleteCriterion = clone(methodsRequest);
+incompleteCriterion.candidate_review.criterion_results.pop();
+assert.match(validateReviewRequest(incompleteCriterion).join('; '), /cover every protocol criterion/);
+
+const missingCriterionEvidence = clone(methodsRequest);
+missingCriterionEvidence.candidate_review.criterion_results[0].evidence_refs = [];
+assert.match(validateReviewRequest(missingCriterionEvidence).join('; '), /criterion evidence must contain non-empty strings/);
+
+for (const field of ['posture_score', 'recommended_posture', 'human_approval']) {
+  const prohibitedField = clone(methodsRequest);
+  prohibitedField.candidate_review[field] = field === 'posture_score' ? 0.5 : 'fabricated';
+  assert.match(validateReviewRequest(prohibitedField).join('; '), /schema|prohibited field/);
+}
+
+// Adversarial domain coverage: each named failure mode has both a concern and a falsification/overturn route.
+const methodsChallenges = methods.method_challenges.map(item => `${item.challenge_id} ${item.description}`).join(' ').toLowerCase();
+const operationsChallenges = operations.method_challenges.map(item => `${item.challenge_id} ${item.description}`).join(' ').toLowerCase();
+assert.match(methodsChallenges, /bed-basis-negative-control/);
+assert.match(methodsChallenges, /shared-entity-double-count/);
+assert.match(methodsChallenges, /omission-audit/);
+assert.match(methodsChallenges, /scope-perturbation-roster/);
+assert.match(operationsChallenges, /period-alignment/);
+assert.match(operationsChallenges, /licensed-to-achievable-capacity/);
+
+assert.strictEqual(handoff.request_hashes.methods, methods.review_request_hash);
+assert.strictEqual(handoff.request_hashes.operations, operations.review_request_hash);
+assert.strictEqual(handoff.request_hashes.conflict, sha256(conflictRequest));
+assert.strictEqual(handoff.review_hashes.methods_first_assessment, methods.first_assessment_hash);
+assert.strictEqual(handoff.review_hashes.methods_output, methods.output_sha256);
+assert.strictEqual(handoff.review_hashes.operations_first_assessment, operations.first_assessment_hash);
+assert.strictEqual(handoff.review_hashes.operations_output, operations.output_sha256);
+assert.strictEqual(handoff.conflict_output_hash, conflict.output_sha256);
+assert.strictEqual(handoff.downstream_bead, 'healthcare-toolkit-2rr9.6.1');
+
+console.log('Scale roster/bed review fixtures, lineage, adversarial gates, and handoff validated.');
