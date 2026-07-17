@@ -31,6 +31,8 @@ try {
   const doctor = JSON.parse(runRequired(bin, ['doctor', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(doctor.agent_count, 51);
   runRequired(bin, ['install', 'revenue-cycle-specialist', '--codex', '--dry-run'], { cwd: project, env });
+  const installedPackage = path.join(project, 'node_modules', 'healthcare-agents');
+  runRequired(process.execPath, ['scripts/test-scale-roster-bed-review.js'], { cwd: installedPackage, env });
 
   for (const file of [
     'node_modules/healthcare-agents/bin/cli.js',

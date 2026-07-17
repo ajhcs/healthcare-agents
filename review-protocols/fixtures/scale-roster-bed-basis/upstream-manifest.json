@@ -1,0 +1,80 @@
+{
+  "schema_version": "ushso.scale-roster-bed-upstream-manifest.v1",
+  "toolkit": {
+    "merge_commit": "1f17d7cb8cc483a884ae4ed043d25012d73b225e",
+    "implementation_commit": "a74dca3563869a034072243ed570713ae5ea2d88",
+    "handoff_path": "contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/handoff.json",
+    "objects": {
+      "decision_scenario": {
+        "path": "contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/decision-scenario.json",
+        "hash": "sha256:8dbc16d8fb4c970a2b8514996e8f5f52ae3cfc0c219a12c6d6472494a7e00f15"
+      },
+      "identity_binding": {
+        "path": "contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/identity-binding.json",
+        "hash": "sha256:64e4322e7561ede8b0b50129ed40b278987392480eb215f33e84336bffc7ebc3"
+      },
+      "computation_result": {
+        "path": "contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/computation-result.json",
+        "hash": "sha256:871b966f09219d6cfa9764b43fcf77bf735308c9958cf8db3c94485926f524f7"
+      },
+      "claim_candidate": {
+        "path": "contracts/reusable-run/v2/fixtures/scale-roster-bed-basis/claim-candidate.json",
+        "hash": "sha256:358a45c36f781cf62b32d0f025a1b86cfe190acdd5d5fad2b49c2650d6d5e8c1"
+      }
+    }
+  },
+  "data_mcp": {
+    "producer_commit": "4496c07aafa72852d3f0caf80593e66745902c97",
+    "input_path": "contracts/v1/fixtures/scale-roster-bed-basis-input.json",
+    "bundle_ref": "ushso-artifact://scale-roster-beds-20260716-08/public-evidence-bundle",
+    "bundle_hash": "sha256:241a6a909613df116802a2d96965ce9678b76e2887c0f1af9f146186ddd75568"
+  },
+  "claim_id": "claim:scale-v1:all-six:not-calculable:2026-07-16",
+  "conflict_ids": [
+    "conflict:chestnut-hill-ownership-and-bases",
+    "conflict:christianacare-shared-cms-reporting-entity",
+    "conflict:cooper-childrens-separate-hospital",
+    "conflict:temple-shared-cms-reporting-entity",
+    "conflict:union-bed-bases"
+  ],
+  "evidence_identifiers": [
+    "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+    "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+    "computation:scale-v1:all-six:no-score:2026-07-16",
+    "system-identity:christianacare",
+    "system-identity:jefferson-health",
+    "system-identity:temple-health",
+    "system-identity:penn-medicine",
+    "system-identity:cooper-university-health-care",
+    "system-identity:main-line-health",
+    "roster:temple-health:chestnut-hill",
+    "roster:penn-medicine:good-shepherd",
+    "roster:penn-medicine:hup-cedar",
+    "roster:penn-medicine:lancaster-behavioral",
+    "roster:penn-medicine:princeton-house",
+    "roster:cooper-university-health-care:childrens-regional",
+    "conflict:chestnut-hill-ownership-and-bases",
+    "conflict:christianacare-shared-cms-reporting-entity",
+    "conflict:cooper-childrens-separate-hospital",
+    "conflict:temple-shared-cms-reporting-entity",
+    "conflict:union-bed-bases",
+    "christiana-cecil-licensed-109",
+    "union-official-103",
+    "md-bed:union:licensed-fy2026",
+    "cms-pos:210032:bed_cnt",
+    "cms-pos:210032:crtfd_bed_cnt",
+    "cms-hcris:210032:number-of-beds",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+    "cms-pos:390027:bed_cnt",
+    "cms-hcris:390027:number-of-beds",
+    "coverage:bed-missing:jefferson-health:jefferson-abington-hospital",
+    "coverage:bed-missing:jefferson-health:lehigh-valley-hospital-1503-n-cedar-crest",
+    "coverage:bed-missing:jefferson-health:lehigh-valley-reilly-children-s-hospital",
+    "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+    "coverage:bed-missing:penn-medicine:hup-cedar",
+    "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+    "coverage:bed-missing:main-line-health:mirmont"
+  ],
+  "manifest_sha256": "sha256:5f51d685dcd9723a10ea575be5bde65e3e9eb34cc0e005a2877b355470110b7c"
+}

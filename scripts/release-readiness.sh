@@ -42,6 +42,7 @@ section "CLI, installer, routing, package, and tarball"
 node scripts/test-cli-regression.js
 node scripts/test-evidence-pack-regression.js
 node scripts/test-strategic-review-contract.js
+node scripts/test-scale-roster-bed-review.js
 node scripts/test-case-data-provider.js
 node scripts/test-denial-spike-golden-artifact.js
 node scripts/test-operator-os-coverage-regression.js

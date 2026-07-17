@@ -1,0 +1,38 @@
+[
+  {
+    "case_id": "mismatched-bed-bases",
+    "target": "request_evidence",
+    "remove_evidence_ref": "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+    "expected_error": "review must preserve required domain evidence"
+  },
+  {
+    "case_id": "stale-ownership",
+    "target": "request_evidence",
+    "remove_evidence_ref": "conflict:chestnut-hill-ownership-and-bases",
+    "expected_error": "review must preserve conflict evidence"
+  },
+  {
+    "case_id": "shared-entity-double-counting",
+    "target": "request_evidence",
+    "remove_evidence_ref": "conflict:christianacare-shared-cms-reporting-entity",
+    "expected_error": "review must preserve conflict evidence"
+  },
+  {
+    "case_id": "omitted-or-unresolved-facilities",
+    "target": "request_evidence",
+    "remove_evidence_ref": "coverage:bed-missing:penn-medicine:hup-cedar",
+    "expected_error": "review must preserve required domain evidence"
+  },
+  {
+    "case_id": "missing-all-six-coverage",
+    "target": "request_evidence",
+    "remove_evidence_ref": "computation:scale-v1:all-six:no-score:2026-07-16",
+    "expected_error": "review must preserve required domain evidence"
+  },
+  {
+    "case_id": "prohibited-partial-score",
+    "target": "request",
+    "set_overall_disposition": "pass",
+    "expected_error": "must remain block"
+  }
+]
