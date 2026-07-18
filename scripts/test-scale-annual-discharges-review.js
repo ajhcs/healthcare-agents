@@ -229,6 +229,24 @@ assert.match(validateAnnualDischargesReviewHandoff(authority, [methods, operatio
 const promoted = clone(handoff);
 promoted.output_inventory.promotion_attempts = 1;
 assert.match(validateAnnualDischargesReviewHandoff(promoted, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /inventory zero/);
+for (const prohibitedUses of [[], handoff.prohibited_uses.slice(1), [...handoff.prohibited_uses].reverse()]) {
+  const weakenedUses = clone(handoff);
+  weakenedUses.prohibited_uses = prohibitedUses;
+  weakenedUses.handoff_sha256 = sha256(Object.fromEntries(Object.entries(weakenedUses).filter(([key]) => key !== 'handoff_sha256')));
+  assert.match(validateAnnualDischargesReviewHandoff(weakenedUses, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact ordered prohibited-use set/);
+}
+const wrongActiveFamily = clone(handoff);
+wrongActiveFamily.active_family = 'physician_count';
+wrongActiveFamily.handoff_sha256 = sha256(Object.fromEntries(Object.entries(wrongActiveFamily).filter(([key]) => key !== 'handoff_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(wrongActiveFamily, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /active_family must remain annual_discharges/);
+const extraHandoffField = clone(handoff);
+extraHandoffField.fabricated_release_authority = true;
+extraHandoffField.handoff_sha256 = sha256(Object.fromEntries(Object.entries(extraHandoffField).filter(([key]) => key !== 'handoff_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(extraHandoffField, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /closed review-handoff field set/);
+const incompleteOutputInventory = clone(handoff);
+delete incompleteOutputInventory.output_inventory.recommendations;
+incompleteOutputInventory.handoff_sha256 = sha256(Object.fromEntries(Object.entries(incompleteOutputInventory).filter(([key]) => key !== 'handoff_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(incompleteOutputInventory, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact closed zero-output inventory|inventory zero/);
 const lostSliceConflictCount = clone(handoff);
 lostSliceConflictCount.annual_discharges_open_conflict_count = 0;
 lostSliceConflictCount.handoff_sha256 = sha256(Object.fromEntries(Object.entries(lostSliceConflictCount).filter(([key]) => key !== 'handoff_sha256')));
@@ -276,7 +294,7 @@ for (const [field, value, expected] of [
 const firstAssessmentDrift = clone(handoff);
 firstAssessmentDrift.first_assessment_hashes.methods = 'sha256:' + '7'.repeat(64);
 firstAssessmentDrift.handoff_sha256 = sha256(Object.fromEntries(Object.entries(firstAssessmentDrift).filter(([key]) => key !== 'handoff_sha256')));
-assert.match(validateAnnualDischargesReviewHandoff(firstAssessmentDrift, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /first-assessment hashes must match/);
+assert.match(validateAnnualDischargesReviewHandoff(firstAssessmentDrift, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /first-assessment hashes must (?:exactly )?match/);
 const handoffCountDrift = clone(handoff);
 handoffCountDrift.cumulative_cell_counts.blocked_source_conflict = 23;
 handoffCountDrift.handoff_sha256 = sha256(Object.fromEntries(Object.entries(handoffCountDrift).filter(([key]) => key !== 'handoff_sha256')));
