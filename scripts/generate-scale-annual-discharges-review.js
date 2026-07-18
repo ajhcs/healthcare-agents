@@ -18,6 +18,7 @@ const {
   validateAnnualDischargesUpstream
 } = require('../lib/scale-annual-discharges-review');
 const { evaluateStrategicReview } = require('../lib/strategic-review');
+const { rebuildEvidenceChain } = require('../lib/scale-input-fitness-kernel');
 const {
   DATA_PRODUCER, EVIDENCE_BUNDLE_REF, PRIOR_COUNTS,
   TOOLKIT_HANDOFF_FILE_HASH, TOOLKIT_PRODUCER
@@ -38,11 +39,8 @@ for (const [role, relativePath] of Object.entries(roles)) {
   artifactHashes[role] = 'sha256:' + crypto.createHash('sha256').update(raw).digest('hex');
 }
 const normalizedInput = JSON.parse(fs.readFileSync(path.join(UPSTREAM, evidencePaths.normalized_input), 'utf8'));
-const producerBoundInput = JSON.parse(JSON.stringify(normalizedInput));
-producerBoundInput.producer.commit = DATA_PRODUCER;
+const { producerBoundInput, publicEvidenceBundle } = rebuildEvidenceChain(normalizedInput, DATA_PRODUCER);
 fs.writeFileSync(path.join(UPSTREAM, evidencePaths.producer_bound_input), stablePrettyJson(producerBoundInput));
-const bundleBody = { schema_version: 'ushso.public-evidence-bundle.v1', ...producerBoundInput };
-const publicEvidenceBundle = { ...bundleBody, bundle_sha256: sha256(bundleBody) };
 fs.writeFileSync(path.join(UPSTREAM, evidencePaths.public_evidence_bundle), stablePrettyJson(publicEvidenceBundle));
 const evidenceArtifacts = {};
 for (const [role, relativePath] of Object.entries(evidencePaths)) {

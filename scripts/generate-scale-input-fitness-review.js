@@ -16,13 +16,17 @@ const {
   PRODUCER_BOUND_INPUT_RAW_HASH,
   TOOLKIT_HANDOFF_FILE_HASH,
   TOOLKIT_PRODUCER,
-  semanticHash,
   stablePrettyJson,
   validateScalePacketReviewHandoff,
   validateScalePacketReviewRequest,
   validateScalePacketUpstream
 } = require('../lib/scale-input-fitness-review');
 const { evaluateStrategicReview } = require('../lib/strategic-review');
+const {
+  buildObjectEntriesForRefs,
+  canonicalText,
+  rebuildEvidenceChain
+} = require('../lib/scale-input-fitness-kernel');
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'review-protocols', 'fixtures', 'scale-input-packets', 'operating-revenue');
@@ -48,19 +52,21 @@ const evidencePaths = {
 
 const objects = {};
 const artifactHashes = {};
-const objectEntries = {};
 for (const [role, relativePath] of Object.entries(roles)) {
   const raw = fs.readFileSync(path.join(UPSTREAM, relativePath));
   objects[role] = JSON.parse(raw);
   artifactHashes[role] = 'sha256:' + crypto.createHash('sha256').update(raw).digest('hex');
-  objectEntries[role] = { artifact_ref: `upstream/${relativePath}`, artifact_hash: artifactHashes[role] };
-  const semantic = semanticHash(objects[role]);
-  if (semantic) objectEntries[role].semantic_hash = semantic;
 }
+const objectEntries = buildObjectEntriesForRefs(
+  Object.fromEntries(Object.entries(roles).map(([role, relativePath]) => [role, `upstream/${relativePath}`])),
+  objects,
+  artifactHashes
+);
 const normalizedInput = JSON.parse(fs.readFileSync(path.join(UPSTREAM, evidencePaths.normalized_input), 'utf8'));
-const producerBoundInput = JSON.parse(JSON.stringify(normalizedInput));
-producerBoundInput.producer.commit = DATA_PRODUCER;
+const { producerBoundInput, publicEvidenceBundle } = rebuildEvidenceChain(normalizedInput, DATA_PRODUCER);
 fs.writeFileSync(path.join(UPSTREAM, evidencePaths.producer_bound_input), stablePrettyJson(producerBoundInput));
+const committedEvidenceBundle = JSON.parse(fs.readFileSync(path.join(UPSTREAM, evidencePaths.public_evidence_bundle), 'utf8'));
+if (canonicalText(publicEvidenceBundle) !== canonicalText(committedEvidenceBundle)) throw new Error('committed public evidence bundle differs from the deterministic normalized-input rebuild');
 const evidenceArtifacts = {};
 for (const [role, relativePath] of Object.entries(evidencePaths)) {
   const raw = fs.readFileSync(path.join(UPSTREAM, relativePath));
