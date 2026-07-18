@@ -1,0 +1,87 @@
+{
+  "schema_version": "ushso.scale-input-fitness-review-handoff.v1",
+  "active_family": "annual_discharges",
+  "upstream_manifest_hash": "sha256:051e3c32a7f04f783791c0ba0c7156156b424fb88d07e72cb044a78ab8ab4e6a",
+  "toolkit_producer_commit": "76e16247cecce818d777b4a4ade56dc13dd7b2a8",
+  "data_producer_commit": "cbefd15c9e15ce84d8b00fe0d54f67d946cb6ccd",
+  "toolkit_handoff_file_hash": "sha256:2c217a84f520a5443c7d5561e8ea9312bbd13ec4f5d541c226287a4c465fb0fe",
+  "evidence_bundle_ref": "ushso-rebuild://scale-inputs/annual-discharges/public-evidence-bundle",
+  "evidence_lineage": {
+    "acquisition_ref": "git:cbefd15c9e15ce84d8b00fe0d54f67d946cb6ccd:contracts/v2/fixtures/scale-annual-discharges-acquisition.json",
+    "acquisition_raw_hash": "sha256:aa0027e2af3dc5e29fc2e5245b6e3d36370b83560ed8bbf64f9de12c6908495a",
+    "acquisition_semantic_hash": "sha256:fc5b401a8f63a98b0bbdc601e47948336e6200ad1177bbac7ded34df387ebcae",
+    "committed_input_ref": "git:cbefd15c9e15ce84d8b00fe0d54f67d946cb6ccd:contracts/v2/fixtures/scale-annual-discharges-input.json",
+    "normalized_input_artifact_ref": "upstream/data-mcp/normalized-input.json",
+    "normalized_input_raw_hash": "sha256:29229692c230073770d5ecbd766d385bd2b9f44eb5c6be2d8640d5480b0fc1d3",
+    "producer_bound_input_artifact_ref": "upstream/data-mcp/producer-bound-input.json",
+    "producer_bound_input_raw_hash": "sha256:d12085e3987df0765f94cffa82576f9f3b452042affb57638ac2b66c4462eb5f",
+    "bundle_artifact_ref": "upstream/data-mcp/public-evidence-bundle.json",
+    "bundle_raw_hash": "sha256:72f3c121b55b505b4779cbe3ee362c25aa8a4b73202849cfa4ae5ca97bbe0da4",
+    "bundle_semantic_hash": "sha256:b8cad4dc793c86c1015dd0929cbb42d125158fc258d5569dccc8371b7dbd00a9"
+  },
+  "review_hashes": {
+    "methods": "sha256:661e140bc1d6dc0e9f8a39fbe80959d9c4e1b72b760bc8ac523f9ac84775b9b9",
+    "utilization_operations": "sha256:6ccf94c95e4cecfe3d42e0d22ae8d92f3c52d4d494f254934f260280483fba12"
+  },
+  "first_assessment_hashes": {
+    "methods": "sha256:22563368a4ac2f6780d4a6a7ec06f158aaa0dd4ec7db84b7cf1e85ac5c67a122",
+    "utilization_operations": "sha256:b99a43bc4e8d1f760d411a3210093b86a2bcc95a0bceb5306a3083aec50c4b37"
+  },
+  "conflict_output_hash": "sha256:418221d3bfd79e35d3c92f755eb1ae77d1934fef81582eb736c3a993b4325d44",
+  "prior_counts": {
+    "material_discrepancies": 26,
+    "reviewer_concerns": 24,
+    "open_conflicts": 5,
+    "overturn_gates": 10,
+    "revenue_discrepancies": 2,
+    "revenue_preserved_concerns": 56,
+    "revenue_open_conflicts": 11
+  },
+  "annual_discharges_blocked_cell_count": 6,
+  "annual_discharges_open_conflict_count": 6,
+  "annual_discharges_open_conflict_refs": [
+    "conflict:christianacare:annual-discharges:comparability",
+    "conflict:jefferson-health:annual-discharges:comparability",
+    "conflict:temple-health:annual-discharges:comparability",
+    "conflict:penn-medicine:annual-discharges:comparability",
+    "conflict:cooper-university-health-care:annual-discharges:comparability",
+    "conflict:main-line-health:annual-discharges:comparability"
+  ],
+  "cumulative_open_conflict_count": 17,
+  "cumulative_cell_counts": {
+    "total": 54,
+    "populated": 0,
+    "blocked_source_conflict": 24,
+    "not_yet_researched": 30
+  },
+  "final_disposition": "block",
+  "route": "human_competence_matched_adjudication",
+  "automatic_resolution": "prohibited",
+  "positions_averaged": false,
+  "adjudication_performed": false,
+  "human_authority_conveyed": false,
+  "output_inventory": {
+    "adjudications": 0,
+    "component_scores": 0,
+    "deployments": 0,
+    "formula_executions": 0,
+    "projections": 0,
+    "promotion_attempts": 0,
+    "recommendations": 0,
+    "scale_scores": 0,
+    "sensitivity_runs": 0
+  },
+  "prohibited_uses": [
+    "calculation",
+    "scoring",
+    "ranking",
+    "sensitivity_analysis",
+    "projection",
+    "adjudication",
+    "strategic_recommendation",
+    "promotion",
+    "deployment"
+  ],
+  "downstream_bead": "healthcare-toolkit-2rr9.6.3.4",
+  "handoff_sha256": "sha256:ebb2f594bef251afc124e9f3c64412b6233cc0845da5153adc9a058678c1019d"
+}

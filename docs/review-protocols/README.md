@@ -36,6 +36,25 @@ warrants, limitations, overturn conditions, challenges, prohibited claims, and
 concerns, and routes material differences to human competence-matched
 adjudication. Its output is advisory; automatic resolution is prohibited.
 
+Scale input fitness fixtures are cumulative and family-specific. The
+`annual-discharges` fixture binds the exact Data MCP acquisition and Toolkit
+packet, routes independent-first evidence/methods and utilization-operations
+reviews, preserves every earlier discrepancy, concern, conflict, and overturn
+gate, and emits only a blocked human-review handoff. It is not a Scale
+calculation, sensitivity, projection, recommendation, adjudication, or release.
+
+### Family-module maintainability disposition
+
+The operating-revenue and annual-discharges validators and generators remain
+separate in this cycle. Their frozen prior-record shapes, evidence custody,
+competence criteria, and lineage proofs differ materially, so generalizing from
+only those two examples would risk hiding family-specific fail-closed checks in
+configuration. This is an explicit disposition of the review's medium
+duplication concern, not approval to copy the pattern through all seven cycles:
+before implementing cycle three, maintainers must decide and test a shared
+family-neutral kernel using the two completed implementations as its boundary,
+while leaving the committed v1 review schemas and frozen fixtures unchanged.
+
 ## Human boundary
 
 Agent slugs in the registry are candidate prompt implementations, not proof of

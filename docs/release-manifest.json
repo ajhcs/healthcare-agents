@@ -230,6 +230,33 @@
       ]
     },
     {
+      "id": "scale-annual-discharges-fitness-review",
+      "claim": "Healthcare Agents publishes a deterministic annual-discharges Scale input-fitness review that binds exact Data MCP and Toolkit lineage, routes independent-first evidence/methods and utilization-operations reviews, preserves unresolved disagreement for human review, and produces no Scale calculation, sensitivity, projection, recommendation, adjudication, or promotion.",
+      "evidence": [
+        "lib/scale-annual-discharges-review.js",
+        "scripts/generate-scale-annual-discharges-review.js",
+        "scripts/test-scale-annual-discharges-review.js",
+        "scripts/verify-scale-annual-discharges-upstream.js",
+        "docs/review-protocols/README.md"
+      ],
+      "commands": [
+        "npm run test:scale-annual-discharges-review",
+        "npm run verify:scale-annual-discharges-upstream -- --data-mcp-repo <healthcare-data-mcp> --toolkit-repo <healthcare-toolkit>",
+        "npm run release:check"
+      ],
+      "artifacts": [
+        "lib/scale-annual-discharges-review.js",
+        "review-protocols/fixtures/scale-input-packets/annual-discharges/upstream-manifest.json",
+        "review-protocols/fixtures/scale-input-packets/annual-discharges/methods-review.json",
+        "review-protocols/fixtures/scale-input-packets/annual-discharges/utilization_operations-review.json",
+        "review-protocols/fixtures/scale-input-packets/annual-discharges/conflict-analysis.json",
+        "review-protocols/fixtures/scale-input-packets/annual-discharges/handoff.json"
+      ],
+      "beads": [
+        "beads-aw6"
+      ]
+    },
+    {
       "id": "tracker-coverage",
       "claim": "Every major product vision goal has bead coverage and bd is documented as the active tracker in this repository.",
       "evidence": [
