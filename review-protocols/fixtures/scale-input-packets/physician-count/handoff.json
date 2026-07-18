@@ -1,0 +1,90 @@
+{
+  "schema_version": "ushso.scale-input-fitness-review-handoff.v1",
+  "active_family": "physician_count",
+  "upstream_manifest_hash": "sha256:6333c1826db7465f539400907d94991824fdd83997a61381aa6e423118420ccc",
+  "toolkit_producer_commit": "581265a2f2c80f71832b87de787b8b93e3ac8b1c",
+  "data_producer_commit": "6099486b39e02b45e525077c695fb2c258bfcf81",
+  "toolkit_handoff_file_hash": "sha256:1cdde4532d1438feaeb32406cc43ef35e345665520caf407f551f16760e122c9",
+  "toolkit_runtime_handoff_file_hash": "sha256:db519e562162107d7d38620358f0049ca96b271e12a189bf10991a9fa2a471e9",
+  "evidence_bundle_ref": "ushso-rebuild://scale-inputs/physician-count/public-evidence-bundle",
+  "evidence_lineage": {
+    "acquisition_ref": "git:6099486b39e02b45e525077c695fb2c258bfcf81:contracts/v3/fixtures/scale-physician-count-acquisition.json",
+    "acquisition_raw_hash": "sha256:e7964104e56b389a19540b541cc490656578aede63d2dcbcbb8ab73571b3192b",
+    "acquisition_semantic_hash": "sha256:3de71b8961509cae7086d812761b0cb89eda27b1b10a905f55e8ba4049448d0a",
+    "committed_input_ref": "git:6099486b39e02b45e525077c695fb2c258bfcf81:contracts/v3/fixtures/scale-physician-count-input.json",
+    "normalized_input_artifact_ref": "upstream/data-mcp/normalized-input.json",
+    "normalized_input_raw_hash": "sha256:2c2734cd58f5b97cb6b73c326493c9794e3eb6fd3ded05d7f2ed503033dababa",
+    "producer_bound_input_artifact_ref": "upstream/data-mcp/producer-bound-input.json",
+    "producer_bound_input_raw_hash": "sha256:a939aa56b3d342dbdedd0cf6ae0986b41c66328d0045fd5e068c556f36753e59",
+    "bundle_artifact_ref": "upstream/data-mcp/public-evidence-bundle.json",
+    "bundle_raw_hash": "sha256:ca656fe66efcd0bccec925897eafeb24136b583de20bbff1410e71bbae74caae",
+    "bundle_semantic_hash": "sha256:5f36b30968fc72ec69ac59d3342210d7e346e723eb134f47304ebffde75124b3"
+  },
+  "review_hashes": {
+    "methods": "sha256:77dd1bf714b08eb31912147664e2511dd737b2b325e190d74cca870e06279f3c",
+    "physician_workforce": "sha256:c83908e70e1a3fd5f36d77876cac4a73fcc4e00c551b8035a6a9cb5ef60a7e22"
+  },
+  "first_assessment_hashes": {
+    "methods": "sha256:af13ad57d5ffb8e80f3ddd558aa1d2d3291c892082fd8c71683b4ed5a104ec1b",
+    "physician_workforce": "sha256:98c7853ab388c028b070d1a7c40ec8f9668bad9279ccaed956f4966ef96ccc0b"
+  },
+  "conflict_output_hash": "sha256:821231c264bfb6a250b45777e1ac1bae6c2f4655191ea882ebc95dc91878ba97",
+  "prior_counts": {
+    "material_discrepancies": 26,
+    "reviewer_concerns": 24,
+    "open_conflicts": 5,
+    "overturn_gates": 10,
+    "revenue_discrepancies": 2,
+    "revenue_preserved_concerns": 56,
+    "annual_discrepancies": 2,
+    "annual_preserved_concerns": 172,
+    "prior_review_open_conflicts": 17
+  },
+  "physician_count_blocked_cell_count": 6,
+  "physician_count_open_conflict_count": 6,
+  "physician_count_open_conflict_refs": [
+    "conflict:christianacare:physician-count:comparability",
+    "conflict:jefferson-health:physician-count:comparability",
+    "conflict:temple-health:physician-count:comparability",
+    "conflict:penn-medicine:physician-count:comparability",
+    "conflict:cooper-university-health-care:physician-count:comparability",
+    "conflict:main-line-health:physician-count:comparability"
+  ],
+  "cumulative_open_conflict_count": 23,
+  "cumulative_cell_counts": {
+    "total": 54,
+    "populated": 0,
+    "blocked_source_conflict": 30,
+    "not_yet_researched": 24
+  },
+  "final_disposition": "block",
+  "route": "human_competence_matched_adjudication",
+  "automatic_resolution": "prohibited",
+  "positions_averaged": false,
+  "adjudication_performed": false,
+  "human_authority_conveyed": false,
+  "output_inventory": {
+    "adjudications": 0,
+    "component_scores": 0,
+    "deployments": 0,
+    "formula_executions": 0,
+    "projections": 0,
+    "promotion_attempts": 0,
+    "recommendations": 0,
+    "scale_scores": 0,
+    "sensitivity_runs": 0
+  },
+  "prohibited_uses": [
+    "calculation",
+    "scoring",
+    "ranking",
+    "sensitivity_analysis",
+    "projection",
+    "adjudication",
+    "strategic_recommendation",
+    "promotion",
+    "deployment"
+  ],
+  "downstream_bead": "healthcare-toolkit-2rr9.6.3.6",
+  "handoff_sha256": "sha256:45d47a0adc0834bec7ce96a5d83ac5ad183ca935503985f781d48e5d489d1f50"
+}
