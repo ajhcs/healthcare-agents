@@ -1,0 +1,120 @@
+{
+  "schema_version": "ushso.scale-input-fitness-upstream-manifest.v1",
+  "active_family": "operating_revenue_usd",
+  "producer_pins": {
+    "healthcare_toolkit": "370dd2da1cb233eea8f89cb4773ed669a8c37b58",
+    "healthcare_data_mcp": "b1fdfad94e65239fa73928990c086a63423b7c94"
+  },
+  "toolkit_handoff_file_hash": "sha256:c448ed24b8737df3ec4e934d801aaae1bff40cdb3d31d142e3e354071d045a3b",
+  "evidence_bundle_hash": "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726",
+  "objects": {
+    "baseline_packet": {
+      "artifact_ref": "upstream/baseline-packet.json",
+      "artifact_hash": "sha256:910b3216a48ded6655a49a334fc55421ca3e2786b63847b404a41dae72b3fd2b",
+      "semantic_hash": "sha256:c04d55ebc900fd70676da9af65a81024c924725514ab29cfe128bd0cd5671472"
+    },
+    "cumulative_packet": {
+      "artifact_ref": "upstream/cumulative-packet.json",
+      "artifact_hash": "sha256:2f7ee1e6983a4c6a10fe0eea57adc2d6d1ba9dbd69f8604397a5e9ad82cea4d0",
+      "semantic_hash": "sha256:a407865a3657e9c619d9481ab21c15f6877141e1a5008b97cd76ff6590e63201"
+    },
+    "decision_scenario": {
+      "artifact_ref": "upstream/decision-scenario.json",
+      "artifact_hash": "sha256:33ba7a053450cca93850f6e6e86fc6806c0a7b4f8078597ba590e1b8a51344ee",
+      "semantic_hash": "sha256:b387f9354305a3556180572c477d62bc42bfa9aed758779b7c99d743926b0354"
+    },
+    "identity_binding": {
+      "artifact_ref": "upstream/identity-binding.json",
+      "artifact_hash": "sha256:104418a5bbf51e50c4a430cb75518792a09348f2a32c858aa09d4014720db5ab",
+      "semantic_hash": "sha256:11d9b3cfaccc65ab22bd07912f6ed5b7c8e75f946619a2a3030f78a9f640b264"
+    },
+    "no_execution_result": {
+      "artifact_ref": "upstream/no-execution-result.json",
+      "artifact_hash": "sha256:d8c49e8ebeda020681c3e8f9a2acfc8deca1cb34c4e3aebe663304382fb07f4c",
+      "semantic_hash": "sha256:ceb5374600806b893069aa445c4fcbec75a21b50db7daa2446f9deff4d34d5d9"
+    },
+    "process_claim": {
+      "artifact_ref": "upstream/process-claim.json",
+      "artifact_hash": "sha256:3789b4548d8a801289df438b43634e77e7d32f5f2514d8541290a82396fa569d",
+      "semantic_hash": "sha256:9ffec3755f26e554c8dced586667f1699febac0304461f331d8a63c418e7c97d"
+    },
+    "prior_review_record": {
+      "artifact_ref": "upstream/prior/claim-review-record.json",
+      "artifact_hash": "sha256:c4c40877ff2179cd2a450133c2b3321fec5bec6776d27c2c95ded5bd77b429c8",
+      "semantic_hash": "sha256:0581990b637598e8d9d2edd3c6b099006458bffc44c964a0c6e5f1f8f51279d6"
+    },
+    "prior_assurance_case": {
+      "artifact_ref": "upstream/prior/module-assurance-case.json",
+      "artifact_hash": "sha256:0447507dd09490576174d24fc9413643da9a368a33e7732409036118ec4b5afb",
+      "semantic_hash": "sha256:245ac7304bd1cf095db99add451a0099bfb4e62a9b8596b13170a3ab55ef8ff2"
+    },
+    "toolkit_handoff": {
+      "artifact_ref": "upstream/handoff.json",
+      "artifact_hash": "sha256:c448ed24b8737df3ec4e934d801aaae1bff40cdb3d31d142e3e354071d045a3b"
+    }
+  },
+  "review_input_hashes": [
+    "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726",
+    "sha256:11d9b3cfaccc65ab22bd07912f6ed5b7c8e75f946619a2a3030f78a9f640b264",
+    "sha256:a407865a3657e9c619d9481ab21c15f6877141e1a5008b97cd76ff6590e63201",
+    "sha256:ceb5374600806b893069aa445c4fcbec75a21b50db7daa2446f9deff4d34d5d9",
+    "sha256:9ffec3755f26e554c8dced586667f1699febac0304461f331d8a63c418e7c97d",
+    "sha256:b387f9354305a3556180572c477d62bc42bfa9aed758779b7c99d743926b0354"
+  ],
+  "expected_counts": {
+    "total_cells": 54,
+    "populated_cells": 0,
+    "blocked_cells": 18,
+    "not_yet_researched_cells": 36,
+    "operating_revenue_blocked_cells": 6,
+    "operating_revenue_conflicts": 6,
+    "cumulative_open_conflicts": 11,
+    "discrepancies": 26,
+    "reviewer_concerns": 24,
+    "open_conflicts": 5,
+    "overturn_gates": 10
+  },
+  "evidence_identifiers": [
+    "claim:scale-v1:operating-revenue-cycle:no-execution:2026-07-17",
+    "cms-hcris:210032:number-of-beds",
+    "cms-pos:210032:bed_cnt",
+    "cms-pos:390027:bed_cnt",
+    "computation:scale-v1:all-six:no-score:2026-07-16",
+    "conflict:chestnut-hill-ownership-and-bases",
+    "conflict:christianacare-shared-cms-reporting-entity",
+    "conflict:christianacare:operating_revenue_usd:comparability",
+    "conflict:cooper-childrens-separate-hospital",
+    "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+    "conflict:jefferson-health:operating_revenue_usd:comparability",
+    "conflict:main-line-health:operating_revenue_usd:comparability",
+    "conflict:penn-medicine:operating_revenue_usd:comparability",
+    "conflict:temple-health:operating_revenue_usd:comparability",
+    "conflict:temple-shared-cms-reporting-entity",
+    "conflict:union-bed-bases",
+    "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+    "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+    "coverage:bed-missing:penn-medicine:hup-cedar",
+    "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+    "md-bed:union:licensed-fy2026",
+    "observation:christianacare:operating_revenue_usd:candidate",
+    "observation:jefferson-health:operating_revenue_usd:candidate",
+    "observation:main-line-health:operating_revenue_usd:candidate",
+    "observation:penn-medicine:operating_revenue_usd:candidate",
+    "receipt:artifact:christianacare:operating-revenue:fy2024",
+    "receipt:artifact:cooper-university-health-care:operating-revenue:fy2025",
+    "receipt:artifact:jefferson-health:operating-revenue:fy2022",
+    "receipt:artifact:main-line-health:operating-revenue:fy2022",
+    "receipt:artifact:penn-medicine:operating-revenue:fy2025",
+    "receipt:artifact:temple-health:operating-revenue:fy2025",
+    "roster:penn-medicine:hup-cedar",
+    "roster:temple-health:chestnut-hill",
+    "scale-input-binding:operating-revenue:all-six:2026-07-17",
+    "scale-input-packet:all-six:operating-revenue-cycle:2026-07-17",
+    "scale-no-execution:operating-revenue:2026-07-17",
+    "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+    "scenario:scale-v1:operating-revenue-fitness:2026-07-17",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds"
+  ],
+  "manifest_sha256": "sha256:9b9557cedbc5113b7fc9737f2d18d2baae377b99562348fff8011e610b6f35de"
+}

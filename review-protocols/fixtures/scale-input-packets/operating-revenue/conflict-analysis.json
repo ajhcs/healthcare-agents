@@ -1,0 +1,423 @@
+{
+  "schema_version": "ushso.ai-conflict-analysis.v1",
+  "analysis_id": "conflict:0700ae71dc39e24050aee7120aa80a99",
+  "request_id": "conflict-request:scale-operating-revenue:2026-07-17",
+  "review_tier": "ordinary_material_claim",
+  "review_refs": [
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "output_sha256": "sha256:a6fdaf46a19139dc8abdc9853687edba13c53f99304ab317fafb4098b73bd699"
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "output_sha256": "sha256:7729424d04526c765c0fbc2305bd6bcfbd7e20e77b30a460f5c20bb30b80df31"
+    }
+  ],
+  "discrepancies": [
+    {
+      "discrepancy_id": "discrepancy:81e1c16393e0cd1e1021948d",
+      "type": "review_concern_or_challenge",
+      "field_path": "method_challenges",
+      "material": true,
+      "positions": [
+        {
+          "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+          "value": [
+            {
+              "challenge_id": "method:source-withholding",
+              "description": "Withhold each source in turn; no absent candidate may become a zero or approved value."
+            },
+            {
+              "challenge_id": "method:period-negative-control",
+              "description": "Keep FY2022, FY2024, and FY2025 values nonequivalent until an approved lag rule is satisfied."
+            },
+            {
+              "challenge_id": "method:scope-perturbation",
+              "description": "Perturb affiliate and consolidation boundaries; any changing value remains ineligible."
+            },
+            {
+              "challenge_id": "method:missingness-audit",
+              "description": "Verify Temple unaudited and Cooper HTTP 403 states remain missing/conflicted, never fabricated zeroes."
+            }
+          ]
+        },
+        {
+          "review_id": "review:c85d567e49c0b582439671857cd37d48",
+          "value": [
+            {
+              "challenge_id": "finance:remove-one-time-items",
+              "description": "Reconcile recurring operating revenue after documented eliminations and one-time items."
+            },
+            {
+              "challenge_id": "finance:test-obligated-group-scope",
+              "description": "Compare obligated group, consolidated parent, health-system, university, and affiliate boundaries without substitution."
+            },
+            {
+              "challenge_id": "finance:stress-debt-liquidity",
+              "description": "Require separate debt, liquidity, and forward capital evidence before any capacity inference."
+            },
+            {
+              "challenge_id": "finance:audit-status-negative-control",
+              "description": "Keep unaudited Temple and inaccessible Cooper evidence nonnumeric and ineligible."
+            }
+          ]
+        }
+      ],
+      "deterministic_resolution": null,
+      "human_route_required": true
+    },
+    {
+      "discrepancy_id": "discrepancy:b339625b8811e3c69be0fa30",
+      "type": "criterion_evidence_or_warrant",
+      "field_path": "evaluation.criteria_results",
+      "material": true,
+      "positions": [
+        {
+          "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+          "value": [
+            {
+              "criterion_id": "cso.evidence-methods-measurement.v1:criterion:1",
+              "result": "addressed",
+              "claim_refs": [
+                "claim:scale-v1:operating-revenue-cycle:no-execution:2026-07-17"
+              ],
+              "evidence_refs": [
+                "scale-input-packet:all-six:operating-revenue-cycle:2026-07-17",
+                "conflict:christianacare:operating_revenue_usd:comparability",
+                "conflict:jefferson-health:operating_revenue_usd:comparability",
+                "conflict:temple-health:operating_revenue_usd:comparability",
+                "conflict:penn-medicine:operating_revenue_usd:comparability",
+                "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+                "conflict:main-line-health:operating_revenue_usd:comparability"
+              ],
+              "rationale": "The observation-claim-warrant chain supports only a process no-go: every revenue value is null and conflicted, so the packet supports no comparative or numerical inference."
+            },
+            {
+              "criterion_id": "cso.evidence-methods-measurement.v1:criterion:2",
+              "result": "addressed",
+              "claim_refs": [
+                "claim:scale-v1:operating-revenue-cycle:no-execution:2026-07-17"
+              ],
+              "evidence_refs": [
+                "scale-input-packet:all-six:operating-revenue-cycle:2026-07-17",
+                "receipt:artifact:christianacare:operating-revenue:fy2024",
+                "receipt:artifact:jefferson-health:operating-revenue:fy2022",
+                "receipt:artifact:temple-health:operating-revenue:fy2025",
+                "receipt:artifact:penn-medicine:operating-revenue:fy2025",
+                "receipt:artifact:cooper-university-health-care:operating-revenue:fy2025",
+                "receipt:artifact:main-line-health:operating-revenue:fy2022"
+              ],
+              "rationale": "FY2022, FY2024, and FY2025 periods, differing organizational bases, Temple unaudited evidence, Cooper retrieval failure, and absent approved values defeat comparability and sensitivity eligibility."
+            },
+            {
+              "criterion_id": "cso.evidence-methods-measurement.v1:criterion:3",
+              "result": "addressed",
+              "claim_refs": [
+                "claim:scale-v1:operating-revenue-cycle:no-execution:2026-07-17"
+              ],
+              "evidence_refs": [
+                "scale-input-packet:all-six:operating-revenue-cycle:2026-07-17",
+                "conflict:christianacare:operating_revenue_usd:comparability",
+                "conflict:jefferson-health:operating_revenue_usd:comparability",
+                "conflict:temple-health:operating_revenue_usd:comparability",
+                "conflict:penn-medicine:operating_revenue_usd:comparability",
+                "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+                "conflict:main-line-health:operating_revenue_usd:comparability"
+              ],
+              "rationale": "Source repetition or candidate agreement cannot resolve consolidation, definition, period, or missingness conflicts and cannot be treated as corroboration."
+            }
+          ]
+        },
+        {
+          "review_id": "review:c85d567e49c0b582439671857cd37d48",
+          "value": [
+            {
+              "criterion_id": "cso.healthcare-finance-capital.v1:criterion:1",
+              "result": "addressed",
+              "claim_refs": [
+                "claim:scale-v1:operating-revenue-cycle:no-execution:2026-07-17"
+              ],
+              "evidence_refs": [
+                "scale-input-packet:all-six:operating-revenue-cycle:2026-07-17",
+                "conflict:christianacare:operating_revenue_usd:comparability",
+                "conflict:jefferson-health:operating_revenue_usd:comparability",
+                "conflict:temple-health:operating_revenue_usd:comparability",
+                "conflict:penn-medicine:operating_revenue_usd:comparability",
+                "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+                "conflict:main-line-health:operating_revenue_usd:comparability"
+              ],
+              "rationale": "Operating revenue is historical accounting evidence, not liquidity, leverage, operating margin, free cash flow, or forward capital capacity; no Scale or strategic conclusion follows."
+            },
+            {
+              "criterion_id": "cso.healthcare-finance-capital.v1:criterion:2",
+              "result": "addressed",
+              "claim_refs": [
+                "claim:scale-v1:operating-revenue-cycle:no-execution:2026-07-17"
+              ],
+              "evidence_refs": [
+                "receipt:artifact:christianacare:operating-revenue:fy2024",
+                "receipt:artifact:jefferson-health:operating-revenue:fy2022",
+                "receipt:artifact:temple-health:operating-revenue:fy2025",
+                "receipt:artifact:penn-medicine:operating-revenue:fy2025",
+                "receipt:artifact:cooper-university-health-care:operating-revenue:fy2025",
+                "receipt:artifact:main-line-health:operating-revenue:fy2022",
+                "conflict:christianacare:operating_revenue_usd:comparability",
+                "conflict:jefferson-health:operating_revenue_usd:comparability",
+                "conflict:temple-health:operating_revenue_usd:comparability",
+                "conflict:penn-medicine:operating_revenue_usd:comparability",
+                "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+                "conflict:main-line-health:operating_revenue_usd:comparability"
+              ],
+              "rationale": "Fiscal periods, consolidation scopes, audited status, affiliate bases, eliminations, and one-time-item treatment are not common. Temple is unaudited and Cooper is inaccessible by HTTP 403, neither is zero."
+            },
+            {
+              "criterion_id": "cso.healthcare-finance-capital.v1:criterion:3",
+              "result": "addressed",
+              "claim_refs": [
+                "claim:scale-v1:operating-revenue-cycle:no-execution:2026-07-17"
+              ],
+              "evidence_refs": [
+                "scale-no-execution:operating-revenue:2026-07-17",
+                "scale-input-packet:all-six:operating-revenue-cycle:2026-07-17"
+              ],
+              "rationale": "No debt, liquidity, capital plan, forecast, or scenario assumptions exist, so capital feasibility, valuation, investment, and strategic recommendations remain prohibited."
+            }
+          ]
+        }
+      ],
+      "deterministic_resolution": null,
+      "human_route_required": true
+    }
+  ],
+  "preserved_reviewer_concerns": [
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Six unresolved and three excluded candidates prevent an approved all-six denominator."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Evidence periods span 2023 through Q1/FY2026; no common period is asserted."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "All conclusions require named human competence-matched adjudication and release authority."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Penn HUP-Cedar is named as a campus but may be a remote HUP location."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "The no-score result is an appropriate block but resolves no underlying conflict or strategic question."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "All six operating-revenue cells remain blocked_source_conflict and unpopulated."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active."
+    },
+    {
+      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "concern": "No averaging, no adjudication, and no model-generated human authority are permitted."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Six unresolved and three excluded candidates prevent an approved all-six denominator."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Evidence periods span 2023 through Q1/FY2026; no common period is asserted."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "All conclusions require named human competence-matched adjudication and release authority."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Penn HUP-Cedar is named as a campus but may be a remote HUP location."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "The no-score result is an appropriate block but resolves no underlying conflict or strategic question."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "All six operating-revenue cells remain blocked_source_conflict and unpopulated."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active."
+    },
+    {
+      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "concern": "No averaging, no adjudication, and no model-generated human authority are permitted."
+    }
+  ],
+  "proposed_route": "human_competence_matched_adjudication",
+  "advisory_only": true,
+  "resolution_authority": "human_required",
+  "automatic_resolution": "prohibited",
+  "output_sha256": "sha256:5e8232d67351ed8e8b3e59489689e4d16408cfbd7f2b246a5bfa7ccf8eb99c40"
+}

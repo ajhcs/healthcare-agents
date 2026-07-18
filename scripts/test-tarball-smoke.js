@@ -33,6 +33,7 @@ try {
   runRequired(bin, ['install', 'revenue-cycle-specialist', '--codex', '--dry-run'], { cwd: project, env });
   const installedPackage = path.join(project, 'node_modules', 'healthcare-agents');
   runRequired(process.execPath, ['scripts/test-scale-roster-bed-review.js'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-scale-input-fitness-review.js'], { cwd: installedPackage, env });
 
   for (const file of [
     'node_modules/healthcare-agents/bin/cli.js',
