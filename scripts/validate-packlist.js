@@ -75,6 +75,7 @@ const required = [
   'scripts/verify-scale-input-fitness-upstream.js',
   'scripts/test-scale-input-fitness-review.js',
   'scripts/test-scale-input-fitness-kernel.js',
+  'scripts/test-scale-input-fitness-upstream-verifier.js',
   'scripts/generate-scale-annual-discharges-review.js',
   'scripts/verify-scale-annual-discharges-upstream.js',
   'scripts/test-scale-annual-discharges-review.js',

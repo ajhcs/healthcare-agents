@@ -45,6 +45,7 @@ node scripts/test-strategic-review-contract.js
 node scripts/test-scale-roster-bed-review.js
 node scripts/test-scale-input-fitness-review.js
 node scripts/test-scale-input-fitness-kernel.js
+node scripts/test-scale-input-fitness-upstream-verifier.js
 node scripts/test-scale-annual-discharges-review.js
 node scripts/test-case-data-provider.js
 node scripts/test-denial-spike-golden-artifact.js

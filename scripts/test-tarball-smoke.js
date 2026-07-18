@@ -35,6 +35,7 @@ try {
   runRequired(process.execPath, ['scripts/test-scale-roster-bed-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-input-fitness-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-input-fitness-kernel.js'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-scale-input-fitness-upstream-verifier.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-annual-discharges-review.js'], { cwd: installedPackage, env });
 
   for (const file of [
