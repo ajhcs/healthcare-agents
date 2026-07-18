@@ -1,6 +1,6 @@
 {
   "schema_version": "ushso.strategic-review.v1",
-  "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+  "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
   "request_id": "review-request:scale-operating-revenue:methods:2026-07-17",
   "review_tier": "ordinary_material_claim",
   "protocol": {
@@ -24,8 +24,8 @@
       "attestation": true
     }
   },
-  "review_request_hash": "sha256:9de13dc2f166f38e6e269d8c7a67a3a6176ae05f00eff6df016d43d5d20d8714",
-  "review_context_hash": "sha256:0337b4e2bbd8dccdf41127ae40f6b4f45c81754a1fa38a32a2628577a7addcd6",
+  "review_request_hash": "sha256:e9752569161c12103c43322b2b53dfdcf7ffd6dd3065a0ce5199a0f3c9f7af8a",
+  "review_context_hash": "sha256:6504283a68c47d8bff1adeace3a7d3f7b1f0721a7ecd438f7945f7c10d8a766f",
   "input_hashes": [
     "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726",
     "sha256:11d9b3cfaccc65ab22bd07912f6ed5b7c8e75f946619a2a3030f78a9f640b264",
@@ -34,7 +34,7 @@
     "sha256:9ffec3755f26e554c8dced586667f1699febac0304461f331d8a63c418e7c97d"
   ],
   "frozen_inputs": {
-    "evidence_bundle_ref": "git:b1fdfad94e65239fa73928990c086a63423b7c94:contracts/scale-inputs/v1/fixtures/operating-revenue/public-evidence-bundle.json",
+    "evidence_bundle_ref": "ushso-rebuild://scale-inputs/operating-revenue/public-evidence-bundle",
     "evidence_bundle_hash": "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726",
     "identity_binding_ref": "git:370dd2da1cb233eea8f89cb4773ed669a8c37b58:contracts/reusable-run/v3/fixtures/operating-revenue/identity-binding.json",
     "identity_binding_hash": "sha256:11d9b3cfaccc65ab22bd07912f6ed5b7c8e75f946619a2a3030f78a9f640b264",
@@ -97,8 +97,8 @@
       }
     ]
   },
-  "frozen_inputs_hash": "sha256:850a8b546f53501dc261b0818e06919a27b398bd8df7654d82481c0045f50afb",
-  "evidence_bundle_ref": "git:b1fdfad94e65239fa73928990c086a63423b7c94:contracts/scale-inputs/v1/fixtures/operating-revenue/public-evidence-bundle.json",
+  "frozen_inputs_hash": "sha256:dc2918e79ca7fac12dd5cdde57409ff6b5703c12b4e35725c5cf172360d2df53",
+  "evidence_bundle_ref": "ushso-rebuild://scale-inputs/operating-revenue/public-evidence-bundle",
   "identity_binding_ref": "git:370dd2da1cb233eea8f89cb4773ed669a8c37b58:contracts/reusable-run/v3/fixtures/operating-revenue/identity-binding.json",
   "decision_scenario": {
     "ref": "git:370dd2da1cb233eea8f89cb4773ed669a8c37b58:contracts/reusable-run/v3/fixtures/operating-revenue/decision-scenario.json",
@@ -348,5 +348,5 @@
     ],
     "advisory_only": true
   },
-  "output_sha256": "sha256:a6fdaf46a19139dc8abdc9853687edba13c53f99304ab317fafb4098b73bd699"
+  "output_sha256": "sha256:a1c2ffa255955228a7fb05e4f3babc13ffb7d9f4676b502fb9b07676b3454b6e"
 }

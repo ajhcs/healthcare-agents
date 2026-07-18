@@ -6,7 +6,18 @@
     "healthcare_data_mcp": "b1fdfad94e65239fa73928990c086a63423b7c94"
   },
   "toolkit_handoff_file_hash": "sha256:c448ed24b8737df3ec4e934d801aaae1bff40cdb3d31d142e3e354071d045a3b",
+  "evidence_bundle_ref": "ushso-rebuild://scale-inputs/operating-revenue/public-evidence-bundle",
   "evidence_bundle_hash": "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726",
+  "evidence_lineage": {
+    "committed_input_ref": "git:b1fdfad94e65239fa73928990c086a63423b7c94:contracts/v1/fixtures/scale-operating-revenue-input.json",
+    "normalized_input_artifact_ref": "upstream/data-mcp/normalized-input.json",
+    "normalized_input_raw_hash": "sha256:04fadae952898bc6dac87d0aaf4a3b04711cc9acc387ec751612f4b937b5b89f",
+    "producer_bound_input_artifact_ref": "upstream/data-mcp/producer-bound-input.json",
+    "producer_bound_input_raw_hash": "sha256:78bca41b71402ec8e4c7b64b73ab1cb722b28e527039caeb515590aa7693554b",
+    "bundle_artifact_ref": "upstream/data-mcp/public-evidence-bundle.json",
+    "bundle_raw_hash": "sha256:a2eee1faa34275b852a5976bd321cc3cc13ae6020d1d749da229dcc2f0577543",
+    "bundle_semantic_hash": "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726"
+  },
   "objects": {
     "baseline_packet": {
       "artifact_ref": "upstream/baseline-packet.json",
@@ -116,5 +127,5 @@
     "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
     "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds"
   ],
-  "manifest_sha256": "sha256:9b9557cedbc5113b7fc9737f2d18d2baae377b99562348fff8011e610b6f35de"
+  "manifest_sha256": "sha256:0560b73dadc2d0ea63c7730aa2701bc5763306468ee58266cb4bbd58f3985f22"
 }

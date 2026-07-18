@@ -8,6 +8,12 @@ const { spawnSync } = require('child_process');
 const { validateConflictAnalysis, validateConflictRequest } = require('../lib/conflict-analysis');
 const { sha256 } = require('../lib/review-protocols');
 const {
+  COMMITTED_INPUT_REF,
+  EVIDENCE_BUNDLE_RAW_HASH,
+  EVIDENCE_BUNDLE_REF,
+  EVIDENCE_BUNDLE_SEMANTIC_HASH,
+  NORMALIZED_INPUT_RAW_HASH,
+  PRODUCER_BOUND_INPUT_RAW_HASH,
   validateScalePacketReviewHandoff,
   validateScalePacketReviewRequest,
   validateScalePacketUpstream
@@ -23,7 +29,7 @@ const {
 const ROOT = path.join(__dirname, '..');
 const FIXTURES = path.join(ROOT, 'review-protocols', 'fixtures', 'scale-input-packets', 'operating-revenue');
 const UPSTREAM = path.join(FIXTURES, 'upstream');
-const generatedNames = ['upstream-manifest.json', 'methods-review-request.json', 'finance-review-request.json', 'methods-review.json', 'finance-review.json', 'conflict-analysis-request.json', 'conflict-analysis.json', 'handoff.json'];
+const generatedNames = ['upstream/data-mcp/producer-bound-input.json', 'upstream-manifest.json', 'methods-review-request.json', 'finance-review-request.json', 'methods-review.json', 'finance-review.json', 'conflict-analysis-request.json', 'conflict-analysis.json', 'handoff.json'];
 const objectPaths = {
   baseline_packet: 'baseline-packet.json', cumulative_packet: 'cumulative-packet.json', decision_scenario: 'decision-scenario.json',
   identity_binding: 'identity-binding.json', no_execution_result: 'no-execution-result.json', process_claim: 'process-claim.json',
@@ -36,7 +42,7 @@ function rawHash(relativePath) { return 'sha256:' + crypto.createHash('sha256').
 function mutateAndValidate(mutator) {
   const mutated = clone(objects);
   mutator(mutated);
-  return validateScalePacketUpstream(manifest, mutated, artifactHashes).join('; ');
+  return validateScalePacketUpstream(manifest, mutated, artifactHashes, evidenceArtifacts).join('; ');
 }
 
 const before = new Map(generatedNames.map(name => [name, fs.readFileSync(path.join(FIXTURES, name))]));
@@ -46,6 +52,15 @@ for (const name of generatedNames) assert(before.get(name).equals(fs.readFileSyn
 
 const objects = Object.fromEntries(Object.entries(objectPaths).map(([role, relativePath]) => [role, load(relativePath, UPSTREAM)]));
 const artifactHashes = Object.fromEntries(Object.entries(objectPaths).map(([role, relativePath]) => [role, rawHash(relativePath)]));
+const evidencePaths = {
+  normalized_input: 'data-mcp/normalized-input.json',
+  producer_bound_input: 'data-mcp/producer-bound-input.json',
+  public_evidence_bundle: 'data-mcp/public-evidence-bundle.json'
+};
+const evidenceArtifacts = Object.fromEntries(Object.entries(evidencePaths).map(([role, relativePath]) => {
+  const raw = fs.readFileSync(path.join(UPSTREAM, relativePath));
+  return [role, { value: JSON.parse(raw), raw_hash: 'sha256:' + crypto.createHash('sha256').update(raw).digest('hex') }];
+}));
 const manifest = load('upstream-manifest.json');
 const methodsRequest = load('methods-review-request.json');
 const financeRequest = load('finance-review-request.json');
@@ -55,11 +70,11 @@ const conflictRequest = load('conflict-analysis-request.json');
 const conflict = load('conflict-analysis.json');
 const handoff = load('handoff.json');
 
-assert.deepStrictEqual(validateScalePacketUpstream(manifest, objects, artifactHashes), []);
+assert.deepStrictEqual(validateScalePacketUpstream(manifest, objects, artifactHashes, evidenceArtifacts), []);
 for (const request of [methodsRequest, financeRequest]) {
   assert.deepStrictEqual(validateReviewRequestShape(request), []);
   assert.deepStrictEqual(validateReviewRequest(request), []);
-  assert.deepStrictEqual(validateScalePacketReviewRequest(request, manifest, objects, artifactHashes), []);
+  assert.deepStrictEqual(validateScalePacketReviewRequest(request, manifest, objects, artifactHashes, evidenceArtifacts), []);
   assert.strictEqual(request.candidate_review.exposure_status, 'independent_first');
   assert.strictEqual(request.candidate_review.overall_disposition, 'block');
 }
@@ -86,22 +101,66 @@ assert.deepStrictEqual(validateConflictAnalysis(conflict), []);
 assert(conflict.discrepancies.length > 0);
 assert(conflict.discrepancies.every(item => item.material && item.human_route_required && item.deterministic_resolution === null));
 assert.strictEqual(conflict.automatic_resolution, 'prohibited');
-assert.deepStrictEqual(validateScalePacketReviewHandoff(handoff, [methods, finance], conflict, manifest, objects, artifactHashes), []);
+assert.deepStrictEqual(validateScalePacketReviewHandoff(handoff, [methods, finance], conflict, manifest, objects, artifactHashes, evidenceArtifacts), []);
 assert.strictEqual(handoff.downstream_bead, 'healthcare-toolkit-2rr9.6.3.2');
 assert.deepStrictEqual(handoff.cumulative_cell_counts, { total: 54, populated: 0, blocked_source_conflict: 18, not_yet_researched: 36 });
 assert.deepStrictEqual(handoff.prior_counts, { discrepancies: 26, reviewer_concerns: 24, open_conflicts: 5, overturn_gates: 10 });
 assert(Object.values(handoff.output_inventory).every(value => value === 0));
+assert.strictEqual(methodsRequest.frozen_inputs.evidence_bundle_ref, EVIDENCE_BUNDLE_REF);
+assert.strictEqual(manifest.evidence_lineage.committed_input_ref, COMMITTED_INPUT_REF);
+assert.strictEqual(manifest.evidence_lineage.normalized_input_raw_hash, NORMALIZED_INPUT_RAW_HASH);
+assert.strictEqual(manifest.evidence_lineage.producer_bound_input_raw_hash, PRODUCER_BOUND_INPUT_RAW_HASH);
+assert.strictEqual(manifest.evidence_lineage.bundle_raw_hash, EVIDENCE_BUNDLE_RAW_HASH);
+assert.strictEqual(manifest.evidence_lineage.bundle_semantic_hash, EVIDENCE_BUNDLE_SEMANTIC_HASH);
+
+// Evidence locator and normalized -> producer-bound -> bundle lineage fail closed.
+for (const ref of [
+  `git:${manifest.producer_pins.healthcare_data_mcp}:contracts/scale-inputs/v1/fixtures/operating-revenue/public-evidence-bundle.json`,
+  'https://example.invalid/public-evidence-bundle.json'
+]) {
+  const badRef = clone(methodsRequest);
+  badRef.frozen_inputs.evidence_bundle_ref = ref;
+  assert.match(validateScalePacketReviewRequest(badRef, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /truthful deterministic rebuild URI/);
+}
+const wrongPath = clone(manifest);
+wrongPath.evidence_lineage.committed_input_ref = `git:${manifest.producer_pins.healthcare_data_mcp}:contracts/v1/fixtures/does-not-exist.json`;
+wrongPath.manifest_sha256 = sha256(Object.fromEntries(Object.entries(wrongPath).filter(([key]) => key !== 'manifest_sha256')));
+assert.match(validateScalePacketUpstream(wrongPath, objects, artifactHashes, evidenceArtifacts).join('; '), /committed evidence input Git path drift/);
+for (const field of ['normalized_input_artifact_ref', 'producer_bound_input_artifact_ref', 'bundle_artifact_ref']) {
+  const wrongArtifactRef = clone(manifest);
+  wrongArtifactRef.evidence_lineage[field] = 'upstream/data-mcp/does-not-exist.json';
+  wrongArtifactRef.manifest_sha256 = sha256(Object.fromEntries(Object.entries(wrongArtifactRef).filter(([key]) => key !== 'manifest_sha256')));
+  assert.match(validateScalePacketUpstream(wrongArtifactRef, objects, artifactHashes, evidenceArtifacts).join('; '), /must resolve to the exact packaged evidence artifact/);
+}
+for (const [role, expected] of [
+  ['normalized_input', /normalized evidence input exact bytes drift/],
+  ['producer_bound_input', /producer-bound evidence input exact bytes drift/],
+  ['public_evidence_bundle', /public evidence bundle exact bytes drift/]
+]) {
+  const driftedArtifacts = clone(evidenceArtifacts);
+  driftedArtifacts[role].raw_hash = 'sha256:' + '8'.repeat(64);
+  assert.match(validateScalePacketUpstream(manifest, objects, artifactHashes, driftedArtifacts).join('; '), expected);
+}
+const normalizedContentDrift = clone(evidenceArtifacts);
+normalizedContentDrift.normalized_input.value.producer.version = 'fabricated';
+assert.match(validateScalePacketUpstream(manifest, objects, artifactHashes, normalizedContentDrift).join('; '), /producer-bound evidence input must differ only|deterministic rebuild hash mismatch/);
+const boundContentDrift = clone(evidenceArtifacts);
+boundContentDrift.producer_bound_input.value.producer.commit = '9'.repeat(40);
+assert.match(validateScalePacketUpstream(manifest, objects, artifactHashes, boundContentDrift).join('; '), /producer-bound evidence input must differ only|commit drift/);
+const bundleSemanticDrift = clone(evidenceArtifacts);
+bundleSemanticDrift.public_evidence_bundle.value.bundle_sha256 = 'sha256:' + 'a'.repeat(64);
+assert.match(validateScalePacketUpstream(manifest, objects, artifactHashes, bundleSemanticDrift).join('; '), /semantic self-hash drift/);
 
 // Raw and semantic upstream drift are rejected independently.
 const artifactDrift = { ...artifactHashes, toolkit_handoff: 'sha256:' + '0'.repeat(64) };
-assert.match(validateScalePacketUpstream(manifest, objects, artifactDrift).join('; '), /exact artifact bytes drift|frozen raw hash/);
+assert.match(validateScalePacketUpstream(manifest, objects, artifactDrift, evidenceArtifacts).join('; '), /exact artifact bytes drift|frozen raw hash/);
 const commitDrift = clone(manifest);
 commitDrift.producer_pins.healthcare_toolkit = '1'.repeat(40);
-assert.match(validateScalePacketUpstream(commitDrift, objects, artifactHashes).join('; '), /self-hash|Toolkit producer pin drift/);
+assert.match(validateScalePacketUpstream(commitDrift, objects, artifactHashes, evidenceArtifacts).join('; '), /self-hash|Toolkit producer pin drift/);
 const semanticRepin = clone(manifest);
 semanticRepin.objects.cumulative_packet.semantic_hash = 'sha256:' + '2'.repeat(64);
 semanticRepin.manifest_sha256 = sha256(Object.fromEntries(Object.entries(semanticRepin).filter(([key]) => key !== 'manifest_sha256')));
-assert.match(validateScalePacketUpstream(semanticRepin, objects, artifactHashes).join('; '), /semantic hash drift|exact Toolkit handoff pin/);
+assert.match(validateScalePacketUpstream(semanticRepin, objects, artifactHashes, evidenceArtifacts).join('; '), /semantic hash drift|exact Toolkit handoff pin/);
 
 // Missing prior evidence, closed conflicts, fabricated values/zeroes, and output leakage are rejected.
 assert.match(mutateAndValidate(value => value.prior_review_record.preserved_concerns.pop()), /24 reviewer concerns/);
@@ -119,26 +178,26 @@ assert.match(mutateAndValidate(value => { value.no_execution_result.sensitivity_
 
 const weakened = clone(methodsRequest);
 weakened.candidate_review.overall_disposition = 'pass';
-assert.match(validateScalePacketReviewRequest(weakened, manifest, objects, artifactHashes).join('; '), /must remain block/);
+assert.match(validateScalePacketReviewRequest(weakened, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /must remain block/);
 const missingCounts = clone(methodsRequest);
 missingCounts.candidate_review.preserved_reviewer_concerns = [];
-assert.match(validateScalePacketReviewRequest(missingCounts, manifest, objects, artifactHashes).join('; '), /preserve all 24 prior reviewer concerns/);
+assert.match(validateScalePacketReviewRequest(missingCounts, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /preserve all 24 prior reviewer concerns/);
 const fabricatedEvidence = clone(methodsRequest);
 fabricatedEvidence.candidate_review.claim_dispositions[0].evidence_refs[0] = 'fabricated:evidence';
-assert.match(validateScalePacketReviewRequest(fabricatedEvidence, manifest, objects, artifactHashes).join('; '), /evidence reference absent from frozen manifest/);
+assert.match(validateScalePacketReviewRequest(fabricatedEvidence, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /evidence reference absent from frozen manifest/);
 
 const duplicate = clone(conflictRequest);
 duplicate.reviews[1].reviewer.reviewer_id = duplicate.reviews[0].reviewer.reviewer_id;
 assert.match(validateConflictRequest(duplicate).join('; '), /unique independent reviewer identities/);
 const averaged = clone(handoff);
 averaged.positions_averaged = true;
-assert.match(validateScalePacketReviewHandoff(averaged, [methods, finance], conflict, manifest, objects, artifactHashes).join('; '), /cannot fabricate authority, adjudicate, or average/);
+assert.match(validateScalePacketReviewHandoff(averaged, [methods, finance], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /cannot fabricate authority, adjudicate, or average/);
 const authority = clone(handoff);
 authority.human_authority_conveyed = true;
-assert.match(validateScalePacketReviewHandoff(authority, [methods, finance], conflict, manifest, objects, artifactHashes).join('; '), /cannot fabricate authority/);
+assert.match(validateScalePacketReviewHandoff(authority, [methods, finance], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /cannot fabricate authority/);
 const promoted = clone(handoff);
 promoted.output_inventory.promotion_attempts = 1;
-assert.match(validateScalePacketReviewHandoff(promoted, [methods, finance], conflict, manifest, objects, artifactHashes).join('; '), /inventory zero/);
+assert.match(validateScalePacketReviewHandoff(promoted, [methods, finance], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /inventory zero/);
 for (const [field, value, expected] of [
   ['upstream_manifest_hash', 'sha256:' + '3'.repeat(64), /upstream manifest hash must match/],
   ['toolkit_producer_commit', '4'.repeat(40), /producer commits must match/],
@@ -148,16 +207,16 @@ for (const [field, value, expected] of [
   const changed = clone(handoff);
   changed[field] = value;
   changed.handoff_sha256 = sha256(Object.fromEntries(Object.entries(changed).filter(([key]) => key !== 'handoff_sha256')));
-  assert.match(validateScalePacketReviewHandoff(changed, [methods, finance], conflict, manifest, objects, artifactHashes).join('; '), expected);
+  assert.match(validateScalePacketReviewHandoff(changed, [methods, finance], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), expected);
 }
 const firstAssessmentDrift = clone(handoff);
 firstAssessmentDrift.first_assessment_hashes.methods = 'sha256:' + '7'.repeat(64);
 firstAssessmentDrift.handoff_sha256 = sha256(Object.fromEntries(Object.entries(firstAssessmentDrift).filter(([key]) => key !== 'handoff_sha256')));
-assert.match(validateScalePacketReviewHandoff(firstAssessmentDrift, [methods, finance], conflict, manifest, objects, artifactHashes).join('; '), /first-assessment hashes must match/);
+assert.match(validateScalePacketReviewHandoff(firstAssessmentDrift, [methods, finance], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /first-assessment hashes must match/);
 const handoffCountDrift = clone(handoff);
 handoffCountDrift.cumulative_cell_counts.blocked_source_conflict = 17;
 handoffCountDrift.handoff_sha256 = sha256(Object.fromEntries(Object.entries(handoffCountDrift).filter(([key]) => key !== 'handoff_sha256')));
-assert.match(validateScalePacketReviewHandoff(handoffCountDrift, [methods, finance], conflict, manifest, objects, artifactHashes).join('; '), /cumulative cell counts must equal/);
+assert.match(validateScalePacketReviewHandoff(handoffCountDrift, [methods, finance], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /cumulative cell counts must equal/);
 
 const financeText = JSON.stringify(finance).toLowerCase();
 for (const term of ['fiscal period', 'consolidation', 'audited', 'one-time', 'capital capacity', 'temple', 'cooper', 'http 403', 'not zero']) assert(financeText.includes(term), `finance review must preserve ${term}`);

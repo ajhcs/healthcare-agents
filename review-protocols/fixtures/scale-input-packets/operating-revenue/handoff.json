@@ -1,19 +1,30 @@
 {
   "schema_version": "ushso.scale-input-fitness-review-handoff.v1",
   "active_family": "operating_revenue_usd",
-  "upstream_manifest_hash": "sha256:9b9557cedbc5113b7fc9737f2d18d2baae377b99562348fff8011e610b6f35de",
+  "upstream_manifest_hash": "sha256:0560b73dadc2d0ea63c7730aa2701bc5763306468ee58266cb4bbd58f3985f22",
   "toolkit_producer_commit": "370dd2da1cb233eea8f89cb4773ed669a8c37b58",
   "data_producer_commit": "b1fdfad94e65239fa73928990c086a63423b7c94",
   "toolkit_handoff_file_hash": "sha256:c448ed24b8737df3ec4e934d801aaae1bff40cdb3d31d142e3e354071d045a3b",
+  "evidence_bundle_ref": "ushso-rebuild://scale-inputs/operating-revenue/public-evidence-bundle",
+  "evidence_lineage": {
+    "committed_input_ref": "git:b1fdfad94e65239fa73928990c086a63423b7c94:contracts/v1/fixtures/scale-operating-revenue-input.json",
+    "normalized_input_artifact_ref": "upstream/data-mcp/normalized-input.json",
+    "normalized_input_raw_hash": "sha256:04fadae952898bc6dac87d0aaf4a3b04711cc9acc387ec751612f4b937b5b89f",
+    "producer_bound_input_artifact_ref": "upstream/data-mcp/producer-bound-input.json",
+    "producer_bound_input_raw_hash": "sha256:78bca41b71402ec8e4c7b64b73ab1cb722b28e527039caeb515590aa7693554b",
+    "bundle_artifact_ref": "upstream/data-mcp/public-evidence-bundle.json",
+    "bundle_raw_hash": "sha256:a2eee1faa34275b852a5976bd321cc3cc13ae6020d1d749da229dcc2f0577543",
+    "bundle_semantic_hash": "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726"
+  },
   "review_hashes": {
-    "methods": "sha256:a6fdaf46a19139dc8abdc9853687edba13c53f99304ab317fafb4098b73bd699",
-    "finance": "sha256:7729424d04526c765c0fbc2305bd6bcfbd7e20e77b30a460f5c20bb30b80df31"
+    "methods": "sha256:a1c2ffa255955228a7fb05e4f3babc13ffb7d9f4676b502fb9b07676b3454b6e",
+    "finance": "sha256:3215dcd2db03df351d9275fec156a97020e1ca03086f88782bcc57fbed404540"
   },
   "first_assessment_hashes": {
     "methods": "sha256:1eb50dc2c84efde26886ddbe55178f3d20ddd0c792a621b6bcb12939437104fb",
     "finance": "sha256:0f34a91e74e4c7eef3ecc49feffce18cce5f00b7bf5819a144affee5e8564bce"
   },
-  "conflict_output_hash": "sha256:5e8232d67351ed8e8b3e59489689e4d16408cfbd7f2b246a5bfa7ccf8eb99c40",
+  "conflict_output_hash": "sha256:419ffbc0b8dee60315a71eda29a537fb77e8a69c0fb63914054593b34ffe7ea4",
   "prior_counts": {
     "discrepancies": 26,
     "reviewer_concerns": 24,
@@ -58,5 +69,5 @@
     "deployment"
   ],
   "downstream_bead": "healthcare-toolkit-2rr9.6.3.2",
-  "handoff_sha256": "sha256:13cc1709d9d8fe99b1191bf76e615e3a545f1c1de2f64af7e74913ce64a99e68"
+  "handoff_sha256": "sha256:a583646c95ec0ee06b84c89fff725c9e7ceefa98200de7d25744f5a2cc42ed72"
 }

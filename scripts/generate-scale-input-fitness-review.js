@@ -7,10 +7,17 @@ const { analyzeReviewConflicts } = require('../lib/conflict-analysis');
 const { findReviewProtocol, sha256 } = require('../lib/review-protocols');
 const {
   DATA_PRODUCER,
+  COMMITTED_INPUT_REF,
+  EVIDENCE_BUNDLE_RAW_HASH,
+  EVIDENCE_BUNDLE_REF,
+  EVIDENCE_BUNDLE_SEMANTIC_HASH,
+  NORMALIZED_INPUT_RAW_HASH,
   PRIOR_COUNTS,
+  PRODUCER_BOUND_INPUT_RAW_HASH,
   TOOLKIT_HANDOFF_FILE_HASH,
   TOOLKIT_PRODUCER,
   semanticHash,
+  stablePrettyJson,
   validateScalePacketReviewHandoff,
   validateScalePacketReviewRequest,
   validateScalePacketUpstream
@@ -33,6 +40,11 @@ const roles = {
   prior_assurance_case: 'prior/module-assurance-case.json',
   toolkit_handoff: 'handoff.json'
 };
+const evidencePaths = {
+  normalized_input: 'data-mcp/normalized-input.json',
+  producer_bound_input: 'data-mcp/producer-bound-input.json',
+  public_evidence_bundle: 'data-mcp/public-evidence-bundle.json'
+};
 
 const objects = {};
 const artifactHashes = {};
@@ -44,6 +56,18 @@ for (const [role, relativePath] of Object.entries(roles)) {
   objectEntries[role] = { artifact_ref: `upstream/${relativePath}`, artifact_hash: artifactHashes[role] };
   const semantic = semanticHash(objects[role]);
   if (semantic) objectEntries[role].semantic_hash = semantic;
+}
+const normalizedInput = JSON.parse(fs.readFileSync(path.join(UPSTREAM, evidencePaths.normalized_input), 'utf8'));
+const producerBoundInput = JSON.parse(JSON.stringify(normalizedInput));
+producerBoundInput.producer.commit = DATA_PRODUCER;
+fs.writeFileSync(path.join(UPSTREAM, evidencePaths.producer_bound_input), stablePrettyJson(producerBoundInput));
+const evidenceArtifacts = {};
+for (const [role, relativePath] of Object.entries(evidencePaths)) {
+  const raw = fs.readFileSync(path.join(UPSTREAM, relativePath));
+  evidenceArtifacts[role] = {
+    value: JSON.parse(raw),
+    raw_hash: 'sha256:' + crypto.createHash('sha256').update(raw).digest('hex')
+  };
 }
 
 const packet = objects.cumulative_packet;
@@ -63,7 +87,7 @@ const evidenceRefs = [...new Set([
 ])].sort();
 
 const frozenInputs = {
-  evidence_bundle_ref: `git:${DATA_PRODUCER}:contracts/scale-inputs/v1/fixtures/operating-revenue/public-evidence-bundle.json`,
+  evidence_bundle_ref: EVIDENCE_BUNDLE_REF,
   evidence_bundle_hash: objects.toolkit_handoff.upstream_hashes.evidence_bundle,
   identity_binding_ref: `git:${TOOLKIT_PRODUCER}:contracts/reusable-run/v3/fixtures/operating-revenue/identity-binding.json`,
   identity_binding_hash: objects.identity_binding.binding_sha256,
@@ -84,7 +108,18 @@ const manifestBody = {
   active_family: 'operating_revenue_usd',
   producer_pins: { healthcare_toolkit: TOOLKIT_PRODUCER, healthcare_data_mcp: DATA_PRODUCER },
   toolkit_handoff_file_hash: TOOLKIT_HANDOFF_FILE_HASH,
+  evidence_bundle_ref: EVIDENCE_BUNDLE_REF,
   evidence_bundle_hash: objects.toolkit_handoff.upstream_hashes.evidence_bundle,
+  evidence_lineage: {
+    committed_input_ref: COMMITTED_INPUT_REF,
+    normalized_input_artifact_ref: `upstream/${evidencePaths.normalized_input}`,
+    normalized_input_raw_hash: NORMALIZED_INPUT_RAW_HASH,
+    producer_bound_input_artifact_ref: `upstream/${evidencePaths.producer_bound_input}`,
+    producer_bound_input_raw_hash: PRODUCER_BOUND_INPUT_RAW_HASH,
+    bundle_artifact_ref: `upstream/${evidencePaths.public_evidence_bundle}`,
+    bundle_raw_hash: EVIDENCE_BUNDLE_RAW_HASH,
+    bundle_semantic_hash: EVIDENCE_BUNDLE_SEMANTIC_HASH
+  },
   objects: objectEntries,
   review_input_hashes: [
     frozenInputs.evidence_bundle_hash,
@@ -205,7 +240,7 @@ function makeRequest(label, protocolId, review, reviewerValue) {
     evidence_boundary: evidenceBoundary,
     candidate_review: review
   };
-  const messages = validateScalePacketReviewRequest(request, upstreamManifest, objects, artifactHashes);
+  const messages = validateScalePacketReviewRequest(request, upstreamManifest, objects, artifactHashes, evidenceArtifacts);
   if (messages.length) throw new Error(messages.join('; '));
   return request;
 }
@@ -228,6 +263,8 @@ const handoffBody = {
   toolkit_producer_commit: TOOLKIT_PRODUCER,
   data_producer_commit: DATA_PRODUCER,
   toolkit_handoff_file_hash: TOOLKIT_HANDOFF_FILE_HASH,
+  evidence_bundle_ref: EVIDENCE_BUNDLE_REF,
+  evidence_lineage: upstreamManifest.evidence_lineage,
   review_hashes: { methods: methodsReview.output_sha256, finance: financeReview.output_sha256 },
   first_assessment_hashes: { methods: methodsReview.first_assessment_hash, finance: financeReview.first_assessment_hash },
   conflict_output_hash: conflictAnalysis.output_sha256,
@@ -247,7 +284,7 @@ const handoffBody = {
   downstream_bead: 'healthcare-toolkit-2rr9.6.3.2'
 };
 const handoff = { ...handoffBody, handoff_sha256: sha256(handoffBody) };
-const handoffMessages = validateScalePacketReviewHandoff(handoff, [methodsReview, financeReview], conflictAnalysis, upstreamManifest, objects, artifactHashes);
+const handoffMessages = validateScalePacketReviewHandoff(handoff, [methodsReview, financeReview], conflictAnalysis, upstreamManifest, objects, artifactHashes, evidenceArtifacts);
 if (handoffMessages.length) throw new Error(handoffMessages.join('; '));
 
 const outputs = {
