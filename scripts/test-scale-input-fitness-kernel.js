@@ -68,20 +68,55 @@ function validKernelConfig() {
     reviewHashKeys: ['methods', 'finance'],
     expectedReviewHashes: { methods: CONFIG_HASH, finance: CONFIG_HASH },
     expectedAssessmentHashes: { methods: CONFIG_HASH, finance: CONFIG_HASH },
-    handoffFamilyBlockedField: 'test_blocked_count', handoffFamilyConflictCountField: 'test_conflict_count',
+    familyCellState: 'blocked_source_conflict', familyCellMessage: 'blocked and unpopulated',
+    handoffFamilyCellCountField: 'test_blocked_count', handoffFamilyConflictCountField: 'test_conflict_count',
     handoffFamilyConflictRefsField: null, zeroInventoryObjectRoles: [],
-    blockedCellMessage: 'blocked and unpopulated', concernErrorMessage: 'concerns must remain exact',
+    concernErrorMessage: 'concerns must remain exact',
     closedOutputInventory: true
   };
 }
 
 assert.doesNotThrow(() => createScaleInputFitnessKernel(validKernelConfig()));
+const unavailableFamilyConfig = validKernelConfig();
+unavailableFamilyConfig.familyCellState = 'unavailable_public';
+unavailableFamilyConfig.familyCellMessage = 'unavailable, unapproved, and unpopulated';
+unavailableFamilyConfig.handoffFamilyCellCountField = 'test_unavailable_count';
+unavailableFamilyConfig.expected.blockedCells = 0;
+unavailableFamilyConfig.expected.unavailableCells = 6;
+unavailableFamilyConfig.expectedManifestCounts.blocked_cells = 0;
+unavailableFamilyConfig.expectedManifestCounts.unavailable_public_cells = 6;
+assert.doesNotThrow(() => createScaleInputFitnessKernel(unavailableFamilyConfig));
+const stricterNoGoConfig = validKernelConfig();
+stricterNoGoConfig.prohibitedUses.push('profile_population');
+assert.doesNotThrow(() => createScaleInputFitnessKernel(stricterNoGoConfig));
 for (const [label, mutator] of [
   ['unknown config', value => { value.fabricated = true; }],
   ['object locator', value => { delete value.objectArtifactRefs.cumulative_packet; }],
   ['evidence hash', value => { delete value.evidence.bundleRawHash; }],
   ['evidence artifact closure', value => { value.evidence.artifactRefs.fabricated = 'fabricated.json'; }],
   ['expected count', value => { delete value.expected.totalCells; }],
+  ['invalid family state', value => { value.familyCellState = 'fabricated_zero'; }],
+  ['missing family state', value => { delete value.familyCellState; }],
+  ['legacy family message', value => {
+    delete value.familyCellMessage;
+    value.blockedCellMessage = 'legacy compatibility shim';
+  }],
+  ['legacy handoff count field', value => {
+    delete value.handoffFamilyCellCountField;
+    value.handoffFamilyBlockedField = 'legacy_blocked_count';
+  }],
+  ['dual family message fields', value => { value.blockedCellMessage = 'legacy compatibility shim'; }],
+  ['dual handoff count fields', value => { value.handoffFamilyBlockedField = 'legacy_blocked_count'; }],
+  ['invalid unavailable count', value => { value.expected.unavailableCells = -1; }],
+  ['unavailable state count field', value => {
+    value.familyCellState = 'unavailable_public';
+    value.familyCellMessage = 'unavailable';
+    value.handoffFamilyCellCountField = 'unavailable_count';
+    value.expected.blockedCells = 0;
+    value.expected.unavailableCells = 6;
+    value.expectedManifestCounts.blocked_cells = 0;
+    delete value.expectedManifestCounts.unavailable_public_cells;
+  }],
   ['expected count consistency', value => { value.expectedManifestCounts.total_cells = 53; }],
   ['prior count', value => { value.priorCounts.discrepancies = -1; }],
   ['prior manifest consistency', value => { value.expectedManifestCounts.discrepancies = 1; }],
@@ -91,6 +126,7 @@ for (const [label, mutator] of [
   ['required terms', value => { value.requestRequiredTerms = []; }],
   ['boundary closure', value => { value.boundaryRequiredTerms = ['human']; }],
   ['prohibited uses', value => { value.prohibitedUses = []; }],
+  ['weakened prohibited uses', value => { value.prohibitedUses = value.prohibitedUses.filter(item => item !== 'projection'); }],
   ['inventory policy', value => { value.closedOutputInventory = false; }],
   ['inventory roles', value => { delete value.zeroInventoryObjectRoles; }],
   ['lane agent', value => { value.reviewerRoles[1].agentSlug = 'physician-executive'; }],
@@ -102,7 +138,8 @@ for (const [label, mutator] of [
   ['manifest closure', value => { value.manifestKeys = value.manifestKeys.filter(item => item !== 'objects'); }],
   ['handoff closure', value => { value.handoffKeys = []; }],
   ['handoff conflict policy', value => { delete value.handoffFamilyConflictRefsField; }],
-  ['blocked-cell policy', value => { delete value.blockedCellMessage; }],
+  ['family-cell message policy', value => { delete value.familyCellMessage; }],
+  ['family-cell count policy', value => { delete value.handoffFamilyCellCountField; }],
   ['concern policy', value => { delete value.concernErrorMessage; }]
 ]) {
   const config = validKernelConfig();

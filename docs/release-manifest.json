@@ -284,6 +284,33 @@
     ]
   },
   {
+    "id": "scale-service-line-count-fitness-review",
+    "claim": "Healthcare Agents publishes a deterministic service-line-count Scale input-fitness review that binds exact Data MCP and Toolkit lineage, routes independent-first evidence/methods and limited portfolio/rights governance reviews, preserves the absent service-taxonomy competence lane as a blocker, and produces no Scale calculation, sensitivity, projection, recommendation, adjudication, profile population, or promotion.",
+    "evidence": [
+      "lib/scale-service-line-count-review.js",
+      "scripts/generate-scale-service-line-count-review.js",
+      "scripts/test-scale-service-line-count-review.js",
+      "scripts/verify-scale-service-line-count-upstream.js",
+      "docs/review-protocols/README.md"
+    ],
+    "commands": [
+      "npm run test:scale-service-line-count-review",
+      "npm run verify:scale-service-line-count-upstream -- --data-mcp-repo <healthcare-data-mcp> --toolkit-repo <healthcare-toolkit>",
+      "npm run release:check"
+    ],
+    "artifacts": [
+      "lib/scale-service-line-count-review.js",
+      "review-protocols/fixtures/scale-input-packets/service-line-count/upstream-manifest.json",
+      "review-protocols/fixtures/scale-input-packets/service-line-count/methods-review.json",
+      "review-protocols/fixtures/scale-input-packets/service-line-count/service_portfolio_governance-review.json",
+      "review-protocols/fixtures/scale-input-packets/service-line-count/conflict-analysis.json",
+      "review-protocols/fixtures/scale-input-packets/service-line-count/handoff.json"
+    ],
+    "beads": [
+      "beads-1aq"
+    ]
+  },
+  {
       "id": "tracker-coverage",
       "claim": "Every major product vision goal has bead coverage and bd is documented as the active tracker in this repository.",
       "evidence": [

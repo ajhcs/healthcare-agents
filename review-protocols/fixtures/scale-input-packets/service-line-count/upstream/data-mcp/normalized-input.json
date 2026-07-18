@@ -1,0 +1,698 @@
+{
+  "bundle_id": "scale-service-line-count-all-six-2026-07-18:public-evidence",
+  "conflicts": [
+    {
+      "conflict_id": "conflict:christianacare:service-line-count:taxonomy-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:christianacare"
+      ],
+      "observation_refs": [],
+      "rationale": "claims_activity_not_equivalent_to_service_offering,common_service_line_taxonomy_not_receipted,current_four_facility_boundary_mismatch,current_roster_membership_unresolved,facility_to_system_aggregation_prohibited,marketing_page_hand_count_prohibited,organizational_boundary_unresolved,period_alignment_unresolved,service_offering_presence_not_receipted,system_level_count_not_reported,west_grove_post_vintage_membership: The exact AHRQ row binds HSI00000218 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count is available for the current four-facility boundary or post-vintage West Grove membership.",
+      "receipt_refs": [
+        "receipt:christianacare:service-line-count:ahrq-identity",
+        "receipt:all-six:service-line-count:cms-rbcs-taxonomy"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:jefferson-health:service-line-count:taxonomy-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:jefferson-health"
+      ],
+      "observation_refs": [],
+      "rationale": "claims_activity_not_equivalent_to_service_offering,common_service_line_taxonomy_not_receipted,current_roster_membership_unresolved,facility_to_system_aggregation_prohibited,frozen_33_facility_boundary_mismatch,lvhn_post_vintage_membership,marketing_page_hand_count_prohibited,organizational_boundary_unresolved,period_alignment_unresolved,service_offering_presence_not_receipted,system_level_count_not_reported: The exact AHRQ row binds HSI00000048 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count is available for the frozen 33-facility boundary or later LVHN membership.",
+      "receipt_refs": [
+        "receipt:jefferson-health:service-line-count:ahrq-identity",
+        "receipt:all-six:service-line-count:cms-rbcs-taxonomy"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:temple-health:service-line-count:taxonomy-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:temple-health"
+      ],
+      "observation_refs": [],
+      "rationale": "claims_activity_not_equivalent_to_service_offering,common_service_line_taxonomy_not_receipted,current_roster_membership_unresolved,facility_to_system_aggregation_prohibited,faculty_practice_scope_unresolved,fox_chase_service_boundary_unresolved,marketing_page_hand_count_prohibited,organizational_boundary_unresolved,period_alignment_unresolved,service_offering_presence_not_receipted,system_level_count_not_reported: The exact AHRQ row binds HSI00001065 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count resolves Fox Chase, faculty-practice, or current product boundaries.",
+      "receipt_refs": [
+        "receipt:temple-health:service-line-count:ahrq-identity",
+        "receipt:all-six:service-line-count:cms-rbcs-taxonomy"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:penn-medicine:service-line-count:taxonomy-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:penn-medicine"
+      ],
+      "observation_refs": [],
+      "rationale": "claims_activity_not_equivalent_to_service_offering,common_service_line_taxonomy_not_receipted,current_roster_membership_unresolved,facility_to_system_aggregation_prohibited,faculty_practice_scope_unresolved,marketing_page_hand_count_prohibited,organizational_boundary_unresolved,period_alignment_unresolved,post_vintage_membership_drift,service_offering_presence_not_receipted,system_level_count_not_reported: The exact AHRQ row binds HSI00000820 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count resolves faculty-practice or post-vintage organizational membership.",
+      "receipt_refs": [
+        "receipt:penn-medicine:service-line-count:ahrq-identity",
+        "receipt:all-six:service-line-count:cms-rbcs-taxonomy"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:cooper-university-health-care:service-line-count:taxonomy-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:cooper-university-health-care"
+      ],
+      "observation_refs": [],
+      "rationale": "cape_regional_post_vintage_membership,childrens_boundary_unresolved,claims_activity_not_equivalent_to_service_offering,common_service_line_taxonomy_not_receipted,current_roster_membership_unresolved,facility_to_system_aggregation_prohibited,marketing_page_hand_count_prohibited,organizational_boundary_unresolved,period_alignment_unresolved,service_offering_presence_not_receipted,system_level_count_not_reported: The exact AHRQ row binds HSI00001079 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count covers Cape Regional or resolves the Children's boundary.",
+      "receipt_refs": [
+        "receipt:cooper-university-health-care:service-line-count:ahrq-identity",
+        "receipt:all-six:service-line-count:cms-rbcs-taxonomy"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:main-line-health:service-line-count:taxonomy-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:main-line-health"
+      ],
+      "observation_refs": [],
+      "rationale": "claims_activity_not_equivalent_to_service_offering,common_service_line_taxonomy_not_receipted,current_roster_membership_unresolved,facility_to_system_aggregation_prohibited,marketing_page_hand_count_prohibited,organizational_boundary_unresolved,period_alignment_unresolved,rehabilitation_roster_inclusion_mismatch,service_boundary_unresolved,service_offering_presence_not_receipted,system_level_count_not_reported: The exact AHRQ row binds HSI00000608 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count resolves rehabilitation inclusion or the current service boundary.",
+      "receipt_refs": [
+        "receipt:main-line-health:service-line-count:ahrq-identity",
+        "receipt:all-six:service-line-count:cms-rbcs-taxonomy"
+      ],
+      "status": "open"
+    }
+  ],
+  "coverage": [
+    {
+      "coverage_id": "coverage:christianacare:service_line_count",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "service_line_count",
+      "observation_refs": [],
+      "reason": "The exact AHRQ row binds HSI00000218 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count is available for the current four-facility boundary or post-vintage West Grove membership.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:jefferson-health:service_line_count",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "service_line_count",
+      "observation_refs": [],
+      "reason": "The exact AHRQ row binds HSI00000048 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count is available for the frozen 33-facility boundary or later LVHN membership.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:temple-health:service_line_count",
+      "entity_ref": "data-mcp:system:temple-health",
+      "measure_id": "service_line_count",
+      "observation_refs": [],
+      "reason": "The exact AHRQ row binds HSI00001065 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count resolves Fox Chase, faculty-practice, or current product boundaries.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:penn-medicine:service_line_count",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "service_line_count",
+      "observation_refs": [],
+      "reason": "The exact AHRQ row binds HSI00000820 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count resolves faculty-practice or post-vintage organizational membership.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:cooper-university-health-care:service_line_count",
+      "entity_ref": "data-mcp:system:cooper-university-health-care",
+      "measure_id": "service_line_count",
+      "observation_refs": [],
+      "reason": "The exact AHRQ row binds HSI00001079 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count covers Cape Regional or resolves the Children's boundary.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:main-line-health:service_line_count",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "service_line_count",
+      "observation_refs": [],
+      "reason": "The exact AHRQ row binds HSI00000608 but reports no service-line field; the CMS taxonomy classifies billed Part B HCPCS services, not offered system service lines. No common-taxonomy count resolves rehabilitation inclusion or the current service boundary.",
+      "status": "unavailable_public"
+    }
+  ],
+  "created_at": "2026-07-18T18:15:29Z",
+  "entities": [
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000218",
+      "aliases": [
+        {
+          "identifier": "HSI00000218",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "ChristianaCare",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "ChristianaCare",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:christianacare",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000048",
+      "aliases": [
+        {
+          "identifier": "HSI00000048",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Jefferson Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Jefferson Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:jefferson-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001065",
+      "aliases": [
+        {
+          "identifier": "HSI00001065",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Temple University Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Temple Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:temple-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000820",
+      "aliases": [
+        {
+          "identifier": "HSI00000820",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "University of Pennsylvania Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Penn Medicine",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:penn-medicine",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001079",
+      "aliases": [
+        {
+          "identifier": "HSI00001079",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Cooper University Health Care",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Cooper University Health Care",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:cooper-university-health-care",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000608",
+      "aliases": [
+        {
+          "identifier": "HSI00000608",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Main Line Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Main Line Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:main-line-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    }
+  ],
+  "input_artifacts": [
+    {
+      "artifact_id": "artifact:ahrq-compendium:system:2023",
+      "cache_run_id": "local-promote-20260615-v040",
+      "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "connector": "validated-cache-manifest",
+      "connector_version": "scale-service-line-count-connector.v4",
+      "media_type": "text/csv",
+      "parser_version": "scale-service-line-count-parser.v4",
+      "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+      "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv"
+    },
+    {
+      "artifact_id": "artifact:cms-rbcs:final-report:2025",
+      "cache_run_id": "scale-service-line-count-all-six-2026-07-18",
+      "checksum_sha256": "sha256:68ac55dcc2812c6d692134dec827ffc5056f60b5ddcf605575fb6f2025b193e4",
+      "connector": "governed-public-http",
+      "connector_version": "scale-service-line-count-connector.v4",
+      "media_type": "application/pdf",
+      "parser_version": "pypdf-text-markers.v1",
+      "schema_fingerprint": "sha256:68ac55dcc2812c6d692134dec827ffc5056f60b5ddcf605575fb6f2025b193e4",
+      "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/cms-rbcs-final-report-2025.pdf"
+    }
+  ],
+  "observations": [],
+  "producer": {
+    "commit": "0000000000000000000000000000000000000000",
+    "repo": "healthcare-data-mcp",
+    "version": "HDM-kh4"
+  },
+  "request": {
+    "parameters": {
+      "common_taxonomy_receipted": false,
+      "desired_definition": "Count of distinct clinical service lines offered by the product system under one preapproved common taxonomy, at the frozen roster boundary and aligned period",
+      "input_family": "service_line_count",
+      "no_claims_aggregation": true,
+      "no_imputation": true,
+      "no_scale_score": true,
+      "no_service_line_hand_count": true,
+      "prior_physician_admission_merge_grouped_sha1": "cc3ccb3d-26e4-4d41-0546-003b7dec073a-2b74ab17",
+      "prior_physician_tracker_merge_grouped_sha1": "208b2ab9-7594-316f-0a3b-d64649423091-c11e6bbf"
+    },
+    "workflow": "scale-service-line-count-acquisition.v4"
+  },
+  "scope": {
+    "market": {
+      "name": "Philadelphia six-system Scale roster",
+      "roster_frozen": true
+    },
+    "periods": [
+      "2023",
+      "2025 taxonomy evaluation",
+      "not_available_on_comparable_basis"
+    ],
+    "service_line": null,
+    "systems": [
+      "christianacare",
+      "jefferson-health",
+      "temple-health",
+      "penn-medicine",
+      "cooper-university-health-care",
+      "main-line-health"
+    ]
+  },
+  "sources": [
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-service-line-count-connector.v4",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-service-line-count-connector.v4",
+          "media_type": "text/csv",
+          "parser_version": "scale-service-line-count-parser.v4",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The exact official system-file schema contains no service-line field and cannot establish offered-service presence or a common taxonomy.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_service_line_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:christianacare",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; no service-line value reported",
+        "next_step": "Toolkit must preserve unavailable_public and every open taxonomy/boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "inspect exact 2023 AHRQ system-file header for a system-level service_line_count field",
+          "evaluation_query_sha256": "sha256:7d43aeffec30bf0971881d3c73f7d54e9b49e475c6400385632664ef54e2228e",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000218",
+          "row_number": 110,
+          "row_sha256": "sha256:1b6d38a9266101556969e8f00be474811ffc62c6a94216f763eedb777d6a8d46"
+        },
+        "receipt_id": "receipt:christianacare:service-line-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=110; health_sys_id=HSI00000218; CSV header has no service_line field",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:christianacare:service-line-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-service-line-count-connector.v4",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-service-line-count-connector.v4",
+          "media_type": "text/csv",
+          "parser_version": "scale-service-line-count-parser.v4",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The exact official system-file schema contains no service-line field and cannot establish offered-service presence or a common taxonomy.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_service_line_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:jefferson-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; no service-line value reported",
+        "next_step": "Toolkit must preserve unavailable_public and every open taxonomy/boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "inspect exact 2023 AHRQ system-file header for a system-level service_line_count field",
+          "evaluation_query_sha256": "sha256:7d43aeffec30bf0971881d3c73f7d54e9b49e475c6400385632664ef54e2228e",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000048",
+          "row_number": 18,
+          "row_sha256": "sha256:6204ec1b304e076d15c96032dfbe732e172e43e293a45abf5eaf4980d6062b54"
+        },
+        "receipt_id": "receipt:jefferson-health:service-line-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=18; health_sys_id=HSI00000048; CSV header has no service_line field",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:jefferson-health:service-line-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-service-line-count-connector.v4",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-service-line-count-connector.v4",
+          "media_type": "text/csv",
+          "parser_version": "scale-service-line-count-parser.v4",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The exact official system-file schema contains no service-line field and cannot establish offered-service presence or a common taxonomy.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_service_line_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:temple-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; no service-line value reported",
+        "next_step": "Toolkit must preserve unavailable_public and every open taxonomy/boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "inspect exact 2023 AHRQ system-file header for a system-level service_line_count field",
+          "evaluation_query_sha256": "sha256:7d43aeffec30bf0971881d3c73f7d54e9b49e475c6400385632664ef54e2228e",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00001065",
+          "row_number": 466,
+          "row_sha256": "sha256:4e1ed4e4546f3a6bd74c3e8a9828b13efca87f1b2f2bd72214d63ba9c477e8c4"
+        },
+        "receipt_id": "receipt:temple-health:service-line-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=466; health_sys_id=HSI00001065; CSV header has no service_line field",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:temple-health:service-line-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-service-line-count-connector.v4",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-service-line-count-connector.v4",
+          "media_type": "text/csv",
+          "parser_version": "scale-service-line-count-parser.v4",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The exact official system-file schema contains no service-line field and cannot establish offered-service presence or a common taxonomy.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_service_line_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:penn-medicine",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; no service-line value reported",
+        "next_step": "Toolkit must preserve unavailable_public and every open taxonomy/boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "inspect exact 2023 AHRQ system-file header for a system-level service_line_count field",
+          "evaluation_query_sha256": "sha256:7d43aeffec30bf0971881d3c73f7d54e9b49e475c6400385632664ef54e2228e",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000820",
+          "row_number": 361,
+          "row_sha256": "sha256:99ffd315130cc094008d33628785b3e5610aaa476de0f7a9da4ef245ac7e2d27"
+        },
+        "receipt_id": "receipt:penn-medicine:service-line-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=361; health_sys_id=HSI00000820; CSV header has no service_line field",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:penn-medicine:service-line-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-service-line-count-connector.v4",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-service-line-count-connector.v4",
+          "media_type": "text/csv",
+          "parser_version": "scale-service-line-count-parser.v4",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The exact official system-file schema contains no service-line field and cannot establish offered-service presence or a common taxonomy.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_service_line_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:cooper-university-health-care",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; no service-line value reported",
+        "next_step": "Toolkit must preserve unavailable_public and every open taxonomy/boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "inspect exact 2023 AHRQ system-file header for a system-level service_line_count field",
+          "evaluation_query_sha256": "sha256:7d43aeffec30bf0971881d3c73f7d54e9b49e475c6400385632664ef54e2228e",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00001079",
+          "row_number": 475,
+          "row_sha256": "sha256:7246f2affd1de40325df2add2de4428d0ebad4e0370ef819ec12ea73c004cc1f"
+        },
+        "receipt_id": "receipt:cooper-university-health-care:service-line-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=475; health_sys_id=HSI00001079; CSV header has no service_line field",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:cooper-university-health-care:service-line-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-service-line-count-connector.v4",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-service-line-count-connector.v4",
+          "media_type": "text/csv",
+          "parser_version": "scale-service-line-count-parser.v4",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The exact official system-file schema contains no service-line field and cannot establish offered-service presence or a common taxonomy.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_service_line_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:main-line-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; no service-line value reported",
+        "next_step": "Toolkit must preserve unavailable_public and every open taxonomy/boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "inspect exact 2023 AHRQ system-file header for a system-level service_line_count field",
+          "evaluation_query_sha256": "sha256:7d43aeffec30bf0971881d3c73f7d54e9b49e475c6400385632664ef54e2228e",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000608",
+          "row_number": 268,
+          "row_sha256": "sha256:af058d7b4dd8ec51d74d75647b58870266c14aaa6f712f827a512c3f207db185"
+        },
+        "receipt_id": "receipt:main-line-health:service-line-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=268; health_sys_id=HSI00000608; CSV header has no service_line field",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:main-line-health:service-line-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:68ac55dcc2812c6d692134dec827ffc5056f60b5ddcf605575fb6f2025b193e4",
+      "receipt": {
+        "acquisition_method": "scale-service-line-count-connector.v4",
+        "artifact": {
+          "artifact_id": "artifact:cms-rbcs:final-report:2025",
+          "cache_run_id": "scale-service-line-count-all-six-2026-07-18",
+          "checksum_sha256": "sha256:68ac55dcc2812c6d692134dec827ffc5056f60b5ddcf605575fb6f2025b193e4",
+          "connector": "governed-public-http",
+          "connector_version": "scale-service-line-count-connector.v4",
+          "media_type": "application/pdf",
+          "parser_version": "pypdf-text-markers.v1",
+          "schema_fingerprint": "sha256:68ac55dcc2812c6d692134dec827ffc5056f60b5ddcf605575fb6f2025b193e4",
+          "uri": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/cms-rbcs-final-report-2025.pdf"
+        },
+        "cache_freshness": "Exact 2025 release; excluded as a system service-offering source",
+        "cache_key": "hc-cache://scale-service-line-count-acquisition.v4/scale-service-line-count-all-six-2026-07-18/cms-rbcs-final-report-2025.pdf",
+        "cache_status": "frozen_verified_external",
+        "caveat": "RBCS classifies paid Medicare Part B HCPCS activity; it does not report which service lines a health system offers or bind categories to the six product systems. Conversion would require prohibited claims aggregation and boundary inference.",
+        "confidence": "exact_taxonomy_scope; not_a_service_line_offering_count",
+        "dataset_id": "cms-rbcs-2025-final-report",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://data.cms.gov/provider-summary-by-type-of-service/provider-service-classifications/restructured-betos-classification-system",
+        "match_basis": "taxonomy applicability evaluation only; no product-system identity join",
+        "next_step": "A later Data acquisition must receipt a common offered-service taxonomy and six system-bound counts; claims aggregation is prohibited.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "evaluate CMS RBCS 2025 as a common taxonomy for offered health-system service_line_count",
+          "evaluation_query_sha256": "sha256:8a79dca0acbdc80b828360c6582343016aa6afc492edeb428b7287543a3aa50e",
+          "http_receipt_sha256": "sha256:20ce1b137bd38903bc6a3df8944008ea04c9425186f273feb0401a557f4ea033",
+          "page_count": 48
+        },
+        "receipt_id": "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+        "retrieved_at": "2026-07-18T18:15:29Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "PDF pages 8 and 22 (physical pages 8 and 22): HCPCS/Part B inclusion rules and Data Limitations",
+        "source_modified": "2025-12-08T17:51:06Z",
+        "source_name": "Centers for Medicare & Medicaid Services",
+        "source_period": "2025 release; Medicare Part B analysis window described by source",
+        "source_url": "https://data.cms.gov/sites/default/files/2025-12/a167eaff-5167-4c2c-a133-9ec94f0ee112/RBCS%20Final%20Report_RY2025.pdf"
+      },
+      "registry_id": "cms-rbcs-final-report",
+      "registry_version": "2025",
+      "source_id": "source:all-six:service-line-count:cms-rbcs-taxonomy"
+    }
+  ]
+}

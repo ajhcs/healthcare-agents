@@ -49,9 +49,17 @@ keeps all source-local `total_mds` candidates unapproved until physician roster,
 employment, affiliation, credentialing, active-status, specialty, deduplication,
 APP-inclusion, current-vintage, and aggregation bases are comparable.
 
+The `service-line-count` fixture adds six explicitly `unavailable_public`
+cells. AHRQ establishes identity but contains no service-line field, while CMS
+RBCS classifies paid Medicare Part B activity rather than offered services.
+It routes evidence/methods review plus a deliberately limited portfolio,
+source-rights, transaction, and governance review. The latter is not taxonomy
+competence: the registry gap remains an explicit blocker and human route.
+
 ### Family-module maintainability
 
-The operating-revenue, annual-discharges, and physician-count adapters share
+The operating-revenue, annual-discharges, physician-count, and
+service-line-count adapters share
 the fail-closed validation, deterministic evidence rebuild, and pinned-upstream
 verification kernels. Each family keeps only its frozen constants, specialist
 routing, cumulative counts, prior-record checks, and other family-specific
