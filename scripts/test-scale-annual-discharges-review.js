@@ -257,6 +257,8 @@ assert.match(mutateAndValidate(value => { value.cumulative_packet.comparability_
 assert.match(mutateAndValidate(value => { value.cumulative_packet.cells.find(cell => cell.state === 'not_yet_researched').state = 'blocked_source_conflict'; }), /exactly 0 populated, 24 blocked_source_conflict, and 30 not_yet_researched/);
 assert.match(mutateAndValidate(value => { value.cumulative_packet.cells.find(cell => cell.state === 'blocked_source_conflict').state = 'populated'; }), /exactly 0 populated, 24 blocked_source_conflict, and 30 not_yet_researched/);
 assert.match(mutateAndValidate(value => { value.cumulative_packet.output_inventory.scale_scores = 1; }), /inventory zero/);
+assert.match(mutateAndValidate(value => { value.prior_review_record.output_inventory.scale_scores = 1; }), /prior review record must inventory zero/);
+assert.match(mutateAndValidate(value => { value.prior_assurance_case.output_inventory.projections = 1; }), /prior assurance case must inventory zero/);
 assert.match(mutateAndValidate(value => { value.no_execution_result.sensitivity_results.push({ fabricated: true }); }), /sensitivity_results must remain empty/);
 assert.match(mutateAndValidate(value => { value.cumulative_packet = null; }), /canonical annual-discharges derivation failed closed/);
 
