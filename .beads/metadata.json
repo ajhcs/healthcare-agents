@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "agents_aw6_tracker_j8bGC5",
+  "project_id": "32078fb3-02a8-4694-8b11-f796d5ba4246"
+}
