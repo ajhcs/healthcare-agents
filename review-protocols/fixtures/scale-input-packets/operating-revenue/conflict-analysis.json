@@ -1,27 +1,27 @@
 {
   "schema_version": "ushso.ai-conflict-analysis.v1",
-  "analysis_id": "conflict:0700ae71dc39e24050aee7120aa80a99",
+  "analysis_id": "conflict:304129739bb823a2bd6f189447954192",
   "request_id": "conflict-request:scale-operating-revenue:2026-07-17",
   "review_tier": "ordinary_material_claim",
   "review_refs": [
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
-      "output_sha256": "sha256:a6fdaf46a19139dc8abdc9853687edba13c53f99304ab317fafb4098b73bd699"
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
+      "output_sha256": "sha256:a1c2ffa255955228a7fb05e4f3babc13ffb7d9f4676b502fb9b07676b3454b6e"
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
-      "output_sha256": "sha256:7729424d04526c765c0fbc2305bd6bcfbd7e20e77b30a460f5c20bb30b80df31"
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
+      "output_sha256": "sha256:3215dcd2db03df351d9275fec156a97020e1ca03086f88782bcc57fbed404540"
     }
   ],
   "discrepancies": [
     {
-      "discrepancy_id": "discrepancy:81e1c16393e0cd1e1021948d",
+      "discrepancy_id": "discrepancy:0f9e1cb669e3f713bfd1cb90",
       "type": "review_concern_or_challenge",
       "field_path": "method_challenges",
       "material": true,
       "positions": [
         {
-          "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+          "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
           "value": [
             {
               "challenge_id": "method:source-withholding",
@@ -42,7 +42,7 @@
           ]
         },
         {
-          "review_id": "review:c85d567e49c0b582439671857cd37d48",
+          "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
           "value": [
             {
               "challenge_id": "finance:remove-one-time-items",
@@ -67,13 +67,13 @@
       "human_route_required": true
     },
     {
-      "discrepancy_id": "discrepancy:b339625b8811e3c69be0fa30",
+      "discrepancy_id": "discrepancy:f20c93b88eb455d8a72c8cd7",
       "type": "criterion_evidence_or_warrant",
       "field_path": "evaluation.criteria_results",
       "material": true,
       "positions": [
         {
-          "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+          "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
           "value": [
             {
               "criterion_id": "cso.evidence-methods-measurement.v1:criterion:1",
@@ -129,7 +129,7 @@
           ]
         },
         {
-          "review_id": "review:c85d567e49c0b582439671857cd37d48",
+          "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
           "value": [
             {
               "criterion_id": "cso.healthcare-finance-capital.v1:criterion:1",
@@ -191,227 +191,227 @@
   ],
   "preserved_reviewer_concerns": [
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Six unresolved and three excluded candidates prevent an approved all-six denominator."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Evidence periods span 2023 through Q1/FY2026; no common period is asserted."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "All conclusions require named human competence-matched adjudication and release authority."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Penn HUP-Cedar is named as a campus but may be a remote HUP location."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "The no-score result is an appropriate block but resolves no underlying conflict or strategic question."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "All six operating-revenue cells remain blocked_source_conflict and unpopulated."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active."
     },
     {
-      "review_id": "review:68797c789ef2fee186f43ff6a3a2dc15",
+      "review_id": "review:b9587a806a4e7631567f11165ae47ba3",
       "concern": "No averaging, no adjudication, and no model-generated human authority are permitted."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Six unresolved and three excluded candidates prevent an approved all-six denominator."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Evidence periods span 2023 through Q1/FY2026; no common period is asserted."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "All conclusions require named human competence-matched adjudication and release authority."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Penn HUP-Cedar is named as a campus but may be a remote HUP location."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "The no-score result is an appropriate block but resolves no underlying conflict or strategic question."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "All six operating-revenue cells remain blocked_source_conflict and unpopulated."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active."
     },
     {
-      "review_id": "review:c85d567e49c0b582439671857cd37d48",
+      "review_id": "review:e2447bb60b33ebf504e31194bddb8ea9",
       "concern": "No averaging, no adjudication, and no model-generated human authority are permitted."
     }
   ],
@@ -419,5 +419,5 @@
   "advisory_only": true,
   "resolution_authority": "human_required",
   "automatic_resolution": "prohibited",
-  "output_sha256": "sha256:5e8232d67351ed8e8b3e59489689e4d16408cfbd7f2b246a5bfa7ccf8eb99c40"
+  "output_sha256": "sha256:419ffbc0b8dee60315a71eda29a537fb77e8a69c0fb63914054593b34ffe7ea4"
 }

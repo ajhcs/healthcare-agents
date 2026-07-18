@@ -1,0 +1,703 @@
+{
+  "bundle_id": "scale-operating-revenue-all-six-2026-07-17:public-evidence",
+  "conflicts": [
+    {
+      "conflict_id": "conflict:christianacare:operating_revenue_usd:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:christianacare"
+      ],
+      "observation_refs": [
+        "observation:christianacare:operating_revenue_usd:candidate"
+      ],
+      "rationale": "period_alignment,no_common_audited_period: FY2024 candidate is not yet comparable to every system and its product-roster boundary remains unapproved.",
+      "receipt_refs": [
+        "receipt:artifact:christianacare:operating-revenue:fy2024"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:jefferson-health:operating_revenue_usd:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:jefferson-health"
+      ],
+      "observation_refs": [
+        "observation:jefferson-health:operating_revenue_usd:candidate"
+      ],
+      "rationale": "entity_boundary,no_common_audited_period: FY2022 university-consolidated candidate is stale and broader than the frozen Jefferson Health delivery roster.",
+      "receipt_refs": [
+        "receipt:artifact:jefferson-health:operating-revenue:fy2022"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:temple-health:operating_revenue_usd:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:temple-health"
+      ],
+      "observation_refs": [],
+      "rationale": "unaudited_source,no_common_audited_period: The Year-End Report is explicitly unaudited and cannot substitute for the unavailable indexed audit; no candidate value is admitted.",
+      "receipt_refs": [
+        "receipt:artifact:temple-health:operating-revenue:fy2025"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:penn-medicine:operating_revenue_usd:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:penn-medicine"
+      ],
+      "observation_refs": [
+        "observation:penn-medicine:operating_revenue_usd:candidate"
+      ],
+      "rationale": "period_and_membership_boundary,no_common_audited_period: FY2025 includes a partial-year Doylestown membership substitution and lacks a common all-six period.",
+      "receipt_refs": [
+        "receipt:artifact:penn-medicine:operating-revenue:fy2025"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:cooper-university-health-care"
+      ],
+      "observation_refs": [],
+      "rationale": "raw_byte_custody,no_common_audited_period: The official landing page identifies a current audit, but governed retrieval returned HTTP 403; no value is admitted.",
+      "receipt_refs": [
+        "receipt:artifact:cooper-university-health-care:operating-revenue:fy2025"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:main-line-health:operating_revenue_usd:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:main-line-health"
+      ],
+      "observation_refs": [
+        "observation:main-line-health:operating_revenue_usd:candidate"
+      ],
+      "rationale": "period_alignment,no_common_audited_period: FY2022 is stale relative to current candidates and its product-roster boundary remains unapproved.",
+      "receipt_refs": [
+        "receipt:artifact:main-line-health:operating-revenue:fy2022"
+      ],
+      "status": "open"
+    }
+  ],
+  "coverage": [
+    {
+      "coverage_id": "coverage:christianacare:operating_revenue_usd",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "operating_revenue_usd",
+      "observation_refs": [],
+      "reason": "FY2024 candidate is not yet comparable to every system and its product-roster boundary remains unapproved.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:jefferson-health:operating_revenue_usd",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "operating_revenue_usd",
+      "observation_refs": [],
+      "reason": "FY2022 university-consolidated candidate is stale and broader than the frozen Jefferson Health delivery roster.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:temple-health:operating_revenue_usd",
+      "entity_ref": "data-mcp:system:temple-health",
+      "measure_id": "operating_revenue_usd",
+      "observation_refs": [],
+      "reason": "The Year-End Report is explicitly unaudited and cannot substitute for the unavailable indexed audit; no candidate value is admitted.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:penn-medicine:operating_revenue_usd",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "operating_revenue_usd",
+      "observation_refs": [],
+      "reason": "FY2025 includes a partial-year Doylestown membership substitution and lacks a common all-six period.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:cooper-university-health-care:operating_revenue_usd",
+      "entity_ref": "data-mcp:system:cooper-university-health-care",
+      "measure_id": "operating_revenue_usd",
+      "observation_refs": [],
+      "reason": "The official landing page identifies a current audit, but governed retrieval returned HTTP 403; no value is admitted.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:main-line-health:operating_revenue_usd",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "operating_revenue_usd",
+      "observation_refs": [],
+      "reason": "FY2022 is stale relative to current candidates and its product-roster boundary remains unapproved.",
+      "status": "blocked_source_conflict"
+    }
+  ],
+  "created_at": "2026-07-17T22:10:00Z",
+  "entities": [
+    {
+      "address": "",
+      "ahrq_system_id": "",
+      "aliases": [],
+      "canonical_name": "ChristianaCare",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:christianacare",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "",
+      "aliases": [],
+      "canonical_name": "Jefferson Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:jefferson-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "",
+      "aliases": [],
+      "canonical_name": "Temple Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:temple-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "",
+      "aliases": [],
+      "canonical_name": "Penn Medicine",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:penn-medicine",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "",
+      "aliases": [],
+      "canonical_name": "Cooper University Health Care",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:cooper-university-health-care",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "",
+      "aliases": [],
+      "canonical_name": "Main Line Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:main-line-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    }
+  ],
+  "input_artifacts": [
+    {
+      "artifact_id": "artifact:christianacare:operating-revenue:fy2024",
+      "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+      "checksum_sha256": "sha256:5ab7710494b4eb5f9a7cbba4d593d084c66f9a83013050f1aeda24d525725cd2",
+      "connector": "governed-public-http",
+      "connector_version": "scale-input-family-connector.v1",
+      "media_type": "application/pdf",
+      "parser_version": "scale-input-family-parser.v1",
+      "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+      "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:christianacare:operating-revenue:fy2024"
+    },
+    {
+      "artifact_id": "artifact:jefferson-health:operating-revenue:fy2022",
+      "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+      "checksum_sha256": "sha256:7e6702695d42e6235f347382a2af4c8b1509e211282e62b30005a72c00e92c70",
+      "connector": "governed-public-http",
+      "connector_version": "scale-input-family-connector.v1",
+      "media_type": "application/pdf",
+      "parser_version": "scale-input-family-parser.v1",
+      "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+      "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:jefferson-health:operating-revenue:fy2022"
+    },
+    {
+      "artifact_id": "artifact:temple-health:operating-revenue:fy2025",
+      "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+      "checksum_sha256": "sha256:c512dac3a6da51cd0fdd9b23c6bbc85efe580f1dab1a65183506ee521ea34711",
+      "connector": "governed-public-http",
+      "connector_version": "scale-input-family-connector.v1",
+      "media_type": "application/pdf",
+      "parser_version": "scale-input-family-parser.v1",
+      "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+      "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:temple-health:operating-revenue:fy2025"
+    },
+    {
+      "artifact_id": "artifact:penn-medicine:operating-revenue:fy2025",
+      "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+      "checksum_sha256": "sha256:e83eab7626abc8f7e012297a70367f510a2ddb3548435fe16eed505a1ef00b55",
+      "connector": "governed-public-http",
+      "connector_version": "scale-input-family-connector.v1",
+      "media_type": "application/pdf",
+      "parser_version": "scale-input-family-parser.v1",
+      "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+      "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:penn-medicine:operating-revenue:fy2025"
+    },
+    {
+      "artifact_id": "artifact:cooper-university-health-care:operating-revenue:fy2025",
+      "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+      "checksum_sha256": "sha256:33acb41a6489d077bb258d1b49dd1546a5e057263a2c470d0002a7c9102eff69",
+      "connector": "governed-public-http",
+      "connector_version": "scale-input-family-connector.v1",
+      "media_type": "text/html",
+      "parser_version": "scale-input-family-parser.v1",
+      "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+      "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:cooper-university-health-care:operating-revenue:fy2025"
+    },
+    {
+      "artifact_id": "artifact:main-line-health:operating-revenue:fy2022",
+      "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+      "checksum_sha256": "sha256:f63496c6eddb610952d6b245cd07b3e33927a8542fd76ed0fe9001e14cdf20a0",
+      "connector": "governed-public-http",
+      "connector_version": "scale-input-family-connector.v1",
+      "media_type": "application/pdf",
+      "parser_version": "scale-input-family-parser.v1",
+      "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+      "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:main-line-health:operating-revenue:fy2022"
+    }
+  ],
+  "observations": [
+    {
+      "caveat": "FY2024 candidate is not yet comparable to every system and its product-roster boundary remains unapproved.",
+      "denominator_scope": "Christiana Care Health System and Affiliates",
+      "dependency_cluster_ids": [
+        "dependency:artifact:christianacare:operating-revenue:fy2024"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "source_local_candidate.operating_revenue_usd",
+      "observation_id": "observation:christianacare:operating_revenue_usd:candidate",
+      "period": {
+        "end": null,
+        "label": "FY2024",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:artifact:christianacare:operating-revenue:fy2024"
+      ],
+      "unit": "USD",
+      "value": 3080783000,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "FY2022 university-consolidated candidate is stale and broader than the frozen Jefferson Health delivery roster.",
+      "denominator_scope": "Thomas Jefferson University",
+      "dependency_cluster_ids": [
+        "dependency:artifact:jefferson-health:operating-revenue:fy2022"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "source_local_candidate.operating_revenue_usd",
+      "observation_id": "observation:jefferson-health:operating_revenue_usd:candidate",
+      "period": {
+        "end": null,
+        "label": "FY2022",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:artifact:jefferson-health:operating-revenue:fy2022"
+      ],
+      "unit": "USD",
+      "value": 7914485000,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "FY2025 includes a partial-year Doylestown membership substitution and lacks a common all-six period.",
+      "denominator_scope": "University of Pennsylvania Health System",
+      "dependency_cluster_ids": [
+        "dependency:artifact:penn-medicine:operating-revenue:fy2025"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "source_local_candidate.operating_revenue_usd",
+      "observation_id": "observation:penn-medicine:operating_revenue_usd:candidate",
+      "period": {
+        "end": null,
+        "label": "FY2025",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:artifact:penn-medicine:operating-revenue:fy2025"
+      ],
+      "unit": "USD",
+      "value": 11995614000,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "FY2022 is stale relative to current candidates and its product-roster boundary remains unapproved.",
+      "denominator_scope": "Main Line Health System and Affiliates",
+      "dependency_cluster_ids": [
+        "dependency:artifact:main-line-health:operating-revenue:fy2022"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "source_local_candidate.operating_revenue_usd",
+      "observation_id": "observation:main-line-health:operating_revenue_usd:candidate",
+      "period": {
+        "end": null,
+        "label": "FY2022",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:artifact:main-line-health:operating-revenue:fy2022"
+      ],
+      "unit": "USD",
+      "value": 2107785000,
+      "value_type": "integer"
+    }
+  ],
+  "producer": {
+    "commit": "0000000000000000000000000000000000000000",
+    "repo": "healthcare-data-mcp",
+    "version": "HDM-pzz"
+  },
+  "request": {
+    "parameters": {
+      "candidate_values_are_not_approved_inputs": true,
+      "input_family": "operating_revenue_usd",
+      "no_scale_score": true
+    },
+    "workflow": "scale-input-family-acquisition.v1"
+  },
+  "scope": {
+    "market": {
+      "name": "Philadelphia six-system Scale roster",
+      "roster_frozen": true
+    },
+    "periods": [
+      "FY2022",
+      "FY2024",
+      "FY2025"
+    ],
+    "service_line": null,
+    "systems": [
+      "christianacare",
+      "jefferson-health",
+      "temple-health",
+      "penn-medicine",
+      "cooper-university-health-care",
+      "main-line-health"
+    ]
+  },
+  "sources": [
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:5ab7710494b4eb5f9a7cbba4d593d084c66f9a83013050f1aeda24d525725cd2",
+      "receipt": {
+        "acquisition_method": "scale-input-family-connector.v1",
+        "artifact": {
+          "artifact_id": "artifact:christianacare:operating-revenue:fy2024",
+          "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+          "checksum_sha256": "sha256:5ab7710494b4eb5f9a7cbba4d593d084c66f9a83013050f1aeda24d525725cd2",
+          "connector": "governed-public-http",
+          "connector_version": "scale-input-family-connector.v1",
+          "media_type": "application/pdf",
+          "parser_version": "scale-input-family-parser.v1",
+          "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+          "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:christianacare:operating-revenue:fy2024"
+        },
+        "cache_freshness": "Frozen for acquisition scale-operating-revenue-all-six-2026-07-17",
+        "cache_key": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:christianacare:operating-revenue:fy2024",
+        "cache_status": "frozen_verified",
+        "caveat": "Christiana Care Health System and Affiliates; exact relationship to the frozen product roster requires review.",
+        "confidence": "blocked_pending_cross-system_comparability",
+        "dataset_id": "artifact:christianacare:operating-revenue:fy2024",
+        "entity_scope": "data-mcp:system:christianacare",
+        "landing_page": "https://hscrc.maryland.gov/Pages/hospitals.aspx",
+        "match_basis": "source-local audited or filing-boundary candidate only",
+        "next_step": "Toolkit must preserve this as a non-approved candidate pending fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "http_status": 200,
+          "input_family": "operating_revenue_usd",
+          "statement_locator": "PDF page 6, Total operating revenues and other support, 2024 column, thousands"
+        },
+        "receipt_id": "receipt:artifact:christianacare:operating-revenue:fy2024",
+        "retrieved_at": "2026-07-17T22:10:00Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "PDF page 6, Total operating revenues and other support, 2024 column, thousands",
+        "source_modified": null,
+        "source_name": "Christiana Care Health System and Affiliates FY2024 audited financial statements",
+        "source_period": "FY2024",
+        "source_url": "https://hscrc.maryland.gov/Documents/Strong%20als%20Folder/Audited%20Financials%20-%20ar-rev/FY%202024/ChristianaCare%20Union%20of%20Cecil%20%20FY2024%20AFS.pdf"
+      },
+      "registry_id": "scale-source:christianacare:operating_revenue_usd",
+      "registry_version": "1",
+      "source_id": "source:artifact:christianacare:operating-revenue:fy2024"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7e6702695d42e6235f347382a2af4c8b1509e211282e62b30005a72c00e92c70",
+      "receipt": {
+        "acquisition_method": "scale-input-family-connector.v1",
+        "artifact": {
+          "artifact_id": "artifact:jefferson-health:operating-revenue:fy2022",
+          "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+          "checksum_sha256": "sha256:7e6702695d42e6235f347382a2af4c8b1509e211282e62b30005a72c00e92c70",
+          "connector": "governed-public-http",
+          "connector_version": "scale-input-family-connector.v1",
+          "media_type": "application/pdf",
+          "parser_version": "scale-input-family-parser.v1",
+          "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+          "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:jefferson-health:operating-revenue:fy2022"
+        },
+        "cache_freshness": "Frozen for acquisition scale-operating-revenue-all-six-2026-07-17",
+        "cache_key": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:jefferson-health:operating-revenue:fy2022",
+        "cache_status": "frozen_verified",
+        "caveat": "Thomas Jefferson University consolidated boundary is broader than the frozen Jefferson Health delivery-system roster.",
+        "confidence": "blocked_pending_cross-system_comparability",
+        "dataset_id": "artifact:jefferson-health:operating-revenue:fy2022",
+        "entity_scope": "data-mcp:system:jefferson-health",
+        "landing_page": "https://www.jefferson.edu/finance/finance-for-staff/university-tax-audit-compliance.html",
+        "match_basis": "source-local audited or filing-boundary candidate only",
+        "next_step": "Toolkit must preserve this as a non-approved candidate pending fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "http_status": 200,
+          "input_family": "operating_revenue_usd",
+          "statement_locator": "PDF page 6, Total operating revenues, gains and other support, 2022 column, thousands"
+        },
+        "receipt_id": "receipt:artifact:jefferson-health:operating-revenue:fy2022",
+        "retrieved_at": "2026-07-17T22:10:00Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "PDF page 6, Total operating revenues, gains and other support, 2022 column, thousands",
+        "source_modified": null,
+        "source_name": "Thomas Jefferson University FY2022 consolidated audited financial statements",
+        "source_period": "FY2022",
+        "source_url": "https://www.jefferson.edu/content/dam/academic/finance/documents/TJU%20FY2022%20Audited%20Financial%20Statements-10182022.pdf"
+      },
+      "registry_id": "scale-source:jefferson-health:operating_revenue_usd",
+      "registry_version": "1",
+      "source_id": "source:artifact:jefferson-health:operating-revenue:fy2022"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:c512dac3a6da51cd0fdd9b23c6bbc85efe580f1dab1a65183506ee521ea34711",
+      "receipt": {
+        "acquisition_method": "scale-input-family-connector.v1",
+        "artifact": {
+          "artifact_id": "artifact:temple-health:operating-revenue:fy2025",
+          "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+          "checksum_sha256": "sha256:c512dac3a6da51cd0fdd9b23c6bbc85efe580f1dab1a65183506ee521ea34711",
+          "connector": "governed-public-http",
+          "connector_version": "scale-input-family-connector.v1",
+          "media_type": "application/pdf",
+          "parser_version": "scale-input-family-parser.v1",
+          "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+          "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:temple-health:operating-revenue:fy2025"
+        },
+        "cache_freshness": "Frozen for acquisition scale-operating-revenue-all-six-2026-07-17",
+        "cache_key": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:temple-health:operating-revenue:fy2025",
+        "cache_status": "frozen_verified",
+        "caveat": "TUHS consolidated reporting boundary is unresolved against the frozen Temple Health product roster; the indexed audit URL was unavailable.",
+        "confidence": "blocked_pending_cross-system_comparability",
+        "dataset_id": "artifact:temple-health:operating-revenue:fy2025",
+        "entity_scope": "data-mcp:system:temple-health",
+        "landing_page": "https://tuhsfinance.templehealth.org/audited.html",
+        "match_basis": "source-local audited or filing-boundary candidate only",
+        "next_step": "Toolkit must preserve this as a non-approved candidate pending fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "http_status": 200,
+          "input_family": "operating_revenue_usd",
+          "statement_locator": "PDF page 8, Revenues and other support without donor restrictions, 2025 column, thousands"
+        },
+        "receipt_id": "receipt:artifact:temple-health:operating-revenue:fy2025",
+        "retrieved_at": "2026-07-17T22:10:00Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "PDF page 8, Revenues and other support without donor restrictions, 2025 column, thousands",
+        "source_modified": null,
+        "source_name": "Temple University Health System June 30, 2025 Year-End Report (UNAUDITED)",
+        "source_period": "FY2025",
+        "source_url": "https://tuhsfinance.templehealth.org/CURRENT%20STATEMENTS/TUHS%20Investor%20Quarterly%20Report%20-%20June%2030%2C%202025.pdf"
+      },
+      "registry_id": "scale-source:temple-health:operating_revenue_usd",
+      "registry_version": "1",
+      "source_id": "source:artifact:temple-health:operating-revenue:fy2025"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:e83eab7626abc8f7e012297a70367f510a2ddb3548435fe16eed505a1ef00b55",
+      "receipt": {
+        "acquisition_method": "scale-input-family-connector.v1",
+        "artifact": {
+          "artifact_id": "artifact:penn-medicine:operating-revenue:fy2025",
+          "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+          "checksum_sha256": "sha256:e83eab7626abc8f7e012297a70367f510a2ddb3548435fe16eed505a1ef00b55",
+          "connector": "governed-public-http",
+          "connector_version": "scale-input-family-connector.v1",
+          "media_type": "application/pdf",
+          "parser_version": "scale-input-family-parser.v1",
+          "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+          "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:penn-medicine:operating-revenue:fy2025"
+        },
+        "cache_freshness": "Frozen for acquisition scale-operating-revenue-all-six-2026-07-17",
+        "cache_key": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:penn-medicine:operating-revenue:fy2025",
+        "cache_status": "frozen_verified",
+        "caveat": "UPHS combined boundary includes Doylestown Health from April 1, 2025 and is not period-aligned with every other system.",
+        "confidence": "blocked_pending_cross-system_comparability",
+        "dataset_id": "artifact:penn-medicine:operating-revenue:fy2025",
+        "entity_scope": "data-mcp:system:penn-medicine",
+        "landing_page": "https://www.pennmedicine.org/locations/entity/princeton-health/financial-reporting",
+        "match_basis": "source-local audited or filing-boundary candidate only",
+        "next_step": "Toolkit must preserve this as a non-approved candidate pending fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "http_status": 200,
+          "input_family": "operating_revenue_usd",
+          "statement_locator": "physical PDF page 6 (statement page 4), Total revenues and other support, 2025 column, thousands"
+        },
+        "receipt_id": "receipt:artifact:penn-medicine:operating-revenue:fy2025",
+        "retrieved_at": "2026-07-17T22:10:00Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "physical PDF page 6 (statement page 4), Total revenues and other support, 2025 column, thousands",
+        "source_modified": null,
+        "source_name": "University of Pennsylvania Health System FY2025 combined audited financial statements",
+        "source_period": "FY2025",
+        "source_url": "https://tupa-q-001.sitecorecontenthub.cloud/api/public/content/PHS-Audited-Financial-Statement.pdf"
+      },
+      "registry_id": "scale-source:penn-medicine:operating_revenue_usd",
+      "registry_version": "1",
+      "source_id": "source:artifact:penn-medicine:operating-revenue:fy2025"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:33acb41a6489d077bb258d1b49dd1546a5e057263a2c470d0002a7c9102eff69",
+      "receipt": {
+        "acquisition_method": "scale-input-family-connector.v1",
+        "artifact": {
+          "artifact_id": "artifact:cooper-university-health-care:operating-revenue:fy2025",
+          "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+          "checksum_sha256": "sha256:33acb41a6489d077bb258d1b49dd1546a5e057263a2c470d0002a7c9102eff69",
+          "connector": "governed-public-http",
+          "connector_version": "scale-input-family-connector.v1",
+          "media_type": "text/html",
+          "parser_version": "scale-input-family-parser.v1",
+          "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+          "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:cooper-university-health-care:operating-revenue:fy2025"
+        },
+        "cache_freshness": "Frozen for acquisition scale-operating-revenue-all-six-2026-07-17",
+        "cache_key": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:cooper-university-health-care:operating-revenue:fy2025",
+        "cache_status": "blocked_http_response",
+        "caveat": "The public landing page lists the audit, but the governed connector received HTTP 403 and could not freeze the audited payload bytes.",
+        "confidence": "blocked_pending_cross-system_comparability",
+        "dataset_id": "artifact:cooper-university-health-care:operating-revenue:fy2025",
+        "entity_scope": "data-mcp:system:cooper-university-health-care",
+        "landing_page": "https://www.cooperhealth.org/cooper-university-health-care-financial-reporting",
+        "match_basis": "source-local audited or filing-boundary candidate only",
+        "next_step": "Toolkit must preserve this as a non-approved candidate pending fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "http_status": 403,
+          "input_family": "operating_revenue_usd",
+          "statement_locator": "HTTP 403 response; no source row admitted"
+        },
+        "receipt_id": "receipt:artifact:cooper-university-health-care:operating-revenue:fy2025",
+        "retrieved_at": "2026-07-17T22:10:00Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "HTTP 403 response; no source row admitted",
+        "source_modified": null,
+        "source_name": "The Cooper Health System FY2025 consolidated audited financial statements",
+        "source_period": "FY2025",
+        "source_url": "https://www.cooperhealth.org/sites/default/files/2026-06/Cooper%20Health%20System%20Financial%20Statements%2025%2024.pdf"
+      },
+      "registry_id": "scale-source:cooper-university-health-care:operating_revenue_usd",
+      "registry_version": "1",
+      "source_id": "source:artifact:cooper-university-health-care:operating-revenue:fy2025"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:f63496c6eddb610952d6b245cd07b3e33927a8542fd76ed0fe9001e14cdf20a0",
+      "receipt": {
+        "acquisition_method": "scale-input-family-connector.v1",
+        "artifact": {
+          "artifact_id": "artifact:main-line-health:operating-revenue:fy2022",
+          "cache_run_id": "scale-operating-revenue-all-six-2026-07-17",
+          "checksum_sha256": "sha256:f63496c6eddb610952d6b245cd07b3e33927a8542fd76ed0fe9001e14cdf20a0",
+          "connector": "governed-public-http",
+          "connector_version": "scale-input-family-connector.v1",
+          "media_type": "application/pdf",
+          "parser_version": "scale-input-family-parser.v1",
+          "schema_fingerprint": "sha256:5ec5a978deaa4d08f01ad53e76b9f08df0a97d23d499a2fefcb43ed56ce168d8",
+          "uri": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:main-line-health:operating-revenue:fy2022"
+        },
+        "cache_freshness": "Frozen for acquisition scale-operating-revenue-all-six-2026-07-17",
+        "cache_key": "hc-cache://scale-input-family-acquisition.v1/scale-operating-revenue-all-six-2026-07-17/artifact:main-line-health:operating-revenue:fy2022",
+        "cache_status": "frozen_verified",
+        "caveat": "Main Line Health System and Affiliates consolidated boundary is stale relative to FY2024/FY2025 candidates and requires roster reconciliation.",
+        "confidence": "blocked_pending_cross-system_comparability",
+        "dataset_id": "artifact:main-line-health:operating-revenue:fy2022",
+        "entity_scope": "data-mcp:system:main-line-health",
+        "landing_page": "https://emma.msrb.org/",
+        "match_basis": "source-local audited or filing-boundary candidate only",
+        "next_step": "Toolkit must preserve this as a non-approved candidate pending fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "http_status": 200,
+          "input_family": "operating_revenue_usd",
+          "statement_locator": "PDF page 6, Total revenues, gains and other support, 2022 column, thousands"
+        },
+        "receipt_id": "receipt:artifact:main-line-health:operating-revenue:fy2022",
+        "retrieved_at": "2026-07-17T22:10:00Z",
+        "rights_classification": "public_domain",
+        "row_locator": "PDF page 6, Total revenues, gains and other support, 2022 column, thousands",
+        "source_modified": null,
+        "source_name": "Main Line Health System and Affiliates FY2022 audited financial statements",
+        "source_period": "FY2022",
+        "source_url": "https://emma.msrb.org/P21619447-P21247636-P21672202.pdf"
+      },
+      "registry_id": "scale-source:main-line-health:operating_revenue_usd",
+      "registry_version": "1",
+      "source_id": "source:artifact:main-line-health:operating-revenue:fy2022"
+    }
+  ]
+}

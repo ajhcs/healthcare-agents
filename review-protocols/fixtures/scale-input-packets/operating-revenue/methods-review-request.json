@@ -22,7 +22,7 @@
     }
   },
   "frozen_inputs": {
-    "evidence_bundle_ref": "git:b1fdfad94e65239fa73928990c086a63423b7c94:contracts/scale-inputs/v1/fixtures/operating-revenue/public-evidence-bundle.json",
+    "evidence_bundle_ref": "ushso-rebuild://scale-inputs/operating-revenue/public-evidence-bundle",
     "evidence_bundle_hash": "sha256:e3b908d6dbe6036b167d9d79acc0165dd796230bb4793451a463f4fdc844f726",
     "identity_binding_ref": "git:370dd2da1cb233eea8f89cb4773ed669a8c37b58:contracts/reusable-run/v3/fixtures/operating-revenue/identity-binding.json",
     "identity_binding_hash": "sha256:11d9b3cfaccc65ab22bd07912f6ed5b7c8e75f946619a2a3030f78a9f640b264",
