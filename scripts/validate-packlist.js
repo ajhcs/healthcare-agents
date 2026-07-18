@@ -46,6 +46,7 @@ const required = [
   'lib/scale-roster-bed-review.js',
   'lib/scale-input-fitness-review.js',
   'lib/scale-annual-discharges-review.js',
+  'lib/scale-annual-discharges-canonical.js',
   'lib/operator-os/data-modes.js',
   'lib/operator-os/case-provenance.js',
   'lib/operator-os/case-data-provider.js',

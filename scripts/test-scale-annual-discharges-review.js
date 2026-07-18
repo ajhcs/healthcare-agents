@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
 
-const { validateConflictAnalysis, validateConflictRequest } = require('../lib/conflict-analysis');
+const { analyzeReviewConflicts, validateConflictAnalysis, validateConflictRequest } = require('../lib/conflict-analysis');
 const { sha256 } = require('../lib/review-protocols');
 const {
   ACQUISITION_RAW_HASH,
@@ -46,6 +46,46 @@ function mutateAndValidate(mutator) {
   const mutated = clone(objects);
   mutator(mutated);
   return validateAnnualDischargesUpstream(manifest, mutated, artifactHashes, evidenceArtifacts).join('; ');
+}
+function withSelfHash(value, hashField) {
+  const body = Object.fromEntries(Object.entries(value).filter(([key]) => key !== hashField));
+  return { ...body, [hashField]: sha256(body) };
+}
+
+function validateSynchronizedMutation(manifestMutator, requestMutator = () => {}) {
+  let mutatedManifest = clone(manifest);
+  manifestMutator(mutatedManifest);
+  mutatedManifest = withSelfHash(mutatedManifest, 'manifest_sha256');
+  const mutatedMethodsRequest = clone(methodsRequest);
+  const mutatedOperationsRequest = clone(operationsRequest);
+  requestMutator(mutatedMethodsRequest);
+  requestMutator(mutatedOperationsRequest);
+  const mutatedMethods = evaluateStrategicReview(mutatedMethodsRequest);
+  const mutatedOperations = evaluateStrategicReview(mutatedOperationsRequest);
+  const mutatedConflict = analyzeReviewConflicts({
+    schema_version: 'ushso.ai-conflict-analysis-request.v1',
+    request_id: conflictRequest.request_id,
+    review_tier: conflictRequest.review_tier,
+    reviews: [mutatedMethods, mutatedOperations]
+  });
+  let mutatedHandoff = clone(handoff);
+  mutatedHandoff.upstream_manifest_hash = mutatedManifest.manifest_sha256;
+  mutatedHandoff.review_hashes = {
+    methods: mutatedMethods.output_sha256,
+    utilization_operations: mutatedOperations.output_sha256
+  };
+  mutatedHandoff.first_assessment_hashes = {
+    methods: mutatedMethods.first_assessment_hash,
+    utilization_operations: mutatedOperations.first_assessment_hash
+  };
+  mutatedHandoff.conflict_output_hash = mutatedConflict.output_sha256;
+  mutatedHandoff = withSelfHash(mutatedHandoff, 'handoff_sha256');
+  return [
+    ...validateAnnualDischargesUpstream(mutatedManifest, objects, artifactHashes, evidenceArtifacts),
+    ...validateAnnualDischargesReviewRequest(mutatedMethodsRequest, mutatedManifest, objects, artifactHashes, evidenceArtifacts),
+    ...validateAnnualDischargesReviewRequest(mutatedOperationsRequest, mutatedManifest, objects, artifactHashes, evidenceArtifacts),
+    ...validateAnnualDischargesReviewHandoff(mutatedHandoff, [mutatedMethods, mutatedOperations], mutatedConflict, mutatedManifest, objects, artifactHashes, evidenceArtifacts)
+  ].join('; ');
 }
 
 const before = new Map(generatedNames.map(name => [name, fs.readFileSync(path.join(FIXTURES, name))]));
@@ -209,6 +249,7 @@ assert.match(mutateAndValidate(value => { value.cumulative_packet.cells.find(cel
 assert.match(mutateAndValidate(value => { value.cumulative_packet.cells.find(cell => cell.state === 'blocked_source_conflict').state = 'populated'; }), /exactly 0 populated, 24 blocked_source_conflict, and 30 not_yet_researched/);
 assert.match(mutateAndValidate(value => { value.cumulative_packet.output_inventory.scale_scores = 1; }), /inventory zero/);
 assert.match(mutateAndValidate(value => { value.no_execution_result.sensitivity_results.push({ fabricated: true }); }), /sensitivity_results must remain empty/);
+assert.match(mutateAndValidate(value => { value.cumulative_packet = null; }), /canonical annual-discharges derivation failed closed/);
 
 const weakened = clone(methodsRequest);
 weakened.candidate_review.overall_disposition = 'pass';
@@ -222,6 +263,20 @@ assert.match(validateAnnualDischargesReviewRequest(replacedConcern, manifest, ob
 const fabricatedEvidence = clone(methodsRequest);
 fabricatedEvidence.candidate_review.claim_dispositions[0].evidence_refs[0] = 'fabricated:evidence';
 assert.match(validateAnnualDischargesReviewRequest(fabricatedEvidence, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /evidence reference absent from frozen manifest/);
+
+// Synchronized fabrication remains invalid even after every downstream artifact is recomputed and rehashed.
+assert.match(validateSynchronizedMutation(
+  value => value.evidence_identifiers.push('fabricated:evidence'),
+  value => value.frozen_inputs.claim_candidates[0].evidence_refs.push('fabricated:evidence')
+), /upstream manifest must exactly equal canonical derivation|review request must exactly equal the canonical family and specialist derivation|specialist reviews must exactly equal canonical evaluation/);
+assert.match(validateSynchronizedMutation(value => { value.fabricated_human_authority = true; }), /upstream manifest must exactly equal canonical derivation/);
+assert.match(validateSynchronizedMutation(value => {
+  value.objects.fabricated_authority_record = {
+    artifact_ref: 'upstream/fabricated-authority.json',
+    artifact_hash: 'sha256:' + '1'.repeat(64)
+  };
+}), /upstream manifest must exactly equal canonical derivation/);
+assert.match(validateSynchronizedMutation(value => { value.expected_counts.total_cells = 999; }), /upstream manifest must exactly equal canonical derivation/);
 
 const duplicate = clone(conflictRequest);
 duplicate.reviews[1].reviewer.reviewer_id = duplicate.reviews[0].reviewer.reviewer_id;
@@ -272,7 +327,7 @@ const substitutedConcernRequest = clone(methodsRequest);
 substitutedConcernRequest.candidate_review.preserved_reviewer_concerns[1] = substitutedConcernRequest.candidate_review.preserved_reviewer_concerns[0];
 const rehashedConcernReview = evaluateStrategicReview(substitutedConcernRequest);
 assert.deepStrictEqual(validateStrategicReview(rehashedConcernReview), []);
-assert.match(validateAnnualDischargesReviewHandoff(handoff, [rehashedConcernReview, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact ordered prior and annual-slice concern lineage/);
+assert.match(validateAnnualDischargesReviewHandoff(handoff, [rehashedConcernReview, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /specialist reviews must exactly equal canonical evaluation/);
 const rehashedConflict = clone(conflict);
 rehashedConflict.review_refs[0].output_sha256 = 'sha256:' + '9'.repeat(64);
 rehashedConflict.output_sha256 = sha256(Object.fromEntries(Object.entries(rehashedConflict).filter(([key]) => key !== 'output_sha256')));
