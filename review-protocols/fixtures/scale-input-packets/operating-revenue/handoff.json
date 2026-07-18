@@ -1,0 +1,62 @@
+{
+  "schema_version": "ushso.scale-input-fitness-review-handoff.v1",
+  "active_family": "operating_revenue_usd",
+  "upstream_manifest_hash": "sha256:9b9557cedbc5113b7fc9737f2d18d2baae377b99562348fff8011e610b6f35de",
+  "toolkit_producer_commit": "370dd2da1cb233eea8f89cb4773ed669a8c37b58",
+  "data_producer_commit": "b1fdfad94e65239fa73928990c086a63423b7c94",
+  "toolkit_handoff_file_hash": "sha256:c448ed24b8737df3ec4e934d801aaae1bff40cdb3d31d142e3e354071d045a3b",
+  "review_hashes": {
+    "methods": "sha256:a6fdaf46a19139dc8abdc9853687edba13c53f99304ab317fafb4098b73bd699",
+    "finance": "sha256:7729424d04526c765c0fbc2305bd6bcfbd7e20e77b30a460f5c20bb30b80df31"
+  },
+  "first_assessment_hashes": {
+    "methods": "sha256:1eb50dc2c84efde26886ddbe55178f3d20ddd0c792a621b6bcb12939437104fb",
+    "finance": "sha256:0f34a91e74e4c7eef3ecc49feffce18cce5f00b7bf5819a144affee5e8564bce"
+  },
+  "conflict_output_hash": "sha256:5e8232d67351ed8e8b3e59489689e4d16408cfbd7f2b246a5bfa7ccf8eb99c40",
+  "prior_counts": {
+    "discrepancies": 26,
+    "reviewer_concerns": 24,
+    "open_conflicts": 5,
+    "overturn_gates": 10
+  },
+  "operating_revenue_blocked_cell_count": 6,
+  "operating_revenue_open_conflict_count": 6,
+  "cumulative_open_conflict_count": 11,
+  "cumulative_cell_counts": {
+    "total": 54,
+    "populated": 0,
+    "blocked_source_conflict": 18,
+    "not_yet_researched": 36
+  },
+  "final_disposition": "block",
+  "route": "human_competence_matched_adjudication",
+  "automatic_resolution": "prohibited",
+  "positions_averaged": false,
+  "adjudication_performed": false,
+  "human_authority_conveyed": false,
+  "output_inventory": {
+    "adjudications": 0,
+    "component_scores": 0,
+    "deployments": 0,
+    "formula_executions": 0,
+    "projections": 0,
+    "promotion_attempts": 0,
+    "recommendations": 0,
+    "scale_scores": 0,
+    "sensitivity_runs": 0
+  },
+  "prohibited_uses": [
+    "calculation",
+    "scoring",
+    "ranking",
+    "sensitivity_analysis",
+    "projection",
+    "adjudication",
+    "strategic_recommendation",
+    "promotion",
+    "deployment"
+  ],
+  "downstream_bead": "healthcare-toolkit-2rr9.6.3.2",
+  "handoff_sha256": "sha256:13cc1709d9d8fe99b1191bf76e615e3a545f1c1de2f64af7e74913ce64a99e68"
+}
