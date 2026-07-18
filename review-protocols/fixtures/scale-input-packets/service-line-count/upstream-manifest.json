@@ -1,0 +1,165 @@
+{
+  "schema_version": "ushso.scale-input-fitness-upstream-manifest.v1",
+  "active_family": "service_line_count",
+  "producer_pins": {
+    "healthcare_toolkit": "d57b1883044475f9dac87eae1ac6806fda1d9728",
+    "healthcare_data_mcp": "599904b82e99ac389e632e2736415a04a01b633d"
+  },
+  "producer_provenance": {
+    "toolkit_feature": "eddba3c1b9949110ace23738cb4daaa2635feb96",
+    "toolkit_tracker": "3d612de3c5137624e845771334807e550bbf8b83",
+    "data_feature": "4ea01109986ffab16fb5efc493bd841d62c2c3cb",
+    "data_tracker": "9204b5d4cf4a773d3596701e7b4cec5380a1a9f8"
+  },
+  "toolkit_handoff_file_hash": "sha256:aea012f0382a99b22fdc430e3b1111d959dd1ad23f76cd752581b6449b542584",
+  "toolkit_runtime_handoff_file_hash": "sha256:805118104932fc7d9fa2541871ba9313c1075520510ed02f6736670660d10593",
+  "evidence_bundle_ref": "ushso-rebuild://scale-inputs/service-line-count/public-evidence-bundle",
+  "evidence_bundle_hash": "sha256:dfda9c60da75e2cb241c050965ec2cbeff9e3ebb305543ae859f4458345c81f9",
+  "evidence_lineage": {
+    "acquisition_ref": "git:599904b82e99ac389e632e2736415a04a01b633d:contracts/v4/fixtures/scale-service-line-count-acquisition.json",
+    "acquisition_raw_hash": "sha256:59a1debb97e6dd3cb2cbc6ce680c996cac8dbd17050c3b55563d3c90fa1f3946",
+    "acquisition_semantic_hash": "sha256:87b8b2ded72ad667ed51c9d99cc9df8f7e86adff4472b1fa883175a96091c5ca",
+    "committed_input_ref": "git:599904b82e99ac389e632e2736415a04a01b633d:contracts/v4/fixtures/scale-service-line-count-input.json",
+    "normalized_input_artifact_ref": "upstream/data-mcp/normalized-input.json",
+    "normalized_input_raw_hash": "sha256:22321f105525f32475d395739021ba6730e4b86ab044e85b24fac639e0b265f4",
+    "producer_bound_input_artifact_ref": "upstream/data-mcp/producer-bound-input.json",
+    "producer_bound_input_raw_hash": "sha256:3b00ae6473196902b28de35ff2b00669446fe2301044788d65b7d60b4c68eeb9",
+    "bundle_artifact_ref": "upstream/data-mcp/public-evidence-bundle.json",
+    "bundle_raw_hash": "sha256:e706ec3f986eded782bca2b5e14bf8b12ab7f9b2acd5f2b5caa4a160fdc318d4",
+    "bundle_semantic_hash": "sha256:dfda9c60da75e2cb241c050965ec2cbeff9e3ebb305543ae859f4458345c81f9"
+  },
+  "objects": {
+    "prior_cumulative_packet": {
+      "artifact_ref": "upstream/prior/cumulative-packet.json",
+      "artifact_hash": "sha256:3b8a7fc610adaf77107658005d56d78268cdafc54254cb7aaa1a02e1d4566128",
+      "semantic_hash": "sha256:282a369b9121a27afebbb20fec4810464d1b7efa3d67a07ea119537cbbed9aa5"
+    },
+    "cumulative_packet": {
+      "artifact_ref": "upstream/cumulative-packet.json",
+      "artifact_hash": "sha256:f9c8747b78baf0221ba3dc8ca3e65d5e89bbd25e94adac865aac6ecb3de501b0",
+      "semantic_hash": "sha256:bb41a834d64c52ae65beef077292b6986ff9754bf81441464150b0ea976b30f6"
+    },
+    "decision_scenario": {
+      "artifact_ref": "upstream/decision-scenario.json",
+      "artifact_hash": "sha256:0692bbe921854c998f4404fd9e7e938d6b4b43c3f9b082aa8ba751b291534d01",
+      "semantic_hash": "sha256:44746e8e0e85ff20df08cc338487fdaf8e79c660492553f95344e3eb1ea9f8fa"
+    },
+    "identity_binding": {
+      "artifact_ref": "upstream/identity-binding.json",
+      "artifact_hash": "sha256:7e7e5b0dc4240ac7eb34c82f9995f1de32813e60c7ddc222fa7191b1e26f8322",
+      "semantic_hash": "sha256:bc6899e07dfd3f8f5daaf411c2782cbded0893ff8e0550d243bba4e5d0f3550a"
+    },
+    "no_execution_result": {
+      "artifact_ref": "upstream/no-execution-result.json",
+      "artifact_hash": "sha256:ab03cb783b907062a9176ad1518a950c8db6e752d712a44374aef9e10ed1f1ce",
+      "semantic_hash": "sha256:9ccc4c894ce9e465bd943255abe424f8a777f8b93e1e59e08f6c24ebec72d34a"
+    },
+    "process_claim": {
+      "artifact_ref": "upstream/process-claim.json",
+      "artifact_hash": "sha256:0b6cf11f4a27e9b12d0e1c9d96bbcd8d652679e9839dc399649ba93c2e1d317d",
+      "semantic_hash": "sha256:252e15a3bd08dcf95b06885b78743113049bbada1134f44e93daa55d0a956d38"
+    },
+    "prior_review_record": {
+      "artifact_ref": "upstream/prior/cumulative-review-record.json",
+      "artifact_hash": "sha256:d5e4e4eb39a2c247a31ab4589134392f1f641df51ed97acbff9158c5cf2847d2",
+      "semantic_hash": "sha256:181691932c17f47e42865422f30be923f9ed739cbacb8be23266dea5342f4d30"
+    },
+    "prior_assurance_case": {
+      "artifact_ref": "upstream/prior/cumulative-module-assurance-case.json",
+      "artifact_hash": "sha256:4a4302a57757e9aba56a686b83272cd6043195b6b4c6b647517e3069cff90854",
+      "semantic_hash": "sha256:8f82c8573ecea197d5ea79784e5f0c806a5ce4fb6a98e70d1ea1ec71a3ca28b8"
+    },
+    "toolkit_handoff": {
+      "artifact_ref": "upstream/handoff.json",
+      "artifact_hash": "sha256:aea012f0382a99b22fdc430e3b1111d959dd1ad23f76cd752581b6449b542584"
+    }
+  },
+  "review_input_hashes": [
+    "sha256:dfda9c60da75e2cb241c050965ec2cbeff9e3ebb305543ae859f4458345c81f9",
+    "sha256:bc6899e07dfd3f8f5daaf411c2782cbded0893ff8e0550d243bba4e5d0f3550a",
+    "sha256:bb41a834d64c52ae65beef077292b6986ff9754bf81441464150b0ea976b30f6",
+    "sha256:9ccc4c894ce9e465bd943255abe424f8a777f8b93e1e59e08f6c24ebec72d34a",
+    "sha256:252e15a3bd08dcf95b06885b78743113049bbada1134f44e93daa55d0a956d38",
+    "sha256:44746e8e0e85ff20df08cc338487fdaf8e79c660492553f95344e3eb1ea9f8fa"
+  ],
+  "expected_counts": {
+    "total_cells": 54,
+    "populated_cells": 0,
+    "blocked_cells": 30,
+    "unavailable_public_cells": 6,
+    "not_yet_researched_cells": 18,
+    "service_line_count_unavailable_cells": 6,
+    "service_line_count_conflicts": 6,
+    "cumulative_open_conflicts": 29,
+    "material_discrepancies": 26,
+    "reviewer_concerns": 24,
+    "open_conflicts": 5,
+    "overturn_gates": 10,
+    "revenue_discrepancies": 2,
+    "revenue_preserved_concerns": 56,
+    "annual_discrepancies": 2,
+    "annual_preserved_concerns": 172,
+    "physician_discrepancies": 2,
+    "current_methods_preserved_concerns": 202,
+    "current_workforce_preserved_concerns": 202,
+    "prior_review_open_conflicts": 23
+  },
+  "evidence_identifiers": [
+    "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18",
+    "cms-hcris:210032:number-of-beds",
+    "cms-pos:210032:bed_cnt",
+    "cms-pos:390027:bed_cnt",
+    "computation:scale-v1:all-six:no-score:2026-07-16",
+    "conflict:chestnut-hill-ownership-and-bases",
+    "conflict:christianacare-shared-cms-reporting-entity",
+    "conflict:christianacare:annual-discharges:comparability",
+    "conflict:christianacare:operating_revenue_usd:comparability",
+    "conflict:christianacare:physician-count:comparability",
+    "conflict:christianacare:service-line-count:taxonomy-boundary",
+    "conflict:cooper-childrens-separate-hospital",
+    "conflict:cooper-university-health-care:annual-discharges:comparability",
+    "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+    "conflict:cooper-university-health-care:physician-count:comparability",
+    "conflict:cooper-university-health-care:service-line-count:taxonomy-boundary",
+    "conflict:jefferson-health:annual-discharges:comparability",
+    "conflict:jefferson-health:operating_revenue_usd:comparability",
+    "conflict:jefferson-health:physician-count:comparability",
+    "conflict:jefferson-health:service-line-count:taxonomy-boundary",
+    "conflict:main-line-health:annual-discharges:comparability",
+    "conflict:main-line-health:operating_revenue_usd:comparability",
+    "conflict:main-line-health:physician-count:comparability",
+    "conflict:main-line-health:service-line-count:taxonomy-boundary",
+    "conflict:penn-medicine:annual-discharges:comparability",
+    "conflict:penn-medicine:operating_revenue_usd:comparability",
+    "conflict:penn-medicine:physician-count:comparability",
+    "conflict:penn-medicine:service-line-count:taxonomy-boundary",
+    "conflict:temple-health:annual-discharges:comparability",
+    "conflict:temple-health:operating_revenue_usd:comparability",
+    "conflict:temple-health:physician-count:comparability",
+    "conflict:temple-health:service-line-count:taxonomy-boundary",
+    "conflict:temple-shared-cms-reporting-entity",
+    "conflict:union-bed-bases",
+    "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+    "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+    "coverage:bed-missing:penn-medicine:hup-cedar",
+    "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+    "md-bed:union:licensed-fy2026",
+    "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+    "receipt:christianacare:service-line-count:ahrq-identity",
+    "receipt:cooper-university-health-care:service-line-count:ahrq-identity",
+    "receipt:jefferson-health:service-line-count:ahrq-identity",
+    "receipt:main-line-health:service-line-count:ahrq-identity",
+    "receipt:penn-medicine:service-line-count:ahrq-identity",
+    "receipt:temple-health:service-line-count:ahrq-identity",
+    "roster:penn-medicine:hup-cedar",
+    "roster:temple-health:chestnut-hill",
+    "scale-input-binding:service-line-count:all-six:2026-07-18",
+    "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+    "scale-no-execution:service-line-count:2026-07-18",
+    "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+    "scenario:scale-v1:service-line-count-fitness:2026-07-18",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds"
+  ],
+  "manifest_sha256": "sha256:a879f19b759e4506e1b90332d56c648576bdca85e08e8ee5059d1384362179ff"
+}

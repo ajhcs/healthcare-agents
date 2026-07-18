@@ -1,0 +1,568 @@
+{
+  "schema_version": "ushso.review-request.v1",
+  "request_id": "review-request:scale-service-line-count:methods:2026-07-18",
+  "review_tier": "ordinary_material_claim",
+  "protocol": {
+    "protocol_id": "cso.evidence-methods-measurement.v1",
+    "version": "1.0.0",
+    "protocol_hash": "sha256:37f245f9fadffda8e2faaeb67612eb3280859ae2e8f84b74e68df9a1dcfbbb72"
+  },
+  "reviewer": {
+    "reviewer_id": "scale-service-line-count:methods:1",
+    "agent_slug": "healthit-clinical-data-analyst",
+    "prompt_version": "2026-07-18",
+    "repo_commit": "0bf8fb60c789a441363389f1cd39a0868da5eb34",
+    "model": "gpt-5.6-sol",
+    "runtime": "codex-desktop-2026-07-18",
+    "independence": {
+      "prior_exposure": "none",
+      "conflict_disclosures": [],
+      "direct_material_conflict": false,
+      "attestation": true
+    }
+  },
+  "frozen_inputs": {
+    "evidence_bundle_ref": "ushso-rebuild://scale-inputs/service-line-count/public-evidence-bundle",
+    "evidence_bundle_hash": "sha256:dfda9c60da75e2cb241c050965ec2cbeff9e3ebb305543ae859f4458345c81f9",
+    "identity_binding_ref": "git:d57b1883044475f9dac87eae1ac6806fda1d9728:contracts/reusable-run/v3/fixtures/service-line-count/identity-binding.json",
+    "identity_binding_hash": "sha256:bc6899e07dfd3f8f5daaf411c2782cbded0893ff8e0550d243bba4e5d0f3550a",
+    "computations": [
+      {
+        "ref": "git:d57b1883044475f9dac87eae1ac6806fda1d9728:contracts/reusable-run/v3/fixtures/service-line-count/cumulative-packet.json",
+        "hash": "sha256:bb41a834d64c52ae65beef077292b6986ff9754bf81441464150b0ea976b30f6"
+      },
+      {
+        "ref": "git:d57b1883044475f9dac87eae1ac6806fda1d9728:contracts/reusable-run/v3/fixtures/service-line-count/no-execution-result.json",
+        "hash": "sha256:9ccc4c894ce9e465bd943255abe424f8a777f8b93e1e59e08f6c24ebec72d34a"
+      }
+    ],
+    "claim_candidates": [
+      {
+        "claim_id": "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18",
+        "claim_hash": "sha256:252e15a3bd08dcf95b06885b78743113049bbada1134f44e93daa55d0a956d38",
+        "evidence_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18",
+          "cms-hcris:210032:number-of-beds",
+          "cms-pos:210032:bed_cnt",
+          "cms-pos:390027:bed_cnt",
+          "computation:scale-v1:all-six:no-score:2026-07-16",
+          "conflict:chestnut-hill-ownership-and-bases",
+          "conflict:christianacare-shared-cms-reporting-entity",
+          "conflict:christianacare:annual-discharges:comparability",
+          "conflict:christianacare:operating_revenue_usd:comparability",
+          "conflict:christianacare:physician-count:comparability",
+          "conflict:christianacare:service-line-count:taxonomy-boundary",
+          "conflict:cooper-childrens-separate-hospital",
+          "conflict:cooper-university-health-care:annual-discharges:comparability",
+          "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+          "conflict:cooper-university-health-care:physician-count:comparability",
+          "conflict:cooper-university-health-care:service-line-count:taxonomy-boundary",
+          "conflict:jefferson-health:annual-discharges:comparability",
+          "conflict:jefferson-health:operating_revenue_usd:comparability",
+          "conflict:jefferson-health:physician-count:comparability",
+          "conflict:jefferson-health:service-line-count:taxonomy-boundary",
+          "conflict:main-line-health:annual-discharges:comparability",
+          "conflict:main-line-health:operating_revenue_usd:comparability",
+          "conflict:main-line-health:physician-count:comparability",
+          "conflict:main-line-health:service-line-count:taxonomy-boundary",
+          "conflict:penn-medicine:annual-discharges:comparability",
+          "conflict:penn-medicine:operating_revenue_usd:comparability",
+          "conflict:penn-medicine:physician-count:comparability",
+          "conflict:penn-medicine:service-line-count:taxonomy-boundary",
+          "conflict:temple-health:annual-discharges:comparability",
+          "conflict:temple-health:operating_revenue_usd:comparability",
+          "conflict:temple-health:physician-count:comparability",
+          "conflict:temple-health:service-line-count:taxonomy-boundary",
+          "conflict:temple-shared-cms-reporting-entity",
+          "conflict:union-bed-bases",
+          "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+          "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+          "coverage:bed-missing:penn-medicine:hup-cedar",
+          "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+          "md-bed:union:licensed-fy2026",
+          "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+          "receipt:christianacare:service-line-count:ahrq-identity",
+          "receipt:cooper-university-health-care:service-line-count:ahrq-identity",
+          "receipt:jefferson-health:service-line-count:ahrq-identity",
+          "receipt:main-line-health:service-line-count:ahrq-identity",
+          "receipt:penn-medicine:service-line-count:ahrq-identity",
+          "receipt:temple-health:service-line-count:ahrq-identity",
+          "roster:penn-medicine:hup-cedar",
+          "roster:temple-health:chestnut-hill",
+          "scale-input-binding:service-line-count:all-six:2026-07-18",
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "scale-no-execution:service-line-count:2026-07-18",
+          "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+          "scenario:scale-v1:service-line-count-fitness:2026-07-18",
+          "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+          "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds"
+        ]
+      }
+    ]
+  },
+  "decision_scenario": {
+    "ref": "git:d57b1883044475f9dac87eae1ac6806fda1d9728:contracts/reusable-run/v3/fixtures/service-line-count/decision-scenario.json",
+    "hash": "sha256:44746e8e0e85ff20df08cc338487fdaf8e79c660492553f95344e3eb1ea9f8fa"
+  },
+  "posture_taxonomy": [
+    "acquire",
+    "merge_affiliate",
+    "partner",
+    "compete",
+    "build_capacity",
+    "defer"
+  ],
+  "evidence_boundary": "Frozen temporary-only service-line-count packet. All 54 cells remain 0 populated, 30 blocked_source_conflict, 6 unavailable_public, and 18 not_yet_researched. Six service-line taxonomy conflicts plus 23 prior conflicts make 29 cumulative open conflicts. AHRQ provides identity but no service-line field; CMS RBCS classifies paid Medicare Part B HCPCS activity rather than offered services, and embedded CPT/HCPCS redistribution rights remain unknown_review_required. All ten comparability gates remain unresolved. The protocol registry has no service-taxonomy competence lane; the second reviewer is limited to portfolio, rights, transaction, and governance constraints and conveys no taxonomy authority. No averaging, automatic adjudication, human authority, profile population, calculation, sensitivity, projection, recommendation, promotion, or deployment is authorized.",
+  "candidate_review": {
+    "competence_role": "evidence_methods_measurement_biostatistics",
+    "exposure_status": "independent_first",
+    "evidence_mutated": false,
+    "claim_dispositions": [
+      {
+        "claim_id": "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18",
+        "evidence_assessment": "supported_by_available_evidence",
+        "review_disposition": "request_additional_evidence",
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "scale-no-execution:service-line-count:2026-07-18",
+          "conflict:christianacare:service-line-count:taxonomy-boundary",
+          "conflict:jefferson-health:service-line-count:taxonomy-boundary",
+          "conflict:temple-health:service-line-count:taxonomy-boundary",
+          "conflict:penn-medicine:service-line-count:taxonomy-boundary",
+          "conflict:cooper-university-health-care:service-line-count:taxonomy-boundary",
+          "conflict:main-line-health:service-line-count:taxonomy-boundary",
+          "conflict:chestnut-hill-ownership-and-bases",
+          "conflict:christianacare-shared-cms-reporting-entity",
+          "conflict:cooper-childrens-separate-hospital",
+          "conflict:temple-shared-cms-reporting-entity",
+          "conflict:union-bed-bases",
+          "conflict:christianacare:operating_revenue_usd:comparability",
+          "conflict:jefferson-health:operating_revenue_usd:comparability",
+          "conflict:temple-health:operating_revenue_usd:comparability",
+          "conflict:penn-medicine:operating_revenue_usd:comparability",
+          "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+          "conflict:main-line-health:operating_revenue_usd:comparability",
+          "conflict:christianacare:annual-discharges:comparability",
+          "conflict:jefferson-health:annual-discharges:comparability",
+          "conflict:temple-health:annual-discharges:comparability",
+          "conflict:penn-medicine:annual-discharges:comparability",
+          "conflict:cooper-university-health-care:annual-discharges:comparability",
+          "conflict:main-line-health:annual-discharges:comparability",
+          "conflict:christianacare:physician-count:comparability",
+          "conflict:jefferson-health:physician-count:comparability",
+          "conflict:temple-health:physician-count:comparability",
+          "conflict:penn-medicine:physician-count:comparability",
+          "conflict:cooper-university-health-care:physician-count:comparability",
+          "conflict:main-line-health:physician-count:comparability"
+        ],
+        "limitation": "Frozen temporary-only service-line-count packet. All 54 cells remain 0 populated, 30 blocked_source_conflict, 6 unavailable_public, and 18 not_yet_researched. Six service-line taxonomy conflicts plus 23 prior conflicts make 29 cumulative open conflicts. AHRQ provides identity but no service-line field; CMS RBCS classifies paid Medicare Part B HCPCS activity rather than offered services, and embedded CPT/HCPCS redistribution rights remain unknown_review_required. All ten comparability gates remain unresolved. The protocol registry has no service-taxonomy competence lane; the second reviewer is limited to portfolio, rights, transaction, and governance constraints and conveys no taxonomy authority. No averaging, automatic adjudication, human authority, profile population, calculation, sensitivity, projection, recommendation, promotion, or deployment is authorized.",
+        "overturn_condition": "Receipt six source-backed counts under one approved offered-service taxonomy and frozen organizational boundary; clear source and embedded-code rights; resolve all 29 conflicts and all ten gates; obtain independent methods and actual service-taxonomy competence review; preserve every prior concern without imputation, fabricated zeroes, averaging, automatic adjudication, or human-authority claims."
+      }
+    ],
+    "posture_assessments": [
+      {
+        "posture": "acquire",
+        "effect": "unresolved",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:christianacare:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "The unavailable acquire evidence state establishes only that Scale execution is ineligible.",
+        "limitation": "No comparable offered-service taxonomy, system count, rights clearance, or taxonomy-competent human review exists. No posture is recommended."
+      },
+      {
+        "posture": "merge_affiliate",
+        "effect": "unresolved",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:jefferson-health:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "The unavailable merge_affiliate evidence state establishes only that Scale execution is ineligible.",
+        "limitation": "No comparable offered-service taxonomy, system count, rights clearance, or taxonomy-competent human review exists. No posture is recommended."
+      },
+      {
+        "posture": "partner",
+        "effect": "unresolved",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:temple-health:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "The unavailable partner evidence state establishes only that Scale execution is ineligible.",
+        "limitation": "No comparable offered-service taxonomy, system count, rights clearance, or taxonomy-competent human review exists. No posture is recommended."
+      },
+      {
+        "posture": "compete",
+        "effect": "unresolved",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:penn-medicine:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "The unavailable compete evidence state establishes only that Scale execution is ineligible.",
+        "limitation": "No comparable offered-service taxonomy, system count, rights clearance, or taxonomy-competent human review exists. No posture is recommended."
+      },
+      {
+        "posture": "build_capacity",
+        "effect": "unresolved",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:cooper-university-health-care:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "The unavailable build_capacity evidence state establishes only that Scale execution is ineligible.",
+        "limitation": "No comparable offered-service taxonomy, system count, rights clearance, or taxonomy-competent human review exists. No posture is recommended."
+      },
+      {
+        "posture": "defer",
+        "effect": "unresolved",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:main-line-health:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "The unavailable defer evidence state establishes only that Scale execution is ineligible.",
+        "limitation": "No comparable offered-service taxonomy, system count, rights clearance, or taxonomy-competent human review exists. No posture is recommended."
+      }
+    ],
+    "missing_evidence_requests": [
+      {
+        "request_id": "missing:offered-service-taxonomy",
+        "description": "Approve and receipt one field-neutral offered-service taxonomy, counting unit, inclusion/exclusion rules, and cross-system mapping."
+      },
+      {
+        "request_id": "missing:six-system-service-line-counts",
+        "description": "Receipt one source-backed system-level count for each frozen product system; source absence is not zero."
+      },
+      {
+        "request_id": "missing:service-boundary-crosswalk",
+        "description": "Reconcile facilities, faculty practices, rehabilitation, children’s, acquired entities, and post-vintage changes to the frozen boundary."
+      },
+      {
+        "request_id": "missing:taxonomy-competence-review",
+        "description": "Route the completed packet to qualified service-taxonomy competence because the current protocol registry contains no such lane."
+      },
+      {
+        "request_id": "missing:source-rights-clearance",
+        "description": "Resolve unknown_review_required access and redistribution rights, including embedded CPT/HCPCS content."
+      }
+    ],
+    "prohibited_claims": [
+      "Do not calculate, score, rank, normalize, impute, hand-count marketing pages, or run Scale v1 or any sensitivity.",
+      "Unavailable, absent, definitionally incompatible, unreceipted, or conflicted service-line evidence is not zero.",
+      "Do not treat AHRQ identity rows or CMS RBCS paid-claims categories as offered service-line counts.",
+      "Do not infer portfolio breadth, capacity, access, market position, feasibility, rank, recommendation, or profile population.",
+      "Do not average positions, automatically adjudicate, fabricate taxonomy or human authority, project, promote, or deploy."
+    ],
+    "preserved_reviewer_concerns": [
+      "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
+      "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
+      "Six unresolved and three excluded candidates prevent an approved all-six denominator.",
+      "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk.",
+      "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved.",
+      "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis.",
+      "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete.",
+      "Evidence periods span 2023 through Q1/FY2026; no common period is asserted.",
+      "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable.",
+      "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method.",
+      "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient.",
+      "All conclusions require named human competence-matched adjudication and release authority.",
+      "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+      "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+      "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+      "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+      "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+      "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+      "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+      "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+      "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+      "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory.",
+      "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
+      "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
+      "Six unresolved and three excluded candidates prevent an approved all-six denominator.",
+      "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk.",
+      "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved.",
+      "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis.",
+      "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete.",
+      "Evidence periods span 2023 through Q1/FY2026; no common period is asserted.",
+      "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable.",
+      "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method.",
+      "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient.",
+      "All conclusions require named human competence-matched adjudication and release authority.",
+      "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+      "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+      "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+      "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+      "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+      "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+      "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+      "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+      "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+      "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory.",
+      "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
+      "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
+      "Six unresolved and three excluded candidates prevent an approved all-six denominator.",
+      "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk.",
+      "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved.",
+      "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis.",
+      "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete.",
+      "Evidence periods span 2023 through Q1/FY2026; no common period is asserted.",
+      "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable.",
+      "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method.",
+      "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient.",
+      "All conclusions require named human competence-matched adjudication and release authority.",
+      "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+      "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+      "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+      "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+      "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+      "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+      "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+      "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+      "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+      "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory.",
+      "All six operating-revenue cells remain blocked_source_conflict and unpopulated.",
+      "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts.",
+      "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active.",
+      "No averaging, no adjudication, and no model-generated human authority are permitted.",
+      "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
+      "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
+      "Six unresolved and three excluded candidates prevent an approved all-six denominator.",
+      "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk.",
+      "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved.",
+      "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis.",
+      "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete.",
+      "Evidence periods span 2023 through Q1/FY2026; no common period is asserted.",
+      "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable.",
+      "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method.",
+      "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient.",
+      "All conclusions require named human competence-matched adjudication and release authority.",
+      "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+      "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+      "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+      "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+      "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+      "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+      "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+      "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+      "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+      "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory.",
+      "All six operating-revenue cells remain blocked_source_conflict and unpopulated.",
+      "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts.",
+      "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active.",
+      "No averaging, no adjudication, and no model-generated human authority are permitted.",
+      "All six annual-discharges cells remain blocked_source_conflict and unpopulated.",
+      "Six annual-discharges conflicts remain open in addition to six revenue and five roster/bed conflicts: 17 cumulative.",
+      "The 26 prior material discrepancies, 24 prior reviewer concerns, ten prior overturn gates, two revenue-review discrepancies, and 56 revenue-review concerns remain active.",
+      "The official sys_dsch technical definition, governed raw HTTP receipt, and source license are not present.",
+      "Candidate annual totals cannot establish utilization denominator, throughput, access, occupancy, staffed capacity, demand, or achievable capacity.",
+      "No averaging, no adjudication, and no model-generated human authority are permitted.",
+      "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
+      "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
+      "Six unresolved and three excluded candidates prevent an approved all-six denominator.",
+      "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk.",
+      "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved.",
+      "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis.",
+      "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete.",
+      "Evidence periods span 2023 through Q1/FY2026; no common period is asserted.",
+      "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable.",
+      "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method.",
+      "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient.",
+      "All conclusions require named human competence-matched adjudication and release authority.",
+      "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+      "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+      "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+      "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+      "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+      "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+      "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+      "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+      "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+      "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory.",
+      "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
+      "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
+      "Six unresolved and three excluded candidates prevent an approved all-six denominator.",
+      "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk.",
+      "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved.",
+      "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis.",
+      "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete.",
+      "Evidence periods span 2023 through Q1/FY2026; no common period is asserted.",
+      "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable.",
+      "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method.",
+      "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient.",
+      "All conclusions require named human competence-matched adjudication and release authority.",
+      "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+      "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+      "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+      "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+      "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+      "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+      "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+      "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+      "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+      "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory.",
+      "All six operating-revenue cells remain blocked_source_conflict and unpopulated.",
+      "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts.",
+      "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active.",
+      "No averaging, no adjudication, and no model-generated human authority are permitted.",
+      "The six identities are source-local matches, not proof that every child and alias is consistently bounded at one effective date.",
+      "The roster is asymmetric: Jefferson has 33 included candidates while the other systems have two to six, making facility-class rules consequential.",
+      "Six unresolved and three excluded candidates prevent an approved all-six denominator.",
+      "ChristianaCare and Temple shared CMS entities create direct double-counting or allocation risk.",
+      "Chestnut Hill joint-ownership language leaves attribution and bed-basis treatment unresolved.",
+      "Cooper Children’s is officially described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar may be a remote HUP location without a separate allocable bed basis.",
+      "Jefferson specialty, rehabilitation, children’s, surgical, orthopaedic, and integrated Lehigh Valley crosswalks remain incomplete.",
+      "Evidence periods span 2023 through Q1/FY2026; no common period is asserted.",
+      "Licensed, staffed, POS, certified-POS, HCRIS, AHRQ, and official-unspecified beds are not interchangeable.",
+      "The source-local bundle contains no governed system rollup; nonexecution does not validate a future method.",
+      "Seven Scale families remain not yet researched, so resolving roster and bed gates alone is insufficient.",
+      "All conclusions require named human competence-matched adjudication and release authority.",
+      "The six labels are source-local identities; consistent enterprise boundaries at one date require adjudication.",
+      "The Jefferson roster includes specialty, rehabilitation, children’s, surgical, and integrated Lehigh Valley facilities with incomplete bed crosswalks.",
+      "ChristianaCare Newark and Wilmington share CMS 080001, creating allocation and double-count risk.",
+      "Temple University Hospital and Episcopal share CMS 390027; Chestnut Hill has joint-ownership and bed-basis ambiguity.",
+      "Cooper Children’s is described as a third hospital but remains co-location/reporting-entity ambiguous.",
+      "Penn HUP-Cedar is named as a campus but may be a remote HUP location.",
+      "Periods range from 2023 through Q1/FY2026, so ownership, operation, roster, and bed status are noncontemporaneous.",
+      "No common all-six distinction exists among licensed, installed, available, staffed, and in-service beds.",
+      "No workforce, occupancy, throughput, scheduling, transfer, or referral evidence supports achievable-capacity inference.",
+      "The no-score result is an appropriate block but resolves no underlying conflict or strategic question.",
+      "A qualified human operations reviewer must adjudicate any professional disposition; this review is advisory.",
+      "All six operating-revenue cells remain blocked_source_conflict and unpopulated.",
+      "Six operating-revenue conflicts remain open in addition to five prior roster/bed conflicts.",
+      "The 26 prior material discrepancies, 24 prior reviewer concerns, and ten prior overturn gates remain active.",
+      "No averaging, no adjudication, and no model-generated human authority are permitted.",
+      "All six annual-discharges cells remain blocked_source_conflict and unpopulated.",
+      "Six annual-discharges conflicts remain open in addition to six revenue and five roster/bed conflicts: 17 cumulative.",
+      "The 26 prior material discrepancies, 24 prior reviewer concerns, ten prior overturn gates, two revenue-review discrepancies, and 56 revenue-review concerns remain active.",
+      "The official sys_dsch technical definition, governed raw HTTP receipt, and source license are not present.",
+      "Candidate annual totals cannot establish utilization denominator, throughput, access, occupancy, staffed capacity, demand, or achievable capacity.",
+      "No averaging, no adjudication, and no model-generated human authority are permitted.",
+      "All six physician-count cells remain blocked_source_conflict and unpopulated.",
+      "Six physician-count conflicts remain open in addition to seventeen prior roster, bed, revenue, and annual-discharge conflicts: 23 cumulative.",
+      "The 26 roster/bed material discrepancies, 24 roster/bed reviewer concerns, ten evidence-specific overturn gates, two revenue-review discrepancies, 56 revenue-review concerns, two annual-review discrepancies, and 172 annual-review concerns remain active.",
+      "The official total_mds technical definition and an approved physician roster, workforce basis, affiliation rule, credentialing rule, employment rule, active-status rule, specialty scope, deduplication method, APP inclusion rule, and current vintage are not present.",
+      "System-specific roster conflicts remain explicit: ChristianaCare includes West Grove/current four-facility uncertainty; Jefferson predates the frozen 33-facility boundary and LVHN; Temple lacks Fox Chase/faculty-practice reconciliation; Penn lacks post-vintage/faculty-practice reconciliation; Cooper predates Cape Regional and leaves Children's scope unresolved; Main Line lacks rehabilitation/medical-staff reconciliation. Candidate total_mds values remain source-local and unapproved.",
+      "No averaging, no automatic adjudication, and no model-generated human authority are permitted.",
+      "All six service-line-count cells remain unavailable_public, null, unapproved, source_backed false, source_backed_zero false, and imputed false.",
+      "Six service-line taxonomy conflicts remain open in addition to 23 prior conflicts: 29 cumulative.",
+      "The 26 roster/bed material discrepancies, 24 original reviewer concerns, ten overturn gates, two revenue discrepancies, 56 revenue concerns, two annual discrepancies, 172 annual concerns, two physician discrepancies, and both 202-concern physician review lanes remain active.",
+      "AHRQ 2023 supplies identity but no service-line-count field; schema absence is not evidence of a zero.",
+      "CMS RBCS 2025 classifies paid Medicare Part B HCPCS activity and is not an offered-service taxonomy or system service-line count.",
+      "Both evaluated sources remain unknown_review_required for access or redistribution; CMS embedded CPT/HCPCS rights are unresolved.",
+      "No marketing-page hand count, claims aggregation, facility inference, imputation, or fabricated zero is permitted.",
+      "ChristianaCare retains the current-four-facility and West Grove boundary question.",
+      "Jefferson Health retains the frozen 33-facility and LVHN boundary question.",
+      "Temple Health retains faculty-practice and Fox Chase scope questions.",
+      "Penn Medicine retains faculty-practice and post-vintage scope questions.",
+      "Cooper retains Cape Regional and Children’s scope questions.",
+      "Main Line Health retains rehabilitation and service-boundary questions.",
+      "All ten comparability gates remain unresolved; no averaging, automatic adjudication, or model-generated human authority is permitted."
+    ],
+    "overall_disposition": "block",
+    "criterion_results": [
+      {
+        "criterion_id": "cso.evidence-methods-measurement.v1:criterion:1",
+        "result": "addressed",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:christianacare:service-line-count:taxonomy-boundary",
+          "conflict:jefferson-health:service-line-count:taxonomy-boundary",
+          "conflict:temple-health:service-line-count:taxonomy-boundary",
+          "conflict:penn-medicine:service-line-count:taxonomy-boundary",
+          "conflict:cooper-university-health-care:service-line-count:taxonomy-boundary",
+          "conflict:main-line-health:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "The observation-claim-warrant chain supports only the no-go: zero observations and six unavailable cells cannot support a comparative count."
+      },
+      {
+        "criterion_id": "cso.evidence-methods-measurement.v1:criterion:2",
+        "result": "addressed",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "receipt:christianacare:service-line-count:ahrq-identity",
+          "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+          "receipt:jefferson-health:service-line-count:ahrq-identity",
+          "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+          "receipt:temple-health:service-line-count:ahrq-identity",
+          "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+          "receipt:penn-medicine:service-line-count:ahrq-identity",
+          "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+          "receipt:cooper-university-health-care:service-line-count:ahrq-identity",
+          "receipt:all-six:service-line-count:cms-rbcs-taxonomy",
+          "receipt:main-line-health:service-line-count:ahrq-identity",
+          "receipt:all-six:service-line-count:cms-rbcs-taxonomy"
+        ],
+        "rationale": "Definition, counting unit, period, organizational boundary, taxonomy, and rights remain incompatible or absent."
+      },
+      {
+        "criterion_id": "cso.evidence-methods-measurement.v1:criterion:3",
+        "result": "addressed",
+        "claim_refs": [
+          "claim:scale-v1:service-line-count-cycle:no-execution:2026-07-18"
+        ],
+        "evidence_refs": [
+          "scale-input-packet:all-six:service-line-count-cycle:2026-07-18",
+          "conflict:christianacare:service-line-count:taxonomy-boundary",
+          "conflict:jefferson-health:service-line-count:taxonomy-boundary",
+          "conflict:temple-health:service-line-count:taxonomy-boundary",
+          "conflict:penn-medicine:service-line-count:taxonomy-boundary",
+          "conflict:cooper-university-health-care:service-line-count:taxonomy-boundary",
+          "conflict:main-line-health:service-line-count:taxonomy-boundary"
+        ],
+        "rationale": "Repeated identity receipts and one shared claims taxonomy are not independent corroboration of offered services."
+      }
+    ],
+    "method_challenges": [
+      {
+        "challenge_id": "method:schema-absence-negative-control",
+        "description": "Keep AHRQ field absence unavailable, never zero."
+      },
+      {
+        "challenge_id": "method:claims-taxonomy-negative-control",
+        "description": "Reject paid-claims category counts as offered-service counts."
+      },
+      {
+        "challenge_id": "method:boundary-perturbation",
+        "description": "Perturb frozen system boundaries without selecting a preferred count."
+      },
+      {
+        "challenge_id": "method:source-withholding",
+        "description": "Withhold each source; no missing value may become populated."
+      }
+    ]
+  }
+}
