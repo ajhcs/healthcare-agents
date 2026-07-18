@@ -183,6 +183,15 @@ const semanticRepin = clone(manifest);
 semanticRepin.objects.cumulative_packet.semantic_hash = 'sha256:' + '2'.repeat(64);
 semanticRepin.manifest_sha256 = sha256(Object.fromEntries(Object.entries(semanticRepin).filter(([key]) => key !== 'manifest_sha256')));
 assert.match(validateAnnualDischargesUpstream(semanticRepin, objects, artifactHashes, evidenceArtifacts).join('; '), /semantic hash drift|exact Toolkit handoff pin/);
+for (const role of Object.keys(objectPaths)) {
+  for (const locator of ['upstream/does-not-exist.json', undefined]) {
+    const locatorDrift = clone(manifest);
+    if (locator === undefined) delete locatorDrift.objects[role].artifact_ref;
+    else locatorDrift.objects[role].artifact_ref = locator;
+    locatorDrift.manifest_sha256 = sha256(Object.fromEntries(Object.entries(locatorDrift).filter(([key]) => key !== 'manifest_sha256')));
+    assert.match(validateAnnualDischargesUpstream(locatorDrift, objects, artifactHashes, evidenceArtifacts).join('; '), /exact artifact locator and hashes/);
+  }
+}
 
 // Missing prior evidence, closed conflicts, fabricated values/zeroes, and output leakage are rejected.
 assert.match(mutateAndValidate(value => value.prior_review_record.prior_preserved_concerns.pop()), /24 reviewer concerns/);

@@ -18,11 +18,13 @@ const {
   EVIDENCE_BUNDLE_SEMANTIC_HASH,
   NORMALIZED_INPUT_RAW_HASH,
   PRIOR_COUNTS,
+  PROHIBITED_USES,
   PRODUCER_BOUND_INPUT_RAW_HASH,
   TOOLKIT_HANDOFF_FILE_HASH,
   TOOLKIT_FEATURE,
   TOOLKIT_PRODUCER,
   TOOLKIT_TRACKER,
+  ZERO_OUTPUT_KEYS,
   semanticHash,
   stablePrettyJson,
   validateAnnualDischargesReviewHandoff,
@@ -301,8 +303,8 @@ const handoffBody = {
   positions_averaged: false,
   adjudication_performed: false,
   human_authority_conveyed: false,
-  output_inventory: Object.fromEntries(['adjudications', 'component_scores', 'deployments', 'formula_executions', 'projections', 'promotion_attempts', 'recommendations', 'scale_scores', 'sensitivity_runs'].map(key => [key, 0])),
-  prohibited_uses: ['calculation', 'scoring', 'ranking', 'sensitivity_analysis', 'projection', 'adjudication', 'strategic_recommendation', 'promotion', 'deployment'],
+  output_inventory: Object.fromEntries(ZERO_OUTPUT_KEYS.map(key => [key, 0])),
+  prohibited_uses: [...PROHIBITED_USES],
   downstream_bead: 'healthcare-toolkit-2rr9.6.3.4'
 };
 const handoff = { ...handoffBody, handoff_sha256: sha256(handoffBody) };
