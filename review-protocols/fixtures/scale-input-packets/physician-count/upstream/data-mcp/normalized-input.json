@@ -1,0 +1,784 @@
+{
+  "bundle_id": "scale-physician-count-all-six-2026-07-18:public-evidence",
+  "conflicts": [
+    {
+      "conflict_id": "conflict:christianacare:physician-count:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:christianacare"
+      ],
+      "observation_refs": [
+        "observation:christianacare:physician-count:candidate"
+      ],
+      "rationale": "active_status_unresolved,current_four_facility_boundary_mismatch,current_roster_membership_unresolved,duplicate_physician_treatment_unresolved,employed_affiliated_total_basis_unresolved,highest_ownership_boundary_unreviewed,physician_definition_not_receipted,source_system_variation_unresolved,source_vintage_2023,west_grove_post_vintage_membership: The exact 2023 total_mds candidate is source-local to HSI00000218 at the highest ownership level; it does not establish employed-versus-affiliated basis, active status, deduplication, the current four-facility roster, or post-vintage West Grove membership.",
+      "receipt_refs": [
+        "receipt:christianacare:physician-count:system"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:jefferson-health:physician-count:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:jefferson-health"
+      ],
+      "observation_refs": [
+        "observation:jefferson-health:physician-count:candidate"
+      ],
+      "rationale": "active_status_unresolved,current_roster_membership_unresolved,duplicate_physician_treatment_unresolved,employed_affiliated_total_basis_unresolved,frozen_33_facility_boundary_mismatch,highest_ownership_boundary_unreviewed,lvhn_post_vintage_membership,physician_definition_not_receipted,source_system_variation_unresolved,source_vintage_2023: The exact 2023 total_mds candidate is source-local to HSI00000048 and predates the frozen 33-facility boundary and later LVHN membership; employed, affiliated, faculty-practice, active-status, specialty, and duplicate treatment are not definitionally receipted.",
+      "receipt_refs": [
+        "receipt:jefferson-health:physician-count:system"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:temple-health:physician-count:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:temple-health"
+      ],
+      "observation_refs": [
+        "observation:temple-health:physician-count:candidate"
+      ],
+      "rationale": "active_status_unresolved,current_roster_membership_unresolved,duplicate_physician_treatment_unresolved,employed_affiliated_total_basis_unresolved,faculty_practice_scope_unresolved,fox_chase_physician_scope_unresolved,highest_ownership_boundary_unreviewed,physician_definition_not_receipted,source_system_variation_unresolved,source_vintage_2023: The exact 2023 total_mds candidate is source-local to HSI00001065; no receipted definition reconciles faculty-practice, employed, affiliated, Fox Chase, active-status, specialty, or duplicate physician bases.",
+      "receipt_refs": [
+        "receipt:temple-health:physician-count:system"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:penn-medicine:physician-count:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:penn-medicine"
+      ],
+      "observation_refs": [
+        "observation:penn-medicine:physician-count:candidate"
+      ],
+      "rationale": "active_status_unresolved,current_roster_membership_unresolved,duplicate_physician_treatment_unresolved,employed_affiliated_total_basis_unresolved,faculty_practice_scope_unresolved,highest_ownership_boundary_unreviewed,physician_definition_not_receipted,post_vintage_membership_drift,source_system_variation_unresolved,source_vintage_2023: The exact 2023 total_mds candidate is source-local to HSI00000820; no receipted definition resolves employed-versus-affiliated scope, faculty-practice membership, active status, deduplication, or post-vintage organizational membership.",
+      "receipt_refs": [
+        "receipt:penn-medicine:physician-count:system"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:cooper-university-health-care:physician-count:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:cooper-university-health-care"
+      ],
+      "observation_refs": [
+        "observation:cooper-university-health-care:physician-count:candidate"
+      ],
+      "rationale": "active_status_unresolved,cape_regional_post_vintage_membership,childrens_boundary_unresolved,current_roster_membership_unresolved,duplicate_physician_treatment_unresolved,employed_affiliated_total_basis_unresolved,highest_ownership_boundary_unreviewed,physician_definition_not_receipted,source_system_variation_unresolved,source_vintage_2023: The exact 2023 total_mds candidate is source-local to HSI00001079 and predates the frozen Cape Regional inclusion; employed, affiliated, medical-staff, Children's boundary, active-status, and duplicate treatment remain unresolved.",
+      "receipt_refs": [
+        "receipt:cooper-university-health-care:physician-count:system"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:main-line-health:physician-count:comparability",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:main-line-health"
+      ],
+      "observation_refs": [
+        "observation:main-line-health:physician-count:candidate"
+      ],
+      "rationale": "active_status_unresolved,current_roster_membership_unresolved,duplicate_physician_treatment_unresolved,employed_affiliated_total_basis_unresolved,highest_ownership_boundary_unreviewed,medical_staff_basis_unresolved,physician_definition_not_receipted,rehabilitation_roster_inclusion_mismatch,source_system_variation_unresolved,source_vintage_2023: The exact 2023 total_mds candidate is source-local to HSI00000608; no receipted definition reconciles employed, affiliated, medical-staff, rehabilitation, active-status, specialty, or duplicate physician bases.",
+      "receipt_refs": [
+        "receipt:main-line-health:physician-count:system"
+      ],
+      "status": "open"
+    }
+  ],
+  "coverage": [
+    {
+      "coverage_id": "coverage:christianacare:physician_count",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "physician_count",
+      "observation_refs": [],
+      "reason": "The exact 2023 total_mds candidate is source-local to HSI00000218 at the highest ownership level; it does not establish employed-versus-affiliated basis, active status, deduplication, the current four-facility roster, or post-vintage West Grove membership.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:jefferson-health:physician_count",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "physician_count",
+      "observation_refs": [],
+      "reason": "The exact 2023 total_mds candidate is source-local to HSI00000048 and predates the frozen 33-facility boundary and later LVHN membership; employed, affiliated, faculty-practice, active-status, specialty, and duplicate treatment are not definitionally receipted.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:temple-health:physician_count",
+      "entity_ref": "data-mcp:system:temple-health",
+      "measure_id": "physician_count",
+      "observation_refs": [],
+      "reason": "The exact 2023 total_mds candidate is source-local to HSI00001065; no receipted definition reconciles faculty-practice, employed, affiliated, Fox Chase, active-status, specialty, or duplicate physician bases.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:penn-medicine:physician_count",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "physician_count",
+      "observation_refs": [],
+      "reason": "The exact 2023 total_mds candidate is source-local to HSI00000820; no receipted definition resolves employed-versus-affiliated scope, faculty-practice membership, active status, deduplication, or post-vintage organizational membership.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:cooper-university-health-care:physician_count",
+      "entity_ref": "data-mcp:system:cooper-university-health-care",
+      "measure_id": "physician_count",
+      "observation_refs": [],
+      "reason": "The exact 2023 total_mds candidate is source-local to HSI00001079 and predates the frozen Cape Regional inclusion; employed, affiliated, medical-staff, Children's boundary, active-status, and duplicate treatment remain unresolved.",
+      "status": "blocked_source_conflict"
+    },
+    {
+      "coverage_id": "coverage:main-line-health:physician_count",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "physician_count",
+      "observation_refs": [],
+      "reason": "The exact 2023 total_mds candidate is source-local to HSI00000608; no receipted definition reconciles employed, affiliated, medical-staff, rehabilitation, active-status, specialty, or duplicate physician bases.",
+      "status": "blocked_source_conflict"
+    }
+  ],
+  "created_at": "2026-07-18T12:00:00Z",
+  "entities": [
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000218",
+      "aliases": [
+        {
+          "identifier": "HSI00000218",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "ChristianaCare",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "ChristianaCare",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:christianacare",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000048",
+      "aliases": [
+        {
+          "identifier": "HSI00000048",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Jefferson Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Jefferson Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:jefferson-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001065",
+      "aliases": [
+        {
+          "identifier": "HSI00001065",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Temple University Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Temple Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:temple-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000820",
+      "aliases": [
+        {
+          "identifier": "HSI00000820",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "University of Pennsylvania Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Penn Medicine",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:penn-medicine",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001079",
+      "aliases": [
+        {
+          "identifier": "HSI00001079",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Cooper University Health Care",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Cooper University Health Care",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:cooper-university-health-care",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000608",
+      "aliases": [
+        {
+          "identifier": "HSI00000608",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Main Line Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Main Line Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:main-line-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    }
+  ],
+  "input_artifacts": [
+    {
+      "artifact_id": "artifact:ahrq-compendium:system:2023",
+      "cache_run_id": "local-promote-20260615-v040",
+      "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "connector": "validated-cache-manifest",
+      "connector_version": "scale-physician-count-connector.v3",
+      "media_type": "text/csv",
+      "parser_version": "scale-physician-count-parser.v3",
+      "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+      "uri": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv"
+    }
+  ],
+  "observations": [
+    {
+      "caveat": "The exact 2023 total_mds candidate is source-local to HSI00000218 at the highest ownership level; it does not establish employed-versus-affiliated basis, active status, deduplication, the current four-facility roster, or post-vintage West Grove membership.",
+      "denominator_scope": "source-local AHRQ highest-ownership system row; employed, affiliated, active-status, specialty, and deduplication bases unapproved",
+      "dependency_cluster_ids": [
+        "dependency:row:system:HSI00000218:110"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "source_local_candidate.physician_count",
+      "observation_id": "observation:christianacare:physician-count:candidate",
+      "period": {
+        "end": null,
+        "label": "2023",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:christianacare:physician-count:system"
+      ],
+      "unit": "physicians",
+      "value": 1054,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "The exact 2023 total_mds candidate is source-local to HSI00000048 and predates the frozen 33-facility boundary and later LVHN membership; employed, affiliated, faculty-practice, active-status, specialty, and duplicate treatment are not definitionally receipted.",
+      "denominator_scope": "source-local AHRQ highest-ownership system row; employed, affiliated, active-status, specialty, and deduplication bases unapproved",
+      "dependency_cluster_ids": [
+        "dependency:row:system:HSI00000048:18"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "source_local_candidate.physician_count",
+      "observation_id": "observation:jefferson-health:physician-count:candidate",
+      "period": {
+        "end": null,
+        "label": "2023",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:jefferson-health:physician-count:system"
+      ],
+      "unit": "physicians",
+      "value": 3811,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "The exact 2023 total_mds candidate is source-local to HSI00001065; no receipted definition reconciles faculty-practice, employed, affiliated, Fox Chase, active-status, specialty, or duplicate physician bases.",
+      "denominator_scope": "source-local AHRQ highest-ownership system row; employed, affiliated, active-status, specialty, and deduplication bases unapproved",
+      "dependency_cluster_ids": [
+        "dependency:row:system:HSI00001065:466"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:temple-health",
+      "measure_id": "source_local_candidate.physician_count",
+      "observation_id": "observation:temple-health:physician-count:candidate",
+      "period": {
+        "end": null,
+        "label": "2023",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:temple-health:physician-count:system"
+      ],
+      "unit": "physicians",
+      "value": 1281,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "The exact 2023 total_mds candidate is source-local to HSI00000820; no receipted definition resolves employed-versus-affiliated scope, faculty-practice membership, active status, deduplication, or post-vintage organizational membership.",
+      "denominator_scope": "source-local AHRQ highest-ownership system row; employed, affiliated, active-status, specialty, and deduplication bases unapproved",
+      "dependency_cluster_ids": [
+        "dependency:row:system:HSI00000820:361"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "source_local_candidate.physician_count",
+      "observation_id": "observation:penn-medicine:physician-count:candidate",
+      "period": {
+        "end": null,
+        "label": "2023",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:penn-medicine:physician-count:system"
+      ],
+      "unit": "physicians",
+      "value": 4336,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "The exact 2023 total_mds candidate is source-local to HSI00001079 and predates the frozen Cape Regional inclusion; employed, affiliated, medical-staff, Children's boundary, active-status, and duplicate treatment remain unresolved.",
+      "denominator_scope": "source-local AHRQ highest-ownership system row; employed, affiliated, active-status, specialty, and deduplication bases unapproved",
+      "dependency_cluster_ids": [
+        "dependency:row:system:HSI00001079:475"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:cooper-university-health-care",
+      "measure_id": "source_local_candidate.physician_count",
+      "observation_id": "observation:cooper-university-health-care:physician-count:candidate",
+      "period": {
+        "end": null,
+        "label": "2023",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:cooper-university-health-care:physician-count:system"
+      ],
+      "unit": "physicians",
+      "value": 1012,
+      "value_type": "integer"
+    },
+    {
+      "caveat": "The exact 2023 total_mds candidate is source-local to HSI00000608; no receipted definition reconciles employed, affiliated, medical-staff, rehabilitation, active-status, specialty, or duplicate physician bases.",
+      "denominator_scope": "source-local AHRQ highest-ownership system row; employed, affiliated, active-status, specialty, and deduplication bases unapproved",
+      "dependency_cluster_ids": [
+        "dependency:row:system:HSI00000608:268"
+      ],
+      "derivation_class": "source_reported",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "source_local_candidate.physician_count",
+      "observation_id": "observation:main-line-health:physician-count:candidate",
+      "period": {
+        "end": null,
+        "label": "2023",
+        "start": null
+      },
+      "receipt_refs": [
+        "receipt:main-line-health:physician-count:system"
+      ],
+      "unit": "physicians",
+      "value": 1084,
+      "value_type": "integer"
+    }
+  ],
+  "producer": {
+    "commit": "0000000000000000000000000000000000000000",
+    "repo": "healthcare-data-mcp",
+    "version": "HDM-auf"
+  },
+  "request": {
+    "parameters": {
+      "candidate_values_are_not_approved_inputs": true,
+      "input_family": "physician_count",
+      "no_physician_aggregation": true,
+      "no_scale_score": true,
+      "physician_definition_receipted": false,
+      "prior_annual_admission_merge_grouped_sha1": "9aed9059-962c-bf2a-03c7-c02e6056aee4-281ee340",
+      "prior_annual_tracker_merge_grouped_sha1": "2d33cab9-264e-636b-d392-b89757f8b05e-d2729ecb",
+      "raw_http_receipt_available": false,
+      "redistribution_rights_reviewed": false
+    },
+    "workflow": "scale-physician-count-acquisition.v3"
+  },
+  "scope": {
+    "market": {
+      "name": "Philadelphia six-system Scale roster",
+      "roster_frozen": true
+    },
+    "periods": [
+      "2023"
+    ],
+    "service_line": null,
+    "systems": [
+      "christianacare",
+      "jefferson-health",
+      "temple-health",
+      "penn-medicine",
+      "cooper-university-health-care",
+      "main-line-health"
+    ]
+  },
+  "sources": [
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-physician-count-connector.v3",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-physician-count-connector.v3",
+          "media_type": "text/csv",
+          "parser_version": "scale-physician-count-parser.v3",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "No locally receipted official technical definition for total_mds; no physician or facility aggregation performed.",
+        "confidence": "blocked_pending_physician_definition_boundary_and_roster_review",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:christianacare",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local tabular row; not an approved Scale input",
+        "next_step": "Toolkit must retain the candidate and every open blocker pending physician-workforce fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "cache_promoted_at": "2026-06-15T20:15:44.056206+00:00",
+          "prim_care_mds_raw": "413",
+          "raw_lexical_value": "1054",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000218",
+          "row_number": 110,
+          "row_sha256": "sha256:1b6d38a9266101556969e8f00be474811ffc62c6a94216f763eedb777d6a8d46",
+          "value_column": "total_mds"
+        },
+        "receipt_id": "receipt:christianacare:physician-count:system",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=110; health_sys_id=HSI00000218; column=total_mds; raw=1054",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:christianacare:physician-count:system"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-physician-count-connector.v3",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-physician-count-connector.v3",
+          "media_type": "text/csv",
+          "parser_version": "scale-physician-count-parser.v3",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "No locally receipted official technical definition for total_mds; no physician or facility aggregation performed.",
+        "confidence": "blocked_pending_physician_definition_boundary_and_roster_review",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:jefferson-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local tabular row; not an approved Scale input",
+        "next_step": "Toolkit must retain the candidate and every open blocker pending physician-workforce fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "cache_promoted_at": "2026-06-15T20:15:44.056206+00:00",
+          "prim_care_mds_raw": "1276",
+          "raw_lexical_value": "3811",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000048",
+          "row_number": 18,
+          "row_sha256": "sha256:6204ec1b304e076d15c96032dfbe732e172e43e293a45abf5eaf4980d6062b54",
+          "value_column": "total_mds"
+        },
+        "receipt_id": "receipt:jefferson-health:physician-count:system",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=18; health_sys_id=HSI00000048; column=total_mds; raw=3811",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:jefferson-health:physician-count:system"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-physician-count-connector.v3",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-physician-count-connector.v3",
+          "media_type": "text/csv",
+          "parser_version": "scale-physician-count-parser.v3",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "No locally receipted official technical definition for total_mds; no physician or facility aggregation performed.",
+        "confidence": "blocked_pending_physician_definition_boundary_and_roster_review",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:temple-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local tabular row; not an approved Scale input",
+        "next_step": "Toolkit must retain the candidate and every open blocker pending physician-workforce fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "cache_promoted_at": "2026-06-15T20:15:44.056206+00:00",
+          "prim_care_mds_raw": "368",
+          "raw_lexical_value": "1281",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00001065",
+          "row_number": 466,
+          "row_sha256": "sha256:4e1ed4e4546f3a6bd74c3e8a9828b13efca87f1b2f2bd72214d63ba9c477e8c4",
+          "value_column": "total_mds"
+        },
+        "receipt_id": "receipt:temple-health:physician-count:system",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=466; health_sys_id=HSI00001065; column=total_mds; raw=1281",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:temple-health:physician-count:system"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-physician-count-connector.v3",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-physician-count-connector.v3",
+          "media_type": "text/csv",
+          "parser_version": "scale-physician-count-parser.v3",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "No locally receipted official technical definition for total_mds; no physician or facility aggregation performed.",
+        "confidence": "blocked_pending_physician_definition_boundary_and_roster_review",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:penn-medicine",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local tabular row; not an approved Scale input",
+        "next_step": "Toolkit must retain the candidate and every open blocker pending physician-workforce fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "cache_promoted_at": "2026-06-15T20:15:44.056206+00:00",
+          "prim_care_mds_raw": "1095",
+          "raw_lexical_value": "4336",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000820",
+          "row_number": 361,
+          "row_sha256": "sha256:99ffd315130cc094008d33628785b3e5610aaa476de0f7a9da4ef245ac7e2d27",
+          "value_column": "total_mds"
+        },
+        "receipt_id": "receipt:penn-medicine:physician-count:system",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=361; health_sys_id=HSI00000820; column=total_mds; raw=4336",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:penn-medicine:physician-count:system"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-physician-count-connector.v3",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-physician-count-connector.v3",
+          "media_type": "text/csv",
+          "parser_version": "scale-physician-count-parser.v3",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "No locally receipted official technical definition for total_mds; no physician or facility aggregation performed.",
+        "confidence": "blocked_pending_physician_definition_boundary_and_roster_review",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:cooper-university-health-care",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local tabular row; not an approved Scale input",
+        "next_step": "Toolkit must retain the candidate and every open blocker pending physician-workforce fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "cache_promoted_at": "2026-06-15T20:15:44.056206+00:00",
+          "prim_care_mds_raw": "276",
+          "raw_lexical_value": "1012",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00001079",
+          "row_number": 475,
+          "row_sha256": "sha256:7246f2affd1de40325df2add2de4428d0ebad4e0370ef819ec12ea73c004cc1f",
+          "value_column": "total_mds"
+        },
+        "receipt_id": "receipt:cooper-university-health-care:physician-count:system",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=475; health_sys_id=HSI00001079; column=total_mds; raw=1012",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:cooper-university-health-care:physician-count:system"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-physician-count-connector.v3",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-physician-count-connector.v3",
+          "media_type": "text/csv",
+          "parser_version": "scale-physician-count-parser.v3",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-physician-count-acquisition.v3/scale-physician-count-all-six-2026-07-18/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "No locally receipted official technical definition for total_mds; no physician or facility aggregation performed.",
+        "confidence": "blocked_pending_physician_definition_boundary_and_roster_review",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:main-line-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local tabular row; not an approved Scale input",
+        "next_step": "Toolkit must retain the candidate and every open blocker pending physician-workforce fitness review.",
+        "parent_receipt_ids": [],
+        "query": {
+          "cache_promoted_at": "2026-06-15T20:15:44.056206+00:00",
+          "prim_care_mds_raw": "405",
+          "raw_lexical_value": "1084",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000608",
+          "row_number": 268,
+          "row_sha256": "sha256:af058d7b4dd8ec51d74d75647b58870266c14aaa6f712f827a512c3f207db185",
+          "value_column": "total_mds"
+        },
+        "receipt_id": "receipt:main-line-health:physician-count:system",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=268; health_sys_id=HSI00000608; column=total_mds; raw=1084",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:main-line-health:physician-count:system"
+    }
+  ]
+}

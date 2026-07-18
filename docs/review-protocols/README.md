@@ -43,17 +43,21 @@ reviews, preserves every earlier discrepancy, concern, conflict, and overturn
 gate, and emits only a blocked human-review handoff. It is not a Scale
 calculation, sensitivity, projection, recommendation, adjudication, or release.
 
-### Family-module maintainability disposition
+The `physician-count` fixture continues that cumulative chain with an
+independent-first evidence/methods review and physician-workforce review. It
+keeps all source-local `total_mds` candidates unapproved until physician roster,
+employment, affiliation, credentialing, active-status, specialty, deduplication,
+APP-inclusion, current-vintage, and aggregation bases are comparable.
 
-The operating-revenue and annual-discharges validators and generators remain
-separate in this cycle. Their frozen prior-record shapes, evidence custody,
-competence criteria, and lineage proofs differ materially, so generalizing from
-only those two examples would risk hiding family-specific fail-closed checks in
-configuration. This is an explicit disposition of the review's medium
-duplication concern, not approval to copy the pattern through all seven cycles:
-before implementing cycle three, maintainers must decide and test a shared
-family-neutral kernel using the two completed implementations as its boundary,
-while leaving the committed v1 review schemas and frozen fixtures unchanged.
+### Family-module maintainability
+
+The operating-revenue, annual-discharges, and physician-count adapters share
+the fail-closed validation, deterministic evidence rebuild, and pinned-upstream
+verification kernels. Each family keeps only its frozen constants, specialist
+routing, cumulative counts, prior-record checks, and other family-specific
+invariants. Cross-family tests prove that a valid packet for one family is
+rejected by the others, while two isolated rebuilds and checked-in fixture
+comparisons preserve exact canonical bytes.
 
 ## Human boundary
 
