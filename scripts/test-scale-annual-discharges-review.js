@@ -168,6 +168,17 @@ assert.match(validateAnnualDischargesUpstream(manifest, objects, artifactDrift, 
 const commitDrift = clone(manifest);
 commitDrift.producer_pins.healthcare_toolkit = '1'.repeat(40);
 assert.match(validateAnnualDischargesUpstream(commitDrift, objects, artifactHashes, evidenceArtifacts).join('; '), /self-hash|Toolkit producer pin drift/);
+for (const [field, expected] of [
+  ['toolkit_feature', /Toolkit feature\/tracker provenance drift/],
+  ['toolkit_tracker', /Toolkit feature\/tracker provenance drift/],
+  ['data_feature', /Data feature\/tracker provenance drift/],
+  ['data_tracker', /Data feature\/tracker provenance drift/]
+]) {
+  const driftedProvenance = clone(manifest);
+  driftedProvenance.producer_provenance[field] = '6'.repeat(40);
+  driftedProvenance.manifest_sha256 = sha256(Object.fromEntries(Object.entries(driftedProvenance).filter(([key]) => key !== 'manifest_sha256')));
+  assert.match(validateAnnualDischargesUpstream(driftedProvenance, objects, artifactHashes, evidenceArtifacts).join('; '), expected);
+}
 const semanticRepin = clone(manifest);
 semanticRepin.objects.cumulative_packet.semantic_hash = 'sha256:' + '2'.repeat(64);
 semanticRepin.manifest_sha256 = sha256(Object.fromEntries(Object.entries(semanticRepin).filter(([key]) => key !== 'manifest_sha256')));
@@ -203,6 +214,9 @@ assert.match(validateAnnualDischargesReviewRequest(fabricatedEvidence, manifest,
 const duplicate = clone(conflictRequest);
 duplicate.reviews[1].reviewer.reviewer_id = duplicate.reviews[0].reviewer.reviewer_id;
 assert.match(validateConflictRequest(duplicate).join('; '), /unique independent reviewer identities/);
+const dependentReviewer = clone(methodsRequest);
+dependentReviewer.reviewer.independence.prior_exposure = operations.review_id;
+assert.match(validateReviewRequest(dependentReviewer).join('; '), /prior_exposure must be equal to one of the allowed values|prior exposure must be none/);
 const averaged = clone(handoff);
 averaged.positions_averaged = true;
 assert.match(validateAnnualDischargesReviewHandoff(averaged, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /cannot fabricate authority, adjudicate, or average/);
