@@ -252,11 +252,38 @@
         "review-protocols/fixtures/scale-input-packets/annual-discharges/conflict-analysis.json",
         "review-protocols/fixtures/scale-input-packets/annual-discharges/handoff.json"
       ],
-      "beads": [
-        "beads-aw6"
-      ]
-    },
-    {
+    "beads": [
+      "beads-aw6"
+    ]
+  },
+  {
+    "id": "scale-physician-count-fitness-review",
+    "claim": "Healthcare Agents publishes a deterministic physician-count Scale input-fitness review that binds exact Data MCP and Toolkit lineage, routes independent-first evidence/methods and physician-workforce reviews, preserves source-local total_mds limitations and unresolved disagreement for human review, and produces no Scale calculation, sensitivity, projection, recommendation, adjudication, or promotion.",
+    "evidence": [
+      "lib/scale-physician-count-review.js",
+      "scripts/generate-scale-physician-count-review.js",
+      "scripts/test-scale-physician-count-review.js",
+      "scripts/verify-scale-physician-count-upstream.js",
+      "docs/review-protocols/README.md"
+    ],
+    "commands": [
+      "npm run test:scale-physician-count-review",
+      "npm run verify:scale-physician-count-upstream -- --data-mcp-repo <healthcare-data-mcp> --toolkit-repo <healthcare-toolkit>",
+      "npm run release:check"
+    ],
+    "artifacts": [
+      "lib/scale-physician-count-review.js",
+      "review-protocols/fixtures/scale-input-packets/physician-count/upstream-manifest.json",
+      "review-protocols/fixtures/scale-input-packets/physician-count/methods-review.json",
+      "review-protocols/fixtures/scale-input-packets/physician-count/physician_workforce-review.json",
+      "review-protocols/fixtures/scale-input-packets/physician-count/conflict-analysis.json",
+      "review-protocols/fixtures/scale-input-packets/physician-count/handoff.json"
+    ],
+    "beads": [
+      "beads-5y2"
+    ]
+  },
+  {
       "id": "tracker-coverage",
       "claim": "Every major product vision goal has bead coverage and bd is documented as the active tracker in this repository.",
       "evidence": [

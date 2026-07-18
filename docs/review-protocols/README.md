@@ -43,17 +43,24 @@ reviews, preserves every earlier discrepancy, concern, conflict, and overturn
 gate, and emits only a blocked human-review handoff. It is not a Scale
 calculation, sensitivity, projection, recommendation, adjudication, or release.
 
+The `physician-count` fixture continues that cumulative chain with an
+independent-first evidence/methods review and physician-workforce review. It
+keeps all source-local `total_mds` candidates unapproved until physician roster,
+employment, affiliation, credentialing, active-status, specialty, deduplication,
+APP-inclusion, current-vintage, and aggregation bases are comparable.
+
 ### Family-module maintainability disposition
 
-The operating-revenue and annual-discharges validators and generators remain
-separate in this cycle. Their frozen prior-record shapes, evidence custody,
-competence criteria, and lineage proofs differ materially, so generalizing from
-only those two examples would risk hiding family-specific fail-closed checks in
-configuration. This is an explicit disposition of the review's medium
-duplication concern, not approval to copy the pattern through all seven cycles:
-before implementing cycle three, maintainers must decide and test a shared
-family-neutral kernel using the two completed implementations as its boundary,
-while leaving the committed v1 review schemas and frozen fixtures unchanged.
+The operating-revenue, annual-discharges, and physician-count validators and
+generators remain separate in this slice because refactoring already committed
+fixture derivations would expand `beads-5y2` beyond its immutable review scope.
+Independent Standards review recorded that duplication as a medium finding.
+It is explicitly dispositioned to unassigned bead `beads-3bd`, which was
+created from `beads-5y2` and blocks the `service_line_count` Agents review
+`beads-1aq`. That prerequisite must extract a shared kernel with byte-identity
+proof across all three completed families before cycle four review work. This
+bounded disposition does not weaken family-specific fail-closed checks or
+authorize a fourth copied implementation.
 
 ## Human boundary
 
