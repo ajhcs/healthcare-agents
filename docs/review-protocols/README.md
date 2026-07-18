@@ -36,6 +36,13 @@ warrants, limitations, overturn conditions, challenges, prohibited claims, and
 concerns, and routes material differences to human competence-matched
 adjudication. Its output is advisory; automatic resolution is prohibited.
 
+Scale input fitness fixtures are cumulative and family-specific. The
+`annual-discharges` fixture binds the exact Data MCP acquisition and Toolkit
+packet, routes independent-first evidence/methods and utilization-operations
+reviews, preserves every earlier discrepancy, concern, conflict, and overturn
+gate, and emits only a blocked human-review handoff. It is not a Scale
+calculation, sensitivity, projection, recommendation, adjudication, or release.
+
 ## Human boundary
 
 Agent slugs in the registry are candidate prompt implementations, not proof of

@@ -1,0 +1,157 @@
+{
+  "schema_version": "ushso.scale-input-fitness-upstream-manifest.v1",
+  "active_family": "annual_discharges",
+  "producer_pins": {
+    "healthcare_toolkit": "76e16247cecce818d777b4a4ade56dc13dd7b2a8",
+    "healthcare_data_mcp": "cbefd15c9e15ce84d8b00fe0d54f67d946cb6ccd"
+  },
+  "producer_provenance": {
+    "toolkit_feature": "7dccc91afca9efb26d59c8d6b01534cbe4db4809",
+    "toolkit_tracker": "420d35d8024de1c484c1b16128836e0f8b00375c",
+    "data_feature": "ebe381c357c80c68640bf74841867dc4cbff930b",
+    "data_tracker": "9b7ffb55710ecb0a3920710f5589dde8fa53b04f"
+  },
+  "toolkit_handoff_file_hash": "sha256:2c217a84f520a5443c7d5561e8ea9312bbd13ec4f5d541c226287a4c465fb0fe",
+  "evidence_bundle_ref": "ushso-rebuild://scale-inputs/annual-discharges/public-evidence-bundle",
+  "evidence_bundle_hash": "sha256:b8cad4dc793c86c1015dd0929cbb42d125158fc258d5569dccc8371b7dbd00a9",
+  "evidence_lineage": {
+    "acquisition_ref": "git:cbefd15c9e15ce84d8b00fe0d54f67d946cb6ccd:contracts/v2/fixtures/scale-annual-discharges-acquisition.json",
+    "acquisition_raw_hash": "sha256:aa0027e2af3dc5e29fc2e5245b6e3d36370b83560ed8bbf64f9de12c6908495a",
+    "acquisition_semantic_hash": "sha256:fc5b401a8f63a98b0bbdc601e47948336e6200ad1177bbac7ded34df387ebcae",
+    "committed_input_ref": "git:cbefd15c9e15ce84d8b00fe0d54f67d946cb6ccd:contracts/v2/fixtures/scale-annual-discharges-input.json",
+    "normalized_input_artifact_ref": "upstream/data-mcp/normalized-input.json",
+    "normalized_input_raw_hash": "sha256:29229692c230073770d5ecbd766d385bd2b9f44eb5c6be2d8640d5480b0fc1d3",
+    "producer_bound_input_artifact_ref": "upstream/data-mcp/producer-bound-input.json",
+    "producer_bound_input_raw_hash": "sha256:d12085e3987df0765f94cffa82576f9f3b452042affb57638ac2b66c4462eb5f",
+    "bundle_artifact_ref": "upstream/data-mcp/public-evidence-bundle.json",
+    "bundle_raw_hash": "sha256:72f3c121b55b505b4779cbe3ee362c25aa8a4b73202849cfa4ae5ca97bbe0da4",
+    "bundle_semantic_hash": "sha256:b8cad4dc793c86c1015dd0929cbb42d125158fc258d5569dccc8371b7dbd00a9"
+  },
+  "objects": {
+    "prior_cumulative_packet": {
+      "artifact_ref": "upstream/prior/cumulative-packet.json",
+      "artifact_hash": "sha256:2f7ee1e6983a4c6a10fe0eea57adc2d6d1ba9dbd69f8604397a5e9ad82cea4d0",
+      "semantic_hash": "sha256:a407865a3657e9c619d9481ab21c15f6877141e1a5008b97cd76ff6590e63201"
+    },
+    "cumulative_packet": {
+      "artifact_ref": "upstream/cumulative-packet.json",
+      "artifact_hash": "sha256:4235988035745a6029722ad91ef1d2527b85e8e2f85ae32da8e61688123997e2",
+      "semantic_hash": "sha256:bb569b3dde1fa4435c658488b11493ebcfe88898f8d7b0571231ce66ca7621a6"
+    },
+    "decision_scenario": {
+      "artifact_ref": "upstream/decision-scenario.json",
+      "artifact_hash": "sha256:8b009e51bc8faf98c0765701ccd89d2407a9a6593508b0056f7059892ae6d5fe",
+      "semantic_hash": "sha256:467ca4fcbb85fa7318d20344f4a18f5cfa227ecf0fc92699711d64ba0cee1d6f"
+    },
+    "identity_binding": {
+      "artifact_ref": "upstream/identity-binding.json",
+      "artifact_hash": "sha256:a6d7983ddb643f3be4eedc5eec2bda452d0beeaff45a946b427d8f8ec6477492",
+      "semantic_hash": "sha256:b32743893ca30408d35e31b2ef0971f2fa581a5ab1ab5f91c42a28e933a8c378"
+    },
+    "no_execution_result": {
+      "artifact_ref": "upstream/no-execution-result.json",
+      "artifact_hash": "sha256:e60d2f8d61fd8fe098c07cfe3b1579b57e1fb566c9e28800d744d34b1b6fc9c7",
+      "semantic_hash": "sha256:c45fb84c82b3843023d2d7c227c60ba17bff278fb08760e7566b648215cb89b8"
+    },
+    "process_claim": {
+      "artifact_ref": "upstream/process-claim.json",
+      "artifact_hash": "sha256:00cc1a7da34f849be75b61b2d43afec75b4caeb41f0ff64d4934c297992318b7",
+      "semantic_hash": "sha256:d2d93fbaf9d83e4902bf29e02c3f68b91e08a432a55421a30fd0065b70457536"
+    },
+    "prior_review_record": {
+      "artifact_ref": "upstream/prior/cumulative-review-record.json",
+      "artifact_hash": "sha256:bfcc0f756cdbf2e04e14cda7630b9ca0c551f0966601408fdc516decacb11d50",
+      "semantic_hash": "sha256:1a64a01ff7d5daa3da8738e75ededf60737f14263d9c4e42e56aa04b47946a66"
+    },
+    "prior_assurance_case": {
+      "artifact_ref": "upstream/prior/cumulative-module-assurance-case.json",
+      "artifact_hash": "sha256:5d75dd6d9fa9498e2c6d9722b7f4826a44fa9e03bfcd416f63000ea09686f8e3",
+      "semantic_hash": "sha256:ea2c98b6e9d02dd221a5472b065446e93af392dcff614b21e167c60802491a76"
+    },
+    "toolkit_handoff": {
+      "artifact_ref": "upstream/handoff.json",
+      "artifact_hash": "sha256:2c217a84f520a5443c7d5561e8ea9312bbd13ec4f5d541c226287a4c465fb0fe"
+    }
+  },
+  "review_input_hashes": [
+    "sha256:b8cad4dc793c86c1015dd0929cbb42d125158fc258d5569dccc8371b7dbd00a9",
+    "sha256:b32743893ca30408d35e31b2ef0971f2fa581a5ab1ab5f91c42a28e933a8c378",
+    "sha256:bb569b3dde1fa4435c658488b11493ebcfe88898f8d7b0571231ce66ca7621a6",
+    "sha256:c45fb84c82b3843023d2d7c227c60ba17bff278fb08760e7566b648215cb89b8",
+    "sha256:d2d93fbaf9d83e4902bf29e02c3f68b91e08a432a55421a30fd0065b70457536",
+    "sha256:467ca4fcbb85fa7318d20344f4a18f5cfa227ecf0fc92699711d64ba0cee1d6f"
+  ],
+  "expected_counts": {
+    "total_cells": 54,
+    "populated_cells": 0,
+    "blocked_cells": 24,
+    "not_yet_researched_cells": 30,
+    "annual_discharges_blocked_cells": 6,
+    "annual_discharges_conflicts": 6,
+    "cumulative_open_conflicts": 17,
+    "material_discrepancies": 26,
+    "reviewer_concerns": 24,
+    "open_conflicts": 5,
+    "overturn_gates": 10,
+    "revenue_discrepancies": 2,
+    "revenue_preserved_concerns": 56,
+    "revenue_open_conflicts": 11
+  },
+  "evidence_identifiers": [
+    "claim:scale-v1:annual-discharges-cycle:no-execution:2026-07-18",
+    "cms-hcris:210032:number-of-beds",
+    "cms-pos:210032:bed_cnt",
+    "cms-pos:390027:bed_cnt",
+    "computation:scale-v1:all-six:no-score:2026-07-16",
+    "conflict:chestnut-hill-ownership-and-bases",
+    "conflict:christianacare-shared-cms-reporting-entity",
+    "conflict:christianacare:annual-discharges:comparability",
+    "conflict:christianacare:operating_revenue_usd:comparability",
+    "conflict:cooper-childrens-separate-hospital",
+    "conflict:cooper-university-health-care:annual-discharges:comparability",
+    "conflict:cooper-university-health-care:operating_revenue_usd:comparability",
+    "conflict:jefferson-health:annual-discharges:comparability",
+    "conflict:jefferson-health:operating_revenue_usd:comparability",
+    "conflict:main-line-health:annual-discharges:comparability",
+    "conflict:main-line-health:operating_revenue_usd:comparability",
+    "conflict:penn-medicine:annual-discharges:comparability",
+    "conflict:penn-medicine:operating_revenue_usd:comparability",
+    "conflict:temple-health:annual-discharges:comparability",
+    "conflict:temple-health:operating_revenue_usd:comparability",
+    "conflict:temple-shared-cms-reporting-entity",
+    "conflict:union-bed-bases",
+    "coverage:bed-missing:cooper-university-health-care:childrens-regional",
+    "coverage:bed-missing:jefferson-health:rothman-orthopaedic-specialty-hospital",
+    "coverage:bed-missing:penn-medicine:hup-cedar",
+    "identity-binding:scale-v1:all-six-roster-bed:2026-07-16",
+    "md-bed:union:licensed-fy2026",
+    "observation:christianacare:annual-discharges:candidate",
+    "observation:cooper-university-health-care:annual-discharges:candidate",
+    "observation:jefferson-health:annual-discharges:candidate",
+    "observation:main-line-health:annual-discharges:candidate",
+    "observation:penn-medicine:annual-discharges:candidate",
+    "observation:temple-health:annual-discharges:candidate",
+    "receipt:christianacare:annual-discharges:linkage",
+    "receipt:christianacare:annual-discharges:system",
+    "receipt:cooper-university-health-care:annual-discharges:linkage",
+    "receipt:cooper-university-health-care:annual-discharges:system",
+    "receipt:jefferson-health:annual-discharges:linkage",
+    "receipt:jefferson-health:annual-discharges:system",
+    "receipt:main-line-health:annual-discharges:linkage",
+    "receipt:main-line-health:annual-discharges:system",
+    "receipt:penn-medicine:annual-discharges:linkage",
+    "receipt:penn-medicine:annual-discharges:system",
+    "receipt:temple-health:annual-discharges:linkage",
+    "receipt:temple-health:annual-discharges:system",
+    "roster:penn-medicine:hup-cedar",
+    "roster:temple-health:chestnut-hill",
+    "scale-input-binding:annual-discharges:all-six:2026-07-18",
+    "scale-input-packet:all-six:annual-discharges-cycle:2026-07-18",
+    "scale-no-execution:annual-discharges:2026-07-18",
+    "scenario:scale-v1:all-six-roster-bed-readiness:2026-07-16",
+    "scenario:scale-v1:annual-discharges-fitness:2026-07-18",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:beds-set-up-and-staffed",
+    "state-bed:pa-hospital-report-2024-1a:temple-university-hospital:licensed-beds"
+  ],
+  "manifest_sha256": "sha256:051e3c32a7f04f783791c0ba0c7156156b424fb88d07e72cb044a78ab8ab4e6a"
+}
