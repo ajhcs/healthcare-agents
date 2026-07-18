@@ -5,66 +5,37 @@ const crypto = require('crypto');
 
 const { analyzeReviewConflicts } = require('../lib/conflict-analysis');
 const { sha256 } = require('../lib/review-protocols');
-const { deriveAnnualDischargesCanonical } = require('../lib/scale-annual-discharges-canonical');
 const {
-  ACQUISITION_RAW_HASH,
-  ACQUISITION_REF,
-  ACQUISITION_SEMANTIC_HASH,
-  DATA_FEATURE,
-  DATA_PRODUCER,
-  DATA_TRACKER,
-  COMMITTED_INPUT_REF,
-  EVIDENCE_BUNDLE_RAW_HASH,
-  EVIDENCE_BUNDLE_REF,
-  EVIDENCE_BUNDLE_SEMANTIC_HASH,
-  NORMALIZED_INPUT_RAW_HASH,
-  PRIOR_COUNTS,
+  ANNUAL_DISCHARGES_CANONICAL_CONTEXT,
+  deriveAnnualDischargesCanonical
+} = require('../lib/scale-annual-discharges-canonical');
+const {
   PROHIBITED_USES,
-  PRODUCER_BOUND_INPUT_RAW_HASH,
-  TOOLKIT_HANDOFF_FILE_HASH,
-  TOOLKIT_FEATURE,
-  TOOLKIT_PRODUCER,
-  TOOLKIT_TRACKER,
   ZERO_OUTPUT_KEYS,
-  semanticHash,
   stablePrettyJson,
   validateAnnualDischargesReviewHandoff,
   validateAnnualDischargesReviewRequest,
   validateAnnualDischargesUpstream
 } = require('../lib/scale-annual-discharges-review');
 const { evaluateStrategicReview } = require('../lib/strategic-review');
+const {
+  DATA_PRODUCER, EVIDENCE_BUNDLE_REF, PRIOR_COUNTS,
+  TOOLKIT_HANDOFF_FILE_HASH, TOOLKIT_PRODUCER
+} = ANNUAL_DISCHARGES_CANONICAL_CONTEXT.constants;
 
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'review-protocols', 'fixtures', 'scale-input-packets', 'annual-discharges');
 const UPSTREAM = path.join(OUT, 'upstream');
-const roles = {
-  prior_cumulative_packet: 'prior/cumulative-packet.json',
-  cumulative_packet: 'cumulative-packet.json',
-  decision_scenario: 'decision-scenario.json',
-  identity_binding: 'identity-binding.json',
-  no_execution_result: 'no-execution-result.json',
-  process_claim: 'process-claim.json',
-  prior_review_record: 'prior/cumulative-review-record.json',
-  prior_assurance_case: 'prior/cumulative-module-assurance-case.json',
-  toolkit_handoff: 'handoff.json'
-};
-const evidencePaths = {
-  acquisition: 'data-mcp/acquisition.json',
-  normalized_input: 'data-mcp/normalized-input.json',
-  producer_bound_input: 'data-mcp/producer-bound-input.json',
-  public_evidence_bundle: 'data-mcp/public-evidence-bundle.json'
-};
+const roles = Object.fromEntries(Object.entries(ANNUAL_DISCHARGES_CANONICAL_CONTEXT.objectArtifactRefs)
+  .map(([role, artifactRef]) => [role, artifactRef.replace(/^upstream\//, '')]));
+const evidencePaths = ANNUAL_DISCHARGES_CANONICAL_CONTEXT.evidencePaths;
 
 const objects = {};
 const artifactHashes = {};
-const objectEntries = {};
 for (const [role, relativePath] of Object.entries(roles)) {
   const raw = fs.readFileSync(path.join(UPSTREAM, relativePath));
   objects[role] = JSON.parse(raw);
   artifactHashes[role] = 'sha256:' + crypto.createHash('sha256').update(raw).digest('hex');
-  objectEntries[role] = { artifact_ref: `upstream/${relativePath}`, artifact_hash: artifactHashes[role] };
-  const semantic = semanticHash(objects[role]);
-  if (semantic) objectEntries[role].semantic_hash = semantic;
 }
 const normalizedInput = JSON.parse(fs.readFileSync(path.join(UPSTREAM, evidencePaths.normalized_input), 'utf8'));
 const producerBoundInput = JSON.parse(JSON.stringify(normalizedInput));
@@ -86,15 +57,7 @@ const {
   upstreamManifest, methodsRequest, operationsRequest, annualConflicts
 } = deriveAnnualDischargesCanonical({
   objects,
-  objectEntries,
-  evidencePaths,
-  constants: {
-    ACQUISITION_RAW_HASH, ACQUISITION_REF, ACQUISITION_SEMANTIC_HASH,
-    COMMITTED_INPUT_REF, DATA_FEATURE, DATA_PRODUCER, DATA_TRACKER,
-    EVIDENCE_BUNDLE_RAW_HASH, EVIDENCE_BUNDLE_REF, EVIDENCE_BUNDLE_SEMANTIC_HASH,
-    NORMALIZED_INPUT_RAW_HASH, PRIOR_COUNTS, PRODUCER_BOUND_INPUT_RAW_HASH,
-    TOOLKIT_FEATURE, TOOLKIT_HANDOFF_FILE_HASH, TOOLKIT_PRODUCER, TOOLKIT_TRACKER
-  }
+  artifactHashes
 });
 const methodsReview = evaluateStrategicReview(methodsRequest);
 const operationsReview = evaluateStrategicReview(operationsRequest);

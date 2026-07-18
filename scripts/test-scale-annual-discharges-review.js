@@ -8,6 +8,10 @@ const { spawnSync } = require('child_process');
 const { analyzeReviewConflicts, validateConflictAnalysis, validateConflictRequest } = require('../lib/conflict-analysis');
 const { sha256 } = require('../lib/review-protocols');
 const {
+  ANNUAL_DISCHARGES_CANONICAL_CONTEXT,
+  deriveAnnualDischargesCanonical
+} = require('../lib/scale-annual-discharges-canonical');
+const {
   ACQUISITION_RAW_HASH,
   ACQUISITION_REF,
   ACQUISITION_SEMANTIC_HASH,
@@ -114,6 +118,11 @@ const conflictRequest = load('conflict-analysis-request.json');
 const conflict = load('conflict-analysis.json');
 const handoff = load('handoff.json');
 
+assert.deepStrictEqual(ANNUAL_DISCHARGES_CANONICAL_CONTEXT.evidencePaths, evidencePaths);
+assert.deepStrictEqual(
+  deriveAnnualDischargesCanonical({ objects, artifactHashes }).upstreamManifest,
+  manifest
+);
 assert.deepStrictEqual(validateAnnualDischargesUpstream(manifest, objects, artifactHashes, evidenceArtifacts), []);
 for (const request of [methodsRequest, operationsRequest]) {
   assert.deepStrictEqual(validateReviewRequestShape(request), []);
