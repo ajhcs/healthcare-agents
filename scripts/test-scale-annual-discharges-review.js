@@ -21,7 +21,7 @@ const {
   validateAnnualDischargesReviewRequest,
   validateAnnualDischargesUpstream
 } = require('../lib/scale-annual-discharges-review');
-const { validateReviewRequest, validateStrategicReview } = require('../lib/strategic-review');
+const { evaluateStrategicReview, validateReviewRequest, validateStrategicReview } = require('../lib/strategic-review');
 const {
   validateConflictAnalysisShape,
   validateConflictRequestShape,
@@ -206,7 +206,10 @@ weakened.candidate_review.overall_disposition = 'pass';
 assert.match(validateAnnualDischargesReviewRequest(weakened, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /must remain block/);
 const missingCounts = clone(methodsRequest);
 missingCounts.candidate_review.preserved_reviewer_concerns = [];
-assert.match(validateAnnualDischargesReviewRequest(missingCounts, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /preserve all prior and slice reviewer concerns/);
+assert.match(validateAnnualDischargesReviewRequest(missingCounts, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact ordered prior and annual-slice concern lineage/);
+const replacedConcern = clone(methodsRequest);
+replacedConcern.candidate_review.preserved_reviewer_concerns[1] = replacedConcern.candidate_review.preserved_reviewer_concerns[0];
+assert.match(validateAnnualDischargesReviewRequest(replacedConcern, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact ordered prior and annual-slice concern lineage/);
 const fabricatedEvidence = clone(methodsRequest);
 fabricatedEvidence.candidate_review.claim_dispositions[0].evidence_refs[0] = 'fabricated:evidence';
 assert.match(validateAnnualDischargesReviewRequest(fabricatedEvidence, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /evidence reference absent from frozen manifest/);
@@ -226,6 +229,31 @@ assert.match(validateAnnualDischargesReviewHandoff(authority, [methods, operatio
 const promoted = clone(handoff);
 promoted.output_inventory.promotion_attempts = 1;
 assert.match(validateAnnualDischargesReviewHandoff(promoted, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /inventory zero/);
+const lostSliceConflictCount = clone(handoff);
+lostSliceConflictCount.annual_discharges_open_conflict_count = 0;
+lostSliceConflictCount.handoff_sha256 = sha256(Object.fromEntries(Object.entries(lostSliceConflictCount).filter(([key]) => key !== 'handoff_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(lostSliceConflictCount, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /six blocked annual-discharges cells/);
+const lostSliceConflictRef = clone(handoff);
+lostSliceConflictRef.annual_discharges_open_conflict_refs.pop();
+lostSliceConflictRef.handoff_sha256 = sha256(Object.fromEntries(Object.entries(lostSliceConflictRef).filter(([key]) => key !== 'handoff_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(lostSliceConflictRef, [methods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact six annual-discharges conflict refs/);
+const rehashedMethods = clone(methods);
+rehashedMethods.reviewer.reviewer_id = 'scale-annual-discharges:methods:substituted';
+rehashedMethods.output_sha256 = sha256(Object.fromEntries(Object.entries(rehashedMethods).filter(([key]) => key !== 'output_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(handoff, [rehashedMethods, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /mutually link the exact specialist review IDs and hashes|review hashes must match exact specialist outputs/);
+const substitutedConcernRequest = clone(methodsRequest);
+substitutedConcernRequest.candidate_review.preserved_reviewer_concerns[1] = substitutedConcernRequest.candidate_review.preserved_reviewer_concerns[0];
+const rehashedConcernReview = evaluateStrategicReview(substitutedConcernRequest);
+assert.deepStrictEqual(validateStrategicReview(rehashedConcernReview), []);
+assert.match(validateAnnualDischargesReviewHandoff(handoff, [rehashedConcernReview, operations], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact ordered prior and annual-slice concern lineage/);
+const rehashedConflict = clone(conflict);
+rehashedConflict.review_refs[0].output_sha256 = 'sha256:' + '9'.repeat(64);
+rehashedConflict.output_sha256 = sha256(Object.fromEntries(Object.entries(rehashedConflict).filter(([key]) => key !== 'output_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(handoff, [methods, operations], rehashedConflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /conflict review_refs must mutually link|conflict output hash must match/);
+const wrongOperationsRole = clone(operations);
+wrongOperationsRole.protocol.protocol_id = 'cso.evidence-methods-measurement.v1';
+wrongOperationsRole.output_sha256 = sha256(Object.fromEntries(Object.entries(wrongOperationsRole).filter(([key]) => key !== 'output_sha256')));
+assert.match(validateAnnualDischargesReviewHandoff(handoff, [methods, wrongOperationsRole], conflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '), /exact utilization-operations review role/);
 for (const [field, value, expected] of [
   ['upstream_manifest_hash', 'sha256:' + '3'.repeat(64), /upstream manifest hash must match/],
   ['toolkit_producer_commit', '4'.repeat(40), /producer commits must match/],

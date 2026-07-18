@@ -292,6 +292,7 @@ const handoffBody = {
   prior_counts: PRIOR_COUNTS,
   annual_discharges_blocked_cell_count: 6,
   annual_discharges_open_conflict_count: 6,
+  annual_discharges_open_conflict_refs: annualConflicts,
   cumulative_open_conflict_count: 17,
   cumulative_cell_counts: { total: 54, populated: 0, blocked_source_conflict: 24, not_yet_researched: 30 },
   final_disposition: 'block',

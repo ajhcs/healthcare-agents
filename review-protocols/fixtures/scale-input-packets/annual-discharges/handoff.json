@@ -39,6 +39,14 @@
   },
   "annual_discharges_blocked_cell_count": 6,
   "annual_discharges_open_conflict_count": 6,
+  "annual_discharges_open_conflict_refs": [
+    "conflict:christianacare:annual-discharges:comparability",
+    "conflict:jefferson-health:annual-discharges:comparability",
+    "conflict:temple-health:annual-discharges:comparability",
+    "conflict:penn-medicine:annual-discharges:comparability",
+    "conflict:cooper-university-health-care:annual-discharges:comparability",
+    "conflict:main-line-health:annual-discharges:comparability"
+  ],
   "cumulative_open_conflict_count": 17,
   "cumulative_cell_counts": {
     "total": 54,
@@ -75,5 +83,5 @@
     "deployment"
   ],
   "downstream_bead": "healthcare-toolkit-2rr9.6.3.4",
-  "handoff_sha256": "sha256:f6f09d40d3d556caa6bb06a0b99f62d063222a4cbe9feb24083333b24cb903ff"
+  "handoff_sha256": "sha256:ebb2f594bef251afc124e9f3c64412b6233cc0845da5153adc9a058678c1019d"
 }
