@@ -11,6 +11,7 @@ const {
 } = require('../lib/scale-input-fitness-kernel');
 const { validateScalePacketReviewRequest, validateScalePacketUpstream } = require('../lib/scale-input-fitness-review');
 const { validateAnnualDischargesUpstream } = require('../lib/scale-annual-discharges-review');
+const { validatePhysicianCountUpstream } = require('../lib/scale-physician-count-review');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -158,11 +159,26 @@ const annual = loadFamily('annual-discharges', {
   acquisition: 'data-mcp/acquisition.json', normalized_input: 'data-mcp/normalized-input.json',
   producer_bound_input: 'data-mcp/producer-bound-input.json', public_evidence_bundle: 'data-mcp/public-evidence-bundle.json'
 });
+const physician = loadFamily('physician-count', {
+  prior_cumulative_packet: 'prior/cumulative-packet.json', cumulative_packet: 'cumulative-packet.json',
+  decision_scenario: 'decision-scenario.json', identity_binding: 'identity-binding.json',
+  no_execution_result: 'no-execution-result.json', process_claim: 'process-claim.json',
+  prior_review_record: 'prior/cumulative-review-record.json', prior_assurance_case: 'prior/cumulative-module-assurance-case.json',
+  toolkit_handoff: 'handoff.json'
+}, {
+  acquisition: 'data-mcp/acquisition.json', normalized_input: 'data-mcp/normalized-input.json',
+  producer_bound_input: 'data-mcp/producer-bound-input.json', public_evidence_bundle: 'data-mcp/public-evidence-bundle.json'
+});
 
 assert.deepStrictEqual(validateScalePacketUpstream(revenue.manifest, revenue.objects, revenue.artifactHashes, revenue.evidenceArtifacts), []);
 assert.deepStrictEqual(validateAnnualDischargesUpstream(annual.manifest, annual.objects, annual.artifactHashes, annual.evidenceArtifacts), []);
+assert.deepStrictEqual(validatePhysicianCountUpstream(physician.manifest, physician.objects, physician.artifactHashes, physician.evidenceArtifacts), []);
 assert(validateScalePacketUpstream(annual.manifest, annual.objects, annual.artifactHashes, annual.evidenceArtifacts).some(message => /active family|producer pin|closed family/.test(message)));
 assert(validateAnnualDischargesUpstream(revenue.manifest, revenue.objects, revenue.artifactHashes, revenue.evidenceArtifacts).some(message => /canonical|active family|producer pin/.test(message)));
+assert(validatePhysicianCountUpstream(annual.manifest, annual.objects, annual.artifactHashes, annual.evidenceArtifacts).some(message => /canonical|active family|producer pin|closed family/.test(message)));
+assert(validateAnnualDischargesUpstream(physician.manifest, physician.objects, physician.artifactHashes, physician.evidenceArtifacts).some(message => /canonical|active family|producer pin|closed family/.test(message)));
+assert(validateScalePacketUpstream(physician.manifest, physician.objects, physician.artifactHashes, physician.evidenceArtifacts).some(message => /active family|producer pin|closed family/.test(message)));
+assert(validatePhysicianCountUpstream(revenue.manifest, revenue.objects, revenue.artifactHashes, revenue.evidenceArtifacts).some(message => /canonical|active family|producer pin|closed family/.test(message)));
 
 const extraManifest = clone(revenue.manifest);
 extraManifest.fabricated_family_override = 'annual_discharges';

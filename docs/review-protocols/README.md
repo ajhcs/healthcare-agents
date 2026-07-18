@@ -49,18 +49,15 @@ keeps all source-local `total_mds` candidates unapproved until physician roster,
 employment, affiliation, credentialing, active-status, specialty, deduplication,
 APP-inclusion, current-vintage, and aggregation bases are comparable.
 
-### Family-module maintainability disposition
+### Family-module maintainability
 
-The operating-revenue, annual-discharges, and physician-count validators and
-generators remain separate in this slice because refactoring already committed
-fixture derivations would expand `beads-5y2` beyond its immutable review scope.
-Independent Standards review recorded that duplication as a medium finding.
-It is explicitly dispositioned to unassigned bead `beads-3bd`, which was
-created from `beads-5y2` and blocks the `service_line_count` Agents review
-`beads-1aq`. That prerequisite must extract a shared kernel with byte-identity
-proof across all three completed families before cycle four review work. This
-bounded disposition does not weaken family-specific fail-closed checks or
-authorize a fourth copied implementation.
+The operating-revenue, annual-discharges, and physician-count adapters share
+the fail-closed validation, deterministic evidence rebuild, and pinned-upstream
+verification kernels. Each family keeps only its frozen constants, specialist
+routing, cumulative counts, prior-record checks, and other family-specific
+invariants. Cross-family tests prove that a valid packet for one family is
+rejected by the others, while two isolated rebuilds and checked-in fixture
+comparisons preserve exact canonical bytes.
 
 ## Human boundary
 
