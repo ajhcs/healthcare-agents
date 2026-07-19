@@ -1,0 +1,729 @@
+{
+  "bundle_id": "scale-safety-net-patient-mix-all-six-2026-07-19:public-evidence",
+  "conflicts": [
+    {
+      "conflict_id": "conflict:christianacare:safety-net-patient-mix:numerator-denominator-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:christianacare"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_binary_flags_not_patient_mix_percentage,approved_patient_denominator_not_receipted,approved_safety_net_numerator_not_receipted,common_period_not_receipted,current_four_facility_boundary_mismatch,current_roster_membership_unresolved,dpp_combines_two_different_denominators,facility_to_system_aggregation_prohibited,hospital_ipps_scope_not_product_system_scope,no_system_level_patient_mix_percentage_reported,organizational_boundary_unresolved,setting_and_encounter_basis_unresolved,uncompensated_care_cost_not_patient_mix,west_grove_post_vintage_membership: The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source reports a comparable patient-mix percentage for the current four-facility product boundary or post-vintage West Grove membership.",
+      "receipt_refs": [
+        "receipt:christianacare:safety-net-patient-mix:ahrq-identity",
+        "receipt:all-six:safety-net-patient-mix:cms-dsh-definition"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:jefferson-health:safety-net-patient-mix:numerator-denominator-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:jefferson-health"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_binary_flags_not_patient_mix_percentage,approved_patient_denominator_not_receipted,approved_safety_net_numerator_not_receipted,common_period_not_receipted,current_roster_membership_unresolved,dpp_combines_two_different_denominators,facility_to_system_aggregation_prohibited,frozen_33_facility_boundary_mismatch,hospital_ipps_scope_not_product_system_scope,lvhn_post_vintage_membership,no_system_level_patient_mix_percentage_reported,organizational_boundary_unresolved,setting_and_encounter_basis_unresolved,uncompensated_care_cost_not_patient_mix: The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source reports a comparable patient-mix percentage for the frozen 33-facility product boundary or later LVHN membership.",
+      "receipt_refs": [
+        "receipt:jefferson-health:safety-net-patient-mix:ahrq-identity",
+        "receipt:all-six:safety-net-patient-mix:cms-dsh-definition"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:temple-health:safety-net-patient-mix:numerator-denominator-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:temple-health"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_binary_flags_not_patient_mix_percentage,approved_patient_denominator_not_receipted,approved_safety_net_numerator_not_receipted,common_period_not_receipted,current_roster_membership_unresolved,dpp_combines_two_different_denominators,facility_to_system_aggregation_prohibited,faculty_practice_scope_unresolved,fox_chase_patient_boundary_unresolved,hospital_ipps_scope_not_product_system_scope,no_system_level_patient_mix_percentage_reported,organizational_boundary_unresolved,setting_and_encounter_basis_unresolved,uncompensated_care_cost_not_patient_mix: The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source resolves a comparable patient-mix percentage across Temple, Fox Chase, faculty-practice, and current product boundaries.",
+      "receipt_refs": [
+        "receipt:temple-health:safety-net-patient-mix:ahrq-identity",
+        "receipt:all-six:safety-net-patient-mix:cms-dsh-definition"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:penn-medicine:safety-net-patient-mix:numerator-denominator-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:penn-medicine"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_binary_flags_not_patient_mix_percentage,approved_patient_denominator_not_receipted,approved_safety_net_numerator_not_receipted,common_period_not_receipted,current_roster_membership_unresolved,dpp_combines_two_different_denominators,facility_to_system_aggregation_prohibited,faculty_practice_scope_unresolved,hospital_ipps_scope_not_product_system_scope,no_system_level_patient_mix_percentage_reported,organizational_boundary_unresolved,post_vintage_membership_drift,setting_and_encounter_basis_unresolved,uncompensated_care_cost_not_patient_mix: The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source resolves a comparable patient-mix percentage across the faculty-practice and current product boundaries.",
+      "receipt_refs": [
+        "receipt:penn-medicine:safety-net-patient-mix:ahrq-identity",
+        "receipt:all-six:safety-net-patient-mix:cms-dsh-definition"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:cooper-university-health-care:safety-net-patient-mix:numerator-denominator-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:cooper-university-health-care"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_binary_flags_not_patient_mix_percentage,approved_patient_denominator_not_receipted,approved_safety_net_numerator_not_receipted,cape_regional_post_vintage_membership,childrens_patient_boundary_unresolved,common_period_not_receipted,current_roster_membership_unresolved,dpp_combines_two_different_denominators,facility_to_system_aggregation_prohibited,hospital_ipps_scope_not_product_system_scope,no_system_level_patient_mix_percentage_reported,organizational_boundary_unresolved,setting_and_encounter_basis_unresolved,uncompensated_care_cost_not_patient_mix: The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source reports a comparable percentage covering Cape Regional or resolves the Children's boundary.",
+      "receipt_refs": [
+        "receipt:cooper-university-health-care:safety-net-patient-mix:ahrq-identity",
+        "receipt:all-six:safety-net-patient-mix:cms-dsh-definition"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:main-line-health:safety-net-patient-mix:numerator-denominator-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:main-line-health"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_binary_flags_not_patient_mix_percentage,approved_patient_denominator_not_receipted,approved_safety_net_numerator_not_receipted,common_period_not_receipted,current_roster_membership_unresolved,dpp_combines_two_different_denominators,facility_to_system_aggregation_prohibited,hospital_ipps_scope_not_product_system_scope,no_system_level_patient_mix_percentage_reported,organizational_boundary_unresolved,rehabilitation_patient_scope_unresolved,setting_and_encounter_basis_unresolved,system_patient_boundary_unresolved,uncompensated_care_cost_not_patient_mix: The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source resolves a comparable percentage across acute, rehabilitation, and current system patient boundaries.",
+      "receipt_refs": [
+        "receipt:main-line-health:safety-net-patient-mix:ahrq-identity",
+        "receipt:all-six:safety-net-patient-mix:cms-dsh-definition"
+      ],
+      "status": "open"
+    }
+  ],
+  "coverage": [
+    {
+      "coverage_id": "coverage:christianacare:safety_net_patient_mix_pct",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "safety_net_patient_mix_pct",
+      "observation_refs": [],
+      "reason": "The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source reports a comparable patient-mix percentage for the current four-facility product boundary or post-vintage West Grove membership.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:jefferson-health:safety_net_patient_mix_pct",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "safety_net_patient_mix_pct",
+      "observation_refs": [],
+      "reason": "The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source reports a comparable patient-mix percentage for the frozen 33-facility product boundary or later LVHN membership.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:temple-health:safety_net_patient_mix_pct",
+      "entity_ref": "data-mcp:system:temple-health",
+      "measure_id": "safety_net_patient_mix_pct",
+      "observation_refs": [],
+      "reason": "The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source resolves a comparable patient-mix percentage across Temple, Fox Chase, faculty-practice, and current product boundaries.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:penn-medicine:safety_net_patient_mix_pct",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "safety_net_patient_mix_pct",
+      "observation_refs": [],
+      "reason": "The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source resolves a comparable patient-mix percentage across the faculty-practice and current product boundaries.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:cooper-university-health-care:safety_net_patient_mix_pct",
+      "entity_ref": "data-mcp:system:cooper-university-health-care",
+      "measure_id": "safety_net_patient_mix_pct",
+      "observation_refs": [],
+      "reason": "The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source reports a comparable percentage covering Cape Regional or resolves the Children's boundary.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:main-line-health:safety_net_patient_mix_pct",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "safety_net_patient_mix_pct",
+      "observation_refs": [],
+      "reason": "The exact AHRQ system row supplies only binary high-DSH/uncompensated-care indicators, while CMS DPP is a hospital IPPS measure formed from two fractions with different denominators. Neither source resolves a comparable percentage across acute, rehabilitation, and current system patient boundaries.",
+      "status": "unavailable_public"
+    }
+  ],
+  "created_at": "2026-07-19T01:15:08Z",
+  "entities": [
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000218",
+      "aliases": [
+        {
+          "identifier": "HSI00000218",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "ChristianaCare",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "ChristianaCare",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:christianacare",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000048",
+      "aliases": [
+        {
+          "identifier": "HSI00000048",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Jefferson Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Jefferson Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:jefferson-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001065",
+      "aliases": [
+        {
+          "identifier": "HSI00001065",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Temple University Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Temple Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:temple-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000820",
+      "aliases": [
+        {
+          "identifier": "HSI00000820",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "University of Pennsylvania Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Penn Medicine",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:penn-medicine",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001079",
+      "aliases": [
+        {
+          "identifier": "HSI00001079",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Cooper University Health Care",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Cooper University Health Care",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:cooper-university-health-care",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000608",
+      "aliases": [
+        {
+          "identifier": "HSI00000608",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Main Line Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Main Line Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:main-line-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    }
+  ],
+  "input_artifacts": [
+    {
+      "artifact_id": "artifact:ahrq-compendium:system:2023",
+      "cache_run_id": "local-promote-20260615-v040",
+      "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "connector": "validated-cache-manifest",
+      "connector_version": "scale-safety-net-patient-mix-connector.v5",
+      "media_type": "text/csv",
+      "parser_version": "scale-safety-net-patient-mix-parser.v5",
+      "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+      "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv"
+    },
+    {
+      "artifact_id": "artifact:cms-mln:medicare-dsh:2024",
+      "cache_run_id": "scale-safety-net-patient-mix-all-six-2026-07-19",
+      "checksum_sha256": "sha256:a658fb1ec185cea715dbc175b8e225c39c806da2b353f8f86b617bcd8ebf390a",
+      "connector": "governed-public-http",
+      "connector_version": "scale-safety-net-patient-mix-connector.v5",
+      "media_type": "application/pdf",
+      "parser_version": "pypdf-text-markers.v1",
+      "schema_fingerprint": "sha256:a658fb1ec185cea715dbc175b8e225c39c806da2b353f8f86b617bcd8ebf390a",
+      "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/cms-mln-medicare-dsh-2024.pdf"
+    }
+  ],
+  "observations": [],
+  "producer": {
+    "commit": "0000000000000000000000000000000000000000",
+    "repo": "healthcare-data-mcp",
+    "version": "HDM-jhh"
+  },
+  "request": {
+    "parameters": {
+      "approved_denominator_receipted": false,
+      "approved_numerator_receipted": false,
+      "desired_definition": "Percent of patients or encounters meeting one preapproved safety-net definition, using a common numerator, denominator, setting, organizational boundary, and aligned period across all six product systems",
+      "input_family": "safety_net_patient_mix_pct",
+      "no_denominator_substitution": true,
+      "no_facility_aggregation": true,
+      "no_imputation": true,
+      "no_scale_score": true,
+      "prior_service_line_admission_merge_grouped_sha1": "46ed66e6-9bcd-595a-a898-4d2c5b48d6b0-ab4f13de",
+      "prior_service_line_tracker_merge_grouped_sha1": "df429e9a-b47d-6002-5258-942e88df036c-389c8731"
+    },
+    "workflow": "scale-safety-net-patient-mix-acquisition.v5"
+  },
+  "scope": {
+    "market": {
+      "name": "Philadelphia six-system Scale roster",
+      "roster_frozen": true
+    },
+    "periods": [
+      "2023",
+      "September 2024 policy fact sheet",
+      "not_available_on_comparable_basis"
+    ],
+    "service_line": null,
+    "systems": [
+      "christianacare",
+      "jefferson-health",
+      "temple-health",
+      "penn-medicine",
+      "cooper-university-health-care",
+      "main-line-health"
+    ]
+  },
+  "sources": [
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-safety-net-patient-mix-connector.v5",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-safety-net-patient-mix-connector.v5",
+          "media_type": "text/csv",
+          "parser_version": "scale-safety-net-patient-mix-parser.v5",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The system file reports only binary high-DSH and uncompensated-care flags; it has no patient-mix numerator, denominator, or percentage and cannot be converted into one.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_safety_net_patient_mix_pct",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:christianacare",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; only binary burden flags, no patient-mix percentage",
+        "next_step": "Toolkit must preserve unavailable_public and every numerator, denominator, period, and boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "binary_indicator_columns": [
+            "sys_incl_highdpphosp",
+            "sys_highucburden",
+            "sys_incl_highuchosp"
+          ],
+          "evaluation_query": "inspect the exact 2023 AHRQ system-file schema for a system-level safety_net_patient_mix_pct numerator, denominator, or percentage",
+          "evaluation_query_sha256": "sha256:d09d0c2906f2d34aa6b00921a06b5611f5655c077c68b2273f0e18594412c79b",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000218",
+          "row_number": 110,
+          "row_sha256": "sha256:1b6d38a9266101556969e8f00be474811ffc62c6a94216f763eedb777d6a8d46"
+        },
+        "receipt_id": "receipt:christianacare:safety-net-patient-mix:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=110; health_sys_id=HSI00000218; binary burden flags are not a percentage",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:christianacare:safety-net-patient-mix:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-safety-net-patient-mix-connector.v5",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-safety-net-patient-mix-connector.v5",
+          "media_type": "text/csv",
+          "parser_version": "scale-safety-net-patient-mix-parser.v5",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The system file reports only binary high-DSH and uncompensated-care flags; it has no patient-mix numerator, denominator, or percentage and cannot be converted into one.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_safety_net_patient_mix_pct",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:jefferson-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; only binary burden flags, no patient-mix percentage",
+        "next_step": "Toolkit must preserve unavailable_public and every numerator, denominator, period, and boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "binary_indicator_columns": [
+            "sys_incl_highdpphosp",
+            "sys_highucburden",
+            "sys_incl_highuchosp"
+          ],
+          "evaluation_query": "inspect the exact 2023 AHRQ system-file schema for a system-level safety_net_patient_mix_pct numerator, denominator, or percentage",
+          "evaluation_query_sha256": "sha256:d09d0c2906f2d34aa6b00921a06b5611f5655c077c68b2273f0e18594412c79b",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000048",
+          "row_number": 18,
+          "row_sha256": "sha256:6204ec1b304e076d15c96032dfbe732e172e43e293a45abf5eaf4980d6062b54"
+        },
+        "receipt_id": "receipt:jefferson-health:safety-net-patient-mix:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=18; health_sys_id=HSI00000048; binary burden flags are not a percentage",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:jefferson-health:safety-net-patient-mix:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-safety-net-patient-mix-connector.v5",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-safety-net-patient-mix-connector.v5",
+          "media_type": "text/csv",
+          "parser_version": "scale-safety-net-patient-mix-parser.v5",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The system file reports only binary high-DSH and uncompensated-care flags; it has no patient-mix numerator, denominator, or percentage and cannot be converted into one.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_safety_net_patient_mix_pct",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:temple-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; only binary burden flags, no patient-mix percentage",
+        "next_step": "Toolkit must preserve unavailable_public and every numerator, denominator, period, and boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "binary_indicator_columns": [
+            "sys_incl_highdpphosp",
+            "sys_highucburden",
+            "sys_incl_highuchosp"
+          ],
+          "evaluation_query": "inspect the exact 2023 AHRQ system-file schema for a system-level safety_net_patient_mix_pct numerator, denominator, or percentage",
+          "evaluation_query_sha256": "sha256:d09d0c2906f2d34aa6b00921a06b5611f5655c077c68b2273f0e18594412c79b",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00001065",
+          "row_number": 466,
+          "row_sha256": "sha256:4e1ed4e4546f3a6bd74c3e8a9828b13efca87f1b2f2bd72214d63ba9c477e8c4"
+        },
+        "receipt_id": "receipt:temple-health:safety-net-patient-mix:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=466; health_sys_id=HSI00001065; binary burden flags are not a percentage",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:temple-health:safety-net-patient-mix:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-safety-net-patient-mix-connector.v5",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-safety-net-patient-mix-connector.v5",
+          "media_type": "text/csv",
+          "parser_version": "scale-safety-net-patient-mix-parser.v5",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The system file reports only binary high-DSH and uncompensated-care flags; it has no patient-mix numerator, denominator, or percentage and cannot be converted into one.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_safety_net_patient_mix_pct",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:penn-medicine",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; only binary burden flags, no patient-mix percentage",
+        "next_step": "Toolkit must preserve unavailable_public and every numerator, denominator, period, and boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "binary_indicator_columns": [
+            "sys_incl_highdpphosp",
+            "sys_highucburden",
+            "sys_incl_highuchosp"
+          ],
+          "evaluation_query": "inspect the exact 2023 AHRQ system-file schema for a system-level safety_net_patient_mix_pct numerator, denominator, or percentage",
+          "evaluation_query_sha256": "sha256:d09d0c2906f2d34aa6b00921a06b5611f5655c077c68b2273f0e18594412c79b",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000820",
+          "row_number": 361,
+          "row_sha256": "sha256:99ffd315130cc094008d33628785b3e5610aaa476de0f7a9da4ef245ac7e2d27"
+        },
+        "receipt_id": "receipt:penn-medicine:safety-net-patient-mix:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=361; health_sys_id=HSI00000820; binary burden flags are not a percentage",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:penn-medicine:safety-net-patient-mix:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-safety-net-patient-mix-connector.v5",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-safety-net-patient-mix-connector.v5",
+          "media_type": "text/csv",
+          "parser_version": "scale-safety-net-patient-mix-parser.v5",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The system file reports only binary high-DSH and uncompensated-care flags; it has no patient-mix numerator, denominator, or percentage and cannot be converted into one.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_safety_net_patient_mix_pct",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:cooper-university-health-care",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; only binary burden flags, no patient-mix percentage",
+        "next_step": "Toolkit must preserve unavailable_public and every numerator, denominator, period, and boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "binary_indicator_columns": [
+            "sys_incl_highdpphosp",
+            "sys_highucburden",
+            "sys_incl_highuchosp"
+          ],
+          "evaluation_query": "inspect the exact 2023 AHRQ system-file schema for a system-level safety_net_patient_mix_pct numerator, denominator, or percentage",
+          "evaluation_query_sha256": "sha256:d09d0c2906f2d34aa6b00921a06b5611f5655c077c68b2273f0e18594412c79b",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00001079",
+          "row_number": 475,
+          "row_sha256": "sha256:7246f2affd1de40325df2add2de4428d0ebad4e0370ef819ec12ea73c004cc1f"
+        },
+        "receipt_id": "receipt:cooper-university-health-care:safety-net-patient-mix:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=475; health_sys_id=HSI00001079; binary burden flags are not a percentage",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:cooper-university-health-care:safety-net-patient-mix:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-safety-net-patient-mix-connector.v5",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-safety-net-patient-mix-connector.v5",
+          "media_type": "text/csv",
+          "parser_version": "scale-safety-net-patient-mix-parser.v5",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 release; current-roster comparability blocked",
+        "cache_key": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "The system file reports only binary high-DSH and uncompensated-care flags; it has no patient-mix numerator, denominator, or percentage and cannot be converted into one.",
+        "confidence": "exact_identity_and_schema_absence; unavailable_for_safety_net_patient_mix_pct",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:main-line-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ identity row; only binary burden flags, no patient-mix percentage",
+        "next_step": "Toolkit must preserve unavailable_public and every numerator, denominator, period, and boundary blocker.",
+        "parent_receipt_ids": [],
+        "query": {
+          "binary_indicator_columns": [
+            "sys_incl_highdpphosp",
+            "sys_highucburden",
+            "sys_incl_highuchosp"
+          ],
+          "evaluation_query": "inspect the exact 2023 AHRQ system-file schema for a system-level safety_net_patient_mix_pct numerator, denominator, or percentage",
+          "evaluation_query_sha256": "sha256:d09d0c2906f2d34aa6b00921a06b5611f5655c077c68b2273f0e18594412c79b",
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key_column": "health_sys_id",
+          "row_key_value": "HSI00000608",
+          "row_number": 268,
+          "row_sha256": "sha256:af058d7b4dd8ec51d74d75647b58870266c14aaa6f712f827a512c3f207db185"
+        },
+        "receipt_id": "receipt:main-line-health:safety-net-patient-mix:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=268; health_sys_id=HSI00000608; binary burden flags are not a percentage",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:main-line-health:safety-net-patient-mix:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:a658fb1ec185cea715dbc175b8e225c39c806da2b353f8f86b617bcd8ebf390a",
+      "receipt": {
+        "acquisition_method": "scale-safety-net-patient-mix-connector.v5",
+        "artifact": {
+          "artifact_id": "artifact:cms-mln:medicare-dsh:2024",
+          "cache_run_id": "scale-safety-net-patient-mix-all-six-2026-07-19",
+          "checksum_sha256": "sha256:a658fb1ec185cea715dbc175b8e225c39c806da2b353f8f86b617bcd8ebf390a",
+          "connector": "governed-public-http",
+          "connector_version": "scale-safety-net-patient-mix-connector.v5",
+          "media_type": "application/pdf",
+          "parser_version": "pypdf-text-markers.v1",
+          "schema_fingerprint": "sha256:a658fb1ec185cea715dbc175b8e225c39c806da2b353f8f86b617bcd8ebf390a",
+          "uri": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/cms-mln-medicare-dsh-2024.pdf"
+        },
+        "cache_freshness": "Exact September 2024 fact sheet; excluded as a product-system patient-mix source",
+        "cache_key": "hc-cache://scale-safety-net-patient-mix-acquisition.v5/scale-safety-net-patient-mix-all-six-2026-07-19/cms-mln-medicare-dsh-2024.pdf",
+        "cache_status": "frozen_verified_external",
+        "caveat": "CMS DPP is hospital-specific and sums a Medicare/SSI fraction and a Medicaid/non-Medicare fraction with different denominators; its IPPS inpatient scope is not a common full product-system patient denominator.",
+        "confidence": "exact_dpp_definition; not_a_common_product_system_patient_mix_percentage",
+        "dataset_id": "cms-mln006741-2024",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps/disproportionate-share-hospital-dsh",
+        "match_basis": "definition applicability evaluation only; hospital IPPS DPP has no product-system identity join",
+        "next_step": "A later acquisition must receipt one approved numerator and denominator for all six product systems; facility aggregation and denominator substitution remain prohibited.",
+        "parent_receipt_ids": [],
+        "query": {
+          "evaluation_query": "evaluate the CMS Medicare DSH disproportionate patient percentage as a common all-patient safety-net patient-mix percentage for the six product systems",
+          "evaluation_query_sha256": "sha256:3ed0c0d170b36b125e892994c153fce6e7d7c9254e931ee8c14dcdece73d3f9f",
+          "http_receipt_sha256": "sha256:cb06e3e7af69f4f5c5c466ce7fd7d3e316b3bb1a17e8f48334d8fb23da0e817d",
+          "page_count": 8
+        },
+        "receipt_id": "receipt:all-six:safety-net-patient-mix:cms-dsh-definition",
+        "retrieved_at": "2026-07-19T01:15:08Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "PDF physical pages 3, 5, and 7: DPP two-fraction definition, IPPS patient-day scope, and worked two-denominator example",
+        "source_modified": "2024-09-18T20:23:56Z",
+        "source_name": "Centers for Medicare & Medicaid Services",
+        "source_period": "September 2024 policy fact sheet; FY 2024 DPP rules",
+        "source_url": "https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/downloads/disproportionate_share_hospital.pdf"
+      },
+      "registry_id": "cms-mln-medicare-dsh",
+      "registry_version": "MLN006741-2024-09",
+      "source_id": "source:all-six:safety-net-patient-mix:cms-dsh-definition"
+    }
+  ]
+}

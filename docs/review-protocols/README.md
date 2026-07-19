@@ -56,10 +56,20 @@ It routes evidence/methods review plus a deliberately limited portfolio,
 source-rights, transaction, and governance review. The latter is not taxonomy
 competence: the registry gap remains an explicit blocker and human route.
 
+The `safety-net-patient-mix` fixture appends six more
+`unavailable_public` cells. AHRQ's binary high-burden indicators are not
+patient-mix percentages, and CMS FY 2024 DPP combines two hospital/IPPS
+fractions with different denominators. Independent-first evidence/methods and
+population-health/health-services reviews preserve the exact 35 prior
+discrepancies and 434 ordered prior concern entries, append three new
+discrepancies and 28 new concern entries, and route all unresolved numerator,
+denominator, attribution, setting, boundary, period, selection, ecological,
+and transportability questions to named human competence-matched review.
+
 ### Family-module maintainability
 
-The operating-revenue, annual-discharges, physician-count, and
-service-line-count adapters share
+The operating-revenue, annual-discharges, physician-count,
+service-line-count, and safety-net-patient-mix adapters share
 the fail-closed validation, deterministic evidence rebuild, and pinned-upstream
 verification kernels. Each family keeps only its frozen constants, specialist
 routing, cumulative counts, prior-record checks, and other family-specific

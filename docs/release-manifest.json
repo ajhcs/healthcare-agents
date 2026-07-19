@@ -311,6 +311,33 @@
     ]
   },
   {
+    "id": "scale-safety-net-patient-mix-fitness-review",
+    "claim": "Healthcare Agents publishes a deterministic safety-net patient-mix Scale input-fitness review that binds exact Data MCP and Toolkit lineage, routes independent-first evidence/methods and population-health/health-services reviews, preserves all prior discrepancies and concerns for human adjudication, and produces no Scale calculation, sensitivity, projection, recommendation, adjudication, profile population, or promotion.",
+    "evidence": [
+      "lib/scale-safety-net-patient-mix-review.js",
+      "scripts/generate-scale-safety-net-patient-mix-review.js",
+      "scripts/test-scale-safety-net-patient-mix-review.js",
+      "scripts/verify-scale-safety-net-patient-mix-upstream.js",
+      "docs/review-protocols/README.md"
+    ],
+    "commands": [
+      "npm run test:scale-safety-net-patient-mix-review",
+      "npm run verify:scale-safety-net-patient-mix-upstream -- --data-mcp-repo <healthcare-data-mcp> --toolkit-repo <healthcare-toolkit>",
+      "npm run release:check"
+    ],
+    "artifacts": [
+      "lib/scale-safety-net-patient-mix-review.js",
+      "review-protocols/fixtures/scale-input-packets/safety-net-patient-mix/upstream-manifest.json",
+      "review-protocols/fixtures/scale-input-packets/safety-net-patient-mix/methods-review.json",
+      "review-protocols/fixtures/scale-input-packets/safety-net-patient-mix/population_health-review.json",
+      "review-protocols/fixtures/scale-input-packets/safety-net-patient-mix/conflict-analysis.json",
+      "review-protocols/fixtures/scale-input-packets/safety-net-patient-mix/handoff.json"
+    ],
+    "beads": [
+      "beads-vrl"
+    ]
+  },
+  {
       "id": "tracker-coverage",
       "claim": "Every major product vision goal has bead coverage and bd is documented as the active tracker in this repository.",
       "evidence": [
