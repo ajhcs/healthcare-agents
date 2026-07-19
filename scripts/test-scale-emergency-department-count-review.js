@@ -338,6 +338,17 @@ assert.match(validateSynchronizedMutation(value => { value.expected_counts.total
 const duplicate = clone(conflictRequest);
 duplicate.reviews[1].reviewer.reviewer_id = duplicate.reviews[0].reviewer.reviewer_id;
 assert.match(validateConflictRequest(duplicate).join('; '), /unique independent reviewer identities/);
+const reidentifiedConflict = analyzeReviewConflicts({
+  ...clone(conflictRequest),
+  request_id: 'conflict-request:scale-emergency-department-count:fabricated-rehash'
+});
+let reidentifiedHandoff = clone(handoff);
+reidentifiedHandoff.conflict_output_hash = reidentifiedConflict.output_sha256;
+reidentifiedHandoff = withSelfHash(reidentifiedHandoff, 'handoff_sha256');
+assert.match(
+  validateEmergencyDepartmentCountReviewHandoff(reidentifiedHandoff, [methods, operations], reidentifiedConflict, manifest, objects, artifactHashes, evidenceArtifacts).join('; '),
+  /conflict request identity must preserve|conflict output must preserve|frozen final family handoff hash/
+);
 const dependentReviewer = clone(methodsRequest);
 dependentReviewer.reviewer.independence.prior_exposure = operations.review_id;
 assert.match(validateReviewRequest(dependentReviewer).join('; '), /prior_exposure must be equal to one of the allowed values|prior exposure must be none/);
