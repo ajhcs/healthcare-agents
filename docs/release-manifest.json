@@ -338,6 +338,33 @@
     ]
   },
   {
+    "id": "scale-emergency-department-count-fitness-review",
+    "claim": "Healthcare Agents publishes a deterministic emergency-department-count Scale input-fitness review that binds exact Data MCP and Toolkit lineage, routes independent-first evidence/methods and registered operations/access/capacity reviews, preserves all prior discrepancies and concerns for human adjudication, and produces no Scale calculation, sensitivity, projection, recommendation, adjudication, profile population, or promotion.",
+    "evidence": [
+      "lib/scale-emergency-department-count-review.js",
+      "scripts/generate-scale-emergency-department-count-review.js",
+      "scripts/test-scale-emergency-department-count-review.js",
+      "scripts/verify-scale-emergency-department-count-upstream.js",
+      "docs/review-protocols/README.md"
+    ],
+    "commands": [
+      "npm run test:scale-emergency-department-count-review",
+      "npm run verify:scale-emergency-department-count-upstream -- --data-mcp-repo <healthcare-data-mcp> --toolkit-repo <healthcare-toolkit>",
+      "npm run release:check"
+    ],
+    "artifacts": [
+      "lib/scale-emergency-department-count-review.js",
+      "review-protocols/fixtures/scale-input-packets/emergency-department-count/upstream-manifest.json",
+      "review-protocols/fixtures/scale-input-packets/emergency-department-count/methods-review.json",
+      "review-protocols/fixtures/scale-input-packets/emergency-department-count/operations-review.json",
+      "review-protocols/fixtures/scale-input-packets/emergency-department-count/conflict-analysis.json",
+      "review-protocols/fixtures/scale-input-packets/emergency-department-count/handoff.json"
+    ],
+    "beads": [
+      "beads-dui"
+    ]
+  },
+  {
       "id": "tracker-coverage",
       "claim": "Every major product vision goal has bead coverage and bd is documented as the active tracker in this repository.",
       "evidence": [

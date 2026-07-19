@@ -66,10 +66,21 @@ discrepancies and 28 new concern entries, and route all unresolved numerator,
 denominator, attribution, setting, boundary, period, selection, ecological,
 and transportability questions to named human competence-matched review.
 
+The `emergency-department-count` fixture appends six unavailable cells and
+routes independent-first evidence/methods plus the exact registered
+operations/access/capacity lane. AHRQ hospital membership, CMS facility-level
+Emergency Services flags, and the 42 CFR dedicated-department definition do
+not enumerate dedicated emergency departments at one approved product-system
+boundary and period. The review therefore prohibits flag summation, facility
+aggregation, campus inference, missing-as-no, and fabricated zeroes, and
+retains all definition, multiplicity, roster, period, and rights questions for
+named human competence-matched review.
+
 ### Family-module maintainability
 
 The operating-revenue, annual-discharges, physician-count,
-service-line-count, and safety-net-patient-mix adapters share
+service-line-count, safety-net-patient-mix, and emergency-department-count
+adapters share
 the fail-closed validation, deterministic evidence rebuild, and pinned-upstream
 verification kernels. Each family keeps only its frozen constants, specialist
 routing, cumulative counts, prior-record checks, and other family-specific

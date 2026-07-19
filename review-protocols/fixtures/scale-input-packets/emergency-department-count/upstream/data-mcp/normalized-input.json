@@ -1,0 +1,976 @@
+{
+  "bundle_id": "scale-emergency-department-count-all-six-2026-07-19:public-evidence",
+  "conflicts": [
+    {
+      "conflict_id": "conflict:christianacare:emergency-department-count:definition-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:christianacare"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_system_file_has_no_emergency_department_field,ccn_hospital_membership_not_dedicated_ed_inventory,cms_emergency_services_boolean_not_department_count,common_period_not_receipted,current_roster_membership_unresolved,dedicated_ed_regulatory_unit_not_enumerated,facility_to_system_aggregation_prohibited,hgi_missing_not_no_or_zero,main_campus_off_campus_taxonomy_unresolved,organizational_boundary_unresolved,provider_department_and_campus_multiplicity_unresolved,source_backed_zero_not_available,system_level_count_not_reported,union_hgi_flag_period_conflict,west_grove_post_vintage_membership: Neither source enumerates dedicated emergency departments, and current West Grove membership and the Union source-period boundary remain unresolved.",
+      "receipt_refs": [
+        "receipt:christianacare:emergency-department-count:ahrq-identity",
+        "receipt:jefferson-health:emergency-department-count:ahrq-identity",
+        "receipt:temple-health:emergency-department-count:ahrq-identity",
+        "receipt:penn-medicine:emergency-department-count:ahrq-identity",
+        "receipt:cooper-university-health-care:emergency-department-count:ahrq-identity",
+        "receipt:main-line-health:emergency-department-count:ahrq-identity",
+        "receipt:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04",
+        "receipt:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:jefferson-health:emergency-department-count:definition-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:jefferson-health"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_system_file_has_no_emergency_department_field,ccn_hospital_membership_not_dedicated_ed_inventory,cms_emergency_services_boolean_not_department_count,common_period_not_receipted,current_roster_membership_unresolved,dedicated_ed_regulatory_unit_not_enumerated,facility_to_system_aggregation_prohibited,frozen_33_facility_boundary_mismatch,hgi_missing_not_no_or_zero,lvhn_post_vintage_membership,main_campus_off_campus_taxonomy_unresolved,organizational_boundary_unresolved,provider_department_and_campus_multiplicity_unresolved,source_backed_zero_not_available,system_level_count_not_reported: Neither source enumerates dedicated emergency departments at the frozen product boundary, and later LVHN membership remains outside the approved roster period.",
+      "receipt_refs": [
+        "receipt:christianacare:emergency-department-count:ahrq-identity",
+        "receipt:jefferson-health:emergency-department-count:ahrq-identity",
+        "receipt:temple-health:emergency-department-count:ahrq-identity",
+        "receipt:penn-medicine:emergency-department-count:ahrq-identity",
+        "receipt:cooper-university-health-care:emergency-department-count:ahrq-identity",
+        "receipt:main-line-health:emergency-department-count:ahrq-identity",
+        "receipt:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04",
+        "receipt:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:temple-health:emergency-department-count:definition-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:temple-health"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_system_file_has_no_emergency_department_field,ccn_hospital_membership_not_dedicated_ed_inventory,cms_emergency_services_boolean_not_department_count,common_period_not_receipted,current_roster_membership_unresolved,dedicated_ed_regulatory_unit_not_enumerated,episcopal_and_fox_chase_scope_unresolved,facility_to_system_aggregation_prohibited,hgi_missing_not_no_or_zero,jeanes_ccn_campus_multiplicity,main_campus_off_campus_taxonomy_unresolved,organizational_boundary_unresolved,provider_department_and_campus_multiplicity_unresolved,source_backed_zero_not_available,system_level_count_not_reported: Neither source enumerates dedicated emergency departments; Jeanes campus multiplicity and the Episcopal and Fox Chase scope remain unresolved.",
+      "receipt_refs": [
+        "receipt:christianacare:emergency-department-count:ahrq-identity",
+        "receipt:jefferson-health:emergency-department-count:ahrq-identity",
+        "receipt:temple-health:emergency-department-count:ahrq-identity",
+        "receipt:penn-medicine:emergency-department-count:ahrq-identity",
+        "receipt:cooper-university-health-care:emergency-department-count:ahrq-identity",
+        "receipt:main-line-health:emergency-department-count:ahrq-identity",
+        "receipt:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04",
+        "receipt:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:penn-medicine:emergency-department-count:definition-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:penn-medicine"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_system_file_has_no_emergency_department_field,ccn_hospital_membership_not_dedicated_ed_inventory,cms_emergency_services_boolean_not_department_count,common_period_not_receipted,current_roster_membership_unresolved,dedicated_ed_regulatory_unit_not_enumerated,facility_to_system_aggregation_prohibited,hgi_missing_not_no_or_zero,main_campus_off_campus_taxonomy_unresolved,multi_campus_ccn_multiplicity,organizational_boundary_unresolved,post_vintage_membership_drift,provider_department_and_campus_multiplicity_unresolved,source_backed_zero_not_available,system_level_count_not_reported: Neither source enumerates main-campus and off-campus dedicated emergency departments, and current membership has drifted beyond the frozen roster period.",
+      "receipt_refs": [
+        "receipt:christianacare:emergency-department-count:ahrq-identity",
+        "receipt:jefferson-health:emergency-department-count:ahrq-identity",
+        "receipt:temple-health:emergency-department-count:ahrq-identity",
+        "receipt:penn-medicine:emergency-department-count:ahrq-identity",
+        "receipt:cooper-university-health-care:emergency-department-count:ahrq-identity",
+        "receipt:main-line-health:emergency-department-count:ahrq-identity",
+        "receipt:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04",
+        "receipt:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:cooper-university-health-care:emergency-department-count:definition-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:cooper-university-health-care"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_system_file_has_no_emergency_department_field,cape_regional_post_vintage_membership,ccn_hospital_membership_not_dedicated_ed_inventory,childrens_emergency_scope_unresolved,cms_emergency_services_boolean_not_department_count,common_period_not_receipted,current_roster_membership_unresolved,dedicated_ed_regulatory_unit_not_enumerated,facility_to_system_aggregation_prohibited,hgi_missing_not_no_or_zero,main_campus_off_campus_taxonomy_unresolved,organizational_boundary_unresolved,provider_department_and_campus_multiplicity_unresolved,source_backed_zero_not_available,system_level_count_not_reported: A facility-level Emergency Services flag is not proof of a dedicated-department count, and Cape Regional and children's emergency scope remain unresolved.",
+      "receipt_refs": [
+        "receipt:christianacare:emergency-department-count:ahrq-identity",
+        "receipt:jefferson-health:emergency-department-count:ahrq-identity",
+        "receipt:temple-health:emergency-department-count:ahrq-identity",
+        "receipt:penn-medicine:emergency-department-count:ahrq-identity",
+        "receipt:cooper-university-health-care:emergency-department-count:ahrq-identity",
+        "receipt:main-line-health:emergency-department-count:ahrq-identity",
+        "receipt:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04",
+        "receipt:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:main-line-health:emergency-department-count:definition-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:main-line-health"
+      ],
+      "observation_refs": [],
+      "rationale": "ahrq_system_file_has_no_emergency_department_field,ccn_hospital_membership_not_dedicated_ed_inventory,cms_emergency_services_boolean_not_department_count,common_period_not_receipted,current_ed_boundary_unresolved,current_roster_membership_unresolved,dedicated_ed_regulatory_unit_not_enumerated,facility_to_system_aggregation_prohibited,hgi_missing_not_no_or_zero,main_campus_off_campus_taxonomy_unresolved,organizational_boundary_unresolved,provider_department_and_campus_multiplicity_unresolved,rehabilitation_roster_inclusion_mismatch,source_backed_zero_not_available,system_level_count_not_reported: Neither source enumerates dedicated emergency departments or resolves the current acute and rehabilitation product boundary.",
+      "receipt_refs": [
+        "receipt:christianacare:emergency-department-count:ahrq-identity",
+        "receipt:jefferson-health:emergency-department-count:ahrq-identity",
+        "receipt:temple-health:emergency-department-count:ahrq-identity",
+        "receipt:penn-medicine:emergency-department-count:ahrq-identity",
+        "receipt:cooper-university-health-care:emergency-department-count:ahrq-identity",
+        "receipt:main-line-health:emergency-department-count:ahrq-identity",
+        "receipt:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28",
+        "receipt:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04",
+        "receipt:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16"
+      ],
+      "status": "open"
+    }
+  ],
+  "coverage": [
+    {
+      "coverage_id": "coverage:christianacare:emergency_department_count",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "emergency_department_count",
+      "observation_refs": [],
+      "reason": "Neither source enumerates dedicated emergency departments, and current West Grove membership and the Union source-period boundary remain unresolved.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:jefferson-health:emergency_department_count",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "emergency_department_count",
+      "observation_refs": [],
+      "reason": "Neither source enumerates dedicated emergency departments at the frozen product boundary, and later LVHN membership remains outside the approved roster period.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:temple-health:emergency_department_count",
+      "entity_ref": "data-mcp:system:temple-health",
+      "measure_id": "emergency_department_count",
+      "observation_refs": [],
+      "reason": "Neither source enumerates dedicated emergency departments; Jeanes campus multiplicity and the Episcopal and Fox Chase scope remain unresolved.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:penn-medicine:emergency_department_count",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "emergency_department_count",
+      "observation_refs": [],
+      "reason": "Neither source enumerates main-campus and off-campus dedicated emergency departments, and current membership has drifted beyond the frozen roster period.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:cooper-university-health-care:emergency_department_count",
+      "entity_ref": "data-mcp:system:cooper-university-health-care",
+      "measure_id": "emergency_department_count",
+      "observation_refs": [],
+      "reason": "A facility-level Emergency Services flag is not proof of a dedicated-department count, and Cape Regional and children's emergency scope remain unresolved.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:main-line-health:emergency_department_count",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "emergency_department_count",
+      "observation_refs": [],
+      "reason": "Neither source enumerates dedicated emergency departments or resolves the current acute and rehabilitation product boundary.",
+      "status": "unavailable_public"
+    }
+  ],
+  "created_at": "2026-07-19T05:06:00Z",
+  "entities": [
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000218",
+      "aliases": [
+        {
+          "identifier": "HSI00000218",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "ChristianaCare",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "ChristianaCare",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:christianacare",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000048",
+      "aliases": [
+        {
+          "identifier": "HSI00000048",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Jefferson Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Jefferson Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:jefferson-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001065",
+      "aliases": [
+        {
+          "identifier": "HSI00001065",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Temple University Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Temple Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:temple-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000820",
+      "aliases": [
+        {
+          "identifier": "HSI00000820",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "University of Pennsylvania Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Penn Medicine",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:penn-medicine",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001079",
+      "aliases": [
+        {
+          "identifier": "HSI00001079",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Cooper University Health Care",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Cooper University Health Care",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:cooper-university-health-care",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000608",
+      "aliases": [
+        {
+          "identifier": "HSI00000608",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Main Line Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Main Line Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:main-line-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    }
+  ],
+  "input_artifacts": [
+    {
+      "artifact_id": "artifact:ahrq-compendium:system:2023",
+      "cache_run_id": "local-promote-20260615-v040",
+      "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "connector": "validated-cache-manifest",
+      "connector_version": "scale-emergency-department-count-connector.v6",
+      "media_type": "text/csv",
+      "parser_version": "scale-emergency-department-count-parser.v6",
+      "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+      "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv"
+    },
+    {
+      "artifact_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+      "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-emergency-department-count-connector.v6",
+      "media_type": "text/csv",
+      "parser_version": "scale-emergency-department-count-parser.v6",
+      "schema_fingerprint": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+      "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-ahrq-compendium-hospital-linkage-2023"
+    },
+    {
+      "artifact_id": "artifact:cms-provider-data:hgi:2026-04-28",
+      "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:83c98b2e8687580e0482b13e1e9acd5813534be243e5ccd9f55556a869595d40",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-emergency-department-count-connector.v6",
+      "media_type": "text/csv",
+      "parser_version": "scale-emergency-department-count-parser.v6",
+      "schema_fingerprint": "sha256:83c98b2e8687580e0482b13e1e9acd5813534be243e5ccd9f55556a869595d40",
+      "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hgi-2026-04-28"
+    },
+    {
+      "artifact_id": "artifact:cms-provider-data:hgi-metadata:2026-04-28",
+      "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:a421368204acb1b91b4074ef797145aac3a11be132ae285730577b151e370cc4",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-emergency-department-count-connector.v6",
+      "media_type": "application/json",
+      "parser_version": "scale-emergency-department-count-parser.v6",
+      "schema_fingerprint": "sha256:a421368204acb1b91b4074ef797145aac3a11be132ae285730577b151e370cc4",
+      "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hgi-metadata-2026-04-28"
+    },
+    {
+      "artifact_id": "artifact:cms-provider-data:hospital-dictionary:2026-04",
+      "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:cd5016abee26e914b273a8fea8ab698710ff60f1c53a1b66e43bbd7168f6cb81",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-emergency-department-count-connector.v6",
+      "media_type": "application/pdf",
+      "parser_version": "scale-emergency-department-count-parser.v6",
+      "schema_fingerprint": "sha256:cd5016abee26e914b273a8fea8ab698710ff60f1c53a1b66e43bbd7168f6cb81",
+      "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hospital-dictionary-2026-04"
+    },
+    {
+      "artifact_id": "artifact:ecfr:42-cfr-489.24:2026-07-16",
+      "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:aa51da81ea3ffbee2da8dff522bcd7c64e9ba8c667acb608bdb8c08b61407546",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-emergency-department-count-connector.v6",
+      "media_type": "application/xml",
+      "parser_version": "scale-emergency-department-count-parser.v6",
+      "schema_fingerprint": "sha256:aa51da81ea3ffbee2da8dff522bcd7c64e9ba8c667acb608bdb8c08b61407546",
+      "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-ecfr-42-cfr-489.24-2026-07-16"
+    }
+  ],
+  "observations": [],
+  "producer": {
+    "commit": "0000000000000000000000000000000000000000",
+    "repo": "healthcare-data-mcp",
+    "version": "HDM-3d9"
+  },
+  "request": {
+    "parameters": {
+      "approved_crosswalk_receipted": false,
+      "approved_department_inventory_receipted": false,
+      "desired_definition": "Count of distinct dedicated emergency departments under 42 CFR 489.24(b), including qualifying on-campus and off-campus departments or facilities, within one approved current product-system roster and common period",
+      "input_family": "emergency_department_count",
+      "no_campus_inference": true,
+      "no_facility_aggregation": true,
+      "no_flag_sum": true,
+      "no_missing_as_no_or_zero": true,
+      "no_scale_score": true,
+      "prior_safety_net_admission_merge": "61a67481-a9f8-bb40-e81a-2f8f59061664-ca5694ba",
+      "prior_safety_net_agents_review_merge": "bd7b0954-5de1-c3b7-f17c-306b6543440c-493bc669",
+      "prior_safety_net_agents_tracker_merge": "cbf9d93a-7132-6e40-0143-d491a2d3adbb-513e96dc",
+      "prior_safety_net_assurance_sha256": "sha256:b82c08cd4ff3d7acf7be5b64c2463b22cd37b370e4f40eeb8fd5c7c04fe7f419",
+      "prior_safety_net_assurance_transport_sha256": "sha256:e7e2ce1dadc4d2c5549459ae6f5bd9362b6e1e06d32a4227952cbf07e3d2a2d6",
+      "prior_safety_net_binding_merge": "9376d387-58d2-098b-8c1d-a09aac615ea5-d4affb50",
+      "prior_safety_net_binding_tracker_merge": "b3113f48-67fb-0eda-8428-0b2245607e24-a3959226",
+      "prior_safety_net_data_feature": "5a248a6d-3eb4-52c4-82c0-a60d8b9168d7-9ae9be26",
+      "prior_safety_net_data_merge": "50eba1ef-da52-2e87-5ebf-b0b3feadfd80-f4073a78",
+      "prior_safety_net_data_tracker_merge": "83ca5ddf-9a2f-df7e-b8af-ebf68955600b-9270a52e",
+      "prior_safety_net_failure_code": "human_review_required",
+      "prior_safety_net_manifest_sha256": "sha256:86f148e3627f4e2b655bb3bab1c0e225ae9a5ab25399e80e2411e3b1a04991c1",
+      "prior_safety_net_manifest_transport_sha256": "sha256:b00d79b155abe12bb24535f4b3b380c17483c415d974af257432f816ed2e268e",
+      "prior_safety_net_packet_sha256": "sha256:af7ac7ce87a991b227673cfa8b6d92374bd01625217e7e21835f39abb289f365",
+      "prior_safety_net_review_sha256": "sha256:68658952d09b2f9b24ec9b062dace730b8ae1ef52b68a79d49de7c3059632fb4",
+      "prior_safety_net_review_transport_sha256": "sha256:e648b443d1b9d96552eaa2b1153bdc10eee608e97d11f9df87547cbaec83c8a3",
+      "prior_safety_net_terminal_status": "blocked",
+      "prior_safety_net_tracker_merge": "01aba0aa-5644-8f17-504e-91f7f9754d96-eb77ee7c"
+    },
+    "workflow": "scale-emergency-department-count-acquisition.v6"
+  },
+  "scope": {
+    "market": {
+      "name": "Philadelphia six-system Scale roster",
+      "roster_frozen": true
+    },
+    "periods": [
+      "2023",
+      "2026-04-28",
+      "42 CFR 489.24 as of 2026-07-16",
+      "not_available_on_comparable_basis"
+    ],
+    "service_line": null,
+    "systems": [
+      "christianacare",
+      "jefferson-health",
+      "temple-health",
+      "penn-medicine",
+      "cooper-university-health-care",
+      "main-line-health"
+    ]
+  },
+  "sources": [
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 system release; no ED field",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no department inventory or count is reported.",
+        "confidence": "exact_identity; unavailable_for_emergency_department_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:christianacare",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ system identity row; schema has no ED count",
+        "next_step": "Preserve unavailable_public until a common dedicated-ED inventory and product-system crosswalk are receipted.",
+        "parent_receipt_ids": [],
+        "query": {
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key": "HSI00000218",
+          "row_number": 110,
+          "row_sha256": "sha256:1b6d38a9266101556969e8f00be474811ffc62c6a94216f763eedb777d6a8d46"
+        },
+        "receipt_id": "receipt:christianacare:emergency-department-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=110; health_sys_id=HSI00000218",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:christianacare:emergency-department-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 system release; no ED field",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no department inventory or count is reported.",
+        "confidence": "exact_identity; unavailable_for_emergency_department_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:jefferson-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ system identity row; schema has no ED count",
+        "next_step": "Preserve unavailable_public until a common dedicated-ED inventory and product-system crosswalk are receipted.",
+        "parent_receipt_ids": [],
+        "query": {
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key": "HSI00000048",
+          "row_number": 18,
+          "row_sha256": "sha256:6204ec1b304e076d15c96032dfbe732e172e43e293a45abf5eaf4980d6062b54"
+        },
+        "receipt_id": "receipt:jefferson-health:emergency-department-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=18; health_sys_id=HSI00000048",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:jefferson-health:emergency-department-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 system release; no ED field",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no department inventory or count is reported.",
+        "confidence": "exact_identity; unavailable_for_emergency_department_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:temple-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ system identity row; schema has no ED count",
+        "next_step": "Preserve unavailable_public until a common dedicated-ED inventory and product-system crosswalk are receipted.",
+        "parent_receipt_ids": [],
+        "query": {
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key": "HSI00001065",
+          "row_number": 466,
+          "row_sha256": "sha256:4e1ed4e4546f3a6bd74c3e8a9828b13efca87f1b2f2bd72214d63ba9c477e8c4"
+        },
+        "receipt_id": "receipt:temple-health:emergency-department-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=466; health_sys_id=HSI00001065",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:temple-health:emergency-department-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 system release; no ED field",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no department inventory or count is reported.",
+        "confidence": "exact_identity; unavailable_for_emergency_department_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:penn-medicine",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ system identity row; schema has no ED count",
+        "next_step": "Preserve unavailable_public until a common dedicated-ED inventory and product-system crosswalk are receipted.",
+        "parent_receipt_ids": [],
+        "query": {
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key": "HSI00000820",
+          "row_number": 361,
+          "row_sha256": "sha256:99ffd315130cc094008d33628785b3e5610aaa476de0f7a9da4ef245ac7e2d27"
+        },
+        "receipt_id": "receipt:penn-medicine:emergency-department-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=361; health_sys_id=HSI00000820",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:penn-medicine:emergency-department-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 system release; no ED field",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no department inventory or count is reported.",
+        "confidence": "exact_identity; unavailable_for_emergency_department_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:cooper-university-health-care",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ system identity row; schema has no ED count",
+        "next_step": "Preserve unavailable_public until a common dedicated-ED inventory and product-system crosswalk are receipted.",
+        "parent_receipt_ids": [],
+        "query": {
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key": "HSI00001079",
+          "row_number": 475,
+          "row_sha256": "sha256:7246f2affd1de40325df2add2de4428d0ebad4e0370ef819ec12ea73c004cc1f"
+        },
+        "receipt_id": "receipt:cooper-university-health-care:emergency-department-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=475; health_sys_id=HSI00001079",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:cooper-university-health-care:emergency-department-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen 2023 system release; no ED field",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no department inventory or count is reported.",
+        "confidence": "exact_identity; unavailable_for_emergency_department_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:main-line-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local AHRQ system identity row; schema has no ED count",
+        "next_step": "Preserve unavailable_public until a common dedicated-ED inventory and product-system crosswalk are receipted.",
+        "parent_receipt_ids": [],
+        "query": {
+          "header_sha256": "sha256:9cc022051910c61c2f66e60b81a450985996cca7fa981c85bd38fa8a9853a79f",
+          "row_key": "HSI00000608",
+          "row_number": 268,
+          "row_sha256": "sha256:af058d7b4dd8ec51d74d75647b58870266c14aaa6f712f827a512c3f207db185"
+        },
+        "receipt_id": "receipt:main-line-health:emergency-department-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=268; health_sys_id=HSI00000608",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:main-line-health:emergency-department-count:ahrq-identity"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+          "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-ahrq-compendium-hospital-linkage-2023"
+        },
+        "cache_freshness": "Exact reviewed source bytes; excluded as a comparable system-count source",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-ahrq-compendium-hospital-linkage-2023",
+        "cache_status": "frozen_verified_external",
+        "caveat": "A 2023 CCN hospital membership row is not a dedicated emergency-department unit and cannot resolve current roster membership.",
+        "confidence": "exact_source_semantics; unavailable_for_system_ed_count",
+        "dataset_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://www.ahrq.gov/chsp/data-resources/compendium-2023.html",
+        "match_basis": "primary-source definition or schema evidence only; no approved aggregation",
+        "next_step": "Acquire an exact common-period dedicated-ED inventory and approved facility/campus-to-product-system crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "enumerates_dedicated_departments": false,
+          "evaluated_unit": "ccn_hospital",
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023",
+        "retrieved_at": "2026-07-16T21:39:39.964148Z",
+        "rights_classification": "public_domain",
+        "row_locator": "CSV header and exact rows keyed by health_sys_id and CCN; schema fingerprint sha256:633359a9d9203acdcd4d2acec3d89761434e0cb0eeda9e8246c06a5f292e7150",
+        "source_modified": "2025-06-02T20:40:39Z",
+        "source_name": "AHRQ Compendium of U.S. Health Systems Hospital Linkage",
+        "source_period": "2023 dated hospital-to-system linkage",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-hospital-linkage-2023.csv"
+      },
+      "registry_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+      "registry_version": "2023 dated hospital-to-system linkage",
+      "source_id": "source:all-six:emergency-department-count:ahrq-compendium-hospital-linkage-2023"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:83c98b2e8687580e0482b13e1e9acd5813534be243e5ccd9f55556a869595d40",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:cms-provider-data:hgi:2026-04-28",
+          "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:83c98b2e8687580e0482b13e1e9acd5813534be243e5ccd9f55556a869595d40",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "text/csv",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:83c98b2e8687580e0482b13e1e9acd5813534be243e5ccd9f55556a869595d40",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hgi-2026-04-28"
+        },
+        "cache_freshness": "Exact reviewed source bytes; excluded as a comparable system-count source",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hgi-2026-04-28",
+        "cache_status": "frozen_verified_external",
+        "caveat": "Emergency Services is one Yes/No flag per Facility ID, not an enumerated count of on-campus and off-campus dedicated ED departments.",
+        "confidence": "exact_source_semantics; unavailable_for_system_ed_count",
+        "dataset_id": "artifact:cms-provider-data:hgi:2026-04-28",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://data.cms.gov/provider-data/dataset/xubh-q36u",
+        "match_basis": "primary-source definition or schema evidence only; no approved aggregation",
+        "next_step": "Acquire an exact common-period dedicated-ED inventory and approved facility/campus-to-product-system crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "enumerates_dedicated_departments": false,
+          "evaluated_unit": "facility_boolean",
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28",
+        "retrieved_at": "2026-07-16T21:39:39.998325Z",
+        "rights_classification": "public_domain",
+        "row_locator": "CSV columns Facility ID and Emergency Services; exact 38-column header; schema fingerprint sha256:bd2e6e437118a83f9dfef8893049c36ab9d3c3aefbc7a16fde3a86b1240fc2df",
+        "source_modified": "2026-04-28T22:10:52Z",
+        "source_name": "CMS Hospital General Information",
+        "source_period": "current snapshot modified 2026-04-28",
+        "source_url": "https://data.cms.gov/provider-data/sites/default/files/resources/893c372430d9d71a1c52737d01239d47_1777413958/Hospital_General_Information.csv"
+      },
+      "registry_id": "artifact:cms-provider-data:hgi:2026-04-28",
+      "registry_version": "current snapshot modified 2026-04-28",
+      "source_id": "source:all-six:emergency-department-count:cms-provider-data-hgi-2026-04-28"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:a421368204acb1b91b4074ef797145aac3a11be132ae285730577b151e370cc4",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:cms-provider-data:hgi-metadata:2026-04-28",
+          "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:a421368204acb1b91b4074ef797145aac3a11be132ae285730577b151e370cc4",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "application/json",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:a421368204acb1b91b4074ef797145aac3a11be132ae285730577b151e370cc4",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hgi-metadata-2026-04-28"
+        },
+        "cache_freshness": "Exact reviewed source bytes; excluded as a comparable system-count source",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hgi-metadata-2026-04-28",
+        "cache_status": "frozen_verified_external",
+        "caveat": "CMS describes a list of Medicare-registered hospitals, not a system or dedicated-department inventory.",
+        "confidence": "exact_source_semantics; unavailable_for_system_ed_count",
+        "dataset_id": "artifact:cms-provider-data:hgi-metadata:2026-04-28",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://data.cms.gov/provider-data/dataset/xubh-q36u",
+        "match_basis": "primary-source definition or schema evidence only; no approved aggregation",
+        "next_step": "Acquire an exact common-period dedicated-ED inventory and approved facility/campus-to-product-system crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "enumerates_dedicated_departments": false,
+          "evaluated_unit": "dataset_metadata",
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28",
+        "retrieved_at": "2026-07-19T05:05:00Z",
+        "rights_classification": "public_domain",
+        "row_locator": "JSON title, description, modified, distribution downloadURL, and describedBy dictionary URL",
+        "source_modified": null,
+        "source_name": "CMS Provider Data metastore metadata for xubh-q36u",
+        "source_period": "metadata modified 2026-04-28",
+        "source_url": "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/xubh-q36u"
+      },
+      "registry_id": "artifact:cms-provider-data:hgi-metadata:2026-04-28",
+      "registry_version": "metadata modified 2026-04-28",
+      "source_id": "source:all-six:emergency-department-count:cms-provider-data-hgi-metadata-2026-04-28"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:cd5016abee26e914b273a8fea8ab698710ff60f1c53a1b66e43bbd7168f6cb81",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:cms-provider-data:hospital-dictionary:2026-04",
+          "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:cd5016abee26e914b273a8fea8ab698710ff60f1c53a1b66e43bbd7168f6cb81",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "application/pdf",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:cd5016abee26e914b273a8fea8ab698710ff60f1c53a1b66e43bbd7168f6cb81",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hospital-dictionary-2026-04"
+        },
+        "cache_freshness": "Exact reviewed source bytes; excluded as a comparable system-count source",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-cms-provider-data-hospital-dictionary-2026-04",
+        "cache_status": "frozen_verified_external",
+        "caveat": "The dictionary declares a Char(3) Emergency Services field but supplies no department-count or campus enumeration field.",
+        "confidence": "exact_source_semantics; unavailable_for_system_ed_count",
+        "dataset_id": "artifact:cms-provider-data:hospital-dictionary:2026-04",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://data.cms.gov/provider-data/dataset/xubh-q36u",
+        "match_basis": "primary-source definition or schema evidence only; no approved aggregation",
+        "next_step": "Acquire an exact common-period dedicated-ED inventory and approved facility/campus-to-product-system crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "enumerates_dedicated_departments": false,
+          "evaluated_unit": "data_dictionary",
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04",
+        "retrieved_at": "2026-07-19T05:05:10Z",
+        "rights_classification": "public_domain",
+        "row_locator": "PDF physical page 20: Hospital General Information table lists Char(6) Facility ID and Char(3) Emergency Services",
+        "source_modified": null,
+        "source_name": "CMS Hospital Data Dictionary",
+        "source_period": "April 2026 downloadable database dictionary",
+        "source_url": "https://data.cms.gov/provider-data/sites/default/files/data_dictionaries/hospital/HOSPITAL_Data_Dictionary.pdf"
+      },
+      "registry_id": "artifact:cms-provider-data:hospital-dictionary:2026-04",
+      "registry_version": "April 2026 downloadable database dictionary",
+      "source_id": "source:all-six:emergency-department-count:cms-provider-data-hospital-dictionary-2026-04"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:aa51da81ea3ffbee2da8dff522bcd7c64e9ba8c667acb608bdb8c08b61407546",
+      "receipt": {
+        "acquisition_method": "scale-emergency-department-count-connector.v6",
+        "artifact": {
+          "artifact_id": "artifact:ecfr:42-cfr-489.24:2026-07-16",
+          "cache_run_id": "scale-emergency-department-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:aa51da81ea3ffbee2da8dff522bcd7c64e9ba8c667acb608bdb8c08b61407546",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-emergency-department-count-connector.v6",
+          "media_type": "application/xml",
+          "parser_version": "scale-emergency-department-count-parser.v6",
+          "schema_fingerprint": "sha256:aa51da81ea3ffbee2da8dff522bcd7c64e9ba8c667acb608bdb8c08b61407546",
+          "uri": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-ecfr-42-cfr-489.24-2026-07-16"
+        },
+        "cache_freshness": "Exact reviewed source bytes; excluded as a comparable system-count source",
+        "cache_key": "hc-cache://scale-emergency-department-count-acquisition.v6/scale-emergency-department-count-all-six-2026-07-19/artifact-ecfr-42-cfr-489.24-2026-07-16",
+        "cache_status": "frozen_verified_external",
+        "caveat": "The regulation defines the required unit but does not enumerate qualifying departments by product system and period.",
+        "confidence": "exact_source_semantics; unavailable_for_system_ed_count",
+        "dataset_id": "artifact:ecfr:42-cfr-489.24:2026-07-16",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://www.ecfr.gov/current/title-42/section-489.24",
+        "match_basis": "primary-source definition or schema evidence only; no approved aggregation",
+        "next_step": "Acquire an exact common-period dedicated-ED inventory and approved facility/campus-to-product-system crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "enumerates_dedicated_departments": false,
+          "evaluated_unit": "dedicated_emergency_department",
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16",
+        "retrieved_at": "2026-07-19T05:06:00Z",
+        "rights_classification": "public_domain",
+        "row_locator": "Section 489.24(b), paragraphs Dedicated emergency department (1)-(3): on/off-campus, state license, held-out-to-public, and one-third outpatient-visit tests",
+        "source_modified": null,
+        "source_name": "Electronic Code of Federal Regulations, 42 CFR 489.24",
+        "source_period": "regulation as of 2026-07-16",
+        "source_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-16/title-42.xml?chapter=IV&subchapter=G&part=489&section=489.24"
+      },
+      "registry_id": "artifact:ecfr:42-cfr-489.24:2026-07-16",
+      "registry_version": "regulation as of 2026-07-16",
+      "source_id": "source:all-six:emergency-department-count:ecfr-42-cfr-489.24-2026-07-16"
+    }
+  ]
+}
