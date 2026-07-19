@@ -41,6 +41,7 @@ try {
   runRequired(process.execPath, ['scripts/test-scale-service-line-count-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-safety-net-patient-mix-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-emergency-department-count-review.js'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-scale-essential-service-designation-count-review.js'], { cwd: installedPackage, env });
 
   for (const file of [
     'node_modules/healthcare-agents/bin/cli.js',
