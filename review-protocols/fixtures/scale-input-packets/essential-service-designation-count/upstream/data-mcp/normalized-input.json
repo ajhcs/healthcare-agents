@@ -1,0 +1,942 @@
+{
+  "bundle_id": "scale-essential-service-designation-count-all-six-2026-07-19:public-evidence",
+  "conflicts": [
+    {
+      "conflict_id": "conflict:christianacare:essential-service-designation-count:taxonomy-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:christianacare"
+      ],
+      "observation_refs": [],
+      "rationale": "approved_current_facility_to_system_crosswalk_not_receipted,approved_eligible_code_taxonomy_not_frozen,christianacare_taxonomy_period_boundary_unresolved,combination_code_expansion_and_dedup_rule_not_approved,common_effective_period_not_receipted,current_product_system_boundary_unresolved,designation_issuer_reconciliation_not_approved,eligible_facility_class_rule_not_approved,expired_and_terminated_record_rule_not_approved,provider_type_is_payment_classification_not_system_count,source_backed_zero_not_available,state_and_federal_designation_mixing_prohibited,system_level_count_not_reported: CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "receipt_refs": [
+        "receipt:christianacare:essential-service-designation-count:ahrq-identity",
+        "receipt:jefferson-health:essential-service-designation-count:ahrq-identity",
+        "receipt:temple-health:essential-service-designation-count:ahrq-identity",
+        "receipt:penn-medicine:essential-service-designation-count:ahrq-identity",
+        "receipt:cooper-university-health-care:essential-service-designation-count:ahrq-identity",
+        "receipt:main-line-health:essential-service-designation-count:ahrq-identity",
+        "receipt:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023",
+        "receipt:all-six:essential-service-designation-count:cms-psf-april-2026",
+        "receipt:all-six:essential-service-designation-count:cms-psf-manual-rev-13757",
+        "receipt:all-six:essential-service-designation-count:cms-psf-release-page-april-2026"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:jefferson-health:essential-service-designation-count:taxonomy-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:jefferson-health"
+      ],
+      "observation_refs": [],
+      "rationale": "approved_current_facility_to_system_crosswalk_not_receipted,approved_eligible_code_taxonomy_not_frozen,combination_code_expansion_and_dedup_rule_not_approved,common_effective_period_not_receipted,current_product_system_boundary_unresolved,designation_issuer_reconciliation_not_approved,eligible_facility_class_rule_not_approved,expired_and_terminated_record_rule_not_approved,jefferson-health_taxonomy_period_boundary_unresolved,provider_type_is_payment_classification_not_system_count,source_backed_zero_not_available,state_and_federal_designation_mixing_prohibited,system_level_count_not_reported: CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "receipt_refs": [
+        "receipt:christianacare:essential-service-designation-count:ahrq-identity",
+        "receipt:jefferson-health:essential-service-designation-count:ahrq-identity",
+        "receipt:temple-health:essential-service-designation-count:ahrq-identity",
+        "receipt:penn-medicine:essential-service-designation-count:ahrq-identity",
+        "receipt:cooper-university-health-care:essential-service-designation-count:ahrq-identity",
+        "receipt:main-line-health:essential-service-designation-count:ahrq-identity",
+        "receipt:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023",
+        "receipt:all-six:essential-service-designation-count:cms-psf-april-2026",
+        "receipt:all-six:essential-service-designation-count:cms-psf-manual-rev-13757",
+        "receipt:all-six:essential-service-designation-count:cms-psf-release-page-april-2026"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:temple-health:essential-service-designation-count:taxonomy-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:temple-health"
+      ],
+      "observation_refs": [],
+      "rationale": "approved_current_facility_to_system_crosswalk_not_receipted,approved_eligible_code_taxonomy_not_frozen,combination_code_expansion_and_dedup_rule_not_approved,common_effective_period_not_receipted,current_product_system_boundary_unresolved,designation_issuer_reconciliation_not_approved,eligible_facility_class_rule_not_approved,expired_and_terminated_record_rule_not_approved,provider_type_is_payment_classification_not_system_count,source_backed_zero_not_available,state_and_federal_designation_mixing_prohibited,system_level_count_not_reported,temple-health_taxonomy_period_boundary_unresolved: CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "receipt_refs": [
+        "receipt:christianacare:essential-service-designation-count:ahrq-identity",
+        "receipt:jefferson-health:essential-service-designation-count:ahrq-identity",
+        "receipt:temple-health:essential-service-designation-count:ahrq-identity",
+        "receipt:penn-medicine:essential-service-designation-count:ahrq-identity",
+        "receipt:cooper-university-health-care:essential-service-designation-count:ahrq-identity",
+        "receipt:main-line-health:essential-service-designation-count:ahrq-identity",
+        "receipt:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023",
+        "receipt:all-six:essential-service-designation-count:cms-psf-april-2026",
+        "receipt:all-six:essential-service-designation-count:cms-psf-manual-rev-13757",
+        "receipt:all-six:essential-service-designation-count:cms-psf-release-page-april-2026"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:penn-medicine:essential-service-designation-count:taxonomy-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:penn-medicine"
+      ],
+      "observation_refs": [],
+      "rationale": "approved_current_facility_to_system_crosswalk_not_receipted,approved_eligible_code_taxonomy_not_frozen,combination_code_expansion_and_dedup_rule_not_approved,common_effective_period_not_receipted,current_product_system_boundary_unresolved,designation_issuer_reconciliation_not_approved,eligible_facility_class_rule_not_approved,expired_and_terminated_record_rule_not_approved,penn-medicine_taxonomy_period_boundary_unresolved,provider_type_is_payment_classification_not_system_count,source_backed_zero_not_available,state_and_federal_designation_mixing_prohibited,system_level_count_not_reported: CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "receipt_refs": [
+        "receipt:christianacare:essential-service-designation-count:ahrq-identity",
+        "receipt:jefferson-health:essential-service-designation-count:ahrq-identity",
+        "receipt:temple-health:essential-service-designation-count:ahrq-identity",
+        "receipt:penn-medicine:essential-service-designation-count:ahrq-identity",
+        "receipt:cooper-university-health-care:essential-service-designation-count:ahrq-identity",
+        "receipt:main-line-health:essential-service-designation-count:ahrq-identity",
+        "receipt:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023",
+        "receipt:all-six:essential-service-designation-count:cms-psf-april-2026",
+        "receipt:all-six:essential-service-designation-count:cms-psf-manual-rev-13757",
+        "receipt:all-six:essential-service-designation-count:cms-psf-release-page-april-2026"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:cooper-university-health-care:essential-service-designation-count:taxonomy-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:cooper-university-health-care"
+      ],
+      "observation_refs": [],
+      "rationale": "approved_current_facility_to_system_crosswalk_not_receipted,approved_eligible_code_taxonomy_not_frozen,combination_code_expansion_and_dedup_rule_not_approved,common_effective_period_not_receipted,cooper-university-health-care_taxonomy_period_boundary_unresolved,current_product_system_boundary_unresolved,designation_issuer_reconciliation_not_approved,eligible_facility_class_rule_not_approved,expired_and_terminated_record_rule_not_approved,provider_type_is_payment_classification_not_system_count,source_backed_zero_not_available,state_and_federal_designation_mixing_prohibited,system_level_count_not_reported: CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "receipt_refs": [
+        "receipt:christianacare:essential-service-designation-count:ahrq-identity",
+        "receipt:jefferson-health:essential-service-designation-count:ahrq-identity",
+        "receipt:temple-health:essential-service-designation-count:ahrq-identity",
+        "receipt:penn-medicine:essential-service-designation-count:ahrq-identity",
+        "receipt:cooper-university-health-care:essential-service-designation-count:ahrq-identity",
+        "receipt:main-line-health:essential-service-designation-count:ahrq-identity",
+        "receipt:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023",
+        "receipt:all-six:essential-service-designation-count:cms-psf-april-2026",
+        "receipt:all-six:essential-service-designation-count:cms-psf-manual-rev-13757",
+        "receipt:all-six:essential-service-designation-count:cms-psf-release-page-april-2026"
+      ],
+      "status": "open"
+    },
+    {
+      "conflict_id": "conflict:main-line-health:essential-service-designation-count:taxonomy-period-boundary",
+      "conflict_type": "scale_input_comparability",
+      "entity_refs": [
+        "data-mcp:system:main-line-health"
+      ],
+      "observation_refs": [],
+      "rationale": "approved_current_facility_to_system_crosswalk_not_receipted,approved_eligible_code_taxonomy_not_frozen,combination_code_expansion_and_dedup_rule_not_approved,common_effective_period_not_receipted,current_product_system_boundary_unresolved,designation_issuer_reconciliation_not_approved,eligible_facility_class_rule_not_approved,expired_and_terminated_record_rule_not_approved,main-line-health_taxonomy_period_boundary_unresolved,provider_type_is_payment_classification_not_system_count,source_backed_zero_not_available,state_and_federal_designation_mixing_prohibited,system_level_count_not_reported: CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "receipt_refs": [
+        "receipt:christianacare:essential-service-designation-count:ahrq-identity",
+        "receipt:jefferson-health:essential-service-designation-count:ahrq-identity",
+        "receipt:temple-health:essential-service-designation-count:ahrq-identity",
+        "receipt:penn-medicine:essential-service-designation-count:ahrq-identity",
+        "receipt:cooper-university-health-care:essential-service-designation-count:ahrq-identity",
+        "receipt:main-line-health:essential-service-designation-count:ahrq-identity",
+        "receipt:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023",
+        "receipt:all-six:essential-service-designation-count:cms-psf-april-2026",
+        "receipt:all-six:essential-service-designation-count:cms-psf-manual-rev-13757",
+        "receipt:all-six:essential-service-designation-count:cms-psf-release-page-april-2026"
+      ],
+      "status": "open"
+    }
+  ],
+  "coverage": [
+    {
+      "coverage_id": "coverage:christianacare:essential_service_designation_count",
+      "entity_ref": "data-mcp:system:christianacare",
+      "measure_id": "essential_service_designation_count",
+      "observation_refs": [],
+      "reason": "CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:jefferson-health:essential_service_designation_count",
+      "entity_ref": "data-mcp:system:jefferson-health",
+      "measure_id": "essential_service_designation_count",
+      "observation_refs": [],
+      "reason": "CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:temple-health:essential_service_designation_count",
+      "entity_ref": "data-mcp:system:temple-health",
+      "measure_id": "essential_service_designation_count",
+      "observation_refs": [],
+      "reason": "CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:penn-medicine:essential_service_designation_count",
+      "entity_ref": "data-mcp:system:penn-medicine",
+      "measure_id": "essential_service_designation_count",
+      "observation_refs": [],
+      "reason": "CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:cooper-university-health-care:essential_service_designation_count",
+      "entity_ref": "data-mcp:system:cooper-university-health-care",
+      "measure_id": "essential_service_designation_count",
+      "observation_refs": [],
+      "reason": "CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "status": "unavailable_public"
+    },
+    {
+      "coverage_id": "coverage:main-line-health:essential_service_designation_count",
+      "entity_ref": "data-mcp:system:main-line-health",
+      "measure_id": "essential_service_designation_count",
+      "observation_refs": [],
+      "reason": "CMS providerType and effective-record context cannot be converted to a product-system count without an approved eligible-code taxonomy, effective-period rule, combination-code rule, and current facility crosswalk.",
+      "status": "unavailable_public"
+    }
+  ],
+  "created_at": "2026-07-19T09:04:43Z",
+  "entities": [
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000218",
+      "aliases": [
+        {
+          "identifier": "HSI00000218",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "ChristianaCare",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "ChristianaCare",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:christianacare",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000048",
+      "aliases": [
+        {
+          "identifier": "HSI00000048",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Jefferson Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Jefferson Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:jefferson-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001065",
+      "aliases": [
+        {
+          "identifier": "HSI00001065",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Temple University Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Temple Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:temple-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000820",
+      "aliases": [
+        {
+          "identifier": "HSI00000820",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "University of Pennsylvania Health System",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Penn Medicine",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:penn-medicine",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00001079",
+      "aliases": [
+        {
+          "identifier": "HSI00001079",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Cooper University Health Care",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Cooper University Health Care",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:cooper-university-health-care",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    },
+    {
+      "address": "",
+      "ahrq_system_id": "HSI00000608",
+      "aliases": [
+        {
+          "identifier": "HSI00000608",
+          "identifier_type": "ahrq_health_sys_id",
+          "name": "Main Line Health",
+          "retrieved_at": null,
+          "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+          "source_url": ""
+        }
+      ],
+      "canonical_name": "Main Line Health",
+      "ccn": "",
+      "conflicts": [],
+      "entity_id": "data-mcp:system:main-line-health",
+      "entity_type": "health_system",
+      "match_decisions": [],
+      "npi": "",
+      "owner_id": "",
+      "pecos_enrollment_id": "",
+      "unresolved_identifiers": [],
+      "zip_code": ""
+    }
+  ],
+  "input_artifacts": [
+    {
+      "artifact_id": "artifact:ahrq-compendium:system:2023",
+      "cache_run_id": "local-promote-20260615-v040",
+      "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "connector": "validated-cache-manifest",
+      "connector_version": "scale-essential-service-designation-count-connector.v7",
+      "media_type": "text/csv",
+      "parser_version": "scale-essential-service-designation-count-parser.v7",
+      "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+      "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv"
+    },
+    {
+      "artifact_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+      "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-essential-service-designation-count-connector.v7",
+      "media_type": "text/csv",
+      "parser_version": "scale-essential-service-designation-count-parser.v7",
+      "schema_fingerprint": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+      "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-ahrq-compendium-hospital-linkage-2023"
+    },
+    {
+      "artifact_id": "artifact:cms:psf-parquet-april-2026",
+      "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:979aa5997d0e7cf309d2ce19b52aa500e62fd0df8df19f0d530ff3fa3924a3ba",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-essential-service-designation-count-connector.v7",
+      "media_type": "application/zip",
+      "parser_version": "scale-essential-service-designation-count-parser.v7",
+      "schema_fingerprint": "sha256:979aa5997d0e7cf309d2ce19b52aa500e62fd0df8df19f0d530ff3fa3924a3ba",
+      "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-psf-parquet-april-2026"
+    },
+    {
+      "artifact_id": "artifact:cms:claims-processing-manual-ch3:rev-13757",
+      "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:b02bd622dd8494a5120c2409d3d4cd48512df998d5a4b9efe354c6cc851a714c",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-essential-service-designation-count-connector.v7",
+      "media_type": "application/pdf",
+      "parser_version": "scale-essential-service-designation-count-parser.v7",
+      "schema_fingerprint": "sha256:b02bd622dd8494a5120c2409d3d4cd48512df998d5a4b9efe354c6cc851a714c",
+      "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-claims-processing-manual-ch3-rev-13757"
+    },
+    {
+      "artifact_id": "artifact:cms:psf-release-page:april-2026",
+      "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+      "checksum_sha256": "sha256:fd7edb400dd79908c99d1f07ad943e3a97f0f0b08a7017b4dccd7f2663ceea76",
+      "connector": "governed-public-primary-source",
+      "connector_version": "scale-essential-service-designation-count-connector.v7",
+      "media_type": "text/html",
+      "parser_version": "scale-essential-service-designation-count-parser.v7",
+      "schema_fingerprint": "sha256:fd7edb400dd79908c99d1f07ad943e3a97f0f0b08a7017b4dccd7f2663ceea76",
+      "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-psf-release-page-april-2026"
+    }
+  ],
+  "observations": [],
+  "producer": {
+    "commit": "0000000000000000000000000000000000000000",
+    "repo": "healthcare-data-mcp",
+    "version": "HDM-tmj"
+  },
+  "request": {
+    "parameters": {
+      "approved_current_crosswalk_receipted": false,
+      "approved_taxonomy_receipted": false,
+      "desired_definition": "Count of current eligible essential-service designations under one approved issuer taxonomy and duplicate rule, within one approved product-system boundary and common effective period",
+      "input_family": "essential_service_designation_count",
+      "no_combination_code_deduplication": true,
+      "no_combination_code_expansion": true,
+      "no_expired_or_terminated_records": true,
+      "no_missing_as_zero_or_imputation": true,
+      "no_narrative_service_or_safety_net_substitution": true,
+      "no_provider_type_aggregation": true,
+      "no_scale_score": true,
+      "no_stale_ahrq_rollup": true,
+      "no_state_federal_mixing": true,
+      "prior_emergency_department_admission_feature": "3c6dc390-5e75-e1dc-21e9-8cca3def0901-8e95a805",
+      "prior_emergency_department_admission_merge": "c4adbb04-44ff-ac14-1247-a170dd03a538-a80855d3",
+      "prior_emergency_department_agents_manifest_sha256": "sha256:b84587ce02e4d69089b68d19bd160a731bf2ea28f961ee6fb6e841271ece5e24",
+      "prior_emergency_department_agents_review_feature": "7167d204-900e-e3fa-d10a-3a4d0f141ba3-45ac2c6a",
+      "prior_emergency_department_agents_review_merge": "335f3f44-c655-54a6-a0be-67507db85a67-784e4be5",
+      "prior_emergency_department_agents_tracker_merge": "4bc1d367-4a46-5ba5-e6cb-815d57519a22-294c32c8",
+      "prior_emergency_department_binding_feature": "9e96aa1c-e379-3c19-b43d-1e19f5791fac-c543d113",
+      "prior_emergency_department_binding_merge": "1154c2bf-c85f-193b-0bfc-18773e12aa21-ab4d2fba",
+      "prior_emergency_department_binding_tracker_merge": "ebffaffd-fb4e-20f5-65f1-3cbadd9b5f89-27a2ca4b",
+      "prior_emergency_department_cumulative_assurance_sha256": "sha256:628c7b0b3d0318fe801b59f01793adf1ba0d0a6999aae4fb67f4e210a8ce1856",
+      "prior_emergency_department_cumulative_assurance_transport_sha256": "sha256:045cdd33eecae8977e0389d6c9fb89e4c04bda54642cbaad969936fac1190240",
+      "prior_emergency_department_cumulative_packet_sha256": "sha256:7679f9a26936cf5508e1909ceec974f1025eaf7212c5ac844bc2a21ff5d8551e",
+      "prior_emergency_department_cumulative_packet_transport_sha256": "sha256:75fefeed38d2885351e89b4a828f1b666e0092dffe31ab64f86df5c79fc1dde3",
+      "prior_emergency_department_cumulative_review_sha256": "sha256:80c7e8578a3ec22c6fdd8a22f50296485ba5952fd75ab4256754296e165749f2",
+      "prior_emergency_department_cumulative_review_transport_sha256": "sha256:630ab57ae1d16f2f926668dcca3b1beb2d2a115ce1fe28bd33411106254e8334",
+      "prior_emergency_department_data_feature": "95e7f51d-fe9e-c8c3-f7b4-9e5145685fdc-54df049c",
+      "prior_emergency_department_data_merge": "ec350c6a-0b4e-d62a-efc9-c6e5e1be0a0c-0e6b5f62",
+      "prior_emergency_department_data_tracker_merge": "d4936645-e7be-04c2-2191-6d33d6d805d9-d509bb44",
+      "prior_emergency_department_failure_code": "human_review_required",
+      "prior_emergency_department_reusable_manifest_sha256": "sha256:8d397c152d63b0805d5a398b0f6c0e9e54e17a3ea358ec570b8b5034ec5cbf0d",
+      "prior_emergency_department_reusable_manifest_transport_sha256": "sha256:a5635b5c5f9571678685f9dd2f2876b39eab8a5f35d45973f6f6b7077e811b08",
+      "prior_emergency_department_terminal_status": "blocked",
+      "prior_emergency_department_tracker_merge": "9bb773be-66ad-e3bd-1236-30b1fa6b4485-a4f54038"
+    },
+    "workflow": "scale-essential-service-designation-count-acquisition.v7"
+  },
+  "scope": {
+    "market": {
+      "name": "Philadelphia six-system Scale roster",
+      "roster_frozen": true
+    },
+    "periods": [
+      "2023",
+      "April 2026",
+      "not_available_on_comparable_basis"
+    ],
+    "service_line": null,
+    "systems": [
+      "christianacare",
+      "jefferson-health",
+      "temple-health",
+      "penn-medicine",
+      "cooper-university-health-care",
+      "main-line-health"
+    ]
+  },
+  "sources": [
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/csv",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen identity only; no designation field",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no countable designation taxonomy is present.",
+        "confidence": "exact_identity; unavailable_for_designation_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:christianacare",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local identity only",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "reports_system_count": false,
+          "row_key": "HSI00000218",
+          "row_number": 110,
+          "row_sha256": "sha256:1b6d38a9266101556969e8f00be474811ffc62c6a94216f763eedb777d6a8d46"
+        },
+        "receipt_id": "receipt:christianacare:essential-service-designation-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=110; health_sys_id=HSI00000218",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:christianacare:essential-service-designation-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/csv",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen identity only; no designation field",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no countable designation taxonomy is present.",
+        "confidence": "exact_identity; unavailable_for_designation_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:jefferson-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local identity only",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "reports_system_count": false,
+          "row_key": "HSI00000048",
+          "row_number": 18,
+          "row_sha256": "sha256:6204ec1b304e076d15c96032dfbe732e172e43e293a45abf5eaf4980d6062b54"
+        },
+        "receipt_id": "receipt:jefferson-health:essential-service-designation-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=18; health_sys_id=HSI00000048",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:jefferson-health:essential-service-designation-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/csv",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen identity only; no designation field",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no countable designation taxonomy is present.",
+        "confidence": "exact_identity; unavailable_for_designation_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:temple-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local identity only",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "reports_system_count": false,
+          "row_key": "HSI00001065",
+          "row_number": 466,
+          "row_sha256": "sha256:4e1ed4e4546f3a6bd74c3e8a9828b13efca87f1b2f2bd72214d63ba9c477e8c4"
+        },
+        "receipt_id": "receipt:temple-health:essential-service-designation-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=466; health_sys_id=HSI00001065",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:temple-health:essential-service-designation-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/csv",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen identity only; no designation field",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no countable designation taxonomy is present.",
+        "confidence": "exact_identity; unavailable_for_designation_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:penn-medicine",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local identity only",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "reports_system_count": false,
+          "row_key": "HSI00000820",
+          "row_number": 361,
+          "row_sha256": "sha256:99ffd315130cc094008d33628785b3e5610aaa476de0f7a9da4ef245ac7e2d27"
+        },
+        "receipt_id": "receipt:penn-medicine:essential-service-designation-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=361; health_sys_id=HSI00000820",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:penn-medicine:essential-service-designation-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/csv",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen identity only; no designation field",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no countable designation taxonomy is present.",
+        "confidence": "exact_identity; unavailable_for_designation_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:cooper-university-health-care",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local identity only",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "reports_system_count": false,
+          "row_key": "HSI00001079",
+          "row_number": 475,
+          "row_sha256": "sha256:7246f2affd1de40325df2add2de4428d0ebad4e0370ef819ec12ea73c004cc1f"
+        },
+        "receipt_id": "receipt:cooper-university-health-care:essential-service-designation-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=475; health_sys_id=HSI00001079",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:cooper-university-health-care:essential-service-designation-count:ahrq-identity"
+    },
+    {
+      "access_rights": "unknown_review_required",
+      "content_checksum": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:system:2023",
+          "cache_run_id": "local-promote-20260615-v040",
+          "checksum_sha256": "sha256:7bd62db33d2241236c662afdbd0ff9b30032da817f5ec0a2326311f77c5371b6",
+          "connector": "validated-cache-manifest",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/csv",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:65e32ad895ad8f21964650352978e59c23b3ee739268ab631a9ad487600f487f",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv"
+        },
+        "cache_freshness": "Frozen identity only; no designation field",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/ahrq_system_2023.csv",
+        "cache_status": "validated_frozen_snapshot",
+        "caveat": "Identity only; no countable designation taxonomy is present.",
+        "confidence": "exact_identity; unavailable_for_designation_count",
+        "dataset_id": "ahrq_health_system_compendium",
+        "entity_scope": "data-mcp:system:main-line-health",
+        "landing_page": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv",
+        "match_basis": "exact source-local identity only",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "reports_system_count": false,
+          "row_key": "HSI00000608",
+          "row_number": 268,
+          "row_sha256": "sha256:af058d7b4dd8ec51d74d75647b58870266c14aaa6f712f827a512c3f207db185"
+        },
+        "receipt_id": "receipt:main-line-health:essential-service-designation-count:ahrq-identity",
+        "retrieved_at": "2026-06-15T20:15:44.083900Z",
+        "rights_classification": "unknown_review_required",
+        "row_locator": "row=268; health_sys_id=HSI00000608",
+        "source_modified": null,
+        "source_name": "AHRQ Compendium of U.S. Health Systems 2023 system file",
+        "source_period": "2023",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-system-2023.csv"
+      },
+      "registry_id": "ahrq-compendium-2023:system",
+      "registry_version": "2023",
+      "source_id": "source:main-line-health:essential-service-designation-count:ahrq-identity"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+          "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/csv",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:a86146f10c8de626fea1da3a24b756e6a68165e449ae3687f1e90d6bdf129727",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-ahrq-compendium-hospital-linkage-2023"
+        },
+        "cache_freshness": "Exact frozen bytes; non-countable absent approved governance",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-ahrq-compendium-hospital-linkage-2023",
+        "cache_status": "frozen_verified_external",
+        "caveat": "A 2023 CCN membership row is stale identity context, not a current designation or product-system crosswalk.",
+        "confidence": "exact_source_semantics; unavailable_for_system_designation_count",
+        "dataset_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://www.ahrq.gov/chsp/data-resources/compendium-2023.html",
+        "match_basis": "custody or semantic context only; no code aggregation or system rollup",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "evaluated_unit": "ccn_hospital",
+          "provider_type_aggregation_performed": false,
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023",
+        "retrieved_at": "2026-07-16T21:39:39.964148Z",
+        "rights_classification": "public_domain",
+        "row_locator": "CSV header and exact rows keyed by health_sys_id and CCN; schema fingerprint sha256:633359a9d9203acdcd4d2acec3d89761434e0cb0eeda9e8246c06a5f292e7150",
+        "source_modified": "2025-06-02T20:40:39Z",
+        "source_name": "AHRQ Compendium of U.S. Health Systems Hospital Linkage",
+        "source_period": "2023 dated hospital-to-system linkage",
+        "source_url": "https://www.ahrq.gov/sites/default/files/wysiwyg/chsp/compendium/chsp-hospital-linkage-2023.csv"
+      },
+      "registry_id": "artifact:ahrq-compendium:hospital-linkage:2023",
+      "registry_version": "2023 dated hospital-to-system linkage",
+      "source_id": "source:all-six:essential-service-designation-count:ahrq-hospital-linkage-2023"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:979aa5997d0e7cf309d2ce19b52aa500e62fd0df8df19f0d530ff3fa3924a3ba",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:cms:psf-parquet-april-2026",
+          "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:979aa5997d0e7cf309d2ce19b52aa500e62fd0df8df19f0d530ff3fa3924a3ba",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "application/zip",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:979aa5997d0e7cf309d2ce19b52aa500e62fd0df8df19f0d530ff3fa3924a3ba",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-psf-parquet-april-2026"
+        },
+        "cache_freshness": "Exact frozen bytes; non-countable absent approved governance",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-psf-parquet-april-2026",
+        "cache_status": "frozen_verified_external",
+        "caveat": "providerType and effective-record context are not countable without approved eligibility, expiry, combination-code, and crosswalk rules.",
+        "confidence": "exact_source_semantics; unavailable_for_system_designation_count",
+        "dataset_id": "artifact:cms:psf-parquet-april-2026",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://www.cms.gov/medicare/payment/prospective-payment-systems/provider-specific-data-public-use-sas-format",
+        "match_basis": "custody or semantic context only; no code aggregation or system rollup",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "evaluated_unit": "ccn_effective_provider_record",
+          "provider_type_aggregation_performed": false,
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:essential-service-designation-count:cms-psf-april-2026",
+        "retrieved_at": "2026-07-19T09:04:42Z",
+        "rights_classification": "public_domain",
+        "row_locator": "ZIP member 2026Q3/PSF Parquet (April 2026)/IPSF_INP_LRO_2026-04-01.parquet; member sha256:d35f2489bdd61279a3817a93282d72c1a014f301ac434f83b860415f5df68925; 681137 bytes; columns include providerCcn, effectiveDate, terminationDate, providerType, and stateCode",
+        "source_modified": "2026-04-15T10:54:40Z",
+        "source_name": "CMS Provider Specific File Parquet",
+        "source_period": "April 2026 release",
+        "source_url": "https://www.cms.gov/files/zip/psf-parquet-april-2026.zip"
+      },
+      "registry_id": "artifact:cms:psf-parquet-april-2026",
+      "registry_version": "April 2026 release",
+      "source_id": "source:all-six:essential-service-designation-count:cms-psf-april-2026"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:b02bd622dd8494a5120c2409d3d4cd48512df998d5a4b9efe354c6cc851a714c",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:cms:claims-processing-manual-ch3:rev-13757",
+          "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:b02bd622dd8494a5120c2409d3d4cd48512df998d5a4b9efe354c6cc851a714c",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "application/pdf",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:b02bd622dd8494a5120c2409d3d4cd48512df998d5a4b9efe354c6cc851a714c",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-claims-processing-manual-ch3-rev-13757"
+        },
+        "cache_freshness": "Exact frozen bytes; non-countable absent approved governance",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-claims-processing-manual-ch3-rev-13757",
+        "cache_status": "frozen_verified_external",
+        "caveat": "The manual defines facility payment classifications but does not approve an essential-service taxonomy or system rollup.",
+        "confidence": "exact_source_semantics; unavailable_for_system_designation_count",
+        "dataset_id": "artifact:cms:claims-processing-manual-ch3:rev-13757",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://www.cms.gov/medicare/regulations-guidance/manuals/internet-only-manuals-ioms-items/cms018912",
+        "match_basis": "custody or semantic context only; no code aggregation or system rollup",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "evaluated_unit": "provider_type_code_definition",
+          "provider_type_aggregation_performed": false,
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:essential-service-designation-count:cms-psf-manual-rev-13757",
+        "retrieved_at": "2026-07-19T09:04:42Z",
+        "rights_classification": "public_domain",
+        "row_locator": "Physical pages 371-374, Addendum A: CCN/providerType definitions and codes 07, 14-18, 21-23, and 37",
+        "source_modified": "2026-07-17T19:04:01Z",
+        "source_name": "CMS Medicare Claims Processing Manual Chapter 3",
+        "source_period": "Revision 13757 issued 2026-04-30",
+        "source_url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c03.pdf"
+      },
+      "registry_id": "artifact:cms:claims-processing-manual-ch3:rev-13757",
+      "registry_version": "Revision 13757 issued 2026-04-30",
+      "source_id": "source:all-six:essential-service-designation-count:cms-psf-manual-rev-13757"
+    },
+    {
+      "access_rights": "public_domain",
+      "content_checksum": "sha256:fd7edb400dd79908c99d1f07ad943e3a97f0f0b08a7017b4dccd7f2663ceea76",
+      "receipt": {
+        "acquisition_method": "scale-essential-service-designation-count-connector.v7",
+        "artifact": {
+          "artifact_id": "artifact:cms:psf-release-page:april-2026",
+          "cache_run_id": "scale-essential-service-designation-count-all-six-2026-07-19",
+          "checksum_sha256": "sha256:fd7edb400dd79908c99d1f07ad943e3a97f0f0b08a7017b4dccd7f2663ceea76",
+          "connector": "governed-public-primary-source",
+          "connector_version": "scale-essential-service-designation-count-connector.v7",
+          "media_type": "text/html",
+          "parser_version": "scale-essential-service-designation-count-parser.v7",
+          "schema_fingerprint": "sha256:fd7edb400dd79908c99d1f07ad943e3a97f0f0b08a7017b4dccd7f2663ceea76",
+          "uri": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-psf-release-page-april-2026"
+        },
+        "cache_freshness": "Exact frozen bytes; non-countable absent approved governance",
+        "cache_key": "hc-cache://scale-essential-service-designation-count-acquisition.v7/scale-essential-service-designation-count-all-six-2026-07-19/artifact-cms-psf-release-page-april-2026",
+        "cache_status": "frozen_verified_external",
+        "caveat": "The release page establishes custody and vintage only; it does not define a countable designation taxonomy.",
+        "confidence": "exact_source_semantics; unavailable_for_system_designation_count",
+        "dataset_id": "artifact:cms:psf-release-page:april-2026",
+        "entity_scope": "Philadelphia six-system Scale roster",
+        "landing_page": "https://www.cms.gov/medicare/payment/prospective-payment-systems/provider-specific-data-public-use-sas-format",
+        "match_basis": "custody or semantic context only; no code aggregation or system rollup",
+        "next_step": "Freeze an approved taxonomy, effective rule, duplicate rule, and current facility crosswalk.",
+        "parent_receipt_ids": [],
+        "query": {
+          "approved_current_crosswalk": false,
+          "approved_taxonomy": false,
+          "evaluated_unit": "release_metadata",
+          "provider_type_aggregation_performed": false,
+          "reports_system_count": false
+        },
+        "receipt_id": "receipt:all-six:essential-service-designation-count:cms-psf-release-page-april-2026",
+        "retrieved_at": "2026-07-19T09:04:43Z",
+        "rights_classification": "public_domain",
+        "row_locator": "Page identifies the April 2026 Parquet release and describes PSF as provider facts",
+        "source_modified": "2026-07-19T04:20:34Z",
+        "source_name": "CMS Provider Specific Data release page",
+        "source_period": "April 2026 release page",
+        "source_url": "https://www.cms.gov/medicare/payment/prospective-payment-systems/provider-specific-data-public-use-sas-format"
+      },
+      "registry_id": "artifact:cms:psf-release-page:april-2026",
+      "registry_version": "April 2026 release page",
+      "source_id": "source:all-six:essential-service-designation-count:cms-psf-release-page-april-2026"
+    }
+  ]
+}

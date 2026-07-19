@@ -51,6 +51,7 @@ node scripts/test-scale-physician-count-review.js
 node scripts/test-scale-service-line-count-review.js
 node scripts/test-scale-safety-net-patient-mix-review.js
 node scripts/test-scale-emergency-department-count-review.js
+node scripts/test-scale-essential-service-designation-count-review.js
 node scripts/test-case-data-provider.js
 node scripts/test-denial-spike-golden-artifact.js
 node scripts/test-operator-os-coverage-regression.js
