@@ -38,6 +38,9 @@ try {
   runRequired(process.execPath, ['scripts/test-scale-input-fitness-upstream-verifier.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-annual-discharges-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-physician-count-review.js'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-scale-service-line-count-review.js'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-scale-safety-net-patient-mix-review.js'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-scale-emergency-department-count-review.js'], { cwd: installedPackage, env });
 
   for (const file of [
     'node_modules/healthcare-agents/bin/cli.js',
