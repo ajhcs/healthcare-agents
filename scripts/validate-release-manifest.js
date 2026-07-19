@@ -32,7 +32,7 @@ for (const claim of manifest.claims || []) {
     if (!fs.existsSync(path.join(ROOT, artifact))) messages.push(`${claim.id} artifact does not exist: ${artifact}`);
   }
   for (const bead of claim.beads || []) {
-    if (!/^beads-(?:i70(?:\.\d+)?|aw6|5y2|1aq)$/.test(bead)) messages.push(`${claim.id} has unexpected bead id: ${bead}`);
+    if (!/^beads-(?:i70(?:\.\d+)?|aw6|5y2|1aq|vrl)$/.test(bead)) messages.push(`${claim.id} has unexpected bead id: ${bead}`);
   }
 }
 
