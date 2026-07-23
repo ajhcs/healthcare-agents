@@ -1,0 +1,52 @@
+name: Agent improvement
+description: Suggest a correction or improvement to one of the 51 existing specialist agents.
+title: "[Agent]: "
+labels: ["agent-improvement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for inaccuracies, stale regulatory references, missing workflows, or weak deliverable templates in an existing agent.
+        **Do not include PHI or real patient data.** Cite specific sources — regulatory knowledge has a shelf life.
+  - type: input
+    id: agent
+    attributes:
+      label: Agent file
+      description: The file under `agents/`, e.g. `revenue-denials-appeals-specialist.md`.
+      placeholder: "agents/..."
+    validations:
+      required: true
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Type of issue
+      options:
+        - Factual or regulatory inaccuracy
+        - Stale guidance (rule or program has changed)
+        - Missing workflow or deliverable
+        - Scope problem (too broad, overlaps another agent, or crosses a compliance boundary)
+        - Weak output quality (observed in real use)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: What the agent currently says or does
+      description: Quote the relevant section of the agent prompt, or describe the output you observed.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-change
+    attributes:
+      label: Proposed improvement
+      description: What should it say instead? Name the specific standard, program, or rule (not "industry standard").
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Links or citations supporting the change (CMS, OIG, HRSA, NCQA, HL7, X12, payer policy, etc.).
+    validations:
+      required: true
