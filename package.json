@@ -19,7 +19,8 @@
     "revenue-cycle"
   ],
   "bin": {
-    "healthcare-agents": "bin/cli.js"
+    "healthcare-agents": "bin/cli.js",
+    "healthcare-agents-mcp": "bin/mcp-server.js"
   },
   "scripts": {
     "scorecard": "node scripts/generate-scorecard.js",
@@ -74,10 +75,16 @@
     "test:admin-adapter": "python3 scripts/test_admin_adapter.py",
     "generate:admin-v2": "node scripts/generate-admin-v2-assets.js && node scripts/generate-admin-v2-proof.js",
     "test:release-version-gates": "node scripts/test-release-version-gates.js",
-    "test:admin-consumer": "node scripts/test-admin-v2-consumer.js"
+    "test:admin-consumer": "node scripts/test-admin-v2-consumer.js",
+    "mcp:stdio": "node bin/mcp-server.js --stdio",
+    "mcp:http": "node bin/mcp-server.js --http",
+    "test:admin-mcp": "node scripts/test-admin-mcp.js",
+    "test:host-contracts": "node scripts/test-host-contracts.js",
+    "test:plugin-consumer": "node scripts/test-plugin-consumer.js",
+    "test:routing-intent": "node scripts/test-routing-intent.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18.14.1"
   },
   "files": [
     ".claude/commands/eval.md",
@@ -187,7 +194,15 @@
     "scripts/generate-admin-v2-assets.js",
     "scripts/generate-admin-v2-proof.js",
     "scripts/test-release-version-gates.js",
-    "scripts/test-admin-v2-consumer.js"
+    "scripts/test-admin-v2-consumer.js",
+    "plugin.json",
+    "mcp.json",
+    ".mcp.json",
+    "adapters/hosts/",
+    "scripts/test-admin-mcp.js",
+    "scripts/test-host-contracts.js",
+    "scripts/test-plugin-consumer.js",
+    "scripts/test-routing-intent.js"
   ],
   "repository": {
     "type": "git",
@@ -197,6 +212,11 @@
   "license": "Apache-2.0",
   "author": "ajhcs",
   "dependencies": {
-    "ajv": "^8.20.0"
+    "@modelcontextprotocol/sdk": "1.31.0",
+    "ajv": "^8.20.0",
+    "@hono/node-server": "1.19.11"
+  },
+  "overrides": {
+    "@hono/node-server": "1.19.11"
   }
 }

@@ -25,7 +25,7 @@ for (const testCase of benchmark.cases) {
   reciprocalSum += rank > 0 ? 1 / rank : 0;
   if (rank !== 1) {
     failures.push({ id: testCase.id, expected: testCase.expected_agent, actual: result.primary_agent, rank: rank || null });
-    const key = `${testCase.expected_domain} -> ${result.top_matches[0].domain}`;
+    const key = `${testCase.expected_domain} -> ${(result.top_matches[0]?.domain || result.status || 'unselected')}`;
     confusion.set(key, (confusion.get(key) || 0) + 1);
   }
 }

@@ -36,5 +36,6 @@
       "Use Healthcare Agents to draft a HIPAA evidence checklist."
     ],
     "brandColor": "#2E8B57"
-  }
+  },
+  "mcpServers": "./.mcp.json"
 }

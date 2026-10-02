@@ -1,6 +1,6 @@
 # 2.0.0-beta.1 (candidate)
 
-Adds routing abstention, CHNA fallback, six deep workflow skills, compact role briefs, aggregate outcome contracts, custom workflow generation and five-target payload exports. Local and hosted acceptance are distinguished; no publication or live-host qualification is implied.
+Adds routing abstention, CHNA fallback, six deep workflow skills, compact role briefs, aggregate outcome contracts, custom workflow generation and five-target payload exports. The successor adds official-SDK stdio/loopback MCP tools, portable plugin packaging and local Claude/Azure/Databricks callback contracts. Independent routing defects are repaired; builder validation wording now reflects shape-only prose checks. A pinned native Codex synthetic MCP campaign is recorded separately from unqualified customer hosts and publication.
 
 # Changelog
 

@@ -1,0 +1,14 @@
+{
+  "retrieved_utc": "2026-10-02T04:44:09.634973+00:00",
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "url": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+      "sha256": "0a4aad95ce337878ad38802ebf0daa3fde76abe3f65400c86bcbb1ec0b3ab883"
+    },
+    {
+      "url": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+      "sha256": "6539175bfcdf43085855183e86da40ea94b166547a72b47ae9a0a390516d3acb"
+    }
+  ]
+}

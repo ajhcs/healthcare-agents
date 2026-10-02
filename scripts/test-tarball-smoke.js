@@ -16,7 +16,7 @@ try {
   fs.mkdirSync(project);
   fs.mkdirSync(home);
   fs.writeFileSync(path.join(project, 'package.json'), '{"private":true,"type":"commonjs"}\n');
-  runRequired('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', tarball], { cwd: project });
+  runRequired('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--no-fund', tarball], { cwd: project });
 
   const bin = path.join(project, 'node_modules', '.bin', process.platform === 'win32' ? 'healthcare-agents.cmd' : 'healthcare-agents');
   const env = { HOME: home, NO_COLOR: '1' };
@@ -26,7 +26,9 @@ try {
   assert.strictEqual(list.count, 51);
   const show = JSON.parse(runRequired(bin, ['show', 'revenue-cycle-specialist', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(show.slug, 'revenue-cycle-specialist');
-  const choose = JSON.parse(runRequired(bin, ['choose', 'clean claim denial spike', '--json'], { cwd: project, env }).stdout);
+  const unscoped = JSON.parse(runRequired(bin, ['choose', 'clean claim denial spike', '--json'], { cwd: project, env }).stdout);
+  assert.strictEqual(unscoped.status, 'no_match');
+  const choose = JSON.parse(runRequired(bin, ['choose', 'Our hospital needs a clean claim denial spike investigation', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(choose.primary_agent, 'revenue-cycle-specialist');
   const doctor = JSON.parse(runRequired(bin, ['doctor', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(doctor.agent_count, 51);

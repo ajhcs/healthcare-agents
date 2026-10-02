@@ -2,18 +2,22 @@
   "schema_version": "healthcare-admin.release-status.v2",
   "version": "2.0.0-beta.1",
   "candidate": true,
-  "local_payload_gate": "checkpoint b8a8924 passed source and installed-package checks; rerun after source changes",
+  "local_payload_gate": "full npm test passed, including MCP, host callbacks, offline plugin consumer, installer and installed tarball; focused final routing regressions rerun",
   "publication": false,
-  "live_hosts_verified": [],
-  "model_outcome_campaign": false,
+  "live_hosts_verified": [
+    "codex_cli_stdio_mcp_bounded_synthetic_snapshot"
+  ],
+  "model_outcome_campaign": true,
   "source_dates_reverified": false,
   "remaining_gates": [
-    "Wider independent code and product review",
-    "Pinned model task-level evaluation",
-    "Customer-host installation and tool integration",
+    "Independent repair/MCP review",
+    "Repeated model task evaluation and independent domain judgment",
+    "Native plugin activation and customer-host/tenant integration",
     "Current domain source verification for consequential claims",
     "Explicit publication authorization and cross-channel payload verification"
   ],
   "independent_forward_review": "bounded local PASS after three independently retested fixes",
-  "primary_source_review": "seven bounded context records; six retrieved response hashes; AHRQ browser review only; specialist dates unchanged"
+  "primary_source_review": "seven bounded context records; six retrieved response hashes; AHRQ browser review only; specialist dates unchanged",
+  "model_campaign": "one prepared synthetic snapshot; codex-cli 0.160.0, gpt-6.1-sol; 12/12 bounded owner-graded tasks; native stdio MCP receipts",
+  "independent_review": "ef1e483 external review found routing/docs defects; its 85 independent probes pass on the successor in a fresh directory; originals preserved"
 }

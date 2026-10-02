@@ -40,6 +40,10 @@ node scripts/validate-operator-os-coverage.js
 
 section "v2 observable outcomes and local adapter"
 node scripts/test-admin-v2.js
+node scripts/test-routing-intent.js
+node scripts/test-admin-mcp.js
+node scripts/test-host-contracts.js
+node scripts/test-plugin-consumer.js
 node scripts/test-admin-v2-consumer.js
 node scripts/test-release-version-gates.js
 python3 scripts/test_admin_adapter.py

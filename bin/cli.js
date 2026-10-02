@@ -14,7 +14,7 @@ const {
   routeWorkflow,
   createWorkupAsync,
   formatWorkupMarkdown,
-  normalizeTarget
+  normalizeTarget, requestedTaskText, specialistIntent
 } = require('../lib/workflows');
 const {
   listEvidencePacks,
@@ -333,18 +333,20 @@ function chooseAgent(args) {
     console.error('error: choose requires a problem description');
     process.exit(1);
   }
-  const problemTokens = tokens(problem);
-  const problemText = normalize(problem);
+  const problemTokens = tokens(requestedTaskText(problem));
+  const problemText = normalize(requestedTaskText(problem));
   const ranked = registry.agents
     .map(agent => ({ agent, score: scoreAgent(agent, problemTokens, problemText) }))
     .sort((a, b) => b.score - a.score);
   const routed = routeWorkflow(problem);
-  const healthcareContext = /\b(healthcare|hospital|clinic|patient|physician|nursing|payer|medicare|medicaid|medical|clinical|pharmacy|chna|hipaa|hedis|hl7|fhir|snf|pdpm|caqh|pecos|hics|hva|emtala|ahrq|cms)\b|health system|community health/.test(problemText);
-  if (routed.status === 'no_match' && !healthcareContext) {
-    const result = { status: 'no_match', problem, primary_agent: null, confidence: 'low',
-      top_matches: [], missing_inputs: ['healthcare administrative outcome and setting'],
-      supporting_agents: [], starter_prompt: 'Clarify the healthcare administrative task before selecting a specialist.' };
-    console.log(json ? JSON.stringify(result, null, 2) : 'No healthcare specialist selected. Clarify the administrative outcome and setting.');
+  const explicitSpecialist = registry.agents.some(agent => problemText.includes(normalize(agent.slug)) || problemText.includes(normalize(agent.display_name)));
+  if ((routed.status === 'needs_clarification' && (!explicitSpecialist || routed.requested_workflows.length > 1)) || (!specialistIntent(problem) && !['matched', 'specialist'].includes(routed.status))) {
+    const status = routed.status === 'needs_clarification' ? 'needs_clarification' : 'no_match';
+    const result = { status, problem, primary_agent: null, confidence: 'low',
+      requested_workflows: routed.requested_workflows, top_matches: [],
+      missing_inputs: [status === 'needs_clarification' ? routed.rationale : 'healthcare administrative outcome and setting'],
+      supporting_agents: [], starter_prompt: status === 'needs_clarification' ? routed.rationale : 'Clarify the healthcare administrative task before selecting a specialist.' };
+    console.log(json ? JSON.stringify(result, null, 2) : result.starter_prompt);
     return;
   }
   const fallback = routed.fallback_agent;

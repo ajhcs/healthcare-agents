@@ -39,7 +39,7 @@ Use synthetic or approved aggregate evidence. This package is not a PHI-processi
 
 Each contract contains domain checks, evidence requirements, decisions and an observable completion gate. See [the catalog](workflows/admin-v2/catalog.json) and [case contract](docs/admin-v2/case-contract.md). All six have committed synthetic examples and independently specified expected arithmetic in the regression suite.
 
-The existing **51 specialists and 16 workups** remain available. [Compact role briefs](skills/healthcare-agents/references/roles/) load only the chosen role; detailed original prompts remain optional references. Specialist tasks outside the fixed workups can use a fallback: CHNA interviews route to community health. Unrelated tasks return `no_match`; tied lexical routes request clarification. Routing scores are heuristics, not calibrated probabilities.
+The existing **51 specialists and 16 workups** remain available. [Compact role briefs](skills/healthcare-agents/references/roles/) load only the chosen role; detailed original prompts remain optional references. Specialist tasks outside the fixed workups can use a fallback: CHNA interviews route to community health. The bounded intent router abstains when healthcare work is unqualified; tied routes and multiple explicit outcomes request clarification and retain requested workflow IDs. Negated/background CHNA mentions do not override the current task. It remains a lexical heuristic with known limits, rather than general intent understanding. Routing scores are heuristics, not calibrated probabilities.
 
 ## Specialist coverage
 
@@ -76,15 +76,20 @@ node bin/cli.js admin export codex denial-spike-workup --output ./codex-denials
 node bin/cli.js admin export azure denial-spike-workup --output ./azure-denials
 ```
 
-| Host | Delivered surface | Verified here |
+| Host | Delivered surface | Qualification |
 | --- | --- | --- |
-| Codex | Agent Skills folder | Local payload, references and hashes |
-| Claude | Agent Skills folder | Local payload, references and hashes |
-| ChatGPT | Instructions and workflow reference for an approved customer setup | Local text payload; no native runtime or Store app claimed |
-| Azure / Microsoft Foundry | Instructions and workflow reference for a customer-managed agent | Local payload and provider-neutral tool adapter; live deployment pending |
-| Databricks | Instructions and workflow reference for a customer-managed agent | Local payload and provider-neutral tool adapter; live deployment pending |
+| Codex | Skills, portable plugin manifests and local stdio MCP | Actual packaged-server client tests; pinned native MCP campaign receipt separate |
+| Claude | Skills and correlated Messages client-tool callback | Local callback/contract tests; live Claude pending |
+| ChatGPT | Plugin manifests and local MCP transport | Local protocol/packaging tested; remote web connection pending |
+| Azure / Microsoft Foundry | Instructions and Responses function callback | Local bridge tested; SDK/model/tenant deployment pending |
+| Databricks | Instructions and Chat Completions callback | Local bridge tested; hosted ResponsesAgent and tenant deployment pending |
 
-The [Python adapter](adapters/python/workflow_tools.py) invokes the installed local calculation engine without model APIs. Customer hosts must provide Node, approved storage, governance and their own model/tool integration. No Azure or Databricks SDK integration, credentials, cloud resource or hosted service is included. [Deployment guide and current primary documentation](docs/platforms/admin-v2.md) explains the distinctions.
+```bash
+node bin/mcp-server.js --stdio
+node bin/host-tool-bridge.js --list azure
+```
+
+Eight read-only MCP tools expose catalog discovery, the six validated calculations and an in-memory workflow draft. Strict schemas, provenance, cancellation, deadlines and structured errors apply. [MCP and customer callback guide](docs/platforms/admin-v2-mcp.md) covers plugin launchers, loopback-only HTTP and actual host requirements. The local [Python bridge](adapters/python/host_tools.py) requires Node and installed dependencies. No cloud SDK, credentials or customer-host service is installed by this package.
 
 Existing [installation options](INSTALL.md) and [platform exports](docs/platforms/) remain available. Generated text and installation simulations do not prove acceptance by every current live client.
 
@@ -113,16 +118,19 @@ flowchart LR
 npm run test:admin-v2
 npm run test:admin-adapter
 npm run test:admin-consumer
+npm run test:admin-mcp
+npm run test:plugin-consumer
+npm run test:routing-intent
 npm test
 ```
 
 The new suite tests observable arithmetic, source attribution, missing/contradictory inputs, routing abstention, real CLI file generation and all 30 target/workflow payload combinations. The adapter test exercises all six cases through Python and the actual Node CLI. A separate clean-consumer test installs the npm tarball offline into a disposable project, runs six independent external cases and six provenance failures, resolves payload references from host-style folders, and tests the builder and routing. Release checks retain existing schema, safety, review, installer and package gates.
 
-These offline tests do not measure model quality, customer usefulness, token savings, healthcare accuracy or live-host behavior. [Candidate status](docs/admin-v2/release-status.json) separates local consistency from publication and model/host qualification. Public-channel checks must fail closed when they cannot verify the actual versions.
+Offline checks do not measure model quality, customer usefulness or healthcare accuracy. A separate [native Codex campaign](docs/admin-v2/model-campaign.md) completed twelve synthetic tasks with actual MCP calls and bounded factual/receipt grading; it does not establish clinical certification, general routing reliability, customer outcomes or token savings. [Candidate status](docs/admin-v2/release-status.json) separates local consistency from publication and model/host qualification. Public-channel checks must fail closed when they cannot verify the actual versions.
 
 ## Eval Status
 
-Historical records report **51/51 evaluated**, an average **94.18**, and **51/51 tracked improved** under the old rubric. These are **internal prompt-rubric results**, **not certification** or outcome validation. They are retained in [eval/results.tsv](eval/results.tsv); local replay evidence is incomplete. The **remaining eval backlog** includes independent task-level and live-host evaluation of this candidate.
+Historical records report **51/51 evaluated**, an average **94.18**, and **51/51 tracked improved** under the old rubric. These are **internal prompt-rubric results**, **not certification** or outcome validation. They are retained in [eval/results.tsv](eval/results.tsv); local replay evidence is incomplete. The **remaining eval backlog** includes repeated independent task-level, domain and customer-host evaluation beyond the bounded native Codex campaign.
 
 ## Self-Improvement Kit
 
