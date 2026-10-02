@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+- Preserve the parent's declared selector and custom rationale in each multi-workflow child draft, including async and packaged CLI paths.
+
 ### Added
 
 - Added a machine-readable seven-role USHSO Review Protocol Registry with

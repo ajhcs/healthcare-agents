@@ -103,6 +103,24 @@ try {
     assert.equal(call(['choose', 'Prepare a community interview draft', '--selection', file, '--json']).primary_agent,
       'pophealth-community-health-coordinator');
   });
+  for (const selectedBy of ['host_agent', 'user']) {
+    verify('packaged consumer retains ' + selectedBy + ' child provenance and custom rationale', () => {
+      const selection = { schema_version: 'healthcare-admin.selection.v1', selected_by: selectedBy,
+        rationale: selectedBy + ' explicitly selected two current packets; retain this custom rationale.',
+        workflow_ids: ['payer-contract-underpayment-review', 'prior-authorization-appeal-workup'] };
+      const file = path.join(consumer, selectedBy + ' provenance.json');
+      fs.writeFileSync(file, JSON.stringify(selection));
+      const draft = call(['workup', 'Two current packets', '--selection', file, '--json']);
+      assert.deepEqual(draft.selection, selection);
+      assert.deepEqual(draft.workups.map(w => w.workflow.id), selection.workflow_ids);
+      for (const child of draft.workups) {
+        assert.equal(child.selection.selected_by, selection.selected_by);
+        assert.equal(child.selection.rationale, selection.rationale);
+        assert.deepEqual(child.selection.workflow_ids, [child.workflow.id]);
+        assert.deepEqual(child.selection, { ...selection, workflow_ids: [child.workflow.id] });
+      }
+    });
+  }
   verify('packaged consumer rejects malformed, oversized and conflicting selections', () => {
     const file = path.join(consumer, 'invalid selection.json');
     const rejected = (args, pattern) => {

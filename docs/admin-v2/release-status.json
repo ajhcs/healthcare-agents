@@ -2,7 +2,7 @@
   "schema_version": "healthcare-admin.release-status.v2",
   "version": "2.0.0-beta.1",
   "candidate": true,
-  "local_payload_gate": "Full local release gate passed for the authority/boundary repair; immutable source/evidence identifiers are recorded in the BuilderBob freeze manifest",
+  "local_payload_gate": "CR-01 successor qualification is recorded by its immutable BuilderBob freeze receipts; no model or live-host qualification is implied",
   "publication": false,
   "live_hosts_verified": [],
   "model_outcome_campaign": false,
@@ -17,5 +17,5 @@
   "independent_forward_review": "bounded local PASS after three independently retested fixes",
   "primary_source_review": "seven bounded context records; six retrieved response hashes; AHRQ browser review only; specialist dates unchanged",
   "model_campaign": "historical prior-snapshot campaign only; no model run for this local contract repair",
-  "independent_review": "Owner-run local retest passes 85/85 and 41/41 with revised authority/boundary expectations, plus unchanged Python boundary 3/3; original automatic-selection and oversized-success assertions retained as migration evidence; independent acceptance pending"
+  "independent_review": "Prior authority/boundary causes passed bounded independent local review; CR-01 child selector/rationale propagation repaired in this successor, exact-freeze independent acceptance pending"
 }

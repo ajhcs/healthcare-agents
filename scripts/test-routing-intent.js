@@ -2,6 +2,7 @@
 const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const { execFileSync, spawnSync } = require('child_process');
 const { routeWorkflow, createWorkup, createWorkupAsync, loadWorkflows } = require('../lib/workflows');
 const { selectionSchema, validateSelection } = require('../lib/routing-contract');
@@ -87,6 +88,40 @@ async function main() {
     const draft = await createWorkupAsync('hospital denial spike and completed CHNA', { dataMode: 'hybrid_synthetic_public' });
     assert.equal(draft.workflow.id, null); assert.equal(draft.case_data, undefined);
   });
+  for (const selectedBy of ['host_agent', 'user']) {
+    const declared = { ...selection, selected_by: selectedBy,
+      rationale: selectedBy + ' selected two current evidence packets; retain this rationale verbatim.\n二つの依頼' };
+    const unchanged = JSON.parse(JSON.stringify(declared));
+    const verifyProvenance = draft => {
+      assert.deepEqual(draft.selection, declared);
+      assert.deepEqual(draft.workups.map(w => w.workflow.id), declared.workflow_ids);
+      for (const child of draft.workups) {
+        // Unchanged CR-01 reproducer assertions; children may be consumed separately.
+        assert.equal(child.selection.selected_by, declared.selected_by);
+        assert.equal(child.selection.rationale, declared.rationale);
+        assert.deepEqual(child.selection.workflow_ids, [child.workflow.id]);
+        assert.deepEqual(child.selection, { ...declared, workflow_ids: [child.workflow.id] });
+        assert.deepEqual(validateSelection(child.selection), child.selection);
+        assert.match(child.workflow.rationale, new RegExp('declared ' + selectedBy + ' selection'));
+      }
+      assert.deepEqual(declared, unchanged);
+    };
+    await check(selectedBy + ' provenance retained in every synchronous child', () => {
+      verifyProvenance(createWorkup('Two current evidence packets', { selection: declared }));
+    });
+    await check(selectedBy + ' provenance retained in every asynchronous child', async () => {
+      verifyProvenance(await createWorkupAsync('Two current evidence packets', { selection: declared, dataMode: 'synthetic_only' }));
+    });
+    await check(selectedBy + ' provenance retained through CLI structured selection', () => {
+      const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-selection-provenance-'));
+      try {
+        const file = path.join(tmp, 'declared selection with spaces.json');
+        fs.writeFileSync(file, JSON.stringify(declared));
+        const draft = JSON.parse(execFileSync(process.execPath, [cli, 'workup', 'Two current packets', '--selection', file, '--json'], { encoding: 'utf8' }));
+        verifyProvenance(draft);
+      } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
+    });
+  }
   const invalid = [
     { ...selection, workflow_ids: [] }, { ...selection, workflow_ids: ['unknown'] },
     { ...selection, workflow_ids: ['denial-spike-workup', 'denial-spike-workup'] },
