@@ -73,7 +73,8 @@
     "test:admin-v2": "node scripts/test-admin-v2.js",
     "test:admin-adapter": "python3 scripts/test_admin_adapter.py",
     "generate:admin-v2": "node scripts/generate-admin-v2-assets.js && node scripts/generate-admin-v2-proof.js",
-    "test:release-version-gates": "node scripts/test-release-version-gates.js"
+    "test:release-version-gates": "node scripts/test-release-version-gates.js",
+    "test:admin-consumer": "node scripts/test-admin-v2-consumer.js"
   },
   "engines": {
     "node": ">=18"
@@ -185,7 +186,8 @@
     "scripts/test_admin_adapter.py",
     "scripts/generate-admin-v2-assets.js",
     "scripts/generate-admin-v2-proof.js",
-    "scripts/test-release-version-gates.js"
+    "scripts/test-release-version-gates.js",
+    "scripts/test-admin-v2-consumer.js"
   ],
   "repository": {
     "type": "git",

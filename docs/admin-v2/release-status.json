@@ -2,16 +2,18 @@
   "schema_version": "healthcare-admin.release-status.v2",
   "version": "2.0.0-beta.1",
   "candidate": true,
-  "local_payload_gate": "run tests against frozen bytes",
+  "local_payload_gate": "checkpoint b8a8924 passed source and installed-package checks; rerun after source changes",
   "publication": false,
   "live_hosts_verified": [],
   "model_outcome_campaign": false,
   "source_dates_reverified": false,
   "remaining_gates": [
-    "Independent implementation review",
+    "Wider independent code and product review",
     "Pinned model task-level evaluation",
     "Customer-host installation and tool integration",
     "Current domain source verification for consequential claims",
     "Explicit publication authorization and cross-channel payload verification"
-  ]
+  ],
+  "independent_forward_review": "bounded local PASS after three independently retested fixes",
+  "primary_source_review": "seven bounded context records; six retrieved response hashes; AHRQ browser review only; specialist dates unchanged"
 }

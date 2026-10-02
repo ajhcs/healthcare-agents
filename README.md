@@ -92,7 +92,7 @@ Existing [installation options](INSTALL.md) and [platform exports](docs/platform
 
 Every v2 numeric input requires an explicit evidence record with source, origin and as-of date. Synthetic and aggregate modes cannot be silently mixed. Missingness and unknown recoverable cash remain explicit. Unexpected fields, invalid dates and impossible denominators fail validation.
 
-Source-family cards in the existing evidence packs are leads to verify, not automatically verified citations. Payer terms, standards, deadlines and clinical facts need the applicable exact source and an accountable owner. External submissions, outreach and production changes require scoped authority. A draft or calculated metric does not demonstrate operational completion.
+Source-family cards in the existing evidence packs are leads to verify, not automatically verified citations. The [bounded primary source review](docs/admin-v2/source-verification.md) records the new workflows' reviewed context and exact applicability limits. Payer terms, standards, deadlines and clinical facts need the applicable exact source and an accountable owner. External submissions, outreach and production changes require scoped authority. A draft or calculated metric does not demonstrate operational completion.
 
 ```mermaid
 flowchart LR
@@ -112,10 +112,11 @@ flowchart LR
 ```bash
 npm run test:admin-v2
 npm run test:admin-adapter
+npm run test:admin-consumer
 npm test
 ```
 
-The new suite tests observable arithmetic, source attribution, missing/contradictory inputs, routing abstention, real CLI file generation and all 30 target/workflow payload combinations. The adapter test exercises all six cases through Python and the actual Node CLI. Release checks retain existing schema, safety, review, installer and package gates.
+The new suite tests observable arithmetic, source attribution, missing/contradictory inputs, routing abstention, real CLI file generation and all 30 target/workflow payload combinations. The adapter test exercises all six cases through Python and the actual Node CLI. A separate clean-consumer test installs the npm tarball offline into a disposable project, runs six independent external cases and six provenance failures, resolves payload references from host-style folders, and tests the builder and routing. Release checks retain existing schema, safety, review, installer and package gates.
 
 These offline tests do not measure model quality, customer usefulness, token savings, healthcare accuracy or live-host behavior. [Candidate status](docs/admin-v2/release-status.json) separates local consistency from publication and model/host qualification. Public-channel checks must fail closed when they cannot verify the actual versions.
 
