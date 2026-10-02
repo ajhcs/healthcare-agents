@@ -116,7 +116,7 @@ for (const [workflowId, prompt, builder] of fixtureCases) {
   const promptOnly = await createWorkupAsync('Commercial payer denial rate jumped');
   assert.strictEqual(promptOnly.case_data, undefined);
 
-  const enriched = await createWorkupAsync('Commercial payer denial rate jumped', { dataMode: DATA_MODES.HYBRID_SYNTHETIC_PUBLIC });
+  const enriched = await createWorkupAsync('Commercial payer denial rate jumped', { workflowIds: ['denial-spike-workup'], dataMode: DATA_MODES.HYBRID_SYNTHETIC_PUBLIC });
   assert.strictEqual(enriched.workflow.id, 'denial-spike-workup');
   assert.strictEqual(enriched.case_data.status, 'ok');
   assert.ok(enriched.case_data.evidence_pack);

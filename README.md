@@ -20,7 +20,7 @@ For this checked-out candidate:
 
 ```bash
 npm ci --ignore-scripts
-node bin/cli.js workup "Commercial payer denial rate jumped" --json
+node bin/cli.js workup "Commercial payer denial rate jumped" --workflow denial-spike-workup --json
 node bin/cli.js admin run examples/admin-v2/denial-spike-workup.json
 ```
 
@@ -39,7 +39,7 @@ Use synthetic or approved aggregate evidence. This package is not a PHI-processi
 
 Each contract contains domain checks, evidence requirements, decisions and an observable completion gate. See [the catalog](workflows/admin-v2/catalog.json) and [case contract](docs/admin-v2/case-contract.md). All six have committed synthetic examples and independently specified expected arithmetic in the regression suite.
 
-The existing **51 specialists and 16 workups** remain available. [Compact role briefs](skills/healthcare-agents/references/roles/) load only the chosen role; detailed original prompts remain optional references. Specialist tasks outside the fixed workups can use a fallback: CHNA interviews route to community health. The bounded intent router abstains when healthcare work is unqualified; tied routes and multiple explicit outcomes request clarification and retain requested workflow IDs. Negated/background CHNA mentions do not override the current task. It remains a lexical heuristic with known limits, rather than general intent understanding. Routing scores are heuristics, not calibrated probabilities.
+The existing **51 specialists and 16 workups** remain available. [Compact role briefs](skills/healthcare-agents/references/roles/) load only the chosen role; detailed original prompts remain optional references. Free-text choose/workup calls offer discovery candidates without selecting a primary specialist or executable workup. The user or host interprets intent, negation, completed work and multiple goals, then supplies validated IDs or a structured selection. Explicit multi-selections retain every workstream. [Routing authority and migration](docs/admin-v2/routing-authority.md) documents the deliberate change from lexical auto-selection; routing scores remain discovery heuristics.
 
 ## Specialist coverage
 
@@ -121,12 +121,13 @@ npm run test:admin-consumer
 npm run test:admin-mcp
 npm run test:plugin-consumer
 npm run test:routing-intent
+npm run test:result-boundary
 npm test
 ```
 
 The new suite tests observable arithmetic, source attribution, missing/contradictory inputs, routing abstention, real CLI file generation and all 30 target/workflow payload combinations. The adapter test exercises all six cases through Python and the actual Node CLI. A separate clean-consumer test installs the npm tarball offline into a disposable project, runs six independent external cases and six provenance failures, resolves payload references from host-style folders, and tests the builder and routing. Release checks retain existing schema, safety, review, installer and package gates.
 
-Offline checks do not measure model quality, customer usefulness or healthcare accuracy. A separate [native Codex campaign](docs/admin-v2/model-campaign.md) completed twelve synthetic tasks with actual MCP calls and bounded factual/receipt grading; it does not establish clinical certification, general routing reliability, customer outcomes or token savings. [Candidate status](docs/admin-v2/release-status.json) separates local consistency from publication and model/host qualification. Public-channel checks must fail closed when they cannot verify the actual versions.
+Offline checks do not measure model quality, customer usefulness or healthcare accuracy. A prior-snapshot [native Codex campaign](docs/admin-v2/model-campaign.md) completed twelve synthetic tasks with actual MCP calls and bounded factual/receipt grading; it was not rerun for the revised routing-authority/result-limit contract and it does not establish clinical certification, general routing reliability, customer outcomes or token savings. [Candidate status](docs/admin-v2/release-status.json) separates local consistency from publication and model/host qualification. Public-channel checks must fail closed when they cannot verify the actual versions.
 
 ## Eval Status
 

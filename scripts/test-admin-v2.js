@@ -91,7 +91,7 @@ check('reject fractional currency and duplicate variance line', () => {
   assert.throws(() => admin.runCase(input));
 });
 check('CHNA interview selects community specialist without an invented workflow', () => {
-  const r = createWorkup('Design a community health needs assessment stakeholder interview plan');
+  const r = createWorkup('Design a community health needs assessment stakeholder interview plan', { agentId: 'pophealth-community-health-coordinator' });
   assert.equal(r.status, 'specialist'); assert.equal(r.workflow.id, null);
   assert.equal(r.roles.primary, 'pophealth-community-health-coordinator');
 });
@@ -102,9 +102,9 @@ for (const problem of ['Help me format a vacation budget spreadsheet', 'Create a
   });
 }
 check('payer keyword does not establish a payer/product value', () => {
-  const r = createWorkup('Commercial payer denial rate jumped');
+  const r = createWorkup('Commercial payer denial rate jumped', { workflowIds: ['denial-spike-workup'] });
   assert.ok(r.questions.required.some(q => q.includes('payer or product')));
-  assert.equal(r.workflow.confidence_kind, 'uncalibrated_lexical_heuristic');
+  assert.equal(r.workflow.confidence_kind, 'explicit_selection_not_a_probability');
 });
 check('underspecified claim evidence does not force a workflow', () => {
   const r = routeWorkflow('claim evidence');

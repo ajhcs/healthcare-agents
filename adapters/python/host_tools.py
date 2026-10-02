@@ -18,8 +18,10 @@ def _execute(arguments, payload=None, package_root=None, node="node", timeout=15
         raise HostBridgeError("Host bridge deadline exceeded") from error
     except OSError as error:
         raise HostBridgeError("Host bridge runtime unavailable") from error
-    if completed.returncode != 0 or len(completed.stdout.encode("utf-8")) > 2 * 1024 * 1024:
+    if completed.returncode != 0:
         raise HostBridgeError("Host bridge request rejected")
+    if len(completed.stdout.encode("utf-8")) > 2 * 1024 * 1024:
+        raise HostBridgeError("Host bridge violated its complete-wire result contract")
     try:
         return json.loads(completed.stdout)
     except ValueError as error:

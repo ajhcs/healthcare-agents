@@ -43,6 +43,7 @@ node scripts/test-admin-v2.js
 node scripts/test-routing-intent.js
 node scripts/test-admin-mcp.js
 node scripts/test-host-contracts.js
+node scripts/test-result-boundary.js
 node scripts/test-plugin-consumer.js
 node scripts/test-admin-v2-consumer.js
 node scripts/test-release-version-gates.js

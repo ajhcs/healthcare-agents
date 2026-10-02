@@ -28,7 +28,7 @@ try {
   assert.strictEqual(show.slug, 'revenue-cycle-specialist');
   const unscoped = JSON.parse(runRequired(bin, ['choose', 'clean claim denial spike', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(unscoped.status, 'no_match');
-  const choose = JSON.parse(runRequired(bin, ['choose', 'Our hospital needs a clean claim denial spike investigation', '--json'], { cwd: project, env }).stdout);
+  const choose = JSON.parse(runRequired(bin, ['choose', 'Our hospital needs a clean claim denial spike investigation', '--agent', 'revenue-cycle-specialist', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(choose.primary_agent, 'revenue-cycle-specialist');
   const doctor = JSON.parse(runRequired(bin, ['doctor', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(doctor.agent_count, 51);

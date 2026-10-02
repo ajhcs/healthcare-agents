@@ -1,5 +1,7 @@
 # 2.0.0-beta.1 (candidate)
 
+The local contract repair makes free-text routing discovery-only, adds validated explicit/host selection with retained multi-workflow drafts, and enforces complete MCP/callback output envelopes with typed size errors. Existing specialists, workup artifacts and calculation contracts remain available through explicit IDs; old auto-selection integrations require migration.
+
 Adds routing abstention, CHNA fallback, six deep workflow skills, compact role briefs, aggregate outcome contracts, custom workflow generation and five-target payload exports. The successor adds official-SDK stdio/loopback MCP tools, portable plugin packaging and local Claude/Azure/Databricks callback contracts. Independent routing defects are repaired; builder validation wording now reflects shape-only prose checks. A pinned native Codex synthetic MCP campaign is recorded separately from unqualified customer hosts and publication.
 
 # Changelog

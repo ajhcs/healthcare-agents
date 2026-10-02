@@ -88,8 +88,40 @@ try {
     const r = spawnSync(process.execPath, [cli, 'admin', 'build', file, '--output', destination], { cwd: consumer, encoding: 'utf8', shell: false });
     assert.notEqual(r.status, 0); assert.match(r.stderr, /already exists/);
   });
+  verify('packaged consumer validates structured multi-workflow and specialist selection files', () => {
+    const file = path.join(consumer, 'selection with spaces.json');
+    const selection = { schema_version: 'healthcare-admin.selection.v1', selected_by: 'host_agent',
+      rationale: 'Two explicitly requested current administrative drafts',
+      workflow_ids: ['payer-contract-underpayment-review', 'prior-authorization-appeal-workup'] };
+    fs.writeFileSync(file, JSON.stringify(selection));
+    const draft = call(['workup', 'Payment and authorization evidence packets', '--selection', file, '--json']);
+    assert.equal(draft.status, 'multiple_selected');
+    assert.deepEqual(draft.workups.map(w => w.workflow.id), selection.workflow_ids);
+    assert.deepEqual(draft.selection, selection);
+    fs.writeFileSync(file, JSON.stringify({ schema_version: selection.schema_version, selected_by: 'user',
+      rationale: 'Explicit specialist choice', agent_id: 'pophealth-community-health-coordinator' }));
+    assert.equal(call(['choose', 'Prepare a community interview draft', '--selection', file, '--json']).primary_agent,
+      'pophealth-community-health-coordinator');
+  });
+  verify('packaged consumer rejects malformed, oversized and conflicting selections', () => {
+    const file = path.join(consumer, 'invalid selection.json');
+    const rejected = (args, pattern) => {
+      const result = spawnSync(process.execPath, [cli, ...args], { cwd: consumer, encoding: 'utf8', shell: false });
+      assert.notEqual(result.status, 0); assert.match(result.stderr, pattern);
+    };
+    fs.writeFileSync(file, '{');
+    rejected(['workup', '--selection', file, '--json'], /error:/);
+    fs.writeFileSync(file, ' '.repeat(2 * 1024 * 1024 + 1));
+    rejected(['workup', '--selection', file, '--json'], /exceeds 2 MiB/);
+    fs.writeFileSync(file, JSON.stringify({ schema_version: 'healthcare-admin.selection.v1', selected_by: 'user',
+      rationale: 'Invalid dual authority', agent_id: 'revenue-cycle-specialist', workflow_ids: ['denial-spike-workup'] }));
+    rejected(['workup', '--selection', file, '--json'], /Invalid selection contract/);
+    rejected(['workup', '--workflow', 'denial-spike-workup', '--selection', file], /Select one routing input/);
+    rejected(['workup', '--workflow', 'denial-spike-workup', '--agent', 'revenue-cycle-specialist'], /Unsupported selection option/);
+    rejected(['choose', '--agent', 'revenue-cycle-specialist', '--workflow', 'denial-spike-workup'], /Unsupported selection option/);
+  });
   verify('consumer routing handles CHNA and family-qualified unrelated requests', () => {
-    assert.equal(call(['choose', 'Prepare a CHNA community interview plan', '--json']).primary_agent, 'pophealth-community-health-coordinator');
+    assert.equal(call(['choose', 'Prepare a CHNA community interview plan', '--agent', 'pophealth-community-health-coordinator', '--json']).primary_agent, 'pophealth-community-health-coordinator');
     for (const command of ['choose', 'workup']) {
       const r = call([command, 'Create a vacation budget spreadsheet for my family.', '--json']);
       assert.equal(r.status, 'no_match');

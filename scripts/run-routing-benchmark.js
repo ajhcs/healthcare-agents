@@ -36,6 +36,7 @@ for (const slug of slugs) {
 
 const count = benchmark.cases.length || 1;
 const metrics = {
+  measurement: 'fixed_bank_lexical_candidate_ranking_not_authoritative_selection',
   cases: benchmark.cases.length,
   top1_accuracy: Number((top1 / count).toFixed(4)),
   top3_accuracy: Number((top3 / count).toFixed(4)),

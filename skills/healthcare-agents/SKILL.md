@@ -8,6 +8,8 @@ license: Apache-2.0
 
 Match the request using [the workflow index](references/workflow-index.json). Load only the chosen workflow; six deep contracts are in [the v2 catalog](../../workflows/admin-v2/catalog.json).
 
+Interpret current intent, negation, completed artifacts and every requested goal before selecting IDs. Free-text CLI routes are discovery candidates only; use validated --workflow IDs or a structured selection for workup drafts. Preserve multiple requested artifacts.
+
 If no workflow fits, consult [the specialist index](references/agent-index.json). CHNA and community stakeholder interviews belong to community health. Abstain on unrelated tasks; ask a focused question when several routes remain plausible.
 
 Use the selected specialist's compact brief in references/roles/<slug>.md. Open its full source prompt only when its detailed domain material is useful. Treat dated source tables as leads to verify, rather than universal current rules.

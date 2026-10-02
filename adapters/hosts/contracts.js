@@ -1,5 +1,5 @@
 const Ajv = require('ajv');
-const { definitions, ToolRuntime } = require('../../lib/admin-tools');
+const { definitions, ToolRuntime, MAX_RESULT_BYTES, wireBytes, failure } = require('../../lib/admin-tools');
 const object = properties => ({ type: 'object', properties, required: Object.keys(properties), additionalProperties: false });
 const text = { type: 'string', minLength: 1, maxLength: 128, pattern: '\\S' };
 const wireArguments = { type: 'object', properties: { payload_json: { type: 'string', description: 'Serialized JSON arguments matching the full Healthcare Agents tool contract. The local runtime validates evidence, dates, ownership and bounds.' } }, required: ['payload_json'], additionalProperties: false };
@@ -24,7 +24,8 @@ function format(target, id, name, payload) {
     ? { type: 'tool_result', tool_use_id: id, content, is_error: !payload.ok }
     : target === 'azure' ? { type: 'function_call_output', call_id: id, output: content }
       : { role: 'tool', tool_call_id: id, content };
-  return { schema_version: 'healthcare-admin.host-result.v1', target, tool_name: name, tool_result: toolResult, structured_content: payload };
+  const result = { schema_version: 'healthcare-admin.host-result.v1', target, tool_name: name, tool_result: toolResult, structured_content: payload };
+  return wireBytes(result) > MAX_RESULT_BYTES ? format(target, id, name, failure('OUTPUT_TOO_LARGE')) : result;
 }
 async function dispatch(target, call, runtime, signal) {
   const valid = validators.get(target);

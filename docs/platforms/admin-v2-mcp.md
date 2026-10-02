@@ -34,7 +34,7 @@ Each calculation tool requires its exact workflow ID, a human owner and dated fi
 
 Every output has either {ok:true,result} or {ok:false,error:{code,message,retryable}} in structuredContent, plus the same serialized JSON as text. isError identifies failure. Tool errors are CONTRACT_INVALID, MODE_NOT_ALLOWED, INPUT_TOO_LARGE, OUTPUT_TOO_LARGE, CANCELLED, TIMEOUT, BUSY and INTERNAL_ERROR. Unknown tools fail at the MCP protocol layer. Errors do not echo supplied records.
 
-The runtime allows four simultaneous worker calculations, each with a five-second deadline and a 96 MiB old-generation worker limit. Tool argument/result payloads are bounded at 2 MiB; protocol frames allow a small envelope overhead. BUSY and TIMEOUT are retryable. MCP cancellation terminates a worker and frees capacity; shutdown cancels remaining jobs. Capacity is bounded rather than queued. All annotations are readOnlyHint=true, destructiveHint=false, idempotentHint=true and openWorldHint=false, matching the absence of local writes and external calls.
+The runtime allows four simultaneous worker calculations, each with a five-second deadline and a 96 MiB old-generation worker limit. Tool arguments are bounded at 2 MiB. Complete MCP tool-result and host callback envelopes, including both structured and serialized representations plus a newline, are bounded at 2 MiB. Oversized valid results return typed OUTPUT_TOO_LARGE; protocol frames retain a separate small overhead allowance. BUSY and TIMEOUT are retryable. MCP cancellation terminates a worker and frees capacity; shutdown cancels remaining jobs. Capacity is bounded rather than queued. All annotations are readOnlyHint=true, destructiveHint=false, idempotentHint=true and openWorldHint=false, matching the absence of local writes and external calls.
 
 ## Plugin packaging and Codex
 
@@ -104,4 +104,6 @@ Documentation reviewed for this slice:
 - [Microsoft Foundry function calling](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/function-calling).
 - [Databricks function calling](https://docs.databricks.com/aws/en/machine-learning/model-serving/function-calling) and [agent authoring](https://docs.databricks.com/aws/en/agents/custom-agents/author-agent).
 
-Run test:admin-mcp, test:host-contracts, test:plugin-consumer and test:routing-intent, then npm test. The plugin schema snapshots include source URLs and byte hashes under docs/admin-v2/plugin-schemas. Qualify each actual customer host with a valid synthetic case, a missing/conflicting-evidence case and an unrelated request; record the exact host/model/package identities and remaining external-action gates.
+Run test:admin-mcp, test:host-contracts, test:result-boundary, test:plugin-consumer and test:routing-intent, then npm test. The plugin schema snapshots include source URLs and byte hashes under docs/admin-v2/plugin-schemas. Qualify each actual customer host with a valid synthetic case, a missing/conflicting-evidence case and an unrelated request; record the exact host/model/package identities and remaining external-action gates.
+
+Free-text discovery and explicit host selections follow the [routing authority contract](../admin-v2/routing-authority.md). The prior model campaign is historical snapshot evidence, not a new campaign for this repair.
