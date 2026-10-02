@@ -1,0 +1,35 @@
+{
+  "schema_version": "healthcare-admin.case.v2",
+  "workflow_id": "payer-contract-underpayment-review",
+  "data_mode": "synthetic_only",
+  "human_owner": "Synthetic Underpayment evidence review owner",
+  "evidence": [
+    {
+      "id": "fixture-1",
+      "origin": "synthetic",
+      "as_of": "2026-10-02",
+      "description": "Invented aggregate fixture for replay; no patient or real policy data.",
+      "fields": [
+        "lines"
+      ]
+    }
+  ],
+  "data": {
+    "lines": [
+      {
+        "id": "L1",
+        "expected": 1000,
+        "paid": 800,
+        "currency": "USD",
+        "contract_ref": "Synthetic contract A"
+      },
+      {
+        "id": "L2",
+        "expected": 500,
+        "paid": 550,
+        "currency": "USD",
+        "contract_ref": "Synthetic contract A"
+      }
+    ]
+  }
+}

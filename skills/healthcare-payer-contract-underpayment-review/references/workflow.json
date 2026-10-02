@@ -1,0 +1,29 @@
+{
+  "id": "payer-contract-underpayment-review",
+  "name": "Underpayment evidence review",
+  "purpose": "Reconcile expected and actual aggregate payment into a contract-linked variance packet.",
+  "checks": [
+    "Pin executed contract, amendment, effective period and applicable product.",
+    "Reconcile supplied expected amounts against units, rates, carve-outs and adjustments; distinguish charges from allowed amounts.",
+    "Compare each line to paid amounts; retain overpayments and unknown expectations.",
+    "Produce a variance register and dispute draft for finance/contract review; verify any authorized payer response."
+  ],
+  "evidence": [
+    "Executed contract references and effective dates",
+    "Line IDs, expected amounts and paid amounts in USD",
+    "Adjustment/remittance context and dispute deadline"
+  ],
+  "decisions": [
+    "Finance owner validates expected-payment calculations.",
+    "Contracting/legal owner verifies contractual interpretation.",
+    "Authorized payer liaison reviews any dispute and monitors response."
+  ],
+  "completion_gate": "Validated variance with source citations and accountable disposition; arithmetic does not establish a collectible debt.",
+  "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+  "primary_agent": "revenue-contract-analyst",
+  "handoffs": [
+    "revenue-cycle-specialist",
+    "revenue-finance-manager",
+    "payer-relations-specialist"
+  ]
+}

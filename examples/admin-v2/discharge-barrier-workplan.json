@@ -1,0 +1,33 @@
+{
+  "schema_version": "healthcare-admin.case.v2",
+  "workflow_id": "discharge-barrier-workplan",
+  "data_mode": "synthetic_only",
+  "human_owner": "Synthetic Discharge barrier coordination owner",
+  "evidence": [
+    {
+      "id": "fixture-1",
+      "origin": "synthetic",
+      "as_of": "2026-10-02",
+      "description": "Invented aggregate fixture for replay; no patient or real policy data.",
+      "fields": [
+        "barriers"
+      ]
+    }
+  ],
+  "data": {
+    "barriers": [
+      {
+        "category": "placement",
+        "cases": 4,
+        "avoidable_days": 10,
+        "owner": "Case management"
+      },
+      {
+        "category": "transport",
+        "cases": 2,
+        "avoidable_days": 3,
+        "owner": "Operations"
+      }
+    ]
+  }
+}

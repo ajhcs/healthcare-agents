@@ -43,6 +43,10 @@ try {
   runRequired(process.execPath, ['scripts/test-scale-emergency-department-count-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-essential-service-designation-count-review.js'], { cwd: installedPackage, env });
 
+  runRequired(process.execPath, ['scripts/test-admin-v2.js'], { cwd: installedPackage, env });
+  runRequired('python3', ['scripts/test_admin_adapter.py'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-release-version-gates.js'], { cwd: installedPackage, env });
+
   for (const file of [
     'node_modules/healthcare-agents/bin/cli.js',
     'node_modules/healthcare-agents/install.sh',

@@ -1,0 +1,29 @@
+{
+  "id": "ambulatory-access-backlog",
+  "name": "Ambulatory access recovery",
+  "purpose": "Turn aggregate demand, usable capacity and backlog into a testable access recovery plan.",
+  "checks": [
+    "Separate requested, scheduled and completed visits; reconcile specialty, site, urgency and measurement windows.",
+    "Model usable slots and staffing; distinguish a waitlist stock from weekly demand flow.",
+    "Test capacity and demand scenarios, then validate cancellations, visit mix and underserved groups.",
+    "Name scheduling and clinical owners; track booking lead time and backlog without changing clinical priority."
+  ],
+  "evidence": [
+    "Weekly requests and usable slots",
+    "Backlog as of a defined date and proposed additional slots",
+    "Visit mix, staffing constraints and cancellation assumptions"
+  ],
+  "decisions": [
+    "Operations owner validates usable capacity and staffing.",
+    "Clinical owner retains urgency/triage decisions.",
+    "Compare realized lead time and equity after any authorized change."
+  ],
+  "completion_gate": "Owners validate assumptions and a measured follow-up tests access improvement; no patient scheduling or clinical triage is executed.",
+  "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+  "primary_agent": "operations-ambulatory-manager",
+  "handoffs": [
+    "healthit-clinical-data-analyst",
+    "clinical-referral-specialist",
+    "operations-physician-practice-manager"
+  ]
+}

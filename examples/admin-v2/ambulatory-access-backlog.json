@@ -1,0 +1,26 @@
+{
+  "schema_version": "healthcare-admin.case.v2",
+  "workflow_id": "ambulatory-access-backlog",
+  "data_mode": "synthetic_only",
+  "human_owner": "Synthetic Ambulatory access recovery owner",
+  "evidence": [
+    {
+      "id": "fixture-1",
+      "origin": "synthetic",
+      "as_of": "2026-10-02",
+      "description": "Invented aggregate fixture for replay; no patient or real policy data.",
+      "fields": [
+        "weekly_requests",
+        "weekly_slots",
+        "backlog",
+        "additional_weekly_slots"
+      ]
+    }
+  ],
+  "data": {
+    "weekly_requests": 120,
+    "weekly_slots": 100,
+    "backlog": 100,
+    "additional_weekly_slots": 40
+  }
+}

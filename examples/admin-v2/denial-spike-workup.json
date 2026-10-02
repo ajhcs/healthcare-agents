@@ -1,0 +1,28 @@
+{
+  "schema_version": "healthcare-admin.case.v2",
+  "workflow_id": "denial-spike-workup",
+  "data_mode": "synthetic_only",
+  "human_owner": "Synthetic Denial spike investigation owner",
+  "evidence": [
+    {
+      "id": "fixture-1",
+      "origin": "synthetic",
+      "as_of": "2026-10-02",
+      "description": "Invented aggregate fixture for replay; no patient or real policy data.",
+      "fields": [
+        "baseline_claims",
+        "baseline_denied",
+        "current_claims",
+        "current_denied",
+        "denied_dollars"
+      ]
+    }
+  ],
+  "data": {
+    "baseline_claims": 1000,
+    "baseline_denied": 100,
+    "current_claims": 1000,
+    "current_denied": 180,
+    "denied_dollars": 42000
+  }
+}

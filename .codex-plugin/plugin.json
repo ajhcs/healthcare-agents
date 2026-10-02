@@ -1,7 +1,7 @@
 {
   "name": "healthcare-agents",
-  "version": "1.6.0",
-  "description": "51 US healthcare administration specialists for Codex.",
+  "version": "2.0.0-beta.1",
+  "description": "Healthcare administration skills, six deep workflows and a custom workflow builder.",
   "author": {
     "name": "ajhcs"
   },
@@ -21,7 +21,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Healthcare Agents",
-    "shortDescription": "51 US healthcare administration specialists for Codex.",
+    "shortDescription": "Healthcare administration workflows and evidence-aware skills.",
     "longDescription": "Use the Healthcare Agents plugin as a self-directing front door for healthcare administration work. It routes plain-language problems through workflow-first triage, department or area hints, and focused specialist prompts across revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, and emergency preparedness.",
     "developerName": "ajhcs",
     "category": "Productivity",

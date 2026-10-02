@@ -1,0 +1,29 @@
+{
+  "id": "denial-spike-workup",
+  "name": "Denial spike investigation",
+  "purpose": "Investigate a denial-rate change and separate operational loss, payer changes and coding risk.",
+  "checks": [
+    "Reconcile payer/product, service line, claim population and periods; compare counts before rates.",
+    "Segment CARC/RARC and first-pass versus final denials; distinguish unique claims from transactions.",
+    "Test policy, registration, authorization, coding and interface hypotheses against dated evidence.",
+    "Prioritize deadline exposure; draft an owner-led recovery plan and verify improvement on a later cohort."
+  ],
+  "evidence": [
+    "Aligned baseline/current claims and denied counts",
+    "Payer/product and dated CARC/RARC definitions",
+    "Actual denied dollars; contract, policy and appeal status"
+  ],
+  "decisions": [
+    "Revenue cycle owner validates cohorts and loss assumptions.",
+    "Coding/compliance owner reviews coding hypotheses; contracting owner verifies payer policy.",
+    "Authorized operator reviews any submission and verifies resulting receipt."
+  ],
+  "completion_gate": "Verified cohorts, named owners, tested root cause and a monitored follow-up; a calculated rate is only an intermediate result.",
+  "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+  "primary_agent": "revenue-cycle-specialist",
+  "handoffs": [
+    "revenue-contract-analyst",
+    "healthit-clinical-data-analyst",
+    "quality-compliance-officer"
+  ]
+}

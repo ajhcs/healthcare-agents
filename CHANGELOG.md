@@ -1,3 +1,7 @@
+# 2.0.0-beta.1 (candidate)
+
+Adds routing abstention, CHNA fallback, six deep workflow skills, compact role briefs, aggregate outcome contracts, custom workflow generation and five-target payload exports. Local and hosted acceptance are distinguished; no publication or live-host qualification is implied.
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

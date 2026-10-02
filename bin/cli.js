@@ -11,6 +11,7 @@ const {
   loadWorkflows,
   findWorkflow,
   createWorkup,
+  routeWorkflow,
   createWorkupAsync,
   formatWorkupMarkdown,
   normalizeTarget
@@ -69,6 +70,10 @@ Usage:
   healthcare-agents list [--domain <name>] [--json]
   healthcare-agents show <agent> [--json]
   healthcare-agents choose "<problem>" [--json]
+  healthcare-agents admin list
+  healthcare-agents admin run <case.json>
+  healthcare-agents admin build <spec.json> --output <new-dir>
+  healthcare-agents admin export <codex|claude|chatgpt|azure|databricks> <workflow-id> --output <new-dir>
   healthcare-agents workflows [--json]
   healthcare-agents workflow <workflow-id> [--json]
   healthcare-agents operator-os coverage [--json]
@@ -333,6 +338,17 @@ function chooseAgent(args) {
   const ranked = registry.agents
     .map(agent => ({ agent, score: scoreAgent(agent, problemTokens, problemText) }))
     .sort((a, b) => b.score - a.score);
+  const routed = routeWorkflow(problem);
+  const healthcareContext = /\b(healthcare|hospital|clinic|patient|physician|nursing|payer|medicare|medicaid|medical|clinical|pharmacy|chna|hipaa|hedis|hl7|fhir|snf|pdpm|caqh|pecos|hics|hva|emtala|ahrq|cms)\b|health system|community health/.test(problemText);
+  if (routed.status === 'no_match' && !healthcareContext) {
+    const result = { status: 'no_match', problem, primary_agent: null, confidence: 'low',
+      top_matches: [], missing_inputs: ['healthcare administrative outcome and setting'],
+      supporting_agents: [], starter_prompt: 'Clarify the healthcare administrative task before selecting a specialist.' };
+    console.log(json ? JSON.stringify(result, null, 2) : 'No healthcare specialist selected. Clarify the administrative outcome and setting.');
+    return;
+  }
+  const fallback = routed.fallback_agent;
+  if (fallback) { const index = ranked.findIndex(item => item.agent.slug === fallback.slug); ranked.unshift(...ranked.splice(index, 1)); }
   const primary = ranked[0].agent;
   const mode = modeFor(problem);
   const supporting = primary.handoffs.length
@@ -811,6 +827,30 @@ function runInstaller(command, args) {
   }
 }
 
+function adminCommand(args) {
+  const admin = require('../lib/admin-workflows');
+  const action = args[0];
+  if (action === 'list') {
+    console.log(JSON.stringify(admin.catalog(), null, 2));
+    return;
+  }
+  if (action === 'export') {
+    const output = requireOptionValue(args, '--output', 'admin export');
+    const manifest = admin.exportWorkflow(args[1], args[2], output);
+    console.log(JSON.stringify(manifest, null, 2));
+    return;
+  }
+  if (!['run', 'validate', 'build'].includes(action) || !args[1]) throw new Error('admin requires list, run <case.json>, validate <spec.json>, build <spec.json> --output <new-dir>, or export <target> <workflow-id> --output <new-dir>');
+  const stat = fs.statSync(args[1]);
+  if (stat.size > 2 * 1024 * 1024) throw new Error('Input exceeds 2 MiB');
+  const input = JSON.parse(fs.readFileSync(args[1], 'utf8'));
+  let result;
+  if (action === 'run') result = admin.runCase(input);
+  if (action === 'validate') result = { status: 'valid', workflow_id: admin.validateCustom(input).id };
+  if (action === 'build') result = admin.buildCustom(input, requireOptionValue(args, '--output', 'admin build'));
+  console.log(JSON.stringify(result, null, 2));
+}
+
 async function main() {
   const args = process.argv.slice(2);
   if (args.length === 0 || hasFlag(args, '--help') || hasFlag(args, '-h')) {
@@ -827,6 +867,7 @@ async function main() {
   if (command === 'operator-os') return operatorOsCommand(rest);
   if (command === 'evidence-pack') return evidencePackCommand(rest);
   if (command === 'review') return reviewCommand(rest);
+  if (command === 'admin') return adminCommand(rest);
   if (command === 'workup') return workupCommand(rest);
   if (command === 'export') return exportCommand(rest);
   if (command === 'internal-render') return internalRender(rest);

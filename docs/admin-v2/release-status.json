@@ -1,0 +1,17 @@
+{
+  "schema_version": "healthcare-admin.release-status.v2",
+  "version": "2.0.0-beta.1",
+  "candidate": true,
+  "local_payload_gate": "run tests against frozen bytes",
+  "publication": false,
+  "live_hosts_verified": [],
+  "model_outcome_campaign": false,
+  "source_dates_reverified": false,
+  "remaining_gates": [
+    "Independent implementation review",
+    "Pinned model task-level evaluation",
+    "Customer-host installation and tool integration",
+    "Current domain source verification for consequential claims",
+    "Explicit publication authorization and cross-channel payload verification"
+  ]
+}

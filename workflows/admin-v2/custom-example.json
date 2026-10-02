@@ -1,0 +1,38 @@
+{
+  "schema_version": "healthcare-admin.workflow.v2",
+  "id": "community-interview-plan",
+  "name": "Community stakeholder interview plan",
+  "purpose": "Prepare a CHNA stakeholder interview plan tied to approved community evidence.",
+  "primary_agent": "pophealth-community-health-coordinator",
+  "human_owner": "Community benefit director",
+  "required_inputs": [
+    {
+      "key": "community_scope",
+      "label": "Geography and stakeholder populations",
+      "type": "string",
+      "source_required": true
+    },
+    {
+      "key": "priorities",
+      "label": "Dated community priorities and source",
+      "type": "string",
+      "source_required": true
+    }
+  ],
+  "steps": [
+    "Reconcile community scope and missing voices against available evidence.",
+    "Draft interview questions, recruitment criteria and accessible participation options.",
+    "Map findings to priority-setting decisions without implying completed engagement."
+  ],
+  "output_sections": [
+    "Stakeholder coverage",
+    "Interview guide",
+    "Recruitment and consent plan",
+    "Evidence gaps and decision map"
+  ],
+  "acceptance": [
+    "Coverage includes underserved voices or records the gap.",
+    "Questions map to priorities with dated sources.",
+    "Human owner reviews recruitment, consent and any external outreach."
+  ]
+}

@@ -96,13 +96,13 @@ for (const agent of registry.agents) {
 }
 
 if (domainCounts.size !== 10) messages.push(`registry has ${domainCounts.size} domains, expected 10`);
-if (!readme.includes('51 specialist AI agents')) messages.push('README is missing the 51-agent product claim');
-if (!readme.includes('10') || !readme.includes('administrative domains')) messages.push('README is missing the 10-domain product claim');
-
-const summaryMatches = [...readme.matchAll(/<summary><strong>([^<]+)<\/strong> - (\d+) agents?<\/summary>/g)];
-const summaryTotal = summaryMatches.reduce((sum, match) => sum + Number(match[2]), 0);
-if (summaryMatches.length !== 10) messages.push(`README catalog has ${summaryMatches.length} domain summaries, expected 10`);
-if (summaryTotal !== registry.agents.length) messages.push(`README catalog summaries total ${summaryTotal}, expected ${registry.agents.length}`);
+if (!readme.includes('51 specialists') && !readme.includes('51 specialist AI agents')) messages.push('README is missing the 51-agent inventory');
+if (!readme.includes('10 administrative domains')) messages.push('README is missing the 10-domain inventory');
+const summaryMatches = [...readme.matchAll(/\| ([^|]+) \| (\d+) \|/g)];
+const declared = new Map(summaryMatches.map(match => [match[1].trim(), Number(match[2])]));
+for (const [domain, count] of domainCounts) {
+  if (declared.get(domain) !== count) messages.push('README domain inventory mismatch: ' + domain);
+}
 
 fail(messages);
 console.log(`registry consistency ok: ${registry.agents.length} agents, ${domainCounts.size} domains, ${summaryMatches.length} README domain summaries`);

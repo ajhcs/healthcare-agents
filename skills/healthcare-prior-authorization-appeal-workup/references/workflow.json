@@ -1,0 +1,29 @@
+{
+  "id": "prior-authorization-appeal-workup",
+  "name": "Prior authorization appeal preparation",
+  "purpose": "Prepare an administrative appeal evidence map without determining medical necessity or submitting an appeal.",
+  "checks": [
+    "Reconcile payer/product, service, decision reason and authorization identity in the approved environment.",
+    "Obtain the applicable policy and actual notice; use explicitly supplied deadline and receipt convention.",
+    "Map required versus available documentation and criteria; leave clinical justification to the treating clinician.",
+    "Draft a source-linked packet for accountable review, then verify authorized submission and receipt separately."
+  ],
+  "evidence": [
+    "Actual notice and dated payer/product rule",
+    "Explicit decision date and appeal deadline",
+    "Required/available document names and clinical reviewer"
+  ],
+  "decisions": [
+    "Payer liaison verifies deadline and receipt convention.",
+    "Treating clinician reviews medical-necessity justification.",
+    "Authorized operator approves submission and retains its receipt."
+  ],
+  "completion_gate": "Reviewed packet plus verified authorized submission/receipt when requested; document completeness alone is not an approved appeal.",
+  "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+  "primary_agent": "clinical-prior-authorization-specialist",
+  "handoffs": [
+    "clinical-care-management-specialist",
+    "quality-compliance-officer",
+    "clinical-utilization-management-specialist"
+  ]
+}

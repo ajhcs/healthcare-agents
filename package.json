@@ -1,7 +1,7 @@
 {
   "name": "healthcare-agents",
-  "version": "1.6.0",
-  "description": "Portable prompt and SKILL.md pack with 51 specialist AI agents for US healthcare administration workflows.",
+  "version": "2.0.0-beta.1",
+  "description": "Healthcare administration skills, six evidence-aware workflows and a local custom workflow builder.",
   "keywords": [
     "healthcare",
     "healthcare-administration",
@@ -69,7 +69,11 @@
     "verify:public-release:network": "node scripts/verify-public-release.js --network",
     "validate:public-version-sync": "node scripts/validate-public-version-sync.js",
     "release:check": "bash scripts/release-readiness.sh",
-    "test": "npm run release:check"
+    "test": "npm run release:check",
+    "test:admin-v2": "node scripts/test-admin-v2.js",
+    "test:admin-adapter": "python3 scripts/test_admin_adapter.py",
+    "generate:admin-v2": "node scripts/generate-admin-v2-assets.js && node scripts/generate-admin-v2-proof.js",
+    "test:release-version-gates": "node scripts/test-release-version-gates.js"
   },
   "engines": {
     "node": ">=18"
@@ -174,7 +178,14 @@
     "skills/",
     "VERSION",
     "LICENSE",
-    "workflows/"
+    "workflows/",
+    "adapters/python/*.py",
+    "docs/admin-v2/",
+    "scripts/test-admin-v2.js",
+    "scripts/test_admin_adapter.py",
+    "scripts/generate-admin-v2-assets.js",
+    "scripts/generate-admin-v2-proof.js",
+    "scripts/test-release-version-gates.js"
   ],
   "repository": {
     "type": "git",
