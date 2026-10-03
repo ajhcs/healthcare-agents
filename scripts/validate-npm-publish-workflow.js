@@ -34,7 +34,7 @@ function workflowProblems(workflow) {
     'test "$(git rev-parse "$RELEASE_TAG^{commit}")" = "$EXPECTED_COMMIT"',
     'node scripts/release-targets.js before "$RUNNER_TEMP/npm-before.json"',
     'node scripts/release-targets.js after "$RUNNER_TEMP/npm-before.json"',
-    'node scripts/validate-public-version-sync.js --network']) requireText(value);
+    'node scripts/validate-public-version-sync.js --network', 'GH_TOKEN: ${{ github.token }}']) requireText(value);
   const publish = steps.filter(step => /^\s*run: npm publish /m.test(step));
   if (publish.length !== 4) failures.push('expected two dry runs and two mutually exclusive publish paths');
   for (const step of publish) {

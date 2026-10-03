@@ -46,6 +46,8 @@ then uses Node 22.14.0/npm 11.5.1 to publish. These versions meet the documented
 Cloud execution and authentication have not been exercised by local dry-run checks.
 Permissions remain contents: read and id-token: write. The npm-production environment,
 NPM_TOKEN secret reference and optional trusted-publisher path are unchanged.
+The final read-only gh lookup receives the existing GitHub workflow token as GH_TOKEN;
+this adds no token creation or permissions.
 No token, trusted publisher, environment policy or CI permission is created here.
 A maintainer must use an already authorized publisher that permits direct npm publish;
 if it is absent, stop and obtain separately scoped authority for that setup.

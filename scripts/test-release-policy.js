@@ -40,6 +40,7 @@ pass(() => assert.deepEqual(workflowProblems(workflow),[]));
 for (const changed of [
   workflow.replace('--tag "$RELEASE_NPM_TAG"','--tag latest'),
   workflow.replace('contents: read','contents: write'),
+  workflow.replace('GH_TOKEN: ${{ github.token }}','GH_TOKEN: removed'),
   workflow.replace('required: true','required: false'),
   workflow.replace('run: npm ci --ignore-scripts --no-audit --no-fund','run: echo skipped'),
   workflow.replace('Install locked dependencies','Run release readiness gate'),

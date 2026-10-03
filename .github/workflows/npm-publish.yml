@@ -96,3 +96,5 @@ jobs:
 
       - name: Verify public npm and GitHub release
         run: node scripts/validate-public-version-sync.js --network
+        env:
+          GH_TOKEN: ${{ github.token }}
