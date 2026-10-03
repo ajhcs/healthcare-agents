@@ -23,6 +23,7 @@ const forbidden = [
 ];
 const required = [
   '.codex-plugin/mcp-stdio-bridge.json',
+  '.codex-plugin/mcp-node.json',
   'scripts/stage-codex-plugin.js',
   'scripts/test-codex-profile.js',
   'lib/public-evidence.js',

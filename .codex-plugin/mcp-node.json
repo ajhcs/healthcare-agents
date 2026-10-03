@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "healthcare-admin": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${PLUGIN_ROOT}/bin/mcp-server.js",
+        "--stdio"
+      ],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}
