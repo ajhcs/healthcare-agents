@@ -28,7 +28,17 @@ function assertRequested(t, env, head) {
   if (env.GITHUB_SHA !== head) throw new Error('workflow ref must be the same approved commit');
   if (env.GITHUB_REPOSITORY !== t.repository) throw new Error('publishing repository mismatch');
 }
+function assertAvailable(t, doc) {
+  if (doc?.name !== t.name || !doc.versions || typeof doc.versions !== 'object' || Array.isArray(doc.versions))
+    throw new Error('registry package identity and complete versions map are required');
+  if (Object.prototype.hasOwnProperty.call(doc.versions, t.version))
+    throw new Error('npm version already exists; never overwrite or reuse it');
+  if (typeof doc['dist-tags']?.latest !== 'string' || !doc['dist-tags'].latest)
+    throw new Error('cannot establish current npm latest');
+  return doc['dist-tags'].latest;
+}
 function assertRegistry(t, doc, before) {
+  if (doc?.name !== t.name) throw new Error('registry package identity mismatch');
   const entry = doc.versions?.[t.version];
   if (!entry || entry.name !== t.name || entry.version !== t.version)
     throw new Error('exact npm package/version metadata is missing');
@@ -80,9 +90,7 @@ async function cli() {
     const file = process.argv[3];
     if (!file || fs.existsSync(file)) throw new Error('supply a new registry snapshot path');
     const doc = await fetchJson(t.registry + '/' + t.name);
-    if (doc.versions?.[t.version]) throw new Error('npm version already exists; never overwrite or reuse it');
-    const latest = doc['dist-tags']?.latest;
-    if (typeof latest !== 'string' || !latest) throw new Error('cannot establish current npm latest');
+    const latest = assertAvailable(t, doc);
     assertGithub(t, await fetchJson('https://api.github.com/repos/' + t.repository + '/releases/tags/' + t.github_tag));
     fs.writeFileSync(file, JSON.stringify({ latest, target: t, observed_at: new Date().toISOString() }, null, 2) + '\n', { flag: 'wx' });
   } else if (mode === 'after') {
@@ -93,4 +101,4 @@ async function cli() {
   console.log(JSON.stringify(t, null, 2));
 }
 if (require.main === module) cli().catch(error => { console.error('release targets: ' + error.message); process.exitCode = 1; });
-module.exports = { targets, assertRequested, assertRegistry, assertGithub, fetchJson };
+module.exports = { targets, assertRequested, assertAvailable, assertRegistry, assertGithub, fetchJson };

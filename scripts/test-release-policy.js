@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const assert = require('assert/strict');
 const fs = require('fs');
-const { targets, assertRequested, assertRegistry, assertGithub } = require('./release-targets');
+const { targets, assertRequested, assertAvailable, assertRegistry, assertGithub } = require('./release-targets');
 const { workflowProblems } = require('./validate-npm-publish-workflow');
 const pkg = require('../package.json');
 const t = targets(pkg);
@@ -27,10 +27,17 @@ const release = {tag_name:t.github_tag,draft:false,prerelease:true};
 pass(() => assertGithub(t,release));
 for (const patch of [{tag_name:'v1.5.0'},{draft:true},{draft:undefined},{draft:null},{draft:0},{draft:'false'},{prerelease:false}])
   denied(() => assertGithub(t,{...release,...patch}));
-const doc = {versions:{[t.version]:{name:t.name,version:t.version,repository:pkg.repository,
+const doc = {name:t.name,versions:{[t.version]:{name:t.name,version:t.version,repository:pkg.repository,
   dist:{tarball:t.registry+'/'+t.name+'/-/'+t.name+'-'+t.version+'.tgz',integrity:'sha512-'+Buffer.alloc(64).toString('base64')}}},
   'dist-tags':{next:t.version,latest:'1.5.0'}};
 pass(() => assertRegistry(t,doc,{latest:'1.5.0'}));
+const available = {name:t.name,versions:{},'dist-tags':{latest:'1.5.0'}};
+pass(() => assert.equal(assertAvailable(t,available),'1.5.0'));
+for (const patch of [{name:'other'},{versions:undefined},{versions:null},{versions:[]},{versions:true},
+  {versions:{[t.version]:null}},{'dist-tags':{}},{'dist-tags':{latest:true}}])
+  denied(() => assertAvailable(t,{...available,...patch}));
+denied(() => assertAvailable(t,doc));
+denied(() => assertRegistry(t,{...doc,name:'other'}));
 for (const dist of [{tarball:true,integrity:true},{tarball:{},integrity:{}},{tarball:[],integrity:[]},
   {tarball:doc.versions[t.version].dist.tarball,integrity:'sha512-example'},
   {tarball:'https://example.org/package.tgz',integrity:doc.versions[t.version].dist.integrity}])
