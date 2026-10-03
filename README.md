@@ -158,3 +158,5 @@ Use one versioned release across package, lockfile, plugin and installer. Verify
 Preserve specialist domain identity, meaningful contracts and owner boundaries. Add realistic negative and conflicting-evidence cases when extending a workflow. Use the [workflow contribution guide](docs/usage/workflow-contribution-guide.md) and report reproducible issues through the repository.
 
 Apache-2.0 · [License](LICENSE) · [Release publishing](docs/release-publishing.md)
+
+For native hosts with restricted socket-based stdio, an optional [POSIX stdio bridge](docs/platforms/admin-v2-stdio-bridge.md) preserves the Node MCP contracts through anonymous pipes. Its process and byte regressions run with npm run test:stdio-bridge; native acceptance and model quality remain separate, exact-configuration checks.

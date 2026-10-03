@@ -111,3 +111,5 @@ Free-text discovery and explicit host selections follow the [routing authority c
 ## Receipt preprocessing
 
 Operators can use the [Data MCP receipt importer](../admin-v2/data-mcp-import.md) before submitting a case. The full evidence sidecar must accompany human review. This does not add a ninth MCP tool or grant aggregate execution to customer callbacks. Python/Pydantic is an optional importer dependency; the existing callback bridge remains Node-based.
+
+The optional [POSIX stdio bridge](admin-v2-stdio-bridge.md) adapts socket-based host stdio to anonymous pipes without changing the sandbox or network policy. It requires an existing Python 3 and is separate from the default portable Node launcher. Use the exact native configuration and qualification receipt for the tested host.

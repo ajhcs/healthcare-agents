@@ -83,7 +83,8 @@
     "test:plugin-consumer": "node scripts/test-plugin-consumer.js",
     "test:routing-intent": "node scripts/test-routing-intent.js",
     "test:result-boundary": "node scripts/test-result-boundary.js",
-    "test:public-evidence": "node scripts/test-public-evidence.js"
+    "test:public-evidence": "node scripts/test-public-evidence.js",
+    "test:stdio-bridge": "python3 scripts/test_stdio_bridge.py"
   },
   "engines": {
     "node": ">=18.14.1"
@@ -206,7 +207,8 @@
     "scripts/test-plugin-consumer.js",
     "scripts/test-routing-intent.js",
     "scripts/test-result-boundary.js",
-    "scripts/test-public-evidence.js"
+    "scripts/test-public-evidence.js",
+    "scripts/test_stdio_bridge.py"
   ],
   "repository": {
     "type": "git",
