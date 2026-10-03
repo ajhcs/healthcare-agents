@@ -4,8 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       expected_version:
-        description: 'Optional package version expected to be published, for example 1.6.0'
-        required: false
+        description: 'Exact approved package version, for example 2.0.0-beta.1'
+        required: true
+        type: string
+      expected_commit:
+        description: 'Exact approved full 40-character commit SHA'
+        required: true
         type: string
 
 permissions:
@@ -14,51 +18,81 @@ permissions:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: npm-production
     env:
       HAS_NPM_TOKEN: ${{ secrets.NPM_TOKEN != '' }}
     steps:
-      - name: Check out repository
+      - name: Check out approved commit
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.expected_commit }}
 
-      - name: Set up Node.js
+      - name: Set up qualification runtime
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18.19.1'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Verify requested version
-        if: ${{ inputs.expected_version != '' }}
-        run: |
-          actual="$(node -p "require('./package.json').version")"
-          if [ "$actual" != "${{ inputs.expected_version }}" ]; then
-            echo "Expected version ${{ inputs.expected_version }} but package.json is $actual" >&2
-            exit 1
-          fi
+      - name: Verify release targets
+        id: targets
+        env:
+          EXPECTED_VERSION: ${{ inputs.expected_version }}
+          EXPECTED_COMMIT: ${{ inputs.expected_commit }}
+        run: node scripts/release-targets.js ci
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
 
       - name: Run release readiness gate
         run: npm run release:check
 
+      - name: Set up publishing runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Pin npm trusted publishing client
+        run: npm install --global npm@11.5.1 --ignore-scripts --no-audit --no-fund
+
+      - name: Verify release tag and record npm latest
+        env:
+          RELEASE_TAG: ${{ steps.targets.outputs.github_tag }}
+          EXPECTED_COMMIT: ${{ inputs.expected_commit }}
+        run: |
+          git fetch origin "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG"
+          test "$(git rev-parse "$RELEASE_TAG^{commit}")" = "$EXPECTED_COMMIT"
+          node scripts/release-targets.js before "$RUNNER_TEMP/npm-before.json"
+
       - name: Verify package contents with npm token
         if: ${{ env.HAS_NPM_TOKEN == 'true' }}
-        run: npm publish --dry-run --access public
+        run: npm publish --dry-run --ignore-scripts --access public --registry https://registry.npmjs.org --tag "$RELEASE_NPM_TAG"
         env:
+          RELEASE_NPM_TAG: ${{ steps.targets.outputs.npm_tag }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Verify package contents with trusted publishing
         if: ${{ env.HAS_NPM_TOKEN != 'true' }}
-        run: npm publish --dry-run --access public
+        run: npm publish --dry-run --ignore-scripts --access public --registry https://registry.npmjs.org --tag "$RELEASE_NPM_TAG"
+        env:
+          RELEASE_NPM_TAG: ${{ steps.targets.outputs.npm_tag }}
 
       - name: Publish to npm with token
         if: ${{ env.HAS_NPM_TOKEN == 'true' }}
-        run: npm publish --access public --provenance
+        run: npm publish --ignore-scripts --access public --provenance --registry https://registry.npmjs.org --tag "$RELEASE_NPM_TAG"
         env:
+          RELEASE_NPM_TAG: ${{ steps.targets.outputs.npm_tag }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm with trusted publishing
         if: ${{ env.HAS_NPM_TOKEN != 'true' }}
-        run: npm publish --access public --provenance
+        run: npm publish --ignore-scripts --access public --provenance --registry https://registry.npmjs.org --tag "$RELEASE_NPM_TAG"
+        env:
+          RELEASE_NPM_TAG: ${{ steps.targets.outputs.npm_tag }}
 
-      - name: Verify public npm version
+      - name: Verify npm channel and unchanged latest
+        run: node scripts/release-targets.js after "$RUNNER_TEMP/npm-before.json"
+
+      - name: Verify public npm and GitHub release
         run: node scripts/validate-public-version-sync.js --network

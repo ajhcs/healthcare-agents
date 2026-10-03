@@ -2,7 +2,7 @@
 
 **Healthcare administration support, from a messy problem to a reviewable artifact.**
 
-This is the **v2.0.0-beta.1 development candidate**. It adds six deep workflows, compact skills, a custom workflow builder and repeatable aggregate calculations. Publication and live-host qualification are pending; `npx healthcare-agents` from the public registry does not yet deliver this candidate.
+This is the **v2.0.0-beta.1 development candidate**. It adds six deep workflows, compact skills, a custom workflow builder and repeatable aggregate calculations. Publication and customer cloud-host qualification are pending; the prepared POSIX Codex profile has bounded native qualification recorded below; `npx healthcare-agents` from the public registry does not yet deliver this candidate.
 
 ![Synthetic denial investigation: 10% baseline, 18% current, 8 percentage points higher](docs/assets/admin-v2-denial-proof.svg)
 

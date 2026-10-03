@@ -4,22 +4,30 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { spawnSync } = require('child_process');
+const { targets } = require('./release-targets');
 const root = path.join(__dirname, '..');
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-version-test-'));
-const version = require('../package.json').version;
+const t = targets(require('../package.json'));
+let checks = 0;
 try {
   function mocks(npmBody, ghBody) {
     for (const [name, body] of [['npm', npmBody], ['gh', ghBody]]) {
-      const file = path.join(tmp, name);
-      fs.writeFileSync(file, '#!/bin/sh\n' + body + '\n', { mode: 0o755 });
+      fs.writeFileSync(path.join(tmp,name), '#!' + process.execPath + '\n' + body + '\n', {mode:0o755});
     }
-    return spawnSync(process.execPath, ['scripts/validate-public-version-sync.js', '--network'], {
-      cwd: root, encoding: 'utf8', env: { ...process.env, PATH: tmp + path.delimiter + process.env.PATH }
+    return spawnSync(process.execPath,['scripts/validate-public-version-sync.js','--network'], {
+      cwd:root, encoding:'utf8', env:{...process.env,PATH:tmp+path.delimiter+process.env.PATH}
     });
   }
-  assert.notEqual(mocks('exit 7', 'exit 7').status, 0);
-  assert.notEqual(mocks('exit 0', 'exit 0').status, 0);
-  assert.notEqual(mocks('echo 1.5.0', 'echo v1.6.0').status, 0);
-  assert.equal(mocks('echo ' + version, 'echo v' + version).status, 0);
-  console.log('Release network gate: 4 controlled access/empty/drift/aligned cases passed; no public-channel receipt asserted');
-} finally { fs.rmSync(tmp, { recursive: true, force: true }); }
+  const goodNpm = 'require("assert/strict").deepEqual(process.argv.slice(2),' +
+    JSON.stringify(['view',t.name+'@next','version','--registry',t.registry]) + '); console.log(' + JSON.stringify(t.version) + ');';
+  const goodGh = 'require("assert/strict").deepEqual(process.argv.slice(2),' +
+    JSON.stringify(['release','view',t.github_tag,'--repo',t.repository,'--json','tagName,isDraft,isPrerelease']) +
+    '); console.log(' + JSON.stringify(JSON.stringify({tagName:t.github_tag,isDraft:false,isPrerelease:true})) + ');';
+  for (const [npm, gh, ok] of [
+    ['process.exit(7)','process.exit(7)',false],['','',false],
+    ['console.log("1.5.0")',goodGh,false],[goodNpm,'console.log("bad-json")',false],
+    [goodNpm,'console.log('+JSON.stringify(JSON.stringify({tagName:t.github_tag,isDraft:false,isPrerelease:false}))+')',false],
+    [goodNpm,goodGh,true]
+  ]) { const r=mocks(npm,gh); assert.equal(r.status===0,ok,r.stderr); checks++; }
+  console.log('Release network gate: '+checks+' controlled access/empty/drift/channel/exact-tag/prerelease cases passed; no public receipt asserted');
+} finally { fs.rmSync(tmp,{recursive:true,force:true}); }

@@ -22,6 +22,8 @@ const forbidden = [
   /(^|\/)temp\//
 ];
 const required = [
+  'scripts/release-targets.js',
+  'scripts/test-release-policy.js',
   '.codex-plugin/mcp-stdio-bridge.json',
   '.codex-plugin/mcp-node.json',
   'scripts/stage-codex-plugin.js',

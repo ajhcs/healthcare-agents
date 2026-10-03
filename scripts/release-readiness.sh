@@ -52,6 +52,7 @@ node scripts/test-result-boundary.js
 node scripts/test-plugin-consumer.js
 node scripts/test-admin-v2-consumer.js
 node scripts/test-release-version-gates.js
+node scripts/test-release-policy.js
 python3 scripts/test_admin_adapter.py
 
 section "CLI, installer, routing, package, and tarball"

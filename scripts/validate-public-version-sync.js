@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const { run } = require('./_release-utils');
+const { targets } = require('./release-targets');
 
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const lock = fs.existsSync('package-lock.json') ? JSON.parse(fs.readFileSync('package-lock.json', 'utf8')) : null;
@@ -15,17 +16,23 @@ if (pkg.version !== versionFile) failures.push('package.json version ' + pkg.ver
 if (!installText.includes('VERSION="' + pkg.version + '"')) failures.push('install.sh VERSION does not match package.json');
 if (plugin.version !== pkg.version) failures.push('Codex plugin version ' + plugin.version + ' does not match package.json ' + pkg.version);
 
-if (process.argv.includes('--network')) {
-  const npm = run('npm', ['view', pkg.name, 'version']);
+let target;
+try { target = targets(pkg); } catch (error) { failures.push(error.message); }
+
+if (process.argv.includes('--network') && target) {
+  const npm = run('npm', ['view', pkg.name + '@' + target.npm_tag, 'version', '--registry', target.registry]);
   if (npm.status !== 0 || !npm.stdout.trim()) failures.push('npm version lookup failed or returned empty data');
   if (npm.status === 0 && npm.stdout.trim() && npm.stdout.trim() !== pkg.version) {
-    failures.push('npm latest ' + npm.stdout.trim() + ' does not match package.json ' + pkg.version);
+    failures.push('npm ' + target.npm_tag + ' ' + npm.stdout.trim() + ' does not match package.json ' + pkg.version);
   }
-  const gh = run('gh', ['release', 'view', '--json', 'tagName', '--jq', '.tagName']);
+  const gh = run('gh', ['release', 'view', target.github_tag, '--repo', target.repository, '--json', 'tagName,isDraft,isPrerelease']);
   if (gh.status !== 0 || !gh.stdout.trim()) failures.push('GitHub release lookup failed or returned empty data');
   if (gh.status === 0 && gh.stdout.trim()) {
-    const tag = gh.stdout.trim().replace(/^v/, '');
-    if (tag !== pkg.version) failures.push('GitHub latest release ' + tag + ' does not match package.json ' + pkg.version);
+    try {
+      const release = JSON.parse(gh.stdout);
+      if (release.tagName !== target.github_tag || release.isDraft || release.isPrerelease !== target.github_prerelease)
+        failures.push('GitHub exact release tag or prerelease state mismatch');
+    } catch { failures.push('GitHub release lookup returned invalid JSON'); }
   }
 }
 

@@ -52,7 +52,7 @@ startup_timeout_sec = 20
 tool_timeout_sec = 20
 ```
 
-The included-allowance evaluation uses per-invocation configuration, read-only sandboxing and the existing ChatGPT-authenticated launcher. See the separate model campaign receipt for the actual version, model, task outcomes and limits. Native marketplace/plugin installation is a different acceptance gate.
+The included-allowance evaluation uses per-invocation configuration, read-only sandboxing and the existing ChatGPT-authenticated launcher. See the separate model campaign receipt for the actual version, model, task outcomes and limits. Native marketplace/plugin installation is a separate acceptance gate. The prepared POSIX Node and opt-in Python profiles at a57428d82030aa79d9a66fb43ea965b19f5ec574 passed that bounded lifecycle gate on BuilderBob Codex 0.160.0: eight skills/tools, six workflows, builder, typed error, removal and controlled restoration. This does not qualify the portable launcher on every host or customer cloud tenant. See [Codex setup](codex.md) and [release status](../admin-v2/release-status.json).
 
 ## ChatGPT
 

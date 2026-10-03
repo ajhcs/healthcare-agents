@@ -86,7 +86,8 @@
     "test:public-evidence": "node scripts/test-public-evidence.js",
     "test:stdio-bridge": "python3 scripts/test_stdio_bridge.py",
     "stage:codex-plugin": "node scripts/stage-codex-plugin.js",
-    "test:codex-profile": "node scripts/test-codex-profile.js"
+    "test:codex-profile": "node scripts/test-codex-profile.js",
+    "test:release-policy": "node scripts/test-release-policy.js"
   },
   "engines": {
     "node": ">=18.14.1"
@@ -212,7 +213,9 @@
     "scripts/test-public-evidence.js",
     "scripts/test_stdio_bridge.py",
     "scripts/stage-codex-plugin.js",
-    "scripts/test-codex-profile.js"
+    "scripts/test-codex-profile.js",
+    "scripts/release-targets.js",
+    "scripts/test-release-policy.js"
   ],
   "repository": {
     "type": "git",
@@ -228,5 +231,10 @@
   },
   "overrides": {
     "@hono/node-server": "1.19.11"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "next",
+    "registry": "https://registry.npmjs.org"
   }
 }
