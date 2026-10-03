@@ -166,6 +166,15 @@ test('Python canonical float representation is verified without JS rehashing',()
 });
 test('transport schema does not coerce numeric dates',()=>{const f=fixture();f.bundle.created_at=1790942400;assert.throws(()=>mapPublicEvidence(JSON.stringify(f.bundle),f.mapping,options),{code:'PUBLIC_EVIDENCE_CONTRACT_INVALID'});});
 test('unsafe integers cannot lose custody through JS parsing',()=>{const f=fixture();f.bundle.request.parameters.unsafe=9007199254740992;assert.throws(()=>mapPublicEvidence(JSON.stringify(f.bundle),f.mapping,options),{code:'UNSAFE_NUMBER_REQUIRES_REVIEW'});});
+for(const [workflow,ownerPath,sourcePath] of [
+  ['ambulatory-access-backlog','/additional_weekly_slots','/weekly_slots'],
+  ['denial-spike-workup','/denied_dollars','/current_denied']
+])test('remaining source periods align with owner input '+workflow,()=>{
+  const f=fixture(workflow),binding=f.mapping.bindings.find(x=>x.path===ownerPath),o=f.bundle.observations.find(x=>x.observation_id===binding.observation_id);
+  f.mapping.bindings=f.mapping.bindings.filter(x=>x!==binding);f.mapping.owner_inputs.push({path:binding.path,value:o.value,as_of:f.mapping.as_of,description:'Explicit operator scalar; source periods still require alignment.'});
+  const b=f.mapping.bindings.find(x=>x.path===sourcePath),row=f.bundle.observations.find(x=>x.observation_id===b.observation_id);
+  row.period={label:'different source period',start:'2026-09-01',end:'2026-09-30'};b.expect.period=clone(row.period);seal(f);blocked(f,'COHORT_ALIGNMENT_REQUIRES_REVIEW');
+});
 test('one leading BOM is parsed but remains in bundle and mapping custody hashes',()=>{
   const f=fixture(),raw='\uFEFF'+f.raw,mappingRaw='\uFEFF'+JSON.stringify(f.mapping),x=mapPublicEvidence(raw,mappingRaw,options);
   assert.equal(x.status,'ready_for_human_review');
