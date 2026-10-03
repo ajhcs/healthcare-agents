@@ -159,4 +159,4 @@ Preserve specialist domain identity, meaningful contracts and owner boundaries. 
 
 Apache-2.0 · [License](LICENSE) · [Release publishing](docs/release-publishing.md)
 
-For native hosts with restricted socket-based stdio, an optional [POSIX stdio bridge](docs/platforms/admin-v2-stdio-bridge.md) preserves the Node MCP contracts through anonymous pipes. Its process and byte regressions run with npm run test:stdio-bridge; native acceptance and model quality remain separate, exact-configuration checks.
+For affected native Codex POSIX hosts, the opt-in [bridge package profile](docs/platforms/admin-v2-stdio-bridge.md) prepares an independent local marketplace and selects the verified bridge in the plugin manifest. Existing Python and Node executables are checked before preparation; no cache-path lookup, per-thread server override or security-setting change is required. Portable defaults remain Node. Run npm run test:codex-profile and npm run test:stdio-bridge; native acceptance and model quality remain separate, exact-configuration checks.

@@ -22,6 +22,9 @@ const forbidden = [
   /(^|\/)temp\//
 ];
 const required = [
+  '.codex-plugin/mcp-stdio-bridge.json',
+  'scripts/stage-codex-plugin.js',
+  'scripts/test-codex-profile.js',
   'lib/public-evidence.js',
   'lib/data-mcp-contract/public_evidence.py',
   'lib/data-mcp-contract/validate_bundle.py',

@@ -84,7 +84,9 @@
     "test:routing-intent": "node scripts/test-routing-intent.js",
     "test:result-boundary": "node scripts/test-result-boundary.js",
     "test:public-evidence": "node scripts/test-public-evidence.js",
-    "test:stdio-bridge": "python3 scripts/test_stdio_bridge.py"
+    "test:stdio-bridge": "python3 scripts/test_stdio_bridge.py",
+    "stage:codex-plugin": "node scripts/stage-codex-plugin.js",
+    "test:codex-profile": "node scripts/test-codex-profile.js"
   },
   "engines": {
     "node": ">=18.14.1"
@@ -208,7 +210,9 @@
     "scripts/test-routing-intent.js",
     "scripts/test-result-boundary.js",
     "scripts/test-public-evidence.js",
-    "scripts/test_stdio_bridge.py"
+    "scripts/test_stdio_bridge.py",
+    "scripts/stage-codex-plugin.js",
+    "scripts/test-codex-profile.js"
   ],
   "repository": {
     "type": "git",
