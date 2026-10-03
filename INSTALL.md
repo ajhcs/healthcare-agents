@@ -146,15 +146,15 @@ compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex
 
 ## Codex CLI and Codex App
 
-For this unpublished v2 beta on the affected Codex POSIX host, use the package-owned bridge profile with existing Node/npm and Python 3:
+For this unpublished v2 beta on the tested BuilderBob Codex host, prepare a package-owned local profile with existing Node/npm:
 
 ```bash
-node scripts/stage-codex-plugin.js --stdio-bridge --output "$HOME/healthcare-agents-codex-posix"
-codex plugin marketplace add "$HOME/healthcare-agents-codex-posix"
+node scripts/stage-codex-plugin.js --output "$HOME/healthcare-agents-codex-local"
+codex plugin marketplace add "$HOME/healthcare-agents-codex-local"
 codex plugin add healthcare-agents@healthcare-agents-posix-local
 ```
 
-Start a new thread. The [profile guide](docs/platforms/admin-v2-stdio-bridge.md) gives dependency preflight, removal and exact tested-host limits. No per-thread MCP override is needed. The public registry does not yet contain this candidate.
+Start a new thread. Python is optional: add --stdio-bridge during preparation to select the tested POSIX bridge. The [profile guide](docs/platforms/admin-v2-stdio-bridge.md) gives dependency preflight, removal and exact tested-host limits. No per-thread MCP override is needed. The public registry does not yet contain this candidate.
 
 For a host that supports the portable Node launcher, the existing local plugin installer remains available:
 

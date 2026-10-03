@@ -128,7 +128,7 @@ function prepare(argv) {
     installed_dependencies: Object.fromEntries(Object.entries(lock.packages || {}).filter(([p]) => p && p !== 'node_modules/healthcare-agents').map(([p, v]) => [p, v.version])),
     profile_changes: changes, staged_file_sha256: identity,
     codex_profile_written: false, plugin_activated: false, security_settings_changed: false,
-    host_qualification: 'Bridge native acceptance is Ubuntu/Python3.12.3/Codex0.160 only; other hosts require their own acceptance.'
+    host_qualification: 'Node native acceptance is Ubuntu24.04/Node18.19.1/Codex0.160; optional bridge also requires Python3.12.3. Other hosts require their own acceptance.'
   };
   fs.writeFileSync(path.join(destination, 'STAGING-RECEIPT.json'), JSON.stringify(receipt, null, 2) + '\n');
   return receipt;
