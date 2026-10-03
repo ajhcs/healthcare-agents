@@ -77,23 +77,28 @@ function prepare(argv) {
     if (!file.startsWith(installed + path.sep)) throw new Error('Invalid package file path');
     identity[item.path] = sha(fs.readFileSync(file));
   }
+  // Normalize both modes, including when ROOT is an already prepared profile.
+  // mcp.json remains the portable Node descriptor; .mcp.json is the Codex selector.
+  const manifestPath = path.join(installed, '.codex-plugin', 'plugin.json');
+  const manifest = JSON.parse(fs.readFileSync(manifestPath));
+  manifest.mcpServers = './.mcp.json';
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+  const portableServer = JSON.parse(fs.readFileSync(path.join(installed, 'mcp.json'))).mcpServers['healthcare-admin'];
+  delete portableServer.type;
+  delete portableServer.cwd;
+  const selectedServer = opts.bridge ? {
+    command: python.executable,
+    args: ['-B', path.join(installed, 'bin', 'mcp-stdio-bridge.py'), '--node', process.execPath],
+    cwd: installed
+  } : portableServer;
+  const configPath = path.join(installed, '.mcp.json');
+  fs.writeFileSync(configPath, JSON.stringify({ mcpServers: { 'healthcare-admin': selectedServer } }, null, 2) + '\n');
   const changes = [];
-  if (opts.bridge) {
-    const manifestPath = path.join(installed, '.codex-plugin', 'plugin.json');
-    const manifest = JSON.parse(fs.readFileSync(manifestPath));
-    manifest.mcpServers = './.codex-plugin/mcp-stdio-bridge.json';
-    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
-    const configPath = path.join(installed, '.codex-plugin', 'mcp-stdio-bridge.json');
-    const config = JSON.parse(fs.readFileSync(configPath));
-    const server = config.mcpServers['healthcare-admin'];
-    server.command = python.executable;
-    server.args.push('--node', process.execPath);
-    fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
-    for (const relative of ['.codex-plugin/plugin.json', '.codex-plugin/mcp-stdio-bridge.json']) {
-      const after = sha(fs.readFileSync(path.join(installed, relative)));
+  for (const relative of ['.codex-plugin/plugin.json', '.mcp.json']) {
+    const after = sha(fs.readFileSync(path.join(installed, relative)));
+    if (after !== identity[relative])
       changes.push({ path: relative, source_sha256: identity[relative], staged_sha256: after });
-      identity[relative] = after;
-    }
+    identity[relative] = after;
   }
   const marketplaceDirectory = path.join(destination, '.agents', 'plugins');
   fs.mkdirSync(marketplaceDirectory, { recursive: true });
