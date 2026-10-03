@@ -82,7 +82,8 @@
     "test:host-contracts": "node scripts/test-host-contracts.js",
     "test:plugin-consumer": "node scripts/test-plugin-consumer.js",
     "test:routing-intent": "node scripts/test-routing-intent.js",
-    "test:result-boundary": "node scripts/test-result-boundary.js"
+    "test:result-boundary": "node scripts/test-result-boundary.js",
+    "test:public-evidence": "node scripts/test-public-evidence.js"
   },
   "engines": {
     "node": ">=18.14.1"
@@ -204,7 +205,8 @@
     "scripts/test-host-contracts.js",
     "scripts/test-plugin-consumer.js",
     "scripts/test-routing-intent.js",
-    "scripts/test-result-boundary.js"
+    "scripts/test-result-boundary.js",
+    "scripts/test-public-evidence.js"
   ],
   "repository": {
     "type": "git",

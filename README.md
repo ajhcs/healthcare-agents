@@ -93,6 +93,18 @@ Eight read-only MCP tools expose catalog discovery, the six validated calculatio
 
 Existing [installation options](INSTALL.md) and [platform exports](docs/platforms/) remain available. Generated text and installation simulations do not prove acceptance by every current live client.
 
+## Import source receipts
+
+The optional [Data MCP receipt importer](docs/admin-v2/data-mcp-import.md) maps a pinned public-evidence bundle into one of the six case contracts. It keeps full receipts, lineage, missingness and conflicts in a custody sidecar. Operators supply exact field bindings; absent or contradictory evidence blocks case creation.
+
+~~~bash
+node bin/cli.js admin import-evidence examples/admin-v2/data-mcp/denial-spike-workup.bundle.json \
+  --mapping examples/admin-v2/data-mcp/denial-spike-workup.mapping.json \
+  --output ./imported-denials --python /path/to/python-with-pydantic
+~~~
+
+This optional preprocessing step requires Python 3.11+ and the [pinned validator dependency](lib/data-mcp-contract/requirements.txt). The [six examples](examples/admin-v2/data-mcp/) are wholly synthetic and were generated through the Data MCP producer CLI; they do not establish public metric availability or customer-host deployment. The existing eight MCP tools remain unchanged.
+
 ## Evidence and boundaries
 
 Every v2 numeric input requires an explicit evidence record with source, origin and as-of date. Synthetic and aggregate modes cannot be silently mixed. Missingness and unknown recoverable cash remain explicit. Unexpected fields, invalid dates and impossible denominators fail validation.
@@ -116,6 +128,8 @@ flowchart LR
 
 ```bash
 npm run test:admin-v2
+# Optional receipt importer, with the pinned Python validator installed:
+HAG_EVIDENCE_PYTHON=/path/to/python-with-pydantic npm run test:public-evidence
 npm run test:admin-adapter
 npm run test:admin-consumer
 npm run test:admin-mcp

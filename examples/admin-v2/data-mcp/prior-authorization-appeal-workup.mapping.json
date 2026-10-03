@@ -1,0 +1,130 @@
+{
+  "schema_version": "healthcare-admin.evidence-mapping.v1",
+  "workflow_id": "prior-authorization-appeal-workup",
+  "human_owner": "Synthetic Prior authorization appeal preparation owner",
+  "data_mode": "synthetic_only",
+  "as_of": "2026-10-03",
+  "bundle_sha256": "sha256:46cc47ff9225e34cd7e6d523b600586e1c614c12b93c92e0d33b37eb0d34ff81",
+  "entity_id": "fictional-cedar",
+  "scope": {
+    "systems": [
+      "Fictional Cedar System"
+    ],
+    "market": {
+      "synthetic": true
+    },
+    "service_line": "fictional administrative scope",
+    "periods": [
+      "synthetic-2026"
+    ]
+  },
+  "accepted_conflict_ids": [],
+  "data": {
+    "decision_date": null,
+    "appeal_deadline": null,
+    "rule_reference": null,
+    "available_documents": [
+      null
+    ],
+    "required_documents": [
+      null,
+      null
+    ]
+  },
+  "bindings": [
+    {
+      "path": "/decision_date",
+      "coverage_id": "coverage-0",
+      "observation_id": "obs-0",
+      "expect": {
+        "measure_id": "/decision_date",
+        "value_type": "string",
+        "unit": "calendar_date",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/appeal_deadline",
+      "coverage_id": "coverage-1",
+      "observation_id": "obs-1",
+      "expect": {
+        "measure_id": "/appeal_deadline",
+        "value_type": "string",
+        "unit": "calendar_date",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/available_documents/0",
+      "coverage_id": "coverage-3",
+      "observation_id": "obs-3",
+      "expect": {
+        "measure_id": "/available_documents/0",
+        "value_type": "string",
+        "unit": "document_label",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/required_documents/0",
+      "coverage_id": "coverage-4",
+      "observation_id": "obs-4",
+      "expect": {
+        "measure_id": "/required_documents/0",
+        "value_type": "string",
+        "unit": "document_label",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/required_documents/1",
+      "coverage_id": "coverage-5",
+      "observation_id": "obs-5",
+      "expect": {
+        "measure_id": "/required_documents/1",
+        "value_type": "string",
+        "unit": "document_label",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    }
+  ],
+  "owner_inputs": [
+    {
+      "path": "/rule_reference",
+      "value": "Synthetic payer notice; no real policy assertion",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    }
+  ],
+  "source_origin": "synthetic"
+}

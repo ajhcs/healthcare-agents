@@ -22,6 +22,17 @@ const forbidden = [
   /(^|\/)temp\//
 ];
 const required = [
+  'lib/public-evidence.js',
+  'lib/data-mcp-contract/public_evidence.py',
+  'lib/data-mcp-contract/validate_bundle.py',
+  'lib/data-mcp-contract/public-evidence-bundle.schema.json',
+  'lib/data-mcp-contract/requirements.txt',
+  'lib/data-mcp-contract/LICENSE',
+  'lib/data-mcp-contract/UPSTREAM.json',
+  'docs/admin-v2/data-mcp-import.md',
+  'scripts/test-public-evidence.js',
+  'examples/admin-v2/data-mcp/denial-spike-workup.bundle.json',
+  'examples/admin-v2/data-mcp/denial-spike-workup.mapping.json',
   '.codex-plugin/plugin.json',
   'bin/cli.js',
   'install.sh',

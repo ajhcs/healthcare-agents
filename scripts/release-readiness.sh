@@ -40,6 +40,11 @@ node scripts/validate-operator-os-coverage.js
 
 section "v2 observable outcomes and local adapter"
 node scripts/test-admin-v2.js
+if [[ -n "${HAG_EVIDENCE_PYTHON:-}" ]]; then
+  node scripts/test-public-evidence.js
+else
+  printf "Receipt-import tests require HAG_EVIDENCE_PYTHON with the pinned Python dependencies; importer not qualified by this run.\n"
+fi
 node scripts/test-routing-intent.js
 node scripts/test-admin-mcp.js
 node scripts/test-host-contracts.js

@@ -107,3 +107,7 @@ Documentation reviewed for this slice:
 Run test:admin-mcp, test:host-contracts, test:result-boundary, test:plugin-consumer and test:routing-intent, then npm test. The plugin schema snapshots include source URLs and byte hashes under docs/admin-v2/plugin-schemas. Qualify each actual customer host with a valid synthetic case, a missing/conflicting-evidence case and an unrelated request; record the exact host/model/package identities and remaining external-action gates.
 
 Free-text discovery and explicit host selections follow the [routing authority contract](../admin-v2/routing-authority.md). The prior model campaign is historical snapshot evidence, not a new campaign for this repair.
+
+## Receipt preprocessing
+
+Operators can use the [Data MCP receipt importer](../admin-v2/data-mcp-import.md) before submitting a case. The full evidence sidecar must accompany human review. This does not add a ninth MCP tool or grant aggregate execution to customer callbacks. Python/Pydantic is an optional importer dependency; the existing callback bridge remains Node-based.

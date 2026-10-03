@@ -1,0 +1,127 @@
+{
+  "schema_version": "healthcare-admin.evidence-mapping.v1",
+  "workflow_id": "survey-readiness-gap-review",
+  "human_owner": "Synthetic Survey evidence gap review owner",
+  "data_mode": "synthetic_only",
+  "as_of": "2026-10-03",
+  "bundle_sha256": "sha256:54a3da0632bb24b8b1d9dbc6ec22d9291a65b10e11dbd77a991055490f04946b",
+  "entity_id": "fictional-cedar",
+  "scope": {
+    "systems": [
+      "Fictional Cedar System"
+    ],
+    "market": {
+      "synthetic": true
+    },
+    "service_line": "fictional administrative scope",
+    "periods": [
+      "synthetic-2026"
+    ]
+  },
+  "accepted_conflict_ids": [],
+  "data": {
+    "findings": [
+      {
+        "id": null,
+        "standard_ref": null,
+        "evidence_present": null,
+        "owner": null,
+        "due_date": null
+      },
+      {
+        "id": null,
+        "standard_ref": null,
+        "evidence_present": null,
+        "owner": null,
+        "due_date": null
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "path": "/findings/0/evidence_present",
+      "coverage_id": "coverage-2",
+      "observation_id": "obs-2",
+      "expect": {
+        "measure_id": "/findings/0/evidence_present",
+        "value_type": "boolean",
+        "unit": "evidence_presence",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/findings/1/evidence_present",
+      "coverage_id": "coverage-7",
+      "observation_id": "obs-7",
+      "expect": {
+        "measure_id": "/findings/1/evidence_present",
+        "value_type": "boolean",
+        "unit": "evidence_presence",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    }
+  ],
+  "owner_inputs": [
+    {
+      "path": "/findings/0/id",
+      "value": "F1",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/findings/0/standard_ref",
+      "value": "Synthetic standard A",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/findings/0/owner",
+      "value": "Facilities",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/findings/0/due_date",
+      "value": "2026-10-15",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/findings/1/id",
+      "value": "F2",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/findings/1/standard_ref",
+      "value": "Synthetic standard B",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/findings/1/owner",
+      "value": "Nursing",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/findings/1/due_date",
+      "value": "2026-10-20",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    }
+  ],
+  "source_origin": "synthetic"
+}

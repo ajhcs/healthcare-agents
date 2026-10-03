@@ -71,6 +71,7 @@ Usage:
   healthcare-agents list [--domain <name>] [--json]
   healthcare-agents show <agent> [--json]
   healthcare-agents choose "<problem>" [--agent <id>|--selection <file>] [--json]
+  healthcare-agents admin import-evidence <bundle.json> --mapping <mapping.json> --output <new-dir> [--python <python3>]
   healthcare-agents admin list
   healthcare-agents admin run <case.json>
   healthcare-agents admin build <spec.json> --output <new-dir>
@@ -820,11 +821,39 @@ function runInstaller(command, args) {
   }
 }
 
+function readEvidenceFile(file) {
+  const limit = 2 * 1024 * 1024;
+  const fd = fs.openSync(file, 'r');
+  try {
+    const stat = fs.fstatSync(fd);
+    if (!stat.isFile() || stat.size > limit) throw new Error('Evidence input must be a regular file of at most 2 MiB');
+    const buffer = Buffer.alloc(limit + 1);
+    let bytes = 0;
+    while (bytes < buffer.length) {
+      const read = fs.readSync(fd, buffer, bytes, buffer.length - bytes, null);
+      if (!read) break;
+      bytes += read;
+    }
+    if (bytes > limit) throw new Error('Input exceeds 2 MiB');
+    return new TextDecoder('utf-8', { fatal: true }).decode(buffer.subarray(0, bytes));
+  } finally { fs.closeSync(fd); }
+}
+
 function adminCommand(args) {
   const admin = require('../lib/admin-workflows');
   const action = args[0];
   if (action === 'list') {
     console.log(JSON.stringify(admin.catalog(), null, 2));
+    return;
+  }
+  if (action === 'import-evidence') {
+    const bundlePath = args[1];
+    const mappingPath = requireOptionValue(args, '--mapping', 'admin import-evidence');
+    const output = requireOptionValue(args, '--output', 'admin import-evidence');
+    if (!bundlePath) throw new Error('admin import-evidence requires a bundle file');
+    const options = args.includes('--python') ? { python: requireOptionValue(args, '--python', 'admin import-evidence') } : {};
+    const result = require('../lib/public-evidence').importEvidence(readEvidenceFile(bundlePath), readEvidenceFile(mappingPath), output, options);
+    console.log(JSON.stringify(result, null, 2));
     return;
   }
   if (action === 'export') {

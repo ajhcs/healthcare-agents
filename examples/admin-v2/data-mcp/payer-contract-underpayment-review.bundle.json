@@ -1,0 +1,267 @@
+{
+  "bundle_id": "synthetic-payer-contract-underpayment-review",
+  "producer": {
+    "repo": "healthcare-data-mcp",
+    "version": "0.4.0",
+    "commit": "7741ee6d38776baf3aa72ae826e7200a5a0944b8"
+  },
+  "created_at": "2026-10-02T12:00:00Z",
+  "request": {
+    "workflow": "payer-contract-underpayment-review",
+    "parameters": {
+      "synthetic": true
+    }
+  },
+  "scope": {
+    "systems": [
+      "Fictional Cedar System"
+    ],
+    "market": {
+      "synthetic": true
+    },
+    "service_line": "fictional administrative scope",
+    "periods": [
+      "synthetic-2026"
+    ]
+  },
+  "entities": [
+    {
+      "entity_id": "fictional-cedar",
+      "canonical_name": "Fictional Cedar System",
+      "entity_type": "synthetic_health_system",
+      "ccn": "",
+      "npi": "",
+      "pecos_enrollment_id": "",
+      "ahrq_system_id": "",
+      "owner_id": "",
+      "address": "",
+      "zip_code": "",
+      "aliases": [],
+      "match_decisions": [
+        {
+          "basis": "Synthetic fixture ID selected by operator",
+          "confidence": "fixture_only",
+          "decided_at": null,
+          "notes": "No real identity verified."
+        }
+      ],
+      "conflicts": [],
+      "unresolved_identifiers": []
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "obs-1",
+      "measure_id": "/lines/0/expected",
+      "value_type": "integer",
+      "value": 1000,
+      "unit": "USD",
+      "period": {
+        "start": "2026-10-01",
+        "end": "2026-10-31",
+        "label": "synthetic-current"
+      },
+      "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+      "entity_ref": "fictional-cedar",
+      "receipt_refs": [
+        "synthetic-receipt"
+      ],
+      "derivation_class": "source_reported",
+      "caveat": "Fabricated example; no verified measure or legal/clinical rule.",
+      "dependency_cluster_ids": [
+        "one-synthetic-source"
+      ]
+    },
+    {
+      "observation_id": "obs-2",
+      "measure_id": "/lines/0/paid",
+      "value_type": "integer",
+      "value": 800,
+      "unit": "USD",
+      "period": {
+        "start": "2026-10-01",
+        "end": "2026-10-31",
+        "label": "synthetic-current"
+      },
+      "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+      "entity_ref": "fictional-cedar",
+      "receipt_refs": [
+        "synthetic-receipt"
+      ],
+      "derivation_class": "source_reported",
+      "caveat": "Fabricated example; no verified measure or legal/clinical rule.",
+      "dependency_cluster_ids": [
+        "one-synthetic-source"
+      ]
+    },
+    {
+      "observation_id": "obs-6",
+      "measure_id": "/lines/1/expected",
+      "value_type": "integer",
+      "value": 500,
+      "unit": "USD",
+      "period": {
+        "start": "2026-10-01",
+        "end": "2026-10-31",
+        "label": "synthetic-current"
+      },
+      "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+      "entity_ref": "fictional-cedar",
+      "receipt_refs": [
+        "synthetic-receipt"
+      ],
+      "derivation_class": "source_reported",
+      "caveat": "Fabricated example; no verified measure or legal/clinical rule.",
+      "dependency_cluster_ids": [
+        "one-synthetic-source"
+      ]
+    },
+    {
+      "observation_id": "obs-7",
+      "measure_id": "/lines/1/paid",
+      "value_type": "integer",
+      "value": 550,
+      "unit": "USD",
+      "period": {
+        "start": "2026-10-01",
+        "end": "2026-10-31",
+        "label": "synthetic-current"
+      },
+      "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+      "entity_ref": "fictional-cedar",
+      "receipt_refs": [
+        "synthetic-receipt"
+      ],
+      "derivation_class": "source_reported",
+      "caveat": "Fabricated example; no verified measure or legal/clinical rule.",
+      "dependency_cluster_ids": [
+        "one-synthetic-source"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "synthetic-source",
+      "registry_id": "synthetic-registry",
+      "registry_version": "1",
+      "receipt": {
+        "receipt_id": "synthetic-receipt",
+        "source_name": "Fictional Cedar administrative fixture",
+        "source_url": "https://cedar.example/synthetic",
+        "dataset_id": "invented-fixture",
+        "source_period": "synthetic-2026",
+        "landing_page": "https://cedar.example/",
+        "retrieved_at": "2026-10-02T12:00:00Z",
+        "source_modified": null,
+        "cache_status": "fixture",
+        "cache_freshness": "not-real-source",
+        "entity_scope": "fictional-cedar",
+        "query": {
+          "synthetic": true
+        },
+        "cache_key": "fixture",
+        "match_basis": "synthetic operator declaration",
+        "confidence": "fixture_only",
+        "caveat": "Entirely synthetic; no actual source bytes or public metric availability verified.",
+        "next_step": "Replace only with approved aggregate evidence and review exact scope.",
+        "acquisition_method": "synthetic_fixture",
+        "rights_classification": "public_domain",
+        "row_locator": "synthetic-table",
+        "artifact": {
+          "artifact_id": "synthetic-table",
+          "checksum_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "media_type": "application/json",
+          "uri": "hc-cache://synthetic/fixture",
+          "cache_run_id": "synthetic-run",
+          "connector": "synthetic",
+          "connector_version": "1",
+          "parser_version": "1",
+          "schema_fingerprint": "synthetic-v1"
+        },
+        "parent_receipt_ids": []
+      },
+      "content_checksum": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "access_rights": "public_domain"
+    }
+  ],
+  "coverage": [
+    {
+      "coverage_id": "coverage-1",
+      "entity_ref": "fictional-cedar",
+      "measure_id": "/lines/0/expected",
+      "status": "populated",
+      "observation_refs": [
+        "obs-1"
+      ],
+      "reason": "Synthetic fixture value supplied."
+    },
+    {
+      "coverage_id": "coverage-2",
+      "entity_ref": "fictional-cedar",
+      "measure_id": "/lines/0/paid",
+      "status": "populated",
+      "observation_refs": [
+        "obs-2"
+      ],
+      "reason": "Synthetic fixture value supplied."
+    },
+    {
+      "coverage_id": "coverage-6",
+      "entity_ref": "fictional-cedar",
+      "measure_id": "/lines/1/expected",
+      "status": "populated",
+      "observation_refs": [
+        "obs-6"
+      ],
+      "reason": "Synthetic fixture value supplied."
+    },
+    {
+      "coverage_id": "coverage-7",
+      "entity_ref": "fictional-cedar",
+      "measure_id": "/lines/1/paid",
+      "status": "populated",
+      "observation_refs": [
+        "obs-7"
+      ],
+      "reason": "Synthetic fixture value supplied."
+    },
+    {
+      "coverage_id": "unselected-missing",
+      "entity_ref": "fictional-cedar",
+      "measure_id": "unrelated_public_measure",
+      "status": "unavailable_public",
+      "observation_refs": [],
+      "reason": "Intentionally absent synthetic measure; preserve without zero-fill."
+    }
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "resolved-synthetic",
+      "conflict_type": "synthetic documentation correction",
+      "entity_refs": [
+        "fictional-cedar"
+      ],
+      "observation_refs": [],
+      "receipt_refs": [
+        "synthetic-receipt"
+      ],
+      "status": "resolved",
+      "rationale": "Invented prior issue resolved within fixture; retain its history."
+    }
+  ],
+  "input_artifacts": [
+    {
+      "artifact_id": "synthetic-table",
+      "checksum_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "media_type": "application/json",
+      "uri": "hc-cache://synthetic/fixture",
+      "cache_run_id": "synthetic-run",
+      "connector": "synthetic",
+      "connector_version": "1",
+      "parser_version": "1",
+      "schema_fingerprint": "synthetic-v1"
+    }
+  ],
+  "schema_version": "ushso.public-evidence-bundle.v1",
+  "bundle_sha256": "sha256:bf308fe161b92ac4298d9e38e8d73debfad7cc8eefb5a844004fbf129d550d47"
+}

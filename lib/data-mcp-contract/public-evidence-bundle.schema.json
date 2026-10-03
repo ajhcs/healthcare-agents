@@ -1,0 +1,957 @@
+{
+  "$defs": {
+    "CacheArtifactLineage": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "minLength": 1,
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "cache_run_id": {
+          "minLength": 1,
+          "title": "Cache Run Id",
+          "type": "string"
+        },
+        "checksum_sha256": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Checksum Sha256",
+          "type": "string"
+        },
+        "connector": {
+          "minLength": 1,
+          "title": "Connector",
+          "type": "string"
+        },
+        "connector_version": {
+          "minLength": 1,
+          "title": "Connector Version",
+          "type": "string"
+        },
+        "media_type": {
+          "minLength": 1,
+          "title": "Media Type",
+          "type": "string"
+        },
+        "parser_version": {
+          "minLength": 1,
+          "title": "Parser Version",
+          "type": "string"
+        },
+        "schema_fingerprint": {
+          "minLength": 1,
+          "title": "Schema Fingerprint",
+          "type": "string"
+        },
+        "uri": {
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_id",
+        "checksum_sha256",
+        "media_type",
+        "uri",
+        "cache_run_id",
+        "connector",
+        "connector_version",
+        "parser_version",
+        "schema_fingerprint"
+      ],
+      "title": "CacheArtifactLineage",
+      "type": "object"
+    },
+    "EvidenceConflictV1": {
+      "additionalProperties": false,
+      "properties": {
+        "conflict_id": {
+          "minLength": 1,
+          "title": "Conflict Id",
+          "type": "string"
+        },
+        "conflict_type": {
+          "minLength": 1,
+          "title": "Conflict Type",
+          "type": "string"
+        },
+        "entity_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Entity Refs",
+          "type": "array"
+        },
+        "observation_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Observation Refs",
+          "type": "array"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "receipt_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Receipt Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "accepted_with_rationale",
+            "resolved"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "conflict_id",
+        "conflict_type",
+        "status",
+        "rationale"
+      ],
+      "title": "EvidenceConflictV1",
+      "type": "object"
+    },
+    "EvidenceCoverageV1": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_id": {
+          "minLength": 1,
+          "title": "Coverage Id",
+          "type": "string"
+        },
+        "entity_ref": {
+          "minLength": 1,
+          "title": "Entity Ref",
+          "type": "string"
+        },
+        "measure_id": {
+          "minLength": 1,
+          "title": "Measure Id",
+          "type": "string"
+        },
+        "observation_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Observation Refs",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "populated",
+            "not_yet_researched",
+            "unavailable_public",
+            "not_applicable",
+            "blocked_source_conflict"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "coverage_id",
+        "entity_ref",
+        "measure_id",
+        "status",
+        "reason"
+      ],
+      "title": "EvidenceCoverageV1",
+      "type": "object"
+    },
+    "EvidenceObservationV1": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value_type": {
+                "const": "integer"
+              }
+            },
+            "required": [
+              "value_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "value_type": {
+                "const": "number"
+              }
+            },
+            "required": [
+              "value_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "value_type": {
+                "const": "string"
+              }
+            },
+            "required": [
+              "value_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "value_type": {
+                "const": "boolean"
+              }
+            },
+            "required": [
+              "value_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "caveat": {
+          "title": "Caveat",
+          "type": "string"
+        },
+        "denominator_scope": {
+          "minLength": 1,
+          "title": "Denominator Scope",
+          "type": "string"
+        },
+        "dependency_cluster_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Dependency Cluster Ids",
+          "type": "array"
+        },
+        "derivation_class": {
+          "enum": [
+            "source_reported",
+            "normalized",
+            "modeled_input"
+          ],
+          "title": "Derivation Class",
+          "type": "string"
+        },
+        "entity_ref": {
+          "minLength": 1,
+          "title": "Entity Ref",
+          "type": "string"
+        },
+        "measure_id": {
+          "minLength": 1,
+          "title": "Measure Id",
+          "type": "string"
+        },
+        "observation_id": {
+          "minLength": 1,
+          "title": "Observation Id",
+          "type": "string"
+        },
+        "period": {
+          "$ref": "#/$defs/EvidencePeriod"
+        },
+        "receipt_refs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Receipt Refs",
+          "type": "array"
+        },
+        "unit": {
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "value_type": {
+          "enum": [
+            "integer",
+            "number",
+            "string",
+            "boolean"
+          ],
+          "title": "Value Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "observation_id",
+        "measure_id",
+        "value_type",
+        "value",
+        "unit",
+        "period",
+        "denominator_scope",
+        "entity_ref",
+        "receipt_refs",
+        "derivation_class",
+        "caveat",
+        "dependency_cluster_ids"
+      ],
+      "title": "EvidenceObservationV1",
+      "type": "object"
+    },
+    "EvidencePeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "end": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "label": {
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        }
+      },
+      "required": [
+        "label"
+      ],
+      "title": "EvidencePeriod",
+      "type": "object"
+    },
+    "EvidenceReceiptV1": {
+      "additionalProperties": false,
+      "properties": {
+        "acquisition_method": {
+          "minLength": 1,
+          "title": "Acquisition Method",
+          "type": "string"
+        },
+        "artifact": {
+          "$ref": "#/$defs/CacheArtifactLineage"
+        },
+        "cache_freshness": {
+          "minLength": 1,
+          "title": "Cache Freshness",
+          "type": "string"
+        },
+        "cache_key": {
+          "minLength": 1,
+          "title": "Cache Key",
+          "type": "string"
+        },
+        "cache_status": {
+          "minLength": 1,
+          "title": "Cache Status",
+          "type": "string"
+        },
+        "caveat": {
+          "title": "Caveat",
+          "type": "string"
+        },
+        "confidence": {
+          "minLength": 1,
+          "title": "Confidence",
+          "type": "string"
+        },
+        "dataset_id": {
+          "minLength": 1,
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "entity_scope": {
+          "minLength": 1,
+          "title": "Entity Scope",
+          "type": "string"
+        },
+        "landing_page": {
+          "minLength": 1,
+          "title": "Landing Page",
+          "type": "string"
+        },
+        "match_basis": {
+          "minLength": 1,
+          "title": "Match Basis",
+          "type": "string"
+        },
+        "next_step": {
+          "minLength": 1,
+          "title": "Next Step",
+          "type": "string"
+        },
+        "parent_receipt_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Parent Receipt Ids",
+          "type": "array"
+        },
+        "query": {
+          "$ref": "#/$defs/JsonValue"
+        },
+        "receipt_id": {
+          "minLength": 1,
+          "title": "Receipt Id",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "rights_classification": {
+          "enum": [
+            "public_domain",
+            "public_use_terms",
+            "restricted_publication",
+            "unknown_review_required"
+          ],
+          "title": "Rights Classification",
+          "type": "string"
+        },
+        "row_locator": {
+          "minLength": 1,
+          "title": "Row Locator",
+          "type": "string"
+        },
+        "source_modified": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Modified"
+        },
+        "source_name": {
+          "minLength": 1,
+          "title": "Source Name",
+          "type": "string"
+        },
+        "source_period": {
+          "minLength": 1,
+          "title": "Source Period",
+          "type": "string"
+        },
+        "source_url": {
+          "minLength": 1,
+          "title": "Source Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "source_name",
+        "source_url",
+        "dataset_id",
+        "source_period",
+        "landing_page",
+        "retrieved_at",
+        "cache_status",
+        "cache_freshness",
+        "entity_scope",
+        "query",
+        "cache_key",
+        "match_basis",
+        "confidence",
+        "caveat",
+        "next_step",
+        "acquisition_method",
+        "rights_classification",
+        "row_locator",
+        "artifact"
+      ],
+      "title": "EvidenceReceiptV1",
+      "type": "object"
+    },
+    "EvidenceRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "parameters": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Parameters",
+          "type": "object"
+        },
+        "workflow": {
+          "minLength": 1,
+          "title": "Workflow",
+          "type": "string"
+        }
+      },
+      "required": [
+        "workflow"
+      ],
+      "title": "EvidenceRequest",
+      "type": "object"
+    },
+    "EvidenceScope": {
+      "additionalProperties": false,
+      "properties": {
+        "market": {
+          "additionalProperties": {
+            "$ref": "#/$defs/JsonValue"
+          },
+          "title": "Market",
+          "type": "object"
+        },
+        "periods": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Periods",
+          "type": "array"
+        },
+        "service_line": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Service Line"
+        },
+        "systems": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Systems",
+          "type": "array"
+        }
+      },
+      "required": [
+        "systems",
+        "market",
+        "periods"
+      ],
+      "title": "EvidenceScope",
+      "type": "object"
+    },
+    "EvidenceSourceV1": {
+      "additionalProperties": false,
+      "properties": {
+        "access_rights": {
+          "enum": [
+            "public_domain",
+            "public_use_terms",
+            "restricted_publication",
+            "unknown_review_required"
+          ],
+          "title": "Access Rights",
+          "type": "string"
+        },
+        "content_checksum": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Content Checksum",
+          "type": "string"
+        },
+        "receipt": {
+          "$ref": "#/$defs/EvidenceReceiptV1"
+        },
+        "registry_id": {
+          "minLength": 1,
+          "title": "Registry Id",
+          "type": "string"
+        },
+        "registry_version": {
+          "minLength": 1,
+          "title": "Registry Version",
+          "type": "string"
+        },
+        "source_id": {
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "registry_id",
+        "registry_version",
+        "receipt",
+        "content_checksum",
+        "access_rights"
+      ],
+      "title": "EvidenceSourceV1",
+      "type": "object"
+    },
+    "HealthcareEntityV1": {
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "default": "",
+          "title": "Address",
+          "type": "string"
+        },
+        "ahrq_system_id": {
+          "default": "",
+          "title": "Ahrq System Id",
+          "type": "string"
+        },
+        "aliases": {
+          "items": {
+            "$ref": "#/$defs/SourceAliasV1"
+          },
+          "title": "Aliases",
+          "type": "array"
+        },
+        "canonical_name": {
+          "minLength": 1,
+          "title": "Canonical Name",
+          "type": "string"
+        },
+        "ccn": {
+          "default": "",
+          "title": "Ccn",
+          "type": "string"
+        },
+        "conflicts": {
+          "items": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "title": "Conflicts",
+          "type": "array"
+        },
+        "entity_id": {
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "entity_type": {
+          "minLength": 1,
+          "title": "Entity Type",
+          "type": "string"
+        },
+        "match_decisions": {
+          "items": {
+            "$ref": "#/$defs/MatchDecisionV1"
+          },
+          "title": "Match Decisions",
+          "type": "array"
+        },
+        "npi": {
+          "default": "",
+          "title": "Npi",
+          "type": "string"
+        },
+        "owner_id": {
+          "default": "",
+          "title": "Owner Id",
+          "type": "string"
+        },
+        "pecos_enrollment_id": {
+          "default": "",
+          "title": "Pecos Enrollment Id",
+          "type": "string"
+        },
+        "unresolved_identifiers": {
+          "items": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "title": "Unresolved Identifiers",
+          "type": "array"
+        },
+        "zip_code": {
+          "default": "",
+          "title": "Zip Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_id",
+        "canonical_name",
+        "entity_type"
+      ],
+      "title": "HealthcareEntityV1",
+      "type": "object"
+    },
+    "JsonValue": {},
+    "MatchDecisionV1": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "title": "Basis",
+          "type": "string"
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "string"
+        },
+        "decided_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decided At"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "basis",
+        "confidence"
+      ],
+      "title": "MatchDecisionV1",
+      "type": "object"
+    },
+    "ProducerIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "commit": {
+          "maxLength": 40,
+          "minLength": 40,
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Commit",
+          "type": "string"
+        },
+        "repo": {
+          "const": "healthcare-data-mcp",
+          "default": "healthcare-data-mcp",
+          "title": "Repo",
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "commit"
+      ],
+      "title": "ProducerIdentity",
+      "type": "object"
+    },
+    "SourceAliasV1": {
+      "additionalProperties": false,
+      "properties": {
+        "identifier": {
+          "default": "",
+          "title": "Identifier",
+          "type": "string"
+        },
+        "identifier_type": {
+          "default": "",
+          "title": "Identifier Type",
+          "type": "string"
+        },
+        "name": {
+          "default": "",
+          "title": "Name",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Retrieved At"
+        },
+        "source_name": {
+          "title": "Source Name",
+          "type": "string"
+        },
+        "source_url": {
+          "default": "",
+          "title": "Source Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_name"
+      ],
+      "title": "SourceAliasV1",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "bundle_id": {
+      "minLength": 1,
+      "title": "Bundle Id",
+      "type": "string"
+    },
+    "bundle_sha256": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "title": "Bundle Sha256",
+      "type": "string"
+    },
+    "conflicts": {
+      "items": {
+        "$ref": "#/$defs/EvidenceConflictV1"
+      },
+      "title": "Conflicts",
+      "type": "array"
+    },
+    "coverage": {
+      "items": {
+        "$ref": "#/$defs/EvidenceCoverageV1"
+      },
+      "minItems": 1,
+      "title": "Coverage",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "entities": {
+      "items": {
+        "$ref": "#/$defs/HealthcareEntityV1"
+      },
+      "minItems": 1,
+      "title": "Entities",
+      "type": "array"
+    },
+    "input_artifacts": {
+      "items": {
+        "$ref": "#/$defs/CacheArtifactLineage"
+      },
+      "minItems": 1,
+      "title": "Input Artifacts",
+      "type": "array"
+    },
+    "observations": {
+      "items": {
+        "$ref": "#/$defs/EvidenceObservationV1"
+      },
+      "title": "Observations",
+      "type": "array"
+    },
+    "producer": {
+      "$ref": "#/$defs/ProducerIdentity"
+    },
+    "request": {
+      "$ref": "#/$defs/EvidenceRequest"
+    },
+    "schema_version": {
+      "const": "ushso.public-evidence-bundle.v1",
+      "default": "ushso.public-evidence-bundle.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "scope": {
+      "$ref": "#/$defs/EvidenceScope"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/EvidenceSourceV1"
+      },
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    }
+  },
+  "required": [
+    "bundle_id",
+    "producer",
+    "created_at",
+    "request",
+    "scope",
+    "entities",
+    "observations",
+    "sources",
+    "coverage",
+    "input_artifacts",
+    "bundle_sha256"
+  ],
+  "title": "PublicEvidenceBundle",
+  "type": "object"
+}
