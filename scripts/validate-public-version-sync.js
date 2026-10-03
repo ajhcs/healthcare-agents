@@ -30,7 +30,7 @@ if (process.argv.includes('--network') && target) {
   if (gh.status === 0 && gh.stdout.trim()) {
     try {
       const release = JSON.parse(gh.stdout);
-      if (release.tagName !== target.github_tag || release.isDraft || release.isPrerelease !== target.github_prerelease)
+      if (release.tagName !== target.github_tag || release.isDraft !== false || release.isPrerelease !== target.github_prerelease)
         failures.push('GitHub exact release tag or prerelease state mismatch');
     } catch { failures.push('GitHub release lookup returned invalid JSON'); }
   }

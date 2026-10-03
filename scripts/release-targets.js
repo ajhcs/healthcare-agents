@@ -39,7 +39,7 @@ function assertRegistry(t, doc, before) {
     throw new Error('npm latest changed during prerelease publication; stop, do not mutate tags automatically');
 }
 function assertGithub(t, release) {
-  if (release.tag_name !== t.github_tag || release.draft || release.prerelease !== t.github_prerelease)
+  if (release.tag_name !== t.github_tag || release.draft !== false || release.prerelease !== t.github_prerelease)
     throw new Error('GitHub exact tag, published state or prerelease flag mismatch');
 }
 function fetchJson(url) {

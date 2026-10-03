@@ -27,6 +27,7 @@ try {
     ['process.exit(7)','process.exit(7)',false],['','',false],
     ['console.log("1.5.0")',goodGh,false],[goodNpm,'console.log("bad-json")',false],
     [goodNpm,'console.log('+JSON.stringify(JSON.stringify({tagName:t.github_tag,isDraft:false,isPrerelease:false}))+')',false],
+    ...[undefined,null,0,'false'].map(isDraft => [goodNpm,'console.log('+JSON.stringify(JSON.stringify({tagName:t.github_tag,isDraft,isPrerelease:true}))+')',false]),
     [goodNpm,goodGh,true]
   ]) { const r=mocks(npm,gh); assert.equal(r.status===0,ok,r.stderr); checks++; }
   console.log('Release network gate: '+checks+' controlled access/empty/drift/channel/exact-tag/prerelease cases passed; no public receipt asserted');

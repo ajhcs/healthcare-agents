@@ -25,7 +25,7 @@ for (const patch of [{EXPECTED_VERSION:''},{EXPECTED_VERSION:'1.5.0'},{EXPECTED_
   denied(() => assertRequested(t,{...env,...patch},head));
 const release = {tag_name:t.github_tag,draft:false,prerelease:true};
 pass(() => assertGithub(t,release));
-for (const patch of [{tag_name:'v1.5.0'},{draft:true},{prerelease:false}])
+for (const patch of [{tag_name:'v1.5.0'},{draft:true},{draft:undefined},{draft:null},{draft:0},{draft:'false'},{prerelease:false}])
   denied(() => assertGithub(t,{...release,...patch}));
 const doc = {versions:{[t.version]:{name:t.name,version:t.version,repository:pkg.repository,
   dist:{tarball:t.registry+'/'+t.name+'/-/'+t.name+'-'+t.version+'.tgz',integrity:'sha512-example'}}},
