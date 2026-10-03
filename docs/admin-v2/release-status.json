@@ -5,22 +5,9 @@
   "local_payload_gate": "Publisher/metadata-only successor of a57428d; exact successor source, package and local checks are recorded in its immutable preparation receipts",
   "publication": false,
   "live_hosts_verified": [
-    {
-      "host": "BuilderBob POSIX Codex 0.160.0",
-      "source_commit": "a57428d82030aa79d9a66fb43ea965b19f5ec574",
-      "profiles": [
-        "prepared Node profile",
-        "opt-in stdlib Python 3.12.3 bridge"
-      ],
-      "scope": "two exact-source native install/new-thread/eight-tools/six-workflows/builder/error/removal/restoration campaigns; no model"
-    }
+    "BuilderBob POSIX Codex 0.160.0, prepared Node profile and opt-in Python 3.12.3 bridge at a57428d82030aa79d9a66fb43ea965b19f5ec574"
   ],
-  "model_outcome_campaign": {
-    "source_commit": "f6dcf0e8ccd363585ba085f3db24560f24507b58",
-    "model": "gpt-6.1-sol",
-    "reasoning": "max",
-    "scope": "one monitored session/turn, four synthetic scenarios, 54 objective checks; independent domain judgment pending; no transfer to later commits"
-  },
+  "model_outcome_campaign": false,
   "source_dates_reverified": false,
   "remaining_gates": [
     "Explicit authorization for the exact public release actions",
@@ -32,5 +19,22 @@
   "independent_forward_review": "bounded local PASS after three independently retested fixes",
   "primary_source_review": "seven bounded context records; six retrieved response hashes; AHRQ browser review only; specialist dates unchanged",
   "model_campaign": "only the monitored f6dcf0e8 packet qualifies model outcomes; no model run for a57428d or its publisher-only successor",
-  "independent_review": "a57428d frozen native-profile candidate passed bounded independent local review; successor publishing-policy review is separately recorded"
+  "independent_review": "a57428d frozen native-profile candidate passed bounded independent local review; successor publishing-policy review is separately recorded",
+  "historical_model_campaign_evidence": {
+    "source_commit": "f6dcf0e8ccd363585ba085f3db24560f24507b58",
+    "model": "gpt-6.1-sol",
+    "reasoning": "max",
+    "scope": "one monitored session/turn, four synthetic scenarios, 54 objective checks; independent domain judgment pending; no transfer to later commits"
+  },
+  "native_qualification_evidence": [
+    {
+      "host": "BuilderBob POSIX Codex 0.160.0",
+      "source_commit": "a57428d82030aa79d9a66fb43ea965b19f5ec574",
+      "profiles": [
+        "prepared Node profile",
+        "opt-in stdlib Python 3.12.3 bridge"
+      ],
+      "scope": "two exact-source native install/new-thread/eight-tools/six-workflows/builder/error/removal/restoration campaigns; no model"
+    }
+  ]
 }
