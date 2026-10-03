@@ -28,9 +28,15 @@ pass(() => assertGithub(t,release));
 for (const patch of [{tag_name:'v1.5.0'},{draft:true},{draft:undefined},{draft:null},{draft:0},{draft:'false'},{prerelease:false}])
   denied(() => assertGithub(t,{...release,...patch}));
 const doc = {versions:{[t.version]:{name:t.name,version:t.version,repository:pkg.repository,
-  dist:{tarball:t.registry+'/'+t.name+'/-/'+t.name+'-'+t.version+'.tgz',integrity:'sha512-example'}}},
+  dist:{tarball:t.registry+'/'+t.name+'/-/'+t.name+'-'+t.version+'.tgz',integrity:'sha512-'+Buffer.alloc(64).toString('base64')}}},
   'dist-tags':{next:t.version,latest:'1.5.0'}};
 pass(() => assertRegistry(t,doc,{latest:'1.5.0'}));
+for (const dist of [{tarball:true,integrity:true},{tarball:{},integrity:{}},{tarball:[],integrity:[]},
+  {tarball:doc.versions[t.version].dist.tarball,integrity:'sha512-example'},
+  {tarball:'https://example.org/package.tgz',integrity:doc.versions[t.version].dist.integrity}])
+  denied(() => assertRegistry(t,{...doc,versions:{[t.version]:{...doc.versions[t.version],dist}}}));
+denied(() => assertRegistry(t,{...doc,'dist-tags':{next:t.version}}));
+denied(() => assertRegistry(t,doc,{latest:null}));
 denied(() => assertRegistry(t,{...doc,'dist-tags':{next:t.version,latest:t.version}},{latest:'1.5.0'}));
 denied(() => assertRegistry(t,{...doc,'dist-tags':{next:'1.5.0',latest:'1.5.0'}}));
 denied(() => assertRegistry(t,{...doc,versions:{}}));

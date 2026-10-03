@@ -30,8 +30,18 @@ function assertRequested(t, env, head) {
 }
 function assertRegistry(t, doc, before) {
   const entry = doc.versions?.[t.version];
-  if (!entry || entry.name !== t.name || entry.version !== t.version || !entry.dist?.tarball || !entry.dist?.integrity)
-    throw new Error('exact npm package/version and tarball integrity are missing');
+  if (!entry || entry.name !== t.name || entry.version !== t.version)
+    throw new Error('exact npm package/version metadata is missing');
+  const tarball = t.registry + '/' + t.name + '/-/' + t.name + '-' + t.version + '.tgz';
+  const integrity = entry.dist?.integrity;
+  if (entry.dist?.tarball !== tarball || typeof integrity !== 'string' ||
+      !/^sha512-[A-Za-z0-9+/]{86}==$/.test(integrity) ||
+      Buffer.from(integrity.slice(7), 'base64').toString('base64') !== integrity.slice(7))
+    throw new Error('exact npm tarball URL and canonical SHA512 integrity are required');
+  if (typeof doc['dist-tags']?.latest !== 'string' || !doc['dist-tags'].latest)
+    throw new Error('current npm latest metadata is missing');
+  if (before && (typeof before.latest !== 'string' || !before.latest))
+    throw new Error('recorded npm latest metadata is missing');
   if (entry.repository?.url !== 'git+https://github.com/' + t.repository + '.git')
     throw new Error('published repository metadata mismatch');
   if (doc['dist-tags']?.[t.npm_tag] !== t.version) throw new Error('expected npm dist-tag does not point at the candidate');
