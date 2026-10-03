@@ -24,7 +24,7 @@ To select the standard-library bridge instead, add --stdio-bridge to the prepara
 
 Use the same two plugin-manager commands above with that directory. Requires an existing POSIX Python >=3.8 on PATH; --python python3.12 selects a different existing bare executable name. Absolute interpreter names are rejected before output creation. Preparation never installs Python, Pydantic or a cloud SDK. The bridge records the verified Python executable and passes the verified Node executable through --node. Bridge native acceptance is qualified on the same BuilderBob host with Python 3.12.3.
 
-Both profiles passed clean native install/activate, eight skill discovery, plugin-owned registration of eight tools, all six mapped synthetic workflows, the custom builder, typed invalid-input rejection, removal and exact prior profile restoration. This is model-free tool and deployment acceptance. It does not qualify model quality or other customer platforms.
+Both profiles passed clean native install/activate, eight skill discovery, plugin-owned registration of eight tools, all six mapped synthetic workflows, the custom builder, typed invalid-input rejection, removal and exact prior profile restoration. This is model-free tool and deployment acceptance. The Node MCP runtime needs no Python; the campaign prepared mapped cases with the separately required Python/Pydantic receipt importer. Direct validated JSON cases do not need that importer. Receipt mapping remains an optional, separately documented data-preparation path. This acceptance does not qualify model quality or other customer platforms.
 
 ## Remove
 
