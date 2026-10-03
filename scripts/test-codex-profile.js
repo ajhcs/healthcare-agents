@@ -43,7 +43,7 @@ async function main() {
   try {
     check('missing Python fails before creating an output', () => {
       const out = path.join(tmp, 'no-python');
-      assert.match(stage(['--stdio-bridge', '--python', path.join(tmp, 'unavailable-python'), '--output', out], false), /existing POSIX Python/);
+      assert.match(stage(['--stdio-bridge', '--python', 'healthcare-agents-unavailable-python', '--output', out], false), /existing POSIX Python/);
       assert.equal(fs.existsSync(out), false);
     });
     check('existing directory is preserved', () => {
@@ -61,6 +61,8 @@ async function main() {
       assert.equal(fs.existsSync(path.join(root, 'invalid-profile-output')), false);
     });
     check('unknown flags and invalid marketplace names are rejected', () => {
+      assert.match(stage(['--stdio-bridge', '--python', '/absolute/python', '--output', path.join(tmp, 'absolute-python')], false), /bare executable name/);
+      assert.equal(fs.existsSync(path.join(tmp, 'absolute-python')), false);
       assert.match(stage(['--security-off', '--output', path.join(tmp, 'invalid')], false), /Unknown option/);
       assert.match(stage(['--name', 'invalid/name', '--output', path.join(tmp, 'invalid')], false), /marketplace name/);
     });
@@ -69,13 +71,15 @@ async function main() {
       assert.equal(bridge.transport, 'python-anonymous-pipes'); assert.equal(bridge.offline, true);
       assert.equal(bridge.profile_changes.length, 2); assert.equal(bridge.lifecycle_scripts_enabled, false);
       assert.equal(bridge.primary_mcp_schema_valid, true);
+      assert.equal(bridge.primary_mcp_command_semantics_valid, true);
+      assert.equal(bridge.python.command, 'python3');
       assert.equal(bridge.dependency_lock_sha256, sha(path.join(bridge.marketplace_root, 'package-lock.json')));
       assert.equal(bridge.installed_dependencies['node_modules/@modelcontextprotocol/sdk'], '1.31.0');
       assert.equal(path.isAbsolute(bridge.python.executable), true);
       const manifest = JSON.parse(fs.readFileSync(path.join(bridge.installed_root, '.codex-plugin/plugin.json')));
       assert.equal(manifest.mcpServers, './.mcp.json');
       const config = JSON.parse(fs.readFileSync(path.join(bridge.installed_root, manifest.mcpServers))).mcpServers['healthcare-admin'];
-      assert.equal(config.command, bridge.python.executable);
+      assert.equal(config.command, bridge.python.command);
       assert.deepEqual(config.args, ['-B', path.join(bridge.installed_root, 'bin/mcp-stdio-bridge.py'), '--node', process.execPath]);
     });
     check('every staged package file matches its recorded bytes', () => {
@@ -87,8 +91,9 @@ async function main() {
       assert.equal(portable.transport, 'portable-node'); assert.equal(portable.python, null);
       assert.equal(portable.profile_changes.length, 2);
       assert.equal(portable.primary_mcp_schema_valid, true);
+      assert.equal(portable.primary_mcp_command_semantics_valid, true);
       const server = JSON.parse(fs.readFileSync(path.join(portable.installed_root, '.mcp.json'))).mcpServers['healthcare-admin'];
-      assert.deepEqual(server, { command: process.execPath, args: [path.join(portable.installed_root, 'bin/mcp-server.js'), '--stdio'] });
+      assert.deepEqual(server, { command: 'node', args: [path.join(portable.installed_root, 'bin/mcp-server.js'), '--stdio'] });
       assert.equal(JSON.parse(fs.readFileSync(path.join(portable.installed_root, '.codex-plugin/plugin.json'))).mcpServers, './.mcp.json');
     });
     await sdk(portable); await sdk(portable, true); passed++; console.log('PASS portable profile official SDK (native sandbox compatibility not claimed)');
@@ -96,7 +101,7 @@ async function main() {
     assert.equal(reset.transport, 'portable-node'); assert.equal(reset.python, null);
     assert.equal(reset.profile_changes.length, 2);
     const resetServer = JSON.parse(fs.readFileSync(path.join(reset.installed_root, '.mcp.json'))).mcpServers['healthcare-admin'];
-    assert.deepEqual(resetServer, { command: process.execPath, args: [path.join(reset.installed_root, 'bin/mcp-server.js'), '--stdio'] });
+    assert.deepEqual(resetServer, { command: 'node', args: [path.join(reset.installed_root, 'bin/mcp-server.js'), '--stdio'] });
     await sdk(reset); await sdk(reset, true); passed++; console.log('PASS restaged bridge to portable removes Python selection and launches Node');
     const renewed = stage(['--stdio-bridge', '--offline', '--output', path.join(tmp, 'bridge to bridge'), '--name', 'healthcare-agents-renewed-test'], true, bridge.installed_root);
     const renewedConfig = JSON.parse(fs.readFileSync(path.join(renewed.installed_root, '.mcp.json'))).mcpServers['healthcare-admin'];

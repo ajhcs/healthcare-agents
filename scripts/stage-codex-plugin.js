@@ -30,6 +30,7 @@ function options(argv) {
       out[{ '--output': 'output', '--python': 'python', '--name': 'name' }[arg]] = argv[++i];
     } else throw new Error('Unknown option: ' + arg);
   }
+  if (!/^[A-Za-z0-9_.-]+$/.test(out.python)) throw new Error('--python requires an existing bare executable name on PATH, such as python3.12');
   if (!out.output) throw new Error('--output requires a new directory outside the package');
   if (!/^[a-z][a-z0-9-]{0,63}$/.test(out.name)) throw new Error('Invalid local marketplace name');
   if (!out.bridge && out.python !== 'python3') throw new Error('--python requires --stdio-bridge');
@@ -52,12 +53,13 @@ function prepare(argv) {
   if (opts.bridge) {
     if (process.platform === 'win32') throw new Error('The bridge profile requires POSIX; Windows is unqualified');
     const code = 'import json,os,sys; assert os.name=="posix" and sys.version_info>=(3,8); print(json.dumps({"executable":os.path.realpath(sys.executable),"version":sys.version.split()[0],"platform":sys.platform}))';
-    try { python = JSON.parse(run(opts.python, ['-B', '-c', code], ROOT, null, 'existing Python preflight')); }
+    try { python = { command: opts.python, ...JSON.parse(run(opts.python, ['-B', '-c', code], ROOT, null, 'existing Python preflight')) }; }
     catch { throw new Error('Bridge profile requires an existing POSIX Python >=3.8; no interpreter is installed automatically'); }
     if (!path.isAbsolute(python.executable)) throw new Error('Python preflight returned no absolute executable');
     fs.accessSync(python.executable, fs.constants.X_OK);
   }
   // Interpreter/tool preflights precede creation. Never edit Codex home/profile.
+  const node = JSON.parse(run('node', ['-e', 'const v=process.versions.node.split(".").map(Number);if(v[0]<18||(v[0]===18&&(v[1]<14||(v[1]===14&&v[2]<1))))process.exit(1);console.log(JSON.stringify({command:"node",executable:process.execPath,version:process.version}))'], ROOT, null, 'existing Node PATH preflight'));
   run('npm', ['--version'], ROOT, null, 'existing npm preflight');
   fs.mkdirSync(destination, { mode: 0o700 });
   const logs = path.join(destination, 'logs'); fs.mkdirSync(logs);
@@ -86,9 +88,9 @@ function prepare(argv) {
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   const common = JSON.parse(fs.readFileSync(path.join(installed, '.codex-plugin', 'mcp-node.json')));
   const selectedServer = opts.bridge ? {
-    command: python.executable,
-    args: ['-B', path.join(installed, 'bin', 'mcp-stdio-bridge.py'), '--node', process.execPath]
-  } : { command: process.execPath, args: [path.join(installed, 'bin', 'mcp-server.js'), '--stdio'] };
+    command: python.command,
+    args: ['-B', path.join(installed, 'bin', 'mcp-stdio-bridge.py'), '--node', node.executable]
+  } : { command: node.command, args: [path.join(installed, 'bin', 'mcp-server.js'), '--stdio'] };
   common.mcpServers['healthcare-admin'] = { type: 'stdio', ...selectedServer };
   fs.writeFileSync(path.join(installed, 'mcp.json'), JSON.stringify(common, null, 2) + '\n');
   fs.writeFileSync(path.join(installed, '.mcp.json'), JSON.stringify({ mcpServers: { 'healthcare-admin': selectedServer } }, null, 2) + '\n');
@@ -118,7 +120,8 @@ function prepare(argv) {
     marketplace_root: destination, installed_root: installed,
     transport: opts.bridge ? 'python-anonymous-pipes' : 'portable-node',
     primary_mcp_schema_valid: true,
-    node: { executable: process.execPath, version: process.version }, python,
+    primary_mcp_command_semantics_valid: true,
+    node, python,
     offline: opts.offline, lifecycle_scripts_enabled: false,
     tarball_sha256: sha(fs.readFileSync(tarball)), source_package_files: packed.files.length,
     dependency_lock_sha256: sha(fs.readFileSync(path.join(destination, 'package-lock.json'))),
