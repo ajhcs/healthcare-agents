@@ -835,7 +835,7 @@ function readEvidenceFile(file) {
       bytes += read;
     }
     if (bytes > limit) throw new Error('Input exceeds 2 MiB');
-    return new TextDecoder('utf-8', { fatal: true }).decode(buffer.subarray(0, bytes));
+    return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(buffer.subarray(0, bytes));
   } finally { fs.closeSync(fd); }
 }
 

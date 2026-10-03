@@ -166,6 +166,35 @@ test('Python canonical float representation is verified without JS rehashing',()
 });
 test('transport schema does not coerce numeric dates',()=>{const f=fixture();f.bundle.created_at=1790942400;assert.throws(()=>mapPublicEvidence(JSON.stringify(f.bundle),f.mapping,options),{code:'PUBLIC_EVIDENCE_CONTRACT_INVALID'});});
 test('unsafe integers cannot lose custody through JS parsing',()=>{const f=fixture();f.bundle.request.parameters.unsafe=9007199254740992;assert.throws(()=>mapPublicEvidence(JSON.stringify(f.bundle),f.mapping,options),{code:'UNSAFE_NUMBER_REQUIRES_REVIEW'});});
+test('one leading BOM is parsed but remains in bundle and mapping custody hashes',()=>{
+  const f=fixture(),raw='\uFEFF'+f.raw,mappingRaw='\uFEFF'+JSON.stringify(f.mapping),x=mapPublicEvidence(raw,mappingRaw,options);
+  assert.equal(x.status,'ready_for_human_review');
+  assert.equal(x.provenance.raw_bundle_sha256,'sha256:'+crypto.createHash('sha256').update(raw).digest('hex'));
+  assert.equal(x.provenance.mapping_sha256,'sha256:'+crypto.createHash('sha256').update(mappingRaw).digest('hex'));
+});
+test('multiple leading BOMs are rejected',()=>{
+  const f=fixture();assert.throws(()=>mapPublicEvidence('\uFEFF\uFEFF'+f.raw,f.mapping,options),{code:'PUBLIC_EVIDENCE_CONTRACT_INVALID'});
+  assert.throws(()=>mapPublicEvidence(f.raw,'\uFEFF\uFEFF'+JSON.stringify(f.mapping),options),{code:'MAPPING_CONTRACT_INVALID'});
+});
+test('backlog from another population blocks despite matching owner expectations',()=>{
+  const f=fixture('ambulatory-access-backlog'),o=f.bundle.observations.find(x=>x.measure_id==='/backlog'),binding=f.mapping.bindings.find(x=>x.path==='/backlog');
+  o.denominator_scope=binding.expect.denominator_scope='different clinic population';seal(f);blocked(f,'COHORT_ALIGNMENT_REQUIRES_REVIEW');
+});
+test('backlog snapshot period can differ from aligned weekly reporting period',()=>{
+  const f=fixture('ambulatory-access-backlog'),o=f.bundle.observations.find(x=>x.measure_id==='/backlog'),binding=f.mapping.bindings.find(x=>x.path==='/backlog');
+  o.period={label:'snapshot 2026-10-03',start:'2026-10-03',end:'2026-10-03'};binding.expect.period=clone(o.period);seal(f);
+  assert.equal(runCase(mapped(f).case).values.weeks_to_clear_backlog,5);
+});
+for(const field of ['/appeal_deadline','/available_documents/0','/required_documents/0'])test('appeal context mismatch '+field+' blocks',()=>{
+  const f=fixture('prior-authorization-appeal-workup'),binding=f.mapping.bindings.find(x=>x.path===field);
+  assert.ok(binding);const o=f.bundle.observations.find(x=>x.observation_id===binding.observation_id);
+  o.denominator_scope=binding.expect.denominator_scope='different payer/product/decision context';seal(f);blocked(f,'COHORT_ALIGNMENT_REQUIRES_REVIEW');
+});
+test('appeal population compares remaining source observations with mixed owner inputs',()=>{
+  const f=fixture('prior-authorization-appeal-workup'),binding=f.mapping.bindings.find(x=>x.path==='/decision_date'),o=f.bundle.observations.find(x=>x.observation_id===binding.observation_id);
+  f.mapping.bindings=f.mapping.bindings.filter(x=>x!==binding);f.mapping.owner_inputs.push({path:binding.path,value:o.value,as_of:f.mapping.as_of,description:'Operator supplied decision date.'});
+  const b=f.mapping.bindings.find(x=>x.path==='/appeal_deadline');f.bundle.observations.find(x=>x.observation_id===b.observation_id).denominator_scope=b.expect.denominator_scope='different payer context';seal(f);blocked(f,'COHORT_ALIGNMENT_REQUIRES_REVIEW');
+});
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'hag-evidence-map-'));
 try {
   test('actual CLI creates pinned case and sidecar bundle',()=>{
@@ -177,6 +206,16 @@ try {
     const manifest=JSON.parse(fs.readFileSync(path.join(output,'manifest.json')));
     for(const row of manifest.files){const bytes=fs.readFileSync(path.join(output,row.path));assert.equal(bytes.length,row.bytes);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),row.sha256);}
     assert.throws(()=>importEvidence(fixture().raw,fixture().mapping,output,options),/Output already exists/);
+  });
+  test('actual CLI preserves original BOM bytes and manifest hash',()=>{
+    const f=fixture(),input=path.join(temp,'bom-bundle.json'),mapping=path.join(temp,'bom-mapping.json'),output=path.join(temp,'bom-output');
+    const bytes=Buffer.from('\uFEFF'+f.raw);fs.writeFileSync(input,bytes);fs.writeFileSync(mapping,'\uFEFF'+JSON.stringify(f.mapping));
+    const p=spawnSync(process.execPath,[path.join(ROOT,'bin/cli.js'),'admin','import-evidence',input,'--mapping',mapping,'--output',output,'--python',python],{encoding:'utf8',timeout:15000});
+    assert.equal(p.status,0,p.stderr);assert.deepEqual(fs.readFileSync(path.join(output,'public-evidence-bundle.json')),bytes);
+    const hash=crypto.createHash('sha256').update(bytes).digest('hex'),sidecar=JSON.parse(fs.readFileSync(path.join(output,'evidence-map.json')));
+    assert.equal(sidecar.provenance.raw_bundle_sha256,'sha256:'+hash);
+    const row=JSON.parse(fs.readFileSync(path.join(output,'manifest.json'))).files.find(x=>x.path==='public-evidence-bundle.json');
+    assert.equal(row.bytes,bytes.length);assert.equal(row.sha256,hash);
   });
   test('blocked export keeps sidecar and omits case',()=>{const f=fixture();f.mapping.bindings[0].expect.unit='wrong';const output=path.join(temp,'blocked');const x=importEvidence(f.raw,f.mapping,output,options);assert.equal(x.status,'blocked');assert.equal(fs.existsSync(path.join(output,'case.json')),false);assert.equal(JSON.parse(fs.readFileSync(path.join(output,'evidence-map.json'))).case,null);});
 } finally {fs.rmSync(temp,{recursive:true,force:true});}

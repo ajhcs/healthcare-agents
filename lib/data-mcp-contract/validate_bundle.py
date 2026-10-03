@@ -11,6 +11,9 @@ def unique_pairs(pairs):
             raise ValueError("duplicate JSON key")
         result[key] = value
     return result
+def without_bom(value):
+    return value[1:] if value.startswith("\ufeff") else value
+
 def reject_constant(value):
     raise ValueError("non-finite JSON constant")
 try:
@@ -20,8 +23,8 @@ try:
     packet = json.loads(raw, object_pairs_hook=unique_pairs, parse_constant=reject_constant)
     if set(packet) != {"bundle_json", "mapping_json"}:
         raise ValueError("invalid packet")
-    value = json.loads(packet["bundle_json"], object_pairs_hook=unique_pairs, parse_constant=reject_constant)
-    mapping = json.loads(packet["mapping_json"], object_pairs_hook=unique_pairs, parse_constant=reject_constant)
+    value = json.loads(without_bom(packet["bundle_json"]), object_pairs_hook=unique_pairs, parse_constant=reject_constant)
+    mapping = json.loads(without_bom(packet["mapping_json"]), object_pairs_hook=unique_pairs, parse_constant=reject_constant)
     if not isinstance(mapping, dict):
         raise ValueError("invalid mapping")
     bundle = PublicEvidenceBundle.model_validate(value)
