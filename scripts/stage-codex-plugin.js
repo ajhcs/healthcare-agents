@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const { spawnSync } = require('node:child_process');
+const { createRequire } = require('node:module');
 const ROOT = fs.realpathSync(path.resolve(__dirname, '..'));
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 
@@ -84,15 +85,17 @@ function prepare(argv) {
   manifest.mcpServers = './.mcp.json';
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   const common = JSON.parse(fs.readFileSync(path.join(installed, '.codex-plugin', 'mcp-node.json')));
-  const nodeServer = common.mcpServers['healthcare-admin'];
   const selectedServer = opts.bridge ? {
     command: python.executable,
-    args: ['-B', path.join(installed, 'bin', 'mcp-stdio-bridge.py'), '--node', process.execPath],
-    cwd: installed
-  } : { command: nodeServer.command, args: nodeServer.args };
-  common.mcpServers['healthcare-admin'] = opts.bridge ? { type: 'stdio', ...selectedServer } : nodeServer;
+    args: ['-B', path.join(installed, 'bin', 'mcp-stdio-bridge.py'), '--node', process.execPath]
+  } : { command: process.execPath, args: [path.join(installed, 'bin', 'mcp-server.js'), '--stdio'] };
+  common.mcpServers['healthcare-admin'] = { type: 'stdio', ...selectedServer };
   fs.writeFileSync(path.join(installed, 'mcp.json'), JSON.stringify(common, null, 2) + '\n');
   fs.writeFileSync(path.join(installed, '.mcp.json'), JSON.stringify({ mcpServers: { 'healthcare-admin': selectedServer } }, null, 2) + '\n');
+  const installedRequire = createRequire(path.join(installed, 'package.json'));
+  const Ajv2020 = installedRequire('ajv/dist/2020');
+  const validator = new Ajv2020({ strict: true }).compile(JSON.parse(fs.readFileSync(path.join(installed, 'docs/admin-v2/plugin-schemas/mcp.schema.json'))));
+  if (!validator(common)) throw new Error('Staged MCP manifest violates the pinned plugin schema: ' + JSON.stringify(validator.errors));
   const changes = [];
   for (const relative of ['.codex-plugin/plugin.json', '.mcp.json', 'mcp.json']) {
     const after = sha(fs.readFileSync(path.join(installed, relative)));
@@ -114,6 +117,7 @@ function prepare(argv) {
     marketplace_name: opts.name, plugin_id: 'healthcare-agents@' + opts.name,
     marketplace_root: destination, installed_root: installed,
     transport: opts.bridge ? 'python-anonymous-pipes' : 'portable-node',
+    primary_mcp_schema_valid: true,
     node: { executable: process.execPath, version: process.version }, python,
     offline: opts.offline, lifecycle_scripts_enabled: false,
     tarball_sha256: sha(fs.readFileSync(tarball)), source_package_files: packed.files.length,

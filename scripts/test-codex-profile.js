@@ -68,6 +68,7 @@ async function main() {
     check('fresh bridge profile has two synchronized MCP changes and resolved executables', () => {
       assert.equal(bridge.transport, 'python-anonymous-pipes'); assert.equal(bridge.offline, true);
       assert.equal(bridge.profile_changes.length, 2); assert.equal(bridge.lifecycle_scripts_enabled, false);
+      assert.equal(bridge.primary_mcp_schema_valid, true);
       assert.equal(bridge.dependency_lock_sha256, sha(path.join(bridge.marketplace_root, 'package-lock.json')));
       assert.equal(bridge.installed_dependencies['node_modules/@modelcontextprotocol/sdk'], '1.31.0');
       assert.equal(path.isAbsolute(bridge.python.executable), true);
@@ -84,15 +85,18 @@ async function main() {
     const portable = stage(['--offline', '--output', path.join(tmp, 'portable'), '--name', 'healthcare-agents-portable-test']);
     check('portable profile retains Node and requires no Python preflight', () => {
       assert.equal(portable.transport, 'portable-node'); assert.equal(portable.python, null);
-      assert.deepEqual(portable.profile_changes, []);
+      assert.equal(portable.profile_changes.length, 2);
+      assert.equal(portable.primary_mcp_schema_valid, true);
+      const server = JSON.parse(fs.readFileSync(path.join(portable.installed_root, '.mcp.json'))).mcpServers['healthcare-admin'];
+      assert.deepEqual(server, { command: process.execPath, args: [path.join(portable.installed_root, 'bin/mcp-server.js'), '--stdio'] });
       assert.equal(JSON.parse(fs.readFileSync(path.join(portable.installed_root, '.codex-plugin/plugin.json'))).mcpServers, './.mcp.json');
     });
     await sdk(portable); await sdk(portable, true); passed++; console.log('PASS portable profile official SDK (native sandbox compatibility not claimed)');
     const reset = stage(['--offline', '--output', path.join(tmp, 'bridge to portable'), '--name', 'healthcare-agents-reset-test'], true, bridge.installed_root);
     assert.equal(reset.transport, 'portable-node'); assert.equal(reset.python, null);
     assert.equal(reset.profile_changes.length, 2);
-    assert.equal(sha(path.join(reset.installed_root, '.mcp.json')), defaults['.mcp.json']);
-    assert.equal(sha(path.join(reset.installed_root, 'mcp.json')), defaults['mcp.json']);
+    const resetServer = JSON.parse(fs.readFileSync(path.join(reset.installed_root, '.mcp.json'))).mcpServers['healthcare-admin'];
+    assert.deepEqual(resetServer, { command: process.execPath, args: [path.join(reset.installed_root, 'bin/mcp-server.js'), '--stdio'] });
     await sdk(reset); await sdk(reset, true); passed++; console.log('PASS restaged bridge to portable removes Python selection and launches Node');
     const renewed = stage(['--stdio-bridge', '--offline', '--output', path.join(tmp, 'bridge to bridge'), '--name', 'healthcare-agents-renewed-test'], true, bridge.installed_root);
     const renewedConfig = JSON.parse(fs.readFileSync(path.join(renewed.installed_root, '.mcp.json'))).mcpServers['healthcare-admin'];
