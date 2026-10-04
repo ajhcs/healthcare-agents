@@ -1,0 +1,57 @@
+name: Bug report
+description: Report a problem with the CLI, installer, workup routing, evidence packs, or platform exports.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. **Do not include PHI or real patient data anywhere in this issue.** Use synthetic examples only.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Output of `healthcare-agents --version` or the value in `VERSION`.
+      placeholder: "1.5.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - CLI (list / show / choose / prompt / doctor)
+        - Workup Engine (workup / workflows / routing)
+        - Operator OS (coverage / evidence-pack)
+        - Installer (install.sh / install / uninstall)
+        - Platform export (Codex / Copilot / Cursor / M365 / other)
+        - Agent content (a specific agents/*.md file)
+        - Docs
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you run, what did you expect, and what did you get instead?
+      placeholder: |
+        1. Ran `healthcare-agents workup "..."`
+        2. Expected ...
+        3. Got ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version (`node --version`), and how you installed (npx, npm -g, install.sh, git clone).
+      placeholder: "macOS 15, Node 20.11, installed via npx"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Paste CLI output or `healthcare-agents doctor` results. Redact anything sensitive.
+      render: shell
