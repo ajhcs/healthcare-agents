@@ -66,6 +66,30 @@ function runRequired(command, args, options = {}) {
   return result;
 }
 
+// Release fixtures use the checked-in lock graph, not registry metadata that npm ci
+// need not cache. The consumer still installs and integrity-checks the actual tarball.
+function prepareLockedConsumer(project, tarball, sourceRoot = ROOT) {
+  const crypto = require('crypto');
+  const source = readJson(path.join(sourceRoot, 'package.json'));
+  const lock = readJson(path.join(sourceRoot, 'package-lock.json'));
+  if (lock.lockfileVersion !== 3 || !lock.packages || !lock.packages[''] ||
+      lock.packages[''].name !== source.name || lock.packages[''].version !== source.version ||
+      !require('util').isDeepStrictEqual(lock.packages[''].dependencies, source.dependencies))
+    throw new Error('Consumer fixture requires the matching source package-lock v3');
+  const dependency = 'file:' + path.resolve(tarball);
+  const manifest = { name: 'healthcare-agents-release-consumer', version: '0.0.0',
+    private: true, type: 'commonjs', dependencies: { [source.name]: dependency } };
+  if (source.overrides) manifest.overrides = source.overrides;
+  const packages = { ...lock.packages };
+  packages[''] = { name: manifest.name, version: manifest.version, dependencies: manifest.dependencies };
+  packages['node_modules/' + source.name] = { ...lock.packages[''],
+    resolved: dependency, integrity: 'sha512-' + crypto.createHash('sha512').update(fs.readFileSync(tarball)).digest('base64') };
+  fs.writeFileSync(path.join(project, 'package.json'), JSON.stringify(manifest, null, 2) + '\n');
+  fs.writeFileSync(path.join(project, 'package-lock.json'), JSON.stringify({
+    name: manifest.name, version: manifest.version, lockfileVersion: 3, requires: true, packages
+  }, null, 2) + '\n');
+}
+
 function normalize(value) {
   return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
@@ -83,5 +107,6 @@ module.exports = {
   fail,
   run,
   runRequired,
-  normalize
+  normalize,
+  prepareLockedConsumer
 };

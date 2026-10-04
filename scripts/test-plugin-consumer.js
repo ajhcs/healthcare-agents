@@ -7,6 +7,7 @@ const { spawnSync } = require('child_process');
 const Ajv2020 = require('ajv/dist/2020');
 const { Client } = require('@modelcontextprotocol/sdk/client/index.js');
 const { StdioClientTransport } = require('@modelcontextprotocol/sdk/client/stdio.js');
+const { prepareLockedConsumer } = require('./_release-utils');
 const root = path.resolve(__dirname, '..');
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-plugin-consumer-'));
 let passed = 0;
@@ -19,8 +20,8 @@ async function main() {
   try {
     const packed = JSON.parse(execute('npm', ['pack', '--json', '--pack-destination', tmp], root))[0];
     const project = path.join(tmp, 'consumer with spaces'); fs.mkdirSync(project);
-    fs.writeFileSync(path.join(project, 'package.json'), '{"private":true}\n');
-    execute('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--no-fund', path.join(tmp, packed.filename)], project);
+    prepareLockedConsumer(project, path.join(tmp, packed.filename), root);
+    execute('npm', ['ci', '--offline', '--ignore-scripts', '--no-audit', '--no-fund'], project);
     const installed = path.join(project, 'node_modules/healthcare-agents');
     await check('plugin: current portable manifests validate against pinned official schemas', () => {
       for (const name of ['plugin', 'mcp']) {

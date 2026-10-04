@@ -3,7 +3,7 @@ const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { ROOT, runRequired } = require('./_release-utils');
+const { ROOT, runRequired, prepareLockedConsumer } = require('./_release-utils');
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-agents-tarball-'));
 try {
@@ -15,8 +15,8 @@ try {
   const home = path.join(tmp, 'home');
   fs.mkdirSync(project);
   fs.mkdirSync(home);
-  fs.writeFileSync(path.join(project, 'package.json'), '{"private":true,"type":"commonjs"}\n');
-  runRequired('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--no-fund', tarball], { cwd: project });
+  prepareLockedConsumer(project, tarball);
+  runRequired('npm', ['ci', '--offline', '--ignore-scripts', '--no-audit', '--no-fund'], { cwd: project });
 
   const bin = path.join(project, 'node_modules', '.bin', process.platform === 'win32' ? 'healthcare-agents.cmd' : 'healthcare-agents');
   const env = { HOME: home, NO_COLOR: '1' };

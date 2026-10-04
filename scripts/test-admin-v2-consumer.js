@@ -5,7 +5,7 @@ const os = require('os');
 const path = require('path');
 const crypto = require('crypto');
 const { spawnSync } = require('child_process');
-const { ROOT } = require('./_release-utils');
+const { ROOT, prepareLockedConsumer } = require('./_release-utils');
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-consumer-v2-'));
 const records = [];
 function execute(command, args, cwd) {
@@ -38,8 +38,8 @@ const scenarios = [
 try {
   const packed = JSON.parse(execute('npm', ['pack', '--json', '--pack-destination', tmp], ROOT))[0];
   const consumer = path.join(tmp, 'clean consumer with spaces'); fs.mkdirSync(consumer);
-  fs.writeFileSync(path.join(consumer, 'package.json'), '{"private":true}\n');
-  execute('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--no-fund', path.join(tmp, packed.filename)], consumer);
+  prepareLockedConsumer(consumer, path.join(tmp, packed.filename), ROOT);
+  execute('npm', ['ci', '--offline', '--ignore-scripts', '--no-audit', '--no-fund'], consumer);
   const installed = path.join(consumer, 'node_modules/healthcare-agents');
   const cli = path.join(installed, 'bin/cli.js');
   const call = args => JSON.parse(execute(process.execPath, [cli, ...args], consumer));
