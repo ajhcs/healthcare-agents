@@ -3,7 +3,7 @@ const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { ROOT, runRequired } = require('./_release-utils');
+const { ROOT, runRequired, prepareLockedConsumer } = require('./_release-utils');
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-agents-tarball-'));
 try {
@@ -15,8 +15,8 @@ try {
   const home = path.join(tmp, 'home');
   fs.mkdirSync(project);
   fs.mkdirSync(home);
-  fs.writeFileSync(path.join(project, 'package.json'), '{"private":true,"type":"commonjs"}\n');
-  runRequired('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', tarball], { cwd: project });
+  prepareLockedConsumer(project, tarball);
+  runRequired('npm', ['ci', '--offline', '--ignore-scripts', '--no-audit', '--no-fund'], { cwd: project });
 
   const bin = path.join(project, 'node_modules', '.bin', process.platform === 'win32' ? 'healthcare-agents.cmd' : 'healthcare-agents');
   const env = { HOME: home, NO_COLOR: '1' };
@@ -26,7 +26,9 @@ try {
   assert.strictEqual(list.count, 51);
   const show = JSON.parse(runRequired(bin, ['show', 'revenue-cycle-specialist', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(show.slug, 'revenue-cycle-specialist');
-  const choose = JSON.parse(runRequired(bin, ['choose', 'clean claim denial spike', '--json'], { cwd: project, env }).stdout);
+  const unscoped = JSON.parse(runRequired(bin, ['choose', 'clean claim denial spike', '--json'], { cwd: project, env }).stdout);
+  assert.strictEqual(unscoped.status, 'no_match');
+  const choose = JSON.parse(runRequired(bin, ['choose', 'Our hospital needs a clean claim denial spike investigation', '--agent', 'revenue-cycle-specialist', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(choose.primary_agent, 'revenue-cycle-specialist');
   const doctor = JSON.parse(runRequired(bin, ['doctor', '--json'], { cwd: project, env }).stdout);
   assert.strictEqual(doctor.agent_count, 51);
@@ -42,6 +44,10 @@ try {
   runRequired(process.execPath, ['scripts/test-scale-safety-net-patient-mix-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-emergency-department-count-review.js'], { cwd: installedPackage, env });
   runRequired(process.execPath, ['scripts/test-scale-essential-service-designation-count-review.js'], { cwd: installedPackage, env });
+
+  runRequired(process.execPath, ['scripts/test-admin-v2.js'], { cwd: installedPackage, env });
+  runRequired('python3', ['scripts/test_admin_adapter.py'], { cwd: installedPackage, env });
+  runRequired(process.execPath, ['scripts/test-release-version-gates.js'], { cwd: installedPackage, env });
 
   for (const file of [
     'node_modules/healthcare-agents/bin/cli.js',

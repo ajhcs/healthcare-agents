@@ -25,7 +25,7 @@ for (const testCase of benchmark.cases) {
   reciprocalSum += rank > 0 ? 1 / rank : 0;
   if (rank !== 1) {
     failures.push({ id: testCase.id, expected: testCase.expected_agent, actual: result.primary_agent, rank: rank || null });
-    const key = `${testCase.expected_domain} -> ${result.top_matches[0].domain}`;
+    const key = `${testCase.expected_domain} -> ${(result.top_matches[0]?.domain || result.status || 'unselected')}`;
     confusion.set(key, (confusion.get(key) || 0) + 1);
   }
 }
@@ -36,6 +36,7 @@ for (const slug of slugs) {
 
 const count = benchmark.cases.length || 1;
 const metrics = {
+  measurement: 'fixed_bank_lexical_candidate_ranking_not_authoritative_selection',
   cases: benchmark.cases.length,
   top1_accuracy: Number((top1 / count).toFixed(4)),
   top3_accuracy: Number((top3 / count).toFixed(4)),

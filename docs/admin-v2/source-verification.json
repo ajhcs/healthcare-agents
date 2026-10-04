@@ -1,0 +1,136 @@
+{
+  "schema_version": "healthcare-admin.source-verification.v2",
+  "records": [
+    {
+      "id": "cms-remittance",
+      "workflows": [
+        "denial-spike-workup",
+        "payer-contract-underpayment-review"
+      ],
+      "url": "https://www.cms.gov/medicare/coding-billing/electronic-billing/health-care-payment-remittance-advice",
+      "quote": "Adjustments can happen at line, claim or provider level.",
+      "supports": "Reconcile adjustment level and CARC/RARC context before labeling a loss.",
+      "limits": "Medicare remittance guidance; not a determination of commercial contract recovery or a definition of the local denial cohort.",
+      "retrieved_utc": "2026-10-02T03:51:29.156142+00:00",
+      "http_status": 200,
+      "final_url": "https://www.cms.gov/medicare/coding-billing/electronic-billing/health-care-payment-remittance-advice",
+      "response_bytes": 199664,
+      "response_sha256": "7f1a3d5cecbc31b10a0d525d480e085c3107a27e06a76c9b81abbd665d06d3af",
+      "last_modified_header": "Fri, 02 Oct 2026 03:51:25 GMT",
+      "supporting_excerpt_present": true,
+      "browser_source_reviewed": true,
+      "scope": "bounded_workflow_context"
+    },
+    {
+      "id": "ihi-access-measures",
+      "workflows": [
+        "ambulatory-access-backlog"
+      ],
+      "url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+      "quote": "Number of days to 3rd next available appointment",
+      "supports": "Use an observed access outcome alongside capacity/process measures and balancing measures.",
+      "limits": "Improvement guidance, not a regulatory requirement or validation of the tool's stable-demand clearance scenario.",
+      "retrieved_utc": "2026-10-02T03:51:25.909888+00:00",
+      "http_status": 200,
+      "final_url": "https://www.ihi.org/library/model-for-improvement/establishing-measures",
+      "response_bytes": 108025,
+      "response_sha256": "9a3380860f153eec2e9696881012b4d6ba7f32daf7e9b12378ea0a9e69399542",
+      "last_modified_header": "Fri, 02 Oct 2026 03:10:33 GMT",
+      "supporting_excerpt_present": true,
+      "browser_source_reviewed": true,
+      "scope": "bounded_workflow_context"
+    },
+    {
+      "id": "cms-hospital-certification",
+      "workflows": [
+        "survey-readiness-gap-review"
+      ],
+      "url": "https://www.cms.gov/medicare/health-safety-standards/certification-compliance/hospitals",
+      "quote": "evaluates and certifies each participating hospital as a whole",
+      "supports": "Survey applicability and institutional scope require qualified validation; a gap counter does not certify readiness.",
+      "limits": "Medicare hospital certification overview, not a verified local finding, accreditor standard or all facility types.",
+      "retrieved_utc": "2026-10-02T03:51:25.738912+00:00",
+      "http_status": 200,
+      "final_url": "https://www.cms.gov/medicare/health-safety-standards/certification-compliance/hospitals",
+      "response_bytes": 205465,
+      "response_sha256": "af56296f178a960f57988df8e8acf087e20c7e2e689c81d08ccceabc48126540",
+      "last_modified_header": "Fri, 02 Oct 2026 03:45:34 GMT",
+      "supporting_excerpt_present": true,
+      "browser_source_reviewed": true,
+      "scope": "bounded_workflow_context"
+    },
+    {
+      "id": "cms-ffs-redetermination",
+      "workflows": [
+        "prior-authorization-appeal-workup"
+      ],
+      "url": "https://www.cms.gov/medicare/appeals-grievances/fee-for-service/first-level-appeal-redetermination-medicare-contractor",
+      "quote": "120 days from the date of receipt",
+      "supports": "Deadlines depend on program, notice and receipt convention; do not infer them from a generic case date.",
+      "limits": "Original Medicare first-level claim redetermination example only. Its period is not a generic prior-authorization, Medicare Advantage or commercial appeal rule.",
+      "retrieved_utc": "2026-10-02T03:51:25.878685+00:00",
+      "http_status": 200,
+      "final_url": "https://www.cms.gov/medicare/appeals-grievances/fee-for-service/first-level-appeal-redetermination-medicare-contractor",
+      "response_bytes": 198803,
+      "response_sha256": "4215ed0457a32eeaef1362ba4a311fc759e6826fa90750c3cc7f487fa4625654",
+      "last_modified_header": "Fri, 02 Oct 2026 03:45:34 GMT",
+      "supporting_excerpt_present": true,
+      "browser_source_reviewed": true,
+      "scope": "bounded_workflow_context"
+    },
+    {
+      "id": "cms-pfs-overview",
+      "workflows": [
+        "payer-contract-underpayment-review"
+      ],
+      "url": "https://www.cms.gov/medicare/physician-fee-schedule/search/overview",
+      "quote": "each Medicare payment locality has a geographic practice cost index",
+      "supports": "Expected payment requires the correct code, locality, applicable policy and authoritative effective payment source.",
+      "limits": "Medicare physician fee schedule context only. No private contract amount, coding adjudication or collectible debt is established.",
+      "retrieved_utc": "2026-10-02T03:51:26.032413+00:00",
+      "http_status": 200,
+      "final_url": "https://www.cms.gov/medicare/physician-fee-schedule/search/overview",
+      "response_bytes": 209500,
+      "response_sha256": "ae41a189f8b635af645e251cc0e2a9a29e4db9cab0a12d60cb3075d44172f6f0",
+      "last_modified_header": "Fri, 02 Oct 2026 03:45:31 GMT",
+      "supporting_excerpt_present": true,
+      "browser_source_reviewed": true,
+      "scope": "bounded_workflow_context"
+    },
+    {
+      "id": "ahrq-ideal-discharge",
+      "workflows": [
+        "discharge-barrier-workplan"
+      ],
+      "url": "https://www.ahrq.gov/patient-safety/patients-families/engagingfamilies/strategy4/index.html",
+      "quote": "Include the patient and family as full partners",
+      "supports": "Retain patient/family participation and responsible clinical review in administrative discharge coordination.",
+      "limits": "Patient/family engagement guidance; it does not define this hospital's avoidable days or authorize a discharge.",
+      "retrieved_utc": "2026-10-02T03:51:26.186416+00:00",
+      "fetch_error_type": "HTTPError",
+      "browser_source_reviewed": true,
+      "scope": "bounded_workflow_context"
+    },
+    {
+      "id": "irs-chna-community-input",
+      "workflows": [
+        "custom-community-interview"
+      ],
+      "url": "https://www.irs.gov/charities-non-profits/community-health-needs-assessment-for-charitable-hospital-organizations-section-501r3",
+      "quote": "Input representing the broad interests of the community",
+      "supports": "A charitable hospital's CHNA interview plan needs public health, underserved/low-income/minority input and prior written comments.",
+      "limits": "Section 501(r)(3) charitable hospital scope. This general review does not certify any hospital's CHNA compliance.",
+      "retrieved_utc": "2026-10-02T03:51:26.381976+00:00",
+      "http_status": 200,
+      "final_url": "https://www.irs.gov/charities-non-profits/community-health-needs-assessment-for-charitable-hospital-organizations-section-501r3",
+      "response_bytes": 121291,
+      "response_sha256": "c4bf330519d3a5524d8a5ad5c6490cc3bb13e5f5414eb09f00dee5d2dcce4bc5",
+      "last_modified_header": "Fri, 02 Oct 2026 02:15:50 GMT",
+      "supporting_excerpt_present": true,
+      "browser_source_reviewed": true,
+      "scope": "bounded_workflow_context"
+    }
+  ],
+  "specialist_review_dates_changed": false,
+  "all_regulatory_claims_verified": false
+}

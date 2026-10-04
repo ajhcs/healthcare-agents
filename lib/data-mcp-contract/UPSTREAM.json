@@ -1,0 +1,22 @@
+{
+  "repo": "healthcare-data-mcp",
+  "source_commit": "7741ee6d38776baf3aa72ae826e7200a5a0944b8",
+  "source_url": "https://github.com/ajhcs/healthcare-data-mcp",
+  "schema_version": "ushso.public-evidence-bundle.v1",
+  "license": "MIT",
+  "files": [
+    {
+      "path": "public_evidence.py",
+      "sha256": "8a0cb14d5181dc41fb37c06dd5787d10e5fb063d1fac4345a23d8d9eb3237160"
+    },
+    {
+      "path": "public-evidence-bundle.schema.json",
+      "sha256": "8aecc9e30866a000848b278ff4d7108c5b4bc6a3012c1e4f2e3878f85e2ac31c"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "98e6fbcea74c60b942f08c19800a48d34391b344eb4b363d855a4cb6aa057235"
+    }
+  ],
+  "scope": "Unmodified portable producer contract only; no server, acquisition code, credentials or cache copied."
+}

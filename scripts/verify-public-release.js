@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs');
-const https = require('https');
+const { targets, assertRegistry, assertGithub, fetchJson } = require('./release-targets');
 const path = require('path');
 const { ROOT, fail, readJson } = require('./_release-utils');
 
@@ -19,36 +19,17 @@ if (plugin.version !== version) messages.push(`Codex plugin version ${plugin.ver
 if (!readme.includes(`version-${version}`) && !readme.includes(`v${version}`)) messages.push('README version badge/link does not match package version');
 if (changelog && !changelog.includes(version)) messages.push('CHANGELOG does not mention package version');
 
-function fetchJson(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, { headers: { 'User-Agent': 'healthcare-agents-release-check' } }, response => {
-      let body = '';
-      response.setEncoding('utf8');
-      response.on('data', chunk => { body += chunk; });
-      response.on('end', () => {
-        if (response.statusCode < 200 || response.statusCode >= 300) {
-          reject(new Error(`${url} returned ${response.statusCode}: ${body.slice(0, 200)}`));
-        } else {
-          resolve(JSON.parse(body));
-        }
-      });
-    }).on('error', reject);
-  });
-}
-
 async function main() {
+  const target = targets(pkg);
   if (!network) {
     fail(messages);
-    console.log('public release metadata ok locally; pass --network before publication to verify npm and GitHub artifacts');
+    console.log('public release metadata ok locally; pass --network after publication to verify npm and GitHub artifacts');
     return;
   }
-  const npm = await fetchJson('https://registry.npmjs.org/healthcare-agents');
-  if (!npm.versions || !npm.versions[version]) messages.push(`npm registry does not contain healthcare-agents@${version}`);
-  const npmFiles = npm.versions && npm.versions[version] && npm.versions[version].dist;
-  if (!npmFiles || !npmFiles.tarball) messages.push(`npm registry metadata for ${version} has no tarball URL`);
-  const release = await fetchJson(`https://api.github.com/repos/ajhcs/healthcare-agents/releases/tags/v${version}`);
-  if (release.tag_name !== `v${version}`) messages.push(`GitHub release tag mismatch: ${release.tag_name}`);
-  if (release.draft || release.prerelease) messages.push('GitHub release is draft or prerelease');
+  const npm = await fetchJson(target.registry + '/' + target.name);
+  assertRegistry(target, npm);
+  const release = await fetchJson('https://api.github.com/repos/' + target.repository + '/releases/tags/' + target.github_tag);
+  assertGithub(target, release);
   fail(messages);
   console.log(`public release artifacts ok: npm healthcare-agents@${version}, GitHub v${version}`);
 }

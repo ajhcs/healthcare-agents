@@ -1,8 +1,19 @@
+# 2.0.0-beta.1 (candidate)
+
+- Release preparation fixes beta publication to npm next and GitHub prerelease semantics, verifies exact approved commit/repository/package metadata, installs locked dependencies before CI checks, and detects any latest-channel change. Existing publishing permissions and environment are retained; no publication is performed by preparation. Native/model evidence remains tied to its recorded source commits.
+
+
+The local contract repair makes free-text routing discovery-only, adds validated explicit/host selection with retained multi-workflow drafts, and enforces complete MCP/callback output envelopes with typed size errors. Existing specialists, workup artifacts and calculation contracts remain available through explicit IDs; old auto-selection integrations require migration.
+
+Adds routing abstention, CHNA fallback, six deep workflow skills, compact role briefs, aggregate outcome contracts, custom workflow generation and five-target payload exports. The successor adds official-SDK stdio/loopback MCP tools, portable plugin packaging and local Claude/Azure/Databricks callback contracts. Independent routing defects are repaired; builder validation wording now reflects shape-only prose checks. A pinned native Codex synthetic MCP campaign is recorded separately from unqualified customer hosts and publication.
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 ## Unreleased
+
+- Preserve the parent's declared selector and custom rationale in each multi-workflow child draft, including async and packaged CLI paths.
 
 ### Added
 

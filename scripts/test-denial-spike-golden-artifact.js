@@ -13,7 +13,7 @@ function expectGoldenFailure(markdown, pattern) {
 
 (async () => {
   const workup = await createWorkupAsync('Commercial payer denial rate jumped and AR days are climbing', {
-    dataMode: 'hybrid_synthetic_public'
+    workflowIds: ['denial-spike-workup'], dataMode: 'hybrid_synthetic_public'
   });
   const artifact = buildDenialSpikeGoldenArtifact(workup);
   const score = scoreDenialSpikeArtifact(artifact);

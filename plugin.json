@@ -1,0 +1,44 @@
+{
+  "name": "healthcare-agents",
+  "version": "2.0.0-beta.1",
+  "description": "Healthcare administration skills, six deep workflows and a custom workflow builder.",
+  "author": {
+    "name": "ajhcs"
+  },
+  "homepage": "https://github.com/ajhcs/healthcare-agents",
+  "repository": "https://github.com/ajhcs/healthcare-agents",
+  "license": "Apache-2.0",
+  "keywords": [
+    "healthcare",
+    "healthcare-administration",
+    "codex",
+    "ai-agents",
+    "agent-skills",
+    "revenue-cycle",
+    "hipaa",
+    "cms"
+  ],
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Healthcare Agents",
+        "shortDescription": "Healthcare administration workflows and evidence-aware skills.",
+        "longDescription": "Use the Healthcare Agents plugin as a self-directing front door for healthcare administration work. It routes plain-language problems through workflow-first triage, department or area hints, and focused specialist prompts across revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, and emergency preparedness.",
+        "developerName": "ajhcs",
+        "category": "Productivity",
+        "capabilities": [
+          "Reference",
+          "Write",
+          "Workflow"
+        ],
+        "defaultPrompt": [
+          "Use the Healthcare Agents plugin for a prior authorization appeal.",
+          "Use Healthcare Agents in the revenue cycle area for denials.",
+          "Use Healthcare Agents to draft a HIPAA evidence checklist."
+        ],
+        "brandColor": "#2E8B57"
+      }
+    }
+  }
+}

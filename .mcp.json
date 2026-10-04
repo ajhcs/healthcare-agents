@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "healthcare-admin": {
+      "command": "node",
+      "args": [
+        "${PLUGIN_ROOT}/bin/mcp-server.js",
+        "--stdio"
+      ]
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "healthcare-admin.evidence-mapping.v1",
+  "workflow_id": "ambulatory-access-backlog",
+  "human_owner": "Synthetic Ambulatory access recovery owner",
+  "data_mode": "synthetic_only",
+  "as_of": "2026-10-03",
+  "bundle_sha256": "sha256:43efc1f1eab83b2d1d3644570ad7903fd4e04d5ba74a952f59cce0ea172047ad",
+  "entity_id": "fictional-cedar",
+  "scope": {
+    "systems": [
+      "Fictional Cedar System"
+    ],
+    "market": {
+      "synthetic": true
+    },
+    "service_line": "fictional administrative scope",
+    "periods": [
+      "synthetic-2026"
+    ]
+  },
+  "accepted_conflict_ids": [],
+  "data": {
+    "weekly_requests": null,
+    "weekly_slots": null,
+    "backlog": null,
+    "additional_weekly_slots": null
+  },
+  "bindings": [
+    {
+      "path": "/weekly_requests",
+      "coverage_id": "coverage-0",
+      "observation_id": "obs-0",
+      "expect": {
+        "measure_id": "/weekly_requests",
+        "value_type": "integer",
+        "unit": "visits_per_week",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/weekly_slots",
+      "coverage_id": "coverage-1",
+      "observation_id": "obs-1",
+      "expect": {
+        "measure_id": "/weekly_slots",
+        "value_type": "integer",
+        "unit": "visits_per_week",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/backlog",
+      "coverage_id": "coverage-2",
+      "observation_id": "obs-2",
+      "expect": {
+        "measure_id": "/backlog",
+        "value_type": "integer",
+        "unit": "visits",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/additional_weekly_slots",
+      "coverage_id": "coverage-3",
+      "observation_id": "obs-3",
+      "expect": {
+        "measure_id": "/additional_weekly_slots",
+        "value_type": "integer",
+        "unit": "visits_per_week",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    }
+  ],
+  "owner_inputs": [],
+  "source_origin": "synthetic"
+}

@@ -1,7 +1,7 @@
 {
   "name": "healthcare-agents",
-  "version": "1.6.0",
-  "description": "Portable prompt and SKILL.md pack with 51 specialist AI agents for US healthcare administration workflows.",
+  "version": "2.0.0-beta.1",
+  "description": "Healthcare administration skills, six evidence-aware workflows and a local custom workflow builder.",
   "keywords": [
     "healthcare",
     "healthcare-administration",
@@ -19,7 +19,8 @@
     "revenue-cycle"
   ],
   "bin": {
-    "healthcare-agents": "bin/cli.js"
+    "healthcare-agents": "bin/cli.js",
+    "healthcare-agents-mcp": "bin/mcp-server.js"
   },
   "scripts": {
     "scorecard": "node scripts/generate-scorecard.js",
@@ -69,10 +70,27 @@
     "verify:public-release:network": "node scripts/verify-public-release.js --network",
     "validate:public-version-sync": "node scripts/validate-public-version-sync.js",
     "release:check": "bash scripts/release-readiness.sh",
-    "test": "npm run release:check"
+    "test": "npm run release:check",
+    "test:admin-v2": "node scripts/test-admin-v2.js",
+    "test:admin-adapter": "python3 scripts/test_admin_adapter.py",
+    "generate:admin-v2": "node scripts/generate-admin-v2-assets.js && node scripts/generate-admin-v2-proof.js",
+    "test:release-version-gates": "node scripts/test-release-version-gates.js",
+    "test:admin-consumer": "node scripts/test-admin-v2-consumer.js",
+    "mcp:stdio": "node bin/mcp-server.js --stdio",
+    "mcp:http": "node bin/mcp-server.js --http",
+    "test:admin-mcp": "node scripts/test-admin-mcp.js",
+    "test:host-contracts": "node scripts/test-host-contracts.js",
+    "test:plugin-consumer": "node scripts/test-plugin-consumer.js",
+    "test:routing-intent": "node scripts/test-routing-intent.js",
+    "test:result-boundary": "node scripts/test-result-boundary.js",
+    "test:public-evidence": "node scripts/test-public-evidence.js",
+    "test:stdio-bridge": "python3 scripts/test_stdio_bridge.py",
+    "stage:codex-plugin": "node scripts/stage-codex-plugin.js",
+    "test:codex-profile": "node scripts/test-codex-profile.js",
+    "test:release-policy": "node scripts/test-release-policy.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18.14.1"
   },
   "files": [
     ".claude/commands/eval.md",
@@ -174,7 +192,30 @@
     "skills/",
     "VERSION",
     "LICENSE",
-    "workflows/"
+    "workflows/",
+    "adapters/python/*.py",
+    "docs/admin-v2/",
+    "scripts/test-admin-v2.js",
+    "scripts/test_admin_adapter.py",
+    "scripts/generate-admin-v2-assets.js",
+    "scripts/generate-admin-v2-proof.js",
+    "scripts/test-release-version-gates.js",
+    "scripts/test-admin-v2-consumer.js",
+    "plugin.json",
+    "mcp.json",
+    ".mcp.json",
+    "adapters/hosts/",
+    "scripts/test-admin-mcp.js",
+    "scripts/test-host-contracts.js",
+    "scripts/test-plugin-consumer.js",
+    "scripts/test-routing-intent.js",
+    "scripts/test-result-boundary.js",
+    "scripts/test-public-evidence.js",
+    "scripts/test_stdio_bridge.py",
+    "scripts/stage-codex-plugin.js",
+    "scripts/test-codex-profile.js",
+    "scripts/release-targets.js",
+    "scripts/test-release-policy.js"
   ],
   "repository": {
     "type": "git",
@@ -184,6 +225,16 @@
   "license": "Apache-2.0",
   "author": "ajhcs",
   "dependencies": {
-    "ajv": "^8.20.0"
+    "@modelcontextprotocol/sdk": "1.31.0",
+    "ajv": "^8.20.0",
+    "@hono/node-server": "1.19.11"
+  },
+  "overrides": {
+    "@hono/node-server": "1.19.11"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "next",
+    "registry": "https://registry.npmjs.org"
   }
 }

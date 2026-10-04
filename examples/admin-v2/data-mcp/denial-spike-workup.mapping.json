@@ -1,0 +1,118 @@
+{
+  "schema_version": "healthcare-admin.evidence-mapping.v1",
+  "workflow_id": "denial-spike-workup",
+  "human_owner": "Synthetic Denial spike investigation owner",
+  "data_mode": "synthetic_only",
+  "as_of": "2026-10-03",
+  "bundle_sha256": "sha256:ec42e28b39a3860674d1a1ff1b7b540b03b557560a9e25c5da092c4b4a435049",
+  "entity_id": "fictional-cedar",
+  "scope": {
+    "systems": [
+      "Fictional Cedar System"
+    ],
+    "market": {
+      "synthetic": true
+    },
+    "service_line": "fictional administrative scope",
+    "periods": [
+      "synthetic-2026"
+    ]
+  },
+  "accepted_conflict_ids": [],
+  "data": {
+    "baseline_claims": null,
+    "baseline_denied": null,
+    "current_claims": null,
+    "current_denied": null,
+    "denied_dollars": null
+  },
+  "bindings": [
+    {
+      "path": "/baseline_claims",
+      "coverage_id": "coverage-0",
+      "observation_id": "obs-0",
+      "expect": {
+        "measure_id": "/baseline_claims",
+        "value_type": "integer",
+        "unit": "claims",
+        "period": {
+          "label": "synthetic-baseline",
+          "start": "2026-09-01",
+          "end": "2026-09-30"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/baseline_denied",
+      "coverage_id": "coverage-1",
+      "observation_id": "obs-1",
+      "expect": {
+        "measure_id": "/baseline_denied",
+        "value_type": "integer",
+        "unit": "claims",
+        "period": {
+          "label": "synthetic-baseline",
+          "start": "2026-09-01",
+          "end": "2026-09-30"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/current_claims",
+      "coverage_id": "coverage-2",
+      "observation_id": "obs-2",
+      "expect": {
+        "measure_id": "/current_claims",
+        "value_type": "integer",
+        "unit": "claims",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/current_denied",
+      "coverage_id": "coverage-3",
+      "observation_id": "obs-3",
+      "expect": {
+        "measure_id": "/current_denied",
+        "value_type": "integer",
+        "unit": "claims",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/denied_dollars",
+      "coverage_id": "coverage-4",
+      "observation_id": "obs-4",
+      "expect": {
+        "measure_id": "/denied_dollars",
+        "value_type": "integer",
+        "unit": "USD",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    }
+  ],
+  "owner_inputs": [],
+  "source_origin": "synthetic"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "discharge-barrier-workplan",
+  "name": "Discharge barrier coordination",
+  "purpose": "Create an aggregate barrier workplan while preserving clinician authority and patient choice.",
+  "checks": [
+    "Define cohort, window and category rules; avoid double-counting cases or days.",
+    "Validate the local avoidable-day definition and distinguish administrative blockers from clinical readiness.",
+    "Assign barrier owners and dependencies for placement, transport, coverage and services.",
+    "Review progress and equity; only authorized clinical teams determine discharge readiness."
+  ],
+  "evidence": [
+    "Aggregate barrier categories and counts",
+    "Locally reviewed avoidable-day labels",
+    "Responsible owners and dependency/status dates"
+  ],
+  "decisions": [
+    "Case-management owner validates category counts.",
+    "Attending/clinical team retains discharge decisions.",
+    "Operational owners verify barrier resolution and preserve patient choice."
+  ],
+  "completion_gate": "Verified barrier disposition and responsible-team review; a barrier summary does not authorize discharge.",
+  "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+  "primary_agent": "clinical-case-manager",
+  "handoffs": [
+    "clinical-utilization-management-specialist",
+    "clinical-care-management-specialist",
+    "revenue-finance-manager"
+  ]
+}

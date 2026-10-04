@@ -1,0 +1,15 @@
+# Bounded primary source review
+
+Checked on 2026-10-02 for the six new workflow contexts and the custom CHNA example. [The machine-readable record](source-verification.json) preserves each scope, limitation, short supporting excerpt, retrieval time and available response hash. Six primary pages were retrieved and hashed on BuilderBob. The AHRQ page was read through the browser tool; direct retrieval failed, so no byte hash is claimed.
+
+| Context | Primary source and verified boundary |
+| --- | --- |
+| Denials/remittance | [CMS payment and remittance advice](https://www.cms.gov/medicare/coding-billing/electronic-billing/health-care-payment-remittance-advice) distinguishes line, claim and provider adjustments and CARC/RARC context. This supports reconciliation; it establishes no recovery amount. |
+| Access | [IHI establishing measures](https://www.ihi.org/library/model-for-improvement/establishing-measures) uses observed third-next-available access and clinician-capacity process measures. A stable-demand backlog scenario does not prove access improvement. |
+| Survey | [CMS hospital certification](https://www.cms.gov/medicare/health-safety-standards/certification-compliance/hospitals) places evaluation/certification with the State Survey Agency and identifies program/institution scope. A finding counter does not certify compliance. |
+| Appeal | [CMS first-level Original Medicare redetermination](https://www.cms.gov/medicare/appeals-grievances/fee-for-service/first-level-appeal-redetermination-medicare-contractor) demonstrates the importance of notice/receipt conventions. Its claim-redetermination period must not be substituted for a prior-authorization, Medicare Advantage or commercial rule. |
+| Expected payment | [CMS PFS overview](https://www.cms.gov/medicare/physician-fee-schedule/search/overview) distinguishes codes, payment policy and locality, and directs official definitive files to the MAC. A commercial expected payment still requires the actual executed contract and amendments. |
+| Discharge | [AHRQ IDEAL discharge planning](https://www.ahrq.gov/patient-safety/patients-families/engagingfamilies/strategy4/index.html) includes patient/family participation. It does not authorize discharge or validate a local avoidable-day definition. |
+| CHNA | [IRS Section 501(r)(3)](https://www.irs.gov/charities-non-profits/community-health-needs-assessment-for-charitable-hospital-organizations-section-501r3) requires input covering public health, underserved/low-income/minority populations and prior written comments in its charitable-hospital scope. An interview plan alone does not establish compliance. |
+
+The stock-flow and variance formulas are transparent arithmetic over supplied facts. These sources provide bounded domain context, not endorsement or independent authentication of input. Applicability, jurisdiction, exact standard/payer terms and dates remain case-specific requirements. None of the retained 51 specialist source-review dates were refreshed by this review. Wider consequential source verification remains a release gate.

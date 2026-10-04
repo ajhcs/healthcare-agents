@@ -20,7 +20,13 @@ else
   echo "warn: shellcheck not installed; running built-in shell safety heuristics"
 fi
 
-shell_eval_hits="$(rg -n '\beval[[:space:]]+["$]|(^|[;&|[:space:]])exec[[:space:]]+[^>]' install.sh scripts/*.sh || true)"
+if command -v rg >/dev/null 2>&1; then
+  SEARCH=(rg -n)
+else
+  SEARCH=(grep -ERn)
+fi
+
+shell_eval_hits="$("${SEARCH[@]}" '\beval[[:space:]]+["$]|(^|[;&|[:space:]])exec[[:space:]]+[^>]' install.sh scripts/*.sh || true)"
 shell_eval_hits="$(printf '%s\n' "$shell_eval_hits" | grep -v '^scripts/static-security-checks.sh:' || true)"
 if [[ -n "$shell_eval_hits" ]]; then
   printf '%s\n' "$shell_eval_hits"
@@ -28,7 +34,7 @@ if [[ -n "$shell_eval_hits" ]]; then
   exit 1
 fi
 
-broad_delete_hits="$(rg -n 'rm -rf "\$dest"|rm -rf "\$CUSTOM_PATH"|rm -rf /' install.sh scripts/*.sh || true)"
+broad_delete_hits="$("${SEARCH[@]}" 'rm -rf "\$dest"|rm -rf "\$CUSTOM_PATH"|rm -rf /' install.sh scripts/*.sh || true)"
 broad_delete_hits="$(printf '%s\n' "$broad_delete_hits" | grep -v '^scripts/static-security-checks.sh:' || true)"
 if [[ -n "$broad_delete_hits" ]]; then
   printf '%s\n' "$broad_delete_hits"
@@ -36,7 +42,7 @@ if [[ -n "$broad_delete_hits" ]]; then
   exit 1
 fi
 
-if rg -n 'child_process\.exec\(|execSync\(' bin scripts/*.js; then
+if "${SEARCH[@]}" 'child_process\.exec\(|execSync\(' bin scripts/*.js; then
   echo "error: Node scripts must use spawn/execFile style APIs, not shell exec" >&2
   exit 1
 fi

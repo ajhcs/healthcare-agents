@@ -11,9 +11,10 @@ const {
   loadWorkflows,
   findWorkflow,
   createWorkup,
+  routeWorkflow,
   createWorkupAsync,
   formatWorkupMarkdown,
-  normalizeTarget
+  normalizeTarget, requestedTaskText, specialistIntent
 } = require('../lib/workflows');
 const {
   listEvidencePacks,
@@ -24,6 +25,7 @@ const { buildEvidencePack } = require('../scripts/scaffold-evidence-pack');
 const { loadReviewProtocolRegistry, reviewProtocolIndex } = require('../lib/review-protocols');
 const { evaluateStrategicReviewFile } = require('../lib/strategic-review');
 const renderers = require('../lib/renderers');
+const { validateSelection, resolveSelection } = require('../lib/routing-contract');
 const VALID_MODES = ['quick triage', 'workplan', 'audit/checklist', 'artifact/template'];
 
 const TOOL_ORDER = [
@@ -68,7 +70,12 @@ function printHelp() {
 Usage:
   healthcare-agents list [--domain <name>] [--json]
   healthcare-agents show <agent> [--json]
-  healthcare-agents choose "<problem>" [--json]
+  healthcare-agents choose "<problem>" [--agent <id>|--selection <file>] [--json]
+  healthcare-agents admin import-evidence <bundle.json> --mapping <mapping.json> --output <new-dir> [--python <python3>]
+  healthcare-agents admin list
+  healthcare-agents admin run <case.json>
+  healthcare-agents admin build <spec.json> --output <new-dir>
+  healthcare-agents admin export <codex|claude|chatgpt|azure|databricks> <workflow-id> --output <new-dir>
   healthcare-agents workflows [--json]
   healthcare-agents workflow <workflow-id> [--json]
   healthcare-agents operator-os coverage [--json]
@@ -77,7 +84,7 @@ Usage:
   healthcare-agents evidence-pack scaffold <workflow-id>
   healthcare-agents review protocols [--json]
   healthcare-agents review evaluate --input <request.json> [--output <review.json>]
-  healthcare-agents workup "<problem>" [--target codex|claude|copilot|m365-copilot] [--data-mode <mode>] [--json]
+  healthcare-agents workup "<problem>" [--workflow <id[,id]>|--selection <file>] [--target codex|claude|copilot|m365-copilot] [--data-mode <mode>] [--json]
   healthcare-agents export <platform> <workflow-id> [--output <dir>]
   healthcare-agents prompt <agent> --mode <mode>
   healthcare-agents doctor [--json]
@@ -111,7 +118,7 @@ Examples:
   healthcare-agents operator-os coverage
   healthcare-agents evidence-pack show denial-spike-workup
   healthcare-agents evidence-pack scaffold clean-claim-rate-decline
-  healthcare-agents workup "Commercial payer denial rate jumped 18 percent" --target codex
+  healthcare-agents workup "Commercial payer denial rate jumped 18 percent" --workflow denial-spike-workup --target codex
   healthcare-agents export m365-declarative-agent denial-spike-workup
   healthcare-agents prompt quality-compliance-officer --mode audit/checklist
   healthcare-agents install revenue-cycle-specialist --codex --dry-run`);
@@ -320,56 +327,58 @@ function scoreAgent(agent, problemTokens, problemText) {
   return score;
 }
 
+function readRoutingSelection(args, kind) {
+  const direct = kind === 'agent' ? '--agent' : '--workflow';
+  const other = kind === 'agent' ? '--workflow' : '--agent';
+  if (hasFlag(args, other)) throw new Error('Unsupported selection option for this command: ' + other);
+  if (args.filter(arg => arg === direct).length > 1 || args.filter(arg => arg === '--selection').length > 1) throw new Error('Duplicate routing selection option');
+  if (hasFlag(args, direct) && hasFlag(args, '--selection')) throw new Error('Select one routing input');
+  if (hasFlag(args, direct)) {
+    const value = requireOptionValue(args, direct, kind === 'agent' ? 'choose' : 'workup');
+    return kind === 'agent' ? { agentId: value } : { workflowIds: value.split(',') };
+  }
+  if (hasFlag(args, '--selection')) {
+    const file = requireOptionValue(args, '--selection', kind === 'agent' ? 'choose' : 'workup');
+    if (fs.statSync(file).size > 2 * 1024 * 1024) throw new Error('Selection document exceeds 2 MiB');
+    return { selection: validateSelection(JSON.parse(fs.readFileSync(file, 'utf8'))) };
+  }
+  return {};
+}
 function chooseAgent(args) {
   const registry = loadRegistry();
   const json = hasFlag(args, '--json');
-  const problem = args.filter(arg => arg !== '--json').join(' ').trim();
-  if (!problem) {
-    console.error('error: choose requires a problem description');
-    process.exit(1);
+  let options, selection;
+  const problem = argsWithoutOptions(args, ['--agent', '--selection']).filter(arg => arg !== '--json').join(' ').trim();
+  try {
+    options = readRoutingSelection(args, 'agent');
+    selection = resolveSelection(problem, options);
+    if (selection && !selection.agent_id) throw new Error('choose requires a specialist selection; use workup for workflow selections');
+  } catch (error) { console.error('error: ' + error.message); process.exitCode = 2; return; }
+  if (!problem && !selection) { console.error('error: choose requires a problem description or explicit specialist selection'); process.exitCode = 1; return; }
+  const ranked = registry.agents.map(agent => ({ agent, score: scoreAgent(agent, tokens(problem), normalize(problem)) })).sort((a, b) => b.score - a.score);
+  if (!selection) {
+    const routed = routeWorkflow(problem);
+    const hints = specialistIntent(problem) ? ranked.filter(row => row.score > 0).slice(0, 5) : [];
+    const matches = hints.map(row => ({ slug: row.agent.slug, display_name: row.agent.display_name, domain: row.agent.domain, score: row.score }));
+    const result = { status: matches.length || routed.candidates.length ? 'needs_clarification' : 'no_match',
+      problem, primary_agent: null, confidence: 'low', confidence_kind: 'uncalibrated_lexical_discovery',
+      routing_authority: 'discovery_only', selection: null, requested_workflows: [],
+      candidates: routed.candidates, candidate_agents: matches, top_matches: matches,
+      missing_inputs: ['Explicit specialist ID or validated host selection'], supporting_agents: [],
+      starter_prompt: 'Free-text ranks are discovery candidates only. Select an agent with --agent or a validated selection document; interpret negation, completed work and multiple goals before selection.' };
+    console.log(json ? JSON.stringify(result, null, 2) : result.starter_prompt + '\n' + matches.map(row => row.slug).join('\n')); return;
   }
-  const problemTokens = tokens(problem);
-  const problemText = normalize(problem);
-  const ranked = registry.agents
-    .map(agent => ({ agent, score: scoreAgent(agent, problemTokens, problemText) }))
-    .sort((a, b) => b.score - a.score);
-  const primary = ranked[0].agent;
+  const primary = registry.agents.find(agent => agent.slug === selection.agent_id);
   const mode = modeFor(problem);
-  const supporting = primary.handoffs.length
-    ? primary.handoffs.slice(0, 3)
-    : ranked.slice(1, 4).map(item => item.agent.slug);
-  const result = {
-    problem,
-    primary_agent: primary.slug,
-    primary_display_name: primary.display_name,
-    recommended_output_mode: mode,
-    confidence: ranked[0].score > 30 ? 'high' : ranked[0].score > 12 ? 'medium' : 'low',
-    top_matches: ranked.slice(0, 5).map(item => ({
-      slug: item.agent.slug,
-      display_name: item.agent.display_name,
-      domain: item.agent.domain,
-      score: item.score
-    })),
-    missing_inputs: inferMissingInputs(problem, primary),
-    supporting_agents: supporting,
-    human_escalation_owner: primary.escalation_owner,
-    role_boundaries: primary.role_boundaries,
-    starter_prompt: buildStarterPrompt(primary, mode, problem, supporting)
-  };
-  if (json) {
-    console.log(JSON.stringify(result, null, 2));
-    return;
-  }
-  console.log(`Primary agent: ${result.primary_agent} (${result.primary_display_name})`);
-  console.log(`Recommended mode: ${result.recommended_output_mode}`);
-  console.log(`Confidence: ${result.confidence}`);
-  console.log(`Missing inputs: ${result.missing_inputs.join('; ') || 'None detected'}`);
-  console.log(`Supporting agents: ${result.supporting_agents.join(', ') || 'None'}`);
-  console.log(`Human escalation owner: ${result.human_escalation_owner}`);
-  console.log('\nStarter prompt:');
-  console.log(result.starter_prompt);
+  const supporting = primary.handoffs.slice(0, 3);
+  const result = { status: 'selected', routing_authority: 'explicit_validated_selection', selection, problem,
+    primary_agent: primary.slug, primary_display_name: primary.display_name, recommended_output_mode: mode,
+    confidence: 'high', confidence_kind: 'explicit_selection_not_a_probability',
+    top_matches: [{ slug: primary.slug, display_name: primary.display_name, domain: primary.domain, score: null }],
+    missing_inputs: inferMissingInputs(problem, primary), supporting_agents: supporting, human_escalation_owner: primary.escalation_owner,
+    role_boundaries: primary.role_boundaries, starter_prompt: buildStarterPrompt(primary, mode, problem || '[supply the administrative scope]', supporting) };
+  console.log(json ? JSON.stringify(result, null, 2) : 'Selected agent: ' + primary.slug + '\n\n' + result.starter_prompt);
 }
-
 function buildStarterPrompt(agent, mode, problem, supporting) {
   const handoffText = supporting.length ? ` Name supporting handoffs to ${supporting.join(', ')} where the work crosses role boundaries.` : '';
   return `Use the ${agent.slug} healthcare administration agent in ${mode} mode. Problem: ${problem}. Lead with the decision or artifact; state assumptions, immediate risks, and the human owner, and ask only blocking questions. For multi-step work, keep a compact ledger of verified facts and sources, documents, actions, owners, deadlines, discrepancies, and blockers; finish as Completed, Partial, or Blocked with terminal evidence and the next action. Use PHI only in an approved environment with minimum necessary handling. Do not make final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions. Role boundary: ${agent.role_boundaries}${handoffText}`;
@@ -548,16 +557,17 @@ async function workupCommand(args) {
   const json = hasFlag(args, '--json');
   const target = normalizeTarget(readOption(args, '--target') || 'codex');
   const dataMode = readOption(args, '--data-mode');
-  const problem = argsWithoutOptions(args, ['--target', '--data-mode']).filter(arg => arg !== '--json' && arg !== '--markdown').join(' ').trim();
-  if (!problem) {
+  const problem = argsWithoutOptions(args, ['--target', '--data-mode', '--workflow', '--selection']).filter(arg => arg !== '--json' && arg !== '--markdown').join(' ').trim();
+  if (!problem && !hasFlag(args, '--workflow') && !hasFlag(args, '--selection')) {
     console.error('error: workup requires a healthcare administration problem description');
     process.exit(1);
   }
   let workup;
   try {
+    const selectionOptions = readRoutingSelection(args, 'workflow');
     workup = dataMode
-      ? await createWorkupAsync(problem, { target, dataMode })
-      : createWorkup(problem, { target });
+      ? await createWorkupAsync(problem, { target, dataMode, ...selectionOptions })
+      : createWorkup(problem, { target, ...selectionOptions });
   } catch (e) {
     console.error('error: ' + e.message);
     process.exit(2);
@@ -811,6 +821,58 @@ function runInstaller(command, args) {
   }
 }
 
+function readEvidenceFile(file) {
+  const limit = 2 * 1024 * 1024;
+  const fd = fs.openSync(file, 'r');
+  try {
+    const stat = fs.fstatSync(fd);
+    if (!stat.isFile() || stat.size > limit) throw new Error('Evidence input must be a regular file of at most 2 MiB');
+    const buffer = Buffer.alloc(limit + 1);
+    let bytes = 0;
+    while (bytes < buffer.length) {
+      const read = fs.readSync(fd, buffer, bytes, buffer.length - bytes, null);
+      if (!read) break;
+      bytes += read;
+    }
+    if (bytes > limit) throw new Error('Input exceeds 2 MiB');
+    return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(buffer.subarray(0, bytes));
+  } finally { fs.closeSync(fd); }
+}
+
+function adminCommand(args) {
+  const admin = require('../lib/admin-workflows');
+  const action = args[0];
+  if (action === 'list') {
+    console.log(JSON.stringify(admin.catalog(), null, 2));
+    return;
+  }
+  if (action === 'import-evidence') {
+    const bundlePath = args[1];
+    const mappingPath = requireOptionValue(args, '--mapping', 'admin import-evidence');
+    const output = requireOptionValue(args, '--output', 'admin import-evidence');
+    if (!bundlePath) throw new Error('admin import-evidence requires a bundle file');
+    const options = args.includes('--python') ? { python: requireOptionValue(args, '--python', 'admin import-evidence') } : {};
+    const result = require('../lib/public-evidence').importEvidence(readEvidenceFile(bundlePath), readEvidenceFile(mappingPath), output, options);
+    console.log(JSON.stringify(result, null, 2));
+    return;
+  }
+  if (action === 'export') {
+    const output = requireOptionValue(args, '--output', 'admin export');
+    const manifest = admin.exportWorkflow(args[1], args[2], output);
+    console.log(JSON.stringify(manifest, null, 2));
+    return;
+  }
+  if (!['run', 'validate', 'build'].includes(action) || !args[1]) throw new Error('admin requires list, run <case.json>, validate <spec.json>, build <spec.json> --output <new-dir>, or export <target> <workflow-id> --output <new-dir>');
+  const stat = fs.statSync(args[1]);
+  if (stat.size > 2 * 1024 * 1024) throw new Error('Input exceeds 2 MiB');
+  const input = JSON.parse(fs.readFileSync(args[1], 'utf8'));
+  let result;
+  if (action === 'run') result = admin.runCase(input);
+  if (action === 'validate') result = { status: 'valid', workflow_id: admin.validateCustom(input).id };
+  if (action === 'build') result = admin.buildCustom(input, requireOptionValue(args, '--output', 'admin build'));
+  console.log(JSON.stringify(result, null, 2));
+}
+
 async function main() {
   const args = process.argv.slice(2);
   if (args.length === 0 || hasFlag(args, '--help') || hasFlag(args, '-h')) {
@@ -827,6 +889,7 @@ async function main() {
   if (command === 'operator-os') return operatorOsCommand(rest);
   if (command === 'evidence-pack') return evidencePackCommand(rest);
   if (command === 'review') return reviewCommand(rest);
+  if (command === 'admin') return adminCommand(rest);
   if (command === 'workup') return workupCommand(rest);
   if (command === 'export') return exportCommand(rest);
   if (command === 'internal-render') return internalRender(rest);

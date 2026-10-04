@@ -1,0 +1,29 @@
+{
+  "id": "survey-readiness-gap-review",
+  "name": "Survey evidence gap review",
+  "purpose": "Build a standard-to-evidence gap register with accountable owners and verification criteria.",
+  "checks": [
+    "Pin accreditor/program, current standard and site scope; verify exact source text.",
+    "Map each finding to implementation evidence and a dated artifact; missing evidence differs from noncompliance.",
+    "Assign owner, due date and verification method, escalating immediate safety concerns to the responsible team.",
+    "Conduct a tracer or retest and retain unresolved conflicts; do not certify survey readiness."
+  ],
+  "evidence": [
+    "Current standard citation with applicability",
+    "Finding IDs and implementation evidence links",
+    "Owner, due date and retest method"
+  ],
+  "decisions": [
+    "Accreditation owner verifies the applicable standard and finding.",
+    "Operational owner implements remediation.",
+    "Qualified reviewer retests evidence and behavior."
+  ],
+  "completion_gate": "Retested evidence and owner sign-off establish local progress; neither evidence presence nor this tool certifies compliance.",
+  "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+  "primary_agent": "quality-accreditation-specialist",
+  "handoffs": [
+    "quality-improvement-specialist",
+    "quality-compliance-officer",
+    "clinical-infection-prevention-specialist"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "healthcare-admin": {
+      "command": "python3",
+      "args": [
+        "-B",
+        "${PLUGIN_ROOT}/bin/mcp-stdio-bridge.py"
+      ],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}

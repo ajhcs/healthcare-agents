@@ -1,0 +1,33 @@
+{
+  "schema_version": "healthcare-admin.case.v2",
+  "workflow_id": "prior-authorization-appeal-workup",
+  "data_mode": "synthetic_only",
+  "human_owner": "Synthetic Prior authorization appeal preparation owner",
+  "evidence": [
+    {
+      "id": "fixture-1",
+      "origin": "synthetic",
+      "as_of": "2026-10-02",
+      "description": "Invented aggregate fixture for replay; no patient or real policy data.",
+      "fields": [
+        "decision_date",
+        "appeal_deadline",
+        "rule_reference",
+        "available_documents",
+        "required_documents"
+      ]
+    }
+  ],
+  "data": {
+    "decision_date": "2026-10-01",
+    "appeal_deadline": "2026-10-31",
+    "rule_reference": "Synthetic payer notice; no real policy assertion",
+    "available_documents": [
+      "notice"
+    ],
+    "required_documents": [
+      "notice",
+      "clinician statement"
+    ]
+  }
+}

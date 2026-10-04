@@ -1,0 +1,35 @@
+{
+  "schema_version": "healthcare-admin.case.v2",
+  "workflow_id": "survey-readiness-gap-review",
+  "data_mode": "synthetic_only",
+  "human_owner": "Synthetic Survey evidence gap review owner",
+  "evidence": [
+    {
+      "id": "fixture-1",
+      "origin": "synthetic",
+      "as_of": "2026-10-02",
+      "description": "Invented aggregate fixture for replay; no patient or real policy data.",
+      "fields": [
+        "findings"
+      ]
+    }
+  ],
+  "data": {
+    "findings": [
+      {
+        "id": "F1",
+        "standard_ref": "Synthetic standard A",
+        "evidence_present": false,
+        "owner": "Facilities",
+        "due_date": "2026-10-15"
+      },
+      {
+        "id": "F2",
+        "standard_ref": "Synthetic standard B",
+        "evidence_present": true,
+        "owner": "Nursing",
+        "due_date": "2026-10-20"
+      }
+    ]
+  }
+}

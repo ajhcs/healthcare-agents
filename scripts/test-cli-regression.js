@@ -42,7 +42,10 @@ const chooseCases = [
   ['prior authorization appeal delay with payer criteria and deadline', 'clinical-prior-authorization-specialist', 'Clinical Operations']
 ];
 for (const [problem, expected] of chooseCases) {
-  const result = cliJson(['choose', problem]);
+  const discovery = cliJson(['choose', problem]);
+  assert.strictEqual(discovery.primary_agent, null);
+  assert.strictEqual(discovery.routing_authority, 'discovery_only');
+  const result = cliJson(['choose', problem, '--agent', expected]);
   assert.strictEqual(result.primary_agent, expected, `choose mismatch for ${problem}`);
   assert.ok(['high', 'medium', 'low'].includes(result.confidence));
   assert.ok(Array.isArray(result.missing_inputs));
@@ -92,42 +95,42 @@ const scaffold = JSON.parse(cli(['evidence-pack', 'scaffold', 'clean-claim-rate-
 assert.strictEqual(scaffold.packs[0].workflow_id, 'clean-claim-rate-decline');
 assert.ok(scaffold.packs[0].citation_cards.length >= 8);
 
-const workup = cliJson(['workup', 'Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing.', '--target', 'codex']);
+const workup = cliJson(['workup', '--workflow', 'denial-spike-workup', 'Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing.', '--target', 'codex']);
 assert.strictEqual(workup.workflow.id, 'denial-spike-workup');
 assert.strictEqual(workup.roles.primary, 'revenue-cycle-specialist');
 assert.ok(workup.platform_prompts.codex.includes('denial spike'));
 assert.ok(workup.safety.phi.includes('PHI'));
 assert.strictEqual(workup.evidence_pack.workflow_id, 'denial-spike-workup');
 
-const workupText = cli(['workup', 'denials spiked for payer X']);
+const workupText = cli(['workup', '--workflow', 'denial-spike-workup', 'denials spiked for payer X']);
 assert.match(workupText, /Evidence Pack/);
 assert.match(workupText, /Operator OS Denial Spike Evidence Pack/);
 
-const syntheticWorkup = cliJson(['workup', 'denial spike for payer X', '--data-mode', 'synthetic_only']);
+const syntheticWorkup = cliJson(['workup', '--workflow', 'denial-spike-workup', 'denial spike for payer X', '--data-mode', 'synthetic_only']);
 assert.strictEqual(syntheticWorkup.case_data.mode, 'synthetic_only');
 assert.strictEqual(syntheticWorkup.case_data.status, 'ok');
 assert.ok(syntheticWorkup.case_data.case_data.payer.provenance);
 
-const publicEvidenceAlias = cliJson(['workup', 'denial spike for payer X', '--data-mode', 'public-evidence']);
+const publicEvidenceAlias = cliJson(['workup', '--workflow', 'denial-spike-workup', 'denial spike for payer X', '--data-mode', 'public-evidence']);
 assert.strictEqual(publicEvidenceAlias.case_data.mode, 'public_evidence');
 assert.strictEqual(publicEvidenceAlias.case_data.status, 'ok');
 assert.ok(publicEvidenceAlias.case_data.evidence_pack);
 
-const hybridWorkupText = cli(['workup', 'denial spike for payer X', '--data-mode', 'hybrid_synthetic_public']);
+const hybridWorkupText = cli(['workup', '--workflow', 'denial-spike-workup', 'denial spike for payer X', '--data-mode', 'hybrid_synthetic_public']);
 assert.match(hybridWorkupText, /## Case Data/);
 assert.match(hybridWorkupText, /payer: .* \[provenance: synthetic; source: operator-os\.synthetic\.denial-spike\.v1\]/);
 assert.match(hybridWorkupText, /Provenance: synthetic=/);
 
-const cleanClaimFixture = cliJson(['workup', 'Medicare Advantage clean claim rate dropped', '--data-mode', 'synthetic_only']);
+const cleanClaimFixture = cliJson(['workup', '--workflow', 'clean-claim-rate-decline', 'Medicare Advantage clean claim rate dropped', '--data-mode', 'synthetic_only']);
 assert.strictEqual(cleanClaimFixture.workflow.id, 'clean-claim-rate-decline');
 assert.strictEqual(cleanClaimFixture.case_data.status, 'ok');
 assert.ok(cleanClaimFixture.case_data.case_data.payer.provenance);
 
-const publicSearchWorkup = cliJson(['workup', 'denial spike for payer X', '--data-mode', 'public_search']);
+const publicSearchWorkup = cliJson(['workup', '--workflow', 'denial-spike-workup', 'denial spike for payer X', '--data-mode', 'public_search']);
 assert.strictEqual(publicSearchWorkup.case_data.status, 'unsupported');
 assert.match(publicSearchWorkup.case_data.summary, /disabled by default/);
 
-const hipaaWorkup = cliJson(['workup', 'Prepare a HIPAA evidence checklist for a vendor security review.', '--target', 'm365-copilot']);
+const hipaaWorkup = cliJson(['workup', '--workflow', 'hipaa-security-evidence-checklist', 'Prepare a HIPAA evidence checklist for a vendor security review.', '--target', 'm365-copilot']);
 assert.strictEqual(hipaaWorkup.workflow.id, 'hipaa-security-evidence-checklist');
 assert.ok(hipaaWorkup.selected_platform_prompt.includes('SharePoint'));
 
@@ -147,7 +150,7 @@ assert.ok(doctor.recommended_next_command.includes('healthcare-agents install'))
 
 expectFail(['show', 'revenue-cycle'], /did you mean:.*revenue-cycle-specialist/);
 expectFail(['evidence-pack', 'show', 'not-a-pack'], /available workflow ids:.*denial-spike-workup/);
-expectFail(['workup', 'denial spike for payer X', '--data-mode', 'bad_mode'], /unsupported data mode/);
+expectFail(['workup', '--workflow', 'denial-spike-workup', 'denial spike for payer X', '--data-mode', 'bad_mode'], /unsupported data mode/);
 expectFail(['prompt', 'revenue-cycle-specialist', '--mode', 'memo'], /invalid mode/);
 expectFail(['choose'], /choose requires a problem description/);
 

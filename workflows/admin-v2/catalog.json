@@ -1,0 +1,179 @@
+{
+  "schema_version": "healthcare-admin.catalog.v2",
+  "workflows": [
+    {
+      "id": "denial-spike-workup",
+      "name": "Denial spike investigation",
+      "purpose": "Investigate a denial-rate change and separate operational loss, payer changes and coding risk.",
+      "checks": [
+        "Reconcile payer/product, service line, claim population and periods; compare counts before rates.",
+        "Segment CARC/RARC and first-pass versus final denials; distinguish unique claims from transactions.",
+        "Test policy, registration, authorization, coding and interface hypotheses against dated evidence.",
+        "Prioritize deadline exposure; draft an owner-led recovery plan and verify improvement on a later cohort."
+      ],
+      "evidence": [
+        "Aligned baseline/current claims and denied counts",
+        "Payer/product and dated CARC/RARC definitions",
+        "Actual denied dollars; contract, policy and appeal status"
+      ],
+      "decisions": [
+        "Revenue cycle owner validates cohorts and loss assumptions.",
+        "Coding/compliance owner reviews coding hypotheses; contracting owner verifies payer policy.",
+        "Authorized operator reviews any submission and verifies resulting receipt."
+      ],
+      "completion_gate": "Verified cohorts, named owners, tested root cause and a monitored follow-up; a calculated rate is only an intermediate result.",
+      "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+      "primary_agent": "revenue-cycle-specialist",
+      "handoffs": [
+        "revenue-contract-analyst",
+        "healthit-clinical-data-analyst",
+        "quality-compliance-officer"
+      ]
+    },
+    {
+      "id": "ambulatory-access-backlog",
+      "name": "Ambulatory access recovery",
+      "purpose": "Turn aggregate demand, usable capacity and backlog into a testable access recovery plan.",
+      "checks": [
+        "Separate requested, scheduled and completed visits; reconcile specialty, site, urgency and measurement windows.",
+        "Model usable slots and staffing; distinguish a waitlist stock from weekly demand flow.",
+        "Test capacity and demand scenarios, then validate cancellations, visit mix and underserved groups.",
+        "Name scheduling and clinical owners; track booking lead time and backlog without changing clinical priority."
+      ],
+      "evidence": [
+        "Weekly requests and usable slots",
+        "Backlog as of a defined date and proposed additional slots",
+        "Visit mix, staffing constraints and cancellation assumptions"
+      ],
+      "decisions": [
+        "Operations owner validates usable capacity and staffing.",
+        "Clinical owner retains urgency/triage decisions.",
+        "Compare realized lead time and equity after any authorized change."
+      ],
+      "completion_gate": "Owners validate assumptions and a measured follow-up tests access improvement; no patient scheduling or clinical triage is executed.",
+      "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+      "primary_agent": "operations-ambulatory-manager",
+      "handoffs": [
+        "healthit-clinical-data-analyst",
+        "clinical-referral-specialist",
+        "operations-physician-practice-manager"
+      ]
+    },
+    {
+      "id": "survey-readiness-gap-review",
+      "name": "Survey evidence gap review",
+      "purpose": "Build a standard-to-evidence gap register with accountable owners and verification criteria.",
+      "checks": [
+        "Pin accreditor/program, current standard and site scope; verify exact source text.",
+        "Map each finding to implementation evidence and a dated artifact; missing evidence differs from noncompliance.",
+        "Assign owner, due date and verification method, escalating immediate safety concerns to the responsible team.",
+        "Conduct a tracer or retest and retain unresolved conflicts; do not certify survey readiness."
+      ],
+      "evidence": [
+        "Current standard citation with applicability",
+        "Finding IDs and implementation evidence links",
+        "Owner, due date and retest method"
+      ],
+      "decisions": [
+        "Accreditation owner verifies the applicable standard and finding.",
+        "Operational owner implements remediation.",
+        "Qualified reviewer retests evidence and behavior."
+      ],
+      "completion_gate": "Retested evidence and owner sign-off establish local progress; neither evidence presence nor this tool certifies compliance.",
+      "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+      "primary_agent": "quality-accreditation-specialist",
+      "handoffs": [
+        "quality-improvement-specialist",
+        "quality-compliance-officer",
+        "clinical-infection-prevention-specialist"
+      ]
+    },
+    {
+      "id": "prior-authorization-appeal-workup",
+      "name": "Prior authorization appeal preparation",
+      "purpose": "Prepare an administrative appeal evidence map without determining medical necessity or submitting an appeal.",
+      "checks": [
+        "Reconcile payer/product, service, decision reason and authorization identity in the approved environment.",
+        "Obtain the applicable policy and actual notice; use explicitly supplied deadline and receipt convention.",
+        "Map required versus available documentation and criteria; leave clinical justification to the treating clinician.",
+        "Draft a source-linked packet for accountable review, then verify authorized submission and receipt separately."
+      ],
+      "evidence": [
+        "Actual notice and dated payer/product rule",
+        "Explicit decision date and appeal deadline",
+        "Required/available document names and clinical reviewer"
+      ],
+      "decisions": [
+        "Payer liaison verifies deadline and receipt convention.",
+        "Treating clinician reviews medical-necessity justification.",
+        "Authorized operator approves submission and retains its receipt."
+      ],
+      "completion_gate": "Reviewed packet plus verified authorized submission/receipt when requested; document completeness alone is not an approved appeal.",
+      "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+      "primary_agent": "clinical-prior-authorization-specialist",
+      "handoffs": [
+        "clinical-care-management-specialist",
+        "quality-compliance-officer",
+        "clinical-utilization-management-specialist"
+      ]
+    },
+    {
+      "id": "payer-contract-underpayment-review",
+      "name": "Underpayment evidence review",
+      "purpose": "Reconcile expected and actual aggregate payment into a contract-linked variance packet.",
+      "checks": [
+        "Pin executed contract, amendment, effective period and applicable product.",
+        "Reconcile supplied expected amounts against units, rates, carve-outs and adjustments; distinguish charges from allowed amounts.",
+        "Compare each line to paid amounts; retain overpayments and unknown expectations.",
+        "Produce a variance register and dispute draft for finance/contract review; verify any authorized payer response."
+      ],
+      "evidence": [
+        "Executed contract references and effective dates",
+        "Line IDs, expected amounts and paid amounts in USD",
+        "Adjustment/remittance context and dispute deadline"
+      ],
+      "decisions": [
+        "Finance owner validates expected-payment calculations.",
+        "Contracting/legal owner verifies contractual interpretation.",
+        "Authorized payer liaison reviews any dispute and monitors response."
+      ],
+      "completion_gate": "Validated variance with source citations and accountable disposition; arithmetic does not establish a collectible debt.",
+      "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+      "primary_agent": "revenue-contract-analyst",
+      "handoffs": [
+        "revenue-cycle-specialist",
+        "revenue-finance-manager",
+        "payer-relations-specialist"
+      ]
+    },
+    {
+      "id": "discharge-barrier-workplan",
+      "name": "Discharge barrier coordination",
+      "purpose": "Create an aggregate barrier workplan while preserving clinician authority and patient choice.",
+      "checks": [
+        "Define cohort, window and category rules; avoid double-counting cases or days.",
+        "Validate the local avoidable-day definition and distinguish administrative blockers from clinical readiness.",
+        "Assign barrier owners and dependencies for placement, transport, coverage and services.",
+        "Review progress and equity; only authorized clinical teams determine discharge readiness."
+      ],
+      "evidence": [
+        "Aggregate barrier categories and counts",
+        "Locally reviewed avoidable-day labels",
+        "Responsible owners and dependency/status dates"
+      ],
+      "decisions": [
+        "Case-management owner validates category counts.",
+        "Attending/clinical team retains discharge decisions.",
+        "Operational owners verify barrier resolution and preserve patient choice."
+      ],
+      "completion_gate": "Verified barrier disposition and responsible-team review; a barrier summary does not authorize discharge.",
+      "source_policy": "Keep the original aggregate report or approved source extract with its effective date. A source-family card is a lookup lead until exact text is verified.",
+      "primary_agent": "clinical-case-manager",
+      "handoffs": [
+        "clinical-utilization-management-specialist",
+        "clinical-care-management-specialist",
+        "revenue-finance-manager"
+      ]
+    }
+  ]
+}

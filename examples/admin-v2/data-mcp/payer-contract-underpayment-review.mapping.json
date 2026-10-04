@@ -1,0 +1,149 @@
+{
+  "schema_version": "healthcare-admin.evidence-mapping.v1",
+  "workflow_id": "payer-contract-underpayment-review",
+  "human_owner": "Synthetic Underpayment evidence review owner",
+  "data_mode": "synthetic_only",
+  "as_of": "2026-10-03",
+  "bundle_sha256": "sha256:bf308fe161b92ac4298d9e38e8d73debfad7cc8eefb5a844004fbf129d550d47",
+  "entity_id": "fictional-cedar",
+  "scope": {
+    "systems": [
+      "Fictional Cedar System"
+    ],
+    "market": {
+      "synthetic": true
+    },
+    "service_line": "fictional administrative scope",
+    "periods": [
+      "synthetic-2026"
+    ]
+  },
+  "accepted_conflict_ids": [],
+  "data": {
+    "lines": [
+      {
+        "id": null,
+        "expected": null,
+        "paid": null,
+        "currency": null,
+        "contract_ref": null
+      },
+      {
+        "id": null,
+        "expected": null,
+        "paid": null,
+        "currency": null,
+        "contract_ref": null
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "path": "/lines/0/expected",
+      "coverage_id": "coverage-1",
+      "observation_id": "obs-1",
+      "expect": {
+        "measure_id": "/lines/0/expected",
+        "value_type": "integer",
+        "unit": "USD",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/lines/0/paid",
+      "coverage_id": "coverage-2",
+      "observation_id": "obs-2",
+      "expect": {
+        "measure_id": "/lines/0/paid",
+        "value_type": "integer",
+        "unit": "USD",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/lines/1/expected",
+      "coverage_id": "coverage-6",
+      "observation_id": "obs-6",
+      "expect": {
+        "measure_id": "/lines/1/expected",
+        "value_type": "integer",
+        "unit": "USD",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    },
+    {
+      "path": "/lines/1/paid",
+      "coverage_id": "coverage-7",
+      "observation_id": "obs-7",
+      "expect": {
+        "measure_id": "/lines/1/paid",
+        "value_type": "integer",
+        "unit": "USD",
+        "period": {
+          "label": "synthetic-current",
+          "start": "2026-10-01",
+          "end": "2026-10-31"
+        },
+        "denominator_scope": "fictional-cedar synthetic supplied cohort; no individual records",
+        "derivation_class": "source_reported"
+      }
+    }
+  ],
+  "owner_inputs": [
+    {
+      "path": "/lines/0/id",
+      "value": "L1",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/lines/0/currency",
+      "value": "USD",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/lines/0/contract_ref",
+      "value": "Synthetic contract A",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/lines/1/id",
+      "value": "L2",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/lines/1/currency",
+      "value": "USD",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    },
+    {
+      "path": "/lines/1/contract_ref",
+      "value": "Synthetic contract A",
+      "as_of": "2026-10-03",
+      "description": "Synthetic operator-supplied administrative label, ownership or standard/rule reference."
+    }
+  ],
+  "source_origin": "synthetic"
+}

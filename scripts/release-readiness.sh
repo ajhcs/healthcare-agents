@@ -38,6 +38,23 @@ node scripts/validate-evidence-packs.js
 node scripts/validate-review-protocols.js
 node scripts/validate-operator-os-coverage.js
 
+section "v2 observable outcomes and local adapter"
+node scripts/test-admin-v2.js
+if [[ -n "${HAG_EVIDENCE_PYTHON:-}" ]]; then
+  node scripts/test-public-evidence.js
+else
+  printf "Receipt-import tests require HAG_EVIDENCE_PYTHON with the pinned Python dependencies; importer not qualified by this run.\n"
+fi
+node scripts/test-routing-intent.js
+node scripts/test-admin-mcp.js
+node scripts/test-host-contracts.js
+node scripts/test-result-boundary.js
+node scripts/test-plugin-consumer.js
+node scripts/test-admin-v2-consumer.js
+node scripts/test-release-version-gates.js
+node scripts/test-release-policy.js
+python3 scripts/test_admin_adapter.py
+
 section "CLI, installer, routing, package, and tarball"
 node scripts/test-cli-regression.js
 node scripts/test-evidence-pack-regression.js
@@ -56,14 +73,14 @@ node scripts/test-case-data-provider.js
 node scripts/test-denial-spike-golden-artifact.js
 node scripts/test-operator-os-coverage-regression.js
 bash scripts/test-installer-e2e.sh
-node scripts/run-routing-benchmark.js >/tmp/healthcare-agents-routing-benchmark.json
+node scripts/run-routing-benchmark.js >${TMPDIR:-/tmp}/healthcare-agents-routing-benchmark.json
 node scripts/test-platform-render-snapshots.js
 node scripts/validate-packlist.js
 node scripts/test-tarball-smoke.js
 
 section "local public-release metadata"
 node scripts/verify-public-release.js
-node scripts/validate-public-version-sync.js
+node scripts/validate-public-version-sync.js --require-lockfile
 node scripts/validate-npm-publish-workflow.js
 
-printf "\nRelease readiness complete. Routing metrics written to /tmp/healthcare-agents-routing-benchmark.json\n"
+printf "\nRelease readiness complete. Routing metrics written to ${TMPDIR:-/tmp}/healthcare-agents-routing-benchmark.json\n"

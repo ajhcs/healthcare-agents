@@ -1,0 +1,125 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "healthcare-admin.selection.v1"
+    },
+    "selected_by": {
+      "enum": [
+        "user",
+        "host_agent"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "\\S"
+    },
+    "workflow_ids": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "denial-spike-workup",
+          "clean-claim-rate-decline",
+          "payer-contract-underpayment-review",
+          "prior-authorization-appeal-workup",
+          "discharge-barrier-workplan",
+          "hipaa-security-evidence-checklist",
+          "survey-readiness-gap-review",
+          "patient-safety-rca2-workup",
+          "ed-boarding-capacity-workup",
+          "ambulatory-access-backlog",
+          "value-based-care-downside-risk-readiness",
+          "hedis-stars-gap-closure-sprint",
+          "hl7-fhir-interface-incident",
+          "clinical-dashboard-specification",
+          "pharmacy-contract-scorecard",
+          "emergency-preparedness-exercise-readiness"
+        ]
+      }
+    },
+    "agent_id": {
+      "enum": [
+        "clinical-care-management-specialist",
+        "clinical-case-manager",
+        "clinical-documentation-improvement-specialist",
+        "clinical-infection-prevention-specialist",
+        "clinical-prior-authorization-specialist",
+        "clinical-referral-specialist",
+        "clinical-research-coordinator",
+        "clinical-utilization-management-specialist",
+        "emergency-preparedness-coordinator",
+        "healthit-clinical-data-analyst",
+        "healthit-epic-applications-analyst",
+        "healthit-informatics-manager",
+        "healthit-information-manager",
+        "healthit-interoperability-engineer",
+        "healthit-telehealth-program-manager",
+        "operations-ambulatory-manager",
+        "operations-home-health-administrator",
+        "operations-hospital-administrator",
+        "operations-long-term-care-administrator",
+        "operations-physician-practice-manager",
+        "operations-supply-chain-manager",
+        "operations-workforce-manager",
+        "payer-credentialing-enrollment-coordinator",
+        "payer-managed-care-analyst",
+        "payer-medicare-medicaid-specialist",
+        "payer-medicare-outreach-coordinator",
+        "payer-relations-specialist",
+        "payer-value-based-care-manager",
+        "pharmacy-benefits-specialist",
+        "pharmacy-medication-safety-specialist",
+        "pophealth-community-health-coordinator",
+        "pophealth-population-health-manager",
+        "pophealth-surveillance-coordinator",
+        "quality-accreditation-specialist",
+        "quality-compliance-officer",
+        "quality-improvement-specialist",
+        "quality-patient-experience-coordinator",
+        "quality-patient-safety-officer",
+        "quality-process-improvement-analyst",
+        "quality-risk-manager",
+        "revenue-340b-program-manager",
+        "revenue-chargemaster-analyst",
+        "revenue-contract-analyst",
+        "revenue-cycle-specialist",
+        "revenue-finance-manager",
+        "revenue-medical-coding-specialist",
+        "strategy-actuarial-advisor",
+        "strategy-clinical-operations-consultant",
+        "strategy-healthcare-consultant",
+        "strategy-operations-consultant",
+        "strategy-structural-improvement-consultant"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "selected_by",
+    "rationale"
+  ],
+  "oneOf": [
+    {
+      "properties": {
+        "workflow_ids": {}
+      },
+      "required": [
+        "workflow_ids"
+      ]
+    },
+    {
+      "properties": {
+        "agent_id": {}
+      },
+      "required": [
+        "agent_id"
+      ]
+    }
+  ]
+}
