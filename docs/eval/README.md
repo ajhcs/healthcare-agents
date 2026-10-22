@@ -3,6 +3,7 @@
 This directory contains tracked, no-network evidence for prompt quality and
 release readiness.
 
+- [Historical prompt evaluation](historical-prompt-evaluation.md) preserves the earlier score claims, caveats and self-improvement procedure. These are internal prompt-rubric results, not external model benchmark scores or current workflow acceptance.
 - `scorecard.md` and `scorecard.json` are generated from `eval/results.tsv`.
   Current public claims must match these files.
 - `routing-benchmark.json` is the deterministic labeled benchmark for
