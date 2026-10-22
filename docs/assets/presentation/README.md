@@ -36,6 +36,6 @@ Ingenium guidance was read at source commit `c8e4e6f283cde78925b87076fc766a87ffa
 
 All eleven SVGs parse as XML and carry a title and description. They contain local geometry and text without external resources, scripts or event handlers. PNG previews were rendered with the existing Sharp 0.35.4 / librsvg 2.62.91 installation and opened for visual review. Label spacing and the mobile optional-calculation branch were corrected after preview inspection. All PNG metadata and dimensions were read successfully; the six icons were also reviewed together in the contact sheet.
 
-Measured opaque text/background pairs used by the illustrations range from 5.59:1 (teal on off-white) to 11.03:1 (ink on paper); secondary ink on paper is 6.12:1. These checks do not establish complete accessibility or acceptance by every README viewer. Narrow-screen diagrams still require the adjacent text equivalent.
+Measured opaque text/background pairs used by the illustrations range from 5.47:1 (secondary ink on mint) to 11.03:1 (ink on paper); teal on off-white is 5.59:1 and secondary ink on paper is 6.12:1. These checks do not establish complete accessibility or acceptance by every README viewer. Narrow-screen diagrams still require the adjacent text equivalent.
 
 The optional Ingenium bounded SVG helper refused ARIA attributes (`role`), so PNGs were exported directly through the existing Sharp renderer while preserving accessible SVG sources. No dependency was installed for export.
