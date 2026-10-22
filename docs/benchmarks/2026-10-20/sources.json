@@ -1,0 +1,104 @@
+{
+  "schema": "healthcare-benchmark-source-inventory-v1",
+  "review_date": "2026-10-20",
+  "integration_base_commit": "b057d5ab0b4b965d5f66026beec018c88651498d",
+  "status": "SOURCE_REVIEW_COMPLETE_WITH_LIMITATIONS",
+  "execution_status": "NOT_RUN",
+  "install_approved": false,
+  "api_spend_approved": false,
+  "benchmarks": [
+    {
+      "name": "PhysicianBench",
+      "upstream": "HealthRex/PhysicianBench",
+      "source_commit": "c7efa8fd5b1e4744ada50668efe4b7e84023cbb0",
+      "source_url": "https://github.com/HealthRex/PhysicianBench/tree/c7efa8fd5b1e4744ada50668efe4b7e84023cbb0",
+      "fork": "ajhcs/PhysicianBench",
+      "fork_url": "https://github.com/ajhcs/PhysicianBench",
+      "fork_head_verified": "c7efa8fd5b1e4744ada50668efe4b7e84023cbb0",
+      "report": "physicianbench.md",
+      "benchmark_run": false,
+      "external_image": {
+        "tag": "fhir-full:v1",
+        "digest": null,
+        "terms": "UNVERIFIED",
+        "acquired": false
+      }
+    },
+    {
+      "name": "K-NHIB",
+      "upstream": "seo-see/K-NHIB",
+      "source_commit": "2e27fa354101e572984b74ef74d4602392dfa32c",
+      "source_url": "https://github.com/seo-see/K-NHIB/tree/2e27fa354101e572984b74ef74d4602392dfa32c",
+      "fork": "ajhcs/K-NHIB",
+      "fork_url": "https://github.com/ajhcs/K-NHIB",
+      "fork_head_verified": "2e27fa354101e572984b74ef74d4602392dfa32c",
+      "report": "k-nhib.md",
+      "benchmark_run": false,
+      "workbook": {
+        "path": "data/benchmark/K-NHIB_GY.xlsx",
+        "sha256": "76fcad20a7fd18aa63b2e6da252db684aa06ca4642508f9ec70e861449effffa",
+        "git_blob": "99e8b6f03981f8c0927968bf59dabb4aace688ea",
+        "bytes": 21041,
+        "cases_independently_counted": 222,
+        "label_counts": {
+          "eligible": 74,
+          "ineligible": 74,
+          "undeterminable": 74
+        }
+      }
+    },
+    {
+      "name": "CHI-Bench",
+      "upstream": "actava-ai/chi-bench",
+      "source_commit": "4444a07fa68a4f1623f841a292a54e284fc8e7f7",
+      "source_url": "https://github.com/actava-ai/chi-bench/tree/4444a07fa68a4f1623f841a292a54e284fc8e7f7",
+      "fork": "ajhcs/chi-bench",
+      "fork_url": "https://github.com/ajhcs/chi-bench",
+      "fork_head_verified": "4444a07fa68a4f1623f841a292a54e284fc8e7f7",
+      "report": "chi-bench.md",
+      "benchmark_run": false,
+      "external_dataset": {
+        "recommended_tag": "chi-bench-v1.0.0",
+        "resolved_commit": null,
+        "payload_verified": false,
+        "runtime_version": "1.1.0",
+        "handbook_acquired": false,
+        "task_counts_basis": "runtime validator and publisher card",
+        "base": 75,
+        "coupled": 23,
+        "marathon": 3
+      }
+    },
+    {
+      "name": "HealthAdminBench",
+      "upstream": "som-shahlab/health-admin-bench",
+      "source_commit": "b88844c8c3e42af717742d795b2c100e646b9b2b",
+      "source_url": "https://github.com/som-shahlab/health-admin-bench/tree/b88844c8c3e42af717742d795b2c100e646b9b2b",
+      "fork": "ajhcs/health-admin-bench",
+      "fork_url": "https://github.com/ajhcs/health-admin-bench",
+      "fork_head_verified": "b88844c8c3e42af717742d795b2c100e646b9b2b",
+      "report": "health-admin-bench.md",
+      "benchmark_run": false,
+      "fixture_audit": {
+        "method": "read-only reviewer parsed every expected naming-grid JSON through full-SHA GitHub fetch_file",
+        "unexpected_extra_files_verified": false,
+        "v2": {
+          "files": 135,
+          "jmespath": 1177,
+          "llm_judge": 521,
+          "total": 1698
+        },
+        "v3": {
+          "files": 135,
+          "jmespath": 1177,
+          "llm_judge": 517,
+          "total": 1694
+        },
+        "changed_tasks": [
+          "denial-hard-8",
+          "denial-hard-9"
+        ]
+      }
+    }
+  ]
+}
