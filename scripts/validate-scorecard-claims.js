@@ -5,6 +5,37 @@ const { ROOT, readJson } = require('./_release-utils');
 
 const HISTORY_PATH = 'docs/eval/historical-prompt-evaluation.md';
 
+// Ignore Markdown code and comments when deciding whether readers can navigate
+// to evidence. Fence delimiters may use backticks or tildes and vary in length.
+function visibleMarkdown(document) {
+  let fence = null;
+  return document.replace(/<!--[\s\S]*?-->/g, '').split('\n').map(line => {
+    const delimiter = line.match(/^ {0,3}(`{3,}|~{3,})(.*)$/);
+    if (fence) {
+      if (delimiter && delimiter[1][0] === fence.character && delimiter[1].length >= fence.length && !delimiter[2].trim()) fence = null;
+      return '';
+    }
+    if (delimiter) {
+      fence = { character: delimiter[1][0], length: delimiter[1].length };
+      return '';
+    }
+    if (/^(?: {4}|\t)/.test(line)) return '';
+    return line;
+  }).join('\n').replace(/(`+)[\s\S]*?\1/g, '');
+}
+
+function headingAnchors(document) {
+  const anchors = new Set();
+  const counts = new Map();
+  for (const match of visibleMarkdown(document).matchAll(/^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$/gm)) {
+    const slug = match[1].toLowerCase().replace(/[^\p{L}\p{N}_\-\s]/gu, '').replace(/\s/g, '-');
+    const duplicate = counts.get(slug) || 0;
+    anchors.add(slug + (duplicate ? '-' + duplicate : ''));
+    counts.set(slug, duplicate + 1);
+  }
+  return anchors;
+}
+
 // The evidence destination remains mandatory. Moving prose must not erase a gate
 // or allow a misleading README claim beside an otherwise accurate history page.
 function validateClaims({ readme, history, scorecard }) {
@@ -13,12 +44,14 @@ function validateClaims({ readme, history, scorecard }) {
   const evaluated = scorecard.evaluated_agent_count ?? scorecard.agents.filter(agent => agent.latest_score != null).length;
   const improved = scorecard.improved_agent_count ?? scorecard.agents.filter(agent => agent.status === 'improved').length;
   const average = Number(scorecard.average_latest_score).toFixed(2);
-  const link = /\[[^\]\n]+\]\(docs\/eval\/historical-prompt-evaluation\.md(?:#(?:historical-prompt-evaluation|eval-status|self-improvement-kit))?\)/;
-  const visibleReadme = readme.replace(/<!--[\s\S]*?-->/g, '').replace(/^```[^\n]*\n[\s\S]*?^```[^\n]*$/gm, '').replace(/`[^`\n]*`/g, '');
-  if (!link.test(visibleReadme)) failures.push('README must link to ' + HISTORY_PATH);
   if (typeof history !== 'string' || !history.trim()) {
     failures.push('Missing or empty historical evaluation destination: ' + HISTORY_PATH);
     return failures;
+  }
+  const anchors = headingAnchors(history);
+  const links = visibleMarkdown(readme).matchAll(/(?<!!)\[[^\]\n]+\]\(docs\/eval\/historical-prompt-evaluation\.md(?:#([a-z0-9-]+))?\)/g);
+  if (![...links].some(match => !match[1] || anchors.has(match[1]))) {
+    failures.push('README must visibly link to ' + HISTORY_PATH + ' with an existing destination anchor');
   }
   for (const [label, value] of [
     ['agent count', String(count)],

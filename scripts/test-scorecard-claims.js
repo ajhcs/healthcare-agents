@@ -45,3 +45,14 @@ test('fenced-code link cannot substitute for a visible evidence link', () => rej
 test('commented-out link cannot substitute for a visible evidence link', () => rejected({ readme: '<!-- ' + readme + ' -->' }));
 test('nonexistent history anchor is rejected', () => rejected({ readme: readme.replace('.md)', '.md#absent)') }));
 test('existing history anchor is accepted', () => assert.deepEqual(check({ readme: readme.replace('.md)', '.md#eval-status)') }), []));
+
+test('a Markdown image is not a navigable historical evidence link', () => rejected({ readme: '![History](docs/eval/historical-prompt-evaluation.md)' }));
+test('a sole link in a tilde code fence is rejected', () => rejected({ readme: '~~~markdown\n' + readme + '\n~~~' }));
+test('an anchor must exist in the actual historical destination', () => {
+  const anchored = readme.replace('.md)', '.md#historical-prompt-evaluation)');
+  assert.deepEqual(check({ readme: anchored, history: '# Historical prompt evaluation\n' + history }), []);
+  rejected({ readme: anchored, history });
+});
+test('a heading inside a code fence cannot create a destination anchor', () => rejected({ readme: readme.replace('.md)', '.md#historical-prompt-evaluation)'), history: '~~~\n# Historical prompt evaluation\n~~~\n' + history }));
+test('indented code cannot provide the only evidence link', () => rejected({ readme: '    ' + readme }));
+test('longer code fences remain code around shorter delimiters', () => rejected({ readme: '~~~~markdown\n~~~\n' + readme + '\n~~~~' }));
