@@ -262,21 +262,21 @@ Slugs are validated against `agents/registry.json`; invalid slugs return close-m
 The package includes registry-backed discovery commands:
 
 ```bash
-healthcare-agents list [--domain revenue] [--json]
-healthcare-agents show revenue-cycle-specialist [--json]
-healthcare-agents choose "prior authorization denials are rising" [--json]
-healthcare-agents prompt revenue-cycle-specialist --mode "quick triage"
+node bin/cli.js list [--domain revenue] [--json]
+node bin/cli.js show revenue-cycle-specialist [--json]
+node bin/cli.js choose "prior authorization denials are rising" [--json]
+node bin/cli.js prompt revenue-cycle-specialist --mode "quick triage"
 ```
 
 ## Workflow Engine
 
-From this source checkout use `node bin/cli.js` in place of the installed `healthcare-agents` executable below. Discovery offers candidates; explicit workflow IDs select the structured workup:
+These source-checkout commands use the local CLI. Discovery offers candidates; explicit workflow IDs select the structured workup:
 
 ```bash
-healthcare-agents workflows
-healthcare-agents workflow denial-spike-workup
-healthcare-agents workup "Commercial payer denial rate jumped 18 percent after a policy change" --workflow denial-spike-workup --target codex
-healthcare-agents workup "Prepare a HIPAA evidence checklist for a vendor security review" --workflow hipaa-security-evidence-checklist --target copilot --json
+node bin/cli.js workflows
+node bin/cli.js workflow denial-spike-workup
+node bin/cli.js workup "Commercial payer denial rate jumped 18 percent after a policy change" --workflow denial-spike-workup --target codex
+node bin/cli.js workup "Prepare a HIPAA evidence checklist for a vendor security review" --workflow hipaa-security-evidence-checklist --target copilot --json
 ```
 
 Install workflow-level runtime support:
@@ -290,9 +290,9 @@ node bin/cli.js install --copilot-all
 Microsoft enterprise paths are exported for governed review instead of installed directly into a tenant:
 
 ```bash
-healthcare-agents export m365-declarative-agent denial-spike-workup
-healthcare-agents export copilot-studio hipaa-security-evidence-checklist
-healthcare-agents export azure-foundry survey-readiness-gap-review
+node bin/cli.js export m365-declarative-agent denial-spike-workup
+node bin/cli.js export copilot-studio hipaa-security-evidence-checklist
+node bin/cli.js export azure-foundry survey-readiness-gap-review
 ```
 
 These exports include instructions, starter prompts or trigger phrases, knowledge-source guidance, action placeholders, safety boundaries, test cases, and admin review checklists.
