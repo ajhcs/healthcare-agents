@@ -1,6 +1,6 @@
 # Installation Guide
 
-Healthcare Agents ships in two compatible formats:
+Healthcare Agents ships prompts, skills and workflow surfaces:
 
 - `agents/*.md`: full specialist prompts for subagent/rules/custom-instruction systems.
 - generated `SKILL.md` folders: portable skill packages for Claude Skills, OpenCode, and tools that follow the open agent-skills layout.
@@ -11,84 +11,63 @@ They do not make final clinical, legal, coding, billing, audit, compliance,
 contracting, employment, or executive decisions, and they do not make a runtime
 safe for PHI without an approved environment and minimum necessary controls.
 
-## Fast Install
+## Choose a version and profile
 
-Codex plugin install from a clone:
+This checkout describes **2.0.0-beta.1**, an unpublished source candidate. The public npm channel does not yet deliver this candidate; an unversioned `npx healthcare-agents` is not a reproducible beta install. Publication and customer cloud-host acceptance remain pending in [candidate status](docs/admin-v2/release-status.json).
+
+The commands below use a pinned source baseline with existing Node ≥18.14.1 and npm. No global installation is needed to validate or build a custom workflow:
 
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
 cd healthcare-agents
-bash scripts/install-codex-plugin.sh
+git checkout --detach 7b536b5ba707a74cc3b9208b658606f36c9a92c8
+npm ci --ignore-scripts
+node bin/cli.js doctor
+node bin/cli.js admin validate workflows/admin-v2/custom-example.json
 ```
 
-For local development from this checkout:
+That baseline precedes this documentation revision. Record the exact source commit you actually use, together with package version and profile. For a published release, separately verify the exact registry version and payload identity using the [release guide](docs/release-publishing.md); do not assume registry and repository channels match.
+
+| Need | Profile | Qualification boundary |
+| --- | --- | --- |
+| Build a custom instruction pack | Local source CLI and [walkthrough](docs/usage/custom-workflow-walkthrough.md) | Schema and generated files; host use requires explicit loading and review |
+| Activate the beta in Codex | [Package-owned local Codex profile](docs/platforms/admin-v2-stdio-bridge.md) | Exact documented POSIX host; other versions and hosts need separate acceptance |
+| Copy specialist prompts or skills | Target commands below, from this source checkout | File generation; does not establish live-client acceptance |
+| Use a published npm release | Verify exact published version first | Separate release channel; no beta equivalence claim |
+
+Inspect writes before installing:
 
 ```bash
-bash scripts/install-codex-plugin.sh
+node bin/cli.js install --all --dry-run
+node bin/cli.js doctor
 ```
 
-The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`.
-
-Start a new Codex thread after installing or updating the plugin. The plugin exposes one self-directing router, `healthcare-agents`, which checks the compact generated workflow index first, reads the compact agent index only when needed, chooses one workflow or specialist route, then reads the full matching source prompt in `agents/*.md`.
-
-```bash
-npx --yes healthcare-agents install
-```
-
-GitHub-backed fallback:
-
-```bash
-npx --yes github:ajhcs/healthcare-agents install
-```
-
-Shell installer fallback:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/ajhcs/healthcare-agents/main/install.sh | bash
-```
-
-Use `--dry-run` before writing files:
-
-```bash
-npx --yes healthcare-agents install --all --dry-run
-```
-
-Run doctor to inspect detected tools, target paths, collisions, and existing installed files:
-
-```bash
-npx --yes healthcare-agents doctor
-```
-
-Use `--force` to update an existing install:
-
-```bash
-npx --yes healthcare-agents install --all --force
-```
+Install only the target needed for your approved host. The local shell installer is also available as `bash install.sh --all --dry-run`; review its proposed writes before running without `--dry-run`. Use `--force` only when you intend to replace an existing managed installation.
 
 ## Targets
 
 | Target | Command | Writes |
 |---|---|---|
 | Codex plugin | `bash scripts/install-codex-plugin.sh` | Local Codex marketplace wrapper and Codex plugin cache from repo-root `.codex-plugin/plugin.json` and `skills/healthcare-agents/SKILL.md` |
-| Claude Code | `npx --yes healthcare-agents install --claude` | `~/.claude/agents/*.md` |
-| Claude Skills | `npx --yes healthcare-agents install --claude-skills` | `~/.claude/skills/<slug>/SKILL.md` |
-| Claude Desktop | `npx --yes healthcare-agents install --claude-desktop` | `~/.claude/skills/<slug>/SKILL.md` |
-| Claude Cowork | `npx --yes healthcare-agents install --claude-cowork` | `~/.claude/skills/<slug>/SKILL.md` |
-| Codex CLI / App | `npx --yes healthcare-agents install --codex` | `~/.codex/agents/*.md`, `~/.codex/AGENTS.md` |
-| OpenCode | `npx --yes healthcare-agents install --opencode` | `~/.config/opencode/skills/<slug>/SKILL.md` |
-| Open Agent Skills | `npx --yes healthcare-agents install --agent-skills` | `~/.agents/skills/<slug>/SKILL.md` |
-| Cursor | `npx --yes healthcare-agents install --cursor` | `.cursor/rules/*.md` |
-| Windsurf | `npx --yes healthcare-agents install --windsurf` | `.windsurf/rules/*.md` |
-| GitHub Copilot | `npx --yes healthcare-agents install --copilot` | `.github/instructions/*.md` |
-| Claude workflow skills | `npx --yes healthcare-agents install --claude-workflow-skills` | `~/.claude/skills/healthcare-*/SKILL.md` |
-| Codex workflow skills | `npx --yes healthcare-agents install --codex-skills` | `~/.codex/skills/healthcare-*/SKILL.md` |
-| GitHub Copilot repo setup | `npx --yes healthcare-agents install --copilot-all` | `.github/copilot-instructions.md`, `.github/instructions`, `.github/agents`, `.github/prompts`, `.github/ISSUE_TEMPLATE` |
-| Gemini CLI | `npx --yes healthcare-agents install --gemini` | `~/.gemini/agents/*.md` |
-| Cline | `npx --yes healthcare-agents install --cline` | `.clinerules/*.md` |
-| Amazon Q Developer | `npx --yes healthcare-agents install --amazonq` | `.amazonq/rules/*.md` |
-| Continue.dev | `npx --yes healthcare-agents install --continue` | `.continue/*.md` |
-| Aider | `npx --yes healthcare-agents install --aider` | managed `.aider.conf.yml` `read:` block |
-| Common skill locations | `npx --yes healthcare-agents install --skills` | Claude, OpenCode, and `.agents` skill folders |
+| Claude Code | `node bin/cli.js install --claude` | `~/.claude/agents/*.md` |
+| Claude Skills | `node bin/cli.js install --claude-skills` | `~/.claude/skills/<slug>/SKILL.md` |
+| Claude Desktop | `node bin/cli.js install --claude-desktop` | `~/.claude/skills/<slug>/SKILL.md` |
+| Claude Cowork | `node bin/cli.js install --claude-cowork` | `~/.claude/skills/<slug>/SKILL.md` |
+| Codex CLI / App | `node bin/cli.js install --codex` | `~/.codex/agents/*.md`, `~/.codex/AGENTS.md` |
+| OpenCode | `node bin/cli.js install --opencode` | `~/.config/opencode/skills/<slug>/SKILL.md` |
+| Open Agent Skills | `node bin/cli.js install --agent-skills` | `~/.agents/skills/<slug>/SKILL.md` |
+| Cursor | `node bin/cli.js install --cursor` | `.cursor/rules/*.md` |
+| Windsurf | `node bin/cli.js install --windsurf` | `.windsurf/rules/*.md` |
+| GitHub Copilot | `node bin/cli.js install --copilot` | `.github/instructions/*.md` |
+| Claude workflow skills | `node bin/cli.js install --claude-workflow-skills` | `~/.claude/skills/healthcare-*/SKILL.md` |
+| Codex workflow skills | `node bin/cli.js install --codex-skills` | `~/.codex/skills/healthcare-*/SKILL.md` |
+| GitHub Copilot repo setup | `node bin/cli.js install --copilot-all` | `.github/copilot-instructions.md`, `.github/instructions`, `.github/agents`, `.github/prompts`, `.github/ISSUE_TEMPLATE` |
+| Gemini CLI | `node bin/cli.js install --gemini` | `~/.gemini/agents/*.md` |
+| Cline | `node bin/cli.js install --cline` | `.clinerules/*.md` |
+| Amazon Q Developer | `node bin/cli.js install --amazonq` | `.amazonq/rules/*.md` |
+| Continue.dev | `node bin/cli.js install --continue` | `.continue/*.md` |
+| Aider | `node bin/cli.js install --aider` | managed `.aider.conf.yml` `read:` block |
+| Common skill locations | `node bin/cli.js install --skills` | Claude, OpenCode, and `.agents` skill folders |
 
 ## Claude Code
 
@@ -100,7 +79,7 @@ Claude Code subagents live in:
 Install globally:
 
 ```bash
-npx --yes healthcare-agents install --claude
+node bin/cli.js install --claude
 ```
 
 Invoke naturally:
@@ -116,14 +95,14 @@ The `name` frontmatter field matches the filename slug, as expected by Claude Co
 Generate SKILL.md folders:
 
 ```bash
-npx --yes healthcare-agents install --claude-skills
+node bin/cli.js install --claude-skills
 ```
 
 Aliases:
 
 ```bash
-npx --yes healthcare-agents install --claude-desktop
-npx --yes healthcare-agents install --claude-cowork
+node bin/cli.js install --claude-desktop
+node bin/cli.js install --claude-cowork
 ```
 
 Each skill is written to:
@@ -170,14 +149,14 @@ Use Healthcare Agents in the revenue cycle area for a denial spike.
 Use the quality department for a survey readiness checklist.
 ```
 
-The plugin keeps `agents/*.md`, `workflows/workflows.json`, and `agents/registry.json` as canonical sources. Generated indexes under `skills/healthcare-agents/references/` reduce model context but are freshness-checked against those sources. The router checks workflow triggers first, uses department/area hints when needed, selects one primary specialist, and reads the full matching prompt before answering.
+The plugin keeps `agents/*.md`, `workflows/workflows.json`, and `agents/registry.json` as canonical sources. Generated indexes under `skills/healthcare-agents/references/` reduce model context but are freshness-checked against those sources. The beta router loads a selected workflow or compact role brief; full prompts are available when needed. Free-text commands offer candidates, and the user or host resolves intent, negation and multiple goals before supplying validated IDs. Explicit multi-selections retain every workstream. See [routing authority](docs/admin-v2/routing-authority.md).
 
 Legacy prompt-copy install:
 
 Install:
 
 ```bash
-npx --yes healthcare-agents install --codex
+node bin/cli.js install --codex
 ```
 
 This writes:
@@ -208,7 +187,7 @@ When healthcare administration expertise is needed, read the matching file in `a
 Install OpenCode skills:
 
 ```bash
-npx --yes healthcare-agents install --opencode
+node bin/cli.js install --opencode
 ```
 
 This writes:
@@ -220,7 +199,7 @@ This writes:
 OpenCode also discovers Claude-compatible and open-agent-compatible skill paths, so `--skills` is a good portable default:
 
 ```bash
-npx --yes healthcare-agents install --skills
+node bin/cli.js install --skills
 ```
 
 ## Cursor, Windsurf, Copilot, and Rules-Based Tools
@@ -228,9 +207,9 @@ npx --yes healthcare-agents install --skills
 Install into project rule folders:
 
 ```bash
-npx --yes healthcare-agents install --cursor
-npx --yes healthcare-agents install --windsurf
-npx --yes healthcare-agents install --copilot
+node bin/cli.js install --cursor
+node bin/cli.js install --windsurf
+node bin/cli.js install --copilot
 ```
 
 For GitHub Copilot, some setups prefer the `.instructions.md` extension:
@@ -246,7 +225,7 @@ done
 Install:
 
 ```bash
-npx --yes healthcare-agents install --aider
+node bin/cli.js install --aider
 ```
 
 This adds a managed block to `.aider.conf.yml`:
@@ -264,7 +243,7 @@ read:
 Copy the source agent files to any directory:
 
 ```bash
-npx --yes healthcare-agents install --path ./vendor/healthcare-agents
+node bin/cli.js install --path ./vendor/healthcare-agents
 ```
 
 ## Single-Agent Install
@@ -272,8 +251,8 @@ npx --yes healthcare-agents install --path ./vendor/healthcare-agents
 Install one prompt when a full pack is unnecessary:
 
 ```bash
-npx --yes healthcare-agents install revenue-cycle-specialist --codex
-npx --yes healthcare-agents install quality-compliance-officer --claude-skills --dry-run
+node bin/cli.js install revenue-cycle-specialist --codex
+node bin/cli.js install quality-compliance-officer --claude-skills --dry-run
 ```
 
 Slugs are validated against `agents/registry.json`; invalid slugs return close-match suggestions.
@@ -283,37 +262,37 @@ Slugs are validated against `agents/registry.json`; invalid slugs return close-m
 The package includes registry-backed discovery commands:
 
 ```bash
-healthcare-agents list [--domain revenue] [--json]
-healthcare-agents show revenue-cycle-specialist [--json]
-healthcare-agents choose "prior authorization denials are rising" [--json]
-healthcare-agents prompt revenue-cycle-specialist --mode "quick triage"
+node bin/cli.js list [--domain revenue] [--json]
+node bin/cli.js show revenue-cycle-specialist [--json]
+node bin/cli.js choose "prior authorization denials are rising" [--json]
+node bin/cli.js prompt revenue-cycle-specialist --mode "quick triage"
 ```
 
 ## Workflow Engine
 
-Workflow commands route a plain-language healthcare administration problem to a structured workup packet:
+These source-checkout commands use the local CLI. Discovery offers candidates; explicit workflow IDs select the structured workup:
 
 ```bash
-healthcare-agents workflows
-healthcare-agents workflow denial-spike-workup
-healthcare-agents workup "Commercial payer denial rate jumped 18 percent after a policy change" --target codex
-healthcare-agents workup "Prepare a HIPAA evidence checklist for a vendor security review" --target copilot --json
+node bin/cli.js workflows
+node bin/cli.js workflow denial-spike-workup
+node bin/cli.js workup "Commercial payer denial rate jumped 18 percent after a policy change" --workflow denial-spike-workup --target codex
+node bin/cli.js workup "Prepare a HIPAA evidence checklist for a vendor security review" --workflow hipaa-security-evidence-checklist --target copilot --json
 ```
 
 Install workflow-level runtime support:
 
 ```bash
-npx --yes healthcare-agents install --claude-workflow-skills
-npx --yes healthcare-agents install --codex-skills
-npx --yes healthcare-agents install --copilot-all
+node bin/cli.js install --claude-workflow-skills
+node bin/cli.js install --codex-skills
+node bin/cli.js install --copilot-all
 ```
 
 Microsoft enterprise paths are exported for governed review instead of installed directly into a tenant:
 
 ```bash
-healthcare-agents export m365-declarative-agent denial-spike-workup
-healthcare-agents export copilot-studio hipaa-security-evidence-checklist
-healthcare-agents export azure-foundry survey-readiness-gap-review
+node bin/cli.js export m365-declarative-agent denial-spike-workup
+node bin/cli.js export copilot-studio hipaa-security-evidence-checklist
+node bin/cli.js export azure-foundry survey-readiness-gap-review
 ```
 
 These exports include instructions, starter prompts or trigger phrases, knowledge-source guidance, action placeholders, safety boundaries, test cases, and admin review checklists.
@@ -321,9 +300,9 @@ These exports include instructions, starter prompts or trigger phrases, knowledg
 ## Uninstall
 
 ```bash
-npx --yes healthcare-agents uninstall --claude
-npx --yes healthcare-agents uninstall --opencode
-npx --yes healthcare-agents uninstall --all
+node bin/cli.js uninstall --claude
+node bin/cli.js uninstall --opencode
+node bin/cli.js uninstall --all
 ```
 
 ## Self-Improvement Kit

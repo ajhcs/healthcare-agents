@@ -5,32 +5,42 @@
   <img src="docs/assets/presentation/hero.png" alt="Healthcare Agents. Clearer evidence. Reviewable next steps. Skills and workflows for healthcare administration.">
 </picture>
 
-**Turn healthcare administration questions into evidence-linked workplans, checklists and review packets.**
+**Build and customize agents for the way your healthcare team works.**
 
-Investigate a denial spike. Map survey evidence gaps. Prepare an appeal packet. Healthcare Agents gives your AI host focused instructions for these tasks, supported by local tools that validate inputs and calculate aggregate quantities. You get a draft with sources, open questions and human owners.
+Healthcare Agents is a starting point for healthcare leaders to describe a workflow, adapt focused instructions and review the resulting work with a human owner. Start with your own task or use an existing specialist: investigate a denial spike, map survey evidence gaps or prepare an appeal packet. Local tools can validate inputs and calculate supported aggregate quantities.
 
-[Quickstart](#quickstart) · [Workflows](#six-workflows-six-useful-outputs) · [Specialists](#explore-the-specialist-catalog) · [Host setup](#connect-your-ai-host) · [Evidence & evaluation](#what-the-evidence-establishes)
+[Customize a workflow](#quickstart) · [Workflows](#six-workflows-six-useful-outputs) · [Specialists](#explore-the-specialist-catalog) · [Host setup](#connect-your-ai-host) · [Evidence & evaluation](#what-the-evidence-establishes)
 
 > **Development candidate · v2.0.0-beta.1**
 > This README describes the checked-out beta. Publication is pending: `npx healthcare-agents` from the public registry does not yet deliver this candidate. Customer cloud-host qualification is also pending. See [candidate status](docs/admin-v2/release-status.json) and the [tested local Codex profile](docs/platforms/admin-v2-stdio-bridge.md).
 
 ## Quickstart
 
-Choose the route that fits your next step:
+Start with the work you need to produce. Adapt a small instruction pack, review it against supplied evidence, then use it in your approved host:
 
 | I want to… | Start here | What I get |
 | --- | --- | --- |
+| **Build my own workflow** | [CHNA interview-plan walkthrough](docs/usage/custom-workflow-walkthrough.md) | An editable local pack, case template and review checklist |
 | **Try a synthetic workflow** | Run the local example below | Validated aggregate calculations, with evidence and limitations |
 | **Use the skill in my AI host** | [Connect an approved host](#connect-your-ai-host), then use a prompt below | A task-specific draft from the host model |
 | **Find a specialist** | [Explore the catalog](#explore-the-specialist-catalog) | A focused role or workflow for the question |
 
+### Make a community interview plan
+
+Suppose you need a community health needs assessment (CHNA) stakeholder interview plan. Describe the decision it supports, the evidence you have, the people whose voices are missing and the person who must approve outreach. The [walkthrough](docs/usage/custom-workflow-walkthrough.md) turns those choices into an editable local instruction pack, then shows how to review, revise or retire it.
+
+Start from the [community interview example](workflows/admin-v2/custom-example.json). The builder checks its structure and creates files for your host to read. Your host drafts the plan; a community benefit director reviews the evidence, coverage, recruitment and consent before anyone is contacted. Building the pack does not install or activate it.
+
+[Review brief](docs/usage/custom-workflow-review-template.md) · [Integration brief](docs/usage/custom-workflow-integration-brief.md)
+
 ### Try the local denial example
 
-Use an existing Node.js installation (the [local profile](docs/platforms/admin-v2-stdio-bridge.md) requires Node ≥18.14.1) and npm:
+This reproducible example pins the source beta baseline; use the [installation guide](INSTALL.md) for channel and host choices. Use an existing Node.js installation (the [local profile](docs/platforms/admin-v2-stdio-bridge.md) requires Node ≥18.14.1) and npm:
 
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
 cd healthcare-agents
+git checkout --detach 7b536b5ba707a74cc3b9208b658606f36c9a92c8
 npm ci --ignore-scripts
 node bin/cli.js admin run examples/admin-v2/denial-spike-workup.json
 ```
@@ -111,24 +121,7 @@ The [Healthcare Agents router skill](skills/healthcare-agents/SKILL.md) loads th
 
 Start with the [installation guide](INSTALL.md) and choose the profile for your approved environment. The [local Codex profile](docs/platforms/admin-v2-stdio-bridge.md) documents preparation, activation, removal and exact tested-host limits. It uses existing Node/npm; Python is optional through `--stdio-bridge`. Other clients need separate acceptance.
 
-| Host | Available integration | Evidence boundary |
-| --- | --- | --- |
-| Codex | Skills, portable plugin manifests and local stdio MCP | Packaged-server tests plus bounded native qualification on the documented POSIX host |
-| Claude | Skills and correlated Messages client-tool callback | Local callback/contract tests; live Claude pending |
-| ChatGPT | Plugin manifests and local MCP transport | Local protocol/packaging tested; remote web connection pending |
-| Azure / Microsoft Foundry | Instructions and Responses function callback | Local bridge tested; SDK/model/tenant deployment pending |
-| Databricks | Instructions and Chat Completions callback | Local bridge tested; hosted ResponsesAgent and tenant deployment pending |
-
-For integration developers:
-
-```bash
-node bin/cli.js admin export codex denial-spike-workup --output ./codex-denials
-node bin/cli.js admin export azure denial-spike-workup --output ./azure-denials
-node bin/mcp-server.js --stdio
-node bin/host-tool-bridge.js --list azure
-```
-
-Eight read-only MCP tools expose catalog discovery, the six validated calculations and an in-memory workflow draft. Strict schemas, provenance, cancellation, deadlines and structured errors apply. The [MCP and callback guide](docs/platforms/admin-v2-mcp.md) covers plugin launchers, loopback-only HTTP and host requirements. The [Python bridge](adapters/python/host_tools.py) requires Node and installed dependencies. No cloud SDK, credentials or customer-host service is installed by this package.
+[Host capabilities, limitations and developer commands](docs/usage/development-checks.md#integration-developer-reference) · [Custom workflow integration brief](docs/usage/custom-workflow-integration-brief.md)
 
 ## Extend a workflow or bring source receipts
 
@@ -172,34 +165,7 @@ Source-family cards are leads to verify. The [bounded primary source review](doc
 - **Model outcome evidence:** a prior-snapshot [native Codex campaign](docs/admin-v2/model-campaign.md) used synthetic tasks, actual MCP calls and bounded factual/receipt grading. It loaded compact instructions; it was not rerun for the revised routing-authority/result-limit contract. Independent domain acceptance remains separate.
 - **External benchmark comparisons:** baseline model runs use tools **without skills**. Skill-enabled evaluation is a separate condition. Historical rubric results and environment checks must not be presented as external model benchmark scores; this README makes no external benchmark score claim.
 
-### Run the repository checks
-
-From a development checkout with dependencies installed:
-
-```bash
-npm run test:admin-v2
-npm run test:admin-adapter
-npm run test:admin-consumer
-npm run test:admin-mcp
-npm run test:plugin-consumer
-npm run test:routing-intent
-npm run test:result-boundary
-npm run test:codex-profile
-npm run test:stdio-bridge
-npm test
-# Optional receipt importer, with the pinned Python validator installed:
-HAG_EVIDENCE_PYTHON=/path/to/python-with-pydantic npm run test:public-evidence
-```
-
-The suites cover independently specified arithmetic, source attribution, missing/contradictory inputs, routing abstention, CLI file generation and target/workflow payloads. The adapter exercises all six cases through Python and the Node CLI. A clean-consumer test installs the npm tarball offline into a disposable project and checks external cases, provenance failures, payload references, builder and routing. Release checks retain schema, safety, review, installer and package gates. Generated text and installation simulations do not prove acceptance by every live client.
-
-## Eval Status
-
-Historical records report **51/51 evaluated**, an average **94.18**, and **51/51 tracked improved** under the old rubric. These are **internal prompt-rubric results**, **not certification**, external benchmark scores or outcome validation. They are retained in [eval/results.tsv](eval/results.tsv); local replay evidence is incomplete. The **remaining eval backlog** includes repeated independent task-level, domain and customer-host evaluation beyond the bounded native Codex campaign.
-
-## Self-Improvement Kit
-
-The historical rubric and role baselines remain immutable. [The evaluation procedure](.claude/commands/eval.md) is retained for explicitly requested historical-loop work. New outcome evidence should record task inputs, independent expected facts, exact model/runtime identity, prompts and source hashes, critical errors, human judgments, cost and latency. No superiority or token-saving claim is made for the compact instructions.
+[Maintainer checks and integration details](docs/usage/development-checks.md) · [Historical prompt evaluation](docs/eval/historical-prompt-evaluation.md)
 
 ## Contribute and learn more
 

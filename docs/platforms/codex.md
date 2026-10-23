@@ -1,35 +1,27 @@
 # Codex
 
-Recommended plugin install:
+For the unpublished **2.0.0-beta.1** source candidate, start with [version and profile selection](../../INSTALL.md#choose-a-version-and-profile). The [package-owned local profile](admin-v2-stdio-bridge.md) documents the exact tested POSIX host, preparation, activation and removal. Follow its dependency preflight; host/client versions outside that record need separate acceptance.
 
-```bash
-git clone https://github.com/ajhcs/healthcare-agents.git
-cd healthcare-agents
-bash scripts/install-codex-plugin.sh
-```
+The beta `healthcare-agents` router loads a selected workflow or compact role brief. Full source prompts remain available when needed. Free-text discovery offers candidates; the user or host resolves intent, negation and multiple goals, then supplies validated IDs or a structured selection. Explicit multi-selections retain each workstream. See [routing authority](../admin-v2/routing-authority.md).
 
-The script creates a local Codex marketplace wrapper at `~/.healthcare-agents-codex-marketplace`, symlinks it to this repo-root plugin, runs `codex plugin marketplace add`, and installs `healthcare-agents@healthcare-agents-local`.
-
-The Codex plugin exposes one self-directing `healthcare-agents` router. The router reads `workflows/workflows.json` and `agents/registry.json`, chooses a workflow, department/area, or specialist route, and then reads the full matching `agents/<slug>.md` source prompt before answering.
-
-Use prompts like:
+Example requests after activation in a new thread:
 
 ```text
-Use the Healthcare Agents plugin for a prior authorization appeal.
-Use Healthcare Agents in the revenue cycle area for a denial spike.
-Use the quality department for a survey readiness checklist.
+Use Healthcare Agents to prepare an administrative prior authorization appeal packet from the supplied evidence.
+Use Healthcare Agents to investigate this denial-rate increase, keeping observations and hypotheses separate.
 ```
 
-Legacy prompt-copy install:
+## Custom instruction packs
+
+The [CHNA walkthrough](../usage/custom-workflow-walkthrough.md) uses explicit local-file loading in an existing approved workspace. Building a pack alone does not install a plugin, register a tool or prove automatic discovery. Record exactly which files the host read and review its output before operational use.
+
+## Legacy prompt-copy profile
+
+From the pinned source checkout described in the installation guide:
 
 ```bash
-npx --yes healthcare-agents install --codex
+node bin/cli.js install --codex --dry-run
+node bin/cli.js install --codex
 ```
 
-Install workflow skills separately with:
-
-```bash
-npx --yes healthcare-agents install --codex-skills
-```
-
-The installer preserves user content in `~/.codex/AGENTS.md` by using a managed block and follows Codex directory precedence rules.
+This older profile writes specialist prompts and a managed block in `~/.codex/AGENTS.md`, preserving other user content. Its instructions to load a full prompt and choose a primary specialist belong to that legacy profile; they do not describe the beta router. Workflow skills can be copied separately with `node bin/cli.js install --codex-skills`.
