@@ -1,0 +1,63 @@
+name: New agent proposal
+description: Propose a new healthcare administration specialist agent.
+title: "[New agent]: "
+labels: ["new-agent"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before proposing, read [CONTRIBUTING.md](https://github.com/ajhcs/healthcare-agents/blob/main/CONTRIBUTING.md) —
+        especially the quality standards and the Services Litmus Test. Agents are narrow specialists for healthcare
+        administration support; they are not clinicians, attorneys, or coders of record.
+  - type: input
+    id: role-name
+    attributes:
+      label: Role name
+      description: The job title this agent represents, e.g. "Utilization Review Coordinator".
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options:
+        - Revenue Cycle
+        - Quality
+        - Clinical Operations
+        - Payer
+        - Health IT
+        - Population Health
+        - Pharmacy
+        - Operations
+        - Strategy
+        - Clinical Prep
+        - New domain (explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and deliverables
+      description: What concrete administrative outputs would this agent produce (packets, binders, dashboards, matrices, plans)?
+    validations:
+      required: true
+  - type: textarea
+    id: overlap
+    attributes:
+      label: Overlap check
+      description: Which existing agents are closest, and why is this role distinct rather than an extension of one of them?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Regulatory and source landscape
+      description: Which programs, regulations, and standards would this agent need to be aware of (HIPAA, CMS, OIG, HEDIS, Stars, MIPS, 340B, NHSN, TEFCA, HL7/FHIR, X12, ...)?
+    validations:
+      required: true
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to draft this agent as a PR following the CONTRIBUTING.md template.
