@@ -13,20 +13,20 @@ safe for PHI without an approved environment and minimum necessary controls.
 
 ## Choose a version and profile
 
-This checkout describes **2.0.0-beta.1**, an unpublished source candidate. The public npm channel does not yet deliver this candidate; an unversioned `npx healthcare-agents` is not a reproducible beta install. Publication and customer cloud-host acceptance remain pending in [candidate status](docs/admin-v2/release-status.json).
+This guide covers **2.0.0-beta.2**. For a one-off CLI command, use `npx --yes healthcare-agents@2.0.0-beta.2 workflows`. To install the Codex plugin from source, check out the matching tag below. See [release evidence](docs/admin-v2/release-status.json) for the tested hosts and revisions.
 
 The commands below use a pinned source baseline with existing Node ≥18.14.1 and npm. No global installation is needed to validate or build a custom workflow:
 
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
 cd healthcare-agents
-git checkout --detach 7b536b5ba707a74cc3b9208b658606f36c9a92c8
+git checkout --detach v2.0.0-beta.2
 npm ci --ignore-scripts
 node bin/cli.js doctor
 node bin/cli.js admin validate workflows/admin-v2/custom-example.json
 ```
 
-That baseline precedes this documentation revision. Record the exact source commit you actually use, together with package version and profile. For a published release, separately verify the exact registry version and payload identity using the [release guide](docs/release-publishing.md); do not assume registry and repository channels match.
+Record the exact source commit you actually use, together with package version and profile. For a published release, separately verify the exact registry version and payload identity using the [release guide](docs/release-publishing.md); do not assume registry and repository channels match.
 
 | Need | Profile | Qualification boundary |
 | --- | --- | --- |
@@ -125,7 +125,7 @@ compatibility: claude-code, claude-desktop, claude-cowork, opencode, codex
 
 ## Codex CLI and Codex App
 
-For this unpublished v2 beta on the tested BuilderBob Codex host, prepare a package-owned local profile with existing Node/npm:
+For the v2 beta on BuilderBob, prepare a package-owned local profile with existing Node/npm:
 
 ```bash
 node scripts/stage-codex-plugin.js --output "$HOME/healthcare-agents-codex-local"
@@ -133,7 +133,7 @@ codex plugin marketplace add "$HOME/healthcare-agents-codex-local"
 codex plugin add healthcare-agents@healthcare-agents-posix-local
 ```
 
-Start a new thread. Python is optional: add --stdio-bridge during preparation to select the tested POSIX bridge. The [profile guide](docs/platforms/admin-v2-stdio-bridge.md) gives dependency preflight, removal and exact tested-host limits. No per-thread MCP override is needed. The public registry does not yet contain this candidate.
+Start a new thread. Python is optional: add --stdio-bridge during preparation to select the tested POSIX bridge. The [profile guide](docs/platforms/admin-v2-stdio-bridge.md) gives dependency preflight, removal and exact tested-host limits. No per-thread MCP override is needed.
 
 For a host that supports the portable Node launcher, the existing local plugin installer remains available:
 
@@ -149,7 +149,7 @@ Use Healthcare Agents in the revenue cycle area for a denial spike.
 Use the quality department for a survey readiness checklist.
 ```
 
-The plugin keeps `agents/*.md`, `workflows/workflows.json`, and `agents/registry.json` as canonical sources. Generated indexes under `skills/healthcare-agents/references/` reduce model context but are freshness-checked against those sources. The beta router loads a selected workflow or compact role brief; full prompts are available when needed. Free-text commands offer candidates, and the user or host resolves intent, negation and multiple goals before supplying validated IDs. Explicit multi-selections retain every workstream. See [routing authority](docs/admin-v2/routing-authority.md).
+The router uses generated indexes and opens the detail file for each selected workflow. Detail files retain inputs, role handoffs, artifact sections and safety constraints from `workflows/workflows.json`. Six point to deeper contracts. The specialist fallback uses compact briefs and can open the full `agents/*.md` prompts when needed. Free-text commands offer discovery candidates. When the host infers IDs from current intent, it passes a structured `--selection` with its rationale and includes all selected workups in order. Use `--workflow` or `--agent` when the user explicitly selected the ID. [Routing authority](docs/admin-v2/routing-authority.md)
 
 Legacy prompt-copy install:
 

@@ -1,0 +1,48 @@
+{
+  "id": "emergency-preparedness-exercise-readiness",
+  "name": "Emergency Preparedness Exercise Readiness",
+  "category": "Emergency Preparedness",
+  "summary": "Prepare exercise objectives, injects, evaluation checklists, and after-action templates for CMS emergency preparedness or internal exercises.",
+  "primary_agent": "emergency-preparedness-coordinator",
+  "handoff_agents": [
+    "operations-hospital-administrator",
+    "quality-compliance-officer",
+    "operations-supply-chain-manager"
+  ],
+  "required_inputs": [
+    "hazard scenario",
+    "sites",
+    "participants",
+    "current plan",
+    "prior after-action findings"
+  ],
+  "optional_inputs": [
+    "HVA",
+    "communications plan",
+    "exercise type",
+    "evaluation roles",
+    "supply constraints"
+  ],
+  "red_flags": [
+    "active emergency",
+    "incident command activation",
+    "regulatory deadline",
+    "critical infrastructure dependency"
+  ],
+  "output_artifact": "exercise readiness packet",
+  "artifact_sections": [
+    "Exercise objectives",
+    "Scenario assumptions",
+    "Inject list",
+    "Evaluation checklist",
+    "After-action template",
+    "Owner timeline"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required",
+    "emergency"
+  ]
+}

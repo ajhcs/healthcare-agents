@@ -1,0 +1,46 @@
+{
+  "id": "hedis-stars-gap-closure-sprint",
+  "name": "HEDIS or Stars Gap Closure Sprint",
+  "category": "Quality",
+  "summary": "Plan a focused quality gap closure sprint for HEDIS, Stars, payer quality programs, denominator/numerator gaps, and outreach.",
+  "primary_agent": "quality-improvement-specialist",
+  "handoff_agents": [
+    "pophealth-population-health-manager",
+    "healthit-clinical-data-analyst",
+    "quality-compliance-officer"
+  ],
+  "required_inputs": [
+    "measure",
+    "denominator",
+    "numerator gap",
+    "patient segment",
+    "outreach channels"
+  ],
+  "optional_inputs": [
+    "payer program",
+    "measure year",
+    "documentation source",
+    "provider owner",
+    "vendor outreach capacity"
+  ],
+  "red_flags": [
+    "measure documentation uncertainty",
+    "patient consent or communication limits",
+    "clinical prioritization needed",
+    "data lag"
+  ],
+  "output_artifact": "gap closure sprint plan",
+  "artifact_sections": [
+    "Gap stratification",
+    "Outreach plan",
+    "Documentation checklist",
+    "Weekly operating rhythm",
+    "Measure validation"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

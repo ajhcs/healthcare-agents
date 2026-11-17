@@ -1,8 +1,8 @@
 # Codex
 
-For the unpublished **2.0.0-beta.1** source candidate, start with [version and profile selection](../../INSTALL.md#choose-a-version-and-profile). The [package-owned local profile](admin-v2-stdio-bridge.md) documents the exact tested POSIX host, preparation, activation and removal. Follow its dependency preflight; host/client versions outside that record need separate acceptance.
+For **2.0.0-beta.2**, start with [version and profile selection](../../INSTALL.md#choose-a-version-and-profile). The [package-owned local profile](admin-v2-stdio-bridge.md) documents the exact tested POSIX host, preparation, activation and removal. Follow its dependency preflight; host/client versions outside that record need separate acceptance.
 
-The beta `healthcare-agents` router loads a selected workflow or compact role brief. Full source prompts remain available when needed. Free-text discovery offers candidates; the user or host resolves intent, negation and multiple goals, then supplies validated IDs or a structured selection. Explicit multi-selections retain each workstream. See [routing authority](../admin-v2/routing-authority.md).
+The beta `healthcare-agents` router matches the request against a compact workflow index and opens each selected workflow’s detail file. If no workflow fits, it opens the selected specialist’s compact role brief, with the full prompt available when needed. Free-text CLI calls offer discovery candidates. Use `--selection` with a rationale for host-inferred IDs, preserving the order of all requested workups. Use `--workflow` or `--agent` when the user explicitly selected the ID. [Routing authority](../admin-v2/routing-authority.md)
 
 Example requests after activation in a new thread:
 

@@ -1,0 +1,48 @@
+{
+  "id": "hipaa-security-evidence-checklist",
+  "name": "HIPAA Security Evidence Checklist",
+  "category": "Compliance",
+  "summary": "Prepare an evidence checklist and gap register for a HIPAA audit, vendor security review, policy refresh, or questionnaire.",
+  "primary_agent": "quality-compliance-officer",
+  "handoff_agents": [
+    "healthit-information-manager",
+    "quality-risk-manager",
+    "payer-relations-specialist"
+  ],
+  "required_inputs": [
+    "entity type",
+    "system scope",
+    "vendor involvement",
+    "current controls",
+    "requested framework"
+  ],
+  "optional_inputs": [
+    "prior risk analysis",
+    "policies",
+    "access review",
+    "incident history",
+    "BAA status"
+  ],
+  "red_flags": [
+    "possible breach",
+    "missing BAA",
+    "unapproved PHI sharing",
+    "critical control gap",
+    "regulator deadline"
+  ],
+  "output_artifact": "evidence checklist and gap register",
+  "artifact_sections": [
+    "Scope",
+    "Evidence map",
+    "Gap register",
+    "Responsible owners",
+    "Collection timeline",
+    "Review sign-off"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

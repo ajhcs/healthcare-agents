@@ -1,0 +1,46 @@
+{
+  "id": "patient-safety-rca2-workup",
+  "name": "Patient Safety RCA2 Workup",
+  "category": "Quality and Safety",
+  "summary": "Organize serious safety event, near miss, or sentinel-event-style review preparation into an RCA2-style planning packet.",
+  "primary_agent": "quality-patient-safety-officer",
+  "handoff_agents": [
+    "quality-risk-manager",
+    "quality-improvement-specialist",
+    "operations-hospital-administrator"
+  ],
+  "required_inputs": [
+    "event summary",
+    "timeline",
+    "harm level",
+    "involved processes",
+    "immediate containment"
+  ],
+  "optional_inputs": [
+    "interview list",
+    "policy references",
+    "equipment or staffing context",
+    "prior similar events"
+  ],
+  "red_flags": [
+    "ongoing safety risk",
+    "mandatory reporting question",
+    "legal privilege concern",
+    "media or regulator sensitivity"
+  ],
+  "output_artifact": "RCA2-style planning packet",
+  "artifact_sections": [
+    "Fact-gathering plan",
+    "Timeline gaps",
+    "Causal factor categories",
+    "Interview guide",
+    "Action strength checklist",
+    "Escalation notes"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

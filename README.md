@@ -11,8 +11,8 @@ Healthcare Agents is a starting point for healthcare leaders to describe a workf
 
 [Customize a workflow](#quickstart) · [Workflows](#six-workflows-six-useful-outputs) · [Specialists](#explore-the-specialist-catalog) · [Host setup](#connect-your-ai-host) · [Evidence & evaluation](#what-the-evidence-establishes)
 
-> **Development candidate · v2.0.0-beta.1**
-> This README describes the checked-out beta. Publication is pending: `npx healthcare-agents` from the public registry does not yet deliver this candidate. Customer cloud-host qualification is also pending. See [candidate status](docs/admin-v2/release-status.json) and the [tested local Codex profile](docs/platforms/admin-v2-stdio-bridge.md).
+> **Beta · v2.0.0-beta.2**
+> Use the versioned [GitHub prerelease](https://github.com/ajhcs/healthcare-agents/releases/tag/v2.0.0-beta.2) or pin `healthcare-agents@2.0.0-beta.2` on npm. See the [release evidence](docs/admin-v2/release-status.json) for the scope of host and model testing.
 
 ## Quickstart
 
@@ -40,7 +40,7 @@ This reproducible example pins the source beta baseline; use the [installation g
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
 cd healthcare-agents
-git checkout --detach 7b536b5ba707a74cc3b9208b658606f36c9a92c8
+git checkout --detach v2.0.0-beta.2
 npm ci --ignore-scripts
 node bin/cli.js admin run examples/admin-v2/denial-spike-workup.json
 ```
@@ -115,7 +115,7 @@ node bin/cli.js admin list
 | Revenue Cycle & Finance | 6 |
 | Strategy & Advisory | 5 |
 
-The [Healthcare Agents router skill](skills/healthcare-agents/SKILL.md) loads the selected workflow or [compact role brief](skills/healthcare-agents/references/roles/); full [specialist prompts](agents/) remain available when needed. Free-text `choose` and `workup` calls offer discovery candidates. The user or host interprets intent, negation and multiple goals, then supplies validated IDs or a structured selection. Explicit multi-selections retain every workstream. See [routing authority and migration](docs/admin-v2/routing-authority.md).
+The [Healthcare Agents router skill](skills/healthcare-agents/SKILL.md) starts with the compact workflow index and opens the detail file for each selected workflow. The specialist fallback uses a [compact role brief](skills/healthcare-agents/references/roles/) and opens the [full prompt](agents/) when needed. Free-text `choose` and `workup` calls offer discovery candidates. The host records inferred choices and their rationale with `--selection`. Use `--workflow` or `--agent` when the user explicitly selected the ID. A workflow selection can retain multiple requested workstreams. [Routing authority and migration](docs/admin-v2/routing-authority.md)
 
 ## Connect your AI host
 
@@ -160,7 +160,7 @@ Source-family cards are leads to verify. The [bounded primary source review](doc
 
 **Environment qualification and model benchmark scores answer different questions.** An install, tool call or arithmetic check can establish bounded software behavior. It cannot establish healthcare accuracy, usefulness or model superiority.
 
-- **Local checks:** contracts, arithmetic, source attribution, failure handling, routing abstention, package installation and generated files. The [candidate status](docs/admin-v2/release-status.json) records publication and qualification separately.
+- **Local checks:** contracts, arithmetic, source attribution, failure handling, routing abstention, package installation and generated files. The [release evidence](docs/admin-v2/release-status.json) identifies the checks and the revisions they cover.
 - **Native host qualification:** the [Codex profile](docs/platforms/admin-v2-stdio-bridge.md) records installation, tool/workflow calls and restoration on a specified Ubuntu/Codex configuration. Other hosts require separate acceptance.
 - **Model outcome evidence:** a prior-snapshot [native Codex campaign](docs/admin-v2/model-campaign.md) used synthetic tasks, actual MCP calls and bounded factual/receipt grading. It loaded compact instructions; it was not rerun for the revised routing-authority/result-limit contract. Independent domain acceptance remains separate.
 - **External benchmark comparisons:** baseline model runs use tools **without skills**. Skill-enabled evaluation is a separate condition. Historical rubric results and environment checks must not be presented as external model benchmark scores; this README makes no external benchmark score claim.

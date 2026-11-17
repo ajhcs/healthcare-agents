@@ -1,0 +1,46 @@
+{
+  "id": "payer-contract-underpayment-review",
+  "name": "Payer Contract Underpayment Review",
+  "category": "Payer Contracting",
+  "summary": "Prepare an underpayment evidence packet for suspected payment variance, fee schedule mismatch, contract renewal, or payer dispute.",
+  "primary_agent": "revenue-contract-analyst",
+  "handoff_agents": [
+    "revenue-cycle-specialist",
+    "revenue-finance-manager",
+    "payer-relations-specialist"
+  ],
+  "required_inputs": [
+    "contract terms",
+    "allowed amounts",
+    "billed charges",
+    "payment history",
+    "carve-outs or exclusions"
+  ],
+  "optional_inputs": [
+    "835 sample",
+    "contract amendment",
+    "fee schedule",
+    "payer correspondence"
+  ],
+  "red_flags": [
+    "legal dispute posture",
+    "large recurring variance",
+    "contract ambiguity",
+    "timely filing or dispute deadline"
+  ],
+  "output_artifact": "underpayment evidence packet",
+  "artifact_sections": [
+    "Variance logic",
+    "Evidence table",
+    "Contract citation map",
+    "Payer dispute letter scaffold",
+    "Negotiation talking points"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ],
+  "deep_contract_reference": "../../../healthcare-payer-contract-underpayment-review/references/workflow.json"
+}

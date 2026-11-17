@@ -1,0 +1,47 @@
+{
+  "id": "discharge-barrier-workplan",
+  "name": "Discharge Barrier Workplan",
+  "category": "Care Coordination",
+  "summary": "Convert discharge delays, avoidable days, placement barriers, DME delays, or family decision delays into a daily action plan.",
+  "primary_agent": "clinical-case-manager",
+  "handoff_agents": [
+    "clinical-utilization-management-specialist",
+    "clinical-care-management-specialist",
+    "revenue-finance-manager"
+  ],
+  "required_inputs": [
+    "barrier categories",
+    "service line",
+    "payer mix",
+    "avoidable days",
+    "escalation rules"
+  ],
+  "optional_inputs": [
+    "post-acute network constraints",
+    "patient choice process",
+    "DME vendor list",
+    "daily huddle cadence"
+  ],
+  "red_flags": [
+    "unsafe discharge risk",
+    "patient rights concern",
+    "avoidable day escalation",
+    "payer denial risk"
+  ],
+  "output_artifact": "discharge barrier action plan",
+  "artifact_sections": [
+    "Barrier taxonomy",
+    "Immediate next actions",
+    "Owner list",
+    "Daily huddle script",
+    "Escalation triggers",
+    "KPI plan"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ],
+  "deep_contract_reference": "../../../healthcare-discharge-barrier-workplan/references/workflow.json"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "value-based-care-downside-risk-readiness",
+  "name": "Value-Based Care Downside Risk Readiness",
+  "category": "Value-Based Care",
+  "summary": "Assess readiness for a new or troubled downside-risk contract across quality, cost, attribution, care management, and governance.",
+  "primary_agent": "payer-value-based-care-manager",
+  "handoff_agents": [
+    "pophealth-population-health-manager",
+    "revenue-finance-manager",
+    "healthit-clinical-data-analyst"
+  ],
+  "required_inputs": [
+    "contract model",
+    "attributed lives",
+    "quality measures",
+    "cost benchmark",
+    "care management model"
+  ],
+  "optional_inputs": [
+    "stop-loss terms",
+    "high-risk cohort",
+    "network leakage",
+    "payer reporting cadence"
+  ],
+  "red_flags": [
+    "unbounded downside exposure",
+    "data lag",
+    "unclear attribution",
+    "quality penalty risk"
+  ],
+  "output_artifact": "downside-risk readiness memo",
+  "artifact_sections": [
+    "Risk register",
+    "Intervention map",
+    "Data gaps",
+    "Governance cadence",
+    "Decision points"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

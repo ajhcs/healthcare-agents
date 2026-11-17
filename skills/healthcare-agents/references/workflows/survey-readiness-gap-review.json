@@ -1,0 +1,46 @@
+{
+  "id": "survey-readiness-gap-review",
+  "name": "Survey Readiness Gap Review",
+  "category": "Compliance",
+  "summary": "Plan accreditation or CMS survey readiness work with tracer preparation, policy evidence, corrective actions, and leadership briefing.",
+  "primary_agent": "quality-accreditation-specialist",
+  "handoff_agents": [
+    "quality-improvement-specialist",
+    "quality-compliance-officer",
+    "clinical-infection-prevention-specialist"
+  ],
+  "required_inputs": [
+    "standard set",
+    "site",
+    "last survey findings",
+    "open corrective actions"
+  ],
+  "optional_inputs": [
+    "policy inventory",
+    "tracer schedule",
+    "department owners",
+    "mock survey findings"
+  ],
+  "red_flags": [
+    "immediate jeopardy concern",
+    "open corrective action deadline",
+    "repeat deficiency",
+    "patient safety risk"
+  ],
+  "output_artifact": "survey readiness gap plan",
+  "artifact_sections": [
+    "Standards map",
+    "Tracer plan",
+    "Policy evidence list",
+    "Owner matrix",
+    "Leadership briefing",
+    "Readiness cadence"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ],
+  "deep_contract_reference": "../../../healthcare-survey-readiness-gap-review/references/workflow.json"
+}

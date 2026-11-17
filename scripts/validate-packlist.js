@@ -1,5 +1,7 @@
 #!/usr/bin/env node
+const { posix } = require('node:path');
 const { fail, runRequired } = require('./_release-utils');
+const { buildWorkflowReferences } = require('../lib/router-indexes');
 
 const result = runRequired('npm', ['pack', '--json', '--dry-run']);
 const pack = JSON.parse(result.stdout)[0];
@@ -21,7 +23,11 @@ const forbidden = [
   /(^|\/)tmp\//,
   /(^|\/)temp\//
 ];
+const routerSkillDir = 'skills/healthcare-agents';
 const required = [
+  `${routerSkillDir}/SKILL.md`,
+  `${routerSkillDir}/references/workflow-index.json`,
+  `${routerSkillDir}/references/agent-index.json`,
   'scripts/release-targets.js',
   'scripts/test-release-policy.js',
   '.codex-plugin/mcp-stdio-bridge.json',
@@ -158,9 +164,16 @@ const required = [
   'scripts/test-platform-render-snapshots.js',
   'scripts/validate-public-version-sync.js',
   'scripts/validate-npm-publish-workflow.js',
-  'scripts/install-codex-plugin.sh',
-  'skills/healthcare-agents/SKILL.md'
+  'scripts/install-codex-plugin.sh'
 ];
+
+for (const [relativePath, reference] of buildWorkflowReferences()) {
+  const packagedPath = posix.join(routerSkillDir, relativePath);
+  required.push(packagedPath);
+  if (reference.deep_contract_reference) {
+    required.push(posix.join(posix.dirname(packagedPath), reference.deep_contract_reference));
+  }
+}
 
 for (const file of files) {
   for (const pattern of forbidden) {

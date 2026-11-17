@@ -25,7 +25,7 @@ for (const agent of registry.agents) {
 }
 for (const workflow of catalog().workflows) {
   const base = 'skills/healthcare-' + workflow.id;
-  write(base + '/SKILL.md', skillFor(workflow));
+  write(base + '/SKILL.md', skillFor(workflow, { builtin: true }));
   write(base + '/references/workflow.json', JSON.stringify(workflow, null, 2) + '\n');
 }
 console.log('Generated 51 compact role briefs and six progressive-disclosure workflow skills');
