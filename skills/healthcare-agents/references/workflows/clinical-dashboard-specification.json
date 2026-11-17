@@ -1,0 +1,47 @@
+{
+  "id": "clinical-dashboard-specification",
+  "name": "Clinical Dashboard Specification",
+  "category": "Analytics",
+  "summary": "Turn a disputed or requested clinical/operational dashboard into metric definitions, grain, filters, validation plan, and ownership.",
+  "primary_agent": "healthit-clinical-data-analyst",
+  "handoff_agents": [
+    "operations-hospital-administrator",
+    "quality-improvement-specialist",
+    "revenue-finance-manager"
+  ],
+  "required_inputs": [
+    "decision owner",
+    "decisions supported",
+    "metrics",
+    "data sources",
+    "cadence"
+  ],
+  "optional_inputs": [
+    "filters",
+    "grain",
+    "refresh latency",
+    "known disputes",
+    "source-of-truth owner"
+  ],
+  "red_flags": [
+    "metric definition conflict",
+    "unvalidated source",
+    "patient-level PHI exposure",
+    "executive decision risk"
+  ],
+  "output_artifact": "dashboard requirements spec",
+  "artifact_sections": [
+    "Decision context",
+    "Metric definitions",
+    "Data grain and filters",
+    "Mock table",
+    "Validation plan",
+    "Owner sign-off"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

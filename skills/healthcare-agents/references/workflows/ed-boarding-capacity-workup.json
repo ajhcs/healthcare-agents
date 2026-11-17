@@ -1,0 +1,46 @@
+{
+  "id": "ed-boarding-capacity-workup",
+  "name": "ED Boarding and Capacity Workup",
+  "category": "Operations",
+  "summary": "Triage ED boarding, throughput issues, inpatient bed constraints, staffing limits, or ambulance diversion risk into a command-center brief.",
+  "primary_agent": "operations-hospital-administrator",
+  "handoff_agents": [
+    "clinical-case-manager",
+    "revenue-finance-manager",
+    "healthit-clinical-data-analyst"
+  ],
+  "required_inputs": [
+    "boarding hours",
+    "arrival and admission rates",
+    "discharge timing",
+    "bed types",
+    "staffing constraints"
+  ],
+  "optional_inputs": [
+    "transfer data",
+    "diversion policy",
+    "surge plan",
+    "command center cadence"
+  ],
+  "red_flags": [
+    "ambulance diversion risk",
+    "unsafe staffing concern",
+    "regulatory reporting issue",
+    "high occupancy escalation"
+  ],
+  "output_artifact": "capacity command-center brief",
+  "artifact_sections": [
+    "Bottleneck map",
+    "Immediate operational moves",
+    "Escalation triggers",
+    "Metric dashboard spec",
+    "Leadership update"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required",
+    "emergency"
+  ]
+}

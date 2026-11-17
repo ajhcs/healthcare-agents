@@ -67,7 +67,7 @@ async function main() {
     assert.equal(routeWorkflow('Mention denial-spike-workup in a background note').workflow, null);
   });
   const selection = { schema_version: 'healthcare-admin.selection.v1', selected_by: 'host_agent',
-    rationale: 'Host interpreted two current requested administrative artifacts',
+    rationale: 'The requested evidence packets cover payer payment variances and a prior authorization appeal.',
     workflow_ids: ['payer-contract-underpayment-review', 'prior-authorization-appeal-workup'] };
   await check('structured host selection retains both outcomes and source order', () => {
     const draft = createWorkup('Payment and authorization evidence packets', { selection });
@@ -139,9 +139,29 @@ async function main() {
     assert.equal(draft.workups.length, 2);
     const role = JSON.parse(execFileSync(process.execPath, [cli, 'choose', 'review draft', '--agent', 'revenue-cycle-specialist', '--json'], { encoding: 'utf8' }));
     assert.equal(role.primary_agent, 'revenue-cycle-specialist'); assert.equal(role.routing_authority, 'explicit_validated_selection');
+    assert.equal(draft.selection.selected_by, 'user'); assert.equal(role.selection.selected_by, 'user');
     for (const args of [['workup', '--workflow', 'unknown'], ['choose', '--agent', 'unknown'], ['workup', '--workflow', 'denial-spike-workup', '--workflow', 'survey-readiness-gap-review']]) {
       assert.notEqual(spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8' }).status, 0);
     }
+  });
+  await check('CLI preserves an inferred specialist and its rationale', () => {
+    const prompt = 'The denial review is complete. Draft a community stakeholder interview plan for our CHNA.';
+    const declared = {
+      schema_version: 'healthcare-admin.selection.v1',
+      selected_by: 'host_agent',
+      agent_id: 'pophealth-community-health-coordinator',
+      rationale: 'The current request is a CHNA stakeholder interview plan. The denial review is already complete.'
+    };
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'healthcare-specialist-selection-'));
+    try {
+      const file = path.join(tmp, 'selection.json');
+      fs.writeFileSync(file, JSON.stringify(declared));
+      const result = JSON.parse(execFileSync(process.execPath, [cli, 'choose', prompt, '--selection', file, '--json'], { encoding: 'utf8' }));
+      assert.equal(result.status, 'selected');
+      assert.equal(result.primary_agent, declared.agent_id);
+      assert.equal(result.problem, prompt);
+      assert.deepEqual(result.selection, declared);
+    } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
   });
   await check('selection schema snapshot has exact registry-derived IDs', () => {
     assert.deepEqual(JSON.parse(fs.readFileSync(path.join(root, 'workflows/selection.schema.json'))), selectionSchema);

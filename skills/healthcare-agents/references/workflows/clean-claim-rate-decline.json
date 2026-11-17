@@ -1,0 +1,46 @@
+{
+  "id": "clean-claim-rate-decline",
+  "name": "Clean Claim Rate Decline",
+  "category": "Revenue Cycle",
+  "summary": "Diagnose a clean-claim-rate drop from edits, clearinghouse rejections, registration defects, coding quality, or system changes.",
+  "primary_agent": "revenue-cycle-specialist",
+  "handoff_agents": [
+    "operations-physician-practice-manager",
+    "revenue-medical-coding-specialist",
+    "healthit-clinical-data-analyst"
+  ],
+  "required_inputs": [
+    "baseline clean claim rate",
+    "current clean claim rate",
+    "edit categories",
+    "affected clinics or service lines",
+    "recent system or workflow changes"
+  ],
+  "optional_inputs": [
+    "clearinghouse report",
+    "registration audit",
+    "coding quality sample",
+    "claim scrubber rules"
+  ],
+  "red_flags": [
+    "patient access impact",
+    "cash acceleration pressure",
+    "repeatable registration defect",
+    "coding compliance concern"
+  ],
+  "output_artifact": "clean claim recovery plan",
+  "artifact_sections": [
+    "Issue segmentation",
+    "Likely process defects",
+    "Owner matrix",
+    "Fix plan",
+    "Dashboard specification",
+    "Validation cadence"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

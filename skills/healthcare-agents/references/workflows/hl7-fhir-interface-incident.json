@@ -1,0 +1,46 @@
+{
+  "id": "hl7-fhir-interface-incident",
+  "name": "HL7 or FHIR Interface Incident",
+  "category": "Health IT",
+  "summary": "Triage interface failures, feed latency, mapping errors, data quality defects, or possible PHI exposure into an incident workup.",
+  "primary_agent": "healthit-interoperability-engineer",
+  "handoff_agents": [
+    "healthit-clinical-data-analyst",
+    "healthit-information-manager",
+    "quality-compliance-officer"
+  ],
+  "required_inputs": [
+    "system names",
+    "message type or resource",
+    "failure mode",
+    "timeline",
+    "affected workflows"
+  ],
+  "optional_inputs": [
+    "sample de-identified message",
+    "interface engine logs",
+    "mapping table",
+    "recent deployment"
+  ],
+  "red_flags": [
+    "possible PHI exposure",
+    "patient safety workflow impact",
+    "downtime procedure needed",
+    "vendor escalation required"
+  ],
+  "output_artifact": "interface incident workup",
+  "artifact_sections": [
+    "Incident summary",
+    "Triage checklist",
+    "Evidence to collect",
+    "Communications",
+    "Root-cause hypotheses",
+    "Remediation plan"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

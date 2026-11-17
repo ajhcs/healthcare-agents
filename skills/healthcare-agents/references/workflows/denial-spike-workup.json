@@ -1,0 +1,51 @@
+{
+  "id": "denial-spike-workup",
+  "name": "Revenue Cycle Denial Spike Workup",
+  "category": "Revenue Cycle",
+  "summary": "Triage a denial-rate increase, payer policy shift, AR aging issue, or write-off spike into an evidence-backed recovery plan.",
+  "primary_agent": "revenue-cycle-specialist",
+  "handoff_agents": [
+    "revenue-contract-analyst",
+    "healthit-clinical-data-analyst",
+    "quality-compliance-officer"
+  ],
+  "required_inputs": [
+    "payer or product",
+    "denial codes or reason categories",
+    "timeframe and baseline",
+    "service lines affected",
+    "estimated dollar exposure",
+    "current appeal status"
+  ],
+  "optional_inputs": [
+    "sample remits",
+    "policy citation",
+    "clearinghouse edits",
+    "coding audit notes",
+    "contract language"
+  ],
+  "red_flags": [
+    "possible coding compliance risk",
+    "payer policy retroactivity",
+    "large dollar exposure",
+    "patient access impact",
+    "appeal deadline risk"
+  ],
+  "output_artifact": "denial spike triage brief",
+  "artifact_sections": [
+    "Executive summary",
+    "Trend and exposure",
+    "Root-cause hypotheses",
+    "Evidence pull list",
+    "Appeal and escalation strategy",
+    "Owner matrix",
+    "Monitoring plan"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ],
+  "deep_contract_reference": "../../../healthcare-denial-spike-workup/references/workflow.json"
+}

@@ -56,6 +56,17 @@ async function exercise(client, label) {
     }
     assert.equal(payload(await call('get_admin_workflows', {})).result.workflows.length, 6);
   });
+  await check(label + ': each shipped workflow skill names its advertised calculation tool', async () => {
+    const { tools } = await client.listTools();
+    const calculators = tools.filter(tool => tool.inputSchema.properties.case);
+    assert.equal(calculators.length, scenarios.length);
+    for (const [name, id] of scenarios) {
+      const registered = calculators.filter(tool => tool.inputSchema.properties.case.properties.workflow_id.const === id);
+      assert.deepEqual(registered.map(tool => tool.name), [name]);
+      const skill = fs.readFileSync(path.join(root, 'skills', 'healthcare-' + id, 'SKILL.md'), 'utf8');
+      assert.deepEqual(calculators.filter(tool => skill.includes('`' + tool.name + '`')).map(tool => tool.name), [name]);
+    }
+  });
   for (const [name, id, expected] of scenarios) {
     await check(label + ': real calculation ' + id, async () => {
       const input = fixture(id); const p = payload(await call(name, { case: input }));
@@ -103,6 +114,12 @@ async function exercise(client, label) {
   await check(label + ': builder rejects absent provenance and impossible date', async () => {
     assert.equal(payload(await call('draft_custom_workflow', { specification: custom })).error.code, 'CONTRACT_INVALID');
     assert.equal(payload(await call('draft_custom_workflow', { specification: custom, specification_provenance: { ...provenance, as_of: '2026-02-30' } })).error.code, 'CONTRACT_INVALID');
+  });
+  await check(label + ': a custom skill with a built-in ID does not inherit a calculator', async () => {
+    const [name, id] = scenarios[0];
+    const p = payload(await call('draft_custom_workflow', { specification: { ...custom, id }, specification_provenance: provenance }));
+    assert.equal(p.ok, true);
+    assert.equal(p.result.files['SKILL.md'].includes('`' + name + '`'), false);
   });
   await check(label + ': unknown tool is a protocol error', async () => {
     await assert.rejects(call('approve_discharge', {}), /Unknown administration tool/);

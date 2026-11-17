@@ -2,7 +2,7 @@
 
 Free-text choose/workup calls are discovery only. They may return ranked candidates or no_match; they never fill workflow.id, roles.primary or primary_agent, never enrich a case and never grant an execution decision. Scores do not establish current intent, negation, completion or the number of goals. The original request remains verbatim so the user or capable host agent can interpret it. Candidate lists are suggestions, not a complete interpretation of every goal.
 
-Use validated identifiers after interpretation:
+Use direct flags for IDs explicitly selected by the user:
 
 ```bash
 node bin/cli.js choose "Prepare the administrative artifact" --agent revenue-cycle-specialist --json
@@ -12,17 +12,21 @@ node bin/cli.js workup "Prepare both evidence packets" --workflow payer-contract
 
 An exact canonical workflow ID as the workup argument is also an explicit selection. Merely mentioning an ID in a longer sentence is discovery. IDs come from workflows/workflows.json and agents/registry.json. Invalid, duplicate, empty and mixed authority inputs fail closed. The 51 specialists, 16 workup contracts, existing command names, draft fields, case-provider modes and rendering/export APIs remain available with explicit selection. Single selected workups retain their prior artifact shape and matched status; selected specialist drafts retain their original primary ID and owner boundaries.
 
-The behavior change is deliberate: integrations that relied on free-text auto-selection must supply --workflow, --agent or a structured selection. No hidden legacy auto-selection mode remains. Rank benchmark results describe fixed-bank candidate order only, not execution authority or general routing accuracy.
+Integrations that relied on free-text auto-selection must now pass a user-selected ID or a structured host selection. The rank benchmark measures candidate order on its fixed prompt bank.
+
+## Workflow discovery
+
+Start with the [router workflow index](../../skills/healthcare-agents/references/workflow-index.json). Each entry contains the ID, name, triggers, exclusions and intended deliverable. Follow its `reference` from the router skill directory for the selected workflow’s inputs, roles, artifact sections, red flags and safety constraints. Six details include a `deep_contract_reference` relative to their own directory, which leads to the corresponding evidence checks and completion gate.
 
 ## Structured host selection
 
-A capable host may interpret intent and provide healthcare-admin.selection.v1. The strict registry-derived schema is in [workflows/selection.schema.json](../../workflows/selection.schema.json).
+When a host infers an ID, pass a `healthcare-admin.selection.v1` document with `selected_by` set to `host_agent`. In the rationale, connect each ID to a current deliverable or evidence in the request. Account for negation and completed work. Keep the rationale free of patient identifiers. For a mixed request, use separate calls for user-selected and inferred IDs, then present the drafts in requested order. [Selection schema](../../workflows/selection.schema.json)
 
 ```json
 {
   "schema_version": "healthcare-admin.selection.v1",
   "selected_by": "host_agent",
-  "rationale": "The user requested two current administrative evidence packets.",
+  "rationale": "The user wants to reconcile payer payment variances against the executed contract and assemble the evidence packet for a prior authorization appeal.",
   "workflow_ids": [
     "payer-contract-underpayment-review",
     "prior-authorization-appeal-workup"
@@ -30,7 +34,7 @@ A capable host may interpret intent and provide healthcare-admin.selection.v1. T
 }
 ```
 
-Run workup "the original request" --selection selection.json. For choose, supply agent_id instead of workflow_ids. Exactly one form is allowed, with selected_by=user or host_agent and a nonblank rationale. Unknown properties fail. Selection documents are limited to 2 MiB. This is declared selection provenance, not authentication of a human/model identity, source evidence or operational approval.
+Run `workup "<original request>" --selection selection.json --json`. For `choose`, use the same flag with `agent_id` in place of `workflow_ids`. Exactly one form is allowed, with selected_by=user or host_agent and a nonblank rationale. Unknown properties fail. Selection documents are limited to 2 MiB. This is declared selection provenance, not authentication of a human/model identity, source evidence or operational approval.
 
 The library exposes routeWorkflow(problem, {selection}), createWorkup(problem, {selection}) and createWorkupAsync(problem, {selection}). Internal trusted callers can pass workflowIds or agentId. resolveSelection/validateSelection enforce the same public schema. routeWorkflow also accepts the structured selection as its first argument when no problem text is supplied.
 

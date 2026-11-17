@@ -38,6 +38,11 @@ change to an agent slug, frontmatter display name, frontmatter description,
 domain, handoff, source family, role boundary, prompt file, or reviewed date
 must update the registry in the same pull request.
 
+After changing `workflows/workflows.json`, `workflows/admin-v2/catalog.json` or
+`agents/registry.json`, regenerate the router indexes and workflow references
+with `node scripts/generate-router-indexes.js`.
+Check them with `node scripts/validate-router-indexes.js`.
+
 Before opening a release-oriented PR, run:
 
 ```bash

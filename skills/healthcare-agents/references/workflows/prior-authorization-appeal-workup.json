@@ -1,0 +1,47 @@
+{
+  "id": "prior-authorization-appeal-workup",
+  "name": "Prior Authorization Appeal Workup",
+  "category": "Clinical Administration",
+  "summary": "Organize a non-clinical prior authorization denial or delayed authorization into appeal evidence, missing documentation, and escalation steps.",
+  "primary_agent": "clinical-prior-authorization-specialist",
+  "handoff_agents": [
+    "clinical-care-management-specialist",
+    "quality-compliance-officer",
+    "clinical-utilization-management-specialist"
+  ],
+  "required_inputs": [
+    "payer",
+    "service or item",
+    "denial reason",
+    "policy citation",
+    "documentation available"
+  ],
+  "optional_inputs": [
+    "deadline",
+    "peer-to-peer status",
+    "coverage policy",
+    "prior similar approvals"
+  ],
+  "red_flags": [
+    "urgent care delay",
+    "appeal deadline",
+    "medical necessity dispute needing licensed review",
+    "potential adverse patient impact"
+  ],
+  "output_artifact": "appeal workup and documentation checklist",
+  "artifact_sections": [
+    "Case restatement",
+    "Payer criteria map",
+    "Missing documentation",
+    "Non-clinical appeal structure",
+    "Escalation path",
+    "Review checklist"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ],
+  "deep_contract_reference": "../../../healthcare-prior-authorization-appeal-workup/references/workflow.json"
+}

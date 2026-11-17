@@ -1,0 +1,45 @@
+{
+  "id": "pharmacy-contract-scorecard",
+  "name": "PBM or Pharmacy Contract Scorecard",
+  "category": "Pharmacy",
+  "summary": "Frame pharmacy spend, PBM terms, rebate questions, formulary performance, specialty spend, and negotiation evidence into a scorecard.",
+  "primary_agent": "pharmacy-benefits-specialist",
+  "handoff_agents": [
+    "revenue-finance-manager",
+    "revenue-contract-analyst",
+    "healthit-clinical-data-analyst"
+  ],
+  "required_inputs": [
+    "contract terms",
+    "utilization",
+    "rebate terms",
+    "specialty spend",
+    "claims sample"
+  ],
+  "optional_inputs": [
+    "formulary tier data",
+    "guarantees",
+    "audit rights",
+    "spread pricing terms"
+  ],
+  "red_flags": [
+    "legal contract dispute",
+    "clinical formulary governance needed",
+    "large unvalidated savings claim",
+    "PHI in claims sample"
+  ],
+  "output_artifact": "pharmacy contract scorecard",
+  "artifact_sections": [
+    "Scorecard structure",
+    "Data request list",
+    "Variance hypotheses",
+    "Rebate and specialty spend review",
+    "Negotiation points"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ]
+}

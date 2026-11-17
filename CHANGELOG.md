@@ -1,4 +1,10 @@
-# 2.0.0-beta.1 (candidate)
+# 2.0.0-beta.2
+
+- The router directs Codex to use a structured `host_agent` selection for inferred workflow and specialist IDs. Workup drafts retain the declared rationale. User-supplied IDs keep their existing CLI shorthand.
+- Each of the six built-in workflow skills names its MCP calculation tool and explains how to handle missing evidence or deliver an advisory checklist.
+- The initial routing index covers all 16 workflows. Detailed inputs, artifact sections, red flags and handoffs load from the selected workflow’s reference.
+
+# 2.0.0-beta.1
 
 - Release preparation fixes beta publication to npm next and GitHub prerelease semantics, verifies exact approved commit/repository/package metadata, installs locked dependencies before CI checks, and detects any latest-channel change. Existing publishing permissions and environment are retained; no publication is performed by preparation. Native/model evidence remains tied to its recorded source commits.
 

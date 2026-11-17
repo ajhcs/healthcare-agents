@@ -1,0 +1,47 @@
+{
+  "id": "ambulatory-access-backlog",
+  "name": "Ambulatory Access Backlog",
+  "category": "Operations",
+  "summary": "Plan recovery for specialty access backlog, referral queue growth, template design problems, or no-show pressure.",
+  "primary_agent": "operations-ambulatory-manager",
+  "handoff_agents": [
+    "healthit-clinical-data-analyst",
+    "clinical-referral-specialist",
+    "operations-physician-practice-manager"
+  ],
+  "required_inputs": [
+    "specialty",
+    "backlog size",
+    "template design",
+    "referral sources",
+    "no-show rate"
+  ],
+  "optional_inputs": [
+    "provider FTE",
+    "visit types",
+    "slot utilization",
+    "scheduling rules",
+    "patient outreach channels"
+  ],
+  "red_flags": [
+    "clinically urgent referrals waiting",
+    "access equity concern",
+    "provider burnout risk",
+    "payer network adequacy issue"
+  ],
+  "output_artifact": "access recovery plan",
+  "artifact_sections": [
+    "Demand and capacity view",
+    "Backlog segmentation",
+    "Scheduling rule changes",
+    "Referral triage approach",
+    "Monitoring metrics"
+  ],
+  "safety_constraints": [
+    "no_medical_advice",
+    "no_phi_by_default",
+    "local_policy_review",
+    "escalate_required"
+  ],
+  "deep_contract_reference": "../../../healthcare-ambulatory-access-backlog/references/workflow.json"
+}

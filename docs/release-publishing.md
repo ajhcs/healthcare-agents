@@ -1,7 +1,7 @@
 # Release Publishing Runbook
 
-This checkout proposes healthcare-agents@2.0.0-beta.1 on the npm next dist-tag and
-the GitHub prerelease v2.0.0-beta.1 in ajhcs/healthcare-agents. The npm latest
+The release targets are healthcare-agents@2.0.0-beta.2 on the npm next dist-tag and
+the GitHub prerelease v2.0.0-beta.2 in ajhcs/healthcare-agents. The npm latest
 channel remains unchanged. Publication requires separate explicit authorization;
 local packaging or dry-run results do not grant it.
 
@@ -28,14 +28,14 @@ through environment variables.
 1. Push the reviewed branch to ajhcs/healthcare-agents and merge its PR through normal
    repository controls. If the release commit or payload changes, recheck and record
    that exact commit rather than reusing the candidate's qualification.
-2. Point v2.0.0-beta.1 at that approved commit and create its GitHub release with the
+2. Point v2.0.0-beta.2 at that approved commit and create its GitHub release with the
    prerelease flag enabled. Do not mark it latest. The publishing workflow verifies
    that the remote tag resolves to expected_commit and that the release is published,
    has the exact tag and is a prerelease before it can publish to npm.
 3. Manually dispatch .github/workflows/npm-publish.yml from the reviewed workflow ref,
-   supplying expected_version=2.0.0-beta.1 and the full expected_commit. Preserve
+   supplying expected_version=2.0.0-beta.2 and the full expected_commit. Preserve
    the existing npm-production environment approval and existing authentication.
-4. Verify npm next points at 2.0.0-beta.1, npm latest equals the recorded pre-publish
+4. Verify npm next points at 2.0.0-beta.2, npm latest equals the recorded pre-publish
    value, and the exact GitHub prerelease and package metadata agree. Run
    node scripts/validate-public-version-sync.js --network and
    node scripts/verify-public-release.js --network after publication.
@@ -55,7 +55,7 @@ if it is absent, stop and obtain separately scoped authority for that setup.
 Immediately before publishing, the workflow checks version availability and records
 the current latest in RUNNER_TEMP/npm-before.json. It fails closed on missing registry
 or GitHub data, an occupied version, wrong commit or wrong prerelease state.
-After publishing it detects a latest change without automatically changing any tag.
+After publishing it allows up to twelve ten-second waits for the version to appear in the public registry. An unexpected latest tag or invalid visible version record fails verification immediately.
 Concurrent independent latest releases can also trigger this stop; a maintainer reviews
 the recorded state. npm versions cannot be reused once published.
 Lifecycle scripts are disabled for dependency installation, packaging and publishing.
