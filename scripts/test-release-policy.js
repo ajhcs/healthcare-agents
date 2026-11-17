@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const assert = require('assert/strict');
 const fs = require('fs');
-const { targets, assertRequested, assertAvailable, assertRegistry, assertGithub } = require('./release-targets');
+const { targets, assertRequested, assertAvailable, assertRegistry, assertGithub, verifyPublishedVersion } = require('./release-targets');
 const { workflowProblems } = require('./validate-npm-publish-workflow');
 const pkg = require('../package.json');
 const t = targets(pkg);
@@ -61,4 +61,25 @@ for (const changed of [
   workflow.replace("env.HAS_NPM_TOKEN != 'true'","env.HAS_NPM_TOKEN == 'true'"),
   workflow.replace('run: node scripts/release-targets.js ci','run: echo ${{ inputs.expected_version }}')
 ]) pass(() => assert.ok(workflowProblems(changed).length));
-console.log('Release policy: ' + checks + ' controlled package/channel/repository/commit/GitHub/latest/workflow checks passed; no publication');
+async function checkPublicationVisibility() {
+  const before = { latest: '1.5.0' };
+  let reads = 0;
+  let waits = 0;
+  const wait = async () => { waits++; };
+  await verifyPublishedVersion(t, before, async () => ++reads === 1 ? available : doc, wait);
+  pass(() => assert.deepEqual([reads, waits], [2, 1]));
+  await assert.rejects(verifyPublishedVersion(t, before, async () => available, wait), /verification window/);
+  pass(() => assert.equal(waits, 13));
+  for (const invalid of [
+    { ...available, 'dist-tags': { latest: t.version } },
+    { ...available, name: 'wrong-package' },
+    { ...doc, versions: { [t.version]: null } },
+    { ...doc, 'dist-tags': { latest: '1.5.0', next: '1.5.0' } },
+  ]) {
+    await assert.rejects(verifyPublishedVersion(t, before, async () => invalid, wait));
+    pass(() => assert.equal(waits, 13));
+  }
+}
+checkPublicationVisibility().then(() => {
+  console.log('Release policy: ' + checks + ' controlled package/channel/repository/commit/GitHub/latest/workflow checks passed; no publication');
+}).catch(error => { console.error(error); process.exitCode = 1; });

@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const { spawnSync } = require('child_process');
+const { setTimeout: delay } = require('node:timers/promises');
 const ROOT = path.join(__dirname, '..');
 const REPOSITORY = 'ajhcs/healthcare-agents';
 const REGISTRY = 'https://registry.npmjs.org';
@@ -77,6 +78,23 @@ function fetchJson(url) {
     req.on('error', reject);
   });
 }
+// npm can acknowledge publication before the public package document includes it.
+async function verifyPublishedVersion(t, before, read = fetchJson, wait = delay) {
+  const url = t.registry + '/' + t.name;
+  for (let attempt = 0; ; attempt++) {
+    const doc = await read(url);
+    if (Object.hasOwn(doc?.versions ?? {}, t.version)) {
+      assertRegistry(t, doc, before);
+      return;
+    }
+    const latest = assertAvailable(t, doc);
+    if (t.github_prerelease && latest !== before.latest)
+      throw new Error('npm latest changed during prerelease publication');
+    if (attempt === 12)
+      throw new Error('published version did not appear in the public registry within the verification window');
+    await wait(10000);
+  }
+}
 async function cli() {
   const t = targets(JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8')));
   const mode = process.argv[2] || 'local';
@@ -96,9 +114,9 @@ async function cli() {
   } else if (mode === 'after') {
     const before = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
     if (JSON.stringify(before.target) !== JSON.stringify(t)) throw new Error('registry snapshot targets mismatch');
-    assertRegistry(t, await fetchJson(t.registry + '/' + t.name), before);
+    await verifyPublishedVersion(t, before);
   } else if (mode !== 'local') throw new Error('unknown release target mode');
   console.log(JSON.stringify(t, null, 2));
 }
 if (require.main === module) cli().catch(error => { console.error('release targets: ' + error.message); process.exitCode = 1; });
-module.exports = { targets, assertRequested, assertAvailable, assertRegistry, assertGithub, fetchJson };
+module.exports = { targets, assertRequested, assertAvailable, assertRegistry, assertGithub, fetchJson, verifyPublishedVersion };

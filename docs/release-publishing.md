@@ -55,7 +55,7 @@ if it is absent, stop and obtain separately scoped authority for that setup.
 Immediately before publishing, the workflow checks version availability and records
 the current latest in RUNNER_TEMP/npm-before.json. It fails closed on missing registry
 or GitHub data, an occupied version, wrong commit or wrong prerelease state.
-After publishing it detects a latest change without automatically changing any tag.
+After publishing it allows up to twelve ten-second waits for the version to appear in the public registry. An unexpected latest tag or invalid visible version record fails verification immediately.
 Concurrent independent latest releases can also trigger this stop; a maintainer reviews
 the recorded state. npm versions cannot be reused once published.
 Lifecycle scripts are disabled for dependency installation, packaging and publishing.
