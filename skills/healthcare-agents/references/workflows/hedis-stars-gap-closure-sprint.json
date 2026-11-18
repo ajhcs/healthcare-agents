@@ -37,6 +37,7 @@
     "Weekly operating rhythm",
     "Measure validation"
   ],
+  "review_guidance": "Draft a gap closure sprint based on the applicable measure specification and aligned numerator, denominator, and exclusions. Identify actionable gaps, assigned outreach and data owners, and how to verify closure and equitable coverage.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

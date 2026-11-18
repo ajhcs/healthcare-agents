@@ -1,7 +1,7 @@
 {
   "id": "payer-contract-underpayment-review",
   "name": "Underpayment evidence review",
-  "purpose": "Reconcile expected and actual aggregate payment into a contract-linked variance packet.",
+  "purpose": "Draft a payer underpayment variance register that ties expected and paid amounts to contract terms, reconciles adjustments, and identifies items for dispute review.",
   "checks": [
     "Pin executed contract, amendment, effective period and applicable product.",
     "Reconcile supplied expected amounts against units, rates, carve-outs and adjustments; distinguish charges from allowed amounts.",

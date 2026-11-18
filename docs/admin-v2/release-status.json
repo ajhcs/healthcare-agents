@@ -1,10 +1,10 @@
 {
   "schema_version": "healthcare-admin.release-status.v2",
-  "version": "2.0.0-beta.2",
-  "record_scope": "Source preparation before publication. Consult the GitHub release and npm version records for live distribution status.",
+  "version": "2.0.0-beta.3",
+  "record_scope": "Source qualification snapshot taken before release. The distribution records give current publication status.",
   "distribution_records": {
-    "github": "https://github.com/ajhcs/healthcare-agents/releases/tag/v2.0.0-beta.2",
-    "npm": "https://registry.npmjs.org/healthcare-agents/2.0.0-beta.2"
+    "github": "https://github.com/ajhcs/healthcare-agents/releases/tag/v2.0.0-beta.3",
+    "npm": "https://registry.npmjs.org/healthcare-agents/2.0.0-beta.3"
   },
   "candidate": true,
   "local_payload_gate": "npm run release:check covers routing, generated resources, package consumers, MCP calculations and release metadata.",
@@ -20,9 +20,9 @@
     "Customer host/tenant and independent domain-usefulness qualification before consequential use",
     "Current domain source verification for consequential claims"
   ],
-  "independent_forward_review": "Historical review of the beta.1 preparation preceding this routing change. See the exact revisions below.",
-  "primary_source_review": "seven bounded context records; six retrieved response hashes; AHRQ browser review only; specialist dates unchanged",
-  "model_campaign": "Historical model campaigns apply to their recorded snapshots. No model outcome campaign is claimed for 2.0.0-beta.2.",
+  "independent_forward_review": "A synthetic mixed request exercised an access recovery workup and community health specialist fallback in one turn. The review informed clearer per-deliverable routing and calculation guidance.",
+  "primary_source_review": "The rewrite reviewed specialist source mapping and checked targeted X12 denial-code and CMS prior authorization corrections. Historical primary-source receipts cover their recorded scope.",
+  "model_campaign": "Historical model campaigns apply to their recorded snapshots. Beta.3 has one synthetic instruction review. It has no measured model-outcome campaign.",
   "independent_review": "a57428d frozen native-profile candidate passed bounded independent local review; successor publishing-policy review is separately recorded",
   "historical_model_campaign_evidence": {
     "source_commit": "f6dcf0e8ccd363585ba085f3db24560f24507b58",

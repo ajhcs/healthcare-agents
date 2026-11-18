@@ -11,8 +11,8 @@ Healthcare Agents is a starting point for healthcare leaders to describe a workf
 
 [Customize a workflow](#quickstart) · [Workflows](#six-workflows-six-useful-outputs) · [Specialists](#explore-the-specialist-catalog) · [Host setup](#connect-your-ai-host) · [Evidence & evaluation](#what-the-evidence-establishes)
 
-> **Beta · v2.0.0-beta.2**
-> Use the versioned [GitHub prerelease](https://github.com/ajhcs/healthcare-agents/releases/tag/v2.0.0-beta.2) or pin `healthcare-agents@2.0.0-beta.2` on npm. See the [release evidence](docs/admin-v2/release-status.json) for the scope of host and model testing.
+> **Beta · v2.0.0-beta.3**
+> Use the versioned [GitHub prerelease](https://github.com/ajhcs/healthcare-agents/releases/tag/v2.0.0-beta.3) or pin `healthcare-agents@2.0.0-beta.3` on npm. See the [release evidence](docs/admin-v2/release-status.json) for the scope of host and model testing.
 
 ## Quickstart
 
@@ -40,7 +40,7 @@ This reproducible example pins the source beta baseline; use the [installation g
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
 cd healthcare-agents
-git checkout --detach v2.0.0-beta.2
+git checkout --detach v2.0.0-beta.3
 npm ci --ignore-scripts
 node bin/cli.js admin run examples/admin-v2/denial-spike-workup.json
 ```

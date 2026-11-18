@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
-const { ROOT, fail } = require('./_release-utils');
+const { ROOT, fail, runRequired } = require('./_release-utils');
 const {
   AGENT_SOURCE,
   DEEP_WORKFLOW_SOURCE,
@@ -80,5 +80,6 @@ if (/Read `\.\.\/\.\.\/(workflows\/workflows|agents\/registry)\.json`/.test(rout
 }
 
 fail(messages);
+process.stdout.write(runRequired('node', ['scripts/generate-admin-v2-assets.js', '--check']).stdout);
 const reduction = Math.round((1 - indexBytes / sourceBytes) * 100);
 console.log(`router indexes ok: ${indexBytes} bytes, ${reduction}% smaller than canonical routing sources. Workflow index: ${workflowIndexBytes} bytes with ${workflowReferences.size} detail references.`);

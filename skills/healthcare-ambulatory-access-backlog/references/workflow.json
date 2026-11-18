@@ -1,7 +1,7 @@
 {
   "id": "ambulatory-access-backlog",
   "name": "Ambulatory access recovery",
-  "purpose": "Turn aggregate demand, usable capacity and backlog into a testable access recovery plan.",
+  "purpose": "Draft an access recovery plan that explains how usable capacity affects wait time and backlog by site, specialty, and urgency.",
   "checks": [
     "Separate requested, scheduled and completed visits; reconcile specialty, site, urgency and measurement windows.",
     "Model usable slots and staffing; distinguish a waitlist stock from weekly demand flow.",

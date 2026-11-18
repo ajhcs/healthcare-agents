@@ -42,8 +42,8 @@
         "HIPAA minimum necessary"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-care-management-specialist.md",
@@ -95,8 +95,8 @@
         "HIPAA minimum necessary"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-case-manager.md",
@@ -152,8 +152,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-documentation-improvement-specialist.md",
@@ -209,8 +209,8 @@
         "pharmacy and medication-use governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-infection-prevention-specialist.md",
@@ -267,8 +267,8 @@
         "interoperability standards and information blocking boundaries"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-prior-authorization-specialist.md",
@@ -322,8 +322,8 @@
         "HIPAA minimum necessary"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-referral-specialist.md",
@@ -375,8 +375,8 @@
         "human subjects research and IRB oversight"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-research-coordinator.md",
@@ -429,8 +429,8 @@
         "HIPAA minimum necessary"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/clinical-utilization-management-specialist.md",
@@ -486,8 +486,8 @@
         "emergency preparedness and incident command"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/emergency-preparedness-coordinator.md",
@@ -542,8 +542,8 @@
         "legal health record governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/healthit-clinical-data-analyst.md",
@@ -597,8 +597,8 @@
         "interoperability standards and information blocking boundaries"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/healthit-epic-applications-analyst.md",
@@ -653,8 +653,8 @@
         "interoperability standards and information blocking boundaries"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/healthit-informatics-manager.md",
@@ -714,8 +714,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/healthit-information-manager.md",
@@ -770,8 +770,8 @@
         "interoperability standards and information blocking boundaries"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/healthit-interoperability-engineer.md",
@@ -829,8 +829,8 @@
         "legal health record governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/healthit-telehealth-program-manager.md",
@@ -886,8 +886,8 @@
         "emergency operations where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/operations-ambulatory-manager.md",
@@ -941,8 +941,8 @@
         "emergency operations where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/operations-home-health-administrator.md",
@@ -996,8 +996,8 @@
         "emergency operations where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/operations-hospital-administrator.md",
@@ -1050,8 +1050,8 @@
         "emergency operations where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/operations-long-term-care-administrator.md",
@@ -1105,8 +1105,8 @@
         "emergency operations where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/operations-physician-practice-manager.md",
@@ -1159,8 +1159,8 @@
         "emergency operations where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/operations-supply-chain-manager.md",
@@ -1215,8 +1215,8 @@
         "emergency operations where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/operations-workforce-manager.md",
@@ -1274,8 +1274,8 @@
         "fraud, abuse, EMTALA, and compliance escalation"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/payer-credentialing-enrollment-coordinator.md",
@@ -1332,8 +1332,8 @@
         "No Surprises Act where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/payer-managed-care-analyst.md",
@@ -1387,8 +1387,8 @@
         "No Surprises Act where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/payer-medicare-medicaid-specialist.md",
@@ -1444,8 +1444,8 @@
         "HIPAA privacy/security"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/payer-medicare-outreach-coordinator.md",
@@ -1501,8 +1501,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/payer-relations-specialist.md",
@@ -1558,8 +1558,8 @@
         "No Surprises Act where applicable"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/payer-value-based-care-manager.md",
@@ -1615,8 +1615,8 @@
         "pharmacy and medication-use governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/pharmacy-benefits-specialist.md",
@@ -1673,8 +1673,8 @@
         "pharmacy and medication-use governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/pharmacy-medication-safety-specialist.md",
@@ -1729,8 +1729,8 @@
         "340B/HRSA compliance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/pophealth-community-health-coordinator.md",
@@ -1788,8 +1788,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/pophealth-population-health-manager.md",
@@ -1847,8 +1847,8 @@
         "emergency preparedness and incident command"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/pophealth-surveillance-coordinator.md",
@@ -1906,8 +1906,8 @@
         "patient safety and risk management"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/quality-accreditation-specialist.md",
@@ -1965,8 +1965,8 @@
         "fraud, abuse, EMTALA, and compliance escalation"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/quality-compliance-officer.md",
@@ -2021,8 +2021,8 @@
         "patient safety and risk management"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/quality-improvement-specialist.md",
@@ -2076,8 +2076,8 @@
         "patient safety and risk management"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/quality-patient-experience-coordinator.md",
@@ -2135,8 +2135,8 @@
         "pharmacy and medication-use governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/quality-patient-safety-officer.md",
@@ -2190,8 +2190,8 @@
         "human subjects research and IRB oversight"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/quality-process-improvement-analyst.md",
@@ -2246,8 +2246,8 @@
         "patient safety and risk management"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/quality-risk-manager.md",
@@ -2306,8 +2306,8 @@
         "pharmacy and medication-use governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/revenue-340b-program-manager.md",
@@ -2363,8 +2363,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/revenue-chargemaster-analyst.md",
@@ -2420,8 +2420,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/revenue-contract-analyst.md",
@@ -2477,8 +2477,8 @@
         "interoperability standards and information blocking boundaries"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/revenue-cycle-specialist.md",
@@ -2489,7 +2489,7 @@
         ],
         "source_service_names": [
           "CMS OPPS/IPPS Final Rules",
-          "Washington Publishing Company (CARC/RARC)",
+          "X12 Claim Adjustment Reason Codes (CARC)",
           "CMS Medicare Claims Processing Manual (Pub 100-04)",
           "NUBC UB-04 Data Specifications Manual",
           "X12 EDI Transaction Standards (837/835/270/271/276/277)"
@@ -2535,8 +2535,8 @@
         "HIPAA minimum necessary"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/revenue-finance-manager.md",
@@ -2592,8 +2592,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/revenue-medical-coding-specialist.md",
@@ -2648,8 +2648,8 @@
         "coding and code-set governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/strategy-actuarial-advisor.md",
@@ -2704,8 +2704,8 @@
         "actuarial and financial governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/strategy-clinical-operations-consultant.md",
@@ -2759,8 +2759,8 @@
         "actuarial and financial governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/strategy-healthcare-consultant.md",
@@ -2816,8 +2816,8 @@
         "actuarial and financial governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/strategy-operations-consultant.md",
@@ -2869,8 +2869,8 @@
         "actuarial and financial governance"
       ],
       "last_reviewed": {
-        "date": "2026-05-21",
-        "basis": "Generated from existing agent prompt frontmatter and docs/usage routing patterns."
+        "date": "2026-11-18",
+        "basis": "Reviewed role scope, source-family routing, and named source leads against the rewritten prompt. Exact source versions and applicability require case-specific verification."
       },
       "provenance": {
         "prompt_file": "agents/strategy-structural-improvement-consultant.md",

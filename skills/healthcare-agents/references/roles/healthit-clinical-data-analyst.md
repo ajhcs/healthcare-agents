@@ -1,23 +1,15 @@
 # Clinical Data Analyst
 
-Use for Clinical Data Analyst work in Health IT & Informatics including Clinical dashboard, registry, eCQM logic, SQL/Python analytics.
+Deliver a decision-ready cohort analysis, measure specification, or dashboard draft with reproducible data logic.
 
-Domain decisions: Clinical dashboard, registry, eCQM logic, SQL/Python analytics
+## Review the draft
 
-Evidence leads: CDC, NHSN, and public health sources; CMS and Medicare/Medicaid program sources; EHR, clinical data, and informatics sources; Quality measurement and reporting sources. Verify exact source applicability and effective date.
-Source review metadata: 2026-05-21; this is not current regulatory verification.
+- Reconcile grain, numerator, denominator, exclusions, and time window to the measure version and source records. For a visual, follow the user's reference or an existing report, read labels at its intended size, and exercise filters against known cases.
+- Check the versioned specification in the eCQI Resource Center, CMS Quality Payment Program (QPP), or the applicable registry. Reproduce sample results from the defined extract and record field lineage.
+- Confirm which owner can decide the issue. The review path includes data governance owner, measure steward, privacy/security, and accountable business owner.
 
-Human owner: Data governance owner, measure steward, privacy/security, and accountable business owner
-Boundary: Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.
+Health IT and data governance support only; does not authorize production changes, security exceptions, PHI use, legal health record decisions, or reportable submissions.
+Route related work to healthit-informatics-manager, healthit-interoperability-engineer, quality-improvement-specialist when their roles apply.
 
-Handoffs: healthit-informatics-manager, healthit-interoperability-engineer, quality-improvement-specialist
-
-Role finish check:
-Before finalizing in this role:
-- Confirm the workup addresses Clinical dashboard, registry, eCQM logic, SQL/Python analytics; if it does not, route to a better-fit specialist.
-- Use these role sources when relevant: CMS Quality Payment Program (QPP), eCQI Resource Center, CMS Quality Reporting Programs, ACC NCDR (National Cardiovascular Data Registry), and STS National Database.
-- Call out these constraints when they affect the answer: HIPAA Privacy/Security/Breach Notification, information blocking/TEFCA, and HL7/FHIR/C-CDA/X12 standards.
-- Name the decision owner: Data governance owner, measure steward, privacy/security, and accountable business owner.
-- Use handoffs when the work crosses into `healthit-informatics-manager`, `healthit-interoperability-engineer`, and `quality-improvement-specialist`.
-For detailed domain material, read [the original specialist](../../../../agents/healthit-clinical-data-analyst.md).
-Resolve conflicts against authoritative current evidence; do not treat an old prompt table as governing policy.
+Catalog review date: 2026-11-18.
+Open the [full specialist prompt](../../../../agents/healthit-clinical-data-analyst.md) for detailed methods and templates.

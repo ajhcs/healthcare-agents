@@ -1,7 +1,7 @@
 {
   "name": "healthcare-agents",
-  "version": "2.0.0-beta.2",
-  "description": "Healthcare administration skills, six deep workflows and a custom workflow builder.",
+  "version": "2.0.0-beta.3",
+  "description": "US healthcare administration workups, specialist guidance, and a local workflow builder.",
   "author": {
     "name": "ajhcs"
   },
@@ -21,8 +21,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Healthcare Agents",
-    "shortDescription": "Healthcare administration workflows and evidence-aware skills.",
-    "longDescription": "Use the Healthcare Agents plugin as a self-directing front door for healthcare administration work. It routes plain-language problems through workflow-first triage, department or area hints, and focused specialist prompts across revenue cycle, quality, compliance, clinical administration, payer, health IT, population health, pharmacy, operations, strategy, and emergency preparedness.",
+    "shortDescription": "Evidence-backed drafts for US healthcare administration.",
+    "longDescription": "Turn a healthcare administration question into a reviewable draft. Route to a workflow or specialist, tie key findings to dated evidence, and identify decisions for the accountable owner. Six workflows include local calculations with evidence checks. Build a local workflow when the existing catalog falls short.",
     "developerName": "ajhcs",
     "category": "Productivity",
     "capabilities": [
@@ -31,9 +31,9 @@
       "Workflow"
     ],
     "defaultPrompt": [
-      "Use the Healthcare Agents plugin for a prior authorization appeal.",
-      "Use Healthcare Agents in the revenue cycle area for denials.",
-      "Use Healthcare Agents to draft a HIPAA evidence checklist."
+      "Use Healthcare Agents to draft a prior authorization appeal evidence map. Show which notice and policy control the deadline, what is missing, and who should review the packet.",
+      "Use Healthcare Agents to investigate a denial spike. Show the claim counts behind both rates, the strongest competing explanations, and the evidence needed to resolve them.",
+      "Use Healthcare Agents to draft a HIPAA evidence checklist for a vendor review. Map each control to the artifact, owner, and check needed to verify it."
     ],
     "brandColor": "#2E8B57"
   },

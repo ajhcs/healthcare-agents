@@ -17,10 +17,10 @@
       "artifact_sections": ["Executive summary", "Trend and exposure", "Root-cause hypotheses", "Evidence pull list", "Appeal and escalation strategy", "Owner matrix", "Monitoring plan"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use the revenue-cycle-specialist as primary for a denial spike workup. Ask for payer, denial codes, timeframe, service lines, exposure, and appeal status before drafting the triage brief.",
-        "codex": "Read the revenue-cycle-specialist prompt first, then produce a structured denial spike triage brief with missing inputs, evidence pulls, handoffs, and safety constraints.",
-        "copilot": "Create a scoped denial spike workup issue or prompt packet with acceptance criteria, evidence requests, and revenue-cycle/compliance handoffs.",
-        "m365_copilot": "Use governed tenant data only. Produce an executive denial spike triage brief and clearly separate instructions, knowledge sources, and action placeholders."
+        "claude": "Use revenue-cycle-specialist as the primary specialist. Draft a denial spike brief for the revenue cycle owner. Reconcile denied and total claim counts across comparable payer, product, and service cohorts. Test competing causes with CARC/RARC, claim acceptance and policy evidence. Show appeal deadlines and keep denied dollars separate from confirmed recoveries.",
+        "codex": "Draft a denial spike brief for the revenue cycle owner. Reconcile denied and total claim counts across comparable payer, product, and service cohorts. Test competing causes with CARC/RARC, claim acceptance and policy evidence. Show appeal deadlines and keep denied dollars separate from confirmed recoveries.",
+        "copilot": "Use approved repository evidence. Draft a denial spike brief for the revenue cycle owner. Reconcile denied and total claim counts across comparable payer, product, and service cohorts. Test competing causes with CARC/RARC, claim acceptance and policy evidence. Show appeal deadlines and keep denied dollars separate from confirmed recoveries.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Draft a denial spike brief for the revenue cycle owner. Reconcile denied and total claim counts across comparable payer, product, and service cohorts. Test competing causes with CARC/RARC, claim acceptance and policy evidence. Show appeal deadlines and keep denied dollars separate from confirmed recoveries."
       },
       "examples": [
         { "input": "Commercial payer denial rate jumped 18 percent after a policy change and our AR days are climbing.", "expected_workflow": "denial-spike-workup" },
@@ -46,10 +46,10 @@
       "artifact_sections": ["Issue segmentation", "Likely process defects", "Owner matrix", "Fix plan", "Dashboard specification", "Validation cadence"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use the revenue-cycle-specialist for clean claim recovery and ask for baseline/current rates, edit categories, affected clinics, and recent system changes.",
-        "codex": "Produce a clean claim recovery plan with segmentation, workflow fixes, owner matrix, and monitoring spec.",
-        "copilot": "Draft a clean claim rate issue with required data pulls, process owners, acceptance criteria, and safety notes.",
-        "m365_copilot": "Build a governed clean claim recovery memo from approved reports and keep claim examples de-identified unless approved."
+        "claude": "Use revenue-cycle-specialist as the primary specialist. Draft a clean claim recovery plan. Use the same first-pass definition and claim denominator in both periods, isolate the edit or clearinghouse reject stage, and tie each proposed fix to an owner and a measured retest.",
+        "codex": "Draft a clean claim recovery plan. Use the same first-pass definition and claim denominator in both periods, isolate the edit or clearinghouse reject stage, and tie each proposed fix to an owner and a measured retest.",
+        "copilot": "Use approved repository evidence. Draft a clean claim recovery plan. Use the same first-pass definition and claim denominator in both periods, isolate the edit or clearinghouse reject stage, and tie each proposed fix to an owner and a measured retest.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Draft a clean claim recovery plan. Use the same first-pass definition and claim denominator in both periods, isolate the edit or clearinghouse reject stage, and tie each proposed fix to an owner and a measured retest."
       },
       "examples": [
         { "input": "Clean claim rate dropped from 92 to 81 after a registration workflow change.", "expected_workflow": "clean-claim-rate-decline" }
@@ -74,10 +74,10 @@
       "artifact_sections": ["Variance logic", "Evidence table", "Contract citation map", "Payer dispute letter scaffold", "Negotiation talking points"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use revenue-contract-analyst as primary and build an underpayment evidence packet from contract terms, payments, and variance rules.",
-        "codex": "Produce a defensible underpayment review with data assumptions, evidence table, and payer escalation handoffs.",
-        "copilot": "Create a payer underpayment analysis prompt file or issue with contract inputs, expected calculations, and acceptance criteria.",
-        "m365_copilot": "Use approved finance and contract sources only and produce an admin-reviewed underpayment memo."
+        "claude": "Use revenue-contract-analyst as the primary specialist. Prepare an underpayment evidence packet with line-level expected and paid amounts, effective contract terms, units, carve-outs, and adjustments. Keep overpayments and unknown expectations visible. Show what finance and contracting must confirm before a dispute.",
+        "codex": "Prepare an underpayment evidence packet with line-level expected and paid amounts, effective contract terms, units, carve-outs, and adjustments. Keep overpayments and unknown expectations visible. Show what finance and contracting must confirm before a dispute.",
+        "copilot": "Use approved repository evidence. Prepare an underpayment evidence packet with line-level expected and paid amounts, effective contract terms, units, carve-outs, and adjustments. Keep overpayments and unknown expectations visible. Show what finance and contracting must confirm before a dispute.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Prepare an underpayment evidence packet with line-level expected and paid amounts, effective contract terms, units, carve-outs, and adjustments. Keep overpayments and unknown expectations visible. Show what finance and contracting must confirm before a dispute."
       },
       "examples": [
         { "input": "Claims are being underpaid against the payer contract and allowed amounts do not match the fee schedule.", "expected_workflow": "payer-contract-underpayment-review" }
@@ -102,10 +102,10 @@
       "artifact_sections": ["Case restatement", "Payer criteria map", "Missing documentation", "Non-clinical appeal structure", "Escalation path", "Review checklist"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use clinical-prior-authorization-specialist and keep the output administrative, with clinician review for medical necessity.",
-        "codex": "Draft a prior authorization appeal workup that asks for payer, service, denial reason, policy citation, and available documentation.",
-        "copilot": "Generate a scoped appeal workup prompt with required inputs, acceptance criteria, and licensed-review checkpoints.",
-        "m365_copilot": "Use approved case materials and keep the artifact as administrative appeal support, not clinical judgment."
+        "claude": "Use clinical-prior-authorization-specialist as the primary specialist. Draft an appeal evidence map. Tie the denial reason and material facts to the actual notice and effective product policy. Verify the deadline and receipt convention, mark missing documentation, and identify the clinical justification the treating clinician needs to verify.",
+        "codex": "Draft an appeal evidence map. Tie the denial reason and material facts to the actual notice and effective product policy. Verify the deadline and receipt convention, mark missing documentation, and identify the clinical justification the treating clinician needs to verify.",
+        "copilot": "Use approved repository evidence. Draft an appeal evidence map. Tie the denial reason and material facts to the actual notice and effective product policy. Verify the deadline and receipt convention, mark missing documentation, and identify the clinical justification the treating clinician needs to verify.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Draft an appeal evidence map. Tie the denial reason and material facts to the actual notice and effective product policy. Verify the deadline and receipt convention, mark missing documentation, and identify the clinical justification the treating clinician needs to verify."
       },
       "examples": [
         { "input": "Prepare a prior authorization appeal workup after a payer denied the requested service for medical necessity.", "expected_workflow": "prior-authorization-appeal-workup" }
@@ -130,10 +130,10 @@
       "artifact_sections": ["Barrier taxonomy", "Immediate next actions", "Owner list", "Daily huddle script", "Escalation triggers", "KPI plan"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use clinical-case-manager to build a discharge barrier action plan and require clinical ownership for discharge decisions.",
-        "codex": "Produce a barrier taxonomy, owner matrix, huddle script, and KPI plan for discharge delay work.",
-        "copilot": "Draft a discharge barrier workplan issue with barrier categories, owners, acceptance criteria, and patient-rights safety notes.",
-        "m365_copilot": "Use de-identified operational data where possible and produce a Teams-ready discharge barrier briefing."
+        "claude": "Use clinical-case-manager as the primary specialist. Build a discharge barrier action plan using a defined cohort and the local avoidable-day definition. Show placement, coverage, transport, and service dependencies with owners, follow-up dates, and resolution evidence. Preserve patient choice and clinical authority.",
+        "codex": "Build a discharge barrier action plan using a defined cohort and the local avoidable-day definition. Show placement, coverage, transport, and service dependencies with owners, follow-up dates, and resolution evidence. Preserve patient choice and clinical authority.",
+        "copilot": "Use approved repository evidence. Build a discharge barrier action plan using a defined cohort and the local avoidable-day definition. Show placement, coverage, transport, and service dependencies with owners, follow-up dates, and resolution evidence. Preserve patient choice and clinical authority.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Build a discharge barrier action plan using a defined cohort and the local avoidable-day definition. Show placement, coverage, transport, and service dependencies with owners, follow-up dates, and resolution evidence. Preserve patient choice and clinical authority."
       },
       "examples": [
         { "input": "Our discharge delays are mostly awaiting SNF placement and family decisions.", "expected_workflow": "discharge-barrier-workplan" },
@@ -159,10 +159,10 @@
       "artifact_sections": ["Scope", "Evidence map", "Gap register", "Responsible owners", "Collection timeline", "Review sign-off"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use quality-compliance-officer for a HIPAA evidence checklist and name privacy, legal, and IT security handoffs.",
-        "codex": "Produce a HIPAA evidence checklist with scope, evidence map, gaps, owners, and collection timeline.",
-        "copilot": "Generate a compliance evidence checklist prompt with PHI cautions, controls, owners, and acceptance criteria.",
-        "m365_copilot": "Use governed policy and control documents; do not store hidden instructions in SharePoint knowledge files."
+        "claude": "Use quality-compliance-officer as the primary specialist. Prepare an evidence checklist and gap register for the specified vendor, data flow, and control scope. Map each applicable safeguard to an artifact, date, owner, gap, and verification method. Keep compliance conclusions with the privacy or security owner.",
+        "codex": "Prepare an evidence checklist and gap register for the specified vendor, data flow, and control scope. Map each applicable safeguard to an artifact, date, owner, gap, and verification method. Keep compliance conclusions with the privacy or security owner.",
+        "copilot": "Use approved repository evidence. Prepare an evidence checklist and gap register for the specified vendor, data flow, and control scope. Map each applicable safeguard to an artifact, date, owner, gap, and verification method. Keep compliance conclusions with the privacy or security owner.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Prepare an evidence checklist and gap register for the specified vendor, data flow, and control scope. Map each applicable safeguard to an artifact, date, owner, gap, and verification method. Keep compliance conclusions with the privacy or security owner."
       },
       "examples": [
         { "input": "Prepare a HIPAA evidence checklist for a vendor security review.", "expected_workflow": "hipaa-security-evidence-checklist" }
@@ -187,10 +187,10 @@
       "artifact_sections": ["Standards map", "Tracer plan", "Policy evidence list", "Owner matrix", "Leadership briefing", "Readiness cadence"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use quality-accreditation-specialist to produce a survey readiness gap plan with standards, evidence, tracers, and owners.",
-        "codex": "Draft a survey readiness workup with standard set, site, prior findings, open actions, and leadership briefing.",
-        "copilot": "Create a survey readiness prompt or issue template with evidence tasks and acceptance criteria.",
-        "m365_copilot": "Use approved survey documents and produce a governed survey readiness briefing."
+        "claude": "Use quality-accreditation-specialist as the primary specialist. Build a survey readiness gap register. Map each finding to the applicable program, effective standard, site, and dated evidence. Show whether evidence is missing or implementation needs review. Name the retest and responsible reviewer for each open item.",
+        "codex": "Build a survey readiness gap register. Map each finding to the applicable program, effective standard, site, and dated evidence. Show whether evidence is missing or implementation needs review. Name the retest and responsible reviewer for each open item.",
+        "copilot": "Use approved repository evidence. Build a survey readiness gap register. Map each finding to the applicable program, effective standard, site, and dated evidence. Show whether evidence is missing or implementation needs review. Name the retest and responsible reviewer for each open item.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Build a survey readiness gap register. Map each finding to the applicable program, effective standard, site, and dated evidence. Show whether evidence is missing or implementation needs review. Name the retest and responsible reviewer for each open item."
       },
       "examples": [
         { "input": "We need a CMS survey readiness gap review for open corrective actions and tracer prep.", "expected_workflow": "survey-readiness-gap-review" }
@@ -215,10 +215,10 @@
       "artifact_sections": ["Fact-gathering plan", "Timeline gaps", "Causal factor categories", "Interview guide", "Action strength checklist", "Escalation notes"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use quality-patient-safety-officer and keep RCA2 output fact-focused, blame-free, and reviewed by safety/risk leadership.",
-        "codex": "Produce an RCA2 planning packet with event facts, timeline gaps, interview guide, and action-strength checklist.",
-        "copilot": "Draft a patient safety RCA2 workup prompt with non-PHI facts, owners, acceptance criteria, and escalation notes.",
-        "m365_copilot": "Use approved safety event materials only and maintain privilege/governance cautions."
+        "claude": "Use quality-patient-safety-officer as the primary specialist. Prepare an RCA2-style planning packet. Mark the confirmed events, evidence gaps, and competing explanations on one timeline. Link stronger system actions to testable contributors and assign follow-up measures and a safety owner.",
+        "codex": "Prepare an RCA2-style planning packet. Mark the confirmed events, evidence gaps, and competing explanations on one timeline. Link stronger system actions to testable contributors and assign follow-up measures and a safety owner.",
+        "copilot": "Use approved repository evidence. Prepare an RCA2-style planning packet. Mark the confirmed events, evidence gaps, and competing explanations on one timeline. Link stronger system actions to testable contributors and assign follow-up measures and a safety owner.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Prepare an RCA2-style planning packet. Mark the confirmed events, evidence gaps, and competing explanations on one timeline. Link stronger system actions to testable contributors and assign follow-up measures and a safety owner."
       },
       "examples": [
         { "input": "Create an RCA2 workup plan for a serious safety event with a partial timeline and immediate containment.", "expected_workflow": "patient-safety-rca2-workup" }
@@ -243,10 +243,10 @@
       "artifact_sections": ["Bottleneck map", "Immediate operational moves", "Escalation triggers", "Metric dashboard spec", "Leadership update"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required", "emergency"],
       "platform_prompt_templates": {
-        "claude": "Use operations-hospital-administrator to build an ED boarding capacity brief with operational owners and safety escalation triggers.",
-        "codex": "Produce a capacity workup with bottlenecks, immediate moves, metrics, and command-center update format.",
-        "copilot": "Create an ED capacity workup prompt with data inputs, owners, and acceptance criteria.",
-        "m365_copilot": "Use governed operations reports and produce a Teams-ready command-center brief."
+        "claude": "Use operations-hospital-administrator as the primary specialist. Draft a capacity brief using comparable arrival, admission, staffed-bed and discharge data. Show where boarding time accumulates, who owns each response, and which throughput and safety measures the command center will monitor.",
+        "codex": "Draft a capacity brief using comparable arrival, admission, staffed-bed and discharge data. Show where boarding time accumulates, who owns each response, and which throughput and safety measures the command center will monitor.",
+        "copilot": "Use approved repository evidence. Draft a capacity brief using comparable arrival, admission, staffed-bed and discharge data. Show where boarding time accumulates, who owns each response, and which throughput and safety measures the command center will monitor.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Draft a capacity brief using comparable arrival, admission, staffed-bed and discharge data. Show where boarding time accumulates, who owns each response, and which throughput and safety measures the command center will monitor."
       },
       "examples": [
         { "input": "ED boarding hours are rising because inpatient bed capacity and discharge timing are constrained.", "expected_workflow": "ed-boarding-capacity-workup" }
@@ -271,10 +271,10 @@
       "artifact_sections": ["Demand and capacity view", "Backlog segmentation", "Scheduling rule changes", "Referral triage approach", "Monitoring metrics"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use operations-ambulatory-manager to produce an access recovery plan with demand/capacity assumptions and referral triage handoffs.",
-        "codex": "Draft an ambulatory access backlog workup with template, referral, no-show, and monitoring sections.",
-        "copilot": "Create an access backlog issue with required inputs, constraints, owners, and acceptance criteria.",
-        "m365_copilot": "Use approved scheduling and referral data, keeping patient-level details out unless governed."
+        "claude": "Use operations-ambulatory-manager as the primary specialist. Draft an access recovery plan. Reconcile demand, usable slots, and backlog by site and visit type. Test how staffing, cancellations, and visit mix affect projected wait and backlog. Name the follow-up owner and what to monitor.",
+        "codex": "Draft an access recovery plan. Reconcile demand, usable slots, and backlog by site and visit type. Test how staffing, cancellations, and visit mix affect projected wait and backlog. Name the follow-up owner and what to monitor.",
+        "copilot": "Use approved repository evidence. Draft an access recovery plan. Reconcile demand, usable slots, and backlog by site and visit type. Test how staffing, cancellations, and visit mix affect projected wait and backlog. Name the follow-up owner and what to monitor.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Draft an access recovery plan. Reconcile demand, usable slots, and backlog by site and visit type. Test how staffing, cancellations, and visit mix affect projected wait and backlog. Name the follow-up owner and what to monitor."
       },
       "examples": [
         { "input": "Dermatology third-next-available is 120 days and referrals are backing up.", "expected_workflow": "ambulatory-access-backlog" }
@@ -299,10 +299,10 @@
       "artifact_sections": ["Risk register", "Intervention map", "Data gaps", "Governance cadence", "Decision points"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use payer-value-based-care-manager to produce a downside-risk readiness memo with finance, population health, and analytics handoffs.",
-        "codex": "Draft a VBC risk readiness memo with contract model, lives, quality, cost, data gaps, and governance cadence.",
-        "copilot": "Create a value-based care readiness prompt with required inputs and acceptance criteria.",
-        "m365_copilot": "Use governed payer and population health reports to produce an executive readiness memo."
+        "claude": "Use payer-value-based-care-manager as the primary specialist. Prepare a downside-risk readiness memo with performance-year terms, attribution, benchmark, quality gates, and material exposures. Show sensitivity to plausible assumptions and the finance, clinical and governance decisions needed before commitment.",
+        "codex": "Prepare a downside-risk readiness memo with performance-year terms, attribution, benchmark, quality gates, and material exposures. Show sensitivity to plausible assumptions and the finance, clinical and governance decisions needed before commitment.",
+        "copilot": "Use approved repository evidence. Prepare a downside-risk readiness memo with performance-year terms, attribution, benchmark, quality gates, and material exposures. Show sensitivity to plausible assumptions and the finance, clinical and governance decisions needed before commitment.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Prepare a downside-risk readiness memo with performance-year terms, attribution, benchmark, quality gates, and material exposures. Show sensitivity to plausible assumptions and the finance, clinical and governance decisions needed before commitment."
       },
       "examples": [
         { "input": "We are entering downside risk and need readiness across quality measures, cost benchmark, and care management.", "expected_workflow": "value-based-care-downside-risk-readiness" }
@@ -327,10 +327,10 @@
       "artifact_sections": ["Gap stratification", "Outreach plan", "Documentation checklist", "Weekly operating rhythm", "Measure validation"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use quality-improvement-specialist to produce a HEDIS or Stars gap closure sprint with measure documentation safeguards.",
-        "codex": "Draft a gap closure sprint plan with measure, denominator, numerator gap, outreach channels, and weekly rhythm.",
-        "copilot": "Create a quality gap closure prompt with measure inputs, outreach tasks, and acceptance criteria.",
-        "m365_copilot": "Use governed quality data and produce a sprint plan that separates outreach operations from clinical judgment."
+        "claude": "Use quality-improvement-specialist as the primary specialist. Draft a gap closure sprint based on the applicable measure specification and aligned numerator, denominator, and exclusions. Identify actionable gaps, assigned outreach and data owners, and how to verify closure and equitable coverage.",
+        "codex": "Draft a gap closure sprint based on the applicable measure specification and aligned numerator, denominator, and exclusions. Identify actionable gaps, assigned outreach and data owners, and how to verify closure and equitable coverage.",
+        "copilot": "Use approved repository evidence. Draft a gap closure sprint based on the applicable measure specification and aligned numerator, denominator, and exclusions. Identify actionable gaps, assigned outreach and data owners, and how to verify closure and equitable coverage.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Draft a gap closure sprint based on the applicable measure specification and aligned numerator, denominator, and exclusions. Identify actionable gaps, assigned outreach and data owners, and how to verify closure and equitable coverage."
       },
       "examples": [
         { "input": "We need a HEDIS gap closure sprint for diabetic eye exams.", "expected_workflow": "hedis-stars-gap-closure-sprint" },
@@ -356,10 +356,10 @@
       "artifact_sections": ["Incident summary", "Triage checklist", "Evidence to collect", "Communications", "Root-cause hypotheses", "Remediation plan"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use healthit-interoperability-engineer for an interface incident workup and escalate PHI/security concerns to compliance.",
-        "codex": "Produce an HL7/FHIR incident workup with system names, message type, failure mode, timeline, and remediation plan.",
-        "copilot": "Create an interface incident issue template with logs, mapping evidence, affected workflows, and acceptance criteria.",
-        "m365_copilot": "Use approved incident records and keep sample messages de-identified unless governed."
+        "claude": "Use healthit-interoperability-engineer as the primary specialist. Prepare an interface incident workup. Trace the transaction or resource from sender to receiver, verify the profile and acknowledgment, and identify where filing failed or diverged. Include a test for duplicate delivery, retry, and reconciliation before change approval.",
+        "codex": "Prepare an interface incident workup. Trace the transaction or resource from sender to receiver, verify the profile and acknowledgment, and identify where filing failed or diverged. Include a test for duplicate delivery, retry, and reconciliation before change approval.",
+        "copilot": "Use approved repository evidence. Prepare an interface incident workup. Trace the transaction or resource from sender to receiver, verify the profile and acknowledgment, and identify where filing failed or diverged. Include a test for duplicate delivery, retry, and reconciliation before change approval.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Prepare an interface incident workup. Trace the transaction or resource from sender to receiver, verify the profile and acknowledgment, and identify where filing failed or diverged. Include a test for duplicate delivery, retry, and reconciliation before change approval."
       },
       "examples": [
         { "input": "HL7 ADT interface is failing ACKs and patient matching errors are affecting downstream workflows.", "expected_workflow": "hl7-fhir-interface-incident" }
@@ -384,10 +384,10 @@
       "artifact_sections": ["Decision context", "Metric definitions", "Data grain and filters", "Mock table", "Validation plan", "Owner sign-off"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use healthit-clinical-data-analyst to specify a dashboard with metric definitions, grain, filters, validation, and owner sign-off.",
-        "codex": "Draft a dashboard requirements spec with decisions supported, metrics, data sources, cadence, and validation plan.",
-        "copilot": "Create a dashboard spec prompt or issue with metric definitions, acceptance criteria, and data validation tasks.",
-        "m365_copilot": "Use governed data catalog references and produce a dashboard spec for review, not patient-level disclosure."
+        "claude": "Use healthit-clinical-data-analyst as the primary specialist. Draft a dashboard specification tied to the user’s decisions and existing report or visual reference. Define metrics, units, denominators, filters, and lineage. Give sample cases to validate interactions and readability at the intended display size.",
+        "codex": "Draft a dashboard specification tied to the user’s decisions and existing report or visual reference. Define metrics, units, denominators, filters, and lineage. Give sample cases to validate interactions and readability at the intended display size.",
+        "copilot": "Use approved repository evidence. Draft a dashboard specification tied to the user’s decisions and existing report or visual reference. Define metrics, units, denominators, filters, and lineage. Give sample cases to validate interactions and readability at the intended display size.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Draft a dashboard specification tied to the user’s decisions and existing report or visual reference. Define metrics, units, denominators, filters, and lineage. Give sample cases to validate interactions and readability at the intended display size."
       },
       "examples": [
         { "input": "Leadership wants a clinical dashboard but KPI definitions conflict and users distrust the current report.", "expected_workflow": "clinical-dashboard-specification" }
@@ -412,10 +412,10 @@
       "artifact_sections": ["Scorecard structure", "Data request list", "Variance hypotheses", "Rebate and specialty spend review", "Negotiation points"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required"],
       "platform_prompt_templates": {
-        "claude": "Use pharmacy-benefits-specialist for a PBM/pharmacy contract scorecard and hand off legal/finance decisions.",
-        "codex": "Produce a pharmacy contract scorecard with terms, utilization, rebates, specialty spend, and data requests.",
-        "copilot": "Create a PBM scorecard prompt with contract inputs, data pulls, acceptance criteria, and governance notes.",
-        "m365_copilot": "Use approved pharmacy and contract sources and keep patient claims de-identified unless governed."
+        "claude": "Use pharmacy-benefits-specialist as the primary specialist. Prepare a pharmacy contract scorecard tying utilization, rebates, specialty spend and net cost to effective plan terms and denominators. Flag exclusions and assumptions and name the pharmacy and contracting owners who can verify them.",
+        "codex": "Prepare a pharmacy contract scorecard tying utilization, rebates, specialty spend and net cost to effective plan terms and denominators. Flag exclusions and assumptions and name the pharmacy and contracting owners who can verify them.",
+        "copilot": "Use approved repository evidence. Prepare a pharmacy contract scorecard tying utilization, rebates, specialty spend and net cost to effective plan terms and denominators. Flag exclusions and assumptions and name the pharmacy and contracting owners who can verify them.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Prepare a pharmacy contract scorecard tying utilization, rebates, specialty spend and net cost to effective plan terms and denominators. Flag exclusions and assumptions and name the pharmacy and contracting owners who can verify them."
       },
       "examples": [
         { "input": "PBM rebate and specialty pharmacy spend need a contract performance scorecard.", "expected_workflow": "pharmacy-contract-scorecard" }
@@ -440,10 +440,10 @@
       "artifact_sections": ["Exercise objectives", "Scenario assumptions", "Inject list", "Evaluation checklist", "After-action template", "Owner timeline"],
       "safety_constraints": ["no_medical_advice", "no_phi_by_default", "local_policy_review", "escalate_required", "emergency"],
       "platform_prompt_templates": {
-        "claude": "Use emergency-preparedness-coordinator to create an exercise readiness packet and defer live emergency decisions to incident command.",
-        "codex": "Draft exercise objectives, injects, evaluation checklist, and after-action template from the hazard scenario and current plan.",
-        "copilot": "Create an emergency preparedness exercise issue with scenario, participants, inputs, safety notes, and acceptance criteria.",
-        "m365_copilot": "Use approved preparedness documents and produce a Teams/SharePoint-ready exercise packet."
+        "claude": "Use emergency-preparedness-coordinator as the primary specialist. Prepare an exercise readiness packet linking priority hazards to objectives, injects, observed performance, and corrective actions. Name owners, the retest for each gap, and the incident command boundary for any live event.",
+        "codex": "Prepare an exercise readiness packet linking priority hazards to objectives, injects, observed performance, and corrective actions. Name owners, the retest for each gap, and the incident command boundary for any live event.",
+        "copilot": "Use approved repository evidence. Prepare an exercise readiness packet linking priority hazards to objectives, injects, observed performance, and corrective actions. Name owners, the retest for each gap, and the incident command boundary for any live event.",
+        "m365_copilot": "Use approved tenant evidence, including SharePoint when applicable. Prepare an exercise readiness packet linking priority hazards to objectives, injects, observed performance, and corrective actions. Name owners, the retest for each gap, and the incident command boundary for any live event."
       },
       "examples": [
         { "input": "We need emergency preparedness exercise readiness for a severe weather scenario and prior after-action gaps.", "expected_workflow": "emergency-preparedness-exercise-readiness" }

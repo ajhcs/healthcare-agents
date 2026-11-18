@@ -37,6 +37,7 @@
     "Root-cause hypotheses",
     "Remediation plan"
   ],
+  "review_guidance": "Prepare an interface incident workup. Trace the transaction or resource from sender to receiver, verify the profile and acknowledgment, and identify where filing failed or diverged. Include a test for duplicate delivery, retry, and reconciliation before change approval.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

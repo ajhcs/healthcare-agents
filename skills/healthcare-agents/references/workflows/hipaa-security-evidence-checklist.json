@@ -39,6 +39,7 @@
     "Collection timeline",
     "Review sign-off"
   ],
+  "review_guidance": "Prepare an evidence checklist and gap register for the specified vendor, data flow, and control scope. Map each applicable safeguard to an artifact, date, owner, gap, and verification method. Keep compliance conclusions with the privacy or security owner.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

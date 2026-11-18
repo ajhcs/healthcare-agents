@@ -1,7 +1,7 @@
 {
   "id": "discharge-barrier-workplan",
   "name": "Discharge barrier coordination",
-  "purpose": "Create an aggregate barrier workplan while preserving clinician authority and patient choice.",
+  "purpose": "Prepare a discharge barrier workplan with a reconciled cohort, locally defined avoidable days, and accountable owners for operational dependencies.",
   "checks": [
     "Define cohort, window and category rules; avoid double-counting cases or days.",
     "Validate the local avoidable-day definition and distinguish administrative blockers from clinical readiness.",

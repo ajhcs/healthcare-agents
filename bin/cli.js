@@ -380,8 +380,22 @@ function chooseAgent(args) {
   console.log(json ? JSON.stringify(result, null, 2) : 'Selected agent: ' + primary.slug + '\n\n' + result.starter_prompt);
 }
 function buildStarterPrompt(agent, mode, problem, supporting) {
-  const handoffText = supporting.length ? ` Name supporting handoffs to ${supporting.join(', ')} where the work crosses role boundaries.` : '';
-  return `Use the ${agent.slug} healthcare administration agent in ${mode} mode. Problem: ${problem}. Lead with the decision or artifact; state assumptions, immediate risks, and the human owner, and ask only blocking questions. For multi-step work, keep a compact ledger of verified facts and sources, documents, actions, owners, deadlines, discrepancies, and blockers; finish as Completed, Partial, or Blocked with terminal evidence and the next action. Use PHI only in an approved environment with minimum necessary handling. Do not make final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions. Role boundary: ${agent.role_boundaries}${handoffText}`;
+  return [
+    `Use ${agent.slug} in ${mode} mode. Apply its Role Finish Check and deliver the requested artifact or decision support.`,
+    '',
+    '## Request',
+    '',
+    problem,
+    '',
+    '## Review criteria',
+    '',
+    'Tie material findings to dated evidence and show what is missing or disputed. Ask only for information that blocks a useful result.',
+    `Review with the accountable human owner (${agent.required_human_owner}).`,
+    ...(supporting.length ? [`Use these handoffs when their roles apply: ${supporting.join(', ')}.`] : []),
+    'For multi-step execution, track documents, owner, deadlines, and confirmation. Report Completed, Partial, or Blocked with terminal evidence or the next authorized action.',
+    'Use PHI only in an approved environment with minimum necessary handling. Do not make final clinical, legal, coding, billing, audit, compliance, contracting, employment, or executive decisions.',
+    `Role boundary: ${agent.role_boundaries}`
+  ].join('\n');
 }
 
 function promptAgent(args) {

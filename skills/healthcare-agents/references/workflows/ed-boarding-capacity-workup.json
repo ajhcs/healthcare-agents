@@ -36,6 +36,7 @@
     "Metric dashboard spec",
     "Leadership update"
   ],
+  "review_guidance": "Draft a capacity brief using comparable arrival, admission, staffed-bed and discharge data. Show where boarding time accumulates, who owns each response, and which throughput and safety measures the command center will monitor.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

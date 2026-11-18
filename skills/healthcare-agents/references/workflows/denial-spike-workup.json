@@ -41,6 +41,7 @@
     "Owner matrix",
     "Monitoring plan"
   ],
+  "review_guidance": "Draft a denial spike brief for the revenue cycle owner. Reconcile denied and total claim counts across comparable payer, product, and service cohorts. Test competing causes with CARC/RARC, claim acceptance and policy evidence. Show appeal deadlines and keep denied dollars separate from confirmed recoveries.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

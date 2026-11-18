@@ -36,6 +36,7 @@
     "Governance cadence",
     "Decision points"
   ],
+  "review_guidance": "Prepare a downside-risk readiness memo with performance-year terms, attribution, benchmark, quality gates, and material exposures. Show sensitivity to plausible assumptions and the finance, clinical and governance decisions needed before commitment.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

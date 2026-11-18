@@ -1,7 +1,7 @@
 {
   "id": "denial-spike-workup",
   "name": "Denial spike investigation",
-  "purpose": "Investigate a denial-rate change and separate operational loss, payer changes and coding risk.",
+  "purpose": "Draft a denial-spike workup with comparable claim counts and rates, supported causes, and a recovery plan ordered by deadline and impact.",
   "checks": [
     "Reconcile payer/product, service line, claim population and periods; compare counts before rates.",
     "Segment CARC/RARC and first-pass versus final denials; distinguish unique claims from transactions.",

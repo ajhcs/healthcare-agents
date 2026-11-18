@@ -28,6 +28,7 @@ const required = [
   `${routerSkillDir}/SKILL.md`,
   `${routerSkillDir}/references/workflow-index.json`,
   `${routerSkillDir}/references/agent-index.json`,
+  `${routerSkillDir}/references/cli-selection.md`,
   'scripts/release-targets.js',
   'scripts/test-release-policy.js',
   '.codex-plugin/mcp-stdio-bridge.json',

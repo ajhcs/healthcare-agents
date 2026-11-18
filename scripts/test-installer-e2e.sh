@@ -44,7 +44,7 @@ run_install revenue-cycle-specialist --codex >"$TMP/skip.log"
 grep -Fq "exists" "$TMP/skip.log"
 assert_contains "$CODEX_AGENT" "sentinel"
 run_install revenue-cycle-specialist --codex --force
-grep -Fq "RevenueCycleSpecialist" "$CODEX_AGENT"
+cmp "$ROOT/agents/revenue-cycle-specialist.md" "$CODEX_AGENT"
 
 run_install revenue-cycle-specialist --codex --uninstall
 assert_missing "$CODEX_AGENT"

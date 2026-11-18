@@ -13,14 +13,14 @@ safe for PHI without an approved environment and minimum necessary controls.
 
 ## Choose a version and profile
 
-This guide covers **2.0.0-beta.2**. For a one-off CLI command, use `npx --yes healthcare-agents@2.0.0-beta.2 workflows`. To install the Codex plugin from source, check out the matching tag below. See [release evidence](docs/admin-v2/release-status.json) for the tested hosts and revisions.
+This guide covers **2.0.0-beta.3**. For a one-off CLI command, use `npx --yes healthcare-agents@2.0.0-beta.3 workflows`. To install the Codex plugin from source, check out the matching tag below. See [release evidence](docs/admin-v2/release-status.json) for the tested hosts and revisions.
 
 The commands below use a pinned source baseline with existing Node ≥18.14.1 and npm. No global installation is needed to validate or build a custom workflow:
 
 ```bash
 git clone https://github.com/ajhcs/healthcare-agents.git
 cd healthcare-agents
-git checkout --detach v2.0.0-beta.2
+git checkout --detach v2.0.0-beta.3
 npm ci --ignore-scripts
 node bin/cli.js doctor
 node bin/cli.js admin validate workflows/admin-v2/custom-example.json

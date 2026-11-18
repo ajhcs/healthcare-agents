@@ -1,7 +1,7 @@
 {
   "id": "survey-readiness-gap-review",
   "name": "Survey evidence gap review",
-  "purpose": "Build a standard-to-evidence gap register with accountable owners and verification criteria.",
+  "purpose": "Prepare a survey gap register that maps each applicable standard to dated evidence, a remediation owner, and a retest.",
   "checks": [
     "Pin accreditor/program, current standard and site scope; verify exact source text.",
     "Map each finding to implementation evidence and a dated artifact; missing evidence differs from noncompliance.",

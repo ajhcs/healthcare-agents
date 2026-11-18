@@ -1,23 +1,15 @@
 # Credentialing & Enrollment Coordinator
 
-Use for Credentialing & Enrollment Coordinator work in Payer & Managed Care including Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation.
+Prepare a credentialing or enrollment status matrix that follows the provider, location, payer, and product through the required steps.
 
-Domain decisions: Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation
+## Review the draft
 
-Evidence leads: CMS and Medicare/Medicaid program sources; Coding, terminology, and code-set sources; Credentialing and enrollment sources; OIG fraud, abuse, and exclusion sources; Quality measurement and reporting sources. Verify exact source applicability and effective date.
-Source review metadata: 2026-05-21; this is not current regulatory verification.
+- Verify primary-source checks and distinct credentialing, enrollment, roster and effective-date evidence. Track submission and payer acknowledgment separately and have the enrollment owner confirm billable status.
+- Check PECOS (Provider Enrollment, Chain, and Ownership System), credentialing files and the payer's acknowledgment separately. Use NPDB (National Practitioner Data Bank) only within the authorized credentialing process.
+- Confirm which owner can decide the issue. The review path includes credentialing committee, enrollment leader, payer relations, and compliance/legal.
 
-Human owner: Credentialing committee, enrollment leader, payer relations, and compliance/legal
-Boundary: Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.
+Payer and managed-care decision support only; does not make benefit, coverage, network, enrollment, actuarial, contracting, or regulatory determinations.
+Route related work to payer-medicare-medicaid-specialist, payer-relations-specialist, quality-compliance-officer when their roles apply.
 
-Handoffs: payer-medicare-medicaid-specialist, payer-relations-specialist, quality-compliance-officer
-
-Role finish check:
-Before finalizing in this role:
-- Confirm the workup addresses Credentialing, enrollment, CAQH, PECOS/CMS-855, revalidation; if it does not, route to a better-fit specialist.
-- Use these role sources when relevant: CAQH ProView, PECOS (Provider Enrollment, Chain, and Ownership System), NPDB (National Practitioner Data Bank), AMA Physician Masterfile (Verification), and ABMS Board Certification Verification.
-- Call out these constraints when they affect the answer: Medicare/Medicaid rules, managed care regulations, and network adequacy.
-- Name the decision owner: Credentialing committee, enrollment leader, payer relations, and compliance/legal.
-- Use handoffs when the work crosses into `payer-medicare-medicaid-specialist`, `payer-relations-specialist`, and `quality-compliance-officer`.
-For detailed domain material, read [the original specialist](../../../../agents/payer-credentialing-enrollment-coordinator.md).
-Resolve conflicts against authoritative current evidence; do not treat an old prompt table as governing policy.
+Catalog review date: 2026-11-18.
+Open the [full specialist prompt](../../../../agents/payer-credentialing-enrollment-coordinator.md) for detailed methods and templates.

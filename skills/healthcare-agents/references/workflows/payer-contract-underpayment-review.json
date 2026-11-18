@@ -36,6 +36,7 @@
     "Payer dispute letter scaffold",
     "Negotiation talking points"
   ],
+  "review_guidance": "Prepare an underpayment evidence packet with line-level expected and paid amounts, effective contract terms, units, carve-outs, and adjustments. Keep overpayments and unknown expectations visible. Show what finance and contracting must confirm before a dispute.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

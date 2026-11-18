@@ -38,6 +38,7 @@
     "After-action template",
     "Owner timeline"
   ],
+  "review_guidance": "Prepare an exercise readiness packet linking priority hazards to objectives, injects, observed performance, and corrective actions. Name owners, the retest for each gap, and the incident command boundary for any live event.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

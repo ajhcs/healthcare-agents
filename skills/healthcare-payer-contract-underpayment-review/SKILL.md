@@ -1,22 +1,26 @@
 ---
 name: healthcare-payer-contract-underpayment-review
-description: "Reconcile expected and actual aggregate payment into a contract-linked variance packet."
+description: "Draft a payer underpayment variance register that ties expected and paid amounts to contract terms, reconciles adjustments, and identifies items for dispute review."
 license: Apache-2.0
 ---
 
 # Underpayment evidence review
 
-Reconcile expected and actual aggregate payment into a contract-linked variance packet.
+Draft a payer underpayment variance register that ties expected and paid amounts to contract terms, reconciles adjustments, and identifies items for dispute review.
 
-Read [the workflow contract](references/workflow.json) when this task applies. Use its evidence fields and decision checks; adapt the artifact to the user.
+Read [the workflow contract](references/workflow.json). Use its evidence and checks to test the findings. Identify who owns each decision and what would satisfy the completion gate for any execution the user requested.
 
-Work from approved aggregate, synthetic or otherwise authorized evidence. Keep sources, effective dates, missing facts and conflicts visible.
-Preserve the named human owner. External submissions, messages and production changes require scoped authorization.
-Provide administrative support; do not make final clinical, legal, coding, billing, audit or compliance decisions.
-Report the artifact delivered and remaining evidence or action; calculation alone does not complete the operational workflow.
+## Review the draft
 
-## Calculations
+- Tie each material finding to the applicable source, effective date, and population or case scope. Show any missing or conflicting facts that could change it. Ask only for what blocks a useful draft.
+- Match the depth to the request. When a conclusion rests on several plausible explanations, test the evidence that distinguishes them. For visuals the user requests, use an available reference and check legibility and interactions at the intended size.
+- State what the artifact establishes and what the owner still needs to review or verify. For multi-step execution, report Completed, Partial, or Blocked based on evidence of the requested outcome. A calculation supports the draft.
 
-- When a calculation is needed, call `review_payment_variance` with `{ "case": ... }` if available. Follow its schema and supply the human owner and dated evidence for every data field. Use synthetic data by default and approved aggregate data only in operator-enabled mode.
-- Leave results pending if evidence is missing or conflicting or if the tool rejects the case. Name the gap and draft what the evidence supports. Respect policy rejections across runtimes. Advice and checklists can proceed without a complete case.
-- Treat successful results as `draft_for_human_review`. Carry the values, evidence and interpretation checks into the draft for the human owner.
+Use synthetic or approved aggregate evidence by default. Keep PHI in an approved environment with minimum necessary handling. Qualified human owners make clinical, legal, coding, billing, audit, and compliance decisions. External submissions, messages, and production changes require scoped authorization.
+
+## Calculation evidence
+
+- Use `review_payment_variance` with `{ "case": ... }` when the calculation is relevant and the tool is available. Follow the schema. Supply the human owner and dated evidence for every data field. Synthetic cases are the default tool mode. Approved aggregate data requires operator-enabled mode. Leave missing real values blank.
+- Keep the validated result pending if the tool is unavailable or the case is incomplete. Show conditional arithmetic only when sufficient, admissible inputs support it. Name the assumption and missing verification. Continue drafting advice or a checklist from supported facts.
+- Leave values pending if inputs conflict or are insufficient. If the tool rejects the case, keep the calculation pending until the issue is resolved. A change of runtime or evidence label cannot override the data policy.
+- Carry successful values, evidence, and interpretation checks into a `draft_for_human_review`.
