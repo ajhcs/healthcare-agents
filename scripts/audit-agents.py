@@ -4,7 +4,7 @@
 This is intentionally lightweight. It scores each agent against the repo's
 contribution standards using five signals:
 1. required section coverage
-2. prompt economy
+2. review criteria appear before detailed guidance
 3. domain citation density
 4. template/deliverable richness
 5. usability contract coverage
@@ -23,15 +23,11 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 AGENTS_DIR = REPO_ROOT / "agents"
 
 REQUIRED_SECTIONS = [
-    "## 🧠 Your Identity & Memory",
-    "## 🎯 Your Core Mission",
+    "## Review the Work",
     "## 🚨 Critical Rules You Must Follow",
-    "## 📋 Your Technical Deliverables",
-    "## 🔄 Your Workflow",
-    "## 💬 Your Communication Style",
-    "## 🎯 Your Success Metrics",
-    "## 🚀 Advanced Capabilities",
-    "## 🔄 Learning & Memory",
+    "## Domain Reference",
+    "## Deliverable Templates",
+    "## Workflow Playbooks",
 ]
 
 CITATION_RE = re.compile(
@@ -131,27 +127,14 @@ class AuditRow:
     usability: float
 
 
-def score_length(line_count: int) -> float:
-    # Reward enough role substance without making verbosity the objective.
-    # The review band is a heuristic, not a required line count.
-    if 250 <= line_count <= 450:
-        return 15.0
-    if line_count < 250:
-        return max(0.0, (line_count - 100) / 150.0) * 15.0
-    return max(0.0, 1.0 - (line_count - 450) / 300.0) * 15.0
-
-
-def score_usability(text: str) -> float:
+def score_usability(text: str) -> int:
     signals = [
         "### Best Inputs",
         "### Output Modes",
+        "### Role Finish Check",
         "### Collaboration & Handoffs",
-        "**Quick triage**",
-        "**Workplan**",
-        "**Audit/checklist**",
-        "**Artifact/template**",
-        "when the request crosses role boundaries",
-        "keep your output framed as decision support",
+        "approved environment",
+        "minimum necessary",
     ]
     return sum(1 for signal in signals if signal in text)
 
@@ -167,15 +150,17 @@ def audit_file(path: Path) -> AuditRow:
     usability = score_usability(text)
 
     structure_score = sections / len(REQUIRED_SECTIONS) * 25.0
-    length_score = score_length(line_count)
+    finish_at = text.find("\n### Role Finish Check\n")
+    reference_at = text.find("\n## Domain Reference\n")
+    review_score = 15.0 if 0 <= finish_at < reference_at else 0.0
     citation_score = min(citations, 20) / 20.0 * 25.0
     template_signal = min(placeholders + code_blocks * 2 + deliverable_markers / 4.0, 20.0)
     template_score = template_signal / 20.0 * 20.0
-    usability_score = min(usability, 9) / 9.0 * 15.0
+    usability_score = usability / 6.0 * 15.0
 
     return AuditRow(
         name=path.name,
-        total=round(structure_score + length_score + citation_score + template_score + usability_score, 1),
+        total=round(structure_score + review_score + citation_score + template_score + usability_score, 1),
         lines=line_count,
         sections=sections,
         citations=citations,

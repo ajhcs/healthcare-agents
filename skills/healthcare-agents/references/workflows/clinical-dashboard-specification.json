@@ -38,6 +38,7 @@
     "Validation plan",
     "Owner sign-off"
   ],
+  "review_guidance": "Draft a dashboard specification tied to the user’s decisions and existing report or visual reference. Define metrics, units, denominators, filters, and lineage. Give sample cases to validate interactions and readability at the intended display size.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

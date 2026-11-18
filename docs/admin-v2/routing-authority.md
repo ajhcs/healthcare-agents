@@ -16,7 +16,7 @@ Integrations that relied on free-text auto-selection must now pass a user-select
 
 ## Workflow discovery
 
-Start with the [router workflow index](../../skills/healthcare-agents/references/workflow-index.json). Each entry contains the ID, name, triggers, exclusions and intended deliverable. Follow its `reference` from the router skill directory for the selected workflow’s inputs, roles, artifact sections, red flags and safety constraints. Six details include a `deep_contract_reference` relative to their own directory, which leads to the corresponding evidence checks and completion gate.
+Start with the [router workflow index](../../skills/healthcare-agents/references/workflow-index.json). Each entry contains the ID, name, triggers, exclusions and intended deliverable. Follow its `reference` from the router skill directory for the selected workflow’s inputs, roles, artifact sections, review guidance, red flags, and safety constraints. Six details include a `deep_contract_reference` relative to their own directory, which leads to the corresponding evidence checks and completion gate.
 
 ## Structured host selection
 

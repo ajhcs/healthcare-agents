@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "generated_from": "agents/registry.json",
-  "routing_order": "Use only when no workflow in workflow-index.json is a fit. Select one narrow primary specialist.",
+  "routing_order": "Use for each requested deliverable without a matching workflow. Choose the narrowest primary specialist for that deliverable.",
   "output_modes": [
     "quick triage",
     "workplan",

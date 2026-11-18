@@ -1,3 +1,10 @@
+# 2.0.0-beta.3
+
+- Rewrite all eight skills, 51 specialist prompts and briefs, and 16 workup references around concrete deliverables and observable review checks. Keep detailed methods and templates available when needed.
+- Route mixed requests per deliverable, distinguish conditional estimates from validated calculations, and add guidance for focused delegation and checking visuals at their intended size.
+- Correct retained X12 denial-code mappings and clarify the applicability of CMS prior authorization rules to drug benefits.
+- Allow up to six minutes for the public npm registry to surface the exact published version. Verify that `next` points to the new version and `latest` retains its pre-publish value.
+
 # 2.0.0-beta.2
 
 - The router directs Codex to use a structured `host_agent` selection for inferred workflow and specialist IDs. Workup drafts retain the declared rationale. User-supplied IDs keep their existing CLI shorthand.

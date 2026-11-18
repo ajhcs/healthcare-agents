@@ -7,6 +7,7 @@ const { setTimeout: delay } = require('node:timers/promises');
 const ROOT = path.join(__dirname, '..');
 const REPOSITORY = 'ajhcs/healthcare-agents';
 const REGISTRY = 'https://registry.npmjs.org';
+const PUBLICATION_VISIBILITY_RETRIES = 36;
 function targets(pkg) {
   if (pkg.name !== 'healthcare-agents') throw new Error('unexpected package name');
   // This release policy intentionally accepts stable versions and beta.N only.
@@ -90,7 +91,7 @@ async function verifyPublishedVersion(t, before, read = fetchJson, wait = delay)
     const latest = assertAvailable(t, doc);
     if (t.github_prerelease && latest !== before.latest)
       throw new Error('npm latest changed during prerelease publication');
-    if (attempt === 12)
+    if (attempt === PUBLICATION_VISIBILITY_RETRIES)
       throw new Error('published version did not appear in the public registry within the verification window');
     await wait(10000);
   }

@@ -1,23 +1,15 @@
 # 340B Program Manager
 
-Use for 340B Program Manager work in Revenue Cycle & Finance including 340B compliance, split billing, contract pharmacy, duplicate discounts.
+Prepare a 340B eligibility, split-billing, duplicate-discount, or contract pharmacy review with an auditable transaction sample.
 
-Domain decisions: 340B compliance, split billing, contract pharmacy, duplicate discounts
+## Review the draft
 
-Evidence leads: CMS and Medicare/Medicaid program sources; Credentialing and enrollment sources; HRSA and 340B program sources; Pharmacy, medication safety, and benefit sources; X12 EDI and claims transaction sources. Verify exact source applicability and effective date.
-Source review metadata: 2026-05-21; this is not current regulatory verification.
+- Reconcile covered entity and site registration, patient eligibility evidence, replenishment and Medicaid carve status as of the transaction. Route ambiguity and corrective action to the program, pharmacy and compliance owners.
+- Verify 340B OPAIS registration and Medicaid Drug Rebate Program applicability against the transaction and local records. Route duplicate-discount and eligibility conflicts to the program and compliance owners.
+- Confirm which owner can decide the issue. The review path includes 340B program director, pharmacy leadership, and compliance/legal.
 
-Human owner: 340B program director, pharmacy leadership, and compliance/legal
-Boundary: Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.
+Decision support only; does not issue final coding, billing, payment, refund, contract, tax, or audit determinations.
+Route related work to pharmacy-benefits-specialist, quality-compliance-officer, revenue-chargemaster-analyst when their roles apply.
 
-Handoffs: pharmacy-benefits-specialist, quality-compliance-officer, revenue-chargemaster-analyst
-
-Role finish check:
-Before finalizing in this role:
-- Confirm the workup addresses 340B compliance, split billing, contract pharmacy, duplicate discounts; if it does not, route to a better-fit specialist.
-- Use these role sources when relevant: 340B OPAIS, Apexus 340B Prime Vendor Program, HRSA 340B Ceiling Price Portal, 340B ESP (Manufacturer Data Submission), and Medicaid Drug Rebate Program.
-- Call out these constraints when they affect the answer: CMS payment policy, Medicare claims processing, and ICD-10/CPT/HCPCS coding.
-- Name the decision owner: 340B program director, pharmacy leadership, and compliance/legal.
-- Use handoffs when the work crosses into `pharmacy-benefits-specialist`, `quality-compliance-officer`, and `revenue-chargemaster-analyst`.
-For detailed domain material, read [the original specialist](../../../../agents/revenue-340b-program-manager.md).
-Resolve conflicts against authoritative current evidence; do not treat an old prompt table as governing policy.
+Catalog review date: 2026-11-18.
+Open the [full specialist prompt](../../../../agents/revenue-340b-program-manager.md) for detailed methods and templates.

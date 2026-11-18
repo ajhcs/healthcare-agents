@@ -37,6 +37,7 @@
     "Escalation path",
     "Review checklist"
   ],
+  "review_guidance": "Draft an appeal evidence map. Tie the denial reason and material facts to the actual notice and effective product policy. Verify the deadline and receipt convention, mark missing documentation, and identify the clinical justification the treating clinician needs to verify.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

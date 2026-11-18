@@ -114,27 +114,37 @@ When an agent has truly distinct trigger branches, prefer sharpening the shared
 leading words in the source prompt and registry before splitting into additional
 model-visible surfaces. More model-invoked surfaces spend context load.
 
-### Required Sections (with emoji prefixes)
+### Prompt structure
 
 ```markdown
 # [Role Name]
 
-[Opening paragraph: "You are **AgentName**, a..." — 2-4 sentences establishing seniority and scope]
+[Describe the work product and who will use it.]
 
-## 🧠 Your Identity & Memory
-## 🎯 Your Core Mission
-## 🚨 Critical Rules You Must Follow
-## 📋 Your Technical Deliverables
-## 🔄 Your Workflow
-## 💬 Your Communication Style
+## Review the Work
+
 ### Best Inputs
+[Which domain facts change the result]
+
 ### Output Modes
+[How to adapt to triage, workplan, audit/checklist, or artifact/template]
+
 ### Role Finish Check
+[Evidence and source checks that the reviewer can inspect]
+[Human decision owner]
+
 ### Collaboration & Handoffs
-## 🎯 Your Success Metrics
-## 🚀 Advanced Capabilities
-## 🔄 Learning & Memory
+[Which neighboring roles help and when]
+
+## 🚨 Critical Rules You Must Follow
+## Domain Reference
+## Deliverable Templates
+## Workflow Playbooks
 ```
+
+Add references for advanced cases, communication examples, or measures when
+they help a specialist decide or produce useful work. Preserve the format
+compatibility of standalone prompts.
 
 ### Division Color Palette
 
@@ -155,43 +165,32 @@ model-visible surfaces. More model-invoked surfaces spend context load.
 
 ### Role Finish Check Standard
 
-Each agent must include `### Role Finish Check` after `### Output Modes` and
-before `### Collaboration & Handoffs`. The role finish check is where the agent
-states its local completion bar: the role-specific evidence, concrete source
-names, regulatory domain, human owner, and handoff threshold that make an
-answer ready. Prefer concrete `provenance.source_service_names` from
-`agents/registry.json` over broad `source_families`; source families are useful
-catalog metadata, not the role's local finish bar.
+Put the finish check near the beginning. Name the evidence the reviewer can
+inspect, the applicable source or version to verify, and the human owner
+who can accept the work. Use concrete `provenance.source_service_names`
+from `agents/registry.json` as lookup leads. Keep the exact source and
+applicability checks in the prompt for the decisions they affect.
 
-Keep shared safety and output-mode criteria in repository-level instructions or
-the `healthcare-agents` router skill. Workflow artifact criteria, including
-required inputs, artifact sections, red flags, and handoffs from
-`workflows/workflows.json`, belong in the router. Do not repeat an identical
-`### Completion Criteria` block across source prompts.
+Keep routing and cross-workflow instructions in the router. A specialist prompt
+should also work when installed on its own, including its governing safety
+boundaries. Put the steps and acceptance checks for a specific workflow in its
+contract. Write detailed procedures where order or precision matters, and let
+the host choose routine mechanics.
 
-### What Great Healthcare Agents Have
-- Narrow, deep specialization within a healthcare administration domain
-- Real regulatory citations (42 CFR, USC, CMS transmittals, Federal Register notices)
-- Actual deliverable templates with placeholders (not descriptions of deliverables)
-- Role-tailored best-input guidance, output modes, and cross-agent handoffs
-- Completion criteria that name the role-specific evidence, owner, escalation, and artifact bar for the work
-- Measurable success metrics with specific numbers
-- Step-by-step workflows from real operational practice
-- Distinct professional voice appropriate to the role
-- The smallest prompt that preserves the role's tested evidence, workflow, boundaries, and deliverables. As a heuristic rather than a quota, 250-500 lines is a reasonable review band; prompts above it need evidence that the extra context improves fixed evals.
+Keep role terminology, evidence hierarchy, source references, and templates.
+Use example metrics to help an owner choose measures and verify a local target.
+Label examples and verify versioned facts before applying them. Prefer an
+observable review criterion over a fictional biography, memory claim, or a
+length target.
 
-### What to Avoid
-- Generic "helpful assistant" personality
-- Vague deliverables without templates
-- Generic input/output/handoff blocks that could apply to any agent
-- Identical completion criteria across agents unless the shared rule is deliberately centralized in a router or repository-level instruction
-- Padding toward a line-count target, repeated examples, or instructions the target model already follows without prompting
-- Overly broad scope (jack-of-all-trades agents)
-- Clinical advice (diagnosis, treatment, prescribing)
-- Legal conclusions (these agents flag compliance risks, not provide legal opinions)
-- Round numbers for reimbursement rates (real rates are rarely round)
-- Treating Medicare and Medicaid as interchangeable
-- Citing "industry standard" without naming the specific standard
+After editing a role prompt or the built-in workflow catalog, run
+`node scripts/generate-admin-v2-assets.js` to refresh shipped role briefs
+and workflow skills. After changing routing data or workflow templates, run
+`node scripts/generate-router-indexes.js`. Run `npm run validate:registry` and
+`npm run validate:workflows` before review.
+
+The Codex prompts follow the outcome, review criteria, and selective delegation
+approach described in the [GPT‑6.2 prompting guide](https://learn.chatgpt.com/guides/prompting-gpt-6-2-astra).
 
 ### The Services Litmus Test
 

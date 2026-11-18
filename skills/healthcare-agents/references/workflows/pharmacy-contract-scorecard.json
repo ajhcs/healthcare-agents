@@ -36,6 +36,7 @@
     "Rebate and specialty spend review",
     "Negotiation points"
   ],
+  "review_guidance": "Prepare a pharmacy contract scorecard tying utilization, rebates, specialty spend and net cost to effective plan terms and denominators. Flag exclusions and assumptions and name the pharmacy and contracting owners who can verify them.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

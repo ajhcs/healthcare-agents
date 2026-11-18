@@ -37,6 +37,7 @@
     "Escalation triggers",
     "KPI plan"
   ],
+  "review_guidance": "Build a discharge barrier action plan using a defined cohort and the local avoidable-day definition. Show placement, coverage, transport, and service dependencies with owners, follow-up dates, and resolution evidence. Preserve patient choice and clinical authority.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

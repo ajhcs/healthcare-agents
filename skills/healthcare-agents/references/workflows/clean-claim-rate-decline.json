@@ -37,6 +37,7 @@
     "Dashboard specification",
     "Validation cadence"
   ],
+  "review_guidance": "Draft a clean claim recovery plan. Use the same first-pass definition and claim denominator in both periods, isolate the edit or clearinghouse reject stage, and tie each proposed fix to an owner and a measured retest.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

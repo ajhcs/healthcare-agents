@@ -6,7 +6,6 @@ set -euo pipefail
 
 AGENTS_DIR="${1:-agents}"
 ERRORS=0
-WARNINGS=0
 
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
@@ -14,7 +13,6 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 error() { echo -e "${RED}ERROR${NC}: $1"; ERRORS=$((ERRORS + 1)); }
-warn() { echo -e "${YELLOW}WARN${NC}: $1"; WARNINGS=$((WARNINGS + 1)); }
 ok() { echo -e "${GREEN}OK${NC}: $1"; }
 
 echo "=== Healthcare Agents Lint ==="
@@ -22,12 +20,6 @@ echo "Scanning: $AGENTS_DIR/"
 echo ""
 
 FILE_COUNT=0
-
-has_literal() {
-    local file="$1"
-    local needle="$2"
-    grep -Fq "$needle" "$file"
-}
 
 for file in "$AGENTS_DIR"/*.md; do
     [ -f "$file" ] || continue
@@ -69,48 +61,24 @@ for file in "$AGENTS_DIR"/*.md; do
         error "$basename: Missing required field 'color'"
     fi
 
-    # Check for key sections
-    if ! has_literal "$file" "## 🧠 Your Identity & Memory"; then
-        warn "$basename: Missing 'Identity & Memory' section"
-    fi
-    if ! has_literal "$file" "## 🎯 Your Core Mission"; then
-        warn "$basename: Missing 'Core Mission' section"
-    fi
-    if ! has_literal "$file" "## 🚨 Critical Rules You Must Follow"; then
-        warn "$basename: Missing 'Critical Rules' section"
-    fi
-    if ! has_literal "$file" "### Best Inputs"; then
-        error "$basename: Missing usability subsection 'Best Inputs'"
-    fi
-    if ! has_literal "$file" "### Output Modes"; then
-        error "$basename: Missing usability subsection 'Output Modes'"
-    fi
-    if ! has_literal "$file" "### Role Finish Check"; then
-        error "$basename: Missing usability subsection 'Role Finish Check'"
-    fi
-    if has_literal "$file" "### Completion Criteria"; then
-        error "$basename: Source prompts must use role-specific 'Role Finish Check'; shared completion criteria belong in the router"
-    fi
-    if ! has_literal "$file" "### Collaboration & Handoffs"; then
-        error "$basename: Missing usability subsection 'Collaboration & Handoffs'"
+    for heading in \
+        '## Review the Work' \
+        '### Best Inputs' \
+        '### Output Modes' \
+        '### Role Finish Check' \
+        '### Collaboration & Handoffs' \
+        '## 🚨 Critical Rules You Must Follow' \
+        '## Domain Reference' \
+        '## Deliverable Templates'; do
+        if ! grep -Fxq "$heading" "$file"; then
+            error "$basename: Missing heading '$heading'"
+        fi
+    done
+    if grep -Fxq "### Completion Criteria" "$file"; then
+        error "$basename: Use the role-specific 'Role Finish Check' heading"
     fi
 
-    # Check body length
     body_lines=$(wc -l < "$file")
-    if [ "$body_lines" -lt 100 ]; then
-        warn "$basename: Body under 100 lines ($body_lines lines)"
-    elif [ "$body_lines" -lt 350 ]; then
-        warn "$basename: Body under 350 lines ($body_lines lines) — consider expanding Core Mission"
-    fi
-
-    # Healthcare-specific: check for emoji section headers
-    if ! has_literal "$file" "## 🧠 Your Identity & Memory"; then
-        warn "$basename: Missing emoji prefix on Identity section header"
-    fi
-    if ! has_literal "$file" "## 🎯 Your Core Mission"; then
-        warn "$basename: Missing emoji prefix on Core Mission section header"
-    fi
-
     ok "$basename ($body_lines lines)"
 done
 
@@ -118,15 +86,11 @@ echo ""
 echo "=== Results ==="
 echo "Files scanned: $FILE_COUNT"
 echo -e "Errors: ${RED}$ERRORS${NC}"
-echo -e "Warnings: ${YELLOW}$WARNINGS${NC}"
 echo ""
 
 if [ "$ERRORS" -gt 0 ]; then
     echo -e "${RED}FAILED${NC} — fix errors before merging"
     exit 1
-elif [ "$WARNINGS" -gt 0 ]; then
-    echo -e "${YELLOW}PASSED with warnings${NC}"
-    exit 0
 else
     echo -e "${GREEN}PASSED${NC}"
     exit 0

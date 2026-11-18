@@ -37,6 +37,7 @@
     "Referral triage approach",
     "Monitoring metrics"
   ],
+  "review_guidance": "Draft an access recovery plan. Reconcile demand, usable slots, and backlog by site and visit type. Test how staffing, cancellations, and visit mix affect projected wait and backlog. Name the follow-up owner and what to monitor.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

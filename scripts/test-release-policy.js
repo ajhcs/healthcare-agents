@@ -69,7 +69,7 @@ async function checkPublicationVisibility() {
   await verifyPublishedVersion(t, before, async () => ++reads === 1 ? available : doc, wait);
   pass(() => assert.deepEqual([reads, waits], [2, 1]));
   await assert.rejects(verifyPublishedVersion(t, before, async () => available, wait), /verification window/);
-  pass(() => assert.equal(waits, 13));
+  pass(() => assert.equal(waits, 37));
   for (const invalid of [
     { ...available, 'dist-tags': { latest: t.version } },
     { ...available, name: 'wrong-package' },
@@ -77,7 +77,7 @@ async function checkPublicationVisibility() {
     { ...doc, 'dist-tags': { latest: '1.5.0', next: '1.5.0' } },
   ]) {
     await assert.rejects(verifyPublishedVersion(t, before, async () => invalid, wait));
-    pass(() => assert.equal(waits, 13));
+    pass(() => assert.equal(waits, 37));
   }
 }
 checkPublicationVisibility().then(() => {

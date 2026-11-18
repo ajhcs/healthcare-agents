@@ -36,6 +36,7 @@
     "Leadership briefing",
     "Readiness cadence"
   ],
+  "review_guidance": "Build a survey readiness gap register. Map each finding to the applicable program, effective standard, site, and dated evidence. Show whether evidence is missing or implementation needs review. Name the retest and responsible reviewer for each open item.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",

@@ -37,6 +37,7 @@
     "Action strength checklist",
     "Escalation notes"
   ],
+  "review_guidance": "Prepare an RCA2-style planning packet. Mark the confirmed events, evidence gaps, and competing explanations on one timeline. Link stronger system actions to testable contributors and assign follow-up measures and a safety owner.",
   "safety_constraints": [
     "no_medical_advice",
     "no_phi_by_default",
